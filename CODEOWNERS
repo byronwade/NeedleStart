@@ -1,0 +1,21 @@
+# Provisional ownership until the monorepo is scaffolded.
+# Update this file when packages, examples, tests, and generated artifact paths exist.
+
+* @byronwade
+
+# Documentation and governance
+/docs/ @byronwade
+/README.md @byronwade
+/AGENTS.md @byronwade
+/ARCHITECTURE.md @byronwade
+/CONTRIBUTING.md @byronwade
+/SECURITY.md @byronwade
+
+# GitHub workflow and templates
+/.github/ @byronwade
+
+# Future package areas
+/packages/ @byronwade
+/examples/ @byronwade
+/tests/ @byronwade
+/benchmarks/ @byronwade
