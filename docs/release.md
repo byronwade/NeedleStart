@@ -1,15 +1,16 @@
 # Release Policy
 
-NeedleStart release behavior is planned. This document defines the target policy for package versions, prereleases, manifest schema versions, generated app compatibility, changelogs, and verification.
+NeedleStart release behavior is planned. This document defines the target policy for package versions, prereleases, manifest schema versions, generated app compatibility, public docs, benchmark claims, changelogs, and verification.
 
 No package is currently published. Until `docs/status.md` marks publish infrastructure verified, this document is a release contract, not an implemented process.
 
 ## Goals
 
 - Avoid publishing planned behavior as implemented behavior.
-- Keep package versions, docs, examples, and generated artifacts aligned.
+- Keep package versions, docs, examples, benchmarks, and generated artifacts aligned.
 - Make manifest schema changes explicit.
 - Give early adopters a clear compatibility story.
+- Keep public docs status-aware.
 - Keep prerelease quality high enough that agents and humans can trust generated output.
 
 ## Package Versioning
@@ -62,17 +63,21 @@ A release may include:
 - Generated app templates.
 - Examples.
 - Documentation.
+- Public website pages.
 - Generated manifest schemas.
 - Adapter behavior.
 - MCP tool contracts.
+- Benchmark harness code.
+- Benchmark results, only when raw data and methodology exist.
 
 A release must not claim:
 
 - Commands pass unless they were run.
 - Runtime behavior exists when only docs exist.
-- Benchmarks are real without reproducible benchmark fixtures.
+- Benchmarks are real without reproducible benchmark fixtures and raw data.
 - Safe edits are trustworthy without rejection tests.
 - Node/static compatibility exists unless verified.
+- Public docs describe implemented behavior unless `docs/status.md` agrees.
 
 ## Verification Levels
 
@@ -102,6 +107,7 @@ Before any package release:
 - Package versions are consistent.
 - Manifest schema versions are correct.
 - Generated app templates have been tested.
+- Public docs do not overclaim planned behavior.
 - Security-sensitive changes have tests or documented review.
 
 Before a public prototype release:
@@ -119,6 +125,21 @@ Before a public prototype release:
 - Safe metadata edit apply works.
 - Undo works.
 - Production output excludes agent-only metadata.
+- Public docs or docs index can be generated without broken links.
+- Benchmark smoke harness runs without publishing official performance claims.
+
+## Public Website Release Gate
+
+Before launching the public docs website:
+
+- `docs/public-docs.md` rules are satisfied.
+- `docs/website-content-map.md` reflects current nav.
+- Public pages have title, description, status, audience, and slug metadata where the website pipeline requires it.
+- Public pages show planned vs implemented status.
+- Public pages avoid secret-like content.
+- Public comparison pages include "choose the other tool when" framing.
+- Public benchmark pages link methodology and raw data, or clearly state that results are not published yet.
+- Sitemap and robots output are generated once the website dogfoods NeedleStart.
 
 ## Manifest Schema Versioning
 
@@ -144,6 +165,8 @@ Manifest families:
 - adapter manifest
 - mutation log
 - agent context index
+- benchmark run result
+- public docs index
 
 ## Generated App Compatibility
 
@@ -159,7 +182,7 @@ Rules:
 
 ## Deprecation Policy
 
-Before removing or renaming a public API, command, manifest field, config field, or route convention:
+Before removing or renaming a public API, command, manifest field, config field, route convention, public docs metadata field, or benchmark result field:
 
 1. Mark it deprecated in docs.
 2. Emit a diagnostic when possible.
@@ -181,6 +204,8 @@ Use a changelog or release notes with sections:
 - Security
 - Compatibility
 - Manifest schema changes
+- Public docs changes
+- Benchmark methodology or result changes
 - Migration notes
 
 Every release should mention:
@@ -190,6 +215,7 @@ Every release should mention:
 - Notable verified commands.
 - Known limitations.
 - Docs status.
+- Public benchmark status, if relevant.
 
 ## Security Releases
 
@@ -209,11 +235,25 @@ Benchmark claims must not be released without:
 - Command used.
 - Environment summary.
 - Commit SHA.
+- Framework versions.
+- Runtime versions.
 - Warmup policy.
+- Repetition count.
 - Measurement duration.
 - Comparison target.
+- Raw data link.
+- Methodology link.
+- Known limitations.
+- A "what this benchmark does not prove" section.
 
 Benchmark marketing should distinguish Bun performance from Node compatibility.
+
+Benchmark claims must distinguish:
+
+- official controlled runs
+- CI smoke runs
+- local development runs
+- non-comparable agent-native features
 
 ## Release Checklist
 
@@ -222,10 +262,12 @@ Benchmark marketing should distinguish Bun performance from Node compatibility.
 - [ ] `docs/status.md` updated.
 - [ ] README current.
 - [ ] AGENTS current.
+- [ ] Public docs metadata current if website pages changed.
 - [ ] Changelog or release notes written.
 - [ ] Commands run and recorded.
 - [ ] Generated app template tested.
 - [ ] Manifest schema changes documented.
+- [ ] Benchmark schema or results changes documented.
 - [ ] Security-sensitive changes reviewed.
 - [ ] Package publish dry-run completed if tooling exists.
 - [ ] Tag created after verification.
@@ -236,3 +278,4 @@ Benchmark marketing should distinguish Bun performance from Node compatibility.
 - Enterprise release channels.
 - Hosted update service.
 - Automatic project migrations for every breaking change.
+- Official benchmark publication before implementation and fixtures exist.
