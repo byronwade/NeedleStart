@@ -7,6 +7,7 @@ NeedleStart is still in Phase 0. Unless `docs/status.md` marks a behavior implem
 ## Start Here
 
 - [Project Status](status.md): current planned, drafted, scaffolded, implemented, and verified state.
+- [Product Strategy](product-strategy.md): developer and AI needs, framework lessons, and NeedleStart opportunity ranking.
 - [Roadmap](roadmap.md): complete phase plan.
 - [Task Backlog](task-backlog.md): first concrete implementation tasks.
 - [Risk Mitigation](risk-mitigation.md): mitigation plan for semantic graph, scope, adoption, Bun perception, and safe edits.
@@ -96,6 +97,7 @@ NeedleStart is still in Phase 0. Unless `docs/status.md` marks a behavior implem
 - Prefer examples that can later become tests.
 - Keep command examples aligned with `docs/cli.md`.
 - Keep generated artifact descriptions aligned with `docs/manifest-contracts.md`.
+- Keep product strategy aligned with research evidence and implementation reality.
 - Keep public docs aligned with `docs/public-docs.md` and `docs/website-content-map.md`.
 - Keep benchmark claims aligned with `docs/benchmarks.md` and `docs/benchmark-methodology.md`.
 - Keep governance docs aligned with release, compatibility, and security decisions.
