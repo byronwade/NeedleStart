@@ -32,12 +32,19 @@ NeedleStart is still in Phase 0. Unless `docs/status.md` marks a behavior implem
 - [Schema DSL](schema.md): validation, serialization, OpenAPI direction, and schema diagnostics.
 - [Cache System](cache.md): cache plans, cache tags, headers, invalidation, and cache manifests.
 - [Performance](performance.md): route budgets, reports, and benchmark goals.
+- [Benchmark System](benchmarks.md): benchmark harness, fixtures, metrics, results contracts, and comparison targets.
+- [Benchmark Methodology](benchmark-methodology.md): fairness rules, reproducibility, raw data, and public reporting policy.
 - [Accessibility Strategy](accessibility.md): semantic HTML, accessibility diagnostics, and safe edit considerations.
 - [Needle Map](needle-map.md): graph model, nodes, edges, and queries.
 - [Agent Kernel](agent-kernel.md): agent context, safe edits, and generated agent files.
 - [MCP Server](mcp-server.md): planned MCP resources and tools.
 - [Safe Edit Transactions](safe-edit-transactions.md): transaction engine, risk tiers, dry runs, mutation logs, and undo.
 - [Migration Tooling](migration.md): migration commands, contract stubs, and reports.
+
+## Public Website Planning
+
+- [Public Docs Publishing Contract](public-docs.md): how repository docs become website-ready public docs.
+- [Website Content Map](website-content-map.md): future website information architecture, docs nav, benchmark pages, and comparison pages.
 
 ## Governance and Launch
 
@@ -89,4 +96,6 @@ NeedleStart is still in Phase 0. Unless `docs/status.md` marks a behavior implem
 - Prefer examples that can later become tests.
 - Keep command examples aligned with `docs/cli.md`.
 - Keep generated artifact descriptions aligned with `docs/manifest-contracts.md`.
+- Keep public docs aligned with `docs/public-docs.md` and `docs/website-content-map.md`.
+- Keep benchmark claims aligned with `docs/benchmarks.md` and `docs/benchmark-methodology.md`.
 - Keep governance docs aligned with release, compatibility, and security decisions.
