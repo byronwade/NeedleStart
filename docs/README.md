@@ -22,6 +22,7 @@ NeedleStart is still in Phase 0. Unless `docs/status.md` marks a behavior implem
 - [Runtime Contract](runtime-contract.md): server behavior and build output expectations.
 - [Adapter Architecture](adapters.md): Bun, Node, and static adapter strategy.
 - [Deployment Guide](deployment.md): build output, production runtime expectations, adapter deployment, and health endpoint policy.
+- [Compatibility Policy](compatibility.md): supported surfaces, runtime compatibility, manifest compatibility, and deprecation rules.
 
 ## Product Systems
 
@@ -31,17 +32,28 @@ NeedleStart is still in Phase 0. Unless `docs/status.md` marks a behavior implem
 - [Schema DSL](schema.md): validation, serialization, OpenAPI direction, and schema diagnostics.
 - [Cache System](cache.md): cache plans, cache tags, headers, invalidation, and cache manifests.
 - [Performance](performance.md): route budgets, reports, and benchmark goals.
+- [Accessibility Strategy](accessibility.md): semantic HTML, accessibility diagnostics, and safe edit considerations.
 - [Needle Map](needle-map.md): graph model, nodes, edges, and queries.
 - [Agent Kernel](agent-kernel.md): agent context, safe edits, and generated agent files.
 - [MCP Server](mcp-server.md): planned MCP resources and tools.
 - [Safe Edit Transactions](safe-edit-transactions.md): transaction engine, risk tiers, dry runs, mutation logs, and undo.
 - [Migration Tooling](migration.md): migration commands, contract stubs, and reports.
 
+## Governance and Launch
+
+- [Release Policy](release.md): package versions, prereleases, schema versions, changelogs, and verification gates.
+- [Examples Strategy](examples.md): examples as proof vehicles and future fixtures.
+- [Comparison Positioning](comparisons.md): honest comparison rules and when to choose other tools.
+
 ## Safety and Verification
 
 - [Security and Threat Model](security.md): secrets, MCP, safe edits, production bundles, and deployment security.
 - [Testing Strategy](testing.md): unit, fixture, integration, HTTP, stable JSON, MCP, safe edit, security, and benchmark tests.
 - [Prototype Acceptance Demo](prototype-acceptance.md): demo that proves the wedge.
+
+## Agent Prompts
+
+- [Frontier Skills and Subagents Builder Prompt](prompts/frontier-skills-subagents-prompt.md): portable prompt for generating model-agnostic skills, subagents, routers, contracts, and safety gates.
 
 ## Reference
 
@@ -55,12 +67,15 @@ NeedleStart is still in Phase 0. Unless `docs/status.md` marks a behavior implem
 
 - [Implementation Task Template](templates/task-template.md)
 - [Architecture Decision Template](templates/adr-template.md)
+- GitHub issue templates under `.github/ISSUE_TEMPLATE/`
+- Pull request template under `.github/pull_request_template.md`
 
 ## Decision Records
 
 - [0001: Runtime and Build Split](decisions/0001-runtime-and-build-split.md)
 - [0002: Agent-Native Core](decisions/0002-agent-native-core.md)
 - [0003: Risk Mitigation From Day One](decisions/0003-risk-mitigation-from-day-one.md)
+- [0004: CLI and Adapter Boundaries](decisions/0004-cli-and-adapter-boundaries.md)
 
 ## Documentation Rules
 
@@ -74,3 +89,4 @@ NeedleStart is still in Phase 0. Unless `docs/status.md` marks a behavior implem
 - Prefer examples that can later become tests.
 - Keep command examples aligned with `docs/cli.md`.
 - Keep generated artifact descriptions aligned with `docs/manifest-contracts.md`.
+- Keep governance docs aligned with release, compatibility, and security decisions.
