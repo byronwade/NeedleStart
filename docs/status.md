@@ -31,6 +31,8 @@ A command must not be marked `verified` until it has been run after the relevant
 | Agent-native core | drafted | ADR 0002, `docs/agent-kernel.md` | Generate context capsules after graph and SEO outputs exist. |
 | Risk mitigation | drafted | `docs/risk-mitigation.md`, ADR 0003 | Keep required for map, agent, MCP, adapter, and safe-edit work. |
 | CLI and adapter boundaries | drafted | ADR 0004, `docs/cli.md`, `docs/package-map.md` | Revisit only through a future ADR. |
+| Public docs publishing | drafted | `docs/public-docs.md`, `docs/website-content-map.md` | Add frontmatter and website app once docs site work begins. |
+| Benchmark system | drafted | `docs/benchmarks.md`, `docs/benchmark-methodology.md` | Build harness after NeedleStart runtime exists. |
 | Roadmap | drafted | `docs/roadmap.md` | Update as phases start or move. |
 | Task backlog | drafted | `docs/task-backlog.md` | Convert each PR slice into task files or issues. |
 | Release policy | drafted | `docs/release.md` | Activate when publish tooling exists. |
@@ -83,6 +85,7 @@ Until the monorepo exists, all commands below are target UX only.
 | `needle migrate from-next` | `@needle/cli`, migration package or compiler | planned | Emits migration report and contract stubs. |
 | `needle check` | `@needle/cli` | planned | Runs affected checks and emits diagnostics. |
 | `needle bench` | `@needle/cli`, benchmark fixtures | planned | Runs reproducible benchmark fixtures. |
+| `needle docs check-public` | `@needle/cli`, docs tooling | planned | Checks public docs metadata, links, status, and overclaims. |
 
 ## Documentation Coverage Matrix
 
@@ -98,7 +101,9 @@ Until the monorepo exists, all commands below are target UX only.
 | Runtime | `docs/runtime-contract.md` | `docs/deployment.md`, `docs/adapters.md` |
 | SEO | `docs/seo-engine.md` | `docs/routing.md`, `docs/manifest-contracts.md` |
 | Accessibility | `docs/accessibility.md` | `docs/seo-engine.md`, `docs/testing.md` |
-| Performance | `docs/performance.md` | `docs/testing.md` |
+| Performance | `docs/performance.md` | `docs/testing.md`, `docs/benchmarks.md` |
+| Benchmarks | `docs/benchmarks.md` | `docs/benchmark-methodology.md`, `docs/examples.md`, `docs/comparisons.md`, `docs/testing.md` |
+| Public website docs | `docs/public-docs.md` | `docs/website-content-map.md`, `docs/status.md`, `docs/release.md` |
 | Cache | `docs/cache.md` | `docs/runtime-contract.md`, `docs/needle-map.md` |
 | API routes | `docs/api-routes.md` | `docs/schema.md`, `docs/hot-api-path.md` |
 | Schema DSL | `docs/schema.md` | `docs/hot-api-path.md` |
@@ -109,10 +114,10 @@ Until the monorepo exists, all commands below are target UX only.
 | Migration | `docs/migration.md` | `docs/needle-map.md`, `docs/schema.md` |
 | Deployment | `docs/deployment.md` | `docs/adapters.md`, `docs/runtime-contract.md` |
 | Security | `docs/security.md`, `SECURITY.md` | `AGENTS.md`, `docs/mcp-server.md` |
-| Testing | `docs/testing.md` | `CONTRIBUTING.md`, `docs/task-backlog.md` |
+| Testing | `docs/testing.md` | `CONTRIBUTING.md`, `docs/task-backlog.md`, `docs/benchmarks.md` |
 | Release | `docs/release.md` | `docs/status.md`, `docs/compatibility.md` |
-| Examples | `docs/examples.md` | `docs/testing.md`, `docs/prototype-acceptance.md` |
-| Comparisons | `docs/comparisons.md` | `README.md`, `VISION.md` |
+| Examples | `docs/examples.md` | `docs/testing.md`, `docs/prototype-acceptance.md`, `docs/benchmarks.md` |
+| Comparisons | `docs/comparisons.md` | `README.md`, `VISION.md`, `docs/benchmarks.md` |
 | Prompt library | `docs/prompts/frontier-skills-subagents-prompt.md` | `AGENTS.md`, `docs/agent-kernel.md` |
 
 ## Update Rules
@@ -124,7 +129,7 @@ Update this file whenever one of these changes:
 - A package is added, removed, or renamed.
 - A generated artifact is added, removed, or versioned.
 - A roadmap phase starts, completes, or changes scope.
-- A governance artifact such as a template, workflow, CODEOWNERS entry, release policy, or prompt changes status.
+- A governance artifact such as a template, workflow, CODEOWNERS entry, release policy, public docs policy, benchmark policy, or prompt changes status.
 
 Every implementation PR should include a one-line status update when it changes the truth table.
 
@@ -162,3 +167,5 @@ The first public prototype becomes credible when the status matrix can honestly 
 16. Undo safe metadata edit.
 17. Serve through Bun adapter.
 18. Demonstrate Node/static adapter path as documented compatibility.
+19. Generate public docs index or equivalent website-ready docs output.
+20. Run benchmark smoke harness without publishing official performance claims.
