@@ -1,12 +1,15 @@
 # Agent Kernel
 
-The Agent Kernel is the part of NeedleStart that makes applications understandable and safely editable by AI agents.
+The Agent Kernel is the part of NeedleStart that makes applications understandable, auditable, and safely editable by AI agents.
+
+Agents do not primarily need more prose. They need a compact, reliable app graph, stable contracts, safe edit rails, and evidence-backed checks.
 
 ## Goals
 
 - Let agents inspect the app without reading the whole repository.
-- Generate compact route-specific context.
+- Generate compact route-specific context from the app graph.
 - Provide deterministic task skeletons.
+- Explain render, cache, SEO, route, and graph behavior through stable JSON.
 - Support safe edit transactions.
 - Record mutation logs.
 - Keep production builds free of agent metadata.
@@ -38,6 +41,7 @@ needle agent task
 needle agent plan
 needle agent apply
 needle agent log
+needle inspect why route /pricing
 ```
 
 ## Context Capsule
@@ -49,18 +53,50 @@ Example:
   "route": "/pricing",
   "source": "app/pricing/page.tsx",
   "mode": "static",
+  "why": [
+    "Route declares staticPage().",
+    "No request-time APIs were detected.",
+    "Metadata is statically analyzable."
+  ],
   "seo": {
     "status": "pass",
     "title": "Pricing | Acme",
     "canonical": "/pricing"
   },
+  "cache": {
+    "mode": "static",
+    "tags": []
+  },
   "components": ["Hero", "PricingTable", "FAQ"],
   "data": ["billing.plans.public"],
   "safeEdits": ["meta.*", "copy.*", "blocks.*.props"],
   "dangerZones": ["billing", "checkout"],
-  "checks": ["seo", "typecheck", "render"]
+  "checks": ["seo", "typecheck", "render", "map"]
 }
 ```
+
+A context capsule should answer what the agent needs to know, not dump the entire repo into a smaller box.
+
+## Agent Task Contract
+
+`needle agent task "task" --json` should eventually return a deterministic task contract.
+
+Draft shape:
+
+```json
+{
+  "goal": "Update pricing hero copy",
+  "relevantFiles": ["app/pricing/page.tsx", "components/PricingHero.tsx"],
+  "likelyAffectedRoutes": ["/pricing"],
+  "safeEditFields": ["copy.*", "meta.description"],
+  "dangerZones": ["billing", "checkout"],
+  "requiredChecks": ["typecheck", "seo", "map"],
+  "risk": "low",
+  "outOfScope": ["pricing logic", "billing API", "checkout copy"]
+}
+```
+
+The command should not call an external LLM. It should use graph data, manifests, templates, and safe edit policies.
 
 ## Safe Edit Transaction
 
@@ -121,6 +157,7 @@ Example:
   "id": "mut_01K00000000000000000000000",
   "task": "Update pricing title",
   "filesChanged": ["app/pricing/page.tsx"],
+  "affectedRoutes": ["/pricing"],
   "checks": {
     "typecheck": "pass",
     "seo": "pass",
@@ -142,6 +179,7 @@ Example:
 - Safe edit rollback must be available for applied transactions.
 - Generated files must not be manually edited.
 - Agent context must not be included in production bundles.
+- Agent-facing output must include evidence, checks, skipped checks with reasons, and known risks.
 
 ## High-Risk Areas
 
@@ -152,6 +190,8 @@ Example:
 - File-system write tools.
 - MCP write tools.
 - Secrets and environment variables.
+- Runtime request routing.
+- Schema validators and serializers.
 
 ## Deterministic Agent Plans
 
@@ -164,4 +204,12 @@ The plan should include:
 - Likely affected routes.
 - Required checks.
 - Risk level.
+- Safe edit fields.
+- Danger zones.
 - Out of scope.
+
+## Product Rule
+
+The Agent Kernel should make agents better because the framework exposes structure, not because the agent guesses harder.
+
+If an agent workflow requires reading the whole repo to answer a route-level question, NeedleStart has not yet fulfilled the app-graph-native promise.
