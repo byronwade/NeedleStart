@@ -2,20 +2,20 @@
 
 NeedleStart is built around a simple split:
 
-- Bun handles runtime execution.
+- Bun is the speed default for local workflow and the first production adapter path.
 - Vite/Rolldown handles frontend build mechanics.
 - The Needle compiler handles framework intelligence.
-- The Needle server handles production request routing.
+- Runtime adapters handle production request routing and static output from generated artifacts.
 - The Agent Kernel and Needle Map expose structure to humans and agents.
 
 ## Strategic Technology Decision
 
 Recommended stack:
 
-- Bun: runtime, package manager, test runner, and production server path.
+- Bun: package manager, test runner, local workflow, and default production adapter runtime.
 - Vite and Rolldown: frontend build, React transforms, HMR, assets, and plugin ecosystem.
 - Custom Needle compiler: route graph, render modes, SEO generation, Needle Map, codegen, and manifests.
-- Needle server: thin adapter integration layer around generated server artifacts.
+- Adapter packages: thin runtime or output layers around generated server artifacts.
 
 This split lets NeedleStart move quickly without reinventing a bundler while putting framework intelligence where it belongs: at build time.
 
@@ -29,9 +29,15 @@ Responsible for file-based routes, layouts, React rendering, metadata, API route
 
 Responsible for app discovery, route graph, render modes, server/client boundaries, SEO manifests, API code generation, hot API handlers, Needle Map generation, agent context generation, and deployment manifests.
 
-### Layer 3: Runtime
+### Layer 3: Runtime and Adapters
 
-Responsible for static file serving, prerendered HTML serving, SSR requests, streaming SSR requests, API handlers, hot API handlers, cache headers, redirects, 404 and 500 responses, health endpoint, and request logging.
+Responsible for static file serving, prerendered HTML serving, SSR requests, streaming SSR requests, API handlers, hot API handlers, cache headers, redirects, 404 and 500 responses, health endpoint, request logging, and static export behavior.
+
+Initial adapters:
+
+- `@needle/adapter-bun`
+- `@needle/adapter-node`
+- `@needle/adapter-static`
 
 ### Layer 4: Agent Kernel
 
@@ -43,9 +49,11 @@ Responsible for file graph, semantic graph, route impact, affected checks, owner
 
 ## Technology Decisions
 
-### Runtime
+### Runtime and Adapters
 
-Bun is the default runtime because it provides a high-performance HTTP server, package manager, test runner, and native TypeScript-friendly workflow. The Bun server package owns production request handling.
+Bun is the default runtime path because it provides a high-performance HTTP server, package manager, test runner, and native TypeScript-friendly workflow. Bun-specific production request handling belongs in `@needle/adapter-bun`.
+
+Node and static adapters move early so Bun remains the speed default without becoming an adoption trap. User application code must not require Bun-only APIs.
 
 ### Frontend Build
 
@@ -63,22 +71,38 @@ The custom Needle compiler owns framework-specific intelligence that Vite does n
 - API validators and serializers.
 - Deployment manifests.
 
-### Server
+### Adapter-Aware Server Output
 
-The production server should be generated and small. It should load the build manifest, route requests, serve static assets, call SSR handlers, call API handlers, and expose predictable error behavior.
+The production server entry should be generated and small. It should load the build manifest, route requests, serve static assets, call SSR handlers, call API handlers, and expose predictable error behavior.
+
+The compiler chooses the adapter import during build.
+
+```ts
+// .needle/generated/server-entry.ts
+import { createServer } from "@needle/adapter-bun"
+```
+
+Adapters consume generated artifacts. They do not rediscover app source structure.
 
 ## Request Flow
+
+Bun adapter request flow:
 
 ```txt
 Bun.serve
   -> generated route matcher
   -> static asset handler
   -> prerendered HTML handler
-  -> SSR renderer
-  -> API handler
   -> hot API handler
+  -> normal API handler
+  -> SSR renderer
+  -> not found handler
   -> error handler
 ```
+
+Node adapter should use the same generated route matcher and handler contracts with Node-compatible request handling.
+
+Static adapter should export compatible static routes and fail clearly for unsupported runtime routes.
 
 ## Build Flow
 
@@ -90,13 +114,15 @@ source app
   -> render mode extraction
   -> metadata extraction
   -> schema extraction
+  -> cache plan extraction
   -> route manifest
   -> render manifest
-  -> SEO manifest
+  -> SEO report
+  -> cache manifest
   -> Needle Map
   -> agent context capsules
   -> Vite build
-  -> server bundle
+  -> generated server modules
   -> adapter output
 ```
 
@@ -130,7 +156,6 @@ needlestart/
     compiler/
     vite-plugin/
     react/
-    server-bun/
     router/
     seo/
     map/
@@ -139,13 +164,15 @@ needlestart/
     cache/
     schema/
     devtools/
-    adapters/
+    adapter-bun/
+    adapter-node/
+    adapter-static/
   examples/
   tests/
   docs/
 ```
 
-See `docs/roadmap.md` for the build order.
+See `docs/roadmap.md` for the build order and `docs/package-map.md` for package boundaries.
 
 ```ts
 export type RouteNode = {
@@ -200,3 +227,17 @@ Production server bundles must not include agent context capsules, MCP server im
 No invisible caching.
 
 Every cacheable route, function, component, or API response must expose its cache plan in a manifest. Cache tags must be queryable by Needle Map and agent diagnostics.
+
+## Contract Docs
+
+Detailed contracts live in:
+
+- `docs/cli.md`
+- `docs/config.md`
+- `docs/routing.md`
+- `docs/manifest-contracts.md`
+- `docs/runtime-contract.md`
+- `docs/adapters.md`
+- `docs/deployment.md`
+- `docs/security.md`
+- `docs/testing.md`
