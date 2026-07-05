@@ -268,6 +268,10 @@ Start here:
 - [Configuration Contract](docs/config.md)
 - [Routing Contract](docs/routing.md)
 - [Manifest Contracts](docs/manifest-contracts.md)
+- [Public Docs Publishing Contract](docs/public-docs.md)
+- [Website Content Map](docs/website-content-map.md)
+- [Benchmark System](docs/benchmarks.md)
+- [Benchmark Methodology](docs/benchmark-methodology.md)
 - [Security and Threat Model](docs/security.md)
 - [Testing Strategy](docs/testing.md)
 - [Release Policy](docs/release.md)
@@ -284,7 +288,7 @@ Start here:
 
 This repository is in Phase 0: project constitution and planning.
 
-No runtime implementation exists yet. The current work is to lock the product direction, architecture boundaries, package responsibilities, documentation rules, command contracts, generated artifact contracts, and agent workflow before implementation begins.
+No runtime implementation exists yet. The current work is to lock the product direction, architecture boundaries, package responsibilities, documentation rules, command contracts, generated artifact contracts, public docs publishing contracts, benchmark methodology, and agent workflow before implementation begins.
 
 The next implementation stage is Phase 1: monorepo skeleton, core data model, adapter package baseline, then route discovery.
 
