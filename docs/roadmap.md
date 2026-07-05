@@ -1,8 +1,10 @@
 # Roadmap
 
-NeedleStart should be built in phases. Each phase must define what it proves, what it implements, and what remains out of scope.
+NeedleStart should be built in phases. Each phase must define what it proves, what it implements, what must be tested, and what remains out of scope.
 
 The first public prototype focuses on proving the agent-native and semantic graph wedge.
+
+Use `docs/status.md` as the current implementation truth table. Unless that file marks a command or feature implemented or verified, the behavior is planned.
 
 ## Major Milestones
 
@@ -10,6 +12,7 @@ The first public prototype focuses on proving the agent-native and semantic grap
 
 - Monorepo, CLI skeleton, config, and AGENTS.md.
 - Shared core data model.
+- Adapter package baseline for Bun, Node, and static output.
 - Route discovery and manifest generation.
 - Basic Vite integration with React SSR and hydration.
 - Nested layouts and params.
@@ -18,7 +21,7 @@ The first public prototype focuses on proving the agent-native and semantic grap
 
 - Render modes: `staticPage`, `prerender`, `ssr`, and `apiHot`.
 - SEO engine: metadata, sitemap, robots, and audits.
-- Adapter-aware Bun production server.
+- Adapter-aware Bun production path.
 - API routes and hot API compiler with schemas.
 - Needle Map v1: file and import graph with affected queries.
 - Agent context capsules and basic MCP read tools.
@@ -37,19 +40,20 @@ The first public prototype focuses on proving the agent-native and semantic grap
 
 ## Current Status
 
-The repository is in Phase 0. The next implementation stage is Phase 1: monorepo skeleton, followed by route discovery.
+The repository is in Phase 0. The next implementation stage is Phase 1: monorepo skeleton, followed by core data model, adapter package baseline, and route discovery.
 
 ## How We Build
 
 - Every major task uses a structured task template.
 - Compiler and map are built as first-class systems from the beginning.
-- Runtime stays minimal.
+- Runtime adapters stay minimal.
 - All generated artifacts are explainable.
+- CLI and MCP JSON output must be stable and schema-versioned.
 - NeedleStart should dogfood Needle Map and agent tools on the framework itself as soon as they exist.
 
 ## Phase 0: Project Constitution
 
-Goal: define what the framework is and what it refuses to become.
+Goal: define what the framework is, what it refuses to become, and the contracts implementation must follow.
 
 Deliverables:
 
@@ -58,9 +62,20 @@ Deliverables:
 - `CONTRIBUTING.md`
 - `ARCHITECTURE.md`
 - `AGENTS.md`
+- `SECURITY.md`
+- `docs/status.md`
 - `docs/roadmap.md`
+- `docs/package-map.md`
+- `docs/cli.md`
+- `docs/config.md`
+- `docs/routing.md`
 - `docs/compiler-ir.md`
+- `docs/manifest-contracts.md`
 - `docs/runtime-contract.md`
+- `docs/adapters.md`
+- `docs/deployment.md`
+- `docs/security.md`
+- `docs/testing.md`
 - `docs/agent-kernel.md`
 - `docs/needle-map.md`
 
@@ -69,6 +84,9 @@ Definition of done:
 - Project thesis is documented.
 - Architecture principles are documented.
 - Package responsibilities are documented.
+- Command contracts are documented.
+- Generated artifact contracts are documented.
+- Security and testing strategy are documented.
 - Agent rules are documented.
 - Implementation task template exists.
 
@@ -79,6 +97,7 @@ Risk mitigation focus:
 - Lock the shared data model before implementation diverges.
 - Keep the first prototype centered on compiler IR, route discovery, basic graph, SEO-safe rendering, and a low-risk safe edit.
 - Treat `docs/risk-mitigation.md` as required reading for map, agent, MCP, adapter, and safe-edit work.
+- Treat `docs/security.md` as required reading for MCP, safe edits, environment handling, manifests, logs, and runtime adapters.
 
 ## Phase 1: Monorepo Skeleton
 
@@ -92,7 +111,6 @@ Packages:
 - `@needle/compiler`
 - `@needle/vite-plugin`
 - `@needle/react`
-- `@needle/server-bun`
 - `@needle/router`
 - `@needle/seo`
 - `@needle/map`
@@ -110,12 +128,14 @@ Definition of done:
 - All packages have `package.json`.
 - All packages expose `src/index.ts`.
 - Placeholder tests exist.
+- `docs/status.md` marks the monorepo skeleton as scaffolded.
 
 Out of scope:
 
 - Real route discovery.
 - Runtime server.
 - Vite integration.
+- Adapter implementation beyond package baseline.
 
 ## Phase 1A: Core Data Model
 
@@ -123,17 +143,42 @@ Goal: lock the shared immutable model in `@needle/core`.
 
 Required types:
 
+- `NeedleConfig`
 - `NeedleApp`
 - `RouteNode`
+- `RenderMode`
+- `GraphNode`
 - `GraphEdge`
 - `NeedleDiagnostic`
+- `SafeFix`
+- `CachePlan`
+- adapter capability types
+- manifest base types
 
 Definition of done:
 
 - CLI, compiler, map, agent, MCP, adapters, and devtools can import shared types from `@needle/core`.
 - `GraphEdge` includes `kind`, `source`, `confidence`, and `why`.
 - Docs and placeholder tests verify the type contracts.
-- No package defines a competing local route or graph shape.
+- No package defines a competing local route, graph, diagnostic, cache, config, or manifest shape.
+
+## Phase 1B: Adapter Package Baseline
+
+Goal: create early adapter package boundaries so Bun is the speed default but not an adoption blocker.
+
+Packages:
+
+- `@needle/adapter-bun`
+- `@needle/adapter-node`
+- `@needle/adapter-static`
+
+Definition of done:
+
+- Adapter packages exist.
+- Adapter capability type exists in `@needle/core`.
+- Adapter packages expose placeholder entry points.
+- User-facing docs explain Bun default plus Node/static compatibility.
+- `@needle/server-bun` is not introduced unless a future ADR defines a shared server core.
 
 ## Phase 2: CLI and App Discovery
 
@@ -144,25 +189,17 @@ Commands:
 - `needle routes`
 - `needle inspect`
 
-Route conventions:
-
-```txt
-app/page.tsx                       -> /
-app/about/page.tsx                 -> /about
-app/blog/[slug]/page.tsx           -> /blog/:slug
-app/docs/[...parts]/page.tsx       -> /docs/*
-app/(marketing)/pricing/page.tsx   -> /pricing
-app/api/health.ts                  -> /api/health
-```
+Route conventions are defined in `docs/routing.md`.
 
 Definition of done:
 
 - Routes are discovered deterministically.
 - Dynamic params are parsed.
+- Catch-all params are parsed.
 - Route groups do not affect URL paths.
 - API and page routes are distinguished.
-- Manifest is stable across operating systems.
-- Tests cover nested routes, dynamic routes, catch-all routes, and route groups.
+- Route manifest is stable across operating systems.
+- Tests cover nested routes, dynamic routes, catch-all routes, route groups, and collisions.
 
 ## Phase 3: Vite Integration
 
@@ -238,9 +275,9 @@ Definition of done:
 
 - Render mode is detected.
 - Static routes emit `dist/public/*.html`.
-- SSR routes run through Bun server.
+- SSR routes run through the selected adapter.
 - Invalid render declarations produce helpful errors.
-- Manifest includes cache and revalidation metadata.
+- Render manifest includes cache and revalidation metadata.
 
 ## Phase 6: SEO Engine
 
@@ -248,7 +285,7 @@ Goal: make public pages SEO-correct by default.
 
 Features:
 
-- `defineMeta()`
+- `defineMeta()`.
 - Static metadata.
 - Dynamic metadata.
 - Title and description.
@@ -278,11 +315,6 @@ Definition of done:
 
 Goal: make performance visible and enforceable.
 
-Phase boundary:
-
-- Phases 0 through 7 should remain focused on compiler IR, route discovery, basic rendering, SEO, performance visibility, and the first graph foundation.
-- Features that require major runtime complexity should be deferred unless they directly strengthen the map or agent demo.
-
 Definition of done:
 
 - Route JS and CSS sizes are reported.
@@ -290,15 +322,14 @@ Definition of done:
 - Public page budgets are stricter by default.
 - JSON diagnostics include safe suggestions.
 
+Phase boundary:
+
+- Phases 0 through 7 should remain focused on compiler IR, route discovery, basic rendering, SEO, performance visibility, and the first graph foundation.
+- Features that require major runtime complexity should be deferred unless they directly strengthen the map or agent demo.
+
 ## Phase 7A: Adapter Abstraction
 
-Goal: create early adapter boundaries so Bun is the speed default but not an adoption blocker.
-
-Packages:
-
-- `@needle/adapter-bun`
-- `@needle/adapter-node`
-- `@needle/adapter-static`
+Goal: make generated server output adapter-aware.
 
 Definition of done:
 
@@ -309,19 +340,19 @@ Definition of done:
 - Static adapter can export static routes.
 - Node adapter can serve a minimal SSR route.
 
-## Phase 8: Bun Production Server
+## Phase 8: Bun Adapter Production Server
 
-Goal: ship a production server that serves static, SSR, and API routes.
+Goal: ship a Bun adapter that serves static, SSR, and API routes from generated output.
 
 Definition of done:
 
 - `needle build` emits a runnable server bundle.
-- `needle start` serves static pages.
-- `needle start` serves SSR pages.
+- `needle start` serves static pages through `@needle/adapter-bun`.
+- `needle start` serves SSR pages through `@needle/adapter-bun`.
 - 404 and 500 work.
 - Cache headers are correct for static assets.
 - Integration tests make HTTP requests and assert responses.
-- Bun server is implemented as `@needle/adapter-bun`.
+- Bun-specific APIs stay inside `@needle/adapter-bun`.
 
 ## Phase 9: API Routes
 
@@ -356,7 +387,7 @@ Definition of done:
 
 - Route cache metadata appears in manifest.
 - Cache tags are queryable by route and component.
-- `revalidateTag` invalidates matching entries.
+- `revalidateTag` invalidates matching entries where the adapter supports it.
 - Cache status appears in dev logs.
 - Agent JSON output explains cache behavior.
 
@@ -469,7 +500,9 @@ Goal: reduce adoption friction through a constrained Next.js migration path.
 
 Command:
 
-- `needle migrate from-next`
+```bash
+needle migrate from-next
+```
 
 Definition of done:
 
@@ -497,6 +530,20 @@ Definition of done:
 - Adapter capabilities are documented in `adapter.manifest.json`.
 - README documents Bun default plus Node compatibility.
 - Benchmarks distinguish Bun performance from Node compatibility.
+
+## Phase 20: Agent Simulator Harness
+
+Goal: prove the agent and MCP workflow without calling an external LLM.
+
+Definition of done:
+
+- Fixture app includes safe and dangerous edit targets.
+- Simulator can inspect routes through the same APIs MCP uses.
+- Simulator can dry-run a metadata edit.
+- Simulator can apply a metadata edit.
+- Simulator runs affected checks.
+- Simulator verifies mutation log output.
+- Rejected edits are tested.
 
 ## Later Phases
 
