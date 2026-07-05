@@ -39,6 +39,7 @@ Avoid `bun needle <command>` in docs unless the project intentionally adds that 
 - Avoid hidden network calls.
 - Avoid using human-formatted output as the only source of truth.
 - Prefer affected checks over whole-project work when graph data is available.
+- Explain why the framework made render, cache, route, and graph decisions.
 
 ## Global Flags
 
@@ -104,6 +105,7 @@ Rules:
 - Include diagnostic codes for errors and warnings.
 - Keep output stable enough for snapshot tests.
 - Do not include secrets or raw environment values.
+- Include `why` arrays for explain commands and framework decisions when available.
 
 ## Command Groups
 
@@ -239,6 +241,8 @@ JSON `data` should include route IDs, paths, source files, kind, params, layouts
 needle inspect route /pricing
 needle inspect file app/pricing/page.tsx
 needle inspect node route:/pricing
+needle inspect why route /pricing
+needle inspect why file app/pricing/page.tsx
 needle inspect route /pricing --json
 ```
 
@@ -246,7 +250,30 @@ Responsibilities:
 
 - Explain what the compiler knows about a route, file, or graph node.
 - Show source file, route mode, layouts, metadata, cache plan, related files, generated files, and recommended checks.
+- Show why a route received its render mode, cache plan, SEO status, and graph relationships when that data is available.
 - Avoid making semantic claims without graph confidence and `why` fields.
+
+`needle inspect why` is an early wedge command. It should attack framework magic directly by answering why NeedleStart made a decision instead of only showing the final result.
+
+Example JSON shape:
+
+```json
+{
+  "route": "/pricing",
+  "renderMode": {
+    "mode": "static",
+    "why": [
+      "Route declares staticPage().",
+      "No request-time APIs were detected.",
+      "Metadata is statically analyzable."
+    ]
+  },
+  "cache": {
+    "mode": "static",
+    "why": ["Static HTML is emitted at build time."]
+  }
+}
+```
 
 ### SEO
 
