@@ -31,7 +31,15 @@ Planned command once the package exists:
 ```bash
 bun create needle my-app
 cd my-app
-bun dev
+needle dev
+```
+
+Generated apps should also expose package scripts:
+
+```bash
+bun run dev
+bun run build
+bun run start
 ```
 
 This repository is not yet at package-publish stage. Until the monorepo is scaffolded, these commands are target UX rather than verified local commands.
@@ -43,6 +51,7 @@ This repository is not yet at package-publish stage. Until the monorepo is scaff
 - Hot API paths: generated validators, serializers, and micro-caching for high-performance API routes.
 - Explicit render modes: `staticPage()`, `prerender()`, `ssr()`, `stream()`, and `apiHot()`.
 - Bun and Vite foundation: fast runtime with frontend ecosystem leverage.
+- Adapter-aware deployment: Bun by default, with Node and static compatibility planned early.
 - Large-app safety: ownership, affected checks, dependency graph, and package boundaries.
 
 ## Positioning
@@ -74,7 +83,7 @@ Type like a route-safe full-stack toolkit.
 
 Ship static HTML whenever possible.
 
-Run server paths through a small Bun runtime when needed.
+Run server paths through a small adapter-aware runtime when needed.
 
 Let agents inspect and modify the app through structured framework data instead of reading the whole repository.
 
@@ -85,8 +94,8 @@ Let agents inspect and modify the app through structured framework data instead 
 | Agent-native framework core | Agents inspect routes, related files, safe edit zones, and affected checks through structured data. |
 | Needle Map | A semantic dependency graph connects routes, components, APIs, schemas, tests, SEO, cache tags, ownership, and risk. |
 | SEO engine built in | Public routes ship with metadata, canonical URLs, sitemap support, robots output, structured data, and audits. |
-| Route-mode compiler | Every route compiles to static, prerendered, SSR, streaming SSR, edge-compatible, client-only, or hot API mode. |
-| Hot API path | Selected API routes bypass generic framework handling through generated Bun handlers, validators, serializers, and caches. |
+| Route-mode compiler | Every route compiles to static, prerendered, SSR, streaming SSR, client-only, API, or hot API mode. |
+| Hot API path | Selected API routes bypass generic framework handling through generated handlers, validators, serializers, and caches. |
 | Large-app safety | Ownership, affected tests, route budgets, dependency boundaries, and agent permissions are first-class. |
 | Vite ecosystem first | NeedleStart uses Vite/Rolldown for the frontend build and keeps framework intelligence in the Needle compiler. |
 
@@ -94,11 +103,10 @@ Let agents inspect and modify the app through structured framework data instead 
 
 NeedleStart starts with:
 
-- Bun for runtime, package management, test execution, and production server paths.
+- Bun for package management, test execution, local workflow, and the default production adapter path.
 - Vite/Rolldown for React frontend builds, HMR, CSS, assets, and ecosystem compatibility.
 - A custom Needle compiler for route graph, render modes, SEO graph, agent context, app map, API codegen, and deploy manifests.
-- A custom Bun server runtime for static files, SSR, streaming, cache handling, API routes, and hot API handlers.
-- Early Node adapter support so Bun is the speed default, not an adoption blocker.
+- Adapter packages for production output: Bun first, then Node and static paths early enough to reduce adoption friction.
 - Additional deployment adapters later.
 
 The framework should avoid building a custom bundler until the product wedge is proven.
@@ -115,6 +123,7 @@ needlestart/
   VISION.md
   ARCHITECTURE.md
   CONTRIBUTING.md
+  SECURITY.md
   packages/
     create-needle/
     cli/
@@ -122,7 +131,6 @@ needlestart/
     compiler/
     vite-plugin/
     react/
-    server-bun/
     router/
     seo/
     map/
@@ -131,10 +139,9 @@ needlestart/
     cache/
     schema/
     devtools/
-    adapters/
-      bun/
-      node/
-      static/
+    adapter-bun/
+    adapter-node/
+    adapter-static/
   examples/
     basic/
     blog-seo/
@@ -156,7 +163,7 @@ NeedleStart is built as five layers:
 
 1. Developer framework: file routes, layouts, React rendering, metadata, API routes, and CLI.
 2. Compiler: route graph, render modes, server/client splitting, SEO generation, codegen, and manifests.
-3. Runtime: Bun server, request handling, SSR, streaming, static serving, cache, and hot APIs.
+3. Runtime and adapters: Bun, Node, and static output paths consume generated artifacts and serve built apps.
 4. Agent Kernel: AGENTS.md generation, context capsules, MCP server, safe edits, plans, and diagnostics.
 5. Needle Map: semantic dependency graph, impact analysis, affected checks, visual map, ownership, and risk.
 
@@ -173,30 +180,32 @@ The first credible prototype proves:
 5. Static and SSR routes both work.
 6. API routes work.
 7. Hot API routes use generated validators and serializers.
-8. The framework generates a route manifest.
+8. The framework generates route and render manifests.
 9. The framework generates a semantic Needle Map.
-10. The framework exposes an MCP server for agents.
-11. An AI agent can inspect routes, edit a page, run affected checks, and update related files.
-12. Build output can run on Bun.
+10. The framework exposes read-only MCP tools for agents.
+11. An AI agent can inspect routes, edit metadata safely, run affected checks, and report the mutation log.
+12. Build output can run on the Bun adapter, with Node and static adapter paths documented.
 
 ## First Prototype Sequence
 
 1. Monorepo skeleton.
-2. Route discovery.
-3. Vite dev integration.
-4. React SSR and hydration.
-5. Layouts and params.
-6. Static build.
-7. Bun server.
-8. Metadata and SEO audit.
-9. API routes.
-10. Hot API schema path.
-11. Needle Map file graph.
-12. Agent context.
-13. MCP read-only server.
-14. Safe metadata edit.
-15. Node adapter baseline.
-16. Migration prototype.
+2. Core data model.
+3. Adapter package baseline.
+4. Route discovery.
+5. Vite dev integration.
+6. React SSR and hydration.
+7. Layouts and params.
+8. Static build.
+9. Adapter-aware Bun server.
+10. Metadata and SEO audit.
+11. API routes.
+12. Hot API schema path.
+13. Needle Map file graph.
+14. Agent context.
+15. MCP read-only server.
+16. Safe metadata edit.
+17. Node adapter baseline.
+18. Migration prototype.
 
 ## Public API Draft
 
@@ -252,16 +261,16 @@ export async function GET({ params }) {
 
 Start here:
 
-- [Vision](VISION.md)
-- [Architecture](ARCHITECTURE.md)
-- [Contributing](CONTRIBUTING.md)
-- [Agent Rules](AGENTS.md)
+- [Project Status](docs/status.md)
 - [Documentation Hub](docs/README.md)
 - [Roadmap](docs/roadmap.md)
+- [CLI Contract](docs/cli.md)
+- [Configuration Contract](docs/config.md)
+- [Routing Contract](docs/routing.md)
+- [Manifest Contracts](docs/manifest-contracts.md)
+- [Security and Threat Model](docs/security.md)
+- [Testing Strategy](docs/testing.md)
 - [Risk Mitigation](docs/risk-mitigation.md)
-- [Adapter Architecture](docs/adapters.md)
-- [Safe Edit Transactions](docs/safe-edit-transactions.md)
-- [Migration Tooling](docs/migration.md)
 - [Prototype Acceptance Demo](docs/prototype-acceptance.md)
 - [Task Template](docs/templates/task-template.md)
 
@@ -269,13 +278,13 @@ Start here:
 
 This repository is in Phase 0: project constitution and planning.
 
-No runtime implementation exists yet. The current work is to lock the product direction, architecture boundaries, package responsibilities, documentation rules, and agent workflow before implementation begins.
+No runtime implementation exists yet. The current work is to lock the product direction, architecture boundaries, package responsibilities, documentation rules, command contracts, generated artifact contracts, and agent workflow before implementation begins.
 
-The next implementation stage is Phase 1: monorepo skeleton, then route discovery.
+The next implementation stage is Phase 1: monorepo skeleton, core data model, adapter package baseline, then route discovery.
 
 ## Philosophy
 
-NeedleStart treats the semantic app graph and agent collaboration as first-class concerns from day one, not late add-ons. The compiler does the heavy lifting so the runtime stays small and predictable.
+NeedleStart treats the semantic app graph and agent collaboration as first-class concerns from day one, not late add-ons. The compiler does the heavy lifting so runtime and adapters stay small and predictable.
 
 The project was initially shaped with AI-assisted architecture and roadmap planning. Implementation and release decisions remain human-accountable, with agents expected to work through documented contracts, tests, and safety checks.
 
