@@ -201,6 +201,8 @@ Expected result: command automation behavior and planned command variants remain
 
 Automated coverage in `bun run docs:check` also requires `docs/cli-json-contract.md` and `docs/public/reference/cli.md` to list every planned JSON automation command: `needle build --json`, `needle routes --json`, `needle inspect --json`, `needle check --json`, `needle seo --json`, `needle map --json`, `needle agent context --json`, `needle edit --json`, `needle migrate --json`, and `needle bench --json`. Public CLI docs must also label the command table as planned while no CLI behavior exists.
 
+Automated coverage also requires the internal Needle Map contract and public Needle Map guide to list the same planned map command surfaces: `needle map`, `needle map --json`, `needle map file`, `needle map route`, `needle map affected`, and `needle map explain`.
+
 ### 12. Diagnostics Contract Check
 
 ```powershell

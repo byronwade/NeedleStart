@@ -10,6 +10,8 @@ This guide describes the planned workflow for inspecting the app graph. Needle M
 
 ```bash
 needle map
+needle map --json
+needle map file components/ProductCard.tsx
 needle map route /pricing
 needle map affected components/ProductCard.tsx
 needle map explain components/ProductCard.tsx

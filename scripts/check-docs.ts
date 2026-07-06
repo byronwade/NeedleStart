@@ -241,6 +241,20 @@ const plannedCommandVariantDocs = [
   "docs/public/reference/cli.md",
 ];
 
+const plannedMapCommandSurfaces = [
+  "needle map",
+  "needle map --json",
+  "needle map file",
+  "needle map route",
+  "needle map affected",
+  "needle map explain",
+];
+
+const plannedMapCommandDocs = [
+  "docs/needle-map.md",
+  "docs/public/guides/needle-map.md",
+];
+
 const scaffoldVerificationCommands = [
   "bun test",
   "bun run typecheck",
@@ -1768,6 +1782,16 @@ for (const file of plannedCommandVariantDocs) {
   for (const command of plannedCommandVariants) {
     if (!content.includes(command)) {
       failures.push(`${file} does not document planned command variant: ${command}.`);
+    }
+  }
+}
+
+for (const file of plannedMapCommandDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file);
+  for (const command of plannedMapCommandSurfaces) {
+    if (!content.includes(command)) {
+      failures.push(`${file} does not document planned Needle Map command surface: ${command}.`);
     }
   }
 }
