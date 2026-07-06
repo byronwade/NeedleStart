@@ -258,8 +258,12 @@ const canonicalGeneratedArtifacts = [
 const generatedArtifactDocs = [
   "AGENTS.md",
   "docs/api-reference.md",
+  "docs/config-contract.md",
+  "docs/examples-contract.md",
+  "docs/getting-started.md",
   "docs/manifest-contracts.md",
   "docs/runtime-contract.md",
+  "docs/public/reference/config.md",
   "docs/public/reference/manifest-contracts.md",
   "docs/public/reference/project-structure.md",
 ];

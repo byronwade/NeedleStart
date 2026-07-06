@@ -29,7 +29,7 @@ The planned public prefix is `NEEDLE_PUBLIC_`, but the final prefix must be conf
 
 ## Generated Output Impact
 
-Config fields that affect routes, rendering, SEO, performance, agent context, or adapter behavior must be reflected in generated artifacts such as `.needle/routes.json`, `.needle/render-manifest.json`, `.needle/seo.report.json`, `.needle/perf.report.json`, `.needle/context/*`, `.needle/generated/*`, and `dist/adapter.manifest.json`.
+Config fields that affect routes, rendering, SEO, performance, agent context, or adapter behavior must be reflected in generated artifacts such as `.needle/routes.json`, `.needle/render-manifest.json`, `.needle/map.json`, `.needle/graph.json`, `.needle/seo.report.json`, `.needle/perf.report.json`, `.needle/context/*.ctx.json`, `.needle/context/agent-index.json`, `.needle/mutations.json`, `.needle/generated/*`, `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, `dist/adapter.manifest.json`, and `dist/*`.
 
 Runtime adapters should consume normalized generated output instead of rediscovering raw source config in production.
 
