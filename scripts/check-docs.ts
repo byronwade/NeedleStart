@@ -273,6 +273,24 @@ const plannedMcpReadToolDocs = [
   "docs/public/reference/mcp.md",
 ];
 
+const plannedMcpWriteTools = [
+  "create_page",
+  "create_api_route",
+  "edit_route_meta",
+  "edit_component_contract",
+  "add_component_to_route",
+  "run_affected_checks",
+  "apply_safe_patch",
+  "read_agent_log",
+  "get_mutation",
+  "undo_mutation",
+];
+
+const plannedMcpWriteToolDocs = [
+  "docs/mcp-server.md",
+  "docs/public/reference/mcp.md",
+];
+
 const scaffoldVerificationCommands = [
   "bun test",
   "bun run typecheck",
@@ -1824,6 +1842,16 @@ for (const file of plannedMcpReadToolDocs) {
   for (const tool of plannedMcpReadTools) {
     if (!content.includes(tool)) {
       failures.push(`${file} does not document planned MCP read tool: ${tool}.`);
+    }
+  }
+}
+
+for (const file of plannedMcpWriteToolDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file);
+  for (const tool of plannedMcpWriteTools) {
+    if (!content.includes(tool)) {
+      failures.push(`${file} does not document planned MCP write tool: ${tool}.`);
     }
   }
 }

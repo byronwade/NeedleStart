@@ -22,6 +22,19 @@ MCP server behavior is not implemented yet.
 
 Write tools are planned only after safe edit transactions exist.
 
+## Planned Write Tools
+
+- `create_page`
+- `create_api_route`
+- `edit_route_meta`
+- `edit_component_contract`
+- `add_component_to_route`
+- `run_affected_checks`
+- `apply_safe_patch`
+- `read_agent_log`
+- `get_mutation`
+- `undo_mutation`
+
 ## Source
 
 - [MCP Server](../../mcp-server.md)

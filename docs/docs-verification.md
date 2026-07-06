@@ -171,7 +171,7 @@ Automated coverage in `bun run docs:check` also requires machine-readable docs, 
 
 Automated coverage also requires machine-readable docs to distinguish `.needle/*` compiler or agent source contracts from deployment-shaped `dist/*` copies.
 
-Automated coverage also requires the internal MCP server contract and public MCP reference to list the same initial planned read tools: `list_routes`, `get_route`, `get_route_context`, `get_related_files`, `get_impact_map`, `get_component_contract`, `get_schema`, `get_seo_report`, `get_perf_report`, and `get_cache_report`.
+Automated coverage also requires the internal MCP server contract and public MCP reference to list the same initial planned read tools: `list_routes`, `get_route`, `get_route_context`, `get_related_files`, `get_impact_map`, `get_component_contract`, `get_schema`, `get_seo_report`, `get_perf_report`, and `get_cache_report`. It also requires both docs to list the same planned write tools: `create_page`, `create_api_route`, `edit_route_meta`, `edit_component_contract`, `add_component_to_route`, `run_affected_checks`, `apply_safe_patch`, `read_agent_log`, `get_mutation`, and `undo_mutation`.
 
 ### 9. Public Docs Site Contract Check
 
