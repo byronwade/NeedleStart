@@ -81,14 +81,15 @@ Planned transaction flow:
 3. Check risk tier.
 4. Produce a dry-run diff preview.
 5. Apply patch in memory using AST.
-6. Regenerate affected graph slices.
-7. Run affected checks.
-8. Apply file writes only after dry-run passes or override is explicit.
-9. Append to `.needle/mutations.json`.
-10. Trigger incremental rebuild.
-11. Re-run affected checks.
-12. Return structured result for CLI and MCP.
-13. Support rollback through `needle edit undo`.
+6. Format changed files.
+7. Regenerate affected graph slices.
+8. Run affected checks.
+9. Apply file writes only after dry-run passes or override is explicit.
+10. Append to `.needle/mutations.json`.
+11. Trigger incremental rebuild.
+12. Re-run affected checks.
+13. Return structured result for CLI and MCP.
+14. Support rollback through `needle edit undo`.
 
 String replacement is not allowed for safe edits.
 

@@ -206,6 +206,14 @@ const generatedAppScriptDocs = [
   },
 ];
 
+const safeEditContractDocs = [
+  "AGENTS.md",
+  "docs/safe-edit-transactions.md",
+  "docs/agent-kernel.md",
+  "docs/mcp-server.md",
+  "docs/public/concepts/safe-edits.md",
+];
+
 const coreModelTypes = [
   "NeedleApp",
   "RouteNode",
@@ -938,6 +946,16 @@ for (const { file, terms } of generatedAppScriptDocs) {
   for (const term of terms) {
     if (!content.includes(term)) {
       failures.push(`${file} does not align generated app package scripts with framework command term: ${term}.`);
+    }
+  }
+}
+
+for (const file of safeEditContractDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file).toLowerCase();
+  for (const term of ["dry-run", "ast", "format", "affected checks", ".needle/mutations.json", "undo", "human sign-off"]) {
+    if (!content.includes(term)) {
+      failures.push(`${file} is missing safe-edit contract term: ${term}.`);
     }
   }
 }

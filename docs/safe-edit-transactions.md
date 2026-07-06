@@ -43,12 +43,14 @@ Validate:
 - Requested change matches the expected schema.
 - Risk tier is compatible with current policy.
 - High-risk edits have explicit human override.
+- High-risk production edits have explicit human sign-off.
 
 ## Phase 2: Dry Run
 
 Dry run must:
 
 - Apply patch in memory using an AST tool such as `ts-morph`.
+- Format changed files using the project formatter.
 - Regenerate affected graph slices.
 - Run affected checks:
   - typecheck
@@ -85,7 +87,7 @@ Post-apply verification must:
 | --- | --- | --- | --- |
 | Low | metadata, copy text, simple props | Auto-apply after passing dry run | Safe |
 | Medium | add block, update contract | Dry run plus confirmation prompt | Ask user or agent |
-| High | auth, billing, schemas, cache | Human override plus extra checks | Block unless `--force` |
+| High | auth, billing, schemas, cache | Human sign-off plus extra checks | Block unless explicitly approved |
 
 ## Required Commands
 
@@ -110,6 +112,8 @@ MCP write tools must expose:
 - Rollback availability.
 
 MCP tools must not bypass CLI safe-edit validation.
+
+In production workflows, high-risk MCP write tools require explicit human sign-off before applying changes.
 
 ## Testing Strategy
 

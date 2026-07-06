@@ -66,8 +66,11 @@ needle://context/public
 - Read tools must not expose secrets.
 - Tool responses must be stable JSON.
 - MCP write tools must use the same safe edit transaction path as CLI writes.
+- MCP write tools must apply changes through the same AST-based safe edit path as CLI writes.
 - MCP write tools must support dry-run previews before applying changes.
-- MCP responses must expose risk tier, affected files, affected routes, checks, and mutation log ID.
+- MCP write tools must use the safe edit formatter before writing files.
+- MCP responses must expose risk tier, affected files, affected routes, checks, and `.needle/mutations.json` mutation log ID.
+- High-risk production write tools require explicit human sign-off before applying changes.
 
 MCP write tools must return the same `SafeEditTransaction` shape as CLI write commands.
 

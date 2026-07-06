@@ -273,7 +273,17 @@ rg -n "security-contract|Security Contract|threat-model|Threat Model|threat mode
 
 Expected result: security target language, high-risk surfaces, threat model requirements, secret handling, production error behavior, security headers, advisory flow, supply-chain release rules, testing evidence, and public reference docs remain connected.
 
-### 24. Performance Contract Check
+### 24. Safe Edit And Agent Write Contract Check
+
+```powershell
+rg -n "dry-run|AST|format|affected checks|\\.needle/mutations\\.json|undo|human sign-off|MCP write tools|CLI writes" AGENTS.md docs\safe-edit-transactions.md docs\agent-kernel.md docs\mcp-server.md docs\public\concepts\safe-edits.md docs\security-contract.md docs\threat-model.md docs\product-build-readiness.md
+```
+
+Expected result: safe edits, Agent Kernel, MCP write tools, security rules, threat model, and readiness gates agree on dry-run previews, AST edits, formatting, affected checks, mutation logs, undo, shared CLI/MCP write paths, and high-risk human sign-off.
+
+Automated coverage in `bun run docs:check` also requires the core safe-edit contract vocabulary to stay aligned across AGENTS, safe edit transactions, Agent Kernel, MCP, and public safe edit docs.
+
+### 25. Performance Contract Check
 
 ```powershell
 rg -n "performance-contract|Performance Contract|benchmark-fixtures|Core Web Vitals|LCP|INP|CLS|perf.report|PERF_|budget|benchmark evidence|delivery|chunk count|source-map|RUM|field data|resourceHints|Early Hints|compression|bfcache|reference/performance" README.md AGENTS.md .github\PULL_REQUEST_TEMPLATE.md docs\performance-contract.md docs\performance.md docs\speed-strategy.md docs\benchmark-methodology.md docs\benchmark-fixtures.md docs\testing-contract.md docs\manifest-contracts.md docs\docs-verification.md docs\product-build-readiness.md docs\public\reference\performance.md
@@ -281,7 +291,7 @@ rg -n "performance-contract|Performance Contract|benchmark-fixtures|Core Web Vit
 
 Expected result: route budgets, Core Web Vitals target language, performance reports, delivery fields, chunk counts, source-map exposure, optional RUM and field-data policy, diagnostics, benchmark evidence, testing evidence, manifest references, public claim rules, and public reference docs remain connected.
 
-### 25. Speed Decision Check
+### 26. Speed Decision Check
 
 ```powershell
 rg -n "speed-capability-audit|Speed Capability Audit|speed-decisions|Speed Decisions|Vite/Rolldown|Vite 8|bundled dev|custom bundler|Bun native dispatch|nativeRouteDispatch|route code splitting|CSS delivery|source maps|RUM|field data|React Compiler|React streaming|103 Early Hints|resource hints|resourceHints|fetchpriority|speculation|bfcache|compression|images|fonts|async waterfall|hot API|payload budget|compiler scaling|rejected defaults" README.md AGENTS.md ARCHITECTURE.md docs\speed-capability-audit.md docs\speed-decisions.md docs\speed-strategy.md docs\performance-contract.md docs\benchmark-methodology.md docs\product-build-readiness.md docs\docs-verification.md docs\task-backlog.md
@@ -289,7 +299,7 @@ rg -n "speed-capability-audit|Speed Capability Audit|speed-decisions|Speed Decis
 
 Expected result: speed-sensitive architecture choices, browser-delivery choices, rejected defaults, implementation gates, performance reports, benchmark methodology, README, AGENTS, architecture, and backlog remain connected.
 
-### 26. Contributor, ADR, Checklist, And Glossary Check
+### 27. Contributor, ADR, Checklist, And Glossary Check
 
 ```powershell
 rg -n "first-contribution|Architecture Decision Records|decisions/README|Implementation Checklists|checklists/phase-1-scaffold|checklists/adapter-implementation|checklists/performance-evidence|public-frontmatter-standard|Glossary" README.md AGENTS.md docs\README.md docs\docs-verification.md docs\website-content-map.md docs\public-docs-site-architecture.md docs\public\README.md
@@ -297,7 +307,7 @@ rg -n "first-contribution|Architecture Decision Records|decisions/README|Impleme
 
 Expected result: first-contribution guidance, ADRs, implementation checklists, public frontmatter rules, and glossary coverage remain discoverable from repository entrypoints and docs verification.
 
-### 27. Review, Threat, Fixture, Example, And Docs-Site Check
+### 28. Review, Threat, Fixture, Example, And Docs-Site Check
 
 ```powershell
 rg -n "review-checklist|threat-model|benchmark-fixtures|examples-catalog|docs-site-build-plan|PULL_REQUEST_TEMPLATE" README.md AGENTS.md .github\PULL_REQUEST_TEMPLATE.md docs\README.md docs\docs-verification.md docs\security-contract.md docs\benchmark-methodology.md docs\examples-contract.md docs\public-docs-site-architecture.md docs\website-content-map.md

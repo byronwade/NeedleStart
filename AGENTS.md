@@ -210,7 +210,7 @@ Key rules:
 - Treat `docs/prototype-acceptance.md`, README, and the public roadmap as the broader first public prototype acceptance scope.
 - Move Node adapter work earlier than the long-term adapter phase to reduce Bun adoption friction.
 - Keep adapter boundaries early: Bun-specific APIs stay in `@needle/adapter-bun`, Node compatibility stays in `@needle/adapter-node`, and static export logic stays in `@needle/adapter-static`.
-- Safe edit transactions must validate, preview, apply through AST, format, regenerate graph, run affected checks, log, and support undo.
+- Safe edit transactions must validate, produce a dry-run preview, apply through AST, format, regenerate graph, run affected checks, log to `.needle/mutations.json`, and support undo.
 - High-risk safe edits in production workflows require explicit human sign-off.
 - New feature work must pass the scope gate: improves map or agent experience, adds minimal production runtime code, and has a clear fixture or agent demo.
 
