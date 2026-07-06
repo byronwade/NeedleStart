@@ -33,6 +33,8 @@ Planned commands:
 | `needle map` | Planned | Query Needle Map. |
 | `needle agent` | Planned | Generate and inspect agent context. |
 | `needle mcp` | Planned | Start the MCP server. |
+| `needle edit` | Planned | Preview, apply, inspect, and undo safe-edit transactions. |
+| `needle migrate` | Planned | Prototype migration workflows such as `from-next`. |
 
 Each command should eventually document human output, `--json` output, exit codes, and affected generated files.
 

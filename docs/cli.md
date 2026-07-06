@@ -22,6 +22,8 @@ Machine-readable command behavior is planned in [CLI JSON Contract](cli-json-con
 | `needle map` | Query Needle Map. | Yes |
 | `needle agent` | Generate or inspect agent context. | Yes |
 | `needle mcp` | Start MCP server. | No |
+| `needle edit` | Preview, apply, inspect, and undo safe-edit transactions. | Yes |
+| `needle migrate` | Prototype framework migration workflows. | Yes |
 
 ## Reference Requirements
 

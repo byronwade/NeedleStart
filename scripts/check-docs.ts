@@ -71,6 +71,30 @@ const allowedTopLevelStatuses = [
   "Deprecated.",
 ];
 
+const plannedNeedleCommands = [
+  "needle dev",
+  "needle build",
+  "needle start",
+  "needle routes",
+  "needle inspect",
+  "needle check",
+  "needle seo",
+  "needle map",
+  "needle agent",
+  "needle mcp",
+  "needle edit",
+  "needle migrate",
+];
+
+const plannedNeedleCommandDocs = [
+  "README.md",
+  "AGENTS.md",
+  "docs/cli.md",
+  "docs/api-reference.md",
+  "docs/getting-started.md",
+  "docs/public/reference/cli.md",
+];
+
 function rel(path: string): string {
   return relative(root, path).replaceAll("\\", "/");
 }
@@ -329,6 +353,16 @@ for (const staleTreeEntry of ["    adapter-bun/", "    adapter-node/", "    adap
 for (const file of ["README.md", "docs/status.md", "docs/phase-1-build-plan.md", "docs/task-backlog.md"]) {
   if (existsSync(join(root, file)) && /`bun\.lock`/.test(read(file))) {
     failures.push(`${file} documents bun.lock, but this scaffold uses bun.lockb.`);
+  }
+}
+
+for (const file of plannedNeedleCommandDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file);
+  for (const command of plannedNeedleCommands) {
+    if (!content.includes(command)) {
+      failures.push(`${file} does not document planned CLI command: ${command}.`);
+    }
   }
 }
 
