@@ -12,6 +12,7 @@ The detailed requirements for examples, templates, verification evidence, and cr
 
 The planned official inventory is canonical in [Examples Catalog](examples-catalog.md). Current planned paths are:
 
+- `examples/mvp-alpha-demo/`
 - `examples/basic/`
 - `examples/blog-seo/`
 - `examples/api-route/`
@@ -25,6 +26,12 @@ The planned official inventory is canonical in [Examples Catalog](examples-catal
 - `playgrounds/large-app-fixture/`
 
 These directories do not exist yet. Do not describe them as scaffolded, runnable, or verified until files, commands, tests, generated artifacts, and status labels exist.
+
+## MVP Alpha Demo
+
+The first example to build should be `examples/mvp-alpha-demo/`. It should demonstrate the same files and routes listed in [MVP Alpha Scope](mvp-alpha-scope.md), and it should not include API routes, MCP, safe edits, auth, databases, or benchmark claims.
+
+The MVP Alpha Demo should prove route discovery, basic render modes, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `lumina routes --json`, `lumina inspect --json`, and `lumina inspect why`.
 
 ## Example Requirements
 

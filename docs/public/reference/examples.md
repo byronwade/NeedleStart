@@ -10,6 +10,7 @@ Lumina examples are planned but not implemented yet. This page explains the publ
 
 | Example | Planned path | Purpose | Current status |
 | --- | --- | --- | --- |
+| MVP Alpha Demo | `examples/mvp-alpha-demo/` | Route discovery, basic render modes, generated manifests, Lumina Map, and CLI inspection. | Planned |
 | Basic Starter | `examples/basic/` | Smallest useful generated app. | Planned |
 | Blog SEO | `examples/blog-seo/` | Tutorial app for pages, metadata, sitemap, and public HTML checks. | Planned |
 | API Route | `examples/api-route/` | Focused API route example. | Planned |
@@ -31,6 +32,10 @@ Lumina examples are planned but not implemented yet. This page explains the publ
 - Deprecated: retained for compatibility or migration notes.
 
 No example in this repository exists or is verified yet.
+
+## MVP Alpha Demo
+
+The first example to build should be `examples/mvp-alpha-demo/`. It should match [MVP Alpha Scope](../../mvp-alpha-scope.md) and avoid API routes, MCP, safe edits, auth, databases, and benchmark claims.
 
 ## Future Create Command
 

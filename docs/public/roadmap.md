@@ -14,6 +14,8 @@ The Bun workspace, package placeholders, shared core types, CI, and enforcement 
 
 The next implementation stage is Phase 1A: expand and stabilize the shared core data model, then begin route discovery.
 
+MVP Alpha is the upcoming prototype target: route discovery, basic render modes, generated `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, CLI inspection, and a demo app.
+
 ## Current Phase Work
 
 Phase 1 creates and hardens the Bun workspace and package scaffold. It should keep proving:
@@ -31,6 +33,16 @@ Phase 1 creates and hardens the Bun workspace and package scaffold. It should ke
 See [Phase 1 Build Plan](../phase-1-build-plan.md).
 
 ## Prototype Goal
+
+MVP Alpha should first prove:
+
+- Route discovery.
+- Basic render modes.
+- `.lumina/routes.json`, `.lumina/render-manifest.json`, and `.lumina/map.json`.
+- `lumina routes --json`, `lumina inspect --json`, and `lumina inspect why`.
+- `examples/mvp-alpha-demo/`.
+
+Post-MVP work includes API routes, MCP, safe edits, migration, Node adapter runtime behavior, and benchmark claims unless the scope changes.
 
 The first public prototype should prove:
 

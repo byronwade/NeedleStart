@@ -41,6 +41,12 @@ Lumina is in Phase 1: monorepo scaffold.
 
 The next implementation step is Phase 1A: expand and stabilize the shared core data model, then begin route discovery. The next prototype target is MVP Alpha, defined in `docs/mvp-alpha-scope.md`, and should stay focused on route discovery, basic render modes, generated route/render/map artifacts, CLI inspection, and a demo app. See `docs/phase-1-build-plan.md` and `docs/task-backlog.md`.
 
+## MVP Alpha Target Status
+
+MVP Alpha is planned, not implemented. It is the next build target after the current scaffold: route discovery, basic render modes, generated route/render/map artifacts, CLI inspection, and a demo app.
+
+Included MVP Alpha evidence should eventually cover `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, and the MVP Alpha demo app described in `docs/mvp-alpha-scope.md`.
+
 ## Status Language
 
 Use these labels:

@@ -9,6 +9,8 @@ Unless a task is explicitly marked `Verified.` or `Scaffolded.` with evidence, i
 
 Current implementation path: Phase 1A expands and stabilizes the shared core data model, then begins route discovery.
 
+MVP Alpha implementation path: keep PR 1A through PR 4 focused on core model hardening, route discovery, deterministic `.lumina/routes.json`, basic render mode data for `.lumina/render-manifest.json`, the first file-level `.lumina/map.json`, CLI inspection, and a demo app. API routes, MCP, safe edits, migration, Node adapter runtime behavior, and benchmarks are post-MVP unless `docs/mvp-alpha-scope.md` changes in the same work.
+
 ## PR 0A: AI Collaboration Playbooks
 
 Goal: maintain docs-level, vendor-neutral skill and subagent guidance for AI companies and human reviewers.
@@ -415,6 +417,8 @@ Out of scope:
 
 Goal: stabilize the shared immutable data model in `@lumina/core`.
 
+MVP Alpha role: provide the route, render, manifest, diagnostic, and graph shapes needed by route discovery, `.lumina/render-manifest.json`, `.lumina/map.json`, and `lumina inspect why`.
+
 The Phase 1 scaffold already exposes placeholder versions of the shared types. This task promotes them into contract-backed shapes before compiler, CLI, runtime adapter, map, agent, MCP, or devtools work depends on them.
 
 Definition of done:
@@ -445,6 +449,8 @@ Definition of done:
 
 Goal: discover `app/` routes and emit `.lumina/routes.json`.
 
+MVP Alpha role: this is the first visible framework behavior. It should support the demo app routes listed in `docs/mvp-alpha-scope.md` before broader route conventions expand.
+
 Read first:
 
 - `docs/routing-contract.md`
@@ -464,6 +470,8 @@ Definition of done:
 
 Goal: make `lumina dev` start Vite and render a basic React page.
 
+MVP Alpha role: start the demo app path and keep route/render/map artifacts inspectable without pulling API routes, MCP, safe edits, migration, or benchmarks into the first slice.
+
 Definition of done:
 
 - `lumina dev` should start.
@@ -475,6 +483,8 @@ Definition of done:
 ## PR 4: React SSR and Hydration
 
 Goal: support basic SSR and client hydration.
+
+MVP Alpha role: prove the smallest render path needed for the demo app, with basic SSR and explicit render mode evidence only.
 
 Definition of done:
 

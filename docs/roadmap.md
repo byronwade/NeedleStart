@@ -46,6 +46,17 @@ The repository is in Phase 1. The monorepo scaffold exists with Bun workspace co
 
 The upcoming prototype target is MVP Alpha, defined in `docs/mvp-alpha-scope.md`. MVP Alpha should keep the first build narrow: route discovery, basic render modes, generated `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, CLI inspection, and a demo app. API routes, MCP, safe edits, migration tooling, Node runtime behavior, and benchmark claims remain post-MVP unless the scope doc changes.
 
+## MVP Alpha Lane
+
+1. Core model hardening for route, render, manifest, and graph output.
+2. Route discovery and deterministic `.lumina/routes.json`.
+3. Basic render mode extraction and `.lumina/render-manifest.json`.
+4. File-level Lumina Map and `.lumina/map.json`.
+5. CLI inspection: `lumina routes --json`, `lumina inspect --json`, and `lumina inspect why`.
+6. Demo app proving the workflow.
+
+API routes, MCP, safe edits, migration, Node adapter runtime behavior, and benchmark claims are post-MVP unless `docs/mvp-alpha-scope.md` is updated in the same change.
+
 ## How We Build
 
 - Every major task uses a structured task template.

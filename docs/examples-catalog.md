@@ -22,7 +22,8 @@ Use the same status values as [Examples And Templates Contract](examples-contrac
 
 | Example | Planned path | Status | Purpose |
 | --- | --- | --- | --- |
-| Basic Starter | `examples/basic/` | Planned | Smallest useful app for `bun create needle`. |
+| MVP Alpha Demo | `examples/mvp-alpha-demo/` | Planned | Route discovery, basic render modes, generated manifests, Lumina Map, and CLI inspection. |
+| Basic Starter | `examples/basic/` | Planned | Smallest useful app for `bun create lumina`. |
 | Blog SEO | `examples/blog-seo/` | Planned | Static content, metadata, sitemap, robots, and structured data. |
 | API Route | `examples/api-route/` | Planned | Standard API route methods, params, body handling, and errors. |
 | Hot API | `examples/hot-api/` | Planned | Generated validation, serialization, and optional micro-cache. |
@@ -35,6 +36,8 @@ Use the same status values as [Examples And Templates Contract](examples-contrac
 | Docs Site | `examples/docs-site/` | Planned | Future public docs renderer, frontmatter, navigation, search, and machine-readable outputs. |
 
 ## Default Starter Requirements
+
+MVP Alpha should build `examples/mvp-alpha-demo/` first. The demo should not include API routes, MCP, safe edits, auth, databases, benchmark claims, or production adapter compatibility beyond the exact MVP scope.
 
 The default starter must be the first example to become verified.
 
