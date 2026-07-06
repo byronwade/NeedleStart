@@ -171,6 +171,8 @@ All planned feature docs should carry status warnings until code exists. This in
 
 The table below summarizes the highest-signal findings. The complete matrix is maintained in `docs/documentation-matrix.md`.
 
+`Current quality` is an editorial assessment for this audit, not the canonical page status. The canonical state for each Markdown file remains its top-level `Status:` line and the status definitions in `docs/status.md`.
+
 | File | Audience | Current quality | Main problem | Recommended fix | Priority | Effort | Website-ready? | Agent-ready? |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | `README.md` | All | Strong | Too much planning detail for future website homepage | Keep concise; link deeper docs | High | Low | Partial | Partial |

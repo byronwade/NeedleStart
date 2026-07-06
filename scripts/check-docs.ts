@@ -386,6 +386,17 @@ const reviewEvidenceContractDocs = [
   },
 ];
 
+const documentationMatrixStatusDocs = [
+  {
+    file: "docs/documentation-audit.md",
+    terms: ["current quality", "editorial assessment", "canonical page status", "top-level `Status:` line"],
+  },
+  {
+    file: "docs/documentation-matrix.md",
+    terms: ["current quality", "editorial assessment", "canonical page status", "top-level `Status:` line"],
+  },
+];
+
 const releaseVersionContractDocs = [
   {
     file: "docs/status.md",
@@ -1674,6 +1685,16 @@ for (const { file, terms } of reviewEvidenceContractDocs) {
   for (const term of terms.map((term) => term.toLowerCase())) {
     if (!content.includes(term)) {
       failures.push(`${file} is missing review evidence contract term: ${term}.`);
+    }
+  }
+}
+
+for (const { file, terms } of documentationMatrixStatusDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file).toLowerCase();
+  for (const term of terms.map((term) => term.toLowerCase())) {
+    if (!content.includes(term)) {
+      failures.push(`${file} is missing documentation matrix status-distinction term: ${term}.`);
     }
   }
 }

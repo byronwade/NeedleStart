@@ -6,6 +6,8 @@ Audience: maintainers, documentation contributors, AI agents.
 
 This matrix evaluates the current documentation system file by file. It uses the format required by the documentation audit objective.
 
+`Current quality` is an editorial assessment for this matrix, not the canonical page status. The canonical state for each Markdown file remains its top-level `Status:` line and the status definitions in `docs/status.md`.
+
 | File | Audience | Current quality | Main problem | Recommended fix | Priority | Effort | Website-ready? | Agent-ready? |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | `README.md` | All | Strong | Broad and still planning-heavy | Keep concise; route detail to docs hub | High | Low | Partial | Partial |
