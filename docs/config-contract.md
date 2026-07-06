@@ -251,7 +251,7 @@ Once implemented:
 
 ## Out Of Scope
 
-- Final config defaults before packages exist.
+- Final config defaults before config loading behavior exists.
 - Host-specific deployment config.
 - A secrets manager.
 - Claiming public environment behavior works before client build tests exist.

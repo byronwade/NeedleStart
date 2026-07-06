@@ -292,6 +292,36 @@ const staleStatusPatterns = [
     message: "docs/documentation-audit.md still presents pre-scaffold status as current.",
   },
   {
+    file: "SECURITY.md",
+    pattern: /NeedleStart is not yet implemented\./i,
+    message: "SECURITY.md should distinguish the scaffold from unimplemented framework security behavior.",
+  },
+  {
+    file: "docs/documentation-audit.md",
+    pattern: /exact testing commands once packages exist|Generate docs where possible after packages exist/i,
+    message: "docs/documentation-audit.md should distinguish scaffolded packages from implemented package behavior.",
+  },
+  {
+    file: "docs/config-contract.md",
+    pattern: /Final config defaults before packages exist/i,
+    message: "docs/config-contract.md should tie config defaults to config-loading behavior, not package existence.",
+  },
+  {
+    file: "docs/task-backlog.md",
+    pattern: /Expand `docs\/machine-readable-docs\.md` into generated schemas when packages exist/i,
+    message: "docs/task-backlog.md should tie generated schema docs to owning package behavior, not package existence.",
+  },
+  {
+    file: "docs/documentation-matrix.md",
+    pattern: /docs versioning after packages exist/i,
+    message: "docs/documentation-matrix.md should distinguish scaffolded packages from public package releases.",
+  },
+  {
+    file: "docs/product-build-readiness.md",
+    pattern: /upgrade-guide procedures once packages exist/i,
+    message: "docs/product-build-readiness.md should distinguish scaffolded packages from public package releases.",
+  },
+  {
     file: "README.md",
     pattern: /Planned command once the package exists/i,
     message: "README.md still ties quick start to package existence instead of implemented app creation behavior.",

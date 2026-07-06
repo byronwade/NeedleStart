@@ -43,7 +43,7 @@ Remaining follow-up:
 - Add public docs frontmatter after a docs site parser is chosen.
 - Add generated `docs-index.json`, `llms.txt`, and `llms-full.txt` plans to Agent Kernel implementation tasks.
 - Keep the pull request template aligned with `docs/docs-maintenance-checklist.md`, `docs/docs-verification.md`, and `docs/review-checklist.md`.
-- Expand `docs/machine-readable-docs.md` into generated schemas when packages exist.
+- Expand `docs/machine-readable-docs.md` into generated schemas when the owning packages have schema output behavior.
 - Use `docs/templates/documentation-page-template.md` for new durable docs pages.
 - Keep `docs/speed-strategy.md` current as performance, runtime, compiler, graph, agent, or benchmark plans change.
 - Keep `docs/threat-model.md`, `docs/benchmark-fixtures.md`, `docs/examples-catalog.md`, and `docs/docs-site-build-plan.md` current as implementation begins.

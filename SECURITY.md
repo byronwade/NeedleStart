@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: maintainers, contributors, security reviewers, AI agents.
 
-NeedleStart is not yet implemented. This policy defines how security should be handled as implementation begins.
+NeedleStart has a Phase 1 scaffold, but framework security behavior is not implemented yet. This policy defines how security should be handled as implementation begins.
 
 Detailed planned security requirements for high-risk implementation work live in [Security Contract](docs/security-contract.md).
 

@@ -92,7 +92,7 @@ This matrix evaluates the current documentation system file by file. It uses the
 | `docs/public/reference/examples.md` | App developers, agents | New | Public summary only until examples exist | Link verified examples after create command and fixtures exist | High | Low | Partial | Yes |
 | `docs/compatibility.md` | Deployers | Good planned | No compatibility evidence yet | Add evidence table as tests land | High | Medium | Partial | Partial |
 | `docs/release.md` | Maintainers | Good planned | No release tooling yet | Add changelog and release workflow later | High | Medium | Partial | Partial |
-| `docs/versioning-and-upgrades.md` | Maintainers, contributors, app developers, agents | New | Policy only until releases exist | Convert into real upgrade guides, deprecation policy, and docs versioning after packages exist | High | Medium | Partial | Yes |
+| `docs/versioning-and-upgrades.md` | Maintainers, contributors, app developers, agents | New | Policy only until releases exist | Convert into real upgrade guides, deprecation policy, and docs versioning after public package releases exist | High | Medium | Partial | Yes |
 | `docs/glossary.md` | All | Basic | Sparse | Expand with API terms as they land | Low | Low | Yes | Yes |
 | `docs/documentation-standard.md` | Docs contributors, agents | Strong | Needs enforcement | Enforce through PR template | High | Low | No | Yes |
 | `docs/docs-freshness-policy.md` | Maintainers, contributors, agents | Strong planned | Needs continued use in PRs | Keep update triggers current as project changes | High | Low | No | Yes |

@@ -193,7 +193,7 @@ These docs should become more exact as implementation starts:
 - `docs/security-contract.md`: replace planned threat model, secret handling, production error, security header, advisory, package provenance, and security evidence rules with implemented checks and release evidence.
 - `docs/performance-contract.md`: replace planned budgets, Core Web Vitals targets, report shape, diagnostics, benchmark evidence, and public claim rules with measured fixture and browser evidence.
 - `docs/speed-decisions.md`: revisit rejected defaults only after fixture data shows the planned path is not enough.
-- `docs/versioning-and-upgrades.md`: replace policy draft with real release, deprecation, and upgrade-guide procedures once packages exist.
+- `docs/versioning-and-upgrades.md`: replace policy draft with real release, deprecation, and upgrade-guide procedures once public package releases exist.
 - `docs/testing.md`: actual scripts and fixture commands.
 - `docs/testing-contract.md`: replace planned fixture layout, snapshot policy, CI gates, browser-test rules, and evidence reporting with implemented package scripts and CI jobs.
 - `docs/docs-verification.md`: expand automated checks for generated indexes, anchors, and claim categories as docs tooling grows.

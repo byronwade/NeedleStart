@@ -91,7 +91,7 @@ Current docs are useful as source material but not yet a complete public docs si
 
 ## 9. Contributor-Readiness Review
 
-Contributor direction is strong for architecture and Phase 1. Missing pieces are issue labels, review ownership, release expectations, and exact testing commands once packages exist.
+Contributor direction is strong for architecture and Phase 1. Missing pieces are issue labels, review ownership, release expectations, and exact feature-specific testing commands once package behavior exists.
 
 ## 10. Maintainer-Readiness Review
 
@@ -356,7 +356,7 @@ Files: docs maintenance checklist, PR templates, docs index, generated reference
 
 Acceptance criteria: feature changes update docs as part of definition of done.
 
-Risks: manual sync burden. Generate docs where possible after packages exist.
+Risks: manual sync burden. Generate docs where possible after package APIs and schema-owned outputs exist.
 
 Verification: use `bun run docs:check` and `bun run check` for documentation changes in the current scaffold.
 
