@@ -28,7 +28,7 @@ The scaffolded `@needle/core` `NeedleDiagnostic` currently uses `code`, `severit
 }
 ```
 
-## Planned Levels
+## Planned Severities
 
 - `info`
 - `warning`
@@ -53,8 +53,11 @@ The scaffolded `@needle/core` `NeedleDiagnostic` currently uses `code`, `severit
 
 - Codes are stable once released.
 - Paths are normalized and relative to the project root.
-- JSON output must not include secrets or absolute local paths.
+- JSON diagnostics must be deterministic.
+- Diagnostic arrays should use stable ordering by `severity`, `code`, file, line, column, and message unless a command documents a more specific order.
+- JSON output must not include secrets, absolute local paths, raw environment values, stack traces, or auth-only data.
 - Human output can include code frames, but automation should use JSON output.
+- Command status maps to diagnostics by default: no diagnostics or only `info` diagnostics means `ok`, one or more `warning` diagnostics means `warning`, and one or more `error` diagnostics means `error`.
 - Diagnostics should link to the most specific docs page once the public docs site exists.
 
 ## Source

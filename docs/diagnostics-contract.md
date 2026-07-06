@@ -229,7 +229,7 @@ Diagnostics appear in:
 Rules:
 
 - JSON diagnostics must be deterministic.
-- Arrays are sorted by `severity`, `code`, file, line, column, and message unless a command documents a more specific order.
+- Diagnostic arrays use stable ordering by `severity`, `code`, file, line, column, and message unless a command documents a more specific order.
 - Warnings do not fail a command unless strict mode or a check command says they do.
 - Diagnostics never include secrets, absolute local paths, raw environment values, stack traces, or auth-only data.
 

@@ -296,6 +296,11 @@ const configEnvironmentContractDocs = [
   "docs/public/reference/config.md",
 ];
 
+const diagnosticContractDocs = [
+  "docs/diagnostics-contract.md",
+  "docs/public/reference/diagnostics.md",
+];
+
 const routingContractDocs = [
   "docs/routing-contract.md",
   "docs/routing.md",
@@ -891,6 +896,16 @@ for (const file of configEnvironmentContractDocs) {
   for (const term of ["server-only", "public prefix", ".env*", "secret", "generated artifacts", "diagnostics"]) {
     if (!content.includes(term)) {
       failures.push(`${file} is missing config environment contract term: ${term}.`);
+    }
+  }
+}
+
+for (const file of diagnosticContractDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file).toLowerCase();
+  for (const term of ["severity", "info", "warning", "error", "deterministic", "stable ordering", "code", "message", "remediation", "docs"]) {
+    if (!content.includes(term)) {
+      failures.push(`${file} is missing diagnostics contract term: ${term}.`);
     }
   }
 }
