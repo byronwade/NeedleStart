@@ -1,5 +1,9 @@
 # Code of Conduct
 
+Status: Planned.
+
+Audience: contributors, maintainers, community members, AI agents.
+
 NeedleStart is an open source project for humans and AI agents. The community should be direct, respectful, evidence-driven, and safe for contributors with different backgrounds and experience levels.
 
 ## Expected Behavior

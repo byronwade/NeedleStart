@@ -1,5 +1,9 @@
 # Architecture
 
+Status: Planned.
+
+Audience: maintainers, contributors, AI agents.
+
 NeedleStart is built around a simple split:
 
 - Bun handles runtime execution.

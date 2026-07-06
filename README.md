@@ -74,7 +74,7 @@ bun run performance:check
 bun run check
 ```
 
-These commands verify the package scaffold, documentation links, docs navigation coverage, package-map/build-plan/backlog alignment, planned CLI command prefix consistency, status-drift guardrails, structure rules, performance-claim guardrails, TypeScript surface, and placeholder tests. They do not prove route discovery, rendering, CLI behavior, runtime adapters, Needle Map generation, MCP tools, or safe edits.
+These commands verify the package scaffold, documentation links, root docs metadata, docs navigation coverage, package-map/build-plan/backlog alignment, planned CLI command prefix consistency, status-drift guardrails, structure rules, performance-claim guardrails, TypeScript surface, and placeholder tests. They do not prove route discovery, rendering, CLI behavior, runtime adapters, Needle Map generation, MCP tools, or safe edits.
 
 ## Key Features
 

@@ -32,6 +32,15 @@ const requiredEntryLinks = [
   "docs/docs-site-build-plan.md",
 ];
 
+const rootDocsWithMetadata = [
+  "ARCHITECTURE.md",
+  "CODE_OF_CONDUCT.md",
+  "CONTRIBUTING.md",
+  "GOVERNANCE.md",
+  "SECURITY.md",
+  "VISION.md",
+];
+
 const packageSpecs = [
   { path: "packages/create-needle", name: "create-needle" },
   { path: "packages/cli", name: "@needle/cli" },
@@ -273,6 +282,11 @@ const staleStatusPatterns = [
     pattern: /if scaffolding is absent/i,
     message: "docs/skills/strategic-app-builder.md still frames scaffold checks as absent.",
   },
+  {
+    file: "GOVERNANCE.md",
+    pattern: /Phase 0|until the project has package scaffolding/i,
+    message: "GOVERNANCE.md still uses pre-scaffold governance language.",
+  },
 ];
 
 for (const file of [
@@ -354,6 +368,16 @@ for (const publicDoc of allPublicDocs()) {
 }
 
 const docsHub = read("docs/README.md");
+for (const rootDoc of rootDocsWithMetadata) {
+  const topMatter = read(rootDoc).split(/\r?\n/).slice(0, 8).join("\n");
+  if (!/^Status:/m.test(topMatter)) {
+    failures.push(`${rootDoc} has no top-level status.`);
+  }
+  if (!/^Audience:/m.test(topMatter)) {
+    failures.push(`${rootDoc} has no top-level audience.`);
+  }
+}
+
 for (const internalDoc of allDurableInternalDocs()) {
   if (internalDoc === "docs/README.md") continue;
   const hubTarget = internalDoc.slice("docs/".length);

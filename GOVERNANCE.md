@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: maintainers, contributors, open source program reviewers, AI agents.
 
-NeedleStart is currently in Phase 0. Governance is intentionally lightweight until the project has package scaffolding, regular contributors, and release activity.
+NeedleStart is currently in Phase 1: monorepo scaffold. Governance is intentionally lightweight until the project has package releases, regular contributors, and release activity.
 
 ## Current Decision Model
 

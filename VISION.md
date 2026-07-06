@@ -1,5 +1,9 @@
 # Vision
 
+Status: Planned.
+
+Audience: maintainers, contributors, AI agents, future website visitors.
+
 NeedleStart exists because the next generation of web frameworks must serve both humans and AI agents.
 
 The framework should make applications faster to ship, easier to audit, safer to modify, and better at exposing their own structure.
