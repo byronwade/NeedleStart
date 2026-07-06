@@ -256,6 +256,12 @@ const reviewEvidenceContractDocs = [
   },
 ];
 
+const historicalAuditDocs = [
+  "docs/documentation-audit.md",
+  "docs/documentation-completion-audit.md",
+  "docs/final-pr-summary.md",
+];
+
 const prototypeScopeTerms = [
   {
     file: "AGENTS.md",
@@ -1337,6 +1343,18 @@ for (const { file, terms } of reviewEvidenceContractDocs) {
     if (!content.includes(term)) {
       failures.push(`${file} is missing review evidence contract term: ${term}.`);
     }
+  }
+}
+
+for (const file of historicalAuditDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file).toLowerCase();
+  const containsPreScaffoldHistory =
+    content.includes("had no bun workspace") ||
+    content.includes("had no package scaffold") ||
+    content.includes("had not scaffolded package scripts");
+  if (containsPreScaffoldHistory && !content.includes("historical context")) {
+    failures.push(`${file} includes pre-scaffold history without labeling it as historical context.`);
   }
 }
 
