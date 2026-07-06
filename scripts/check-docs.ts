@@ -469,6 +469,11 @@ const staleStatusPatterns = [
     message: "docs/runtime-contract.md uses stale generated artifact names; canonical compiler artifacts live under .needle/*.",
   },
   {
+    file: "docs/compiler-ir.md",
+    pattern: /\bfile: string\b|"file":|"renderMode": "auto"|api-hot/i,
+    message: "docs/compiler-ir.md should use sourceFile and supported RenderMode values that match the shared core model.",
+  },
+  {
     file: "docs/adapters.md",
     pattern: /unsupported runtime features in `adapter\.manifest\.json`/i,
     message: "docs/adapters.md should reference dist/adapter.manifest.json for adapter output.",

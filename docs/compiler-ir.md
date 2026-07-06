@@ -41,7 +41,7 @@ export type NeedleApp = {
 export type RouteNode = {
   id: string
   path: string
-  file: string
+  sourceFile: string
   kind: "page" | "api"
   params: Param[]
   layouts: string[]
@@ -64,18 +64,18 @@ Example:
     {
       "id": "app.page",
       "path": "/",
-      "file": "app/page.tsx",
+      "sourceFile": "app/page.tsx",
       "kind": "page",
       "params": [],
-      "renderMode": "auto"
+      "renderMode": "static"
     },
     {
       "id": "app.blog.$slug.page",
       "path": "/blog/:slug",
-      "file": "app/blog/[slug]/page.tsx",
+      "sourceFile": "app/blog/[slug]/page.tsx",
       "kind": "page",
       "params": [{ "name": "slug", "type": "string" }],
-      "renderMode": "auto"
+      "renderMode": "static"
     }
   ]
 }
@@ -90,7 +90,7 @@ export type RenderManifest = {
   routes: Array<{
     id: string
     path: string
-    mode: "static" | "prerender" | "ssr" | "stream" | "client-only" | "api" | "api-hot"
+    mode: "static" | "prerender" | "ssr" | "stream" | "client-only" | "api" | "hot-api"
     cache?: CachePlan
     generatedFiles: string[]
   }>
