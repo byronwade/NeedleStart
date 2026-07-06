@@ -255,6 +255,24 @@ const plannedMapCommandDocs = [
   "docs/public/guides/needle-map.md",
 ];
 
+const plannedMcpReadTools = [
+  "list_routes",
+  "get_route",
+  "get_route_context",
+  "get_related_files",
+  "get_impact_map",
+  "get_component_contract",
+  "get_schema",
+  "get_seo_report",
+  "get_perf_report",
+  "get_cache_report",
+];
+
+const plannedMcpReadToolDocs = [
+  "docs/mcp-server.md",
+  "docs/public/reference/mcp.md",
+];
+
 const scaffoldVerificationCommands = [
   "bun test",
   "bun run typecheck",
@@ -689,6 +707,10 @@ const plannedOverviewImplementationStatusDocs = [
   {
     file: "docs/mcp-server.md",
     terms: ["planned MCP server behavior", "MCP server behavior is not implemented yet"],
+  },
+  {
+    file: "docs/public/reference/mcp.md",
+    terms: ["MCP server behavior is not implemented yet"],
   },
 ];
 
@@ -1792,6 +1814,16 @@ for (const file of plannedMapCommandDocs) {
   for (const command of plannedMapCommandSurfaces) {
     if (!content.includes(command)) {
       failures.push(`${file} does not document planned Needle Map command surface: ${command}.`);
+    }
+  }
+}
+
+for (const file of plannedMcpReadToolDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file);
+  for (const tool of plannedMcpReadTools) {
+    if (!content.includes(tool)) {
+      failures.push(`${file} does not document planned MCP read tool: ${tool}.`);
     }
   }
 }
