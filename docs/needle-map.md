@@ -3,6 +3,8 @@
 Status: Planned.
 Audience: app developers, framework contributors, AI agents.
 
+This page describes the planned Needle Map behavior. Needle Map generation is not implemented yet.
+
 Needle Map is the semantic dependency graph for a NeedleStart application.
 
 It must be a core framework feature, not a side widget.

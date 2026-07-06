@@ -4,6 +4,8 @@ Status: Planned.
 
 Audience: app developers, runtime contributors, AI agents.
 
+This page describes the planned cache overview. Cache behavior is not implemented yet.
+
 NeedleStart caching must be explicit and inspectable.
 
 The planned cache plan shape, `Cache-Control` header mapping, cache tags, revalidation behavior, diagnostics, generated manifests, security rules, and fixture requirements are defined in [Cache Contract](cache-contract.md).

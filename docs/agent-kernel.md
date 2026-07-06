@@ -3,6 +3,8 @@
 Status: Planned.
 Audience: AI agents, framework contributors, maintainers.
 
+This page describes the planned Agent Kernel behavior. Agent Kernel behavior is not implemented yet.
+
 The Agent Kernel is the part of NeedleStart that makes applications understandable and safely editable by AI agents.
 
 ## Goals

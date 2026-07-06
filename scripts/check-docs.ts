@@ -605,6 +605,29 @@ const runtimeImplementationStatusDocs = [
   },
 ];
 
+const plannedOverviewImplementationStatusDocs = [
+  {
+    file: "docs/cache.md",
+    terms: ["planned cache overview", "Cache behavior is not implemented yet"],
+  },
+  {
+    file: "docs/needle-map.md",
+    terms: ["planned Needle Map behavior", "Needle Map generation is not implemented yet"],
+  },
+  {
+    file: "docs/safe-edit-transactions.md",
+    terms: ["planned safe edit transaction model", "Safe edit behavior is not implemented yet"],
+  },
+  {
+    file: "docs/agent-kernel.md",
+    terms: ["planned Agent Kernel behavior", "Agent Kernel behavior is not implemented yet"],
+  },
+  {
+    file: "docs/mcp-server.md",
+    terms: ["planned MCP server behavior", "MCP server behavior is not implemented yet"],
+  },
+];
+
 const configEnvironmentContractDocs = [
   "docs/config-contract.md",
   "docs/config.md",
@@ -1699,6 +1722,16 @@ for (const { file, terms } of runtimeImplementationStatusDocs) {
   for (const term of terms) {
     if (!content.includes(term)) {
       failures.push(`${file} is missing runtime implementation status term: ${term}.`);
+    }
+  }
+}
+
+for (const { file, terms } of plannedOverviewImplementationStatusDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file);
+  for (const term of terms) {
+    if (!content.includes(term)) {
+      failures.push(`${file} is missing planned overview implementation status term: ${term}.`);
     }
   }
 }

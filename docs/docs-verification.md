@@ -107,6 +107,8 @@ This is a review aid, not a binary test.
 
 Automated coverage in `bun run docs:check` also rejects pre-scaffold command-limitation language, stale pre-expansion audit tasks, stale improvement-matrix PR-template tasks, public compiler/runtime wording that implies implemented behavior, and PR-template diagnostic severity wording, so old "no scaffold," "missing docs homes," "add PR template later," or unimplemented present-tense behavior evidence cannot be mistaken for current repository status. It also requires documentation audit matrix pages to distinguish editorial `Current quality` values from canonical `Status:` labels.
 
+Planned overview pages for Cache, Needle Map, Agent Kernel, MCP, and Safe Edit Transactions must state that the behavior is not implemented yet until package behavior and feature-specific evidence exist.
+
 ### 5. Navigation Coverage Check
 
 ```powershell
