@@ -165,6 +165,7 @@ Do not add frontmatter until the docs site parser exists or a static-site direct
 - Link from prose pages to exact reference pages.
 - Never ask agents to rely on inferred behavior when a manifest, schema, or contract should exist.
 - Generated app-local or public-docs agent artifacts such as app-local `AGENTS.md`, `llms.txt`, `llms-full.txt`, and `docs-index.json` must not include secrets.
+- Canonical `.needle/*` compiler and agent artifacts and named `dist/*` deployment artifacts must stay aligned across manifest, runtime, agent-kernel, machine-readable, API, and public reference docs.
 
 ## Benchmark Claim Rules
 

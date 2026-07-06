@@ -212,10 +212,10 @@ Automated coverage in `bun run docs:check` also requires adapter contract, adapt
 ### 15. Manifest Contract Check
 
 ```powershell
-rg -n "routes\.json|render-manifest\.json|map\.json|graph\.json|seo\.report\.json|perf\.report\.json|agent-index\.json|mutations\.json|routes\.manifest\.json|render\.manifest\.json|adapter\.manifest\.json|schema version|normalized paths|stable ordering|source inputs|absolute local paths" AGENTS.md docs\api-reference.md docs\config-contract.md docs\examples-contract.md docs\getting-started.md docs\manifest-contracts.md docs\runtime-contract.md docs\public\reference\config.md docs\public\reference\manifest-contracts.md docs\public\reference\project-structure.md
+rg -n "routes\.json|render-manifest\.json|map\.json|graph\.json|seo\.report\.json|perf\.report\.json|agent-index\.json|mutations\.json|routes\.manifest\.json|render\.manifest\.json|adapter\.manifest\.json|schema version|normalized paths|stable ordering|source inputs|absolute local paths" AGENTS.md docs\agent-kernel.md docs\api-reference.md docs\config-contract.md docs\examples-contract.md docs\getting-started.md docs\machine-readable-docs.md docs\manifest-contracts.md docs\runtime-contract.md docs\public\reference\config.md docs\public\reference\manifest-contracts.md docs\public\reference\project-structure.md
 ```
 
-Expected result: generated artifact names, deployment-copy artifact names, schema version rules, normalized paths, stable ordering, source-input documentation, public-artifact path safety, and generated-file edit rules remain connected across agent rules, API reference, config contract, examples contract, getting-started output, internal manifests, runtime contract, public config reference, public manifest reference, and public project structure docs.
+Expected result: generated artifact names, deployment-copy artifact names, schema version rules, normalized paths, stable ordering, source-input documentation, public-artifact path safety, and generated-file edit rules remain connected across agent rules, Agent Kernel docs, API reference, config contract, examples contract, getting-started output, machine-readable docs, internal manifests, runtime contract, public config reference, public manifest reference, and public project structure docs.
 
 Automated coverage in `bun run docs:check` also requires canonical `.needle/*` artifact names, named `dist/*` deployment-copy artifacts, and generated artifact contract-rule vocabulary to stay aligned across these docs.
 

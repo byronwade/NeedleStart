@@ -78,7 +78,7 @@ Also apply `docs/docs-freshness-policy.md` for any change that can make docs sta
 - Cache behavior changes: update `docs/cache.md`, `docs/cache-contract.md`, `docs/runtime-contract.md`, `docs/speed-strategy.md`, `docs/api-route-contract.md`, `docs/hot-api-path.md`, `docs/manifest-contracts.md`, `docs/security.md`, and public cache reference.
 - SEO behavior changes: update `docs/seo-engine.md`, `docs/seo-contract.md`, `docs/api-reference.md`, `docs/manifest-contracts.md`, `docs/runtime-contract.md`, `docs/cache-contract.md`, and public SEO reference.
 - Accessibility behavior, accessibility diagnostics, route focus behavior, framework-owned form errors, public docs UI, or accessibility evidence changes: update `docs/accessibility.md`, `docs/accessibility-contract.md`, `docs/testing-contract.md`, `docs/seo-contract.md`, and public accessibility reference.
-- Generated files change: update `docs/manifest-contracts.md`.
+- Generated files change: update `docs/manifest-contracts.md`, `docs/api-reference.md`, `docs/runtime-contract.md`, `docs/agent-kernel.md`, `docs/machine-readable-docs.md`, and public manifest or project-structure references.
 - Manifest schema versions change: update `docs/versioning-and-upgrades.md` and machine-readable docs.
 - Public helpers change: update `docs/api-reference.md`.
 - Agent JSON changes: update `docs/agent-kernel.md` and `docs/mcp-server.md`.

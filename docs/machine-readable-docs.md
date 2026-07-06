@@ -14,10 +14,25 @@ NeedleStart should make documentation consumable by humans and AI agents. Machin
 | `llms.txt` | Compact public docs or app-local summary for AI tools. | No production runtime bundles |
 | `llms-full.txt` | Full AI-readable public docs or app-local context. | No production runtime bundles |
 | `docs-index.json` | Index of docs pages, status, audience, tags, and source paths. | Public docs artifact only |
+| `.needle/routes.json` | Stable route manifest for apps. | No production runtime bundles |
+| `.needle/render-manifest.json` | Render modes and cache metadata for apps. | No production runtime bundles |
+| `.needle/map.json` | Queryable Needle Map output for apps. | No production runtime bundles |
+| `.needle/graph.json` | Compiler and agent graph data for apps. | No production runtime bundles |
+| `.needle/seo.report.json` | SEO audit output for apps. | No production runtime bundles |
+| `.needle/perf.report.json` | Performance and budget output for apps. | No production runtime bundles |
 | `.needle/context/*.ctx.json` | Route or surface context capsules for apps. | No production runtime bundles |
 | `.needle/context/agent-index.json` | Index of generated agent context. | No production runtime bundles |
+| `.needle/mutations.json` | Safe edit mutation log for apps. | No production runtime bundles |
+| `.needle/generated/*` | Generated runtime modules for apps. | May feed production build output, but not agent metadata |
+| `dist/routes.manifest.json` | Deployment-oriented route manifest copy for adapters. | Adapter artifact |
+| `dist/render.manifest.json` | Deployment-oriented render manifest copy for adapters. | Adapter artifact |
+| `dist/seo.report.json` | Deployment-oriented SEO report copy for adapters. | Adapter artifact |
+| `dist/adapter.manifest.json` | Adapter capabilities and deployment output metadata. | Adapter artifact |
+| `dist/*` | Production build output. | Yes |
 
 The root `AGENTS.md` in this repository is not generated. It remains the authoritative hand-maintained operating guide for contributors and AI agents working on NeedleStart itself. Generated `AGENTS.md` files are planned only for user applications created or managed by NeedleStart.
+
+Canonical generated artifact names must stay aligned with [Manifest Contracts](manifest-contracts.md), [API Reference](api-reference.md), [Runtime Contract](runtime-contract.md), [Agent Kernel](agent-kernel.md), and public reference docs. The `.needle/*` files are compiler and agent source contracts. The named `dist/*` files are adapter-shaped deployment outputs.
 
 ## `docs-index.json` Draft
 
