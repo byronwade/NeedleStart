@@ -1680,6 +1680,11 @@ const staleStatusPatterns = [
     message: "docs/docs-verification.md still treats the Bun workspace as future work.",
   },
   {
+    file: "docs/docs-verification.md",
+    pattern: /implementation-sequence/i,
+    message: "docs/docs-verification.md references a nonexistent implementation-sequence doc; use the Phase 1 build plan and task backlog.",
+  },
+  {
     file: "docs/review-checklist.md",
     pattern: /Out Of Scope For Phase 0|before package scaffolding exists/i,
     message: "docs/review-checklist.md still uses Phase 0 or pre-scaffold review language.",
