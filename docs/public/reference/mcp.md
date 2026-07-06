@@ -35,6 +35,17 @@ Write tools are planned only after safe edit transactions exist.
 - `get_mutation`
 - `undo_mutation`
 
+## Planned Resources
+
+```txt
+needle://routes
+needle://route/%2Fpricing
+needle://map/file/components%2FProductCard.tsx
+needle://seo/report
+needle://perf/report
+needle://context/public
+```
+
 ## Source
 
 - [MCP Server](../../mcp-server.md)

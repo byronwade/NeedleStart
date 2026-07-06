@@ -291,6 +291,20 @@ const plannedMcpWriteToolDocs = [
   "docs/public/reference/mcp.md",
 ];
 
+const plannedMcpResources = [
+  "needle://routes",
+  "needle://route/%2Fpricing",
+  "needle://map/file/components%2FProductCard.tsx",
+  "needle://seo/report",
+  "needle://perf/report",
+  "needle://context/public",
+];
+
+const plannedMcpResourceDocs = [
+  "docs/mcp-server.md",
+  "docs/public/reference/mcp.md",
+];
+
 const scaffoldVerificationCommands = [
   "bun test",
   "bun run typecheck",
@@ -1852,6 +1866,16 @@ for (const file of plannedMcpWriteToolDocs) {
   for (const tool of plannedMcpWriteTools) {
     if (!content.includes(tool)) {
       failures.push(`${file} does not document planned MCP write tool: ${tool}.`);
+    }
+  }
+}
+
+for (const file of plannedMcpResourceDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file);
+  for (const resource of plannedMcpResources) {
+    if (!content.includes(resource)) {
+      failures.push(`${file} does not document planned MCP resource: ${resource}.`);
     }
   }
 }
