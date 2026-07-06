@@ -2,7 +2,7 @@
 
 Date: YYYY-MM-DD
 
-Status: proposed
+Status: Proposed.
 
 ## Context
 

@@ -25,12 +25,15 @@ The current repository has a scaffold, so several pages remain draft references 
 
 Every user-facing feature page should make its status clear near the top:
 
-- Implemented: code exists, tests or checks have verified it, and the page describes current behavior.
-- Planned: design is accepted, but implementation does not exist yet.
 - Draft: design is exploratory or incomplete.
+- Proposed: an architecture decision has been proposed for planning, but implementation has not proven it yet.
+- Planned: design is accepted, but implementation does not exist yet.
+- Scaffolded: package, file, command, or documentation structure exists, but feature behavior is not complete.
+- Implemented: code exists, tests or checks have verified it, and the page describes current behavior.
+- Verified: code exists and the required checks, fixtures, or evidence prove the documented behavior.
 - Deprecated: behavior exists but should not be used for new work.
 
-Do not use "Implemented" until the repository contains the code and checks have run.
+Write status lines as `Status: Planned.` with title case and a period. Add a separate `Scope:` line when the page needs nuance. Do not use "Implemented" until the repository contains the code and checks have run.
 
 ## Page Shape
 

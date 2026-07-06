@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: contributors, AI agents.
 
-NeedleStart is currently in planning and constitution mode. The first contributor responsibility is to keep direction, architecture, implementation tasks, and docs coherent.
+NeedleStart is currently in Phase 1: monorepo scaffold. The first contributor responsibility is to keep direction, architecture, implementation tasks, and docs coherent while the prototype foundation is built.
 
 ## Contributor Path
 

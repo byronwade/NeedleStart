@@ -1,10 +1,10 @@
 # Documentation Verification
 
-Status: Planned.
+Status: Scaffolded.
 
 Audience: maintainers, contributors, AI agents.
 
-This page defines the repeatable checks that keep NeedleStart documentation build-ready. It complements [Documentation Freshness Policy](docs-freshness-policy.md) and [Documentation Maintenance Checklist](docs-maintenance-checklist.md) by naming exact checks, expected evidence, and current scaffold limitations.
+This page defines the repeatable checks that keep NeedleStart documentation build-ready. It complements [Documentation Freshness Policy](docs-freshness-policy.md) and [Documentation Maintenance Checklist](docs-maintenance-checklist.md) by naming exact checks, expected evidence, implemented scaffold checks, and current scaffold limitations.
 
 ## Why This Exists
 
@@ -113,7 +113,15 @@ rg -n "first-contribution|review-checklist|threat-model|benchmark-fixtures|examp
 
 Expected result: new durable docs are discoverable from the relevant root, docs hub, public docs, or website map surfaces.
 
-### 6. Package And Prototype Scope Check
+### 6. Status Language Check
+
+```powershell
+bun run docs:check
+```
+
+Expected result: top-level `Status:` lines use a canonical title-case label with a period: `Draft.`, `Proposed.`, `Planned.`, `Scaffolded.`, `Implemented.`, `Verified.`, or `Deprecated.`. Pages that need nuance should add a separate `Scope:` or prose note instead of embedding explanation in the status line.
+
+### 7. Package And Prototype Scope Check
 
 ```powershell
 bun run docs:check
@@ -121,7 +129,7 @@ bun run docs:check
 
 Expected result: package names and paths stay aligned across `docs/package-map.md`, `docs/phase-1-build-plan.md`, and `docs/task-backlog.md`; prototype CLI examples use the planned `needle ...` command form; adapter docs use `packages/adapters/bun`, `packages/adapters/node`, and `packages/adapters/static`; and scaffold status language does not drift back to pre-scaffold wording.
 
-### 7. Machine-Readable Docs Contract Check
+### 8. Machine-Readable Docs Contract Check
 
 ```powershell
 rg -n "llms\.txt|llms-full\.txt|docs-index\.json|schemaVersion|generatedAt" docs\machine-readable-docs.md docs\agent-kernel.md docs\mcp-server.md docs\public-docs.md
@@ -129,7 +137,7 @@ rg -n "llms\.txt|llms-full\.txt|docs-index\.json|schemaVersion|generatedAt" docs
 
 Expected result: machine-readable docs outputs remain documented as planned, schema-versioned, deterministic, and separate from production runtime bundles.
 
-### 8. Public Docs Site Contract Check
+### 9. Public Docs Site Contract Check
 
 ```powershell
 rg -n "frontmatter|canonical|docs-index\.json|llms\.txt|route mapping|renderer|public-frontmatter-standard|docs-site-build-plan" docs\public-docs-site-architecture.md docs\public-frontmatter-standard.md docs\docs-site-build-plan.md docs\public-docs.md docs\website-content-map.md docs\machine-readable-docs.md
@@ -137,7 +145,7 @@ rg -n "frontmatter|canonical|docs-index\.json|llms\.txt|route mapping|renderer|p
 
 Expected result: public docs metadata, routes, navigation, renderer assumptions, and machine-readable outputs remain connected.
 
-### 9. Testing Contract Check
+### 10. Testing Contract Check
 
 ```powershell
 rg -n "testing-contract|test:fixtures|test:http|test:browser|snapshot|Fixture Layout|CI Gates|no external network|deterministic" README.md AGENTS.md docs\testing-contract.md docs\testing.md docs\docs-verification.md docs\product-build-readiness.md docs\public\reference\testing.md
@@ -145,7 +153,7 @@ rg -n "testing-contract|test:fixtures|test:http|test:browser|snapshot|Fixture La
 
 Expected result: test layers, fixture layout, snapshot policy, CI gates, network rules, deterministic output, testing overview, and public reference docs remain connected.
 
-### 10. CLI JSON Contract Check
+### 11. CLI JSON Contract Check
 
 ```powershell
 rg -n "schemaVersion|diagnostics|Exit Codes|--json|stdout|exit-code|needle.cli|CLI JSON|cli-json-contract|diagnostics-contract" docs\cli-json-contract.md docs\cli.md docs\api-reference.md docs\manifest-contracts.md docs\agent-kernel.md docs\mcp-server.md docs\diagnostics-contract.md
@@ -153,7 +161,7 @@ rg -n "schemaVersion|diagnostics|Exit Codes|--json|stdout|exit-code|needle.cli|C
 
 Expected result: command automation behavior remains connected across CLI reference, API reference, manifests, agent context, and MCP docs.
 
-### 11. Diagnostics Contract Check
+### 12. Diagnostics Contract Check
 
 ```powershell
 rg -n "diagnostics-contract|NeedleDiagnostic|DiagnosticCategory|remediation|related|source location|code frame|ROUTE_DUPLICATE_PATH|diagnostic codes" README.md AGENTS.md docs\diagnostics-contract.md docs\cli-json-contract.md docs\api-reference.md docs\manifest-contracts.md docs\compiler-ir.md docs\runtime-contract.md docs\public\reference\diagnostics.md
@@ -161,7 +169,7 @@ rg -n "diagnostics-contract|NeedleDiagnostic|DiagnosticCategory|remediation|rela
 
 Expected result: diagnostic code rules, levels, categories, source locations, remediations, docs links, JSON behavior, manifests, compiler/runtime docs, and public reference docs remain connected.
 
-### 12. Configuration Contract Check
+### 13. Configuration Contract Check
 
 ```powershell
 rg -n "needle.config|defineConfig|environment|env|normalized|schemaVersion|secret|adapter" docs\config-contract.md docs\config.md docs\api-reference.md docs\runtime-contract.md docs\adapters.md docs\security.md docs\manifest-contracts.md
@@ -169,7 +177,7 @@ rg -n "needle.config|defineConfig|environment|env|normalized|schemaVersion|secre
 
 Expected result: config loading, validation, environment behavior, normalized output, adapter selection, and secret-exclusion rules remain connected.
 
-### 13. Adapter Contract Check
+### 14. Adapter Contract Check
 
 ```powershell
 rg -n "adapter-contract|Adapter Contract|adapter.manifest|ADAPTER_|health endpoint|static export|@needle/adapter-bun|@needle/adapter-node|@needle/adapter-static|capabilities|nativeRouteDispatch|Bun\.serve|compression|Early Hints|resourceHints|bfcache" README.md AGENTS.md docs\adapter-contract.md docs\adapters.md docs\deployment.md docs\compatibility.md docs\runtime-contract.md docs\manifest-contracts.md docs\public\reference\adapters.md
@@ -177,7 +185,7 @@ rg -n "adapter-contract|Adapter Contract|adapter.manifest|ADAPTER_|health endpoi
 
 Expected result: adapter packages, generated output, adapter manifest fields, capabilities, native route dispatch, compression, Early Hints, resource hints, bfcache-aware delivery, environment behavior, health endpoint behavior, static export rules, diagnostics, deployment docs, compatibility docs, and public reference docs remain connected.
 
-### 14. Routing Contract Check
+### 15. Routing Contract Check
 
 ```powershell
 rg -n "routing-contract|Route ID|ROUTE_DUPLICATE_PATH|routes\.json|routeGroups|sourceFile|catch-all|route discovery" README.md AGENTS.md docs\routing-contract.md docs\routing.md docs\file-conventions.md docs\compiler-ir.md docs\manifest-contracts.md docs\api-routes.md docs\public\reference\file-conventions.md docs\public\reference\project-structure.md docs\public\reference\routing.md
@@ -185,7 +193,7 @@ rg -n "routing-contract|Route ID|ROUTE_DUPLICATE_PATH|routes\.json|routeGroups|s
 
 Expected result: route grammar, route IDs, manifest fields, diagnostics, fixture requirements, overview docs, and public references remain connected.
 
-### 15. Examples Contract Check
+### 16. Examples Contract Check
 
 ```powershell
 rg -n "examples-contract|examples-catalog|Examples And Templates Contract|Verified|Runnable|Scaffolded|bun create needle|--example|large-app-fixture|agent-demo|reference/examples" README.md AGENTS.md docs\examples-contract.md docs\examples-catalog.md docs\examples.md docs\getting-started.md docs\public\guides\create-app.md docs\public\reference\examples.md docs\product-build-readiness.md docs\testing-contract.md
@@ -193,7 +201,7 @@ rg -n "examples-contract|examples-catalog|Examples And Templates Contract|Verifi
 
 Expected result: example status labels, starter-template requirements, create-command examples, fixture expectations, public references, and verification evidence remain connected.
 
-### 16. API Route Contract Check
+### 17. API Route Contract Check
 
 ```powershell
 rg -n "api-route-contract|API_METHOD|ApiRouteContext|Request|Response|VALIDATION_FAILED|methods|hot API|bodyLimit" README.md AGENTS.md docs\api-route-contract.md docs\api-routes.md docs\schema.md docs\hot-api-path.md docs\runtime-contract.md docs\security.md docs\manifest-contracts.md docs\public\reference\api-routes.md
@@ -201,7 +209,7 @@ rg -n "api-route-contract|API_METHOD|ApiRouteContext|Request|Response|VALIDATION
 
 Expected result: API handler context, method exports, request/response behavior, validation, diagnostics, hot API integration, security rules, manifests, and public reference docs remain connected.
 
-### 17. Schema Contract Check
+### 18. Schema Contract Check
 
 ```powershell
 rg -n "schema-contract|SchemaResult|SchemaIssue|InferInput|InferOutput|SCHEMA_|OpenAPI|query coercion|serializer" README.md AGENTS.md docs\schema-contract.md docs\schema.md docs\api-route-contract.md docs\hot-api-path.md docs\manifest-contracts.md docs\api-reference.md docs\public\reference\schema.md
@@ -209,7 +217,7 @@ rg -n "schema-contract|SchemaResult|SchemaIssue|InferInput|InferOutput|SCHEMA_|O
 
 Expected result: schema helpers, validation result shape, issue shape, type inference, query coercion, serializer behavior, OpenAPI mapping, diagnostics, manifest references, and public reference docs remain connected.
 
-### 18. Cache Contract Check
+### 19. Cache Contract Check
 
 ```powershell
 rg -n "cache-contract|CachePlan|CACHE_|Cache-Control|revalidateTag|micro-cache|stale-while-revalidate|cache tags|no-store" README.md AGENTS.md docs\cache-contract.md docs\cache.md docs\runtime-contract.md docs\speed-strategy.md docs\api-route-contract.md docs\hot-api-path.md docs\manifest-contracts.md docs\security.md docs\public\reference\cache.md
@@ -217,7 +225,7 @@ rg -n "cache-contract|CachePlan|CACHE_|Cache-Control|revalidateTag|micro-cache|s
 
 Expected result: cache plan shape, defaults, headers, tags, revalidation, micro-cache behavior, diagnostics, manifests, security rules, speed docs, and public reference docs remain connected.
 
-### 19. SEO Contract Check
+### 20. SEO Contract Check
 
 ```powershell
 rg -n "seo-contract|defineMeta|generateMeta|SEO_|sitemap|robots|structuredData|canonical|seo.report" README.md AGENTS.md docs\seo-contract.md docs\seo-engine.md docs\api-reference.md docs\manifest-contracts.md docs\runtime-contract.md docs\cache-contract.md docs\public\reference\seo.md docs\public\guides\seo-metadata.md
@@ -225,7 +233,7 @@ rg -n "seo-contract|defineMeta|generateMeta|SEO_|sitemap|robots|structuredData|c
 
 Expected result: metadata API, merge rules, sitemap output, robots output, structured data, diagnostics, manifests, runtime/cache interaction, and public reference docs remain connected.
 
-### 20. Accessibility Contract Check
+### 21. Accessibility Contract Check
 
 ```powershell
 rg -n "accessibility-contract|Accessibility Contract|WCAG|keyboard|focus|semantic HTML|A11Y_|route focus|form errors|reference/accessibility" README.md AGENTS.md docs\accessibility-contract.md docs\accessibility.md docs\testing-contract.md docs\seo-contract.md docs\docs-verification.md docs\product-build-readiness.md docs\public-docs.md docs\public\reference\accessibility.md
@@ -233,7 +241,7 @@ rg -n "accessibility-contract|Accessibility Contract|WCAG|keyboard|focus|semanti
 
 Expected result: WCAG target language, semantic HTML, keyboard behavior, focus behavior, form errors, diagnostics, testing evidence, public docs readiness, SEO overlap, and public reference docs remain connected.
 
-### 21. Security Contract Check
+### 22. Security Contract Check
 
 ```powershell
 rg -n "security-contract|Security Contract|threat-model|Threat Model|threat model|secret|production error|security headers|vulnerability|advisory|provenance|supply chain|high-risk" README.md AGENTS.md SECURITY.md .github\PULL_REQUEST_TEMPLATE.md docs\security-contract.md docs\threat-model.md docs\security.md docs\testing-contract.md docs\docs-verification.md docs\product-build-readiness.md docs\public\reference\security.md
@@ -241,7 +249,7 @@ rg -n "security-contract|Security Contract|threat-model|Threat Model|threat mode
 
 Expected result: security target language, high-risk surfaces, threat model requirements, secret handling, production error behavior, security headers, advisory flow, supply-chain release rules, testing evidence, and public reference docs remain connected.
 
-### 22. Performance Contract Check
+### 23. Performance Contract Check
 
 ```powershell
 rg -n "performance-contract|Performance Contract|benchmark-fixtures|Core Web Vitals|LCP|INP|CLS|perf.report|PERF_|budget|benchmark evidence|delivery|chunk count|source-map|RUM|field data|resourceHints|Early Hints|compression|bfcache|reference/performance" README.md AGENTS.md .github\PULL_REQUEST_TEMPLATE.md docs\performance-contract.md docs\performance.md docs\speed-strategy.md docs\benchmark-methodology.md docs\benchmark-fixtures.md docs\testing-contract.md docs\manifest-contracts.md docs\docs-verification.md docs\product-build-readiness.md docs\public\reference\performance.md
@@ -249,7 +257,7 @@ rg -n "performance-contract|Performance Contract|benchmark-fixtures|Core Web Vit
 
 Expected result: route budgets, Core Web Vitals target language, performance reports, delivery fields, chunk counts, source-map exposure, optional RUM and field-data policy, diagnostics, benchmark evidence, testing evidence, manifest references, public claim rules, and public reference docs remain connected.
 
-### 23. Speed Decision Check
+### 24. Speed Decision Check
 
 ```powershell
 rg -n "speed-capability-audit|Speed Capability Audit|speed-decisions|Speed Decisions|Vite/Rolldown|Vite 8|bundled dev|custom bundler|Bun native dispatch|nativeRouteDispatch|route code splitting|CSS delivery|source maps|RUM|field data|React Compiler|React streaming|103 Early Hints|resource hints|resourceHints|fetchpriority|speculation|bfcache|compression|images|fonts|async waterfall|hot API|payload budget|compiler scaling|rejected defaults" README.md AGENTS.md ARCHITECTURE.md docs\speed-capability-audit.md docs\speed-decisions.md docs\speed-strategy.md docs\performance-contract.md docs\benchmark-methodology.md docs\product-build-readiness.md docs\docs-verification.md docs\task-backlog.md
@@ -257,7 +265,7 @@ rg -n "speed-capability-audit|Speed Capability Audit|speed-decisions|Speed Decis
 
 Expected result: speed-sensitive architecture choices, browser-delivery choices, rejected defaults, implementation gates, performance reports, benchmark methodology, README, AGENTS, architecture, and backlog remain connected.
 
-### 24. Contributor, ADR, Checklist, And Glossary Check
+### 25. Contributor, ADR, Checklist, And Glossary Check
 
 ```powershell
 rg -n "first-contribution|Architecture Decision Records|decisions/README|Implementation Checklists|checklists/phase-1-scaffold|checklists/adapter-implementation|checklists/performance-evidence|public-frontmatter-standard|Glossary" README.md AGENTS.md docs\README.md docs\docs-verification.md docs\website-content-map.md docs\public-docs-site-architecture.md docs\public\README.md
@@ -265,7 +273,7 @@ rg -n "first-contribution|Architecture Decision Records|decisions/README|Impleme
 
 Expected result: first-contribution guidance, ADRs, implementation checklists, public frontmatter rules, and glossary coverage remain discoverable from repository entrypoints and docs verification.
 
-### 25. Review, Threat, Fixture, Example, And Docs-Site Check
+### 26. Review, Threat, Fixture, Example, And Docs-Site Check
 
 ```powershell
 rg -n "review-checklist|threat-model|benchmark-fixtures|examples-catalog|docs-site-build-plan|PULL_REQUEST_TEMPLATE" README.md AGENTS.md .github\PULL_REQUEST_TEMPLATE.md docs\README.md docs\docs-verification.md docs\security-contract.md docs\benchmark-methodology.md docs\examples-contract.md docs\public-docs-site-architecture.md docs\website-content-map.md
@@ -290,7 +298,7 @@ The initial Bun workspace exposes these package scripts:
 
 Target behavior:
 
-- `docs:check` validates required docs, required links, local Markdown links, durable internal docs hub coverage, top-level status/audience pairing, public docs navigation coverage, AI playbook placement, verification-section coverage, scaffold-status language, package-map/build-plan/backlog package coverage, planned CLI command prefix consistency, adapter package paths, and the current `bun.lockb` lockfile name.
+- `docs:check` validates required docs, required links, local Markdown links, durable internal docs hub coverage, top-level status/audience pairing, top-level status label format, public docs navigation coverage, AI playbook placement, verification-section coverage, scaffold-status language, package-map/build-plan/backlog package coverage, planned CLI command prefix consistency, adapter package paths, and the current `bun.lockb` lockfile name.
 - `structure:check` validates workspace scripts, package names, package entrypoints, TypeScript scaffold files, CI, and forbidden runtime dependencies on agent-only packages.
 - `performance:check` validates performance docs, benchmark fixture coverage, raw-result rules, and unsupported public speed-claim patterns.
 - `check` runs the automated docs, structure, performance, typecheck, and test gates.

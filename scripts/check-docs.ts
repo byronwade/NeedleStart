@@ -52,6 +52,16 @@ const packageSpecs = [
   { path: "packages/adapters/static", name: "@needle/adapter-static" },
 ];
 
+const allowedTopLevelStatuses = [
+  "Draft.",
+  "Proposed.",
+  "Planned.",
+  "Scaffolded.",
+  "Implemented.",
+  "Verified.",
+  "Deprecated.",
+];
+
 function rel(path: string): string {
   return relative(root, path).replaceAll("\\", "/");
 }
@@ -243,6 +253,26 @@ const staleStatusPatterns = [
     pattern: /when scaffold exists/i,
     message: "docs/versioning-and-upgrades.md still ties example docs to scaffold existence.",
   },
+  {
+    file: "CONTRIBUTING.md",
+    pattern: /planning and constitution mode|once the monorepo is scaffolded|until package scaffolding exists/i,
+    message: "CONTRIBUTING.md still uses pre-scaffold contribution guidance.",
+  },
+  {
+    file: "docs/public/community/contributing.md",
+    pattern: /planning and constitution mode/i,
+    message: "docs/public/community/contributing.md still uses pre-scaffold contribution guidance.",
+  },
+  {
+    file: "docs/subagents/verification.md",
+    pattern: /while scaffolding is absent/i,
+    message: "docs/subagents/verification.md still frames scaffold checks as absent.",
+  },
+  {
+    file: "docs/skills/strategic-app-builder.md",
+    pattern: /if scaffolding is absent/i,
+    message: "docs/skills/strategic-app-builder.md still frames scaffold checks as absent.",
+  },
 ];
 
 for (const file of [
@@ -351,9 +381,17 @@ for (const doc of requiredEntryLinks) {
 
 for (const file of walkMarkdown(root)) {
   const content = readFileSync(file, "utf8");
+  const topMatter = content.split(/\r?\n/).slice(0, 8).join("\n");
+  const statusLine = topMatter.match(/^Status:\s+(.+)$/m);
   const fileDir = dirname(file);
   const matches = content.matchAll(/\[[^\]]+\]\(([^)#][^)]*)\)/g);
   const fileRel = rel(file);
+
+  if (statusLine && !allowedTopLevelStatuses.includes(statusLine[1].trim())) {
+    failures.push(
+      `${fileRel} has non-standard top-level status "${statusLine[1].trim()}"; use one of ${allowedTopLevelStatuses.join(", ")}`,
+    );
+  }
 
   if (/(^|\s)bun needle\b/.test(content)) {
     failures.push(`${fileRel} uses stale command prefix "bun needle"; document planned CLI commands as "needle ...".`);
@@ -375,6 +413,7 @@ const docsVerification = read("docs/docs-verification.md");
 for (const term of [
   "Root Playbook Placement Check",
   "Navigation Coverage Check",
+  "Status Language Check",
   "Package And Prototype Scope Check",
   "Review, Threat, Fixture, Example, And Docs-Site Check",
 ]) {

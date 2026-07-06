@@ -8,7 +8,7 @@ Plan and run the smallest useful checks for NeedleStart changes.
 
 - Test/check command recommendations.
 - Determinism review for generated or agent-facing output.
-- Reporting unavailable checks honestly while scaffolding is absent.
+- Reporting unavailable checks honestly when feature-specific commands or fixtures do not exist yet.
 
 ## Must Read
 

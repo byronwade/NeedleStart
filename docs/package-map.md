@@ -2,9 +2,11 @@
 
 This document defines package responsibilities and boundaries.
 
-Status: Scaffolded for package names and entrypoints; package behavior remains planned unless a package README, tests, and implementation evidence say otherwise.
+Status: Scaffolded.
 
 Audience: framework contributors, package owners, AI agents.
+
+Scope: package names and entrypoints are scaffolded; package behavior remains planned unless a package README, tests, and implementation evidence say otherwise.
 
 ## Root Packages
 

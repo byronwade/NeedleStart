@@ -1,6 +1,10 @@
 # Contributing to NeedleStart
 
-NeedleStart is currently in planning and constitution mode. The first contributor responsibility is to keep the product direction, architecture, and implementation tasks coherent.
+Status: Scaffolded.
+
+Audience: contributors, AI agents.
+
+NeedleStart is currently in Phase 1: monorepo scaffold. The first contributor responsibility is to keep the product direction, architecture, implementation tasks, and documentation coherent while the prototype foundation is built.
 
 We welcome contributions from both humans and AI agents.
 
@@ -35,17 +39,21 @@ Before contributing, read:
 - Prefer deterministic generated output.
 - Keep planned features separate from implemented features.
 
-## Planned Setup
+## Implemented Repository Setup
 
-These commands are planned once the monorepo is scaffolded:
+These commands are available in the repository scaffold:
 
 ```bash
 bun install
 bun test
 bun run typecheck
+bun run docs:check
+bun run structure:check
+bun run performance:check
+bun run check
 ```
 
-Do not claim these commands pass until package scaffolding exists.
+These commands prove scaffold integrity, documentation links and guardrails, package structure, TypeScript validity, and placeholder tests. They do not prove framework runtime behavior, route discovery, CLI behavior, runtime adapters, Needle Map generation, MCP tools, or safe edits.
 
 ## Contribution Flow
 

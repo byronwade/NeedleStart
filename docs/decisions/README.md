@@ -29,12 +29,11 @@ Use an ADR when a decision affects:
 
 ## Status Values
 
-- `proposed`: accepted for planning, not proven by implementation.
-- `accepted`: proven enough to guide implementation.
-- `superseded`: replaced by a later ADR.
-- `deprecated`: no longer recommended.
+- `Proposed.`: accepted for planning, not proven by implementation.
+- `Verified.`: proven enough by implementation and checks to guide future work as current behavior.
+- `Deprecated.`: no longer recommended.
 
-Early ADRs should normally stay `proposed` until implementation and verification exist.
+Early ADRs should normally stay `Proposed.` until implementation and verification exist.
 
 ## Maintenance Rules
 

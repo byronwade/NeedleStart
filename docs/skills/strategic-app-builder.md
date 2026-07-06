@@ -31,7 +31,7 @@ Read before editing:
 3. Define the smallest useful milestone.
 4. Create or update a task from `../templates/task-template.md` when implementation work is planned.
 5. Keep public API examples marked as draft until implemented and tested.
-6. Add tests for implemented behavior; if scaffolding is absent, state checks are unavailable.
+6. Add tests for implemented behavior; if feature-specific checks are absent, state which checks are unavailable.
 
 ## Outputs
 

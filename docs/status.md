@@ -44,8 +44,10 @@ The next implementation step is Phase 1A: expand and stabilize the shared core d
 Use these labels:
 
 - Draft: exploratory design.
+- Proposed: architecture decision proposed for planning, not proven by implementation.
 - Planned: accepted target behavior, not implemented.
 - Scaffolded: package or file exists, behavior is not complete.
 - Implemented: code exists.
 - Verified: code exists and checks have passed.
+- Deprecated: behavior exists but should not be used for new work.
 
