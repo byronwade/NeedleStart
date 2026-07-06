@@ -3,7 +3,7 @@
 Status: Planned.
 Audience: new users, app developers, AI agents.
 
-This is the target MVP Alpha onboarding path. The repository currently has the Phase 1 scaffold plus route discovery, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `lumina routes --json`, `lumina inspect --json`, and `lumina inspect why`; app creation, dev/build/start, rendering, and runtime serving are not implemented yet.
+This is the target MVP Alpha onboarding path. The repository currently has the Phase 1 scaffold plus route discovery, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, scaffolded `apps/www`, and scaffolded example fixtures; app creation, dev/build/start, rendering, and runtime serving are not implemented yet.
 
 ## What You Will Build In MVP Alpha
 
@@ -31,7 +31,7 @@ bun run performance:check
 bun run check
 ```
 
-They verify scaffold health, documentation links and guardrails, package structure, TypeScript validity, performance-claim hygiene, scaffold tests, shared core model tests, route-discovery fixture behavior, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, and benchmark skeleton path/status coverage. The repository currently contains a Bun workspace, package placeholders, shared core types, route/render/map artifact generation, route-centered CLI inspection, early benchmark/status skeletons, and enforcement scripts; it does not yet contain dev/build/start CLI behavior, measured benchmark results, rendering, or runtime serving.
+They verify scaffold health, documentation links and guardrails, package structure, TypeScript validity, performance-claim hygiene, scaffold tests, shared core model tests, route-discovery fixture behavior, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, scaffolded app/example route evidence, and benchmark skeleton path/status coverage. The repository currently contains a Bun workspace, package placeholders, shared core types, route/render/map artifact generation, route-centered CLI inspection, scaffolded `apps/www` and example fixtures, early benchmark/status skeletons, and enforcement scripts; it does not yet contain dev/build/start CLI behavior, measured benchmark results, rendering, or runtime serving.
 
 ## Target MVP App Creation
 
@@ -75,9 +75,45 @@ lumina migrate
 lumina bench
 ```
 
-## Demo App Structure
+## Current Scaffolded Marketing App
 
-The MVP Alpha demo app should use this structure:
+The current `apps/www` source fixture uses this structure:
+
+```txt
+apps/www/
+  app/
+    layout.tsx
+    page.tsx
+    about/page.tsx
+    docs/page.tsx
+    benchmarks/page.tsx
+    examples/page.tsx
+    roadmap/page.tsx
+  components/
+    Hero.tsx
+    FeatureGrid.tsx
+    SpeedPanel.tsx
+    MapPreview.tsx
+    ExampleCard.tsx
+  lumina.config.ts
+  package.json
+  README.md
+```
+
+Route mapping:
+
+```txt
+app/page.tsx -> /
+app/about/page.tsx -> /about
+app/docs/page.tsx -> /docs
+app/benchmarks/page.tsx -> /benchmarks
+app/examples/page.tsx -> /examples
+app/roadmap/page.tsx -> /roadmap
+```
+
+## Target Generated App Structure
+
+The eventual generated app should use this structure:
 
 ```txt
 my-app/
@@ -127,7 +163,7 @@ Target MVP behavior:
 lumina routes --json
 ```
 
-The command should print deterministic route data for the demo app. The route list should include `/`, `/about`, `/pricing`, and `/blog/:slug`, including source files and render modes once render extraction exists.
+The command should print deterministic route data for the demo app. The current `apps/www` route list includes `/`, `/about`, `/docs`, `/benchmarks`, `/examples`, and `/roadmap`, including source files and render modes from the current default static route behavior.
 
 ## Inspect Why A Route Works
 
@@ -195,5 +231,5 @@ Future work after MVP Alpha includes:
 - [MVP Alpha Scope](mvp-alpha-scope.md): included, deferred, demo-app, and verification scope.
 - [Lumina Map](lumina-map.md): MVP map output and future graph direction.
 - [File Conventions](file-conventions.md): starter file conventions and deferred route conventions.
-- [Examples](examples.md): planned MVP demo app and future examples.
+- [Examples](examples.md): scaffolded MVP app fixtures and future examples.
 - [Task Backlog](task-backlog.md): implementation order.

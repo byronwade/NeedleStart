@@ -4,15 +4,18 @@ Status: Planned.
 
 Audience: app developers, framework contributors, AI agents.
 
-Lumina examples are planned but not implemented yet. This page explains the public rules for official examples and starter templates.
+Lumina examples are scaffolded only where noted. Scaffolded examples are source fixtures for compiler and CLI evidence; they are not runnable or verified public examples yet.
 
 ## Planned Examples
 
 | Example | Planned path | Purpose | Current status |
 | --- | --- | --- | --- |
-| MVP Alpha Demo | `examples/mvp-alpha-demo/` | Route discovery, basic render modes, generated manifests, Lumina Map, and CLI inspection. | Planned |
-| Basic Starter | `examples/basic/` | Smallest useful generated app. | Planned |
-| Blog SEO | `examples/blog-seo/` | Tutorial app for pages, metadata, sitemap, and public HTML checks. | Planned |
+| Lumina Marketing App | `apps/www/` | Route discovery, generated manifests, Lumina Map, and CLI inspection source fixture. | Scaffolded |
+| Basic Starter | `examples/basic/` | Smallest useful generated app. | Scaffolded |
+| Blog SEO | `examples/blog-seo/` | Tutorial app for pages, metadata, sitemap, and public HTML checks. | Scaffolded |
+| Multi-App Workspace | `examples/multi-app-workspace/` | Future workspace graph and shared-file identity fixture. | Scaffolded |
+| Large 100 Routes | `examples/large-100-routes/` | Deterministic generated route-discovery fixture. | Scaffolded |
+| Large 1000 Routes | `examples/large-1000-routes/` | Deterministic generated large-route fixture. | Scaffolded |
 | API Route | `examples/api-route/` | Focused API route example. | Planned |
 | Hot API | `examples/hot-api/` | Generated validation, serialization, and optional micro-cache. | Planned |
 | Static Export | `examples/static-export/` | Fully static output and unsupported-route diagnostics. | Planned |
@@ -31,11 +34,11 @@ Lumina examples are planned but not implemented yet. This page explains the publ
 - Verified: commands, tests, generated artifacts, and docs claims pass.
 - Deprecated: retained for compatibility or migration notes.
 
-No example in this repository exists or is verified yet.
+No example in this repository is runnable or verified yet.
 
 ## MVP Alpha Demo
 
-The first example to build should be `examples/mvp-alpha-demo/`. It should match [MVP Alpha Scope](../../mvp-alpha-scope.md) and avoid API routes, MCP, safe edits, auth, databases, and benchmark claims.
+The first MVP source fixture is `apps/www/`. It should match [MVP Alpha Scope](../../mvp-alpha-scope.md) and avoid API routes, MCP, safe edits, auth, databases, and benchmark claims.
 
 ## Future Create Command
 

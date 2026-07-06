@@ -1,0 +1,10 @@
+{
+  "name": "@lumina/example-large-1000-routes",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "bun scripts/generate-routes.ts .",
+    "routes": "bun ../../packages/cli/src/index.ts routes . --json"
+  }
+}

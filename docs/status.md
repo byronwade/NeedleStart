@@ -23,6 +23,7 @@ Lumina is in Phase 1: monorepo scaffold with route discovery, generated route/re
 - Contract-backed shared `@lumina/core` model types for routes, graph edges, diagnostics, cache plans, and adapter manifests.
 - `@lumina/compiler` route discovery for page and API route files under `app/`, including deterministic route IDs, route groups, dynamic params, catch-all params, layout collection, duplicate-path diagnostics, compact `.lumina/routes.json`, `.lumina/render-manifest.json`, and `.lumina/map.json` generation.
 - `@lumina/cli` support for `routes <appPath> --json`, `inspect <appPath> --json`, and `inspect <appPath> why <route>`, exposed locally through `bun run lumina -- ...`.
+- Scaffolded `apps/www` marketing app source and scaffolded examples under `examples/basic/`, `examples/blog-seo/`, `examples/multi-app-workspace/`, `examples/large-100-routes/`, and `examples/large-1000-routes/`, with route-discovery and inspect fixture evidence.
 - Early benchmark/status skeletons under `benchmarks/` and stable fixture placeholders under `fixtures/apps/`, all reporting `not implemented` and no synthetic timing results.
 - CI workflow and root verification scripts for docs, structure, performance documentation, type checking, scaffold tests, shared core model tests, route-discovery fixture tests, and benchmark skeleton path/status tests.
 
@@ -39,16 +40,16 @@ Lumina is in Phase 1: monorepo scaffold with route discovery, generated route/re
 - Agent Kernel implementation.
 - MCP server.
 - Safe edit transactions.
-- Generated `.lumina/*` or `dist/*` artifacts.
+- Checked-in generated `.lumina/*` or `dist/*` artifacts.
 - Implemented agent automation beyond documentation and wrapper scaffolds.
 
 ## Current Next Step
 
-The next implementation path is adding the first `apps/www` and example app fixtures that exercise the generated artifacts and inspection workflow. Phase 1A shared core model hardening is implemented in `@lumina/core` and covered by type-focused tests. Route discovery, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `lumina routes --json`, `lumina inspect --json`, and `lumina inspect why` are implemented and covered by fixture, artifact, and CLI tests. The early benchmark/status skeleton paths exist with `not implemented` status and no benchmark evidence. MVP Alpha is not complete. The next prototype target is MVP Alpha, defined in `docs/mvp-alpha-scope.md`, and should stay focused on route discovery, basic render modes, generated route/render/map artifacts, CLI inspection, and a demo app. Agent workflow for that build target is scaffolded in `docs/alpha-agent-operating-system.md`, `docs/alpha-work-routing.md`, and `docs/alpha-drift-prevention.md`. See `docs/phase-1-build-plan.md`, `docs/large-repo-build-architecture.md`, and `docs/task-backlog.md`.
+The next implementation path is Vite dev integration for the scaffolded `apps/www` app and examples. Phase 1A shared core model hardening is implemented in `@lumina/core` and covered by type-focused tests. Route discovery, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, and scaffolded app/example fixture route evidence are implemented and covered by fixture, artifact, and CLI tests. The early benchmark/status skeleton paths exist with `not implemented` status and no benchmark evidence. MVP Alpha is not complete. The next prototype target is MVP Alpha, defined in `docs/mvp-alpha-scope.md`, and should stay focused on route discovery, basic render modes, generated route/render/map artifacts, CLI inspection, a demo app, and the first dev-server path. Agent workflow for that build target is scaffolded in `docs/alpha-agent-operating-system.md`, `docs/alpha-work-routing.md`, and `docs/alpha-drift-prevention.md`. See `docs/phase-1-build-plan.md`, `docs/large-repo-build-architecture.md`, and `docs/task-backlog.md`.
 
 ## MVP Alpha Target Status
 
-MVP Alpha is planned, not implemented. Route discovery, route/render/map artifacts, `lumina routes --json`, `lumina inspect --json`, and `lumina inspect why` exist, but the MVP build target still requires rendering and a demo app.
+MVP Alpha is planned, not complete. Route discovery, route/render/map artifacts, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, and scaffolded `apps/www` / example source fixtures exist, but the MVP build target still requires rendering, dev/build/start commands, and runtime serving.
 
 Included MVP Alpha evidence should eventually cover `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, and the MVP Alpha demo app described in `docs/mvp-alpha-scope.md`.
 

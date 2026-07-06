@@ -10,9 +10,9 @@ Lumina is currently in Phase 1: monorepo scaffold with the first compiler route-
 
 Phase 0 defined the product direction, architecture, package responsibilities, documentation system, safety rules, and implementation sequence.
 
-The Bun workspace, package placeholders, shared core types, CI, enforcement scripts, `@lumina/compiler` route discovery, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `lumina routes --json`, and early benchmark/status skeletons exist. Phase 1A shared core model hardening is implemented in `@lumina/core`. Runtime implementation is still planned.
+The Bun workspace, package placeholders, shared core types, CI, enforcement scripts, `@lumina/compiler` route discovery, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, scaffolded `apps/www` and example fixtures, and early benchmark/status skeletons exist. Phase 1A shared core model hardening is implemented in `@lumina/core`. Runtime implementation is still planned.
 
-The next implementation path is the first `apps/www` and example app fixtures.
+The next implementation path is Vite dev integration for the scaffolded `apps/www` app and examples.
 
 MVP Alpha is the upcoming prototype target: route discovery, basic render modes, generated `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, CLI inspection, and a demo app.
 
@@ -40,7 +40,7 @@ MVP Alpha should first prove:
 - Basic render modes.
 - `.lumina/routes.json`, `.lumina/render-manifest.json`, and `.lumina/map.json`.
 - `lumina routes --json`, `lumina inspect --json`, and `lumina inspect why`.
-- `examples/mvp-alpha-demo/`.
+- scaffolded `apps/www` and examples that currently prove route discovery, generated artifacts, and inspect output.
 
 Post-MVP work includes API routes, MCP, safe edits, migration, Node adapter runtime behavior, and benchmark claims unless the scope changes.
 

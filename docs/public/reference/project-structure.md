@@ -6,9 +6,36 @@ Audience: app developers, framework contributors, AI agents.
 
 Lumina apps are planned to use a small application root, file-based routes under `app/`, generated framework artifacts under `.lumina/`, and production output under `dist/`.
 
-The repository is in Phase 1 scaffold. This page describes target MVP Alpha application structure and scaffolded repository structure, not verified generated app output.
+The repository is in Phase 1 scaffold. This page describes target MVP Alpha application structure, the scaffolded `apps/www` and example source fixtures, and scaffolded repository structure, not verified generated app output.
 
-## MVP Alpha Application Structure
+## Scaffolded MVP App Structure
+
+Current source fixture:
+
+```txt
+apps/www/
+  app/
+    layout.tsx
+    page.tsx
+    about/page.tsx
+    docs/page.tsx
+    benchmarks/page.tsx
+    examples/page.tsx
+    roadmap/page.tsx
+  components/
+    Hero.tsx
+    FeatureGrid.tsx
+    SpeedPanel.tsx
+    MapPreview.tsx
+    ExampleCard.tsx
+  lumina.config.ts
+  package.json
+  README.md
+```
+
+This fixture is scaffolded and compiler-verifiable. It is not yet a runnable dev/build/start app.
+
+## Target Generated App Structure
 
 Planned generated app:
 
@@ -98,7 +125,7 @@ The future generated artifact names are `.lumina/graph.json`, `.lumina/seo.repor
 
 Lumina itself is scaffolded as a Bun workspace with package workspaces under `packages/`, adapter package workspaces under `packages/adapters/`, repository scripts under `scripts/`, tests under `tests/`, and documentation under `docs/`.
 
-The planned example and large-fixture directories, including `examples/` and `playgrounds/`, do not exist yet. Public docs may name them as planned paths, but they must not describe those directories as scaffolded, runnable, or verified until the files, commands, tests, and example status labels exist.
+Scaffolded example directories now exist under `examples/basic/`, `examples/blog-seo/`, `examples/multi-app-workspace/`, `examples/large-100-routes/`, and `examples/large-1000-routes/`. Public docs may describe those directories as scaffolded only; they must not describe them as runnable or verified until the commands, runtime behavior, generated artifacts, and example evidence exist.
 
 Planned test fixture structure is defined in [Testing](testing.md) and the internal [Testing Contract](../../testing-contract.md).
 

@@ -743,19 +743,19 @@ const prototypeScopeTerms = [
 const currentImplementationStepDocs = [
   {
     file: "README.md",
-    terms: ["The next implementation stage is to add the first `apps/www` and example app fixtures"],
+    terms: ["The next implementation stage is Vite dev integration for the scaffolded `apps/www` app and examples"],
   },
   {
     file: "docs/status.md",
-    terms: ["The next implementation path is adding the first `apps/www` and example app fixtures"],
+    terms: ["The next implementation path is Vite dev integration for the scaffolded `apps/www` app and examples"],
   },
   {
     file: "docs/roadmap.md",
-    terms: ["The next implementation stage is the first `apps/www` and example app fixtures."],
+    terms: ["The next implementation stage is Vite dev integration for the scaffolded `apps/www` app and examples."],
   },
   {
     file: "docs/public/roadmap.md",
-    terms: ["The next implementation path is the first `apps/www` and example app fixtures."],
+    terms: ["The next implementation path is Vite dev integration for the scaffolded `apps/www` app and examples."],
   },
   {
     file: "docs/product-build-readiness.md",
@@ -763,7 +763,7 @@ const currentImplementationStepDocs = [
   },
   {
     file: "docs/task-backlog.md",
-    terms: ["Current implementation path: add the first `apps/www` and example app fixtures."],
+    terms: ["Current implementation path: add Vite dev integration for the scaffolded `apps/www` app and examples."],
   },
 ];
 

@@ -4,25 +4,28 @@ Status: Planned.
 
 Audience: app developers, framework contributors, AI agents.
 
-This page documents the planned file and folder conventions for Lumina apps. These conventions are not implemented yet.
+This page documents file and folder conventions for Lumina apps. The route-discovery subset is implemented for compiler fixtures; rendering, config loading, metadata, and runtime behavior remain planned.
 
 For exact route parsing, route IDs, sorting, conflict diagnostics, and fixture requirements, see [Routing Contract](routing-contract.md).
 
 ## MVP Alpha File Conventions
 
-MVP Alpha should support:
+MVP Alpha route discovery currently supports source fixtures that use:
 
 - `app/layout.tsx`
 - `app/page.tsx`
 - `app/about/page.tsx`
-- `app/(marketing)/pricing/page.tsx`
+- `app/docs/page.tsx`
+- `app/benchmarks/page.tsx`
+- `app/examples/page.tsx`
+- `app/roadmap/page.tsx`
 - `app/blog/[slug]/page.tsx`
 - `components/*.tsx`
 - `lumina.config.ts`
 
-MVP Alpha should defer API routes, optional catch-all segments, error routes, not-found routes, contract files, app-local AGENTS generation, and llms outputs.
+MVP Alpha should defer rendered HTML behavior, config loading, optional catch-all segments, error routes, not-found routes, contract files, app-local AGENTS generation, and llms outputs.
 
-These conventions are the starter surface for `examples/mvp-alpha-demo/` and `bun create lumina` target behavior.
+These conventions are the starter surface for `apps/www/`, scaffolded examples, and `bun create lumina` target behavior.
 
 ## Application Root
 

@@ -4,17 +4,27 @@ Status: Planned.
 
 Audience: app developers, framework contributors, AI agents.
 
-Examples should become the fastest way to understand Lumina behavior once implementation exists.
+Examples should become the fastest way to understand Lumina behavior once implementation exists. Current example files are scaffolded source fixtures for the compiler and CLI, not runnable apps.
 
 The detailed requirements for examples, templates, verification evidence, and create-command integration are defined in [Examples And Templates Contract](examples-contract.md).
 
-## Planned Examples
+## Scaffolded Examples
 
-The planned official inventory is canonical in [Examples Catalog](examples-catalog.md). Current planned paths are:
+The official inventory is canonical in [Examples Catalog](examples-catalog.md). Current scaffolded paths are:
 
-- `examples/mvp-alpha-demo/`
+- `apps/www/`
 - `examples/basic/`
 - `examples/blog-seo/`
+- `examples/multi-app-workspace/`
+- `examples/large-100-routes/`
+- `examples/large-1000-routes/`
+
+These fixtures have README status labels and route-discovery tests. They are not runnable or verified examples until dev/build/start commands and runtime behavior exist.
+
+## Planned Examples
+
+Planned future paths are:
+
 - `examples/api-route/`
 - `examples/hot-api/`
 - `examples/static-export/`
@@ -29,7 +39,7 @@ These directories do not exist yet. Do not describe them as scaffolded, runnable
 
 ## MVP Alpha Demo
 
-The first example to build should be `examples/mvp-alpha-demo/`. It should demonstrate the same files and routes listed in [MVP Alpha Scope](mvp-alpha-scope.md), and it should not include API routes, MCP, safe edits, auth, databases, or benchmark claims.
+The first MVP source fixture is `apps/www/`. It demonstrates the same marketing-app route surface listed in [MVP Alpha Scope](mvp-alpha-scope.md), and it does not include API routes, MCP, safe edits, auth, databases, or benchmark claims.
 
 The MVP Alpha Demo should prove route discovery, basic render modes, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `lumina routes --json`, `lumina inspect --json`, and `lumina inspect why`.
 

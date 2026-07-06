@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, framework contributors, docs maintainers, AI agents.
 
-This page defines how Lumina examples, starter templates, and public guide snippets should work once implementation exists. The repository is in Phase 1 scaffold, so no example is verified yet. The planned official inventory lives in [Examples Catalog](examples-catalog.md).
+This page defines how Lumina examples, starter templates, and public guide snippets should work once implementation exists. The repository is in Phase 1 scaffold, so no example is verified yet. Scaffolded source fixtures exist for `apps/www`, `examples/basic/`, `examples/blog-seo/`, `examples/multi-app-workspace/`, `examples/large-100-routes/`, and `examples/large-1000-routes/`; they are not runnable examples until dev/build/start behavior exists. The planned official inventory lives in [Examples Catalog](examples-catalog.md).
 
 ## Research Notes
 
@@ -62,7 +62,7 @@ playgrounds/
   large-app-fixture/
 ```
 
-Canonical planned paths are `examples/basic/`, `examples/blog-seo/`, `examples/api-route/`, `examples/hot-api/`, `examples/static-export/`, `examples/adapter-node/`, `examples/dashboard-client/`, `examples/ecommerce/`, `examples/agent-demo/`, `examples/docs-site/`, and `playgrounds/large-app-fixture/`.
+Canonical scaffolded paths are `examples/basic/`, `examples/blog-seo/`, `examples/multi-app-workspace/`, `examples/large-100-routes/`, and `examples/large-1000-routes/`. Canonical planned future paths are `examples/api-route/`, `examples/hot-api/`, `examples/static-export/`, `examples/adapter-node/`, `examples/dashboard-client/`, `examples/ecommerce/`, `examples/agent-demo/`, `examples/docs-site/`, and `playgrounds/large-app-fixture/`.
 
 The exact layout may change during Phase 1, but every verified example must have a README, commands, expected outputs, tests, and status.
 
@@ -238,7 +238,7 @@ Scale fixture claims must link to [Benchmark Methodology](benchmark-methodology.
 
 ## Out Of Scope For The Current Scaffold
 
-- Real example apps.
+- Runnable or verified example apps.
 - Verified create-command output.
 - Package installation commands.
 - Remote template fetching.

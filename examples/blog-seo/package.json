@@ -1,0 +1,11 @@
+{
+  "name": "@lumina/example-blog-seo",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "routes": "bun ../../packages/cli/src/index.ts routes . --json",
+    "inspect": "bun ../../packages/cli/src/index.ts inspect . --json",
+    "inspect:why": "bun ../../packages/cli/src/index.ts inspect . why /"
+  }
+}

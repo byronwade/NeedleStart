@@ -6,7 +6,7 @@ Audience: app developers, docs maintainers, framework contributors, AI agents.
 
 This catalog names the official examples Lumina should grow into. It complements [Examples And Templates Contract](examples-contract.md), [Getting Started](getting-started.md), [Public Examples Reference](public/reference/examples.md), and [Benchmark Fixtures](benchmark-fixtures.md).
 
-No example app exists yet. Every entry is planned until files, commands, tests, and generated artifacts prove otherwise.
+Scaffolded source fixtures now exist for `apps/www`, `examples/basic/`, `examples/blog-seo/`, `examples/multi-app-workspace/`, `examples/large-100-routes/`, and `examples/large-1000-routes/`. They are compiler-verifiable fixtures, not runnable or verified examples. Every other entry is planned until files, commands, tests, and generated artifacts prove otherwise.
 
 ## Status Values
 
@@ -22,9 +22,12 @@ Use the same status values as [Examples And Templates Contract](examples-contrac
 
 | Example | Planned path | Status | Purpose |
 | --- | --- | --- | --- |
-| MVP Alpha Demo | `examples/mvp-alpha-demo/` | Planned | Route discovery, basic render modes, generated manifests, Lumina Map, and CLI inspection. |
-| Basic Starter | `examples/basic/` | Planned | Smallest useful app for `bun create lumina`. |
-| Blog SEO | `examples/blog-seo/` | Planned | Static content, metadata, sitemap, robots, and structured data. |
+| Lumina Marketing App | `apps/www/` | Scaffolded | First marketing app source fixture for route discovery, generated manifests, Lumina Map, and CLI inspection. |
+| Basic Starter | `examples/basic/` | Scaffolded | Smallest useful app for `bun create lumina`. |
+| Blog SEO | `examples/blog-seo/` | Scaffolded | Static content, future metadata, sitemap, robots, and structured data. |
+| Multi-App Workspace | `examples/multi-app-workspace/` | Scaffolded | Future workspace graph, shared-file identity, affected build, and split-app planning. |
+| Large 100 Routes | `examples/large-100-routes/` | Scaffolded | Deterministic generated route-discovery and manifest-ordering fixture. |
+| Large 1000 Routes | `examples/large-1000-routes/` | Scaffolded | Deterministic generated large-route and future graph-scaling fixture. |
 | API Route | `examples/api-route/` | Planned | Standard API route methods, params, body handling, and errors. |
 | Hot API | `examples/hot-api/` | Planned | Generated validation, serialization, and optional micro-cache. |
 | Static Export | `examples/static-export/` | Planned | Fully static output and unsupported-route diagnostics. |
@@ -32,14 +35,14 @@ Use the same status values as [Examples And Templates Contract](examples-contrac
 | Dashboard Client | `examples/dashboard-client/` | Planned | Intentional client interactivity and hydration boundaries. |
 | Ecommerce | `examples/ecommerce/` | Planned | Product pages, cache tags, API routes, SEO, and performance budgets. |
 | Agent Demo | `examples/agent-demo/` | Planned | Lumina Map inspection, context capsules, safe edit, mutation log, and undo. |
-| Large App Fixture | `playgrounds/large-app-fixture/` | Planned | Route discovery scale, graph generation, diagnostics, and benchmark evidence. |
 | Docs Site | `examples/docs-site/` | Planned | Future public docs renderer, frontmatter, navigation, search, and machine-readable outputs. |
+| Large App Fixture | `playgrounds/large-app-fixture/` | Planned | Broader route discovery scale, graph generation, diagnostics, and benchmark evidence. |
 
 ## Default Starter Requirements
 
-MVP Alpha should build `examples/mvp-alpha-demo/` first. The demo should not include API routes, MCP, safe edits, auth, databases, benchmark claims, or production adapter compatibility beyond the exact MVP scope.
+MVP Alpha is currently using `apps/www/` plus the scaffolded examples as the source fixture lane. These fixtures should not include API routes, MCP, safe edits, auth, databases, benchmark claims, or production adapter compatibility beyond the exact MVP scope.
 
-The default starter must be the first example to become verified.
+The default starter must be the first `examples/` entry to become verified.
 
 It should include:
 
@@ -95,7 +98,7 @@ An example can move to verified only when:
 
 ## Out Of Scope For The Current Scaffold
 
-- Creating example apps.
+- Calling scaffolded example apps runnable or verified.
 - Claiming examples run.
 - Remote template fetching.
 - Benchmark numbers from planned examples.
