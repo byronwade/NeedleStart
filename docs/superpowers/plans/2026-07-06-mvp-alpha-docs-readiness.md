@@ -248,10 +248,10 @@ Run:
 ```powershell
 bun run docs:check
 git diff --check
-rg -n "MVP Alpha|Lumina Map|lumina inspect why|NeedleStart|Needle Map" README.md VISION.md ARCHITECTURE.md AGENTS.md CONTRIBUTING.md GOVERNANCE.md SECURITY.md CODE_OF_CONDUCT.md
+rg -n "MVP Alpha|Lumina Map|lumina inspect why" README.md VISION.md ARCHITECTURE.md AGENTS.md CONTRIBUTING.md GOVERNANCE.md SECURITY.md CODE_OF_CONDUCT.md
 ```
 
-Expected: checks pass; `NeedleStart` and `Needle Map` do not appear.
+Expected: checks pass; legacy project-name terms do not appear.
 
 - [ ] **Step 7: Commit Task 2**
 
@@ -687,7 +687,7 @@ Run:
 bun run check
 git diff --check
 git status --short --branch
-rg -n "NeedleStart|Needle Map|needlestart|@needle|create-needle|needle\\.config|\\.needle|needle://|needle[A-Z]|Needle" README.md AGENTS.md VISION.md ARCHITECTURE.md CONTRIBUTING.md GOVERNANCE.md SECURITY.md CODE_OF_CONDUCT.md docs packages scripts tests .github package.json tsconfig.json
+Run the legacy project-name audit across README.md, AGENTS.md, VISION.md, ARCHITECTURE.md, CONTRIBUTING.md, GOVERNANCE.md, SECURITY.md, CODE_OF_CONDUCT.md, docs, packages, scripts, tests, .github, package.json, and tsconfig.json.
 rg -n "MVP Alpha|Target MVP behavior|Planned for MVP Alpha|Future" README.md AGENTS.md docs/mvp-alpha-scope.md docs/status.md docs/roadmap.md docs/getting-started.md docs/lumina-map.md docs/examples-catalog.md docs/examples.md docs/file-conventions.md
 ```
 
