@@ -137,9 +137,11 @@ Automated coverage in `bun run docs:check` also requires every public page under
 bun run docs:check
 ```
 
-Expected result: every Markdown file under `docs/` has top-level `Status:` and `Audience:` lines near the top, and every `Status:` line uses a canonical title-case label with a period: `Draft.`, `Proposed.`, `Planned.`, `Scaffolded.`, `Implemented.`, `Verified.`, or `Deprecated.`. Pages that need nuance should add a separate `Scope:`, `Evidence:`, or prose note instead of embedding explanation in the status line.
+Expected result: every Markdown file under `docs/` has top-level `Status:` and `Audience:` lines near the top, and every top-level `Status:` line uses a canonical title-case label with a period: `Draft.`, `Proposed.`, `Planned.`, `Scaffolded.`, `Implemented.`, `Verified.`, or `Deprecated.`. Pages that need nuance should add a separate `Scope:`, `Evidence:`, or prose note instead of embedding explanation in the status line.
 
 Automated coverage in `bun run docs:check` also requires the project status doc, documentation standard, public frontmatter standard, and public docs site architecture to keep the mapping between internal status labels and public frontmatter values aligned: `Draft.` to `draft`, `Proposed.` to `proposed`, `Planned.` to `planned`, `Scaffolded.` to `scaffolded`, `Implemented.` to `implemented`, `Verified.` to `verified`, and `Deprecated.` to `deprecated`.
+
+Automated coverage also requires embedded planning fields in `docs/roadmap.md` and `docs/task-backlog.md` to use `Phase status:` and `Task status:` instead of bare `Status:`. Bare `Status:` is reserved for the top-level page metadata block so agents and docs tooling do not confuse page status with phase or task state.
 
 ### 7. Package And Prototype Scope Check
 

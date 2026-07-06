@@ -78,7 +78,7 @@ Definition of done:
 - Agent rules are documented.
 - Implementation task template exists.
 
-Status: Verified.
+Phase status: Verified.
 
 Scope: complete for initial project constitution.
 
@@ -95,7 +95,7 @@ Goal: create the Bun workspace and package scaffolds.
 
 Implementation guide: `docs/phase-1-build-plan.md`.
 
-Status: Scaffolded.
+Phase status: Scaffolded.
 
 Packages:
 

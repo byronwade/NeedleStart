@@ -2940,6 +2940,17 @@ for (const file of walkMarkdown(root)) {
     );
   }
 
+  if (fileRel === "docs/roadmap.md" || fileRel === "docs/task-backlog.md") {
+    const lines = content.split(/\r?\n/);
+    for (const [index, line] of lines.entries()) {
+      if (index < 8) continue;
+      if (/^Status:\s+/.test(line)) {
+        const scopedLabel = fileRel === "docs/roadmap.md" ? "Phase status:" : "Task status:";
+        failures.push(`${fileRel}:${index + 1} should use ${scopedLabel} for embedded planning status fields.`);
+      }
+    }
+  }
+
   if (/(^|\s)bun needle\b/.test(content)) {
     failures.push(`${fileRel} uses stale command prefix "bun needle"; document planned CLI commands as "needle ...".`);
   }
