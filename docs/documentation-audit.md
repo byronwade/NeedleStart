@@ -64,7 +64,7 @@ See `docs/documentation-research.md` for project-by-project notes.
 
 | Audience | What they need | Current state | Priority improvement |
 | --- | --- | --- | --- |
-| New users | Honest status, quick start, simple mental model. | Getting-started page now exists but is planned. | Add beginner tutorial once scaffold exists. |
+| New users | Honest status, quick start, simple mental model. | Getting-started page now exists but app creation remains planned. | Add beginner tutorial after app creation and the default starter are verified. |
 | App developers | Routing, config, SEO, API, deployment, examples. | Reference homes now exist; implementation absent. | Fill guides as features land. |
 | Framework contributors | Architecture, package map, tasks, tests. | Strong. | Add task-level acceptance criteria and testing docs. |
 | Maintainers | Governance, release, security, review process. | Added initial governance/security/release homes. | Define maintainer roles before public launch. |
@@ -165,7 +165,7 @@ All planned feature docs should carry status warnings until code exists. This in
 | Add machine-readable docs index and llms output plan. | High | Medium | Phase 1-2 |
 | Add public website content map. | Medium | Low | Early docs foundation |
 | Add benchmark methodology before any speed claims. | High | Low | Before benchmarks |
-| Add examples once scaffold exists. | High | Medium | Phase 1-2 |
+| Add examples after create-command support and fixture layout exist. | High | Medium | Phase 1-2 |
 
 ## Doc-By-Doc Improvement Matrix
 
@@ -358,7 +358,7 @@ Acceptance criteria: feature changes update docs as part of definition of done.
 
 Risks: manual sync burden. Generate docs where possible after packages exist.
 
-Verification: CI docs checks once scaffold exists.
+Verification: use `bun run docs:check` and `bun run check` for documentation changes in the current scaffold.
 
 ## Final PR Summary Draft
 

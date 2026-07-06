@@ -295,12 +295,12 @@ const staleStatusPatterns = [
   },
   {
     file: "docs/documentation-audit.md",
-    pattern: /Strong for Phase 0|Replace planned flow with verified tutorial after scaffold|Planned packages only|Update after scaffold|Phase 0 governance/i,
+    pattern: /Strong for Phase 0|Replace planned flow with verified tutorial after scaffold|Planned packages only|Update after scaffold|Phase 0 governance|once scaffold exists|once the scaffold exists/i,
     message: "docs/documentation-audit.md still contains stale pre-scaffold audit wording.",
   },
   {
     file: "docs/documentation-matrix.md",
-    pattern: /when scaffold exists|after scaffold lands|until package scripts exist/i,
+    pattern: /when scaffold exists|after scaffold lands|until package scripts exist|until scaffold exists|generated app structure after Phase 1/i,
     message: "docs/documentation-matrix.md still contains stale scaffold timing language.",
   },
   {
