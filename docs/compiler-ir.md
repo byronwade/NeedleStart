@@ -121,7 +121,7 @@ Example:
 
 ## Render Manifest
 
-The render manifest records how every route should execute.
+The `.needle/render-manifest.json` render manifest records how every route should execute. Deployment adapters may copy that canonical compiler artifact into `dist/render.manifest.json`, but the `.needle/` file remains the source contract for compiler, CLI, MCP, Agent Kernel, devtools, and tests.
 
 ```ts
 export type RenderManifest = {

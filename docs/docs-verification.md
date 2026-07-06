@@ -243,6 +243,8 @@ rg -n "RenderMode|staticPage|prerender|ssr|stream|clientOnly|client-only|app/api
 
 Expected result: public helper names, ordinary API route mode, manifest literal values, compiler IR, runtime docs, roadmap, and the `@needle/core` `RenderMode` union remain connected.
 
+Automated coverage in `bun run docs:check` also requires `@needle/core`, compiler IR, API reference, runtime contract, public render-mode reference, and public API route reference docs to keep `RenderMode`, `staticPage()`, `prerender()`, `ssr()`, `stream()`, `clientOnly()`, ordinary `app/api/` `renderMode: "api"`, explicit `apiHot()` `renderMode: "hot-api"`, `.needle/render-manifest.json`, and every render-mode literal aligned.
+
 ### 19. Schema Contract Check
 
 ```powershell

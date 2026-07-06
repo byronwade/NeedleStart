@@ -70,7 +70,7 @@ dist/
   adapter.manifest.json
 ```
 
-The `.needle/*` files are the canonical compiler and agent artifacts. The `dist/*.manifest.json` files are deployment copies or adapter-specific output shaped for runtime loading.
+The `.needle/*` files are the canonical compiler and agent artifacts. `.needle/render-manifest.json` is the canonical render-mode contract for routes. The `dist/*.manifest.json` files, including `dist/render.manifest.json`, are deployment copies or adapter-specific output shaped for runtime loading.
 
 ## Adapter-Aware Entry
 
@@ -99,6 +99,8 @@ Normal API handler semantics, return normalization, validation diagnostics, and 
 Cache plans, cache headers, cache tags, revalidation, micro-cache behavior, and cache diagnostics are defined in `docs/cache-contract.md`.
 
 Runtime diagnostics, source locations, production sanitization, and JSON diagnostic fields are defined in `docs/diagnostics-contract.md`.
+
+Render mode literals must stay aligned with `@needle/core` `RenderMode`: static, prerender, SSR, streaming, client-only, API, and hot API. Client-only routes must be intentional and visible in generated manifests so runtime behavior does not silently hide SEO, hydration, or payload costs.
 
 ## Server Inputs
 

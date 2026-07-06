@@ -351,6 +351,33 @@ const schemaContractDocs = [
   "docs/public/reference/schema.md",
 ];
 
+const renderModeContractDocs = [
+  {
+    file: "packages/core/src/index.ts",
+    terms: ["rendermode", "\"static\"", "\"prerender\"", "\"ssr\"", "\"stream\"", "\"client-only\"", "\"api\"", "\"hot-api\"", "rendermode: rendermode"],
+  },
+  {
+    file: "docs/compiler-ir.md",
+    terms: ["rendermode", ".needle/render-manifest.json", "rendermanifest", "\"static\"", "\"prerender\"", "\"ssr\"", "\"stream\"", "\"client-only\"", "\"api\"", "\"hot-api\""],
+  },
+  {
+    file: "docs/api-reference.md",
+    terms: ["staticpage()", "prerender()", "ssr()", "stream()", "clientonly()", "apihot()", "rendermode: \"api\"", "rendermode: \"hot-api\""],
+  },
+  {
+    file: "docs/runtime-contract.md",
+    terms: ["render mode", ".needle/render-manifest.json", "dist/render.manifest.json", "static asset", "prerendered html", "ssr", "streaming", "client-only", "api", "hot api"],
+  },
+  {
+    file: "docs/public/reference/render-modes.md",
+    terms: ["@needle/core", "rendermode", ".needle/render-manifest.json", "staticpage()", "prerender()", "ssr()", "stream()", "clientonly()", "apihot()", "\"static\"", "\"prerender\"", "\"ssr\"", "\"stream\"", "\"client-only\"", "\"api\"", "\"hot-api\""],
+  },
+  {
+    file: "docs/public/reference/api-routes.md",
+    terms: ["app/api", "rendermode: \"api\"", "rendermode: \"hot-api\"", "apihot()", "hot api"],
+  },
+];
+
 const routingContractDocs = [
   "docs/routing-contract.md",
   "docs/routing.md",
@@ -1057,6 +1084,16 @@ for (const file of schemaContractDocs) {
   for (const term of ["schemaresult", "schemaissue", "inferinput", "inferoutput", "schema_", "openapi", "query coercion", "serializer", "diagnostics", "manifest references"]) {
     if (!content.includes(term)) {
       failures.push(`${file} is missing schema contract term: ${term}.`);
+    }
+  }
+}
+
+for (const { file, terms } of renderModeContractDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file).toLowerCase();
+  for (const term of terms) {
+    if (!content.includes(term)) {
+      failures.push(`${file} is missing render mode contract term: ${term}.`);
     }
   }
 }

@@ -31,7 +31,17 @@ These APIs are planned and not implemented.
 | API route file under `app/api/` | `"api"` |
 | `apiHot()` | `"hot-api"` |
 
-The manifest values above must stay aligned with `@needle/core` `RenderMode`, [Compiler IR](../../compiler-ir.md), and generated route or render manifests.
+The manifest values above must stay aligned with `@needle/core` `RenderMode`, [Compiler IR](../../compiler-ir.md), `.needle/render-manifest.json`, and generated route manifests.
+
+## Contract Vocabulary
+
+Public render-mode docs are checked against the same planned contract terms as the internal API and compiler docs:
+
+- `staticPage()`, `prerender()`, `ssr()`, `stream()`, `clientOnly()`, and `apiHot()`.
+- `RenderMode` literals: `"static"`, `"prerender"`, `"ssr"`, `"stream"`, `"client-only"`, `"api"`, and `"hot-api"`.
+- Ordinary `app/api/` files compile to `renderMode: "api"`.
+- `apiHot()` is the explicit opt-in to `renderMode: "hot-api"`.
+- `.needle/render-manifest.json` is the canonical planned render manifest.
 
 ## Source
 

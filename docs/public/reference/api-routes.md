@@ -61,6 +61,8 @@ Validation failures should use the planned `VALIDATION_FAILED` response shape.
 - API routes default to `no-store` unless explicit cache config opts in.
 - Route config may include planned `bodyLimit` behavior.
 - Generated manifests should list methods, schemas, cache behavior, diagnostics, and hot API status.
+- Ordinary files under `app/api/` compile to `renderMode: "api"`.
+- Hot API routes are explicit `apiHot()` opt-ins that compile to `renderMode: "hot-api"`.
 - API route diagnostics should use `API_METHOD_` and related `API_` codes.
 - Production security behavior must hide stack traces, secrets, and local paths.
 
