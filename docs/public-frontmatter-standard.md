@@ -73,6 +73,18 @@ tags:
 
 Do not use `implemented` or `verified` on public pages until the repository has code and checks that prove the exact behavior.
 
+Public status values map to internal Markdown status labels:
+
+| Internal status label | Public frontmatter value |
+| --- | --- |
+| `Draft.` | `draft` |
+| `Proposed.` | `proposed` |
+| `Planned.` | `planned` |
+| `Scaffolded.` | `scaffolded` |
+| `Implemented.` | `implemented` |
+| `Verified.` | `verified` |
+| `Deprecated.` | `deprecated` |
+
 ## Route Rules
 
 - `canonical` must start with `/`.

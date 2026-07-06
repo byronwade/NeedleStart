@@ -89,6 +89,18 @@ Required fields:
 | `source` | Repository source path. |
 | `canonical` | Planned public URL. |
 
+Status values map to internal Markdown status labels:
+
+| Internal status label | Public frontmatter value |
+| --- | --- |
+| `Draft.` | `draft` |
+| `Proposed.` | `proposed` |
+| `Planned.` | `planned` |
+| `Scaffolded.` | `scaffolded` |
+| `Implemented.` | `implemented` |
+| `Verified.` | `verified` |
+| `Deprecated.` | `deprecated` |
+
 Optional fields:
 
 | Field | Purpose |

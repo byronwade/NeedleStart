@@ -947,6 +947,13 @@ const statusDefinitionDocs = [
   "docs/public-frontmatter-standard.md",
 ];
 
+const statusMappingDocs = [
+  "docs/status.md",
+  "docs/documentation-standard.md",
+  "docs/public-frontmatter-standard.md",
+  "docs/public-docs-site-architecture.md",
+];
+
 function rel(path: string): string {
   return relative(root, path).replaceAll("\\", "/");
 }
@@ -2195,6 +2202,21 @@ for (const file of ["docs/public-frontmatter-standard.md", "docs/public-docs-sit
   for (const status of canonicalStatusLabels) {
     if (!publicFrontmatter.includes(`\`${status.publicValue}\``)) {
       failures.push(`${file} is missing public status value: ${status.publicValue}.`);
+    }
+  }
+}
+
+for (const file of statusMappingDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file);
+  for (const term of ["Internal status label", "Public frontmatter value"]) {
+    if (!content.includes(term)) {
+      failures.push(`${file} is missing status mapping table heading: ${term}.`);
+    }
+  }
+  for (const status of canonicalStatusLabels) {
+    if (!content.includes(`\`${status.title}\``) || !content.includes(`\`${status.publicValue}\``)) {
+      failures.push(`${file} is missing status mapping row for ${status.title} -> ${status.publicValue}.`);
     }
   }
 }

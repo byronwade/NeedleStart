@@ -35,6 +35,18 @@ Every Markdown doc should make its status clear near the top:
 
 Write status lines as `Status: Planned.` with title case and a period. Add a separate `Scope:` line when the page needs nuance. Do not use "Implemented" until the repository contains the behavior and current local evidence. Do not use "Verified" until the full required checks, fixtures, or evidence for that feature pass. `bun run docs:check` enforces a top-level `Status:` line for every Markdown file under `docs/`.
 
+Public docs frontmatter uses the same status vocabulary in lowercase without periods:
+
+| Internal status label | Public frontmatter value |
+| --- | --- |
+| `Draft.` | `draft` |
+| `Proposed.` | `proposed` |
+| `Planned.` | `planned` |
+| `Scaffolded.` | `scaffolded` |
+| `Implemented.` | `implemented` |
+| `Verified.` | `verified` |
+| `Deprecated.` | `deprecated` |
+
 ## Page Shape
 
 Use this structure for feature docs when practical:

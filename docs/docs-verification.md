@@ -135,6 +135,8 @@ bun run docs:check
 
 Expected result: every Markdown file under `docs/` has top-level `Status:` and `Audience:` lines near the top, and every `Status:` line uses a canonical title-case label with a period: `Draft.`, `Proposed.`, `Planned.`, `Scaffolded.`, `Implemented.`, `Verified.`, or `Deprecated.`. Pages that need nuance should add a separate `Scope:`, `Evidence:`, or prose note instead of embedding explanation in the status line.
 
+Automated coverage in `bun run docs:check` also requires the project status doc, documentation standard, public frontmatter standard, and public docs site architecture to keep the mapping between internal status labels and public frontmatter values aligned: `Draft.` to `draft`, `Proposed.` to `proposed`, `Planned.` to `planned`, `Scaffolded.` to `scaffolded`, `Implemented.` to `implemented`, `Verified.` to `verified`, and `Deprecated.` to `deprecated`.
+
 ### 7. Package And Prototype Scope Check
 
 ```powershell

@@ -53,3 +53,17 @@ Use these labels:
 - Verified: behavior exists and the full required checks, fixtures, or evidence for that feature pass.
 - Deprecated: behavior exists but should not be used for new work.
 
+## Public Status Mapping
+
+Internal Markdown docs use title-case labels with periods. Future public docs frontmatter uses lowercase values without periods.
+
+| Internal status label | Public frontmatter value |
+| --- | --- |
+| `Draft.` | `draft` |
+| `Proposed.` | `proposed` |
+| `Planned.` | `planned` |
+| `Scaffolded.` | `scaffolded` |
+| `Implemented.` | `implemented` |
+| `Verified.` | `verified` |
+| `Deprecated.` | `deprecated` |
+
