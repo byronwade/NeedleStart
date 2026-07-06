@@ -337,6 +337,8 @@ rg -n "first-contribution|Architecture Decision Records|decisions/README|Impleme
 
 Expected result: first-contribution guidance, ADRs, implementation checklists, public frontmatter rules, and glossary coverage remain discoverable from repository entrypoints and docs verification.
 
+Automated coverage in `bun run docs:check` also requires first contribution, ADR index, checklist index, and glossary docs to keep task backlog, documentation verification, AGENTS, planned/implemented status, docs hub, tradeoffs, rejected alternatives, implementation evidence, source contracts, public frontmatter, review checklist, threat note, benchmark fixture, and Vite/Rolldown vocabulary aligned.
+
 ### 28. Review, Threat, Fixture, Example, And Docs-Site Check
 
 ```powershell
@@ -344,6 +346,8 @@ rg -n "review-checklist|threat-model|benchmark-fixtures|examples-catalog|docs-si
 ```
 
 Expected result: review gates, threat-model requirements, benchmark fixture planning, example catalog planning, docs-site implementation phases, and PR template evidence remain connected.
+
+Automated coverage in `bun run docs:check` also requires review checklist, threat model, benchmark fixtures, examples catalog, docs-site build plan, and pull request template docs to keep threat-note, trusted/untrusted input, human sign-off, raw benchmark data, equivalent behavior, field data, examples status, public guide mapping, renderer decision, frontmatter validation, machine-readable output, quality gate, and command-evidence vocabulary aligned.
 
 ## Script Targets
 

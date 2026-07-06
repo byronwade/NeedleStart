@@ -210,6 +210,52 @@ const publicDocsSiteContractDocs = [
   },
 ];
 
+const contributorDocsContractDocs = [
+  {
+    file: "docs/first-contribution.md",
+    terms: ["task backlog", "documentation verification", "AGENTS", "planned", "implemented", "docs hub", "checks could not run"],
+  },
+  {
+    file: "docs/decisions/README.md",
+    terms: ["architecture decision records", "tradeoffs", "rejected alternatives", "proposed", "verified", "deprecated", "implementation evidence"],
+  },
+  {
+    file: "docs/checklists/README.md",
+    terms: ["implementation checklists", "verifiable", "source contracts", "planned and implemented", "evidence complete", "high review risk"],
+  },
+  {
+    file: "docs/glossary.md",
+    terms: ["adr", "benchmark fixture", "public frontmatter", "review checklist", "threat note", "vite/rolldown"],
+  },
+];
+
+const reviewEvidenceContractDocs = [
+  {
+    file: "docs/review-checklist.md",
+    terms: ["review checklist", "threat model", "public frontmatter standard", "performance evidence checklist", "raw benchmark data", "pr template"],
+  },
+  {
+    file: "docs/threat-model.md",
+    terms: ["threat note", "trusted inputs", "untrusted inputs", "human sign-off", "docs indexes", "public claim drift"],
+  },
+  {
+    file: "docs/benchmark-fixtures.md",
+    terms: ["benchmark fixtures", "stable name", "raw result output path", "equivalent behavior", "docs-site", "field data"],
+  },
+  {
+    file: "docs/examples-catalog.md",
+    terms: ["examples catalog", "planned", "scaffolded", "runnable", "verified", "public guide mapping"],
+  },
+  {
+    file: "docs/docs-site-build-plan.md",
+    terms: ["docs site build plan", "renderer decision", "frontmatter validation", "machine-readable outputs", "quality gates", "docs:check"],
+  },
+  {
+    file: ".github/PULL_REQUEST_TEMPLATE.md",
+    terms: ["docs/review-checklist.md", "docs/threat-model.md", "docs/benchmark-fixtures.md", "docs/examples-catalog.md", "docs/docs-site-build-plan.md", "Threat note", "Benchmark claims", "Commands run"],
+  },
+];
+
 const prototypeScopeTerms = [
   {
     file: "AGENTS.md",
@@ -1270,6 +1316,26 @@ for (const { file, terms } of publicDocsSiteContractDocs) {
   for (const term of terms) {
     if (!content.includes(term)) {
       failures.push(`${file} is missing public docs site contract term: ${term}.`);
+    }
+  }
+}
+
+for (const { file, terms } of contributorDocsContractDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file).toLowerCase();
+  for (const term of terms.map((term) => term.toLowerCase())) {
+    if (!content.includes(term)) {
+      failures.push(`${file} is missing contributor docs contract term: ${term}.`);
+    }
+  }
+}
+
+for (const { file, terms } of reviewEvidenceContractDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file).toLowerCase();
+  for (const term of terms.map((term) => term.toLowerCase())) {
+    if (!content.includes(term)) {
+      failures.push(`${file} is missing review evidence contract term: ${term}.`);
     }
   }
 }
