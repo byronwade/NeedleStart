@@ -207,6 +207,7 @@ lumina bench
 - Public SEO behavior must be tested when implemented.
 - New graph edges must include `kind`, `source`, `confidence`, and `why`.
 - Claims about scaffolded directories, examples, commands, generated files, and performance evidence must match the current filesystem and checks; otherwise mark them as planned.
+- MVP Alpha docs and implementation must keep route discovery, basic render modes, Lumina Map output, CLI inspection, and the demo app as the center. Do not pull MCP, safe edits, API routes, migration, or benchmark claims into MVP Alpha unless the scope doc is updated in the same change.
 - Shared core model types belong in `@lumina/core`; other packages must import them instead of defining local `LuminaApp`, `RouteNode`, `GraphEdge`, `LuminaDiagnostic`, `RenderMode`, `CachePlan`, or `AdapterManifest` substitutes.
 - Docs that describe planned expansions of shared core model types must also state the current scaffold shape and add or preserve an automated docs guardrail when drift would mislead readers.
 - Do not edit generated files manually.

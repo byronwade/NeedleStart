@@ -28,11 +28,26 @@ The goal is not to clone Next.js. The goal is to win a newer category:
 
 Lumina is moving toward Alpha. This checkout is in Phase 1: monorepo scaffold. The product language below describes target framework behavior unless a section explicitly marks behavior as current.
 
+Lumina is preparing an MVP Alpha focused on route discovery, explicit render modes, the first Lumina Map output, and CLI inspection. The current repository is still Phase 1 scaffold; MVP commands below are target behavior until implementation and fixture evidence exist.
+
 Current implemented scope is the Bun workspace scaffold, package placeholders, shared core types, CI, and verification scripts. Route discovery, rendering, CLI behavior, runtime adapter behavior, Lumina Map generation, MCP tools, and safe edits remain planned.
 
 Package manifest versions currently use `0.0.0` as private scaffold placeholder metadata. No packages are published, and these placeholder versions are not release tags, published package versions, or compatibility guarantees.
 
 The next documentation and prototype target is [MVP Alpha Scope](docs/mvp-alpha-scope.md): route discovery, explicit render modes, first Lumina Map output, CLI inspection, and a demo app. Anything outside that scope remains future unless the scope document changes in the same pull request.
+
+## MVP Alpha Target
+
+MVP Alpha should prove:
+
+1. A small app can be created from the Lumina starter target.
+2. `app/` routes are discovered deterministically.
+3. Static and basic SSR render modes are explicit.
+4. `.lumina/routes.json`, `.lumina/render-manifest.json`, and `.lumina/map.json` are generated.
+5. `lumina routes --json`, `lumina inspect --json`, and `lumina inspect why` explain the app.
+6. A demo app shows why the Lumina Map matters for humans and agents.
+
+See [MVP Alpha Scope](docs/mvp-alpha-scope.md).
 
 ## Product Thesis
 

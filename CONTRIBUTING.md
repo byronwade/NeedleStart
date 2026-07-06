@@ -6,11 +6,14 @@ Audience: contributors, AI agents.
 
 Lumina is currently in Phase 1: monorepo scaffold. The first contributor responsibility is to keep the product direction, architecture, implementation tasks, and documentation coherent while the prototype foundation is built.
 
+The next prototype target is MVP Alpha: route discovery, explicit render modes, first Lumina Map output, CLI inspection, and a demo app. See `docs/mvp-alpha-scope.md` before expanding prototype scope.
+
 We welcome contributions from both humans and AI agents.
 
 Before contributing, read:
 
 - `docs/status.md` for the current project phase.
+- `docs/mvp-alpha-scope.md` for the current prototype target.
 - `AGENTS.md` for agent and repository operating rules.
 - `docs/engineering-standards.md` for the project engineering bar.
 - `docs/docs-freshness-policy.md` for keeping documentation current.

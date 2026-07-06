@@ -6,6 +6,8 @@ Audience: contributors, maintainers, community members, AI agents.
 
 Lumina is an open source project for humans and AI agents. The community should be direct, respectful, evidence-driven, and safe for contributors with different backgrounds and experience levels.
 
+Project discussions should keep planned behavior, MVP Alpha target behavior, and implemented behavior distinct so contributors are not misled about what exists today.
+
 ## Expected Behavior
 
 - Focus criticism on ideas, code, docs, and evidence.

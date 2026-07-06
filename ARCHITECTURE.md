@@ -27,6 +27,10 @@ This split lets Lumina move quickly without reinventing a bundler while putting 
 
 Speed-sensitive architecture choices must follow `docs/speed-decisions.md`. That decision record is the guardrail for Vite/Rolldown, Bun, React streaming, route budgets, hot APIs, explicit caching, compiler scaling, and benchmark evidence.
 
+## MVP Alpha Architecture Slice
+
+MVP Alpha should include only the compiler and runtime pieces needed to discover routes, produce manifests, render a small demo app, generate the first file-level Lumina Map, and answer `lumina inspect why`. Anything that requires broad runtime complexity stays future unless it directly supports this proof.
+
 ## System Layers
 
 ### Layer 1: Developer Framework

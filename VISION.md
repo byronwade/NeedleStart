@@ -48,6 +48,10 @@ Short form:
 - Run through the Bun adapter path when server execution is needed.
 - Let agents inspect, plan, and safely edit through a native semantic graph instead of searching the repo.
 
+## MVP Alpha Proof
+
+The first proof is intentionally narrow: Lumina should make a small React app visible. Route discovery, render mode extraction, the initial Lumina Map, and inspection commands are enough to prove the category before larger runtime, SEO, MCP, safe edit, migration, and benchmark work begins.
+
 ## What Lumina Should Own
 
 Lumina should own the category of app-graph-native, SEO-first React applications for humans and AI agents.

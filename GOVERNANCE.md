@@ -6,6 +6,8 @@ Audience: maintainers, contributors, open source program reviewers, AI agents.
 
 Lumina is currently in Phase 1: monorepo scaffold. Governance is intentionally lightweight until the project has package releases, regular contributors, and release activity.
 
+MVP Alpha scope is governed by `docs/mvp-alpha-scope.md`. Maintainers should require a same-change scope update before accepting API routes, MCP, safe edits, migration tooling, benchmark claims, or other post-MVP work into the first prototype lane.
+
 ## Current Decision Model
 
 - Human maintainers are accountable for product direction, implementation, release decisions, and security decisions.
@@ -19,6 +21,7 @@ Maintainers are responsible for:
 - Upholding `docs/engineering-standards.md`.
 - Keeping planned and implemented behavior separate.
 - Protecting the app-graph-native, SEO-first, agent-safe product direction.
+- Protecting MVP Alpha scope discipline until the first route, render, map, inspection, and demo workflow is verified.
 - Reviewing changes to high-risk areas.
 - Requiring evidence for benchmark, performance, security, and compatibility claims.
 - Keeping governance, security, release, roadmap, and contribution docs current.
