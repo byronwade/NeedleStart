@@ -133,6 +133,8 @@ bun run docs:check
 
 Expected result: package names and paths stay aligned across `docs/package-map.md`, `docs/phase-1-build-plan.md`, and `docs/task-backlog.md`; prototype CLI examples use the planned `needle ...` command form; adapter docs use `packages/adapters/bun`, `packages/adapters/node`, and `packages/adapters/static`; adapter manifest prose uses `dist/adapter.manifest.json`; and scaffold status language does not drift back to pre-scaffold wording.
 
+Automated coverage in `bun run docs:check` also requires the AGENTS required-documentation-sync list to include the root docs, docs hub, status, roadmap, package map, documentation standard, freshness, maintenance, verification, Phase 1 build plan, product build readiness, and task backlog files that agents must evaluate on every change.
+
 ### 8. Machine-Readable Docs Contract Check
 
 ```powershell

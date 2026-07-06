@@ -28,6 +28,7 @@ Every agent change must evaluate whether these files need updates:
 - `CODE_OF_CONDUCT.md`
 - `VISION.md`
 - `ARCHITECTURE.md`
+- `docs/README.md`
 - `docs/status.md`
 - `docs/roadmap.md`
 - `docs/risk-mitigation.md`

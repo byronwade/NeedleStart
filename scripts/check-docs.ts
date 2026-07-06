@@ -41,6 +41,30 @@ const rootDocsWithMetadata = [
   "VISION.md",
 ];
 
+const agentRequiredSyncDocs = [
+  "README.md",
+  "AGENTS.md",
+  "CONTRIBUTING.md",
+  "GOVERNANCE.md",
+  "SECURITY.md",
+  "CODE_OF_CONDUCT.md",
+  "VISION.md",
+  "ARCHITECTURE.md",
+  "docs/README.md",
+  "docs/status.md",
+  "docs/roadmap.md",
+  "docs/risk-mitigation.md",
+  "docs/engineering-standards.md",
+  "docs/package-map.md",
+  "docs/documentation-standard.md",
+  "docs/docs-freshness-policy.md",
+  "docs/docs-maintenance-checklist.md",
+  "docs/docs-verification.md",
+  "docs/phase-1-build-plan.md",
+  "docs/product-build-readiness.md",
+  "docs/task-backlog.md",
+];
+
 const packageSpecs = [
   { path: "packages/create-needle", name: "create-needle" },
   { path: "packages/cli", name: "@needle/cli" },
@@ -604,6 +628,13 @@ if (existsSync(join(root, "subagents"))) {
 for (const dir of ["docs/skills", "docs/subagents"]) {
   if (!existsSync(join(root, dir))) {
     failures.push(`Missing docs-level agent playbook directory: ${dir}`);
+  }
+}
+
+const agentsGuide = read("AGENTS.md");
+for (const doc of agentRequiredSyncDocs) {
+  if (!agentsGuide.includes(`- \`${doc}\``)) {
+    failures.push(`AGENTS.md required documentation sync list does not include ${doc}.`);
   }
 }
 
