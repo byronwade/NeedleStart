@@ -381,15 +381,15 @@ for (const doc of requiredEntryLinks) {
 
 for (const file of walkMarkdown(root)) {
   const content = readFileSync(file, "utf8");
-  const topMatter = content.split(/\r?\n/).slice(0, 8).join("\n");
-  const statusLine = topMatter.match(/^Status:\s+(.+)$/m);
   const fileDir = dirname(file);
   const matches = content.matchAll(/\[[^\]]+\]\(([^)#][^)]*)\)/g);
   const fileRel = rel(file);
 
-  if (statusLine && !allowedTopLevelStatuses.includes(statusLine[1].trim())) {
+  for (const statusMatch of content.matchAll(/^Status:\s+(.+)$/gm)) {
+    const status = statusMatch[1].trim();
+    if (allowedTopLevelStatuses.includes(status)) continue;
     failures.push(
-      `${fileRel} has non-standard top-level status "${statusLine[1].trim()}"; use one of ${allowedTopLevelStatuses.join(", ")}`,
+      `${fileRel} has non-standard status "${status}"; use one of ${allowedTopLevelStatuses.join(", ")}`,
     );
   }
 

@@ -73,7 +73,9 @@ Definition of done:
 - Agent rules are documented.
 - Implementation task template exists.
 
-Status: complete for initial project constitution.
+Status: Verified.
+
+Scope: complete for initial project constitution.
 
 Risk mitigation focus:
 
@@ -88,7 +90,7 @@ Goal: create the Bun workspace and package scaffolds.
 
 Implementation guide: `docs/phase-1-build-plan.md`.
 
-Status: scaffolded.
+Status: Scaffolded.
 
 Packages:
 

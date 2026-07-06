@@ -6,7 +6,9 @@ This backlog turns the roadmap into concrete implementation tasks. Each task sho
 
 Goal: maintain docs-level, vendor-neutral skill and subagent guidance for AI companies and human reviewers.
 
-Status: initial documentation exists in `docs/skills/` and `docs/subagents/`.
+Status: Planned.
+
+Evidence: initial documentation exists in `docs/skills/` and `docs/subagents/`.
 
 Definition of done:
 
@@ -19,7 +21,9 @@ Definition of done:
 
 Goal: make the documentation structure comparable to a mature framework by separating getting started material, guides, API reference, file conventions, architecture, and contribution rules.
 
-Status: initial documentation structure exists in `docs/getting-started.md`, `docs/guides.md`, `docs/api-reference.md`, `docs/file-conventions.md`, `docs/documentation-standard.md`, `docs/documentation-audit.md`, and `docs/docs-maintenance-checklist.md`.
+Status: Planned.
+
+Evidence: initial documentation structure exists in `docs/getting-started.md`, `docs/guides.md`, `docs/api-reference.md`, `docs/file-conventions.md`, `docs/documentation-standard.md`, `docs/documentation-audit.md`, and `docs/docs-maintenance-checklist.md`.
 
 Definition of done:
 
@@ -45,7 +49,9 @@ Remaining follow-up:
 
 Goal: define speed as a whole-system property before implementation begins.
 
-Status: initial documentation exists in `docs/speed-strategy.md`.
+Status: Planned.
+
+Evidence: initial documentation exists in `docs/speed-strategy.md`.
 
 Definition of done:
 
@@ -70,7 +76,9 @@ Remaining follow-up:
 
 Goal: keep the docs system ready to support the first real product build without letting implementation drift ahead of contracts.
 
-Status: initial documentation exists in `docs/product-build-readiness.md` and `docs/public/reference/project-structure.md`.
+Status: Planned.
+
+Evidence: initial documentation exists in `docs/product-build-readiness.md` and `docs/public/reference/project-structure.md`.
 
 Definition of done:
 
@@ -83,7 +91,9 @@ Definition of done:
 
 Goal: make docs quality repeatable before implementation starts.
 
-Status: initial documentation exists in `docs/docs-verification.md`.
+Status: Scaffolded.
+
+Evidence: initial documentation and executable scaffold checks exist in `docs/docs-verification.md`.
 
 Definition of done:
 
@@ -96,7 +106,9 @@ Definition of done:
 
 Goal: define test layers, fixture layout, snapshot policy, CI gates, browser artifact rules, network restrictions, contract-to-test mapping, and evidence reporting before feature implementation expands beyond the scaffold.
 
-Status: initial documentation exists in `docs/testing-contract.md` and `docs/public/reference/testing.md`.
+Status: Planned.
+
+Evidence: initial documentation exists in `docs/testing-contract.md` and `docs/public/reference/testing.md`.
 
 Definition of done:
 
@@ -109,7 +121,9 @@ Definition of done:
 
 Goal: define versioning rules before public APIs, generated manifests, CLI JSON, docs outputs, and compatibility claims become real contracts.
 
-Status: initial documentation exists in `docs/versioning-and-upgrades.md`.
+Status: Planned.
+
+Evidence: initial documentation exists in `docs/versioning-and-upgrades.md`.
 
 Definition of done:
 
@@ -122,7 +136,9 @@ Definition of done:
 
 Goal: define the future docs-site content model before building the public documentation portion of the website.
 
-Status: initial documentation exists in `docs/public-docs-site-architecture.md`.
+Status: Planned.
+
+Evidence: initial documentation exists in `docs/public-docs-site-architecture.md`.
 
 Definition of done:
 
@@ -135,7 +151,9 @@ Definition of done:
 
 Goal: define machine-readable CLI output before `@needle/cli` implementation begins.
 
-Status: initial documentation exists in `docs/cli-json-contract.md`.
+Status: Planned.
+
+Evidence: initial documentation exists in `docs/cli-json-contract.md`.
 
 Definition of done:
 
@@ -148,7 +166,9 @@ Definition of done:
 
 Goal: define diagnostic codes, levels, categories, source locations, related locations, remediation text, docs links, child diagnostics, JSON ordering, and fixture expectations before compiler, CLI, runtime, and agent diagnostics are implemented.
 
-Status: initial documentation exists in `docs/diagnostics-contract.md` and `docs/public/reference/diagnostics.md`.
+Status: Planned.
+
+Evidence: initial documentation exists in `docs/diagnostics-contract.md` and `docs/public/reference/diagnostics.md`.
 
 Definition of done:
 
@@ -160,7 +180,9 @@ Definition of done:
 
 Goal: define config loading, validation, environment-variable policy, and normalized output before compiler and adapter implementation starts.
 
-Status: initial documentation exists in `docs/config-contract.md`.
+Status: Planned.
+
+Evidence: initial documentation exists in `docs/config-contract.md`.
 
 Definition of done:
 
@@ -173,7 +195,9 @@ Definition of done:
 
 Goal: define Bun, Node, and static adapter inputs, outputs, manifest fields, capabilities, environment variables, health endpoint behavior, static export behavior, diagnostics, compatibility evidence, and fixture expectations before adapter implementation starts.
 
-Status: initial documentation exists in `docs/adapter-contract.md` and `docs/public/reference/adapters.md`.
+Status: Planned.
+
+Evidence: initial documentation exists in `docs/adapter-contract.md` and `docs/public/reference/adapters.md`.
 
 Definition of done:
 
@@ -185,7 +209,9 @@ Definition of done:
 
 Goal: define official example statuses, README requirements, starter-template behavior, create-command example support, generated-artifact expectations, public docs linking rules, and verification evidence before examples are used in onboarding.
 
-Status: initial documentation exists in `docs/examples-contract.md` and `docs/public/reference/examples.md`.
+Status: Planned.
+
+Evidence: initial documentation exists in `docs/examples-contract.md` and `docs/public/reference/examples.md`.
 
 Definition of done:
 
@@ -197,7 +223,9 @@ Definition of done:
 
 Goal: define route discovery, route IDs, sorting, diagnostics, and fixture expectations before `@needle/compiler` route discovery starts.
 
-Status: initial documentation exists in `docs/routing-contract.md`.
+Status: Planned.
+
+Evidence: initial documentation exists in `docs/routing-contract.md`.
 
 Definition of done:
 
@@ -211,7 +239,9 @@ Definition of done:
 
 Goal: define API route handlers, request and response behavior, schemas, diagnostics, manifests, security rules, and fixture expectations before API route implementation starts.
 
-Status: initial documentation exists in `docs/api-route-contract.md` and `docs/public/reference/api-routes.md`.
+Status: Planned.
+
+Evidence: initial documentation exists in `docs/api-route-contract.md` and `docs/public/reference/api-routes.md`.
 
 Definition of done:
 
@@ -225,7 +255,9 @@ Definition of done:
 
 Goal: define the schema DSL, parse result shape, issue shape, query coercion, serializer behavior, OpenAPI mapping, diagnostics, manifest references, and fixture expectations before schema and hot API implementation starts.
 
-Status: initial documentation exists in `docs/schema-contract.md` and `docs/public/reference/schema.md`.
+Status: Planned.
+
+Evidence: initial documentation exists in `docs/schema-contract.md` and `docs/public/reference/schema.md`.
 
 Definition of done:
 
@@ -238,7 +270,9 @@ Definition of done:
 
 Goal: define cache modes, HTTP header mapping, cache tags, revalidation, micro-cache behavior, diagnostics, manifest fields, security rules, and fixture expectations before cache implementation starts.
 
-Status: initial documentation exists in `docs/cache-contract.md` and `docs/public/reference/cache.md`.
+Status: Planned.
+
+Evidence: initial documentation exists in `docs/cache-contract.md` and `docs/public/reference/cache.md`.
 
 Definition of done:
 
@@ -250,7 +284,9 @@ Definition of done:
 
 Goal: define metadata helpers, metadata merge behavior, sitemap output, robots output, structured data behavior, SEO diagnostics, generated reports, security rules, and fixture expectations before SEO implementation starts.
 
-Status: initial documentation exists in `docs/seo-contract.md` and `docs/public/reference/seo.md`.
+Status: Planned.
+
+Evidence: initial documentation exists in `docs/seo-contract.md` and `docs/public/reference/seo.md`.
 
 Definition of done:
 
@@ -262,7 +298,9 @@ Definition of done:
 
 Goal: define WCAG target language, semantic HTML expectations, keyboard and focus behavior, form error requirements, accessibility diagnostics, public docs rules, and test evidence before examples, docs UI, or framework-owned pages are marked verified.
 
-Status: initial documentation exists in `docs/accessibility-contract.md` and `docs/public/reference/accessibility.md`.
+Status: Planned.
+
+Evidence: initial documentation exists in `docs/accessibility-contract.md` and `docs/public/reference/accessibility.md`.
 
 Definition of done:
 
@@ -274,7 +312,9 @@ Definition of done:
 
 Goal: define high-risk surfaces, threat model requirements, secret handling, production error behavior, security headers, agent/MCP write rules, vulnerability intake, supply-chain release expectations, and security test evidence before high-risk implementation work begins.
 
-Status: initial documentation exists in `docs/security-contract.md` and `docs/public/reference/security.md`.
+Status: Planned.
+
+Evidence: initial documentation exists in `docs/security-contract.md` and `docs/public/reference/security.md`.
 
 Definition of done:
 
@@ -286,7 +326,9 @@ Definition of done:
 
 Goal: define route budgets, Core Web Vitals target language, `.needle/perf.report.json`, route chunk and CSS delivery fields, source-map exposure checks, performance diagnostics, benchmark evidence, lab-vs-field language, optional RUM policy, agent/CI behavior, and public speed-claim rules before performance tooling or claims are implemented.
 
-Status: initial documentation exists in `docs/performance-contract.md` and `docs/public/reference/performance.md`.
+Status: Planned.
+
+Evidence: initial documentation exists in `docs/performance-contract.md` and `docs/public/reference/performance.md`.
 
 Definition of done:
 
@@ -298,7 +340,9 @@ Definition of done:
 
 Goal: create the Bun workspace and package scaffolds.
 
-Status: scaffolded in the repository. Keep this section as the acceptance record for the initial scaffold and update it if package boundaries change.
+Status: Scaffolded.
+
+Evidence: scaffolded in the repository. Keep this section as the acceptance record for the initial scaffold and update it if package boundaries change.
 
 Read first:
 
