@@ -30,7 +30,7 @@ The repository has a Bun workspace and package placeholders. The `create-needle`
 
 The future default starter must follow [Examples And Templates Contract](../../examples-contract.md) before this guide can be marked verified.
 
-## Related
+## Source
 
 - [Getting Started](../../getting-started.md)
 - [Examples](../reference/examples.md)

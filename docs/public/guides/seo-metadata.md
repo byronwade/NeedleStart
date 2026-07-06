@@ -29,7 +29,7 @@ export const meta = defineMeta({
 - sitemap inclusion
 - structured data when configured
 
-## Related
+## Source
 
 - [SEO-First Rendering](../concepts/seo-first.md)
 - [SEO Reference](../reference/seo.md)

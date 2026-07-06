@@ -54,7 +54,7 @@ A verified example must include:
 - Links to the contracts it exercises.
 - Evidence from the current repository state.
 
-## Related
+## Source
 
 - [Create An App](../guides/create-app.md)
 - [Project Structure](project-structure.md)

@@ -26,7 +26,7 @@ Safe edits are planned guardrails for automated changes. The first safe edit pat
 - MCP write tools must use the same transaction path as CLI writes.
 - Mutation logs must be append-only.
 
-## Reference
+## Source
 
 - [Safe Edit Transactions](../../safe-edit-transactions.md)
 - [Agent-Native Development](agent-native.md)

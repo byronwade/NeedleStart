@@ -68,3 +68,10 @@ These guides describe target workflows. They are not verified until implementati
 - [Governance](community/governance.md)
 - [Comparisons](comparisons/overview.md)
 
+## Source
+
+- [Docs Hub](../README.md)
+- [Public Docs Site Architecture](../public-docs-site-architecture.md)
+- [Public Frontmatter Standard](../public-frontmatter-standard.md)
+- [Docs Site Build Plan](../docs-site-build-plan.md)
+

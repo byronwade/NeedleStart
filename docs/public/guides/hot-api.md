@@ -25,7 +25,7 @@ export const params = schema.object({
 
 Hot API performance claims require benchmark methodology and raw results. Do not claim this path is faster until benchmarks exist.
 
-## Related
+## Source
 
 - [Hot API Path](../../hot-api-path.md)
 - [Schema](../../schema.md)

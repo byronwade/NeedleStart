@@ -48,3 +48,9 @@ Needle Map is planned as a first-class graph of how files, routes, components, A
 - [Agent-Native Development](concepts/agent-native.md)
 - [Whole-System Speed](concepts/speed.md)
 
+## Source
+
+- [Project Status](../status.md)
+- [Phase 1 Build Plan](../phase-1-build-plan.md)
+- [Roadmap](roadmap.md)
+

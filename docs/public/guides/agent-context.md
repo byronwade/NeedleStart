@@ -25,7 +25,7 @@ Agent context should include:
 - danger zones
 - recommended checks
 
-## Related
+## Source
 
 - [Agent-Native Development](../concepts/agent-native.md)
 - [Agent Kernel](../../agent-kernel.md)

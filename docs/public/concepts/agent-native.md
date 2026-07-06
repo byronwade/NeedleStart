@@ -24,7 +24,7 @@ NeedleStart is designed for a future where AI agents are normal contributors to 
 - High-risk production edits require explicit human sign-off.
 - Needle Map must not be the only source of truth for safety-critical decisions.
 
-## Reference
+## Source
 
 - [Agent Kernel](../../agent-kernel.md)
 - [MCP Reference](../reference/mcp.md)

@@ -41,7 +41,7 @@ When implemented, this workflow should run:
 - render check
 - SEO audit
 
-## Related
+## Source
 
 - [Render Modes](../reference/render-modes.md)
 - [Add SEO Metadata](seo-metadata.md)

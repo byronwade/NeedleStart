@@ -31,7 +31,7 @@ NeedleStart keeps framework intelligence in the compiler and keeps production ru
 
 Runtime should not rediscover source files or rebuild the app graph on requests. Generated manifests should carry the work that can be done safely at build time.
 
-## Reference
+## Source
 
 - [Compiler IR](../../compiler-ir.md)
 - [Runtime Contract](../../runtime-contract.md)

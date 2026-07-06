@@ -64,7 +64,7 @@ Do not claim NeedleStart is faster than another framework unless the claim links
 
 The repository is in Phase 1 scaffold. Performance reports, benchmark commands, and Core Web Vitals evidence do not exist yet.
 
-## Related
+## Source
 
 - [Performance Contract](../../performance-contract.md)
 - [Speed Decisions](../../speed-decisions.md)

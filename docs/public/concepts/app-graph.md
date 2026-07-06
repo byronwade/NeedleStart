@@ -48,7 +48,7 @@ Planned workflows:
 - Give agents route-specific context.
 - Run affected checks instead of guessing.
 
-## Reference
+## Source
 
 - [Needle Map](../../needle-map.md)
 - [Manifest Contracts](../reference/manifest-contracts.md)

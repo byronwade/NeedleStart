@@ -83,9 +83,11 @@ Every internal source linked by a public page must also be listed here so the fu
 - `docs/cache.md`
 - `docs/compiler-ir.md`
 - `docs/config-contract.md`
+- `docs/docs-site-build-plan.md`
 - `docs/docs-freshness-policy.md`
 - `docs/docs-verification.md`
 - `docs/engineering-standards.md`
+- `docs/getting-started.md`
 - `docs/hot-api-path.md`
 - `docs/machine-readable-docs.md`
 - `docs/maintainer-guide.md`
@@ -96,6 +98,8 @@ Every internal source linked by a public page must also be listed here so the fu
 - `docs/package-map.md`
 - `docs/performance.md`
 - `docs/phase-1-build-plan.md`
+- `docs/public-docs-site-architecture.md`
+- `docs/public-frontmatter-standard.md`
 - `docs/roadmap.md`
 - `docs/routing.md`
 - `docs/runtime-contract.md`
@@ -106,3 +110,4 @@ Every internal source linked by a public page must also be listed here so the fu
 - `docs/speed-decisions.md`
 - `docs/speed-strategy.md`
 - `docs/testing.md`
+- `docs/website-content-map.md`

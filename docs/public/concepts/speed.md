@@ -30,7 +30,7 @@ No public benchmark claim should be made without:
 - Hardware or environment.
 - Methodology.
 
-## Reference
+## Source
 
 - [Speed Strategy](../../speed-strategy.md)
 - [Speed Decisions](../../speed-decisions.md)

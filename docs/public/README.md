@@ -81,3 +81,9 @@ NeedleStart is in Phase 1 scaffold. Public pages must not claim that app command
 - Prefer concise website copy over internal planning detail.
 - Follow [Public Frontmatter Standard](../public-frontmatter-standard.md) when a future docs renderer starts consuming page metadata.
 
+## Source
+
+- [Public Docs Site Architecture](../public-docs-site-architecture.md)
+- [Website Content Map](../website-content-map.md)
+- [Public Frontmatter Standard](../public-frontmatter-standard.md)
+

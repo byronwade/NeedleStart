@@ -44,7 +44,7 @@ Future high-risk work must include:
 
 Use the root [Security Policy](../../../SECURITY.md) for reporting guidance. Before public release, maintainers should configure private vulnerability reporting.
 
-## Related
+## Source
 
 - [Security Contract](../../security-contract.md)
 - [Diagnostics](diagnostics.md)

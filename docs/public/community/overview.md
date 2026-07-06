@@ -20,3 +20,9 @@ NeedleStart should be open source, evidence-led, and welcoming to both human and
 - [Governance](governance.md)
 - [Open Source Community](../../open-source-community.md)
 
+## Source
+
+- [Open Source Community](../../open-source-community.md)
+- [Contributing](../../../CONTRIBUTING.md)
+- [Governance](../../../GOVERNANCE.md)
+

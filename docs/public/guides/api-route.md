@@ -27,7 +27,7 @@ export async function GET() {
 - Response objects pass through.
 - Errors are readable in development and hidden in production.
 
-## Related
+## Source
 
 - [API Routes](../../api-routes.md)
 - [Create A Hot API Route](hot-api.md)

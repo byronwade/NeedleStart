@@ -36,7 +36,7 @@ export const meta = defineMeta({
 
 This example is planned and not implemented yet.
 
-## Reference
+## Source
 
 - [SEO Engine](../../seo-engine.md)
 - [Add SEO Metadata](../guides/seo-metadata.md)

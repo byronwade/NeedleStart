@@ -27,7 +27,7 @@ Needle Map should explain:
 - owners
 - risk zones
 
-## Related
+## Source
 
 - [Your App Ships With A Map](../concepts/app-graph.md)
 - [Needle Map](../../needle-map.md)

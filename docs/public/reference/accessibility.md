@@ -44,7 +44,7 @@ Future checks should cover:
 
 The repository is in Phase 1 scaffold. Accessibility diagnostics, browser tests, route focus behavior, and generated reports do not exist yet.
 
-## Related
+## Source
 
 - [Accessibility Contract](../../accessibility-contract.md)
 - [Testing](testing.md)

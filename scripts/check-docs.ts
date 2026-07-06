@@ -882,6 +882,13 @@ for (const publicDoc of allPublicDocs()) {
 
 for (const publicDoc of allPublicDocs()) {
   const content = read(publicDoc);
+  if (!/^## Source(?: Of Truth)?\s*$/m.test(content)) {
+    failures.push(`${publicDoc} must include a public source section named ## Source or ## Source Of Truth.`);
+  }
+}
+
+for (const publicDoc of allPublicDocs()) {
+  const content = read(publicDoc);
   const fileDir = dirname(join(root, publicDoc));
   const matches = content.matchAll(/\[[^\]]+\]\(([^)#][^)]*)\)/g);
 
