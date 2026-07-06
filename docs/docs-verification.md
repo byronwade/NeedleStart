@@ -270,12 +270,14 @@ Automated coverage in `bun run docs:check` also requires `docs/documentation-com
 ### 17. Examples Contract Check
 
 ```powershell
-rg -n "examples-contract|examples-catalog|Examples And Templates Contract|Verified|Runnable|Scaffolded|bun create needle|--example|large-app-fixture|agent-demo|reference/examples" README.md AGENTS.md docs\examples-contract.md docs\examples-catalog.md docs\examples.md docs\getting-started.md docs\public\guides\create-app.md docs\public\reference\examples.md docs\product-build-readiness.md docs\testing-contract.md
+rg -n "examples-contract|examples-catalog|Examples And Templates Contract|Verified|Runnable|Scaffolded|bun create needle|--example|large-app-fixture|agent-demo|blog-seo|reference/examples" README.md AGENTS.md docs\risk-mitigation.md docs\examples-contract.md docs\examples-catalog.md docs\examples.md docs\getting-started.md docs\public\guides\create-app.md docs\public\reference\examples.md docs\product-build-readiness.md docs\testing-contract.md
 ```
 
-Expected result: example status labels, starter-template requirements, create-command examples, fixture expectations, public references, and verification evidence remain connected.
+Expected result: example status labels, starter-template requirements, create-command examples, fixture expectations, risk-mitigation example names, public references, and verification evidence remain connected.
 
 Automated coverage in `bun run docs:check` also requires generated app package scripts (`bun run dev`, `bun run build`, and `bun run start`) to stay documented as wrappers around `needle dev`, `needle build`, and `needle start` in the onboarding and examples docs. Example command blocks must not list both `bun run build` and direct `needle build` as separate required build steps.
+
+Automated coverage also rejects stale example names or create-command flags such as `--template agent-demo`, `large-monorepo-fixture`, and `blog-seo-with-map`; use `--example`, `examples/agent-demo/`, `playgrounds/large-app-fixture/`, and `examples/blog-seo/` instead.
 
 Automated coverage in `bun run docs:check` also requires onboarding target-result bullets in `docs/getting-started.md` and `docs/public/guides/create-app.md` to use planned `should` wording until app creation, route output, SEO metadata, Needle Map, and agent context behavior are implemented.
 

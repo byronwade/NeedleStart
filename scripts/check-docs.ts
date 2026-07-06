@@ -1093,6 +1093,11 @@ const staleStatusPatterns = [
     message: "docs/examples.md should list planned example paths from docs/examples-catalog.md.",
   },
   {
+    file: "docs/risk-mitigation.md",
+    pattern: /--template agent-demo|large-monorepo-fixture|blog-seo-with-map/i,
+    message: "docs/risk-mitigation.md should use examples-catalog names and the planned --example create-command flag.",
+  },
+  {
     file: "docs/examples-contract.md",
     pattern: /```bash[\s\S]*bun run build[\s\S]*needle build[\s\S]*```/i,
     message: "docs/examples-contract.md should not list bun run build and direct needle build as separate required example build steps.",

@@ -228,7 +228,7 @@ Use this order in marketing and user-facing documentation:
 
 ### Killer Onboarding Experiences
 
-- `bun create needle my-app --template agent-demo`
+- `bun create needle my-app --example agent-demo`
 - `needle agent context --route /pricing --json`
 - `needle map explain components/ProductCard.tsx`
 - A simple visual Needle Map explorer at `http://localhost:3434/__needle/map`
@@ -262,9 +262,9 @@ See `docs/migration.md`.
 - Generate excellent `llms.txt` and `llms-full.txt`.
 - Host a public Needle Map showcase repository for anonymized real app graphs.
 - Maintain high-quality examples:
-  - `agent-demo`
-  - `large-monorepo-fixture`
-  - `blog-seo-with-map`
+  - `examples/agent-demo/`
+  - `playgrounds/large-app-fixture/`
+  - `examples/blog-seo/`
 - Make demos focus on graph, agent, and SEO workflows rather than generic framework parity.
 
 ### Revenue Direction
