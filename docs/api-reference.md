@@ -101,6 +101,7 @@ Planned generated files:
 | `.needle/perf.report.json` | Planned | Performance budget output. |
 | `.needle/context/*.ctx.json` | Planned | Route or surface context capsules. |
 | `.needle/context/agent-index.json` | Planned | Agent context index. |
+| `.needle/mutations.json` | Planned | Safe edit mutation log. |
 | `.needle/generated/*` | Planned | Generated runtime modules. |
 | `dist/adapter.manifest.json` | Planned | Adapter capabilities and deployment output metadata. |
 | `dist/*` | Planned | Production build output. |

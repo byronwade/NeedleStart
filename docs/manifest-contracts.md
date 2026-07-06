@@ -20,6 +20,7 @@ Shared diagnostic fields in manifests should follow [Diagnostics Contract](diagn
 | `.needle/perf.report.json` | Performance and budget output. Follows [Performance Contract](performance-contract.md). |
 | `.needle/context/*.ctx.json` | Route or surface context capsules for agents and tools. |
 | `.needle/context/agent-index.json` | Agent context index. |
+| `.needle/mutations.json` | Safe edit mutation log. |
 | `.needle/generated/*` | Generated runtime modules. |
 | `dist/adapter.manifest.json` | Adapter capabilities. |
 | `dist/*` | Production build output. |

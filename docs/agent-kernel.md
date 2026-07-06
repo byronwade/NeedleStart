@@ -31,6 +31,7 @@ Planned public docs and app-agent outputs:
 | `.needle/map.json` | Generated app artifact | Queryable Needle Map output. |
 | `.needle/context/*.ctx.json` | Generated app artifact | Route or surface context capsules. |
 | `.needle/context/agent-index.json` | Generated app artifact | Index of generated agent context. |
+| `.needle/mutations.json` | Generated app artifact | Safe edit mutation log. |
 
 See `docs/machine-readable-docs.md` for the planned machine-readable documentation contract.
 
