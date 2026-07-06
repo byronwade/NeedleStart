@@ -18,11 +18,11 @@ Generated apps should also expose `bun run dev`, `bun run build`, and `bun run s
 
 ## Target Result
 
-- A local development server starts.
-- A React page renders.
-- `.needle/routes.json` and `.needle/render-manifest.json` are generated.
-- SEO metadata is visible for public pages.
-- Needle Map and agent context can be inspected.
+- A local development server should start.
+- A React page should render.
+- `.needle/routes.json` and `.needle/render-manifest.json` should be generated.
+- SEO metadata should be visible for public pages.
+- Needle Map and agent context should be inspectable.
 
 ## Current Reality
 

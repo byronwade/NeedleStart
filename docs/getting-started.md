@@ -32,11 +32,11 @@ Generated apps should also expose `bun run dev`, `bun run build`, and `bun run s
 
 Target result:
 
-- A React app starts locally.
-- The home page renders server HTML.
-- Public routes include SEO metadata.
-- `.needle/routes.json` and `.needle/render-manifest.json` are generated.
-- Needle Map and agent context can be inspected.
+- A React app should start locally.
+- The home page should render server HTML.
+- Public routes should include SEO metadata.
+- `.needle/routes.json` and `.needle/render-manifest.json` should be generated.
+- Needle Map and agent context should be inspectable.
 
 Do not claim this flow works until `create-needle`, `@needle/cli`, and the runtime path exist and have been verified.
 

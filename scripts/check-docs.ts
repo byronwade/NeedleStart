@@ -1115,6 +1115,16 @@ const staleStatusPatterns = [
     message: "docs/public/guides/create-app.md should use `needle dev` target command language and current scaffold status.",
   },
   {
+    file: "docs/getting-started.md",
+    pattern: /- A React app starts locally\.|- The home page renders server HTML\.|- Public routes include SEO metadata\.|- `\.needle\/routes\.json` and `\.needle\/render-manifest\.json` are generated\.|- Needle Map and agent context can be inspected\./i,
+    message: "docs/getting-started.md should use planned `should` wording for target app results until implementation exists.",
+  },
+  {
+    file: "docs/public/guides/create-app.md",
+    pattern: /- A local development server starts\.|- A React page renders\.|- `\.needle\/routes\.json` and `\.needle\/render-manifest\.json` are generated\.|- SEO metadata is visible for public pages\.|- Needle Map and agent context can be inspected\./i,
+    message: "docs/public/guides/create-app.md should use planned `should` wording for target app results until implementation exists.",
+  },
+  {
     file: "docs/public/guides/api-route.md",
     pattern: /^This guide describes the planned API route workflow\.$/m,
     message: "docs/public/guides/api-route.md should state API route behavior is not implemented yet.",
