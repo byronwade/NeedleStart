@@ -19,7 +19,7 @@ Research backing:
 
 ## Current Manual Checks
 
-Run these checks before finishing documentation, navigation, public-docs, package-structure, command, generated-file, or agent-workflow changes. The automated subset runs through:
+Run these checks before finishing documentation, navigation, public-docs, package-structure, command, generated-file, or agent-workflow changes. Use [Agent Enforcement Matrix](agent-enforcement.md) to map each gate to the rules it currently enforces. The automated subset runs through:
 
 ```powershell
 bun run docs:check
@@ -120,7 +120,7 @@ Public API draft examples must say they are planned and not implemented yet unle
 ### 5. Navigation Coverage Check
 
 ```powershell
-rg -n "first-contribution|review-checklist|threat-model|benchmark-fixtures|examples-catalog|docs-site-build-plan|decisions/README|checklists/README|public-frontmatter-standard|glossary|product-build-readiness|project-structure|docs-verification|public-docs-site-architecture|docs-freshness-policy|docs-maintenance-checklist" README.md AGENTS.md docs\README.md docs\public\README.md docs\public\docs.md docs\website-content-map.md
+rg -n "first-contribution|review-checklist|threat-model|benchmark-fixtures|examples-catalog|docs-site-build-plan|decisions/README|checklists/README|public-frontmatter-standard|glossary|product-build-readiness|agent-enforcement|project-structure|docs-verification|public-docs-site-architecture|docs-freshness-policy|docs-maintenance-checklist" README.md AGENTS.md docs\README.md docs\public\README.md docs\public\docs.md docs\website-content-map.md
 ```
 
 Expected result: new durable docs are discoverable from the relevant root, docs hub, public docs, or website map surfaces.
@@ -148,6 +148,16 @@ Automated coverage in `bun run docs:check` also requires the AGENTS required-doc
 It also parses the AGENTS required-documentation-sync section directly. Every path listed there must exist, and every canonical must-check documentation contract, security, performance, public-docs, and checklist file must remain listed there. It also discovers every Markdown file under `docs/skills/` and `docs/subagents/` and requires each playbook file to appear in the AGENTS sync list.
 
 Prototype, public-roadmap, implementation-sequence, and contributor docs must describe Bun serving through `@needle/adapter-bun` instead of generic "Bun serving" or "Bun server" wording that could imply a separate active runtime package.
+
+### 7A. Agent Enforcement Matrix Check
+
+```powershell
+rg -n "Agent Enforcement Matrix|bun run docs:check|bun run structure:check|bun run performance:check|bun run typecheck|bun test|bun run check|planned, scaffolded, implemented, and verified|performance claims|root skills|root subagents" README.md AGENTS.md docs\README.md docs\agent-enforcement.md docs\product-build-readiness.md docs\docs-maintenance-checklist.md
+```
+
+Expected result: agent rules, automation commands, claim gates, performance evidence, and root playbook placement rules remain connected from README, AGENTS, docs hub, build-readiness docs, and the maintenance checklist.
+
+Automated coverage in `bun run docs:check` also requires `docs/agent-enforcement.md` to exist, be linked from README and the docs hub, appear in AGENTS required-documentation-sync, and keep the command and claim-gate vocabulary aligned.
 
 ### 8. Machine-Readable Docs Contract Check
 
@@ -424,7 +434,7 @@ The initial Bun workspace exposes these package scripts:
 
 Target behavior:
 
-- `docs:check` validates required docs, required links, local Markdown links, root docs metadata, every `docs/` Markdown file's top-level status and audience metadata, status definition wording, durable internal docs hub coverage, local directory index coverage for prompts, decisions, checklists, skills, and subagents, every Markdown status label format, public docs navigation, source-section consistency, and source-map coverage, AI playbook placement, AGENTS required-sync coverage, verification-section coverage, scaffold-status language, historical pre-scaffold status labeling, scaffolded-package-versus-implemented-package wording, current-vs-planned structure claims, current root placeholder-test wording, build-readiness evidence wording, agent-output naming guardrails, package-map/build-plan/backlog package coverage, planned CLI command surface and prefix consistency, config/adapter contract terms, adapter package paths, render-mode contract wording, generated artifact names and rules, machine-readable docs contracts, public docs-site contracts, contributor and review-evidence vocabulary, speed-decision vocabulary, safe-edit contract vocabulary, shared-core scaffold terminology, and the current `bun.lockb` lockfile name.
+- `docs:check` validates required docs, required links, local Markdown links, root docs metadata, every `docs/` Markdown file's top-level status and audience metadata, status definition wording, durable internal docs hub coverage, local directory index coverage for prompts, decisions, checklists, skills, and subagents, every Markdown status label format, public docs navigation, source-section consistency, and source-map coverage, AI playbook placement, AGENTS required-sync coverage, agent enforcement matrix coverage, verification-section coverage, scaffold-status language, historical pre-scaffold status labeling, scaffolded-package-versus-implemented-package wording, current-vs-planned structure claims, current root placeholder-test wording, build-readiness evidence wording, agent-output naming guardrails, package-map/build-plan/backlog package coverage, planned CLI command surface and prefix consistency, config/adapter contract terms, adapter package paths, render-mode contract wording, generated artifact names and rules, machine-readable docs contracts, public docs-site contracts, contributor and review-evidence vocabulary, speed-decision vocabulary, safe-edit contract vocabulary, shared-core scaffold terminology, and the current `bun.lockb` lockfile name.
 - `structure:check` validates workspace script commands, package names, package entrypoints, TypeScript scaffold files, CI, forbidden runtime dependencies on agent-only packages, and shared-core type ownership outside `@needle/core`.
 - `performance:check` validates performance docs, benchmark fixture coverage, raw-result rules, and unsupported root/public speed, benchmark, or SEO positioning claim patterns.
 - `check` runs the automated docs, structure, performance, typecheck, and test gates.

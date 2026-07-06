@@ -11,6 +11,7 @@ const requiredDocs = [
   "docs/status.md",
   "docs/phase-1-build-plan.md",
   "docs/package-map.md",
+  "docs/agent-enforcement.md",
   "docs/docs-verification.md",
   "docs/review-checklist.md",
   "docs/threat-model.md",
@@ -24,6 +25,7 @@ const requiredDocs = [
 const requiredEntryLinks = [
   "docs/phase-1-build-plan.md",
   "docs/package-map.md",
+  "docs/agent-enforcement.md",
   "docs/docs-verification.md",
   "docs/review-checklist.md",
   "docs/threat-model.md",
@@ -60,6 +62,7 @@ const agentRequiredSyncDocs = [
   "docs/docs-freshness-policy.md",
   "docs/docs-maintenance-checklist.md",
   "docs/docs-verification.md",
+  "docs/agent-enforcement.md",
   "docs/first-contribution.md",
   "docs/review-checklist.md",
   "docs/public-frontmatter-standard.md",
@@ -383,6 +386,47 @@ const reviewEvidenceContractDocs = [
   {
     file: ".github/PULL_REQUEST_TEMPLATE.md",
     terms: ["docs/review-checklist.md", "docs/threat-model.md", "docs/benchmark-fixtures.md", "docs/examples-catalog.md", "docs/docs-site-build-plan.md", "Threat note", "Benchmark claims", "Commands run"],
+  },
+];
+
+const agentEnforcementContractDocs = [
+  {
+    file: "docs/agent-enforcement.md",
+    terms: [
+      "Agent Enforcement Matrix",
+      "bun run docs:check",
+      "bun run structure:check",
+      "bun run performance:check",
+      "bun run typecheck",
+      "bun test",
+      "bun run check",
+      "planned, scaffolded, implemented, and verified",
+      "Performance claims",
+      "Root `skills/`",
+      "Root `subagents/`",
+      "AI skill playbooks live under `docs/skills/`",
+      "AI subagent role briefs live under `docs/subagents/`",
+    ],
+  },
+  {
+    file: "README.md",
+    terms: ["docs/agent-enforcement.md"],
+  },
+  {
+    file: "AGENTS.md",
+    terms: ["docs/agent-enforcement.md"],
+  },
+  {
+    file: "docs/product-build-readiness.md",
+    terms: ["Agent Enforcement Matrix"],
+  },
+  {
+    file: "docs/docs-maintenance-checklist.md",
+    terms: ["docs/agent-enforcement.md"],
+  },
+  {
+    file: "docs/docs-verification.md",
+    terms: ["Agent Enforcement Matrix Check"],
   },
 ];
 
@@ -2031,6 +2075,16 @@ for (const { file, terms } of reviewEvidenceContractDocs) {
   for (const term of terms.map((term) => term.toLowerCase())) {
     if (!content.includes(term)) {
       failures.push(`${file} is missing review evidence contract term: ${term}.`);
+    }
+  }
+}
+
+for (const { file, terms } of agentEnforcementContractDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file).toLowerCase();
+  for (const term of terms.map((term) => term.toLowerCase())) {
+    if (!content.includes(term)) {
+      failures.push(`${file} is missing agent enforcement contract term: ${term}.`);
     }
   }
 }

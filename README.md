@@ -385,6 +385,7 @@ Start here:
 - [Documentation Standard](docs/documentation-standard.md)
 - [Documentation Freshness Policy](docs/docs-freshness-policy.md)
 - [Documentation Verification](docs/docs-verification.md)
+- [Agent Enforcement Matrix](docs/agent-enforcement.md)
 - [Testing Contract](docs/testing-contract.md)
 - [Public Frontmatter Standard](docs/public-frontmatter-standard.md)
 - [Documentation Research Notes](docs/documentation-research.md)

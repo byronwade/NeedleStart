@@ -16,6 +16,7 @@ Also apply `docs/docs-freshness-policy.md` for any change that can make docs sta
 - `.github/PULL_REQUEST_TEMPLATE.md` still reflects the required review gates.
 - `docs/docs-freshness-policy.md` still reflects current docs freshness rules.
 - `docs/docs-verification.md` still reflects the checks contributors are expected to run.
+- `docs/agent-enforcement.md` still maps agent rules to the current docs, structure, performance, typecheck, and test gates.
 - `docs/testing-contract.md` still reflects test layers, fixture layout, snapshot policy, CI gates, browser artifacts, network rules, and evidence reporting.
 - `docs/versioning-and-upgrades.md` still reflects public API, manifest, generated-file, compatibility, and release policy.
 - `docs/diagnostics-contract.md` still reflects diagnostic codes, severity values, source locations, remediations, docs links, JSON behavior, security rules, and fixtures.

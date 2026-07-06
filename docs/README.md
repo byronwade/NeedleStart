@@ -18,6 +18,7 @@ This directory is the source of truth for NeedleStart planning, architecture, ro
 - [Documentation Research Notes](documentation-research.md): primary-source lessons from leading docs.
 - [Documentation Freshness Policy](docs-freshness-policy.md): rules for keeping docs current as the project changes.
 - [Documentation Verification](docs-verification.md): repeatable docs checks, expected evidence, and future script targets.
+- [Agent Enforcement Matrix](agent-enforcement.md): maps agent rules to documentation, structure, performance, typecheck, and test gates.
 - [Testing Contract](testing-contract.md): planned test layers, fixture layout, snapshots, CI gates, and evidence rules.
 - [Public Docs Site Architecture](public-docs-site-architecture.md): planned public docs content model, frontmatter, navigation, and validation.
 - [Public Frontmatter Standard](public-frontmatter-standard.md): planned metadata fields and validation rules for future public docs pages.
@@ -107,6 +108,7 @@ This directory is the source of truth for NeedleStart planning, architecture, ro
 - [Final PR Summary Draft](final-pr-summary.md): summary template for this docs-system work.
 - [Docs Maintenance Checklist](docs-maintenance-checklist.md): update triggers for future contributors.
 - [Documentation Verification](docs-verification.md): automated scaffold checks plus manual review checks for unsupported claims.
+- [Agent Enforcement Matrix](agent-enforcement.md): automated gate map for agents and maintainers.
 - [Glossary](glossary.md): shared terminology.
 - [First Contribution Path](first-contribution.md): first safe contribution path for Phase 1 scaffold work.
 - [AI Skill Playbooks](skills/README.md): vendor-neutral skill workflows for agents.

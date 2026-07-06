@@ -38,6 +38,7 @@ Every agent change must evaluate whether these files need updates:
 - `docs/docs-freshness-policy.md`
 - `docs/docs-maintenance-checklist.md`
 - `docs/docs-verification.md`
+- `docs/agent-enforcement.md`
 - `docs/first-contribution.md`
 - `docs/review-checklist.md`
 - `docs/public-frontmatter-standard.md`
@@ -328,6 +329,7 @@ Test output used by agents must be deterministic.
 - Follow `docs/docs-freshness-policy.md` before finishing any change that can make docs stale.
 - Use `docs/docs-maintenance-checklist.md` before finishing documentation, command, package, status, governance, release, security, benchmark, or public-docs changes.
 - Use `docs/docs-verification.md` for repeatable documentation checks and report which checks passed.
+- Use `docs/agent-enforcement.md` to map agent rules to the automated docs, structure, performance, typecheck, and test gates before finishing non-trivial work.
 - Use `docs/first-contribution.md` when shaping first-time contributor or good-first-task guidance.
 - Use `docs/review-checklist.md` before review-ready changes, especially docs-system, security, performance, public-docs, package-boundary, or implementation work.
 - Use `docs/decisions/README.md` and `docs/templates/adr-template.md` when a change needs a durable architecture decision record.
@@ -374,8 +376,9 @@ Before editing:
 4. Check whether the task is documentation-only, scaffolding, implementation, or verification.
 5. Read `docs/engineering-standards.md` for non-trivial implementation, architecture, or process work.
 6. Read `docs/review-checklist.md` before preparing non-trivial work for review.
-7. For AI collaboration or delegation changes, read `docs/skills/README.md` and `docs/subagents/README.md`.
-8. For Phase 1 scaffolding or package-boundary work, read `docs/phase-1-build-plan.md`.
+7. Read `docs/agent-enforcement.md` for non-trivial docs, structure, performance, package-boundary, status, or verification work.
+8. For AI collaboration or delegation changes, read `docs/skills/README.md` and `docs/subagents/README.md`.
+9. For Phase 1 scaffolding or package-boundary work, read `docs/phase-1-build-plan.md`.
 
 While editing:
 
