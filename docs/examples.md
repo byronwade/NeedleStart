@@ -10,15 +10,21 @@ The detailed requirements for examples, templates, verification evidence, and cr
 
 ## Planned Examples
 
-- `basic`
-- `blog-seo`
-- `api-route`
-- `hot-api`
-- `adapter-node`
-- `ecommerce`
-- `dashboard`
-- `agent-demo`
-- `large-app-fixture`
+The planned official inventory is canonical in [Examples Catalog](examples-catalog.md). Current planned paths are:
+
+- `examples/basic/`
+- `examples/blog-seo/`
+- `examples/api-route/`
+- `examples/hot-api/`
+- `examples/static-export/`
+- `examples/adapter-node/`
+- `examples/dashboard-client/`
+- `examples/ecommerce/`
+- `examples/agent-demo/`
+- `examples/docs-site/`
+- `playgrounds/large-app-fixture/`
+
+These directories do not exist yet. Do not describe them as scaffolded, runnable, or verified until files, commands, tests, generated artifacts, and status labels exist.
 
 ## Example Requirements
 

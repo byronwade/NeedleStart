@@ -8,14 +8,19 @@ NeedleStart examples are planned but not implemented yet. This page explains the
 
 ## Planned Examples
 
-| Example | Purpose | Current status |
-| --- | --- | --- |
-| `basic` | Smallest useful generated app. | Planned |
-| `blog-seo` | Tutorial app for pages, metadata, sitemap, and public HTML checks. | Planned |
-| `api-route` | Focused API route example. | Planned |
-| `hot-api` | Fast API path with schema and serializer behavior. | Planned |
-| `agent-demo` | Map inspection, safe edit preview, apply, log, and undo. | Planned |
-| `large-app-fixture` | Large route tree, graph generation, and performance evidence. | Planned |
+| Example | Planned path | Purpose | Current status |
+| --- | --- | --- | --- |
+| Basic Starter | `examples/basic/` | Smallest useful generated app. | Planned |
+| Blog SEO | `examples/blog-seo/` | Tutorial app for pages, metadata, sitemap, and public HTML checks. | Planned |
+| API Route | `examples/api-route/` | Focused API route example. | Planned |
+| Hot API | `examples/hot-api/` | Fast API path with schema and serializer behavior. | Planned |
+| Static Export | `examples/static-export/` | Fully static output and unsupported-route diagnostics. | Planned |
+| Node Adapter | `examples/adapter-node/` | Node compatibility for SSR and static output. | Planned |
+| Dashboard Client | `examples/dashboard-client/` | Intentional client interactivity and hydration boundaries. | Planned |
+| Ecommerce | `examples/ecommerce/` | Product pages, cache tags, API routes, SEO, and performance budgets. | Planned |
+| Agent Demo | `examples/agent-demo/` | Map inspection, safe edit preview, apply, log, and undo. | Planned |
+| Docs Site | `examples/docs-site/` | Future public docs renderer, frontmatter, navigation, search, and machine-readable outputs. | Planned |
+| Large App Fixture | `playgrounds/large-app-fixture/` | Large route tree, graph generation, and performance evidence. | Planned |
 
 ## Example Status
 
@@ -25,7 +30,7 @@ NeedleStart examples are planned but not implemented yet. This page explains the
 - Verified: commands, tests, generated artifacts, and docs claims pass.
 - Deprecated: retained for compatibility or migration notes.
 
-No example in this repository is verified yet.
+No example in this repository exists or is verified yet.
 
 ## Future Create Command
 

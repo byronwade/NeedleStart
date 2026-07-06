@@ -197,6 +197,28 @@ const sharedCoreScaffoldTerms = [
   },
 ];
 
+const plannedExamplePaths = [
+  "examples/basic/",
+  "examples/blog-seo/",
+  "examples/api-route/",
+  "examples/hot-api/",
+  "examples/static-export/",
+  "examples/adapter-node/",
+  "examples/dashboard-client/",
+  "examples/ecommerce/",
+  "examples/agent-demo/",
+  "examples/docs-site/",
+  "playgrounds/large-app-fixture/",
+];
+
+const plannedExampleInventoryDocs = [
+  "README.md",
+  "docs/examples-contract.md",
+  "docs/examples-catalog.md",
+  "docs/examples.md",
+  "docs/public/reference/examples.md",
+];
+
 function rel(path: string): string {
   return relative(root, path).replaceAll("\\", "/");
 }
@@ -308,6 +330,21 @@ const staleStatusPatterns = [
     file: "docs/public/reference/project-structure.md",
     pattern: /scaffolded as a Bun workspace with .*examples under `examples\/`|scaffolded as a Bun workspace with .*playgrounds under `playgrounds\/`/i,
     message: "docs/public/reference/project-structure.md claims planned example directories are scaffolded.",
+  },
+  {
+    file: "README.md",
+    pattern: /examples\/[\s\S]*dashboard\/(?!client)/i,
+    message: "README.md should use the planned dashboard-client example path.",
+  },
+  {
+    file: "docs/examples-contract.md",
+    pattern: /agent-demo\/\r?\n\s+large-app-fixture\//i,
+    message: "docs/examples-contract.md should keep large-app-fixture under playgrounds/, not examples/.",
+  },
+  {
+    file: "docs/examples.md",
+    pattern: /- `dashboard`$|- `large-app-fixture`$/m,
+    message: "docs/examples.md should list planned example paths from docs/examples-catalog.md.",
   },
   {
     file: "README.md",
@@ -672,7 +709,7 @@ for (const requiredPath of [
   }
 }
 
-for (const staleTreeEntry of ["    adapter-bun/", "    adapter-node/", "    adapter-static/"]) {
+for (const staleTreeEntry of ["    adapter-bun/", "    adapter-static/"]) {
   if (readme.includes(staleTreeEntry)) {
     failures.push(`README.md still documents stale flat adapter path: ${staleTreeEntry.trim()}`);
   }
@@ -690,6 +727,16 @@ for (const file of plannedNeedleCommandDocs) {
   for (const command of plannedNeedleCommands) {
     if (!content.includes(command)) {
       failures.push(`${file} does not document planned CLI command: ${command}.`);
+    }
+  }
+}
+
+for (const file of plannedExampleInventoryDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file);
+  for (const examplePath of plannedExamplePaths) {
+    if (!content.includes(examplePath)) {
+      failures.push(`${file} does not document planned example path: ${examplePath}.`);
     }
   }
 }

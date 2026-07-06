@@ -212,9 +212,14 @@ needlestart/
   examples/
     basic/
     blog-seo/
+    api-route/
+    hot-api/
+    static-export/
+    adapter-node/
     ecommerce/
-    dashboard/
+    dashboard-client/
     agent-demo/
+    docs-site/
   playgrounds/
     large-app-fixture/
   tests/
@@ -223,6 +228,8 @@ needlestart/
     performance/
   docs/
 ```
+
+Planned example paths are `examples/basic/`, `examples/blog-seo/`, `examples/api-route/`, `examples/hot-api/`, `examples/static-export/`, `examples/adapter-node/`, `examples/dashboard-client/`, `examples/ecommerce/`, `examples/agent-demo/`, `examples/docs-site/`, and `playgrounds/large-app-fixture/`. These paths are target inventory only until the directories, commands, tests, generated artifacts, and status labels exist.
 
 Adapter package paths are `packages/adapters/bun`, `packages/adapters/node`, and `packages/adapters/static`.
 

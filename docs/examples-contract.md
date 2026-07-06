@@ -30,7 +30,7 @@ Planned example categories:
 | Feature example | Focused example for one capability. | `api-route`, `hot-api`, `static-export`, `adapter-node` |
 | Integration example | Shows a common external library or deployment pattern. | Planned after core behavior exists. |
 | Agent example | Proves map inspection, safe edits, and agent context. | `agent-demo` |
-| Scale fixture | Proves large-app discovery, graph output, and performance gates. | `large-app-fixture` |
+| Scale fixture | Proves large-app discovery, graph output, and performance gates. | `playgrounds/large-app-fixture` |
 
 Do not add integration examples before the relevant core contract is implemented and tested.
 
@@ -52,9 +52,17 @@ examples/
   blog-seo/
   api-route/
   hot-api/
+  static-export/
+  adapter-node/
+  dashboard-client/
+  ecommerce/
   agent-demo/
+  docs-site/
+playgrounds/
   large-app-fixture/
 ```
+
+Canonical planned paths are `examples/basic/`, `examples/blog-seo/`, `examples/api-route/`, `examples/hot-api/`, `examples/static-export/`, `examples/adapter-node/`, `examples/dashboard-client/`, `examples/ecommerce/`, `examples/agent-demo/`, `examples/docs-site/`, and `playgrounds/large-app-fixture/`.
 
 The exact layout may change during Phase 1, but every verified example must have a README, commands, expected outputs, tests, and status.
 
@@ -118,8 +126,11 @@ Verified examples must document expected artifacts:
 .needle/graph.json
 .needle/seo.report.json
 .needle/perf.report.json
+.needle/context/*.ctx.json
 .needle/context/agent-index.json
-dist/
+.needle/generated/*
+dist/adapter.manifest.json
+dist/*
 ```
 
 When an example does not produce one of these artifacts, its README must explain why.
