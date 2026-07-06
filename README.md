@@ -24,6 +24,12 @@ The goal is not to clone Next.js. The goal is to win a newer category:
 
 > The React framework where your app ships with a map.
 
+## Current Repository Status
+
+This checkout is in Phase 1: monorepo scaffold. The product language below describes target framework behavior unless a section explicitly marks behavior as current.
+
+Current implemented scope is the Bun workspace scaffold, package placeholders, shared core types, CI, and verification scripts. Route discovery, rendering, CLI behavior, runtime adapters, Needle Map generation, MCP tools, and safe edits remain planned.
+
 ## Product Thesis
 
 Modern React applications fail when they become too large to reason about. Routes drift away from tests, components drift away from schemas, SEO regressions hide inside client-heavy rendering, cache behavior hides behind framework magic, and AI agents waste context guessing how files relate to each other.

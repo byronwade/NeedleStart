@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, framework contributors, AI agents.
 
-NeedleStart keeps framework intelligence in the compiler and keeps production runtime adapters small.
+NeedleStart is planned to keep framework intelligence in the compiler and keep production runtime adapters small.
 
 ## Compiler Owns
 

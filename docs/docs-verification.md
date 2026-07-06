@@ -105,7 +105,7 @@ Expected result: every match is either:
 
 This is a review aid, not a binary test.
 
-Automated coverage in `bun run docs:check` also rejects pre-scaffold command-limitation language, stale pre-expansion audit tasks, stale improvement-matrix PR-template tasks, and PR-template diagnostic severity wording, so old "no scaffold," "missing docs homes," or "add PR template later" evidence cannot be mistaken for current repository status. It also requires documentation audit matrix pages to distinguish editorial `Current quality` values from canonical `Status:` labels.
+Automated coverage in `bun run docs:check` also rejects pre-scaffold command-limitation language, stale pre-expansion audit tasks, stale improvement-matrix PR-template tasks, public compiler/runtime wording that implies implemented behavior, and PR-template diagnostic severity wording, so old "no scaffold," "missing docs homes," "add PR template later," or unimplemented present-tense behavior evidence cannot be mistaken for current repository status. It also requires documentation audit matrix pages to distinguish editorial `Current quality` values from canonical `Status:` labels.
 
 ### 5. Navigation Coverage Check
 
@@ -232,6 +232,8 @@ Expected result: route grammar, dynamic API examples, route IDs, manifest fields
 Automated coverage in `bun run docs:check` requires public routing and file-convention tables to label planned files, routes, URLs, and route types as planned while route discovery remains unimplemented.
 
 Automated coverage in `bun run docs:check` also requires routing, file-convention, and public routing docs to keep the dynamic API example, optional catch-all status, unsupported-convention diagnostic wording, route IDs, and cross-OS stability language aligned.
+
+Automated coverage in `bun run docs:check` requires the README first screen to explain that the checkout is still Phase 1 scaffold and that broad product language describes target framework behavior, not current runtime behavior.
 
 ### 17. Examples Contract Check
 

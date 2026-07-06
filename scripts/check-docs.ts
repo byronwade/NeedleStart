@@ -838,6 +838,11 @@ const staleStatusPatterns = [
     message: "docs/public/reference/project-structure.md claims planned example directories are scaffolded.",
   },
   {
+    file: "docs/public/concepts/compiler-runtime.md",
+    pattern: /NeedleStart keeps framework intelligence in the compiler and keeps production runtime adapters small\./i,
+    message: "docs/public/concepts/compiler-runtime.md should describe the compiler/runtime split as planned until implementation exists.",
+  },
+  {
     file: "CONTRIBUTING.md",
     pattern: /Bun server runtime details|Bun server details|Bun runtime package/i,
     message: "CONTRIBUTING.md should direct runtime help to @needle/adapter-bun adapter work, not generic Bun server wording.",
@@ -1390,6 +1395,15 @@ for (const { file, pattern, message } of staleStatusPatterns) {
 }
 
 const readme = read("README.md");
+const readmeFirstScreen = readme.split(/\r?\n/).slice(0, 40).join("\n");
+if (!/This checkout is in Phase 1: monorepo scaffold\./.test(readmeFirstScreen)) {
+  failures.push("README.md must state Phase 1 scaffold status near the top before broad product claims can be read as current behavior.");
+}
+
+if (!/target framework behavior/.test(readmeFirstScreen)) {
+  failures.push("README.md must state near the top that product language describes target framework behavior unless marked current.");
+}
+
 for (const requiredPath of [
   "packages/adapters/bun",
   "packages/adapters/node",
