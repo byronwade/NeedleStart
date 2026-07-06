@@ -98,7 +98,7 @@ flowchart LR
   Generated[generatedFile]
   Benchmark[benchmarkFixture]
   Doc[docPage]
-  Risk[risk / dangerZone]
+  Risk[risk or dangerZone]
 
   Route -->|usesLayout| Layout
   Route -->|renders| Page
@@ -128,21 +128,21 @@ This is the shape a developer or agent should be able to inspect for one route.
 
 ```mermaid
 flowchart TB
-  Route[/route: /pricing/]
-  File[app/pricing/page.tsx]
-  Layout[app/layout.tsx]
-  Hero[components/PricingHero.tsx]
-  Table[components/PricingTable.tsx]
-  FAQ[components/FAQ.tsx]
-  Meta[meta: Pricing | Acme]
-  Cache[cache: static]
-  Render[render: staticPage]
-  SEO[seo: pass]
-  Test1[pricing.test.tsx]
-  Test2[seo-pricing.test.ts]
-  Owner[owner: growth-team]
-  GeneratedHTML[dist/public/pricing/index.html]
-  Ctx[.needle/context/pricing.ctx.json]
+  Route["route: /pricing"]
+  File["app/pricing/page.tsx"]
+  Layout["app/layout.tsx"]
+  Hero["components/PricingHero.tsx"]
+  Table["components/PricingTable.tsx"]
+  FAQ["components/FAQ.tsx"]
+  Meta["meta: Pricing | Acme"]
+  Cache["cache: static"]
+  Render["render: staticPage"]
+  SEO["seo: pass"]
+  Test1["pricing.test.tsx"]
+  Test2["seo-pricing.test.ts"]
+  Owner["owner: growth-team"]
+  GeneratedHTML["dist/public/pricing/index.html"]
+  Ctx[".needle/context/pricing.ctx.json"]
 
   Route -->|source| File
   Route -->|usesLayout| Layout
@@ -180,11 +180,11 @@ flowchart LR
   StaticAnalysis[Static Analysis Edge]
   Manual[Manual Edge]
 
-  Import -->|source: import| Medium[Medium confidence]
-  Contract -->|source: contract| High[High confidence]
-  Convention -->|source: convention| LowMedium[Low to medium confidence]
-  StaticAnalysis -->|source: typescript| Variable[Variable confidence]
-  Manual -->|source: manual| HighReview[High if reviewed]
+  Import -->|source import| Medium[Medium confidence]
+  Contract -->|source contract| High[High confidence]
+  Convention -->|source convention| LowMedium[Low to medium confidence]
+  StaticAnalysis -->|source typescript| Variable[Variable confidence]
+  Manual -->|source manual| HighReview[High if reviewed]
 
   LowMedium --> NeedsWhy[Must include why]
   Variable --> NeedsWhy
@@ -223,7 +223,7 @@ sequenceDiagram
   Dev->>CLI: needle check --affected --json
   CLI->>Checks: run typecheck, route tests, SEO, cache checks
   Checks-->>Reports: diagnostics with codes and evidence
-  Reports-->>Dev: pass/warn/fail + next actions
+  Reports-->>Dev: pass/warn/fail and next actions
 ```
 
 ## 6. Safe Edit Transaction Flow
@@ -303,7 +303,7 @@ flowchart TB
   L0a[Routes, files, imports, tests]
   L1a[Component contracts, route contracts, ownership]
   L2a[Metadata exports, render declarations, schema exports]
-  L3a[Prop/data consumption when useful]
+  L3a[Prop and data consumption when useful]
 
   L0 --> L0a
   L1 --> L1a
@@ -325,7 +325,7 @@ This is the eventual visual UI shape. The CLI and manifests should work first.
 
 ```mermaid
 flowchart LR
-  Sidebar[Route / File / Component Picker]
+  Sidebar[Route, File, Component Picker]
   Canvas[Graph Canvas]
   Inspector[Node Inspector]
   Why[Why Panel]
@@ -338,7 +338,7 @@ flowchart LR
   Inspector --> Checks
   Inspector --> SafeEdits
 
-  Why -->|render/cache/seo/graph explanations| Inspector
+  Why -->|render cache seo graph explanations| Inspector
   Checks -->|affected checks| Inspector
   SafeEdits -->|dry run transaction| Inspector
 ```
@@ -351,21 +351,21 @@ The first prototype should be able to show this graph for a small app:
 
 ```mermaid
 flowchart TB
-  Home[/route: //]
-  Pricing[/route: /pricing/]
-  API[/api: /api/health/]
-  RootLayout[app/layout.tsx]
-  HomePage[app/page.tsx]
-  PricingPage[app/pricing/page.tsx]
-  Hero[components/Hero.tsx]
-  PricingHero[components/PricingHero.tsx]
-  MetaHome[meta: Home]
-  MetaPricing[meta: Pricing]
-  SEOReport[seo.report.json]
-  RoutesManifest[routes.manifest.json]
-  RenderManifest[render.manifest.json]
-  MapManifest[map.manifest.json]
-  AgentCtx[route context capsules]
+  Home["route: /"]
+  Pricing["route: /pricing"]
+  API["api: /api/health"]
+  RootLayout["app/layout.tsx"]
+  HomePage["app/page.tsx"]
+  PricingPage["app/pricing/page.tsx"]
+  Hero["components/Hero.tsx"]
+  PricingHero["components/PricingHero.tsx"]
+  MetaHome["meta: Home"]
+  MetaPricing["meta: Pricing"]
+  SEOReport["seo.report.json"]
+  RoutesManifest["routes.manifest.json"]
+  RenderManifest["render.manifest.json"]
+  MapManifest["map.manifest.json"]
+  AgentCtx["route context capsules"]
 
   Home --> RootLayout
   Pricing --> RootLayout
