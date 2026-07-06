@@ -45,7 +45,7 @@ Short form:
 - Build like Next.js.
 - Type like TanStack Start.
 - Ship like a static site when possible.
-- Run like a low-level Bun server when needed.
+- Run through the Bun adapter path when server execution is needed.
 - Let agents inspect, plan, and safely edit through a native semantic graph instead of searching the repo.
 
 ## What NeedleStart Should Own

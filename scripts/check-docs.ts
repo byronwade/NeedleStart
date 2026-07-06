@@ -1733,6 +1733,11 @@ const staleStatusPatterns = [
     message: "README.md should describe prototype Bun serving through @needle/adapter-bun.",
   },
   {
+    file: "VISION.md",
+    pattern: /low-level Bun server|Bun server|Serve through Bun|Adapter-aware Bun server/i,
+    message: "VISION.md should describe server execution through the Bun adapter path, not generic Bun server wording.",
+  },
+  {
     file: "docs/prototype-acceptance.md",
     pattern: /Bun serving(?! is implemented through `@needle\/adapter-bun`)|Serve static and SSR routes through Bun|Production Bun server|Bun server|Serve through Bun|Adapter-aware Bun server/i,
     message: "docs/prototype-acceptance.md should describe production serving through @needle/adapter-bun.",
