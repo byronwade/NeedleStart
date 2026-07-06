@@ -61,6 +61,7 @@ const forbiddenPublicClaims = [
   /answer\s+instantly/i,
   /extremely\s+fast/i,
   /maximum\s+speed/i,
+  /fastest\s+safe\s+rendering\s+strategy/i,
 ];
 
 for (const file of [
@@ -68,6 +69,8 @@ for (const file of [
   "VISION.md",
   "ARCHITECTURE.md",
   "docs/adapters.md",
+  "docs/roadmap.md",
+  "docs/task-backlog.md",
   "docs/product-strategy.md",
   "docs/risk-mitigation.md",
   "docs/public/index.md",

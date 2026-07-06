@@ -246,7 +246,7 @@ Definition of done:
 
 ## Phase 5: Render Modes
 
-Goal: every route compiles into the fastest safe rendering strategy.
+Goal: every route compiles into the safest appropriate rendering strategy with clear performance evidence.
 
 Public API:
 
