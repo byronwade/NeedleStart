@@ -49,6 +49,7 @@ NeedleStart is still in Phase 0. Unless `docs/status.md` marks a behavior implem
 
 ## Governance and Launch
 
+- [Open Source Community and Vercel Program Readiness](open-source-community.md): open source posture, Vercel readiness, credits policy, and community impact metrics.
 - [Release Policy](release.md): package versions, prereleases, schema versions, changelogs, and verification gates.
 - [Examples Strategy](examples.md): examples as proof vehicles and future fixtures.
 - [Comparison Positioning](comparisons.md): honest comparison rules and when to choose other tools.
@@ -68,6 +69,8 @@ NeedleStart is still in Phase 0. Unless `docs/status.md` marks a behavior implem
 - [Vision](../VISION.md): product purpose and promises.
 - [Architecture](../ARCHITECTURE.md): system layers and strategic technology split.
 - [Contributing](../CONTRIBUTING.md): contribution flow and review standards.
+- [Code of Conduct](../CODE_OF_CONDUCT.md): community standards.
+- [Governance](../GOVERNANCE.md): maintainer and decision process.
 - [Agent Rules](../AGENTS.md): operating guide for AI agents working in this repository.
 - [Glossary](glossary.md): shared terminology.
 
@@ -100,4 +103,5 @@ NeedleStart is still in Phase 0. Unless `docs/status.md` marks a behavior implem
 - Keep product strategy aligned with research evidence and implementation reality.
 - Keep public docs aligned with `docs/public-docs.md` and `docs/website-content-map.md`.
 - Keep benchmark claims aligned with `docs/benchmarks.md` and `docs/benchmark-methodology.md`.
+- Keep open source community docs aligned with `CODE_OF_CONDUCT.md`, `GOVERNANCE.md`, and `docs/open-source-community.md`.
 - Keep governance docs aligned with release, compatibility, and security decisions.
