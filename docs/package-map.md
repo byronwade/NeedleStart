@@ -13,7 +13,7 @@ Scope: package names and entrypoints are scaffolded; package behavior remains pl
 | Package | Responsibility |
 | --- | --- |
 | `create-needle` | One-command project creation. |
-| `@needle/cli` | CLI commands such as `dev`, `build`, `start`, `routes`, `inspect`, `seo`, `map`, `agent`, and `check`. |
+| `@needle/cli` | Planned `needle` command surface: `needle dev`, `needle build`, `needle start`, `needle routes`, `needle inspect`, `needle check`, `needle seo`, `needle map`, `needle agent`, `needle mcp`, `needle edit`, and `needle migrate`. |
 | `@needle/core` | Shared types, config, route definitions, render modes, diagnostics, and public helper types. |
 | `@needle/compiler` | App discovery, route IR, render mode extraction, manifests, generated modules, route asset metadata, API codegen, graph inputs. |
 | `@needle/vite-plugin` | Vite integration, virtual modules, route HMR, client and server entry wiring. |

@@ -92,6 +92,7 @@ const plannedNeedleCommandDocs = [
   "docs/cli.md",
   "docs/api-reference.md",
   "docs/getting-started.md",
+  "docs/package-map.md",
   "docs/public/reference/cli.md",
 ];
 
@@ -230,6 +231,11 @@ const staleStatusPatterns = [
     file: "docs/checklists/phase-1-scaffold.md",
     pattern: /Status: Planned|It is not evidence that scaffolding exists|documented placeholder reason/i,
     message: "docs/checklists/phase-1-scaffold.md still treats scaffold evidence as unavailable.",
+  },
+  {
+    file: "docs/phase-1-build-plan.md",
+    pattern: /The first implementation PR should prove only this|The Phase 1 scaffold should add or update|When Phase 1 lands/i,
+    message: "docs/phase-1-build-plan.md still frames the existing scaffold as future work.",
   },
   {
     file: "docs/skills/README.md",

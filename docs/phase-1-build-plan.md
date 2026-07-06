@@ -26,13 +26,15 @@ bun run check
 
 Create a clean monorepo foundation that makes later compiler, runtime, SEO, map, and agent work possible without package-boundary drift.
 
-The first implementation PR should prove only this:
+The initial scaffold proves this foundation:
 
 - The workspace installs.
 - The package graph is explicit.
 - Each package has an entrypoint.
 - Placeholder tests and type checks run.
 - Documentation still clearly separates planned behavior from implemented behavior.
+
+Future Phase 1 hardening should preserve those guarantees while adding the smallest implementation surface needed for Phase 1A.
 
 ## Package Scaffold
 
@@ -84,7 +86,7 @@ create-needle
 
 ## Root Files
 
-The Phase 1 scaffold should add or update:
+The Phase 1 scaffold includes:
 
 - `package.json` with Bun workspace configuration.
 - `bun.lockb` after install.
@@ -194,7 +196,7 @@ Those belong to later roadmap tasks after the package foundation exists.
 
 ## Documentation Checklist
 
-When Phase 1 lands, update:
+When Phase 1 scaffold files, package boundaries, commands, or status change, update:
 
 - `README.md`: current status, setup commands, and implemented package structure.
 - `AGENTS.md`: real commands, package boundaries, generated-file rules if any.
