@@ -733,6 +733,16 @@ for (const doc of agentListedSyncDocs) {
   }
 }
 
+const agentPlaybookDocs = ["docs/skills", "docs/subagents"]
+  .flatMap((dir) => walkMarkdown(join(root, dir)).map((path) => rel(path)))
+  .sort();
+
+for (const doc of agentPlaybookDocs) {
+  if (!agentListedSyncDocs.includes(doc)) {
+    failures.push(`AGENTS.md required documentation sync list does not include agent playbook file: ${doc}.`);
+  }
+}
+
 for (const doc of agentRequiredSyncDocs) {
   if (!existsSync(join(root, doc))) {
     failures.push(`AGENTS.md required documentation sync file is missing: ${doc}.`);

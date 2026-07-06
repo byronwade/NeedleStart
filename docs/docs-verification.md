@@ -135,7 +135,7 @@ Expected result: package names and paths stay aligned across `docs/package-map.m
 
 Automated coverage in `bun run docs:check` also requires the AGENTS required-documentation-sync list to include existing root docs, docs hub, status, roadmap, package map, documentation standards, freshness rules, maintenance rules, verification rules, feature contracts, runtime and compiler contracts, public-docs planning, public docs root pages, release and migration docs, speed and performance docs, Phase 1 build plan, product build readiness, and task backlog files that agents must evaluate on every change.
 
-It also parses the AGENTS required-documentation-sync section directly. Every path listed there must exist, and every canonical must-check documentation contract, security, performance, public-docs, checklist, skill, and subagent playbook file must remain listed there.
+It also parses the AGENTS required-documentation-sync section directly. Every path listed there must exist, and every canonical must-check documentation contract, security, performance, public-docs, and checklist file must remain listed there. It also discovers every Markdown file under `docs/skills/` and `docs/subagents/` and requires each playbook file to appear in the AGENTS sync list.
 
 Prototype and implementation-sequence docs must describe Bun serving through `@needle/adapter-bun` instead of generic "Bun server" wording that could imply a separate active runtime package.
 

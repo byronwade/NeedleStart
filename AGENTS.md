@@ -118,7 +118,19 @@ Every agent change must evaluate whether these files need updates:
 - `docs/glossary.md`
 - `docs/task-backlog.md`
 - `docs/skills/README.md`
+- `docs/skills/agent-kernel-designer.md`
+- `docs/skills/docs-maintainer.md`
+- `docs/skills/needle-map-designer.md`
+- `docs/skills/project-maintainer.md`
+- `docs/skills/seo-runtime-guardian.md`
+- `docs/skills/strategic-app-builder.md`
 - `docs/subagents/README.md`
+- `docs/subagents/agent-safety.md`
+- `docs/subagents/architect.md`
+- `docs/subagents/compiler-map.md`
+- `docs/subagents/docs-keeper.md`
+- `docs/subagents/runtime-seo.md`
+- `docs/subagents/verification.md`
 
 Update `README.md` when:
 
