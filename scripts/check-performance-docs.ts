@@ -13,6 +13,7 @@ const requiredDocs = [
   "docs/speed-strategy.md",
   "docs/speed-decisions.md",
   "docs/speed-capability-audit.md",
+  "docs/implementation-speed-rules.md",
   "docs/benchmark-methodology.md",
   "docs/benchmark-fixtures.md",
   "docs/checklists/performance-evidence.md",
@@ -24,6 +25,9 @@ for (const doc of requiredDocs) {
 
 const benchmarkFixtures = read("docs/benchmark-fixtures.md");
 for (const fixture of [
+  "tiny-static",
+  "medium-100-routes",
+  "large-1000-routes",
   "basic-static",
   "basic-ssr",
   "hot-api",

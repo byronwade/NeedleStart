@@ -34,7 +34,9 @@ Also apply `docs/docs-freshness-policy.md` for any change that can make docs sta
 - `docs/security-contract.md` still reflects high-risk surfaces, threat model rules, secret handling, production error behavior, security headers, agent/MCP write rules, vulnerability intake, supply-chain release rules, and evidence requirements.
 - `docs/performance-contract.md` still reflects route budgets, Core Web Vitals target language, `.lumina/perf.report.json`, performance diagnostics, benchmark evidence, and public speed-claim rules.
 - `docs/speed-decisions.md` still reflects rendering defaults, build pipeline choices, runtime request path, React Compiler, React streaming, resource hints, fetch priority, speculation rules, bfcache, image/font delivery, compression, hot APIs, cache strategy, compiler scaling, rejected defaults, and benchmark positioning.
+- `docs/implementation-speed-rules.md` still reflects early benchmark skeleton paths, dependency pin policy, generated artifact provenance, request-path import rules, and code-level speed rules.
 - `docs/speed-capability-audit.md` still maps every major speed surface to a decision, source docs, proof gate, and implementation follow-up.
+- `docs/large-repo-build-architecture.md` still reflects workspace graph, shared-file identity, split-app support, affected builds, terminal output, HMR summaries, and observability reports.
 - `docs/public-docs-site-architecture.md` and `docs/website-content-map.md` still reflect public docs metadata, routing, navigation, source mapping, and renderer decisions.
 - Planned, scaffolded, implemented, and verified behavior are clearly separated.
 - Tool-specific wrappers under `CLAUDE.md`, `.claude/`, `.agents/skills/`, and `.cursor/rules/` remain thin pointers to vendor-neutral docs instead of new sources of truth.
@@ -85,6 +87,7 @@ Also apply `docs/docs-freshness-policy.md` for any change that can make docs sta
 - SEO behavior changes: update `docs/seo-engine.md`, `docs/seo-contract.md`, `docs/api-reference.md`, `docs/manifest-contracts.md`, `docs/runtime-contract.md`, `docs/cache-contract.md`, and public SEO reference.
 - Accessibility behavior, accessibility diagnostics, route focus behavior, framework-owned form errors, public docs UI, or accessibility evidence changes: update `docs/accessibility.md`, `docs/accessibility-contract.md`, `docs/testing-contract.md`, `docs/seo-contract.md`, and public accessibility reference.
 - Generated files change: update `docs/manifest-contracts.md`, `docs/api-reference.md`, `docs/runtime-contract.md`, `docs/agent-kernel.md`, `docs/machine-readable-docs.md`, and public manifest or project-structure references.
+- Workspace graph, shared-file identity, split-app, affected-build, terminal output, HMR summary, or large-repo observability behavior changes: update `docs/large-repo-build-architecture.md`, `docs/compiler-ir.md`, `docs/lumina-map.md`, `docs/package-map.md`, `docs/manifest-contracts.md`, `docs/runtime-contract.md`, and public docs when applicable.
 - Manifest schema versions change: update `docs/versioning-and-upgrades.md` and machine-readable docs.
 - Public helpers change: update `docs/api-reference.md`.
 - Agent JSON changes: update `docs/agent-kernel.md` and `docs/mcp-server.md`.
@@ -127,6 +130,7 @@ Also apply `docs/docs-freshness-policy.md` for any change that can make docs sta
 
 Performance-sensitive changes should update `docs/performance.md`, `docs/performance-contract.md`, `docs/speed-strategy.md`, `docs/benchmark-methodology.md`, `docs/testing-contract.md`, `docs/manifest-contracts.md`, and public performance reference when applicable.
 Speed-sensitive architecture decisions should also update `docs/speed-decisions.md` and explain whether the change follows or revises an existing decision.
+Implementation-level speed rules should also update `docs/implementation-speed-rules.md` when early benchmark skeletons, dependency pins, generated artifact provenance, or request-path import guardrails change.
 Whole-system speed reviews should update `docs/speed-capability-audit.md` when a new speed surface, proof gate, or implementation follow-up appears.
 
 ## Update Speed Strategy When
@@ -138,6 +142,7 @@ Whole-system speed reviews should update `docs/speed-capability-audit.md` when a
 - SEO metadata, sitemap generation, robots output, or public HTML checks change.
 - Agent-facing JSON grows or changes shape.
 - New performance budgets or benchmark fixtures are introduced.
+- Early benchmark skeleton paths, dependency pins, generated artifact provenance, or request-path import rules change.
 - Test fixture, snapshot, or CI behavior changes that affect performance evidence.
 - Public speed positioning changes.
 
@@ -151,6 +156,7 @@ Whole-system speed reviews should update `docs/speed-capability-audit.md` when a
 - 103 Early Hints support is added, removed, or scoped.
 - Hot API, schema generation, or micro-cache defaults change.
 - Runtime request routing adds per-request work.
+- Runtime request routing imports or reads any compiler, map, agent, MCP, docs, or source-discovery path.
 - Compiler graph or route discovery scaling strategy changes.
 - A rejected default becomes viable because benchmark evidence exists.
 

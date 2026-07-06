@@ -101,6 +101,13 @@ Planned generated files:
 | `.lumina/graph.json` | Planned | Graph data for compiler, map, and agents. |
 | `.lumina/seo.report.json` | Planned | SEO audit output. |
 | `.lumina/perf.report.json` | Planned | Performance budget output. |
+| `.lumina/workspace.json` | Planned | Workspace apps, packages, settings, and generated artifact index. |
+| `.lumina/workspace-graph.json` | Planned | Cross-app graph for shared files, packages, routes, tests, owners, and artifacts. |
+| `.lumina/affected.json` | Planned | Affected apps, routes, packages, tests, generated artifacts, and reasons. |
+| `.lumina/build-trace.json` | Planned | Build phases, timings, cache behavior, and diagnostics. |
+| `.lumina/cache-report.json` | Planned | Cache keys, hits, misses, invalidations, and reused artifact summary. |
+| `.lumina/hmr-report.json` | Planned | Dev server update scope, invalidated modules, route updates, and timings. |
+| `.lumina/split-report.json` | Planned | Planned app or route split analysis and generated artifact movement. |
 | `.lumina/context/*.ctx.json` | Planned | Route or surface context capsules. |
 | `.lumina/context/agent-index.json` | Planned | Agent context index. |
 | `.lumina/mutations.json` | Planned | Safe edit mutation log. |

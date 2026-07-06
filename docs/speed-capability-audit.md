@@ -24,6 +24,7 @@ This audit is based on current primary guidance and the repository contracts:
 | Vite/Rolldown build | Use Vite/Rolldown; avoid custom bundler until measured limits require it. | [Speed Decisions](speed-decisions.md), [Architecture](../ARCHITECTURE.md), [Benchmark Methodology](benchmark-methodology.md) | Vite plugin fixtures, build timing, dev startup timing, migration notes. | Covered as planned |
 | Large-app dev mode | Evaluate bundled dev mode only when module fan-out is measured. | [Speed Decisions](speed-decisions.md), [Speed Strategy](speed-strategy.md) | Large-app fixture showing request count, reload time, HMR behavior, and memory. | Covered as planned |
 | Runtime adapter | Bun first, Node/static early, runtime request path manifest-driven. | [Adapter Contract](adapter-contract.md), [Runtime Contract](runtime-contract.md), [Speed Decisions](speed-decisions.md) | Bun/Node/static adapter parity tests and separate benchmark tracks. | Covered as planned |
+| Request-path imports | Production request paths must not import compiler, map, agent, MCP, docs, or source discovery code. | [Implementation Speed Rules](implementation-speed-rules.md), [Runtime Contract](runtime-contract.md), [Speed Decisions](speed-decisions.md) | Runtime import/read test after adapter behavior exists. | Covered as planned; implementation evidence still required |
 | Bun native dispatch | Generated route table remains canonical; Bun adapter may lower compatible routes into native `Bun.serve({ routes })` only with parity and timing evidence. | [Speed Decisions](speed-decisions.md), [Adapter Contract](adapter-contract.md) | Bun native-route fixture, generated-matcher fallback fixture, dispatch timing comparison. | Covered as planned; implementation evidence still required |
 | Route matching | Precomputed route tables; no source discovery on request. | [Routing Contract](routing-contract.md), [Compiler IR](compiler-ir.md), [Runtime Contract](runtime-contract.md) | Route manifest snapshots and runtime tests proving generated artifacts are used. | Covered as planned |
 | Compiler scaling | Content-hash caching, normalized IDs, deterministic sorting, layered graph extraction. | [Compiler IR](compiler-ir.md), [Lumina Map](lumina-map.md), [Speed Decisions](speed-decisions.md) | Thousand-route fixture, changed-file update timing, graph query timing. | Covered as planned |
@@ -50,6 +51,7 @@ This audit is based on current primary guidance and the repository contracts:
 | Agent context | Compact route context and affected-check selection instead of repository-wide reads. | [Agent Kernel](agent-kernel.md), [Machine-Readable Documentation](machine-readable-docs.md), [Speed Strategy](speed-strategy.md) | Context size budgets, map query timing, affected-check fixture. | Covered as planned |
 | Field measurement | RUM and Core Web Vitals field data are optional app instrumentation, never default framework telemetry. | [Speed Decisions](speed-decisions.md), [Performance Contract](performance-contract.md) | Optional web-vitals example, no-default-telemetry test, field-data claim policy. | Covered as planned |
 | Benchmarks | Raw data, methodology, equivalent behavior, variance, and separate tracks. | [Benchmark Methodology](benchmark-methodology.md), [Performance Contract](performance-contract.md) | Raw result folder, environment metadata, commit SHA, commands. | Covered as planned |
+| Early speed skeleton | Add fixture and benchmark skeletons before route discovery expands; report `not implemented` until behavior exists. | [Implementation Speed Rules](implementation-speed-rules.md), [Benchmark Fixtures](benchmark-fixtures.md) | `tiny-static`, `medium-100-routes`, `large-1000-routes`, and skeleton benchmark paths. | Covered as planned; no benchmark evidence yet |
 
 ## Current Judgment
 
@@ -61,6 +63,7 @@ The documentation now covers the major speed decision surfaces as planned behavi
 - Route code splitting, CSS splitting, source-map output, and telemetry must stay explicit defaults with fixture evidence before any exception.
 - 103 Early Hints should be modeled as an adapter capability, not a universal default.
 - Public speed claims must wait for raw data and comparable behavior.
+- The early benchmark skeleton should land before route discovery expands, but skeleton files must not be treated as benchmark proof.
 
 ## Required Follow-Up At Implementation Time
 
@@ -69,6 +72,7 @@ After Phase 1 scaffold and before speed-sensitive implementation:
 - Pin actual Vite/Rolldown/Bun/React versions in package docs and lockfile evidence after a fresh source check.
 - Default to current stable Vite 8.x/Rolldown if scaffold work starts from the 2026-07-06 research snapshot and no blocking regression is found.
 - Add fixtures that can later prove build speed, route discovery speed, and browser delivery behavior.
+- Add the early fixture and benchmark skeleton from `docs/implementation-speed-rules.md` before expanding route discovery and adapter behavior.
 
 Before runtime/adapters are marked verified:
 

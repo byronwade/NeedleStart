@@ -146,7 +146,11 @@ Planned `.lumina/perf.report.json` shape:
 
 ```json
 {
-  "schemaVersion": "0.1.0",
+  "schemaVersion": "lumina.perf-report.v0",
+  "generatedBy": {
+    "package": "@lumina/compiler",
+    "version": "0.0.0"
+  },
   "generatedAt": "2026-01-01T00:00:00.000Z",
   "routes": [
     {

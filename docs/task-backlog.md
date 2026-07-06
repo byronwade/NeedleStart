@@ -7,9 +7,9 @@ This backlog turns the roadmap into concrete implementation tasks. Each task sho
 
 Unless a task is explicitly marked `Verified.` or `Scaffolded.` with evidence, its "Definition of done" is planned acceptance criteria, not a claim that the behavior exists today. Future implementation tasks should use `should` wording for behavior that does not exist yet.
 
-Current implementation path: Phase 1A expands and stabilizes the shared core data model, then begins route discovery.
+Current implementation path: Phase 1A expands and stabilizes the shared core data model, Phase 1B adds an early benchmark and fixture skeleton with no public claims, Phase 1C documents the large-repo workspace graph lane, then route discovery begins.
 
-MVP Alpha implementation path: keep PR 1A through PR 4 focused on core model hardening, route discovery, deterministic `.lumina/routes.json`, basic render mode data for `.lumina/render-manifest.json`, the first file-level `.lumina/map.json`, CLI inspection, and a demo app. API routes, MCP, safe edits, migration, Node adapter runtime behavior, and benchmarks are post-MVP unless `docs/mvp-alpha-scope.md` changes in the same work.
+MVP Alpha implementation path: keep PR 1A through PR 4 focused on core model hardening, the early benchmark skeleton, large-repo architecture planning, route discovery, deterministic `.lumina/routes.json`, basic render mode data for `.lumina/render-manifest.json`, the first file-level `.lumina/map.json`, CLI inspection, and a demo app. API routes, MCP, safe edits, migration, Node adapter runtime behavior, benchmark publishing, and performance claims are post-MVP unless `docs/mvp-alpha-scope.md` changes in the same work.
 
 ## PR 0A: AI Collaboration Playbooks
 
@@ -434,7 +434,122 @@ Definition of done:
 - CLI, compiler, map, agent, MCP, adapters, and devtools import these types instead of defining local substitutes.
 - Type tests and fixture tests verify the shape.
 
-## PR 1B: Adapter Package Baseline
+## PR 1B: Early Benchmark And Fixture Skeleton
+
+Goal: create the speed evidence path before route discovery and adapter behavior expand.
+
+MVP Alpha role: keep the first implementation honest by reporting measured or `not implemented` status for the first speed surfaces without publishing claims.
+
+Read first:
+
+- `docs/implementation-speed-rules.md`
+- `docs/benchmark-fixtures.md`
+- `docs/benchmark-methodology.md`
+- `docs/performance-contract.md`
+- `docs/speed-decisions.md`
+
+Definition of done:
+
+- `fixtures/apps/tiny-static/` exists with deterministic source.
+- `fixtures/apps/medium-100-routes/` exists with deterministic source or generator.
+- `fixtures/apps/large-1000-routes/` exists with deterministic source or generator.
+- `benchmarks/route-discovery.bench.ts` exists and reports `not implemented` until route discovery exists.
+- `benchmarks/manifest-size.bench.ts` exists and reports `not implemented` until generated manifests exist.
+- `benchmarks/graph-query.bench.ts` exists and reports `not implemented` until Lumina Map queries exist.
+- `benchmarks/adapter-dispatch.bench.ts` exists and reports `not implemented` until runtime adapters exist.
+- Benchmark skeleton output separates developer speed, user speed, and agent speed.
+- No synthetic benchmark results or public speed claims are added.
+- Dependency versions used by measured work are pinned before any result is recorded.
+- README, AGENTS, roadmap, speed docs, benchmark fixtures, and testing docs remain aligned.
+
+## PR 1C: Large-Repo Build Architecture
+
+Goal: document the large-repo foundation before route discovery, dev server work, and runtime adapters grow.
+
+Read first:
+
+- `docs/large-repo-build-architecture.md`
+- `docs/compiler-ir.md`
+- `docs/lumina-map.md`
+- `docs/package-map.md`
+- `docs/performance-contract.md`
+- `docs/runtime-contract.md`
+- `docs/speed-strategy.md`
+
+Definition of done:
+
+- Workspace graph concepts are documented.
+- Shared file identity and generated artifact identity are documented.
+- Split-app support is documented.
+- Affected build, check, test, and map commands are documented.
+- Terminal output and logs are documented for large workspaces.
+- Observability reports are documented.
+- Roadmap, backlog, manifest contracts, package map, and agent rules link to the large-repo lane.
+- Production runtime boundaries forbid workspace graph discovery and source crawling.
+
+## PR 1D: Workspace Graph Contract
+
+Goal: add the first workspace-level graph contract and stable JSON shape.
+
+Definition of done:
+
+- `LuminaWorkspace`, app, package, shared-file, generated-artifact, and workspace graph type drafts are contract-backed in docs or `@lumina/core`.
+- `.lumina/workspace.json` and `.lumina/workspace-graph.json` planned schemas include `schemaVersion` and `generatedBy`.
+- Snapshot fixtures cover a single-app workspace and a multi-app workspace.
+
+## PR 1E: Shared File Identity And Artifact Identity
+
+Goal: let one source file be consumed by multiple apps without copying generated output blindly.
+
+Definition of done:
+
+- Shared files use normalized paths, content hashes, ownership metadata, consumer lists, and deterministic ordering.
+- Generated artifacts track source inputs and consumers separately from source identity.
+- Public artifacts avoid absolute local paths.
+- Fixture snapshots cover a shared component and shared schema consumed by multiple apps.
+
+## PR 1F: Split-App Planning
+
+Goal: plan how apps and routes can move across workspace boundaries without duplicating packages.
+
+Definition of done:
+
+- `lumina workspace explain <file>` and future split-report behavior are specified.
+- `.lumina/split-report.json` schema is documented.
+- Split plans list shared packages, affected routes, generated artifacts, and manual review items.
+- Safe edit transactions remain required before mutating user files.
+
+## PR 1G: Affected Work Selection
+
+Goal: select affected apps, routes, packages, tests, and generated artifacts from the workspace graph.
+
+Definition of done:
+
+- `lumina build --affected`, `lumina check --affected`, `lumina test --affected`, and `lumina map affected <file>` are planned with stable JSON output.
+- `.lumina/affected.json` schema is documented.
+- Fixtures cover shared-file changes, app-local changes, and route moves.
+
+## PR 1H: Terminal Output And Logs
+
+Goal: make large-repo output concise by default and structured when requested.
+
+Definition of done:
+
+- Build, check, test, dev, and HMR output have phase names, timings, grouped diagnostics, cache summaries, affected summaries, and next actions.
+- JSON output is stable and compact.
+- Verbose mode exists for deeper debugging without noisy default stack traces.
+
+## PR 1I: Large-Repo Observability Reports
+
+Goal: emit build, cache, HMR, generated artifact, and large-repo report artifacts without adding production payload by default.
+
+Definition of done:
+
+- `.lumina/build-trace.json`, `.lumina/cache-report.json`, `.lumina/hmr-report.json`, and `.lumina/split-report.json` are documented.
+- Reports avoid secrets, absolute local paths, random IDs, and machine-specific values unless marked raw benchmark data.
+- Runtime adapters do not read these reports on the request path.
+
+## PR 1J: Adapter Package Baseline
 
 Goal: create early adapter package boundaries.
 

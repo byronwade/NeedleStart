@@ -25,6 +25,12 @@ Lumina apps should use:
 lumina.config.ts
 ```
 
+Large multi-app workspaces may later add:
+
+```txt
+lumina.workspace.ts
+```
+
 Planned minimal config:
 
 ```ts
@@ -37,6 +43,8 @@ export default defineConfig({
 ```
 
 `defineConfig()` should provide type checking and narrow accepted values. It should not execute runtime request logic.
+
+`defineWorkspace()` is planned for multi-app workspace topology, shared-file policy, affected build settings, and terminal output settings. It should feed compiler and CLI planning only; runtime adapters must consume generated app-specific output instead of evaluating workspace source config.
 
 ## Runtime And Adapter Ownership
 
@@ -106,8 +114,55 @@ Rules:
 | `devtools` | Planned | Local-only devtools settings. |
 | `performance` | Planned | Budgets and report behavior. |
 | `env` | Planned | Environment variable policy and public prefix behavior. |
+| `workspace` | Planned | Link to normalized workspace graph settings when `lumina.workspace.ts` exists. |
 
 Do not treat this table as final API. It is the planned reference home until implementation settles exact fields.
+
+## Workspace Config
+
+Draft shape:
+
+```ts
+import { defineWorkspace } from "lumina"
+
+export default defineWorkspace({
+  apps: {
+    marketing: "apps/marketing",
+    dashboard: "apps/dashboard",
+    docs: "apps/docs",
+  },
+  packages: ["packages/*"],
+  sharing: {
+    mode: "graph",
+    allowSharedRoutes: false,
+    allowSharedComponents: true,
+    allowSharedContent: true,
+    duplicateGeneratedAssets: "never-unless-required",
+  },
+  performance: {
+    affectedBuilds: true,
+    cache: {
+      contentHash: true,
+      graphSchemaHash: true,
+      packageDependencyHash: true,
+    },
+    terminal: {
+      default: "summary",
+      json: true,
+      timings: true,
+      cacheSummary: true,
+    },
+  },
+})
+```
+
+Rules:
+
+- Workspace config is planned, not implemented.
+- Workspace config must normalize app and package paths.
+- Workspace config must not serialize secrets.
+- Workspace config must not enable runtime source discovery.
+- Workspace-generated output must follow [Large-Repo Build Architecture](large-repo-build-architecture.md).
 
 ## Performance Delivery Config
 
@@ -236,6 +291,13 @@ Config can affect:
 - `.lumina/graph.json`.
 - `.lumina/seo.report.json`.
 - `.lumina/perf.report.json`.
+- `.lumina/workspace.json`.
+- `.lumina/workspace-graph.json`.
+- `.lumina/affected.json`.
+- `.lumina/build-trace.json`.
+- `.lumina/cache-report.json`.
+- `.lumina/hmr-report.json`.
+- `.lumina/split-report.json`.
 - `.lumina/context/*.ctx.json`.
 - `.lumina/context/agent-index.json`.
 - `.lumina/mutations.json`.

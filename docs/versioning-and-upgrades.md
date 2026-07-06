@@ -29,7 +29,7 @@ Research backing:
 | CLI commands | Command options, exit codes, and JSON output are public contracts once released. | Update [CLI Reference](cli.md) and [API Reference](api-reference.md). |
 | Public helper APIs | Helper names, signatures, defaults, and errors are public contracts once released. | Update feature docs and API reference. |
 | Config | Config fields, defaults, loading behavior, environment policy, and normalized output are public contracts once released. | Update [Config](config.md), [Configuration Contract](config-contract.md), and migration notes for changes. |
-| Manifests | Every generated JSON artifact must include `schemaVersion`. | Update [Manifest Contracts](manifest-contracts.md) and machine-readable docs. |
+| Manifests | Every generated JSON artifact must include `schemaVersion` and `generatedBy`. | Update [Manifest Contracts](manifest-contracts.md) and machine-readable docs. |
 | Agent context | Context capsule JSON must include schema versions. | Update [Agent Kernel](agent-kernel.md), [MCP Server](mcp-server.md), and [Machine-Readable Documentation](machine-readable-docs.md). |
 | Docs site | Public docs should identify the product version they describe once releases exist. | Add docs-site version switcher or version labels before stable public launch. |
 | Examples | Examples should name compatible Lumina versions. | Update example READMEs when examples exist. |
@@ -63,6 +63,10 @@ Generated files should use explicit schema versions:
 ```json
 {
   "schemaVersion": "lumina.routes.v0",
+  "generatedBy": {
+    "package": "@lumina/compiler",
+    "version": "0.0.0"
+  },
   "generatedAt": "2026-07-06T00:00:00.000Z",
   "routes": []
 }

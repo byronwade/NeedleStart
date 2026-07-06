@@ -41,7 +41,7 @@ Lumina is in Phase 1: monorepo scaffold.
 
 ## Current Next Step
 
-The next implementation step is Phase 1A: expand and stabilize the shared core data model, then begin route discovery. The next prototype target is MVP Alpha, defined in `docs/mvp-alpha-scope.md`, and should stay focused on route discovery, basic render modes, generated route/render/map artifacts, CLI inspection, and a demo app. Agent workflow for that build target is scaffolded in `docs/alpha-agent-operating-system.md`, `docs/alpha-work-routing.md`, and `docs/alpha-drift-prevention.md`. See `docs/phase-1-build-plan.md` and `docs/task-backlog.md`.
+The next implementation path is Phase 1A shared core model hardening, Phase 1B early benchmark and fixture skeleton, Phase 1C large-repo workspace graph planning, then route discovery. The next prototype target is MVP Alpha, defined in `docs/mvp-alpha-scope.md`, and should stay focused on route discovery, basic render modes, generated route/render/map artifacts, CLI inspection, and a demo app. Agent workflow for that build target is scaffolded in `docs/alpha-agent-operating-system.md`, `docs/alpha-work-routing.md`, and `docs/alpha-drift-prevention.md`. See `docs/phase-1-build-plan.md`, `docs/large-repo-build-architecture.md`, and `docs/task-backlog.md`.
 
 ## MVP Alpha Target Status
 

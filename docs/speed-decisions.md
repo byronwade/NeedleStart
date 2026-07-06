@@ -6,6 +6,8 @@ Audience: framework contributors, runtime authors, compiler authors, performance
 
 This page records the speed-sensitive product and engineering decisions Lumina should carry into implementation. It is not benchmark evidence. It is the decision guardrail that keeps the project pointed at proven fast paths while preventing premature custom infrastructure.
 
+Code-level speed rules for implementation live in [Implementation Speed Rules](implementation-speed-rules.md).
+
 ## Research Baseline
 
 Current primary guidance supports these choices. This baseline was refreshed on 2026-07-06 and must be refreshed again before implementation pins dependency versions:
@@ -59,9 +61,15 @@ Current primary guidance supports these choices. This baseline was refreshed on 
 | bfcache | Avoid framework defaults that block back/forward cache. | Browser page restoration can make repeat navigations instant. | Browser navigation test and disqualifier scan. |
 | Third-party scripts | Defer, isolate, and budget third-party scripts. | External scripts can dominate INP, LCP, and reliability. | Script budget report and example review. |
 | Compiler scaling | Content-hash caches, normalized path IDs, deterministic ordering, layered graph extraction. | Large apps need incremental graph and route updates. | Thousand-route fixture, changed-file update timing, snapshot stability. |
+| Workspace scaling | Use workspace graph, shared-file identity, app boundaries, and affected work selection before adding broad runtime complexity. | Large repos need to avoid repeated work across apps and shared packages. | Multi-app fixture, shared-file consumer snapshots, affected build timing, workspace graph query timing. |
 | Agent speed | Compact route context and affected-check selection instead of repo-wide reads. | Agent workflows become faster and cheaper as apps grow. | Context size budget, affected-check fixture, map query timing. |
 | Field measurement | Treat RUM and Core Web Vitals field data as optional app instrumentation, not framework runtime default. | Real-user data is essential for claims, but telemetry must not add default payload or privacy risk. | Optional web-vitals example, no-default-telemetry test, field-data claim policy. |
 | Metrics | Separate lab, field, build, runtime, and benchmark evidence. | One fast number is not enough to support public claims. | Benchmark methodology and raw result storage. |
+| Early speed proof | Add fixture and benchmark skeletons before route discovery expands, with `not implemented` status until behavior exists. | Speed evidence should shape implementation instead of being retrofitted after decisions are locked. | `tiny-static`, `medium-100-routes`, `large-1000-routes`, and skeleton benchmark files with no synthetic numbers. |
+| Speed categories | Separate developer speed, user speed, and agent speed in tasks and output. | Route discovery, user latency, and agent context cost regress for different reasons. | CI or benchmark status grouped by category. |
+| Dependency pins | Pin toolchain and implementation dependencies before measured work records results. | Floating dependency ranges make baseline numbers unreproducible. | Lockfile, package metadata, and raw benchmark metadata. |
+| Generated provenance | Every generated JSON artifact includes `schemaVersion` and `generatedBy`. | Agents and adapters need stable schema and producer context before trusting output. | Manifest snapshots and schema tests. |
+| Request-path graph work | Production request paths must not import compiler, map, agent, MCP, docs, or source discovery code. | Runtime speed and production safety depend on generated artifacts being the only request input. | Runtime import/read tests after adapters exist. |
 
 ## Decision Ladder
 
@@ -91,6 +99,8 @@ If a decision adds runtime work to every request, it needs a stronger justificat
 - Production source maps should default off for public output. Hidden source maps may be generated for error reporting only when config explicitly enables them and deployment docs explain where they are stored.
 - Generated code should avoid barrel imports, broad glob imports, non-static paths, and route-agnostic client bundles.
 - React Compiler should be treated as an optional build capability until fixture evidence proves compatibility and value.
+- Generated JSON artifacts should include `schemaVersion` and `generatedBy` from the first implementation.
+- Before measured implementation work records results, dependency versions used by Bun, TypeScript, Vite/Rolldown, React, parser, and compiler paths should be pinned.
 
 ## Runtime Decisions
 
@@ -99,6 +109,7 @@ If a decision adds runtime work to every request, it needs a stronger justificat
 - API and hot API handlers bypass React rendering.
 - Request routing uses precomputed route tables.
 - `@lumina/adapter-bun` may use native `Bun.serve({ routes })` dispatch for compatible static, API, and parameter routes, but the generated route table remains the canonical source and every native-lowered route needs parity coverage.
+- Runtime request handling must not import `@lumina/compiler`, `@lumina/map`, `@lumina/agent`, `@lumina/mcp`, docs, or app source discovery paths.
 - Per-request mutable state must stay request-scoped.
 - Node compatibility must not force user application code to use Bun-only APIs.
 
@@ -170,6 +181,7 @@ If a decision adds runtime work to every request, it needs a stronger justificat
 Before implementation expands a speed-sensitive surface, it must name:
 
 - Which decision above it follows.
+- Whether the work affects developer speed, user speed, agent speed, or more than one category.
 - Which generated artifact or route budget changes.
 - Which fixture proves the behavior.
 - Which benchmark, if any, is required.
@@ -190,6 +202,7 @@ Before public speed claims, implementation must provide:
 ## Related Docs
 
 - [Speed Strategy](speed-strategy.md)
+- [Implementation Speed Rules](implementation-speed-rules.md)
 - [Performance Contract](performance-contract.md)
 - [Benchmark Methodology](benchmark-methodology.md)
 - [Runtime Contract](runtime-contract.md)

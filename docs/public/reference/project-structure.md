@@ -70,6 +70,13 @@ Future work after MVP Alpha may add:
   graph.json
   seo.report.json
   perf.report.json
+  workspace.json
+  workspace-graph.json
+  affected.json
+  build-trace.json
+  cache-report.json
+  hmr-report.json
+  split-report.json
   context/
     *.ctx.json
     agent-index.json
@@ -85,7 +92,7 @@ dist/
 
 These future artifacts must not be described as implemented until the packages, commands, tests, and generated output exist.
 
-The future generated artifact names are `.lumina/graph.json`, `.lumina/seo.report.json`, `.lumina/perf.report.json`, `.lumina/context/*.ctx.json`, `.lumina/context/agent-index.json`, `.lumina/mutations.json`, `.lumina/generated/*`, `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, `dist/adapter.manifest.json`, and `dist/*`.
+The future generated artifact names are `.lumina/graph.json`, `.lumina/seo.report.json`, `.lumina/perf.report.json`, `.lumina/workspace.json`, `.lumina/workspace-graph.json`, `.lumina/affected.json`, `.lumina/build-trace.json`, `.lumina/cache-report.json`, `.lumina/hmr-report.json`, `.lumina/split-report.json`, `.lumina/context/*.ctx.json`, `.lumina/context/agent-index.json`, `.lumina/mutations.json`, `.lumina/generated/*`, `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, `dist/adapter.manifest.json`, and `dist/*`.
 
 ## Repository Structure
 

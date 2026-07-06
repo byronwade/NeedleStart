@@ -27,6 +27,7 @@ Research backing lives in [Documentation Research Notes](documentation-research.
 | Reference docs | [API Reference](api-reference.md), [CLI](cli.md), [CLI JSON Contract](cli-json-contract.md), [Diagnostics Contract](diagnostics-contract.md), [Config](config.md), [Configuration Contract](config-contract.md), [Adapter Contract](adapter-contract.md), [API Route Contract](api-route-contract.md), [Schema Contract](schema-contract.md), [Cache Contract](cache-contract.md), [SEO Contract](seo-contract.md), [Accessibility Contract](accessibility-contract.md), [Manifest Contracts](manifest-contracts.md) | Every planned public command, helper, config field, config loading rule, diagnostic rule, adapter rule, API handler rule, schema rule, cache rule, SEO rule, accessibility rule, JSON envelope, exit code, and generated artifact has a reference home. |
 | Versioning | [Versioning And Upgrades](versioning-and-upgrades.md), [Release Process](release.md), [Compatibility](compatibility.md) | Public APIs, manifests, docs outputs, deprecations, compatibility claims, and upgrade guides have rules before release work. |
 | Speed | [Speed Strategy](speed-strategy.md), [Speed Decisions](speed-decisions.md), [Speed Capability Audit](speed-capability-audit.md), [Performance](performance.md), [Performance Contract](performance-contract.md), [Benchmark Methodology](benchmark-methodology.md) | Each implementation phase names the speed-sensitive surfaces it touches, the fast-path decision it follows, the browser-delivery surfaces it affects, the route/report contracts it changes, and the evidence required before public claims. |
+| Large-repo readiness | [Large-Repo Build Architecture](large-repo-build-architecture.md), [Compiler IR](compiler-ir.md), [Lumina Map](lumina-map.md), [Package Map](package-map.md) | Workspace graph, shared-file identity, split-app planning, affected work selection, terminal output, HMR summaries, and observability reports are documented before implementation. |
 | Agent readiness | [AGENTS](../AGENTS.md), [Agent Enforcement Matrix](agent-enforcement.md), [Machine-Readable Documentation](machine-readable-docs.md), [Agent Kernel](agent-kernel.md), [MCP Server](mcp-server.md), [Safe Edit Transactions](safe-edit-transactions.md) | Agents can find stable contracts, map rules to automated gates, and know what is planned, implemented, generated, and forbidden. |
 | Public docs | [Public Docs Readiness](public-docs.md), [Public Docs Site Architecture](public-docs-site-architecture.md), [Website Content Map](website-content-map.md), [Public Website Content](public/README.md) | Public pages have status, audience, source links, route metadata, and no unsupported implementation claims. |
 | Security and governance | [Security](security.md), [Security Contract](security-contract.md), [Security Policy](../SECURITY.md), [Governance](../GOVERNANCE.md), [Maintainer Guide](maintainer-guide.md) | High-risk areas, threat model rules, review ownership, evidence, and disclosure expectations are documented before implementation touches them. |
@@ -54,12 +55,13 @@ Before expanding beyond the monorepo scaffold, the repository should have:
 - A planned performance contract for route budgets, Core Web Vitals targets, reports, diagnostics, benchmark evidence, and public speed claims.
 - A planned speed decision record for Vite/Rolldown, Bun, route code splitting, CSS delivery, production source maps, React Compiler, React streaming, resource hints, fetch priority, speculation rules, bfcache, image/font delivery, compression, optional RUM, explicit caching, hot APIs, payload budgets, compiler scaling, and rejected defaults.
 - A planned speed capability audit that maps every major speed surface to its decision, source docs, proof gate, and implementation follow-up.
+- A planned large-repo build architecture for workspace graph, shared-file identity, split-app support, affected builds, terminal output, HMR summaries, and observability reports.
 - A docs freshness process that requires README, AGENTS, roadmap, package map, status, and reference docs to stay current.
 - A benchmark policy that prevents unsupported speed claims.
 - A testing contract for fixtures, snapshots, HTTP checks, browser checks, security checks, CI gates, and evidence reporting.
 - A repeatable documentation verification runbook with exact checks and evidence expectations.
 
-This documentation foundation is present for the Phase 1 scaffold when `bun run check` passes. The current follow-up is keeping the readiness checklist aligned with implementation issues, PR descriptions, and any scaffold changes before Phase 1A expands and stabilizes the shared core data model, then begins route discovery.
+This documentation foundation is present for the Phase 1 scaffold when `bun run check` passes. The current follow-up is keeping the readiness checklist aligned with implementation issues, PR descriptions, and any scaffold changes before Phase 1A shared core model hardening, Phase 1B early benchmark skeleton work, Phase 1C large-repo workspace graph planning, and route discovery.
 
 ## Product Build Gates
 
@@ -209,7 +211,7 @@ Lumina is ready for a full product build when a contributor can:
 
 1. Read README and know the current phase.
 2. Read the docs hub and find start, guide, reference, concept, deployment, community, and agent lanes.
-3. Read the Phase 1 build plan and know the next Phase 1A task.
+3. Read the Phase 1 build plan and know the next Phase 1A, Phase 1B, and Phase 1C tasks.
 4. Read package map and know where each responsibility belongs.
 5. Read project structure docs and know what goes in the root, `app/`, `packages/`, `.lumina/`, `dist/`, and `docs/`.
 6. Read examples docs and know which starter or fixture proves an onboarding workflow.

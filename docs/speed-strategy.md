@@ -8,7 +8,19 @@ Lumina should be fast as a whole system, not only fast on one benchmark. Speed m
 
 The goal is not to make vague speed claims. The goal is to make fast paths the default, make slow paths visible, and require evidence before publishing performance claims.
 
-The concrete technology and architecture choices that support this strategy are recorded in [Speed Decisions](speed-decisions.md). Treat that page as the decision gate before adding build, runtime, React rendering, cache, hot API, or benchmark behavior.
+The concrete technology and architecture choices that support this strategy are recorded in [Speed Decisions](speed-decisions.md). Code-level implementation guardrails live in [Implementation Speed Rules](implementation-speed-rules.md). Treat those pages as the decision gate before adding build, runtime, React rendering, cache, hot API, graph query, agent context, or benchmark behavior.
+
+## Speed Categories
+
+Lumina speed work must stay split across three categories:
+
+| Category | What it protects | First evidence path |
+| --- | --- | --- |
+| Developer speed | route discovery, manifest size, dev startup, rebuild/HMR behavior | `tiny-static`, `medium-100-routes`, `large-1000-routes`, `route-discovery.bench.ts`, `manifest-size.bench.ts` |
+| User speed | static request path, SSR request path, browser payload, API and hot API latency, adapter dispatch | route and adapter fixtures, browser payload reports, `adapter-dispatch.bench.ts` |
+| Agent speed | graph query latency, affected checks, route context bytes, CLI JSON size | graph fixtures, context-size budgets, `graph-query.bench.ts` |
+
+Early status output should say `not implemented` for missing behavior instead of implying a speed pass.
 
 ## Speed Principles
 
@@ -29,6 +41,7 @@ The concrete technology and architecture choices that support this strategy are 
 
 | Surface | Speed goal | Primary docs | Evidence required |
 | --- | --- | --- | --- |
+| Early speed skeleton | Create stable fixture and benchmark paths before route discovery expands. | `docs/implementation-speed-rules.md`, `docs/benchmark-fixtures.md` | Skeleton files with `not implemented` status and no synthetic results |
 | Dev startup | Start quickly after config and route discovery. | `docs/roadmap.md`, `docs/compiler-ir.md` | Dev fixture timing after route discovery and dev server work exist |
 | HMR and route updates | Recompute changed route slices, not the whole app. | `docs/compiler-ir.md`, `docs/lumina-map.md` | Incremental route fixture |
 | Static pages | Serve prebuilt HTML with minimal runtime work. | `docs/runtime-contract.md`, `docs/seo-engine.md` | Static output and HTTP tests |
@@ -38,6 +51,7 @@ The concrete technology and architecture choices that support this strategy are 
 | Agent context | Return compact context without repository-wide reads. | `docs/agent-kernel.md`, `docs/machine-readable-docs.md` | Stable JSON size and response timing |
 | Client payload | Keep public page JS, CSS, chunk count, hydration, and debug payload budgets visible. | `docs/performance.md` | Route budget report |
 | Builds | Avoid unnecessary rebuilds with content/config hashing. | `docs/compiler-ir.md` | Build cache fixture |
+| Large-repo workspaces | Avoid repeated work across apps, shared packages, generated artifacts, and affected checks. | `docs/large-repo-build-architecture.md`, `docs/compiler-ir.md`, `docs/lumina-map.md` | Multi-app fixture, affected build snapshot, workspace graph timing |
 | Async waterfalls | Avoid serial fetch or validation work when dependencies are independent. | `docs/speed-decisions.md`, `docs/runtime-contract.md` | SSR/API fixture timings |
 | Resource loading | Emit only accurate preload, preinit, preconnect, or DNS prefetch hints. | `docs/performance-contract.md`, `docs/speed-decisions.md` | Browser fixture and report snapshot |
 | CSS, images, and fonts | Keep route CSS, LCP assets, and font loading explicit. | `docs/speed-decisions.md`, `docs/performance-contract.md` | Browser fixture and asset report |
@@ -141,6 +155,8 @@ Before scheduling or merging a feature, answer:
 9. Does it introduce an avoidable async waterfall?
 10. Does it increase public route JavaScript, CSS, chunk count, hydration, or LCP asset size?
 11. Does it change route splitting, CSS delivery, source maps, image, font, compression, script, resource hint, speculation, RUM, or bfcache behavior?
+12. Does it change early benchmark skeletons, dependency pins, generated artifact provenance, or request-path import rules?
+13. Does it change workspace graph, shared-file identity, affected build selection, terminal output, HMR summaries, or large-repo reports?
 
 If the answer is unclear, add a risk note to the task before implementation.
 

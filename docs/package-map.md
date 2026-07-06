@@ -14,13 +14,13 @@ Scope: package names and entrypoints are scaffolded; package behavior remains pl
 | --- | --- |
 | `create-lumina` | One-command project creation. |
 | `@lumina/cli` | Planned `needle` command surface: `lumina dev`, `lumina build`, `lumina start`, `lumina routes`, `lumina inspect`, `lumina check`, `lumina seo`, `lumina map`, `lumina agent`, `lumina mcp`, `lumina edit`, `lumina migrate`, and `lumina bench`. |
-| `@lumina/core` | Shared types, config, route definitions, render modes, diagnostics, and public helper types. |
-| `@lumina/compiler` | App discovery, route IR, render mode extraction, manifests, generated modules, route asset metadata, API codegen, graph inputs. |
-| `@lumina/vite-plugin` | Vite integration, virtual modules, route HMR, client and server entry wiring. |
+| `@lumina/core` | Shared types, config, route definitions, render modes, diagnostics, workspace graph, shared-file identity, generated artifact identity, and public helper types. |
+| `@lumina/compiler` | App discovery, workspace discovery, route IR, render mode extraction, manifests, generated modules, route asset metadata, API codegen, graph inputs, incremental planning, affected selection, and large-repo reports. |
+| `@lumina/vite-plugin` | Vite integration, virtual modules, route HMR, app-scoped invalidation, client and server entry wiring. |
 | `@lumina/react` | React SSR helpers, layouts, head manager, loaders, hydration, client entry helpers. |
 | `@lumina/router` | Generated route matcher, typed links, params, route helpers. |
 | `@lumina/seo` | Metadata, sitemap, robots, OG images, structured data helpers, SEO audits. |
-| `@lumina/map` | Semantic graph builder, file graph, query engine, affected checks. |
+| `@lumina/map` | Semantic graph builder, workspace graph queries, file graph, query engine, affected checks, shared-file consumers, and split-app explain output. |
 | `@lumina/agent` | App-local `AGENTS.md` generation, context capsules, task skeletons, safe edit orchestration. |
 | `@lumina/mcp` | MCP server tools and resources. |
 | `@lumina/cache` | Cache tags, route cache, response cache, invalidation primitives. |
@@ -58,15 +58,19 @@ Note: earlier planning docs referred to `@lumina/server-bun` as the Bun producti
 ## Boundary Rules
 
 - Shared public types belong in `@lumina/core`.
+- Workspace, app, package, shared-file, generated-artifact, and workspace-report types belong in `@lumina/core`.
 - Compiler-only parsing and generation belongs in `@lumina/compiler`.
+- Workspace discovery, incremental planning, affected build selection, and large-repo report generation belong in `@lumina/compiler`.
 - Runtime request handling belongs in runtime adapters, starting with `@lumina/adapter-bun`.
 - Browser-facing React helpers belong in `@lumina/react`.
 - Route asset discovery, resource-hint metadata, likely LCP asset metadata, and performance report generation belong in `@lumina/compiler` until a dedicated performance package is justified.
+- Early benchmark skeletons and fixture apps belong outside runtime packages under `benchmarks/` and `fixtures/apps/`; they must not become production dependencies.
 - Compression serving, 103 Early Hints emission, final `Link` headers, and adapter-specific bfcache-safe delivery behavior belong in runtime adapters.
 - Agent context and safe edit code belongs in `@lumina/agent`.
 - MCP protocol code belongs in `@lumina/mcp`.
 - SEO metadata helpers and audits belong in `@lumina/seo`.
 - Graph storage and graph queries belong in `@lumina/map`.
+- Workspace graph affected queries, shared-file consumer queries, and split-app explain queries belong in `@lumina/map`.
 - Schema validation and serialization belongs in `@lumina/schema`.
 
 ## Import Rules

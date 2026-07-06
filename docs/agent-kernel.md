@@ -34,6 +34,13 @@ Planned public docs and app-agent outputs:
 | `.lumina/graph.json` | Planned generated app artifact | Semantic app graph. |
 | `.lumina/seo.report.json` | Planned generated app artifact | SEO audit output for agents and tooling. |
 | `.lumina/perf.report.json` | Planned generated app artifact | Performance budget output for agents and tooling. |
+| `.lumina/workspace.json` | Planned generated app artifact | Workspace apps, packages, settings, and generated artifact index. |
+| `.lumina/workspace-graph.json` | Planned generated app artifact | Cross-app graph for shared files, packages, routes, tests, owners, and artifacts. |
+| `.lumina/affected.json` | Planned generated app artifact | Affected apps, routes, packages, tests, generated artifacts, and reasons. |
+| `.lumina/build-trace.json` | Planned generated app artifact | Build phases, timings, cache behavior, and diagnostics. |
+| `.lumina/cache-report.json` | Planned generated app artifact | Cache keys, hits, misses, invalidations, and reused artifact summary. |
+| `.lumina/hmr-report.json` | Planned generated app artifact | Dev server update scope, invalidated modules, route updates, and timings. |
+| `.lumina/split-report.json` | Planned generated app artifact | Planned app or route split analysis and generated artifact movement. |
 | `.lumina/context/*.ctx.json` | Planned generated app artifact | Route or surface context capsules. |
 | `.lumina/context/agent-index.json` | Planned generated app artifact | Index of generated agent context. |
 | `.lumina/mutations.json` | Planned generated app artifact | Safe edit mutation log. |

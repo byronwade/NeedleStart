@@ -73,6 +73,8 @@ This directory is the source of truth for Lumina planning, architecture, roadmap
 - [Speed Strategy](speed-strategy.md): whole-system speed principles, surfaces, gates, and evidence rules.
 - [Speed Decisions](speed-decisions.md): concrete fast-path decisions, rejected defaults, and implementation gates.
 - [Speed Capability Audit](speed-capability-audit.md): coverage matrix for speed decisions across framework layers.
+- [Implementation Speed Rules](implementation-speed-rules.md): code-level speed rules, early benchmark skeleton, request-path guardrails, and dependency pin policy.
+- [Large-Repo Build Architecture](large-repo-build-architecture.md): workspace graph, shared-file identity, split-app support, affected builds, terminal output, and observability reports.
 - [SEO Engine](seo-engine.md): metadata, sitemap, robots, structured data, and audits.
 - [SEO Contract](seo-contract.md): planned SEO API, metadata merge rules, generated output, diagnostics, and fixtures.
 - [API Routes](api-routes.md): planned route handler conventions.

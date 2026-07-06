@@ -27,6 +27,8 @@ MVP Alpha should prove that a small React app can be created, discovered, render
 - Expose `lumina inspect why`.
 - Include a demo app that shows the Lumina Map and inspection workflow.
 - Keep JSON output deterministic and compact.
+- Add the early benchmark and fixture skeleton with `not implemented` status only, so later speed work has stable paths before public claims exist.
+- Document the large-repo workspace graph lane before route discovery expands, without implementing multi-app runtime behavior in MVP Alpha.
 
 ## Deferred Until After MVP Alpha
 
@@ -40,7 +42,8 @@ MVP Alpha should prove that a small React app can be created, discovered, render
 - Node adapter runtime.
 - Static export adapter.
 - Migration tooling.
-- Benchmarked performance claims.
+- Benchmark publishing, public comparisons, and performance claims.
+- Implemented multi-app workspace builds, split-app mutation, and distributed cache behavior.
 - Devtools dashboard.
 
 ## MVP Demo App

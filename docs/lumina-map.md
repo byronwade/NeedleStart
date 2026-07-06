@@ -9,6 +9,8 @@ Lumina Map is the semantic dependency graph for a Lumina application.
 
 It must be a core framework feature, not a side widget.
 
+Large-repo workspace graph behavior is documented in [Large-Repo Build Architecture](large-repo-build-architecture.md). The workspace graph extends Lumina Map across apps and packages; it does not authorize runtime source discovery.
+
 ## MVP Alpha Map
 
 For MVP Alpha, the Lumina Map is a deterministic file-level graph generated from discovered routes, route source files, imported components, render mode declarations, and basic ownership or source metadata when present. It should be useful before deeper semantic contracts exist.
@@ -131,6 +133,10 @@ Planned graph nodes:
 - `sitemap`
 - `cacheTag`
 - `package`
+- `workspace`
+- `app`
+- `generatedArtifact`
+- `deploymentTarget`
 - `owner`
 - `envVar`
 
@@ -157,6 +163,11 @@ Planned edge types:
 - `usesCacheTag`
 - `usesEnv`
 - `ownedBy`
+- `workspaceContains`
+- `appUsesPackage`
+- `fileConsumedByApp`
+- `artifactGeneratedFrom`
+- `artifactConsumedByAdapter`
 - `dangerZone`
 
 ## Edge Shape
@@ -212,6 +223,9 @@ The same query engine should power:
 - MCP `get_related_files`
 - Devtools map explorer
 - Agent context capsules
+- `lumina workspace graph --json`
+- `lumina workspace apps --json`
+- `lumina workspace explain <file>`
 
 ## Agent Read Surface
 
@@ -299,6 +313,12 @@ Planned v1 acceptance criteria:
 - Explain query should include why edges exist.
 - Output should be compact and deterministic.
 - Tests should cover graph generation on fixture apps.
+
+Large-repo graph acceptance criteria remain planned separately:
+
+- Workspace graph should include apps, packages, shared files, generated artifacts, tests, owners, and deployment targets.
+- Affected queries should explain app, route, package, test, and generated artifact impact.
+- Shared-file consumers should be queryable without reading the whole repository at request time.
 
 ## Layered Semantic Extraction
 

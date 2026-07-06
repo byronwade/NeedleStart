@@ -14,6 +14,13 @@ Planned generated files include:
 - `.lumina/graph.json`
 - `.lumina/seo.report.json`
 - `.lumina/perf.report.json`
+- `.lumina/workspace.json`
+- `.lumina/workspace-graph.json`
+- `.lumina/affected.json`
+- `.lumina/build-trace.json`
+- `.lumina/cache-report.json`
+- `.lumina/hmr-report.json`
+- `.lumina/split-report.json`
 - `.lumina/context/*.ctx.json`
 - `.lumina/context/agent-index.json`
 - `.lumina/mutations.json`

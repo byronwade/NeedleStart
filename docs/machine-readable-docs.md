@@ -22,6 +22,13 @@ Lumina should make documentation consumable by humans and AI agents. Machine-rea
 | `.lumina/graph.json` | Compiler and agent graph data for apps. | Compiler and agent source contract; not a production runtime bundle |
 | `.lumina/seo.report.json` | SEO audit output for apps. | Compiler and audit source contract; adapter output may copy report data into `dist/seo.report.json` |
 | `.lumina/perf.report.json` | Performance and budget output for apps. | Compiler and audit source contract; not a production runtime bundle |
+| `.lumina/workspace.json` | Workspace apps, packages, settings, and generated artifact index. | Compiler, CLI, map, and agent source contract; not a production runtime bundle |
+| `.lumina/workspace-graph.json` | Cross-app graph for shared files, packages, routes, tests, owners, and artifacts. | Compiler, map, and agent source contract; not a production runtime bundle |
+| `.lumina/affected.json` | Affected apps, routes, packages, tests, generated artifacts, and reasons. | CLI, CI, and agent source contract; not a production runtime bundle |
+| `.lumina/build-trace.json` | Build phases, timings, cache behavior, and diagnostics. | Build observability artifact; not a production runtime bundle |
+| `.lumina/cache-report.json` | Cache keys, hits, misses, invalidations, and reused artifact summary. | Build observability artifact; not a production runtime bundle |
+| `.lumina/hmr-report.json` | Dev server update scope, invalidated modules, route updates, and timings. | Dev observability artifact; not a production runtime bundle |
+| `.lumina/split-report.json` | Planned app or route split analysis, shared dependencies, and generated artifact movement. | Planning artifact; not a production runtime bundle |
 | `.lumina/context/*.ctx.json` | Route or surface context capsules for apps. | Agent source contract; not a production runtime bundle |
 | `.lumina/context/agent-index.json` | Index of generated agent context. | Agent source contract; not a production runtime bundle |
 | `.lumina/mutations.json` | Safe edit mutation log for apps. | Agent and safe-edit source contract; not a production runtime bundle |

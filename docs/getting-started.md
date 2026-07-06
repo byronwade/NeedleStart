@@ -177,6 +177,7 @@ Future work after MVP Alpha includes:
 - Full graph output in `.lumina/graph.json`.
 - Full SEO engine and `.lumina/seo.report.json`.
 - Performance reports and `.lumina/perf.report.json`.
+- Large-repo workspace reports: `.lumina/workspace.json`, `.lumina/workspace-graph.json`, `.lumina/affected.json`, `.lumina/build-trace.json`, `.lumina/cache-report.json`, `.lumina/hmr-report.json`, and `.lumina/split-report.json`.
 - Agent context capsules under `.lumina/context/*.ctx.json` and `.lumina/context/agent-index.json`.
 - Safe edit mutation logs under `.lumina/mutations.json`.
 - Generated compiler outputs under `.lumina/generated/*`.

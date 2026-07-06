@@ -86,6 +86,7 @@ Every agent change must evaluate whether these files need updates:
 - `docs/benchmark-fixtures.md`
 - `docs/benchmark-methodology.md`
 - `docs/benchmarks.md`
+- `docs/implementation-speed-rules.md`
 - `docs/runtime-contract.md`
 - `docs/compiler-ir.md`
 - `docs/agent-kernel.md`
@@ -113,6 +114,7 @@ Every agent change must evaluate whether these files need updates:
 - `docs/speed-decisions.md`
 - `docs/speed-capability-audit.md`
 - `docs/speed-strategy.md`
+- `docs/large-repo-build-architecture.md`
 - `docs/public-docs-site-architecture.md`
 - `docs/docs-site-build-plan.md`
 - `docs/phase-1-build-plan.md`
@@ -261,6 +263,13 @@ Planned generated files include:
 .lumina/graph.json
 .lumina/seo.report.json
 .lumina/perf.report.json
+.lumina/workspace.json
+.lumina/workspace-graph.json
+.lumina/affected.json
+.lumina/build-trace.json
+.lumina/cache-report.json
+.lumina/hmr-report.json
+.lumina/split-report.json
 .lumina/context/*.ctx.json
 .lumina/context/agent-index.json
 .lumina/mutations.json
@@ -389,7 +398,9 @@ Test output used by agents must be deterministic.
 - Use `docs/performance-contract.md` when changing route budgets, performance diagnostics, `.lumina/perf.report.json`, benchmark evidence, Core Web Vitals language, or public speed claims.
 - Use `docs/benchmark-fixtures.md` when changing benchmark fixture scope, fixture names, raw result layout, performance evidence paths, or benchmark claim gates.
 - Use `docs/speed-decisions.md` when changing rendering defaults, build pipeline choices, runtime request path, route code splitting, CSS delivery, production source maps, React Compiler, React streaming or hydration behavior, browser delivery hints, 103 Early Hints, optional RUM or field-data policy, API hot paths, caching strategy, compiler scaling, agent context size, or benchmark positioning.
+- Use `docs/implementation-speed-rules.md` before implementing route discovery, generated manifests, runtime adapters, hot API paths, graph queries, agent context output, or benchmark skeletons.
 - Use `docs/speed-capability-audit.md` when reviewing whether all major speed surfaces have a documented decision, proof gate, and remaining implementation evidence.
+- Use `docs/large-repo-build-architecture.md` when changing workspace graph, shared-file identity, multi-app workspaces, split-app planning, affected builds, terminal output, HMR summaries, or large-repo observability reports.
 - Use `docs/public-docs-site-architecture.md` when changing public docs navigation, page metadata, future frontmatter, route mapping, source mapping, or docs-site behavior.
 - Use `docs/docs-site-build-plan.md` when changing future public docs implementation phases, renderer selection gates, search, navigation, accessibility, or machine-readable docs outputs.
 - Use `docs/versioning-and-upgrades.md` when changing public APIs, command contracts, config, manifest schemas, generated files, compatibility claims, or release behavior.

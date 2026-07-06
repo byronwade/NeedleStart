@@ -17,6 +17,8 @@ const requiredDocs = [
   "docs/review-checklist.md",
   "docs/threat-model.md",
   "docs/benchmark-fixtures.md",
+  "docs/implementation-speed-rules.md",
+  "docs/large-repo-build-architecture.md",
   "docs/examples-catalog.md",
   "docs/docs-site-build-plan.md",
   "docs/checklists/README.md",
@@ -31,6 +33,8 @@ const requiredEntryLinks = [
   "docs/review-checklist.md",
   "docs/threat-model.md",
   "docs/benchmark-fixtures.md",
+  "docs/implementation-speed-rules.md",
+  "docs/large-repo-build-architecture.md",
   "docs/examples-catalog.md",
   "docs/docs-site-build-plan.md",
   "docs/mvp-alpha-scope.md",
@@ -106,6 +110,8 @@ const agentRequiredSyncDocs = [
   "docs/benchmark-fixtures.md",
   "docs/benchmark-methodology.md",
   "docs/benchmarks.md",
+  "docs/implementation-speed-rules.md",
+  "docs/large-repo-build-architecture.md",
   "docs/runtime-contract.md",
   "docs/compiler-ir.md",
   "docs/agent-kernel.md",
@@ -348,6 +354,13 @@ const canonicalGeneratedArtifacts = [
   ".lumina/graph.json",
   ".lumina/seo.report.json",
   ".lumina/perf.report.json",
+  ".lumina/workspace.json",
+  ".lumina/workspace-graph.json",
+  ".lumina/affected.json",
+  ".lumina/build-trace.json",
+  ".lumina/cache-report.json",
+  ".lumina/hmr-report.json",
+  ".lumina/split-report.json",
   ".lumina/context/*.ctx.json",
   ".lumina/context/agent-index.json",
   ".lumina/mutations.json",
@@ -708,27 +721,27 @@ const prototypeScopeTerms = [
 const currentImplementationStepDocs = [
   {
     file: "README.md",
-    terms: ["The next implementation stage is Phase 1A: expand and stabilize the shared core data model, then begin route discovery."],
+    terms: ["The next implementation stage is Phase 1A shared core model hardening, Phase 1B early benchmark and fixture skeleton, Phase 1C large-repo workspace graph planning, then route discovery."],
   },
   {
     file: "docs/status.md",
-    terms: ["The next implementation step is Phase 1A: expand and stabilize the shared core data model, then begin route discovery."],
+    terms: ["The next implementation path is Phase 1A shared core model hardening, Phase 1B early benchmark and fixture skeleton, Phase 1C large-repo workspace graph planning, then route discovery."],
   },
   {
     file: "docs/roadmap.md",
-    terms: ["The next implementation stage is Phase 1A: expand and stabilize the shared core data model, then begin route discovery."],
+    terms: ["The next implementation stage is Phase 1A shared core model hardening, Phase 1B early benchmark and fixture skeleton, Phase 1C large-repo workspace graph planning, then route discovery."],
   },
   {
     file: "docs/public/roadmap.md",
-    terms: ["The next implementation stage is Phase 1A: expand and stabilize the shared core data model, then begin route discovery."],
+    terms: ["The next implementation path is Phase 1A shared core model hardening, Phase 1B early benchmark and fixture skeleton, Phase 1C large-repo workspace graph planning, then route discovery."],
   },
   {
     file: "docs/product-build-readiness.md",
-    terms: ["Phase 1A expands and stabilizes the shared core data model, then begins route discovery."],
+    terms: ["Phase 1A shared core model hardening, Phase 1B early benchmark skeleton work, Phase 1C large-repo workspace graph planning, and route discovery."],
   },
   {
     file: "docs/task-backlog.md",
-    terms: ["Current implementation path: Phase 1A expands and stabilizes the shared core data model, then begins route discovery."],
+    terms: ["Current implementation path: Phase 1A expands and stabilizes the shared core data model, Phase 1B adds an early benchmark and fixture skeleton with no public claims, Phase 1C documents the large-repo workspace graph lane, then route discovery begins."],
   },
 ];
 
@@ -1030,7 +1043,7 @@ const performanceContractDocs = [
 const speedDecisionContractDocs = [
   {
     file: "docs/speed-decisions.md",
-    terms: ["vite/rolldown", "vite 8", "bundled dev", "custom bundler", "bun.serve({ routes })", "route code splitting", "css delivery", "source maps", "rum", "field data", "react compiler", "react streaming", "103 early hints", "resource hints", "fetchpriority", "speculation", "bfcache", "compression", "images", "fonts", "waterfalls", "hot api", "payload budgets", "compiler scaling", "rejected until proven"],
+    terms: ["vite/rolldown", "vite 8", "bundled dev", "custom bundler", "bun.serve({ routes })", "route code splitting", "css delivery", "source maps", "rum", "field data", "react compiler", "react streaming", "103 early hints", "resource hints", "fetchpriority", "speculation", "bfcache", "compression", "images", "fonts", "waterfalls", "hot api", "payload budgets", "compiler scaling", "generatedby", "request-path", "rejected until proven"],
   },
   {
     file: "docs/speed-capability-audit.md",
@@ -1038,7 +1051,15 @@ const speedDecisionContractDocs = [
   },
   {
     file: "docs/speed-strategy.md",
-    terms: ["speed decisions", "vite bundled dev", "custom bundler", "route code splitting", "css delivery", "source maps", "rum", "react compiler", "resource hints", "speculation", "bfcache", "compression", "images", "fonts", "async waterfall", "hot api", "payload discipline", "large-app readiness"],
+    terms: ["speed decisions", "implementation speed rules", "developer speed", "user speed", "agent speed", "vite bundled dev", "custom bundler", "route code splitting", "css delivery", "source maps", "rum", "react compiler", "resource hints", "speculation", "bfcache", "compression", "images", "fonts", "async waterfall", "hot api", "payload discipline", "large-app readiness"],
+  },
+  {
+    file: "docs/implementation-speed-rules.md",
+    terms: ["developer speed", "user speed", "agent speed", "tiny-static", "medium-100-routes", "large-1000-routes", "route-discovery.bench.ts", "manifest-size.bench.ts", "graph-query.bench.ts", "adapter-dispatch.bench.ts", "generatedby", "schemaversion", "request-path", "no barrel imports", "no default telemetry"],
+  },
+  {
+    file: "docs/large-repo-build-architecture.md",
+    terms: ["workspace graph", "shared file identity", "split-app", "affected build", "terminal output", "observability", "lumina.workspace.ts", ".lumina/workspace.json", ".lumina/workspace-graph.json", ".lumina/affected.json", ".lumina/build-trace.json", ".lumina/cache-report.json", ".lumina/hmr-report.json", ".lumina/split-report.json", "no absolute local paths"],
   },
   {
     file: "docs/performance-contract.md",

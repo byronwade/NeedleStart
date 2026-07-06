@@ -39,6 +39,8 @@ The initial scaffold proves this foundation:
 
 Future Phase 1 hardening should preserve those guarantees while adding the smallest implementation surface needed for Phase 1A.
 
+Before route discovery expands, Phase 1 should also add the early benchmark and fixture skeleton described in [Implementation Speed Rules](implementation-speed-rules.md). That skeleton may report `not implemented`; it must not publish speed claims or synthetic results.
+
 ## Package Scaffold
 
 The scaffold uses these package paths:
@@ -182,6 +184,8 @@ If a command is not available yet, the PR must say so and update the relevant do
 
 Placeholder tests should prove package entrypoints and type surfaces only. They should not imply route discovery, rendering, adapter behavior, or generated artifacts exist.
 
+When benchmark skeletons are added, checks should verify path existence, deterministic fixture naming, and claim hygiene only. They should not treat skeleton files as performance evidence.
+
 ## Out Of Scope
 
 Phase 1 should not implement:
@@ -194,6 +198,7 @@ Phase 1 should not implement:
 - MCP tools.
 - Safe edit transactions.
 - Generated `.lumina/*` artifacts.
+- Benchmark results or public speed comparisons.
 
 Those belong to later roadmap tasks after the package foundation exists.
 
@@ -207,3 +212,4 @@ When Phase 1 scaffold files, package boundaries, commands, or status change, upd
 - `docs/package-map.md`: package names and dependency rules.
 - `docs/testing.md` and `docs/testing-contract.md`: real scripts, fixture layout, and CI behavior.
 - `docs/task-backlog.md`: completed and next tasks.
+- `docs/implementation-speed-rules.md`, `docs/benchmark-fixtures.md`, and `docs/speed-decisions.md`: early speed-proof rules and claim gates.

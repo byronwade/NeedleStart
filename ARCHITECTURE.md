@@ -27,6 +27,8 @@ This split lets Lumina move quickly without reinventing a bundler while putting 
 
 Speed-sensitive architecture choices must follow `docs/speed-decisions.md`. That decision record is the guardrail for Vite/Rolldown, Bun, React streaming, route budgets, hot APIs, explicit caching, compiler scaling, and benchmark evidence.
 
+Large-repo architecture choices must follow `docs/large-repo-build-architecture.md`. That document is the guardrail for workspace graph, shared-file identity, multi-app workspaces, affected builds, split-app planning, terminal output, HMR summaries, and large-repo observability reports.
+
 ## MVP Alpha Architecture Slice
 
 MVP Alpha should include only the compiler and runtime pieces needed to discover routes, produce manifests, render a small demo app, generate the first file-level Lumina Map, and answer `lumina inspect why`. Anything that requires broad runtime complexity stays future unless it directly supports this proof.
@@ -52,6 +54,10 @@ Responsible for AGENTS.md generation, llms.txt and llms-full.txt generation, rou
 ### Layer 5: Lumina Map
 
 Responsible for file graph, semantic graph, route impact, affected checks, ownership, cache tag visibility, SEO impact, risk scoring, and human or agent queries.
+
+### Layer 6: Workspace Graph
+
+Responsible for multi-app workspace topology, shared-file identity, package consumers, generated artifact identity, affected app selection, split-app planning, and large-repo observability reports.
 
 ## Technology Decisions
 
@@ -101,6 +107,7 @@ Bun.serve
 ```txt
 source app
   -> config load
+  -> workspace graph
   -> route discovery
   -> layout discovery
   -> render mode extraction
@@ -110,6 +117,7 @@ source app
   -> render manifest
   -> SEO manifest
   -> Lumina Map
+  -> affected app and route plan
   -> agent context capsules
   -> Vite build
   -> server bundle
@@ -130,6 +138,19 @@ export type LuminaApp = {
   schemas: SchemaNode[]
   content: ContentNode[]
   graph: LuminaGraph
+}
+```
+
+Planned large-repo workspace model:
+
+```ts
+export type LuminaWorkspace = {
+  root: string
+  apps: LuminaWorkspaceApp[]
+  packages: LuminaWorkspacePackage[]
+  sharedFiles: SharedFileIdentity[]
+  generatedArtifacts: GeneratedArtifactIdentity[]
+  graph: LuminaWorkspaceGraph
 }
 ```
 

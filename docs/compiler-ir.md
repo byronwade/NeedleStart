@@ -17,6 +17,7 @@ Compiler diagnostics should follow [Diagnostics Contract](diagnostics-contract.m
 - Avoid runtime recomputation where build-time generation is possible.
 - Keep CLI, compiler, map, agent, MCP, runtime adapters, and devtools aligned on one immutable core data model.
 - Preserve whole-system speed by moving safe work to build time and emitting compact runtime artifacts.
+- Support future multi-app workspace graph, shared-file identity, and affected build planning without adding production runtime source discovery.
 
 ## Lumina App
 
@@ -49,6 +50,8 @@ export type LuminaApp = {
   graph: LuminaGraph
 }
 ```
+
+Large-repo workspace graph, shared-file identity, and affected build planning are defined in [Large-Repo Build Architecture](large-repo-build-architecture.md). Those concepts should extend the compiler model without replacing the app-level route and render contracts.
 
 ## Route Node
 
@@ -179,13 +182,15 @@ Detailed stages:
 Planned incremental behavior:
 
 - Cache compiler artifacts by source content hash, config hash, compiler version, and graph schema version.
+- For large workspaces, also cache by package dependency hash, app boundary, generated artifact schema version, and workspace graph schema version.
 - Persist build and graph cache under `.lumina/cache/`.
 - Use graph edges to invalidate changed routes and dependents.
+- Use workspace graph edges to invalidate affected apps, shared packages, generated artifacts, and tests.
 - Avoid rebuilding unrelated routes.
 - Parallelize independent route compilation where possible.
 - Keep generated JSON stable so agent-facing output can be diffed.
 
-Speed rules for compiler work are defined in `docs/speed-strategy.md`.
+Speed rules for compiler work are defined in `docs/speed-strategy.md` and `docs/implementation-speed-rules.md`. Large-repo compiler rules are defined in `docs/large-repo-build-architecture.md`.
 
 ## Feature Scheduling Gate
 
@@ -201,6 +206,6 @@ Features that do not satisfy these questions are lower priority for the first pr
 
 - Full TypeScript semantic analysis of every prop.
 - Full React Server Components graph.
-- Cross-package incremental analysis.
-- Persistent graph cache.
+- Cross-package incremental analysis beyond the planned large-repo architecture contract.
+- Persistent graph cache implementation.
 - Fine-grained field-level dataflow.

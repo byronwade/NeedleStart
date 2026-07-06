@@ -8,6 +8,28 @@ This page defines the planned fixture set for proving Lumina speed claims. It co
 
 No benchmark fixture exists yet. Do not report results from this page.
 
+## Early Benchmark Skeleton
+
+The first benchmark work should create stable paths before route discovery, graph queries, or adapter dispatch are implemented:
+
+```txt
+fixtures/apps/tiny-static/
+fixtures/apps/medium-100-routes/
+fixtures/apps/large-1000-routes/
+benchmarks/route-discovery.bench.ts
+benchmarks/manifest-size.bench.ts
+benchmarks/graph-query.bench.ts
+benchmarks/adapter-dispatch.bench.ts
+```
+
+These files may report `not implemented` until the owning feature exists. They must not publish synthetic numbers.
+
+The early skeleton should separate:
+
+- developer speed: route discovery, manifest size, dev startup;
+- user speed: static request path, SSR request path, browser payload, adapter dispatch;
+- agent speed: graph query latency and agent context bytes.
+
 ## Fixture Rules
 
 Every benchmark fixture must have:
@@ -30,6 +52,9 @@ Fixture output must be deterministic enough to compare across commits. When a fi
 
 | Fixture | Purpose | Primary metrics | Initial status |
 | --- | --- | --- | --- |
+| `tiny-static` | Minimal app for route discovery, manifest shape, and static request-path smoke checks. | route discovery time, manifest bytes, static request status | Planned |
+| `medium-100-routes` | Medium deterministic route set for manifest-size and route-discovery regression baselines. | discovery time, manifest bytes, diagnostics count | Planned |
+| `large-1000-routes` | Large deterministic route set for route discovery, graph query, and agent context scaling. | discovery time, graph query time, context bytes, manifest bytes | Planned |
 | `basic-static` | Small static site baseline. | build time, route JS, CSS, HTML bytes, static serve latency | Planned |
 | `basic-ssr` | Minimal SSR route behavior. | SSR latency, cold start, response size, hydration bytes | Planned |
 | `streaming-ssr` | Streaming path and shell timing. | time to first byte, shell flush, full response time | Planned |
@@ -55,6 +80,33 @@ Must prove:
 - Route manifest records static mode.
 - Browser payload stays within planned budgets.
 - Static output can be served by Bun and static adapters when those exist.
+
+### `tiny-static`
+
+Must prove:
+
+- The smallest route fixture has deterministic files.
+- Generated artifact skeletons remain compact.
+- Static request-path tests have a stable future home.
+- The fixture never implies benchmark evidence before raw results exist.
+
+### `medium-100-routes`
+
+Must prove:
+
+- Route count is deterministic.
+- Manifest size can be tracked across commits.
+- Route discovery diagnostics stay stable.
+- Fixture generation uses a fixed seed when generated data is used.
+
+### `large-1000-routes`
+
+Must prove:
+
+- Large route discovery remains deterministic.
+- Graph and agent-context scaling have a stable future fixture.
+- Manifest and context byte budgets have a repeatable source.
+- Graph query benchmarks can run without inventing semantic edges.
 
 ### `basic-ssr`
 

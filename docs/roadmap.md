@@ -16,6 +16,7 @@ Unless a phase is explicitly marked `Verified.` or `Scaffolded.` with evidence, 
 - Monorepo, CLI skeleton, config, and AGENTS.md.
 - Shared core data model.
 - Route discovery and manifest generation.
+- Workspace graph, shared-file identity, and affected build planning.
 - Basic Vite integration with React SSR and hydration.
 - Nested layouts and params.
 
@@ -42,18 +43,19 @@ Unless a phase is explicitly marked `Verified.` or `Scaffolded.` with evidence, 
 
 ## Current Status
 
-The repository is in Phase 1. The monorepo scaffold exists with Bun workspace configuration, package placeholders, shared core scaffold types, CI, and enforcement scripts. The next implementation stage is Phase 1A: expand and stabilize the shared core data model, then begin route discovery.
+The repository is in Phase 1. The monorepo scaffold exists with Bun workspace configuration, package placeholders, shared core scaffold types, CI, and enforcement scripts. The next implementation stage is Phase 1A shared core model hardening, Phase 1B early benchmark and fixture skeleton, Phase 1C large-repo workspace graph planning, then route discovery.
 
 The upcoming prototype target is MVP Alpha, defined in `docs/mvp-alpha-scope.md`. MVP Alpha should keep the first build narrow: route discovery, basic render modes, generated `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, CLI inspection, and a demo app. API routes, MCP, safe edits, migration tooling, Node runtime behavior, and benchmark claims remain post-MVP unless the scope doc changes.
 
 ## MVP Alpha Lane
 
 1. Core model hardening for route, render, manifest, and graph output.
-2. Route discovery and deterministic `.lumina/routes.json`.
-3. Basic render mode extraction and `.lumina/render-manifest.json`.
-4. File-level Lumina Map and `.lumina/map.json`.
-5. CLI inspection: `lumina routes --json`, `lumina inspect --json`, and `lumina inspect why`.
-6. Demo app proving the workflow.
+2. Early benchmark and fixture skeleton with measured or `not implemented` status only.
+3. Route discovery and deterministic `.lumina/routes.json`.
+4. Basic render mode extraction and `.lumina/render-manifest.json`.
+5. File-level Lumina Map and `.lumina/map.json`.
+6. CLI inspection: `lumina routes --json`, `lumina inspect --json`, and `lumina inspect why`.
+7. Demo app proving the workflow.
 
 API routes, MCP, safe edits, migration, Node adapter runtime behavior, and benchmark claims are post-MVP unless `docs/mvp-alpha-scope.md` is updated in the same change.
 
@@ -65,6 +67,7 @@ API routes, MCP, safe edits, migration, Node adapter runtime behavior, and bench
 - Speed is treated as a whole-system property across compiler, runtime, client payload, graph queries, agent workflows, and benchmarks.
 - All generated artifacts are explainable.
 - Lumina should dogfood Lumina Map and agent tools on the framework itself as soon as they exist.
+- Large-repo work should make shared files, split apps, affected builds, terminal output, and observability visible before broad runtime complexity.
 
 ## Phase 0: Project Constitution
 
@@ -172,6 +175,49 @@ Definition of done:
 - `GraphEdge` includes `kind`, `source`, `confidence`, and `why`.
 - Docs, type tests, and contract fixtures verify the type contracts.
 - No package defines a competing local route or graph shape.
+
+## Phase 1B: Early Benchmark And Fixture Skeleton
+
+Goal: create the speed evidence path before route discovery and adapter work expand.
+
+This phase must not publish benchmark claims. It should add deterministic fixture and benchmark skeletons that can report `not implemented` until the owning behavior exists.
+
+Planned paths:
+
+```txt
+fixtures/apps/tiny-static/
+fixtures/apps/medium-100-routes/
+fixtures/apps/large-1000-routes/
+benchmarks/route-discovery.bench.ts
+benchmarks/manifest-size.bench.ts
+benchmarks/graph-query.bench.ts
+benchmarks/adapter-dispatch.bench.ts
+```
+
+Definition of done:
+
+- Fixture apps have stable names and deterministic content.
+- Benchmark files exist but do not emit synthetic results.
+- First speed surfaces are categorized as developer, user, or agent speed.
+- Generated JSON skeletons include `schemaVersion` and `generatedBy` when artifacts are emitted.
+- Dependency versions used by measured work are pinned before results are recorded.
+- Docs state that benchmark publishing and public comparisons remain future work.
+
+## Phase 1C: Large-Repo Build Architecture
+
+Goal: define workspace graph, shared-file identity, split-app planning, affected work selection, terminal output, and observability reports before broad runtime complexity grows.
+
+Source doc: `docs/large-repo-build-architecture.md`.
+
+Definition of done:
+
+- Workspace graph shape is documented.
+- Shared file and generated artifact identity are documented.
+- Multi-app workspace and split-app behavior are documented.
+- Affected build, check, and test commands are documented.
+- Terminal output and logs have a planned contract.
+- Large-repo observability reports are documented.
+- Production runtime boundaries stay generated-artifact only.
 
 ## Phase 2: CLI and App Discovery
 

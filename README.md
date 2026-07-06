@@ -295,26 +295,28 @@ Terminology: the first working slice is smaller and is intended to prove create 
 
 1. Monorepo skeleton.
 2. Core data model.
-3. Adapter package baseline.
-4. Route discovery.
-5. Stable CLI JSON envelope.
-6. `lumina inspect` and `lumina inspect why`.
-7. Vite dev integration.
-8. React SSR and hydration.
-9. Layouts and params.
-10. Static build.
-11. Adapter-aware `@lumina/adapter-bun` server output.
-12. Metadata and SEO audit.
-13. Cache metadata baseline.
-14. API routes.
-15. Hot API schema path.
-16. Lumina Map file graph.
-17. Agent context.
-18. MCP read-only server.
-19. Safe metadata edit.
-20. Node adapter baseline.
-21. Migration prototype.
-22. Benchmark evidence command.
+3. Early benchmark and fixture skeleton with no public claims.
+4. Adapter package baseline.
+5. Large-repo workspace graph and shared-file identity planning.
+6. Route discovery.
+7. Stable CLI JSON envelope.
+8. `lumina inspect` and `lumina inspect why`.
+9. Vite dev integration.
+10. React SSR and hydration.
+11. Layouts and params.
+12. Static build.
+13. Adapter-aware `@lumina/adapter-bun` server output.
+14. Metadata and SEO audit.
+15. Cache metadata baseline.
+16. API routes.
+17. Hot API schema path.
+18. Lumina Map file graph.
+19. Agent context.
+20. MCP read-only server.
+21. Safe metadata edit.
+22. Node adapter baseline.
+23. Migration prototype.
+24. Benchmark evidence command.
 
 ## Public API Draft
 
@@ -405,6 +407,7 @@ Start here:
 - [Threat Model](docs/threat-model.md)
 - [Performance Contract](docs/performance-contract.md)
 - [Benchmark Fixtures](docs/benchmark-fixtures.md)
+- [Implementation Speed Rules](docs/implementation-speed-rules.md)
 - [Documentation Standard](docs/documentation-standard.md)
 - [Documentation Freshness Policy](docs/docs-freshness-policy.md)
 - [Documentation Verification](docs/docs-verification.md)
@@ -426,6 +429,7 @@ Start here:
 - [Speed Strategy](docs/speed-strategy.md)
 - [Speed Decisions](docs/speed-decisions.md)
 - [Speed Capability Audit](docs/speed-capability-audit.md)
+- [Large-Repo Build Architecture](docs/large-repo-build-architecture.md)
 - [Documentation Audit](docs/documentation-audit.md)
 - [Docs Maintenance Checklist](docs/docs-maintenance-checklist.md)
 - [Machine-Readable Documentation](docs/machine-readable-docs.md)
@@ -456,7 +460,7 @@ This repository is in Phase 1: monorepo scaffold.
 
 The repository now has a Bun workspace, package placeholders, shared core types, CI, and enforcement scripts for docs, structure, performance-claim hygiene, type checking, and placeholder tests.
 
-No framework runtime implementation exists yet. Route discovery, rendering, CLI behavior, runtime adapter behavior, Lumina Map generation, MCP tools, and safe edits remain planned. The next implementation stage is Phase 1A: expand and stabilize the shared core data model, then begin route discovery.
+No framework runtime implementation exists yet. Route discovery, rendering, CLI behavior, runtime adapter behavior, Lumina Map generation, MCP tools, and safe edits remain planned. The next implementation stage is Phase 1A shared core model hardening, Phase 1B early benchmark and fixture skeleton, Phase 1C large-repo workspace graph planning, then route discovery.
 
 ## Philosophy
 

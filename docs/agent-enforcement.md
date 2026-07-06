@@ -34,7 +34,8 @@ Before editing, agents must identify which docs own the change:
 - `docs/alpha-agent-operating-system.md`, `docs/alpha-work-routing.md`, `docs/alpha-implementation-sequence.md`, and `docs/alpha-drift-prevention.md` for Alpha agent workflow, task routing, implementation order, drift risks, and issue-closure rules.
 - `docs/package-map.md`, `docs/phase-1-build-plan.md`, and `docs/task-backlog.md` for package ownership, build sequence, and implementation tasks.
 - Feature contracts under `docs/*-contract.md` for behavior, diagnostics, generated artifacts, tests, and evidence.
-- `docs/performance-contract.md`, `docs/speed-strategy.md`, `docs/speed-decisions.md`, `docs/speed-capability-audit.md`, and `docs/benchmark-methodology.md` for speed-sensitive changes.
+- `docs/performance-contract.md`, `docs/speed-strategy.md`, `docs/speed-decisions.md`, `docs/implementation-speed-rules.md`, `docs/speed-capability-audit.md`, and `docs/benchmark-methodology.md` for speed-sensitive changes.
+- `docs/large-repo-build-architecture.md` for workspace graph, shared-file identity, multi-app workspaces, split-app planning, affected builds, terminal output, HMR summaries, and large-repo observability reports.
 - `docs/security-contract.md` and `docs/threat-model.md` for high-risk surfaces.
 - `docs/public-docs-site-architecture.md`, `docs/public-frontmatter-standard.md`, `docs/public-docs.md`, and `docs/website-content-map.md` for public docs changes.
 
@@ -74,12 +75,17 @@ Agents must preserve these structure rules:
 Speed-sensitive work must name the decision it follows or changes. Use:
 
 - `docs/speed-decisions.md` for architecture defaults and rejected alternatives.
+- `docs/implementation-speed-rules.md` for code-level speed rules, early benchmark skeletons, dependency pinning, generated artifact provenance, and request-path import guardrails.
 - `docs/speed-capability-audit.md` for coverage and remaining evidence.
 - `docs/performance-contract.md` for budgets, diagnostics, reports, and claim rules.
 - `docs/benchmark-methodology.md` and `docs/benchmark-fixtures.md` for benchmark evidence.
 - `docs/checklists/performance-evidence.md` before reviewing public performance claims.
 
 Until browser, fixture, or benchmark evidence exists, performance language must stay in target form.
+
+Runtime request paths must remain generated-artifact driven. Once adapters exist, tests should fail if production request handling imports compiler, map, agent, MCP, docs, or source-discovery code.
+
+Large-repo work must keep workspace graph discovery, build traces, cache reports, HMR reports, split reports, and affected selection outside the production request path.
 
 ## Documentation Freshness Enforcement
 
