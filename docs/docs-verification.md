@@ -170,10 +170,10 @@ Expected result: test layers, fixture layout, snapshot policy, CI gates, network
 ### 11. CLI JSON Contract Check
 
 ```powershell
-rg -n "schemaVersion|diagnostics|Exit Codes|--json|stdout|exit-code|needle.cli|CLI JSON|cli-json-contract|diagnostics-contract" docs\cli-json-contract.md docs\cli.md docs\api-reference.md docs\manifest-contracts.md docs\agent-kernel.md docs\mcp-server.md docs\diagnostics-contract.md
+rg -n "schemaVersion|diagnostics|Exit Codes|--json|stdout|exit-code|needle.cli|CLI JSON|cli-json-contract|diagnostics-contract|needle inspect why|needle map affected|needle map explain|needle agent context|needle agent plan|needle edit undo|needle migrate from-next|needle seo --route|needle seo --sitemap|needle seo --strict" docs\cli-json-contract.md docs\cli.md docs\api-reference.md docs\manifest-contracts.md docs\agent-kernel.md docs\mcp-server.md docs\diagnostics-contract.md docs\public\reference\cli.md
 ```
 
-Expected result: command automation behavior remains connected across CLI reference, API reference, manifests, agent context, and MCP docs.
+Expected result: command automation behavior and planned command variants remain connected across CLI reference, API reference, manifests, agent context, MCP docs, and public CLI docs.
 
 Automated coverage in `bun run docs:check` also requires `docs/cli-json-contract.md` and `docs/public/reference/cli.md` to list every planned JSON automation command: `needle build --json`, `needle routes --json`, `needle inspect --json`, `needle check --json`, `needle seo --json`, `needle map --json`, `needle agent context --json`, `needle edit --json`, `needle migrate --json`, and `needle bench --json`.
 

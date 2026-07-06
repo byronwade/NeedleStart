@@ -26,6 +26,23 @@ Machine-readable command behavior is planned in [CLI JSON Contract](cli-json-con
 | `needle migrate` | Prototype framework migration workflows. | Yes |
 | `needle bench` | Run planned benchmark fixtures and emit evidence metadata. | Yes |
 
+## Planned Command Variants
+
+These variants are referenced by roadmap, guide, and contract docs. They remain planned until `@needle/cli` implements and tests them:
+
+| Command variant | Purpose |
+| --- | --- |
+| `needle inspect why` | Explain route render, cache, SEO, and risk decisions. |
+| `needle map affected` | Show affected routes, files, and checks for a changed target. |
+| `needle map explain` | Explain why a graph relationship or impact result exists. |
+| `needle agent context` | Emit a route or surface context capsule. |
+| `needle agent plan` | Generate a deterministic task skeleton from graph data. |
+| `needle edit undo` | Roll back an applied safe edit by mutation ID. |
+| `needle migrate from-next` | Prototype migration from a Next.js-style app. |
+| `needle seo --route` | Run SEO checks for one route. |
+| `needle seo --sitemap` | Inspect planned sitemap output. |
+| `needle seo --strict` | Treat warnings as check failures for SEO automation. |
+
 ## Reference Requirements
 
 Each command must eventually document:

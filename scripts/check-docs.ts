@@ -214,6 +214,24 @@ const plannedJsonCommandContracts = [
   "needle bench --json",
 ];
 
+const plannedCommandVariants = [
+  "needle inspect why",
+  "needle map affected",
+  "needle map explain",
+  "needle agent context",
+  "needle agent plan",
+  "needle edit undo",
+  "needle migrate from-next",
+  "needle seo --route",
+  "needle seo --sitemap",
+  "needle seo --strict",
+];
+
+const plannedCommandVariantDocs = [
+  "docs/cli.md",
+  "docs/public/reference/cli.md",
+];
+
 const scaffoldVerificationCommands = [
   "bun test",
   "bun run typecheck",
@@ -1302,6 +1320,16 @@ for (const file of plannedNeedleCommandDocs) {
   for (const command of plannedNeedleCommands) {
     if (!content.includes(command)) {
       failures.push(`${file} does not document planned CLI command: ${command}.`);
+    }
+  }
+}
+
+for (const file of plannedCommandVariantDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file);
+  for (const command of plannedCommandVariants) {
+    if (!content.includes(command)) {
+      failures.push(`${file} does not document planned command variant: ${command}.`);
     }
   }
 }
