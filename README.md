@@ -10,7 +10,7 @@ Build like Next.js.
 
 Type like TanStack Start.
 
-Ship fast with Bun and Vite.
+Ship static when possible with Bun and Vite leverage.
 
 Let humans and AI agents understand, audit, change, and verify your app through structured framework data instead of spelunking the whole repo.
 
