@@ -60,9 +60,42 @@ const agentRequiredSyncDocs = [
   "docs/docs-freshness-policy.md",
   "docs/docs-maintenance-checklist.md",
   "docs/docs-verification.md",
+  "docs/first-contribution.md",
+  "docs/review-checklist.md",
+  "docs/public-frontmatter-standard.md",
+  "docs/testing-contract.md",
+  "docs/cli-json-contract.md",
+  "docs/diagnostics-contract.md",
+  "docs/config-contract.md",
+  "docs/adapter-contract.md",
+  "docs/examples-contract.md",
+  "docs/examples-catalog.md",
+  "docs/routing-contract.md",
+  "docs/api-route-contract.md",
+  "docs/schema-contract.md",
+  "docs/cache-contract.md",
+  "docs/seo-contract.md",
+  "docs/accessibility-contract.md",
+  "docs/security-contract.md",
+  "docs/threat-model.md",
+  "docs/performance-contract.md",
+  "docs/benchmark-fixtures.md",
+  "docs/speed-decisions.md",
+  "docs/speed-capability-audit.md",
+  "docs/public-docs-site-architecture.md",
+  "docs/docs-site-build-plan.md",
   "docs/phase-1-build-plan.md",
   "docs/product-build-readiness.md",
+  "docs/versioning-and-upgrades.md",
+  "docs/decisions/README.md",
+  "docs/checklists/README.md",
+  "docs/checklists/phase-1-scaffold.md",
+  "docs/checklists/adapter-implementation.md",
+  "docs/checklists/performance-evidence.md",
+  "docs/glossary.md",
   "docs/task-backlog.md",
+  "docs/skills/README.md",
+  "docs/subagents/README.md",
 ];
 
 const packageSpecs = [
@@ -553,6 +586,22 @@ function read(path: string): string {
   return readFileSync(join(root, path), "utf8");
 }
 
+function agentRequiredDocumentationSyncEntries(): string[] {
+  const agentsGuide = read("AGENTS.md");
+  const match = agentsGuide.match(
+    /Every agent change must evaluate whether these files need updates:\s*([\s\S]*?)\nUpdate `README\.md` when:/,
+  );
+
+  if (!match) {
+    failures.push("AGENTS.md required documentation sync section could not be parsed.");
+    return [];
+  }
+
+  return [...match[1].matchAll(/^- `([^`]+)`$/gm)]
+    .map((entry) => entry[1])
+    .filter((entry, index, entries) => entries.indexOf(entry) === index);
+}
+
 function walkMarkdown(dir: string): string[] {
   const found: string[] = [];
   for (const entry of readdirSync(dir)) {
@@ -631,12 +680,19 @@ for (const dir of ["docs/skills", "docs/subagents"]) {
   }
 }
 
-const agentsGuide = read("AGENTS.md");
+const agentListedSyncDocs = agentRequiredDocumentationSyncEntries();
+
+for (const doc of agentListedSyncDocs) {
+  if (!existsSync(join(root, doc))) {
+    failures.push(`AGENTS.md required documentation sync list references missing file: ${doc}.`);
+  }
+}
+
 for (const doc of agentRequiredSyncDocs) {
   if (!existsSync(join(root, doc))) {
     failures.push(`AGENTS.md required documentation sync file is missing: ${doc}.`);
   }
-  if (!agentsGuide.includes(`- \`${doc}\``)) {
+  if (!agentListedSyncDocs.includes(doc)) {
     failures.push(`AGENTS.md required documentation sync list does not include ${doc}.`);
   }
 }
