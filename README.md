@@ -108,7 +108,7 @@ These commands verify the package scaffold, documentation links, root docs metad
 - No invisible caching: every cacheable route, API, component, or function should expose a cache plan and cache tags.
 - Hot API paths: generated validators, serializers, and micro-caching for performance-critical API routes.
 - Explicit render modes: `staticPage()`, `prerender()`, `ssr()`, `stream()`, `clientOnly()`, ordinary `app/api/` routes, and `apiHot()`.
-- Bun and Vite foundation: planned fast runtime paths with frontend ecosystem leverage.
+- Bun and Vite foundation: planned Bun-first adapter paths with frontend ecosystem leverage.
 - Large-app safety: ownership, affected checks, dependency graph, route budgets, package boundaries, and risk visibility.
 - Agent-safe workflows: safe edits should be AST-based, previewable, logged, check-backed, and reversible.
 
@@ -137,7 +137,7 @@ NeedleStart is planned to combine:
 - Explicit render and cache behavior with `why` explanations.
 - Next-level routing familiarity.
 - TanStack-level type-safety ambition.
-- Bun-speed runtime paths.
+- Bun-first adapter paths.
 - Vite and Rolldown ecosystem leverage.
 - SEO-first public HTML.
 - Agent-native development through stable contracts.
