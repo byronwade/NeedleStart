@@ -843,6 +843,11 @@ const staleStatusPatterns = [
     message: "docs/public/concepts/compiler-runtime.md should describe the compiler/runtime split as planned until implementation exists.",
   },
   {
+    file: "docs/phase-1-build-plan.md",
+    pattern: /Package-level placeholder tests where practical/i,
+    message: "docs/phase-1-build-plan.md should describe the current root placeholder test coverage instead of implying package-level tests exist.",
+  },
+  {
     file: "CONTRIBUTING.md",
     pattern: /Bun server runtime details|Bun server details|Bun runtime package/i,
     message: "CONTRIBUTING.md should direct runtime help to @needle/adapter-bun adapter work, not generic Bun server wording.",
@@ -981,6 +986,11 @@ const staleStatusPatterns = [
     file: "docs/product-build-readiness.md",
     pattern: /upgrade-guide procedures once packages exist/i,
     message: "docs/product-build-readiness.md should distinguish scaffolded packages from public package releases.",
+  },
+  {
+    file: "docs/product-build-readiness.md",
+    pattern: /This state is mostly present/i,
+    message: "docs/product-build-readiness.md should tie Phase 1 readiness to explicit scaffold evidence instead of vague mostly-present wording.",
   },
   {
     file: "README.md",

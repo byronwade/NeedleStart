@@ -97,7 +97,7 @@ The Phase 1 scaffold includes:
 - Root test and typecheck scripts.
 - Package-level `package.json` files.
 - Package-level `src/index.ts` files.
-- Package-level placeholder tests where practical.
+- Root placeholder tests that verify package entrypoints and shared type surfaces.
 - Initial `tests/` folders only when they match the planned fixture layout in [Testing Contract](testing-contract.md).
 
 Do not add framework behavior in the same change unless the task explicitly says so.

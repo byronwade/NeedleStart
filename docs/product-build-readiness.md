@@ -58,7 +58,7 @@ Before expanding beyond the monorepo scaffold, the repository should have:
 - A testing contract for fixtures, snapshots, HTTP checks, browser checks, security checks, CI gates, and evidence reporting.
 - A repeatable documentation verification runbook with exact checks and evidence expectations.
 
-This state is mostly present. The current follow-up is keeping the readiness checklist aligned with implementation issues, PR descriptions, and the Phase 1 scaffold.
+This documentation foundation is present for the Phase 1 scaffold when `bun run check` passes. The current follow-up is keeping the readiness checklist aligned with implementation issues, PR descriptions, and any scaffold changes before Phase 1A work depends on it.
 
 ## Product Build Gates
 
