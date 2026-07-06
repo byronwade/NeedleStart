@@ -3,7 +3,7 @@
 NeedleStart docs should be useful in two places:
 
 1. The repository, where contributors need source-of-truth contracts.
-2. The future public website, where users need guides, references, examples, benchmarks, and comparison pages.
+2. The future public website, where users need guides, references, examples, benchmarks, comparison pages, and community information.
 
 This document defines how repository docs become public-facing website docs without turning the website into a filing cabinet with CSS.
 
@@ -13,8 +13,10 @@ This document defines how repository docs become public-facing website docs with
 - Make every public page status-aware.
 - Prevent planned behavior from being published as implemented behavior.
 - Keep internal governance docs useful without forcing them into the main website nav.
+- Make open source community posture clear and welcoming.
 - Support future `llms.txt`, `llms-full.txt`, search indexes, and agent context generation.
 - Let the future NeedleStart website dogfood NeedleStart once the framework exists.
+- Prepare public docs, demos, and benchmark reports to be hosted on Vercel where appropriate.
 
 ## Non-Goals
 
@@ -25,6 +27,7 @@ Initially out of scope:
 - Publishing every repo doc as a top-level website page.
 - Hiding project governance from contributors.
 - Claiming implemented behavior from planned docs.
+- Claiming participation in support programs before it happens.
 
 ## Source of Truth
 
@@ -36,6 +39,8 @@ The future website should ingest or mirror docs from:
 README.md
 VISION.md
 CONTRIBUTING.md
+CODE_OF_CONDUCT.md
+GOVERNANCE.md
 SECURITY.md
 docs/**/*.md
 ```
@@ -106,6 +111,7 @@ Allowed audience labels:
 - `security-reviewer`
 - `benchmark-reader`
 - `adopter`
+- `open-source-contributor`
 
 A page can have multiple audiences.
 
@@ -117,7 +123,8 @@ A page can have multiple audiences.
 | Public reference | Detailed API or contract page. | CLI, Config, Manifest Contracts, Schema DSL. |
 | Public concept | Product/category explanation. | Vision, Comparisons, Needle Map. |
 | Contributor doc | Public but contributor-oriented. | Contributing, Testing, Package Map. |
-| Governance doc | Useful for repository process, not main nav. | ADRs, CODEOWNERS, PR templates. |
+| Community doc | Public open source community information. | Code of Conduct, Governance, Open Source Community. |
+| Governance doc | Useful for repository process, not necessarily main nav. | ADRs, CODEOWNERS, PR templates. |
 | Security-sensitive doc | Public summary with careful details. | Security, MCP write rules, safe edits. |
 | Future or hidden doc | Not website-ready yet. | Raw status tables, unfinished implementation notes. |
 
@@ -148,9 +155,10 @@ When generating public website pages from repo docs:
 - Preserve technical contracts.
 - Add user-friendly introductions where needed.
 - Keep status banners visible.
+- Keep open source community pages visible and welcoming.
 - Keep code examples aligned with `docs/cli.md` and `docs/config.md`.
 - Keep manifest examples aligned with `docs/manifest-contracts.md`.
-- Do not remove safety warnings from MCP, safe edit, security, deployment, or benchmark pages.
+- Do not remove safety warnings from MCP, safe edit, security, deployment, benchmark, or community pages.
 - Do not publish internal TODO notes as public guidance.
 
 ## Public Docs Gate
@@ -201,6 +209,20 @@ The docs website should prove:
 - Route-level docs status.
 - Generated docs manifest.
 - Needle Map over the docs themselves.
+- Public community pages.
+- Benchmark result pages.
+
+## Vercel Hosting Intent
+
+NeedleStart intends to host public project infrastructure on Vercel where it helps open source collaboration:
+
+- public docs website
+- preview deployments for documentation and examples
+- benchmark report pages
+- demo apps
+- launch pages
+
+This hosting intent should not be framed as deployment lock-in. NeedleStart remains adapter-aware and should support deployment beyond Vercel.
 
 ## LLM and Agent Consumption
 
@@ -232,6 +254,7 @@ Before a doc becomes public-facing:
 - [ ] Commands are canonical.
 - [ ] Planned behavior is not overclaimed.
 - [ ] Security-sensitive details are framed safely.
+- [ ] Open source community claims are accurate.
 - [ ] Benchmarks have methodology and raw data links, if present.
 - [ ] Links work.
 - [ ] Out-of-scope notes are included where useful.
@@ -243,5 +266,6 @@ Update this file when:
 - Website content structure changes.
 - Public docs metadata changes.
 - Docs publishing rules change.
+- Open source community pages change.
 - `llms.txt` or agent docs generation behavior changes.
 - Benchmark or comparison pages become public.
