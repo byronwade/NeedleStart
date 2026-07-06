@@ -14,8 +14,12 @@ Planned generated files include:
 - `.needle/graph.json`
 - `.needle/seo.report.json`
 - `.needle/perf.report.json`
+- `.needle/context/*.ctx.json`
 - `.needle/context/agent-index.json`
+- `.needle/generated/*`
 - `dist/adapter.manifest.json`
+
+Adapters may also emit deployment-oriented copies such as `dist/routes.manifest.json`, `dist/render.manifest.json`, and `dist/seo.report.json`. The canonical compiler and agent contracts stay under `.needle/`.
 
 ## Source
 

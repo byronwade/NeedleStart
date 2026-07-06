@@ -96,6 +96,27 @@ const plannedNeedleCommandDocs = [
   "docs/public/reference/cli.md",
 ];
 
+const canonicalGeneratedArtifacts = [
+  ".needle/routes.json",
+  ".needle/render-manifest.json",
+  ".needle/map.json",
+  ".needle/graph.json",
+  ".needle/seo.report.json",
+  ".needle/perf.report.json",
+  ".needle/context/*.ctx.json",
+  ".needle/context/agent-index.json",
+  ".needle/generated/*",
+  "dist/adapter.manifest.json",
+];
+
+const generatedArtifactDocs = [
+  "AGENTS.md",
+  "docs/api-reference.md",
+  "docs/manifest-contracts.md",
+  "docs/public/reference/manifest-contracts.md",
+  "docs/public/reference/project-structure.md",
+];
+
 function rel(path: string): string {
   return relative(root, path).replaceAll("\\", "/");
 }
@@ -317,6 +338,21 @@ const staleStatusPatterns = [
     pattern: /Phase 0|until the project has package scaffolding/i,
     message: "GOVERNANCE.md still uses pre-scaffold governance language.",
   },
+  {
+    file: "docs/runtime-contract.md",
+    pattern: /needle\.manifest\.json|map\.manifest\.json|cache\.manifest\.json/i,
+    message: "docs/runtime-contract.md uses stale generated artifact names; canonical compiler artifacts live under .needle/*.",
+  },
+  {
+    file: "docs/assets/needle-map-data-flow.svg",
+    pattern: /map\.manifest\.json|cache\.manifest\.json/i,
+    message: "docs/assets/needle-map-data-flow.svg uses stale generated artifact names.",
+  },
+  {
+    file: "docs/assets/safe-edit-transaction.svg",
+    pattern: /map\.manifest\.json/i,
+    message: "docs/assets/safe-edit-transaction.svg uses stale generated artifact names.",
+  },
 ];
 
 for (const file of [
@@ -368,6 +404,16 @@ for (const file of plannedNeedleCommandDocs) {
   for (const command of plannedNeedleCommands) {
     if (!content.includes(command)) {
       failures.push(`${file} does not document planned CLI command: ${command}.`);
+    }
+  }
+}
+
+for (const file of generatedArtifactDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file);
+  for (const artifact of canonicalGeneratedArtifacts) {
+    if (!content.includes(artifact)) {
+      failures.push(`${file} does not document canonical generated artifact: ${artifact}.`);
     }
   }
 }

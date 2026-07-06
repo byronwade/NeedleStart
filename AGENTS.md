@@ -167,6 +167,7 @@ Planned generated files include:
 .needle/context/*.ctx.json
 .needle/context/agent-index.json
 .needle/generated/*
+dist/adapter.manifest.json
 dist/*
 ```
 

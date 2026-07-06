@@ -72,7 +72,7 @@
   <text class="t" x="408" y="452">3 routes</text>
   <text class="t" x="408" y="478">6 tests</text>
   <text class="t" x="408" y="504">1 owner</text>
-  <text class="small" x="408" y="530">from map.manifest.json</text>
+  <text class="small" x="408" y="530">from .needle/map.json</text>
 
   <rect class="card shadow" x="690" y="385" width="260" height="168" rx="18"/>
   <text class="h" x="718" y="420">Check result</text>

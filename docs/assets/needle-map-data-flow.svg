@@ -33,10 +33,10 @@
   <rect class="panel shadow" x="670" y="135" width="235" height="385" rx="18"/>
   <text class="h" x="694" y="170">3. Generated contracts</text>
   <text class="small" x="694" y="194">Stable JSON for tools</text>
-  <rect class="chip2" x="694" y="220" width="187" height="38" rx="10"/><text class="code" x="714" y="244">routes.manifest.json</text>
-  <rect class="chip2" x="694" y="268" width="187" height="38" rx="10"/><text class="code" x="714" y="292">map.manifest.json</text>
+  <rect class="chip2" x="694" y="220" width="187" height="38" rx="10"/><text class="code" x="714" y="244">.needle/routes.json</text>
+  <rect class="chip2" x="694" y="268" width="187" height="38" rx="10"/><text class="code" x="714" y="292">.needle/map.json</text>
   <rect class="chip2" x="694" y="316" width="187" height="38" rx="10"/><text class="code" x="714" y="340">seo.report.json</text>
-  <rect class="chip2" x="694" y="364" width="187" height="38" rx="10"/><text class="code" x="714" y="388">cache.manifest.json</text>
+  <rect class="chip2" x="694" y="364" width="187" height="38" rx="10"/><text class="code" x="714" y="388">render-manifest.json</text>
   <rect class="chip2" x="694" y="412" width="187" height="38" rx="10"/><text class="code" x="714" y="436">context/*.ctx.json</text>
 
   <rect class="panel shadow" x="965" y="135" width="175" height="385" rx="18"/>

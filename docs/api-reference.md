@@ -101,6 +101,7 @@ Planned generated files:
 | `.needle/context/*.ctx.json` | Planned | Route or surface context capsules. |
 | `.needle/context/agent-index.json` | Planned | Agent context index. |
 | `.needle/generated/*` | Planned | Generated runtime modules. |
+| `dist/adapter.manifest.json` | Planned | Adapter capabilities and deployment output metadata. |
 | `dist/*` | Planned | Production build output. |
 
 Generated JSON must use normalized paths, stable ordering, schema versions, and compact agent-friendly fields.

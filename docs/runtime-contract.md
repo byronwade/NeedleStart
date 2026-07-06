@@ -48,16 +48,24 @@ request
 Planned output:
 
 ```txt
+.needle/
+  routes.json
+  render-manifest.json
+  map.json
+  graph.json
+  seo.report.json
+  perf.report.json
+  generated/
 dist/
   public/
   server/
-  needle.manifest.json
   routes.manifest.json
   render.manifest.json
-  map.manifest.json
   seo.report.json
   adapter.manifest.json
 ```
+
+The `.needle/*` files are the canonical compiler and agent artifacts. The `dist/*.manifest.json` files are deployment copies or adapter-specific output shaped for runtime loading.
 
 ## Adapter-Aware Entry
 
