@@ -35,9 +35,9 @@ Handlers are planned to receive Web `Request` and route metadata through `ApiRou
 
 ## Planned Return Behavior
 
-- `Response` values pass through.
-- Plain objects and arrays become JSON responses.
-- Strings become text responses unless a helper marks another response type.
+- `Response` values should pass through.
+- Plain objects and arrays should become JSON responses.
+- Strings should become text responses unless a helper marks another response type.
 - `null` or `undefined` should become an explicit empty response or diagnostic depending on method and strictness.
 
 ## Planned Validation

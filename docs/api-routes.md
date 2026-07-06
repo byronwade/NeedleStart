@@ -20,17 +20,17 @@ export async function GET() {
 
 ## Requirements
 
-- Common HTTP methods work.
-- Dynamic API params work.
+- Common HTTP methods should work.
+- Dynamic API params should work.
 - Handlers receive Web `Request` and route metadata through the planned `ApiRouteContext`.
-- Plain objects become JSON responses.
-- Response objects pass through.
+- Plain objects should become JSON responses.
+- Response objects should pass through.
 - Validation failures use the planned `VALIDATION_FAILED` response shape.
 - API routes default to `no-store` unless explicit cache config opts in.
 - Route config may include planned `bodyLimit` behavior.
 - API route diagnostics use `API_METHOD_` and related `API_` codes.
-- Generated manifests list methods, schemas, cache behavior, diagnostics, and hot API status.
-- Errors are readable in development and hidden in production.
+- Generated manifests should list methods, schemas, cache behavior, diagnostics, and hot API status.
+- Errors should be readable in development and hidden in production.
 - Hot API routes can opt into generated validation and serialization.
 
 See [Hot API Path](hot-api-path.md), [Schema](schema.md), and [Public API Routes Reference](public/reference/api-routes.md).

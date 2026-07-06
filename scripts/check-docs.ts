@@ -883,6 +883,16 @@ const staleStatusPatterns = [
     message: "docs/public/reference/api-routes.md should label API route examples as planned while API routes are unimplemented.",
   },
   {
+    file: "docs/api-routes.md",
+    pattern: /- Common HTTP methods work\.|- Dynamic API params work\.|- Plain objects become JSON responses\.|- Response objects pass through\./i,
+    message: "docs/api-routes.md should use planned `should` wording for API behavior until implementation exists.",
+  },
+  {
+    file: "docs/public/reference/api-routes.md",
+    pattern: /- `Response` values pass through\.|- Plain objects and arrays become JSON responses\.|- Strings become text responses/i,
+    message: "docs/public/reference/api-routes.md should use planned `should` wording for API return behavior until implementation exists.",
+  },
+  {
     file: "docs/public/reference/file-conventions.md",
     pattern: /\| File \| URL \|/i,
     message: "docs/public/reference/file-conventions.md should label file convention examples as planned while route discovery is unimplemented.",

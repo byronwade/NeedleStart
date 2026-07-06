@@ -257,6 +257,8 @@ Expected result: API handler context, method exports, request/response behavior,
 
 Automated coverage in `bun run docs:check` also requires API route contract, API route overview, and public API route reference docs to keep `ApiRouteContext`, Web `Request` and `Response`, `VALIDATION_FAILED`, method exports, `API_METHOD_` diagnostics, hot API integration, `bodyLimit`, `no-store`, generated manifests, security, and diagnostics language aligned.
 
+Automated coverage in `bun run docs:check` also requires API route overview and public reference docs to use planned `should` wording for return and handler behavior until implementation exists.
+
 ### 18A. Render Mode Contract Check
 
 ```powershell
