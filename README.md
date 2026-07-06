@@ -162,7 +162,7 @@ Let humans and agents inspect and modify the app through structured framework da
 
 | Differentiator | Why it matters |
 | --- | --- |
-| App-graph-native framework core | The framework emits a structured map of routes, components, APIs, schemas, tests, SEO, cache tags, ownership, generated files, and risk. |
+| App-graph-native framework core | The planned framework emits a structured map of routes, components, APIs, schemas, tests, SEO, cache tags, ownership, generated files, and risk. |
 | Needle Map | Humans and agents can ask what uses this, what breaks if this changes, which tests should run, and which routes are affected. |
 | Explainable render/cache behavior | `why` fields and inspect commands reduce hidden framework magic. |
 | SEO engine built in | Public routes ship with metadata, canonical URLs, sitemap support, robots output, structured data, meaningful HTML, and audits. |
@@ -256,19 +256,19 @@ The runtime must stay small. Build-time compiler output should carry the complex
 
 The first public prototype should prove:
 
-1. A developer can create an app with one command.
-2. The app has file-based routes.
-3. Routes render React.
-4. Public pages are SEO-safe by default.
-5. Static and SSR routes both work.
-6. API routes work.
-7. Hot API routes use generated validators and serializers.
-8. The framework generates `.needle/routes.json` and `.needle/render-manifest.json`.
-9. The framework explains route, render, cache, and SEO decisions in stable JSON.
-10. The framework generates a semantic Needle Map.
-11. The framework exposes read-only MCP tools for agents.
-12. An AI agent can inspect routes, edit metadata safely, run affected checks, and report the mutation log.
-13. Build output can run on the Bun adapter, with Node and static adapter paths documented.
+1. A developer should be able to create an app with one command.
+2. The app should have file-based routes.
+3. Routes should render React.
+4. Public pages should be SEO-safe by default.
+5. Static and SSR routes should both work.
+6. API routes should work.
+7. Hot API routes should use generated validators and serializers.
+8. The framework should generate `.needle/routes.json` and `.needle/render-manifest.json`.
+9. The framework should explain route, render, cache, and SEO decisions in stable JSON.
+10. The framework should generate a semantic Needle Map.
+11. The framework should expose read-only MCP tools for agents.
+12. An AI agent should be able to inspect routes, edit metadata safely, run affected checks, and report the mutation log.
+13. Build output should run on the Bun adapter, with Node and static adapter paths documented.
 
 Terminology: the first working slice is smaller and is intended to prove create app, SEO-safe pages, `@needle/adapter-bun` serving, a basic map, agent inspection, and safe metadata edit. The first public prototype is the broader demo target listed above.
 

@@ -1165,6 +1165,21 @@ const staleStatusPatterns = [
     message: "docs/public/guides/create-app.md should use planned `should` wording for target app results until implementation exists.",
   },
   {
+    file: "README.md",
+    pattern: /The framework emits a structured map|The framework generates `\.needle\/routes\.json`|The framework exposes read-only MCP tools|An AI agent can inspect routes, edit metadata safely/i,
+    message: "README.md prototype and differentiator language should use planned `should` wording until framework behavior exists.",
+  },
+  {
+    file: "docs/roadmap.md",
+    pattern: /- `needle dev` starts Vite\.|- `virtual:needle\/routes` works\.|- Affected query works from changed file|- `needle mcp` starts server\.|- `SafeEditTransaction` shape is implemented\./i,
+    message: "docs/roadmap.md future acceptance criteria should use planned `should` wording until behavior exists.",
+  },
+  {
+    file: "docs/task-backlog.md",
+    pattern: /- Root route SSR works\.|- Static route emits HTML\.|- `list_routes` works\.|- Dry-run diff preview works\.|- Converts simple App Router pages\./i,
+    message: "docs/task-backlog.md future acceptance criteria should use planned `should` wording until behavior exists.",
+  },
+  {
     file: "docs/mcp-server.md",
     pattern: /The NeedleStart MCP server exposes/i,
     message: "docs/mcp-server.md should describe MCP behavior as planned until MCP tooling exists.",

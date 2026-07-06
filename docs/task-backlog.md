@@ -5,7 +5,7 @@ Audience: maintainers, framework contributors, AI agents.
 
 This backlog turns the roadmap into concrete implementation tasks. Each task should eventually become an issue or implementation plan using `docs/templates/task-template.md`.
 
-Unless a task is explicitly marked `Verified.` or `Scaffolded.` with evidence, its "Definition of done" is planned acceptance criteria, not a claim that the behavior exists today.
+Unless a task is explicitly marked `Verified.` or `Scaffolded.` with evidence, its "Definition of done" is planned acceptance criteria, not a claim that the behavior exists today. Future implementation tasks should use `should` wording for behavior that does not exist yet.
 
 ## PR 0A: AI Collaboration Playbooks
 
@@ -464,11 +464,11 @@ Goal: make `needle dev` start Vite and render a basic React page.
 
 Definition of done:
 
-- `needle dev` starts.
-- Page renders on server.
-- Client hydrates.
-- Route manifest virtual module exists.
-- HMR updates changed page.
+- `needle dev` should start.
+- Page should render on the server.
+- Client should hydrate.
+- Route manifest virtual module should exist.
+- HMR should update changed pages.
 
 ## PR 4: React SSR and Hydration
 
@@ -476,9 +476,9 @@ Goal: support basic SSR and client hydration.
 
 Definition of done:
 
-- Root route SSR works.
-- Client component counter hydrates.
-- Dev errors are readable.
+- Root route SSR should work.
+- Client component counter should hydrate.
+- Dev errors should be readable.
 
 ## PR 5: Layouts and Params
 
@@ -486,10 +486,10 @@ Goal: support nested layouts, route params, and search params.
 
 Definition of done:
 
-- Nested layouts render in order.
-- Dynamic params pass to pages.
-- Search params pass to pages.
-- 404 and error page conventions work.
+- Nested layouts should render in order.
+- Dynamic params should pass to pages.
+- Search params should pass to pages.
+- 404 and error page conventions should work.
 
 ## PR 6: Static Build
 
@@ -497,9 +497,9 @@ Goal: support `staticPage()` and emit static HTML.
 
 Definition of done:
 
-- Static route emits HTML.
-- Render manifest records mode.
-- Invalid render export gets helpful diagnostic.
+- Static routes should emit HTML.
+- Render manifest should record mode.
+- Invalid render exports should get helpful diagnostics.
 
 ## PR 7: Bun Adapter Production Output
 
@@ -512,12 +512,12 @@ Read first:
 
 Definition of done:
 
-- Static files served.
-- SSR routes served.
-- 404 works.
-- 500 works.
-- Cache headers are tested.
-- Bun serving is implemented through `@needle/adapter-bun`.
+- Static files should be served.
+- SSR routes should be served.
+- 404 should work.
+- 500 should work.
+- Cache headers should be tested.
+- Bun serving should be implemented through `@needle/adapter-bun`.
 
 ## PR 7A: Adapter-Aware Server Entry
 
@@ -525,11 +525,11 @@ Goal: make generated server output adapter-aware.
 
 Definition of done:
 
-- `needle.config.ts` supports `runtime` and `adapter`.
-- `.needle/generated/server-entry.ts` imports selected adapter.
-- `dist/adapter.manifest.json` is emitted.
-- Static adapter can export compatible static routes.
-- Node adapter can serve a minimal SSR route.
+- `needle.config.ts` should support `runtime` and `adapter`.
+- `.needle/generated/server-entry.ts` should import the selected adapter.
+- `dist/adapter.manifest.json` should be emitted.
+- Static adapter should export compatible static routes.
+- Node adapter should serve a minimal SSR route.
 
 ## PR 8: Metadata and SEO Audit
 
@@ -537,11 +537,11 @@ Goal: implement `defineMeta()` and `needle seo`.
 
 Definition of done:
 
-- Head tags render.
-- Sitemap generated.
-- Robots generated.
-- Missing title, description, or canonical fails public route audit.
-- JSON output is stable.
+- Head tags should render.
+- Sitemap should be generated.
+- Robots should be generated.
+- Missing title, description, or canonical should fail public route audits.
+- JSON output should be stable.
 
 ## PR 8A: Cache Manifest Baseline
 
@@ -557,13 +557,13 @@ Read first:
 
 Definition of done:
 
-- Static asset cache plan is emitted.
-- Static and prerendered route cache plans are emitted.
-- SSR and API routes default to `no-store`.
-- Explicit API TTL cache config appears in manifest.
-- Cache tags appear in manifest and Needle Map inputs.
-- Cache diagnostics cover invalid tags, unsafe auth caching, invalid TTL, and header conflicts.
-- Bun adapter HTTP tests verify generated cache headers.
+- Static asset cache plan should be emitted.
+- Static and prerendered route cache plans should be emitted.
+- SSR and API routes should default to `no-store`.
+- Explicit API TTL cache config should appear in manifests.
+- Cache tags should appear in manifests and Needle Map inputs.
+- Cache diagnostics should cover invalid tags, unsafe auth caching, invalid TTL, and header conflicts.
+- Bun adapter HTTP tests should verify generated cache headers.
 
 ## PR 9: API Routes
 
@@ -601,10 +601,10 @@ Read first:
 
 Definition of done:
 
-- Params validate.
-- Response serializes.
-- Invalid input returns structured 400.
-- Benchmark fixture compares normal and hot API.
+- Params should validate.
+- Response should serialize.
+- Invalid input should return structured 400.
+- Benchmark fixture should compare normal and hot API.
 
 ## PR 11: Needle Map File Graph
 
@@ -618,10 +618,10 @@ Risk mitigation:
 
 Definition of done:
 
-- Routes, components, APIs, schemas, styles, tests, and metadata appear.
-- Affected query works.
-- Explain query works.
-- JSON output is deterministic.
+- Routes, components, APIs, schemas, styles, tests, and metadata should appear.
+- Affected query should work.
+- Explain query should work.
+- JSON output should be deterministic.
 
 ## PR 12: Agent Context
 
@@ -629,9 +629,9 @@ Goal: generate route context capsules.
 
 Definition of done:
 
-- `needle agent context --route / --json` works.
-- Context includes route, source, mode, SEO, components, checks, and safe edits.
-- Production build excludes agent metadata.
+- `needle agent context --route / --json` should work.
+- Context should include route, source, mode, SEO, components, checks, and safe edits.
+- Production build should exclude agent metadata.
 
 ## PR 13: MCP Read-Only Server
 
@@ -639,11 +639,11 @@ Goal: expose read-only framework tools through MCP.
 
 Definition of done:
 
-- `needle mcp` starts.
-- `list_routes` works.
-- `get_route` works.
-- `get_related_files` works.
-- `get_seo_report` works.
+- `needle mcp` should start.
+- `list_routes` should work.
+- `get_route` should work.
+- `get_related_files` should work.
+- `get_seo_report` should work.
 
 ## PR 14: Safe Metadata Edit
 
@@ -659,14 +659,14 @@ Risk mitigation:
 
 Definition of done:
 
-- Route metadata can be updated.
-- AST edit is used.
-- Dry-run diff preview works.
-- `SafeEditTransaction` result is emitted.
-- `.needle/mutations.json` is append-only.
-- Affected checks run.
-- Mutation log is written.
-- `needle edit undo <mutationId>` works.
+- Route metadata should be updated.
+- AST edit should be used.
+- Dry-run diff preview should work.
+- `SafeEditTransaction` result should be emitted.
+- `.needle/mutations.json` should be append-only.
+- Affected checks should run.
+- Mutation log should be written.
+- `needle edit undo <mutationId>` should work.
 
 ## PR 15: Node Adapter Baseline
 
@@ -674,10 +674,10 @@ Goal: provide early Node compatibility so Bun is a speed default, not an adoptio
 
 Definition of done:
 
-- Built static pages can run on Node.
-- SSR route can run on Node.
-- Adapter capabilities are documented.
-- README documents Bun default plus Node compatibility.
+- Built static pages should run on Node.
+- SSR routes should run on Node.
+- Adapter capabilities should be documented.
+- README should document Bun default plus Node compatibility.
 
 ## PR 16: Agent Simulator Harness
 
@@ -685,13 +685,13 @@ Goal: create a script that exercises the agent and MCP workflow without an exter
 
 Definition of done:
 
-- Fixture app includes safe and dangerous edit targets.
-- Simulator can inspect routes through the same APIs MCP uses.
-- Simulator can dry-run a metadata edit.
-- Simulator can apply a metadata edit.
-- Simulator runs affected checks.
-- Simulator verifies mutation log output.
-- Rejected edits are tested.
+- Fixture app should include safe and dangerous edit targets.
+- Simulator should inspect routes through the same APIs MCP uses.
+- Simulator should dry-run a metadata edit.
+- Simulator should apply a metadata edit.
+- Simulator should run affected checks.
+- Simulator should verify mutation log output.
+- Rejected edits should be tested.
 
 ## PR 17: Migration Prototype
 
@@ -699,9 +699,9 @@ Goal: prototype `needle migrate from-next`.
 
 Definition of done:
 
-- Converts simple App Router pages.
-- Preserves compatible layouts.
-- Converts static metadata.
-- Maps dynamic route segments.
-- Generates `.contract.ts` stubs for ambiguous semantics.
-- Emits migration report with skipped files and manual review items.
+- Simple App Router pages should be converted.
+- Compatible layouts should be preserved.
+- Static metadata should be converted.
+- Dynamic route segments should be mapped.
+- `.contract.ts` stubs should be generated for ambiguous semantics.
+- Migration report should be emitted with skipped files and manual review items.

@@ -111,6 +111,8 @@ Planned overview pages for Cache, Needle Map, Agent Kernel, MCP, and Safe Edit T
 
 Planned feature overviews must use planned acceptance criteria and `should` wording instead of current-tense "Definition of Done" bullets until the behavior exists and feature-specific evidence proves it.
 
+README prototype goals and future roadmap or backlog acceptance bullets must also use `should` wording until the corresponding package behavior, fixtures, and checks exist.
+
 ### 5. Navigation Coverage Check
 
 ```powershell

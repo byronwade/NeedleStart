@@ -7,7 +7,7 @@ NeedleStart should be built in phases. Each phase must define what it proves, wh
 
 The first public prototype focuses on proving the agent-native and semantic graph wedge.
 
-Unless a phase is explicitly marked `Verified.` or `Scaffolded.` with evidence, its "Definition of done" is planned acceptance criteria, not a claim that the behavior exists today.
+Unless a phase is explicitly marked `Verified.` or `Scaffolded.` with evidence, its "Definition of done" is planned acceptance criteria, not a claim that the behavior exists today. Future-phase acceptance bullets should use `should` wording when they describe behavior that does not exist yet.
 
 ## Major Milestones
 
@@ -214,11 +214,11 @@ virtual:needle/head
 
 Definition of done:
 
-- `needle dev` starts Vite.
-- Changing `app/page.tsx` updates browser output.
-- `virtual:needle/routes` works.
-- React page renders on the server.
-- Client hydration works for a simple counter.
+- `needle dev` should start Vite.
+- Changing `app/page.tsx` should update browser output.
+- `virtual:needle/routes` should work.
+- React pages should render on the server.
+- Client hydration should work for a simple counter.
 
 ## Phase 4: React Pages, Layouts, and Hydration
 
@@ -237,12 +237,12 @@ Features:
 
 Definition of done:
 
-- Nested layouts render in correct order.
-- Params are available to page components.
-- Search params are available.
-- 404 uses `app/not-found.tsx`.
-- Errors use `app/error.tsx`.
-- Hydration works for simple client components.
+- Nested layouts should render in correct order.
+- Params should be available to page components.
+- Search params should be available.
+- 404 should use `app/not-found.tsx`.
+- Errors should use `app/error.tsx`.
+- Hydration should work for simple client components.
 
 ## Phase 5: Render Modes
 
@@ -261,11 +261,11 @@ export const render = apiHot({ validate: true, serialize: "generated" })
 
 Definition of done:
 
-- Render mode is detected.
-- Static routes emit `dist/public/*.html`.
-- SSR routes run through `@needle/adapter-bun`.
-- Invalid render declarations produce helpful errors.
-- Manifest includes cache and revalidation metadata.
+- Render mode should be detected.
+- Static routes should emit `dist/public/*.html`.
+- SSR routes should run through `@needle/adapter-bun`.
+- Invalid render declarations should produce helpful errors.
+- Manifest should include cache and revalidation metadata.
 
 ## Phase 6: SEO Engine
 
@@ -292,12 +292,12 @@ Features:
 
 Definition of done:
 
-- Head tags render into SSR and SSG HTML.
-- `sitemap.xml` is generated from public route manifest.
-- `robots.txt` is generated from config.
-- `needle seo` catches missing title, description, and canonical URL.
-- `needle seo --json` is stable for agents.
-- Tests cover static and dynamic metadata.
+- Head tags should render into SSR and SSG HTML.
+- `sitemap.xml` should be generated from the public route manifest.
+- `robots.txt` should be generated from config.
+- `needle seo` should catch missing title, description, and canonical URL.
+- `needle seo --json` should be stable for agents.
+- Tests should cover static and dynamic metadata.
 
 ## Phase 7: Core Web Vitals and Performance Budgets
 
@@ -310,10 +310,10 @@ Phase boundary:
 
 Definition of done:
 
-- Route JS and CSS sizes are reported.
-- Budgets can warn or fail.
-- Public page budgets are stricter by default.
-- JSON diagnostics include safe suggestions.
+- Route JS and CSS sizes should be reported.
+- Budgets should warn or fail according to config.
+- Public page budgets should be stricter by default.
+- JSON diagnostics should include safe suggestions.
 
 ## Phase 7A: Adapter Abstraction
 
@@ -327,12 +327,12 @@ Packages:
 
 Definition of done:
 
-- `needle.config.ts` supports `runtime` and `adapter`.
-- Generated server entry imports the selected adapter.
-- Adapter manifest documents capabilities.
-- User application code does not require Bun-only APIs.
-- Static adapter can export static routes.
-- Node adapter can serve a minimal SSR route.
+- `needle.config.ts` should support `runtime` and `adapter`.
+- Generated server entry should import the selected adapter.
+- Adapter manifest should document capabilities.
+- User application code should not require Bun-only APIs.
+- Static adapter should export static routes.
+- Node adapter should serve a minimal SSR route.
 
 ## Phase 8: Bun Adapter Production Output
 
@@ -340,13 +340,13 @@ Goal: ship Bun adapter output that serves static, SSR, and API routes.
 
 Definition of done:
 
-- `needle build` emits a runnable Bun adapter entry.
-- `needle start` serves static pages.
-- `needle start` serves SSR pages.
-- 404 and 500 work.
-- Cache headers are correct for static assets.
-- Integration tests make HTTP requests and assert responses.
-- Bun serving is implemented through `@needle/adapter-bun`.
+- `needle build` should emit a runnable Bun adapter entry.
+- `needle start` should serve static pages.
+- `needle start` should serve SSR pages.
+- 404 and 500 should work.
+- Cache headers should be correct for static assets.
+- Integration tests should make HTTP requests and assert responses.
+- Bun serving should be implemented through `@needle/adapter-bun`.
 
 ## Phase 9: API Routes
 
@@ -366,12 +366,12 @@ Goal: make selected API routes faster than generic framework handlers.
 
 Definition of done:
 
-- Params, query, and body schemas validate.
-- Response schema serializes.
-- Invalid input returns 400 with structured errors.
-- Hot API route avoids generic JSON path where possible.
-- OpenAPI file emits for API routes.
-- Benchmarks are reproducible.
+- Params, query, and body schemas should validate.
+- Response schema should serialize.
+- Invalid input should return 400 with structured errors.
+- Hot API routes should avoid generic JSON paths where possible.
+- OpenAPI output should emit for API routes.
+- Benchmarks should be reproducible.
 
 ## Phase 11: Cache System
 
@@ -379,11 +379,11 @@ Goal: build predictable and inspectable caching.
 
 Definition of done:
 
-- Route cache metadata appears in manifest.
-- Cache tags are queryable by route and component.
-- `revalidateTag` invalidates matching entries.
-- Cache status appears in dev logs.
-- Agent JSON output explains cache behavior.
+- Route cache metadata should appear in manifests.
+- Cache tags should be queryable by route and component.
+- `revalidateTag` should invalidate matching entries.
+- Cache status should appear in dev logs.
+- Agent JSON output should explain cache behavior.
 
 ## Phase 12: Server Functions
 
@@ -391,11 +391,11 @@ Goal: provide type-safe same-origin server calls.
 
 Definition of done:
 
-- Server functions callable from loaders.
-- Server functions callable from client components through generated stubs.
-- Input validation works.
-- Output validation works in dev.
-- Map shows which routes call each server function.
+- Server functions should be callable from loaders.
+- Server functions should be callable from client components through generated stubs.
+- Input validation should work.
+- Output validation should work in dev.
+- Map should show which routes call each server function.
 
 ## Phase 13: Needle Map v1
 
@@ -410,11 +410,11 @@ Risk mitigation focus:
 
 Definition of done:
 
-- Graph includes routes, components, APIs, schemas, tests, styles, and metadata.
-- Affected query works from changed file to impacted routes and tests.
-- Explain query includes why edges exist.
-- Output is compact and deterministic.
-- Tests cover graph generation on fixture apps.
+- Graph should include routes, components, APIs, schemas, tests, styles, and metadata.
+- Affected query should connect changed files to impacted routes and tests.
+- Explain query should include why edges exist.
+- Output should be compact and deterministic.
+- Tests should cover graph generation on fixture apps.
 
 ## Phase 14: Needle Map v2
 
@@ -430,12 +430,12 @@ Risk mitigation focus:
 
 Definition of done:
 
-- Map distinguishes hard and soft edges.
-- Component contracts create prop edges.
-- Route metadata creates SEO edges.
-- Cache tags appear as nodes.
-- Affected checks are smarter than import traversal.
-- Agent can ask what else must change if a component changes.
+- Map should distinguish hard and soft edges.
+- Component contracts should create prop edges.
+- Route metadata should create SEO edges.
+- Cache tags should appear as nodes.
+- Affected checks should be smarter than import traversal.
+- Agents should be able to ask what else must change if a component changes.
 
 ## Phase 15: Agent Kernel v1
 
@@ -443,11 +443,11 @@ Goal: make the framework usable by AI agents without forcing them to read the wh
 
 Definition of done:
 
-- App-local `AGENTS.md` generated with project commands and rules.
-- Context capsules generated per route.
-- Agent context command returns compact JSON.
-- Agent plan returns deterministic task skeletons.
-- No production build includes agent metadata.
+- App-local `AGENTS.md` should be generated with project commands and rules.
+- Context capsules should be generated per route.
+- Agent context command should return compact JSON.
+- Agent plan should return deterministic task skeletons.
+- Production builds should not include agent metadata.
 
 ## Phase 16: MCP Server
 
@@ -455,13 +455,13 @@ Goal: expose framework data and actions through structured tools.
 
 Definition of done:
 
-- `needle mcp` starts server.
-- MCP client can list routes.
-- MCP client can inspect a route.
-- MCP client can get related files.
-- MCP client can run affected checks.
-- Write tools require safe-edit validation.
-- Tools return compact structured JSON.
+- `needle mcp` should start the server.
+- MCP clients should list routes.
+- MCP clients should inspect a route.
+- MCP clients should get related files.
+- MCP clients should run affected checks.
+- Write tools should require safe-edit validation.
+- Tools should return compact structured JSON.
 
 ## Phase 17: Safe Edit API
 
@@ -477,16 +477,16 @@ Risk mitigation focus:
 
 Definition of done:
 
-- Safe edit can update metadata.
-- Safe edit can add route block placeholder.
-- Safe edit can update component contract.
-- `SafeEditTransaction` shape is implemented.
-- Dry-run applies patches in memory.
-- `.needle/mutations.json` is append-only.
-- Unsafe fields are rejected.
-- Mutation log is written.
-- Affected checks run after edits.
-- `needle edit undo` can roll back the last safe edit.
+- Safe edits should update metadata.
+- Safe edits should add route block placeholders.
+- Safe edits should update component contracts.
+- `SafeEditTransaction` shape should be implemented.
+- Dry-runs should apply patches in memory.
+- `.needle/mutations.json` should be append-only.
+- Unsafe fields should be rejected.
+- Mutation log should be written.
+- Affected checks should run after edits.
+- `needle edit undo` should roll back the last safe edit.
 
 ## Phase 18: Migration Prototype
 
@@ -498,12 +498,12 @@ Command:
 
 Definition of done:
 
-- App Router pages can be copied into NeedleStart route shape when compatible.
-- Layouts can be preserved when compatible.
-- Static metadata can be converted.
-- Dynamic route segments can be mapped.
-- Ambiguous semantics generate `.contract.ts` stubs.
-- Migration report lists skipped files and manual review items.
+- App Router pages should be copied into NeedleStart route shape when compatible.
+- Layouts should be preserved when compatible.
+- Static metadata should be converted.
+- Dynamic route segments should be mapped.
+- Ambiguous semantics should generate `.contract.ts` stubs.
+- Migration report should list skipped files and manual review items.
 
 ## Phase 19: Node Adapter Baseline
 
@@ -517,11 +517,11 @@ Rationale:
 
 Definition of done:
 
-- A basic Node adapter can serve built static routes.
-- A basic Node adapter can serve SSR routes.
-- Adapter capabilities are documented in `dist/adapter.manifest.json`.
-- README documents Bun default plus Node compatibility.
-- Benchmarks distinguish Bun performance from Node compatibility.
+- A basic Node adapter should serve built static routes.
+- A basic Node adapter should serve SSR routes.
+- Adapter capabilities should be documented in `dist/adapter.manifest.json`.
+- README should document Bun default plus Node compatibility.
+- Benchmarks should distinguish Bun performance from Node compatibility.
 
 ## Later Phases
 
