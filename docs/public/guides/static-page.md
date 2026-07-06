@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, AI agents.
 
-This guide describes the planned workflow for adding a static public page.
+This guide describes the planned workflow for adding a static public page. Static page routing and rendering are not implemented yet.
 
 ## Planned File
 

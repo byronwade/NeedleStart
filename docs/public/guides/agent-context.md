@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: AI agents, app developers, maintainers.
 
-This guide describes the planned agent context workflow.
+This guide describes the planned agent context workflow. Agent context commands are not implemented yet.
 
 ## Planned Command
 

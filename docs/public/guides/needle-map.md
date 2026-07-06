@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, AI agents.
 
-This guide describes the planned workflow for inspecting the app graph.
+This guide describes the planned workflow for inspecting the app graph. Needle Map commands are not implemented yet.
 
 ## Planned Commands
 

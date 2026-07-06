@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, AI agents.
 
-This guide describes the planned workflow for adding route metadata.
+This guide describes the planned workflow for adding route metadata. Metadata APIs and SEO checks are not implemented yet.
 
 ## Planned API
 

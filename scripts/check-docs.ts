@@ -1023,6 +1023,31 @@ const staleStatusPatterns = [
     message: "docs/public/guides/create-app.md should use `needle dev` target command language and current scaffold status.",
   },
   {
+    file: "docs/public/guides/api-route.md",
+    pattern: /^This guide describes the planned API route workflow\.$/m,
+    message: "docs/public/guides/api-route.md should state API route behavior is not implemented yet.",
+  },
+  {
+    file: "docs/public/guides/agent-context.md",
+    pattern: /^This guide describes the planned agent context workflow\.$/m,
+    message: "docs/public/guides/agent-context.md should state agent context commands are not implemented yet.",
+  },
+  {
+    file: "docs/public/guides/needle-map.md",
+    pattern: /^This guide describes the planned workflow for inspecting the app graph\.$/m,
+    message: "docs/public/guides/needle-map.md should state Needle Map commands are not implemented yet.",
+  },
+  {
+    file: "docs/public/guides/seo-metadata.md",
+    pattern: /^This guide describes the planned workflow for adding route metadata\.$/m,
+    message: "docs/public/guides/seo-metadata.md should state metadata APIs and SEO checks are not implemented yet.",
+  },
+  {
+    file: "docs/public/guides/static-page.md",
+    pattern: /^This guide describes the planned workflow for adding a static public page\.$/m,
+    message: "docs/public/guides/static-page.md should state static routing and rendering are not implemented yet.",
+  },
+  {
     file: "docs/README.md",
     pattern: /until package scripts exist|first safe contribution path for Phase 0/i,
     message: "docs/README.md still uses pre-scaffold navigation language.",

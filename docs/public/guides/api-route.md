@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, framework contributors.
 
-This guide describes the planned API route workflow.
+This guide describes the planned API route workflow. API route behavior is not implemented yet.
 
 ## Planned File
 
@@ -22,10 +22,10 @@ export async function GET() {
 
 ## Planned Behavior
 
-- Common HTTP methods work.
-- Plain objects become JSON responses.
-- Response objects pass through.
-- Errors are readable in development and hidden in production.
+- Common HTTP methods should work.
+- Plain objects should become JSON responses.
+- Response objects should pass through.
+- Errors should be readable in development and hidden in production.
 
 ## Source
 
