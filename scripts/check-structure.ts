@@ -1,4 +1,4 @@
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join, resolve } from "node:path";
 
 type PackageSpec = {
@@ -9,6 +9,15 @@ type PackageSpec = {
 
 const root = resolve(import.meta.dir, "..");
 const failures: string[] = [];
+const sharedCoreTypes = [
+  "NeedleApp",
+  "RouteNode",
+  "GraphEdge",
+  "NeedleDiagnostic",
+  "RenderMode",
+  "CachePlan",
+  "AdapterManifest",
+];
 
 const packages: PackageSpec[] = [
   { path: "packages/create-needle", name: "create-needle" },
@@ -32,6 +41,23 @@ const packages: PackageSpec[] = [
 
 function readJson<T>(path: string): T {
   return JSON.parse(readFileSync(join(root, path), "utf8")) as T;
+}
+
+function walkTsFiles(dir: string): string[] {
+  const found: string[] = [];
+
+  for (const entry of readdirSync(join(root, dir))) {
+    const path = join(dir, entry);
+    const absolute = join(root, path);
+    const stats = statSync(absolute);
+    if (stats.isDirectory()) {
+      found.push(...walkTsFiles(path));
+    } else if (entry.endsWith(".ts") || entry.endsWith(".tsx")) {
+      found.push(path);
+    }
+  }
+
+  return found;
 }
 
 const rootPackage = readJson<{
@@ -97,6 +123,18 @@ for (const required of [
   ".github/workflows/ci.yml",
 ]) {
   if (!existsSync(join(root, required))) failures.push(`Missing ${required}`);
+}
+
+for (const file of walkTsFiles("packages")) {
+  if (file.replaceAll("\\", "/").startsWith("packages/core/")) continue;
+  const content = readFileSync(join(root, file), "utf8");
+
+  for (const typeName of sharedCoreTypes) {
+    const localTypePattern = new RegExp(`\\b(?:export\\s+)?(?:type|interface)\\s+${typeName}\\b`);
+    if (localTypePattern.test(content)) {
+      failures.push(`${file} defines ${typeName}; shared core types must come from @needle/core.`);
+    }
+  }
 }
 
 if (failures.length) {

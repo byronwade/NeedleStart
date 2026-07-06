@@ -151,7 +151,7 @@ Production runtime packages must not depend on `@needle/agent`, `@needle/mcp`, o
 
 ## First Types To Lock
 
-Phase 1A should define the shared model in `@needle/core` before any package creates local substitutes:
+Phase 1A should stabilize the shared model in `@needle/core` before any package creates local substitutes. The current scaffold exports placeholder versions of these names so package boundaries and checks can be wired early:
 
 - `NeedleApp`
 - `RouteNode`
@@ -207,4 +207,3 @@ When Phase 1 scaffold files, package boundaries, commands, or status change, upd
 - `docs/package-map.md`: package names and dependency rules.
 - `docs/testing.md` and `docs/testing-contract.md`: real scripts, fixture layout, and CI behavior.
 - `docs/task-backlog.md`: completed and next tasks.
-

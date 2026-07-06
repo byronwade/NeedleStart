@@ -159,7 +159,7 @@ Cut from the first public release:
 
 - Runtime stays tiny.
 - Compiler and build-time graph carry the complexity.
-- Shared immutable data model must be locked in `@needle/core`: `NeedleApp`, `RouteNode`, `GraphEdge`, and `NeedleDiagnostic`.
+- Shared immutable data model must be stabilized in `@needle/core`: `NeedleApp`, `RouteNode`, `GraphEdge`, `NeedleDiagnostic`, `RenderMode`, `CachePlan`, and `AdapterManifest`.
 - CLI, compiler, map, agent, MCP, and devtools must read the same core model instead of duplicating local shapes.
 - Build pipeline is discovery -> IR -> graph augmentation -> codegen -> manifests.
 - Runtime consumes generated artifacts and should not rediscover source structure.
@@ -197,7 +197,7 @@ Small-team ownership should split along these lines:
 - Runtime and Vite plugin.
 - Agent Kernel, MCP, and safe edits.
 
-All owners must use the same core data model: `NeedleApp`, `RouteNode`, `GraphEdge`, and `NeedleDiagnostic`.
+All owners must use the same core data model: `NeedleApp`, `RouteNode`, `GraphEdge`, `NeedleDiagnostic`, `RenderMode`, `CachePlan`, and `AdapterManifest`.
 
 ### Success Metric
 
@@ -448,7 +448,7 @@ Safe edits produce zero silent breaks in demo scenarios and catch nearly all int
 
 After the monorepo skeleton:
 
-1. Lock `NeedleApp`, `RouteNode`, `GraphEdge`, and `NeedleDiagnostic` in `@needle/core`.
+1. Stabilize `NeedleApp`, `RouteNode`, `GraphEdge`, `NeedleDiagnostic`, `RenderMode`, `CachePlan`, and `AdapterManifest` in `@needle/core` beyond the current scaffold placeholders.
 2. Implement the file-level graph and basic affected query as the first non-trivial feature.
 3. Build an agent simulator script that uses MCP tools once available to perform metadata edits and assert that checks pass.
 4. Write the marketing one-pager: "NeedleStart: the framework where changing code does not feel like operating without a map."

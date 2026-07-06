@@ -114,7 +114,7 @@ bun run performance:check
 bun run check
 ```
 
-These commands verify the scaffold, docs links, root docs metadata, docs navigation coverage, package-map/build-plan/backlog alignment, planned CLI command surface and prefix consistency, status-drift guardrails, package structure, performance documentation guardrails, TypeScript surface, and placeholder tests. They do not prove route discovery, rendering, CLI runtime behavior, adapters, Needle Map generation, MCP tools, or safe edits.
+These commands verify the scaffold, docs links, root docs metadata, docs navigation coverage, package-map/build-plan/backlog alignment, planned CLI command surface and prefix consistency, status-drift guardrails, package structure, shared-core type ownership, performance documentation guardrails, TypeScript surface, and placeholder tests. They do not prove route discovery, rendering, CLI runtime behavior, adapters, Needle Map generation, MCP tools, or safe edits.
 
 ## Planned Commands
 
@@ -144,6 +144,7 @@ needle migrate
 - Public SEO behavior must be tested when implemented.
 - New graph edges must include `kind`, `source`, `confidence`, and `why`.
 - Claims about scaffolded directories, examples, commands, generated files, and performance evidence must match the current filesystem and checks; otherwise mark them as planned.
+- Shared core model types belong in `@needle/core`; other packages must import them instead of defining local `NeedleApp`, `RouteNode`, `GraphEdge`, `NeedleDiagnostic`, `RenderMode`, `CachePlan`, or `AdapterManifest` substitutes.
 - Do not edit generated files manually.
 - Do not add network calls in tests unless explicitly required.
 - Do not introduce global mutable state in the server runtime.

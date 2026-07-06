@@ -133,7 +133,9 @@ Out of scope:
 
 ## Phase 1A: Core Data Model
 
-Goal: lock the shared immutable model in `@needle/core`.
+Goal: stabilize the shared immutable model in `@needle/core`.
+
+The Phase 1 scaffold already exposes placeholder versions of these types. Phase 1A must turn them into contract-backed shapes instead of letting downstream packages invent local substitutes.
 
 Required types:
 
@@ -141,12 +143,15 @@ Required types:
 - `RouteNode`
 - `GraphEdge`
 - `NeedleDiagnostic`
+- `RenderMode`
+- `CachePlan`
+- `AdapterManifest`
 
 Definition of done:
 
-- CLI, compiler, map, agent, MCP, adapters, and devtools can import shared types from `@needle/core`.
+- CLI, compiler, map, agent, MCP, adapters, and devtools import shared types from `@needle/core`.
 - `GraphEdge` includes `kind`, `source`, `confidence`, and `why`.
-- Docs and placeholder tests verify the type contracts.
+- Docs, type tests, and contract fixtures verify the type contracts.
 - No package defines a competing local route or graph shape.
 
 ## Phase 2: CLI and App Discovery

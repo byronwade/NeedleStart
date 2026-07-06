@@ -144,6 +144,23 @@ const prototypeScopeTerms = [
   },
 ];
 
+const coreModelTypes = [
+  "NeedleApp",
+  "RouteNode",
+  "GraphEdge",
+  "NeedleDiagnostic",
+  "RenderMode",
+  "CachePlan",
+  "AdapterManifest",
+];
+
+const coreModelDocs = [
+  "docs/phase-1-build-plan.md",
+  "docs/roadmap.md",
+  "docs/task-backlog.md",
+  "docs/risk-mitigation.md",
+];
+
 function rel(path: string): string {
   return relative(root, path).replaceAll("\\", "/");
 }
@@ -584,6 +601,16 @@ if (existsSync(join(root, "docs/task-backlog.md"))) {
   for (const spec of packageSpecs) {
     if (!backlog.includes(spec.name)) {
       failures.push(`docs/task-backlog.md does not include package name ${spec.name}.`);
+    }
+  }
+}
+
+for (const file of coreModelDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file);
+  for (const typeName of coreModelTypes) {
+    if (!content.includes(typeName)) {
+      failures.push(`${file} does not document shared core type ${typeName}.`);
     }
   }
 }

@@ -405,16 +405,21 @@ Out of scope:
 
 ## PR 1A: Core Data Model
 
-Goal: lock the shared immutable data model in `@needle/core`.
+Goal: stabilize the shared immutable data model in `@needle/core`.
+
+The Phase 1 scaffold already exposes placeholder versions of the shared types. This task promotes them into contract-backed shapes before compiler, CLI, runtime adapter, map, agent, MCP, or devtools work depends on them.
 
 Definition of done:
 
-- `NeedleApp` exists.
-- `RouteNode` exists.
-- `GraphEdge` exists with `kind`, `source`, `confidence`, and `why`.
-- `NeedleDiagnostic` exists.
+- `NeedleApp` is contract-backed.
+- `RouteNode` is contract-backed.
+- `GraphEdge` is contract-backed and includes `kind`, `source`, `confidence`, and `why`.
+- `NeedleDiagnostic` is contract-backed.
+- `RenderMode` is contract-backed.
+- `CachePlan` is contract-backed.
+- `AdapterManifest` is contract-backed.
 - CLI, compiler, map, agent, MCP, adapters, and devtools import these types instead of defining local substitutes.
-- Type tests or placeholder tests verify the shape.
+- Type tests and fixture tests verify the shape.
 
 ## PR 1B: Adapter Package Baseline
 
