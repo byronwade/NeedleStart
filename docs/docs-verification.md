@@ -143,7 +143,7 @@ Expected result: machine-readable docs outputs remain documented as planned, sch
 rg -n "frontmatter|canonical|docs-index\.json|llms\.txt|route mapping|renderer|public-frontmatter-standard|docs-site-build-plan" docs\public-docs-site-architecture.md docs\public-frontmatter-standard.md docs\docs-site-build-plan.md docs\public-docs.md docs\website-content-map.md docs\machine-readable-docs.md
 ```
 
-Expected result: public docs metadata, routes, navigation, renderer assumptions, and machine-readable outputs remain connected.
+Expected result: public docs metadata, routes, navigation, source mapping, renderer assumptions, and machine-readable outputs remain connected.
 
 ### 10. Testing Contract Check
 
@@ -300,7 +300,7 @@ The initial Bun workspace exposes these package scripts:
 
 Target behavior:
 
-- `docs:check` validates required docs, required links, local Markdown links, root docs metadata, every `docs/` Markdown file's top-level status and audience metadata, status definition wording, durable internal docs hub coverage, local directory index coverage for prompts, decisions, checklists, skills, and subagents, every Markdown status label format, public docs navigation coverage, AI playbook placement, verification-section coverage, scaffold-status language, scaffolded-package-versus-implemented-package wording, current-vs-planned structure claims, agent-output naming guardrails, package-map/build-plan/backlog package coverage, planned CLI command surface and prefix consistency, config/adapter contract terms, adapter package paths, shared-core scaffold terminology, and the current `bun.lockb` lockfile name.
+- `docs:check` validates required docs, required links, local Markdown links, root docs metadata, every `docs/` Markdown file's top-level status and audience metadata, status definition wording, durable internal docs hub coverage, local directory index coverage for prompts, decisions, checklists, skills, and subagents, every Markdown status label format, public docs navigation and source-map coverage, AI playbook placement, verification-section coverage, scaffold-status language, scaffolded-package-versus-implemented-package wording, current-vs-planned structure claims, agent-output naming guardrails, package-map/build-plan/backlog package coverage, planned CLI command surface and prefix consistency, config/adapter contract terms, adapter package paths, shared-core scaffold terminology, and the current `bun.lockb` lockfile name.
 - `structure:check` validates workspace script commands, package names, package entrypoints, TypeScript scaffold files, CI, forbidden runtime dependencies on agent-only packages, and shared-core type ownership outside `@needle/core`.
 - `performance:check` validates performance docs, benchmark fixture coverage, raw-result rules, and unsupported root/public speed, benchmark, or SEO positioning claim patterns.
 - `check` runs the automated docs, structure, performance, typecheck, and test gates.
@@ -318,7 +318,7 @@ Every documentation-heavy PR should report:
 - Whether status language was reviewed.
 - Whether top-level docs status and audience metadata stayed complete.
 - Whether public docs navigation changed.
-- Whether public docs metadata, route mapping, or renderer assumptions changed.
+- Whether public docs metadata, route mapping, source mapping, or renderer assumptions changed.
 - Whether machine-readable docs contracts changed.
 - Whether first-contribution guidance, ADRs, implementation checklists, glossary terms, or public frontmatter rules changed.
 - Whether review gates, threat models, benchmark fixtures, examples catalog, docs-site build plan, or pull request template requirements changed.

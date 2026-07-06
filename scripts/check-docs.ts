@@ -880,6 +880,28 @@ for (const publicDoc of allPublicDocs()) {
   }
 }
 
+for (const publicDoc of allPublicDocs()) {
+  const content = read(publicDoc);
+  const fileDir = dirname(join(root, publicDoc));
+  const matches = content.matchAll(/\[[^\]]+\]\(([^)#][^)]*)\)/g);
+
+  for (const match of matches) {
+    const target = match[1].trim();
+    if (/^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(target)) continue;
+
+    const pathOnly = target.split("#")[0];
+    if (!pathOnly || !pathOnly.endsWith(".md")) continue;
+
+    const resolved = resolve(fileDir, pathOnly);
+    const targetRel = rel(resolved);
+    if (targetRel.startsWith("docs/public/")) continue;
+
+    if (!websiteContentMap.includes(targetRel)) {
+      failures.push(`docs/website-content-map.md does not list public source link: ${targetRel}`);
+    }
+  }
+}
+
 const docsHub = read("docs/README.md");
 for (const rootDoc of rootDocsWithMetadata) {
   const topMatter = read(rootDoc).split(/\r?\n/).slice(0, 8).join("\n");

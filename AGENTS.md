@@ -291,7 +291,7 @@ Test output used by agents must be deterministic.
 - Use `docs/benchmark-fixtures.md` when changing benchmark fixture scope, fixture names, raw result layout, performance evidence paths, or benchmark claim gates.
 - Use `docs/speed-decisions.md` when changing rendering defaults, build pipeline choices, runtime request path, route code splitting, CSS delivery, production source maps, React Compiler, React streaming or hydration behavior, browser delivery hints, 103 Early Hints, optional RUM or field-data policy, API hot paths, caching strategy, compiler scaling, agent context size, or benchmark positioning.
 - Use `docs/speed-capability-audit.md` when reviewing whether all major speed surfaces have a documented decision, proof gate, and remaining implementation evidence.
-- Use `docs/public-docs-site-architecture.md` when changing public docs navigation, page metadata, future frontmatter, route mapping, or docs-site behavior.
+- Use `docs/public-docs-site-architecture.md` when changing public docs navigation, page metadata, future frontmatter, route mapping, source mapping, or docs-site behavior.
 - Use `docs/docs-site-build-plan.md` when changing future public docs implementation phases, renderer selection gates, search, navigation, accessibility, or machine-readable docs outputs.
 - Use `docs/versioning-and-upgrades.md` when changing public APIs, command contracts, config, manifest schemas, generated files, compatibility claims, or release behavior.
 - Use direct, durable language.

@@ -32,7 +32,7 @@ Also apply `docs/docs-freshness-policy.md` for any change that can make docs sta
 - `docs/performance-contract.md` still reflects route budgets, Core Web Vitals target language, `.needle/perf.report.json`, performance diagnostics, benchmark evidence, and public speed-claim rules.
 - `docs/speed-decisions.md` still reflects rendering defaults, build pipeline choices, runtime request path, React Compiler, React streaming, resource hints, fetch priority, speculation rules, bfcache, image/font delivery, compression, hot APIs, cache strategy, compiler scaling, rejected defaults, and benchmark positioning.
 - `docs/speed-capability-audit.md` still maps every major speed surface to a decision, source docs, proof gate, and implementation follow-up.
-- `docs/public-docs-site-architecture.md` still reflects public docs metadata, routing, navigation, and renderer decisions.
+- `docs/public-docs-site-architecture.md` and `docs/website-content-map.md` still reflect public docs metadata, routing, navigation, source mapping, and renderer decisions.
 - Planned, scaffolded, implemented, and verified behavior are clearly separated.
 - New examples are either verified or clearly marked as planned.
 

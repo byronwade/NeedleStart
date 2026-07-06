@@ -71,3 +71,38 @@ The route and metadata contract for these pages is defined in [Public Docs Site 
 | Deployment | `docs/public/deployment/*`, `docs/deployment.md`, `docs/adapters.md`, `docs/compatibility.md` |
 | Community | `docs/public/community/*`, `CONTRIBUTING.md`, `GOVERNANCE.md`, `CODE_OF_CONDUCT.md`, `docs/first-contribution.md` |
 | Comparisons | `docs/public/comparisons/*`, `docs/comparisons.md`, `docs/documentation-research.md` |
+
+## Public Source Coverage
+
+Every internal source linked by a public page must also be listed here so the future docs site can validate source links, related-doc metadata, and machine-readable docs output.
+
+- `SECURITY.md`
+- `docs/api-routes.md`
+- `docs/benchmark-methodology.md`
+- `docs/benchmarks.md`
+- `docs/cache.md`
+- `docs/compiler-ir.md`
+- `docs/config-contract.md`
+- `docs/docs-freshness-policy.md`
+- `docs/docs-verification.md`
+- `docs/engineering-standards.md`
+- `docs/hot-api-path.md`
+- `docs/machine-readable-docs.md`
+- `docs/maintainer-guide.md`
+- `docs/manifest-contracts.md`
+- `docs/mcp-server.md`
+- `docs/open-source-community.md`
+- `docs/operating-cadence.md`
+- `docs/package-map.md`
+- `docs/performance.md`
+- `docs/phase-1-build-plan.md`
+- `docs/roadmap.md`
+- `docs/routing.md`
+- `docs/runtime-contract.md`
+- `docs/safe-edit-transactions.md`
+- `docs/schema.md`
+- `docs/security.md`
+- `docs/seo-engine.md`
+- `docs/speed-decisions.md`
+- `docs/speed-strategy.md`
+- `docs/testing.md`

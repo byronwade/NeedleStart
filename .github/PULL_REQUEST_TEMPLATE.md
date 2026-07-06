@@ -49,7 +49,7 @@ Describe what changed and why.
 - [ ] `docs/performance-contract.md` was applied when route budgets, performance diagnostics, `.needle/perf.report.json`, benchmark evidence, Core Web Vitals language, or public speed claims changed.
 - [ ] `docs/benchmark-fixtures.md` was applied when benchmark fixture names, fixture scope, raw result layout, or performance evidence paths changed.
 - [ ] `docs/speed-decisions.md` and `docs/speed-capability-audit.md` were applied when rendering defaults, build pipeline, runtime request path, React Compiler, React streaming, resource hints, fetch priority, 103 Early Hints, speculation rules, bfcache, image/font delivery, compression, hot APIs, cache strategy, compiler scaling, or benchmark positioning changed.
-- [ ] `docs/public-docs-site-architecture.md` was applied when public docs metadata, routes, navigation, or renderer assumptions changed.
+- [ ] `docs/public-docs-site-architecture.md` was applied when public docs metadata, routes, navigation, source mapping, or renderer assumptions changed.
 - [ ] `docs/docs-site-build-plan.md` was applied when public docs implementation phases, renderer decision gates, search, navigation, accessibility, or machine-readable output plans changed.
 - [ ] `docs/versioning-and-upgrades.md` was applied when public APIs, CLI output, config, manifests, compatibility, deprecations, or release behavior changed.
 - [ ] Relevant reference docs were updated.
