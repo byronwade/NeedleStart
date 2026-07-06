@@ -116,15 +116,20 @@ Example:
 
 ```json
 {
+  "schemaVersion": "needle.adapter.v0",
   "adapter": "bun",
-  "runtime": "bun",
+  "package": "@needle/adapter-bun",
+  "runtime": {
+    "name": "bun"
+  },
   "capabilities": {
     "static": true,
     "ssr": true,
     "api": true,
     "hotApi": true,
     "streaming": false
-  }
+  },
+  "unsupported": []
 }
 ```
 

@@ -64,8 +64,10 @@ describe("Phase 1 scaffold", () => {
     };
     const cache: CachePlan = { mode: "no-store" };
     const adapter: AdapterManifest = {
-      name: "@needle/adapter-bun",
-      runtime: "bun",
+      schemaVersion: "needle.adapter.v0",
+      adapter: "bun",
+      package: "@needle/adapter-bun",
+      runtime: { name: "bun" },
       capabilities: {},
       unsupported: [],
     };
@@ -83,7 +85,7 @@ describe("Phase 1 scaffold", () => {
     expect(route.renderMode).toBe("static");
     expect(diagnostic.severity).toBe("info");
     expect(cache.mode).toBe("no-store");
-    expect(adapter.runtime).toBe("bun");
+    expect(adapter.runtime.name).toBe("bun");
     expect(edge.why).toContain("scaffold");
     expect(needleCoreStatus.implementsRuntimeBehavior).toBe(false);
   });

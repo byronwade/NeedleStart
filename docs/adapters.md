@@ -97,8 +97,12 @@ The compiler chooses the adapter import during build. Runtime packages consume g
 
 ```json
 {
+  "schemaVersion": "needle.adapter.v0",
   "adapter": "bun",
-  "runtime": "bun",
+  "package": "@needle/adapter-bun",
+  "runtime": {
+    "name": "bun"
+  },
   "capabilities": {
     "static": true,
     "ssr": true,
@@ -120,7 +124,8 @@ The compiler chooses the adapter import during build. Runtime packages consume g
       "earlyHints103": false
     },
     "bfcacheAwareHeaders": true
-  }
+  },
+  "unsupported": []
 }
 ```
 

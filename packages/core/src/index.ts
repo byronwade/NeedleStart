@@ -79,8 +79,13 @@ export type NeedleApp = {
 };
 
 export type AdapterManifest = {
-  name: string;
-  runtime: "bun" | "node" | "static" | string;
+  schemaVersion: string;
+  adapter: "bun" | "node" | "static" | string;
+  package: string;
+  runtime: {
+    name: "bun" | "node" | "static" | string;
+    versionRange?: string;
+  };
   entry?: string;
   publicDir?: string;
   capabilities: Record<string, boolean | string | number>;
