@@ -350,13 +350,13 @@ Definition of done:
 
 Goal: support full-stack API routes.
 
-Definition of done:
+Planned definition of done:
 
-- GET, POST, PUT, PATCH, DELETE, OPTIONS, and HEAD work.
-- Dynamic API params work.
-- Plain objects become JSON responses.
-- Response objects pass through untouched.
-- Errors are formatted in dev and hidden in production.
+- GET, POST, PUT, PATCH, DELETE, OPTIONS, and HEAD should be implemented and tested.
+- Dynamic API params should be implemented and tested.
+- Plain objects should become JSON responses.
+- Response objects should pass through untouched.
+- Errors should be formatted in development and hidden in production.
 
 ## Phase 10: Hot API Compiler
 

@@ -888,6 +888,31 @@ const staleStatusPatterns = [
     message: "docs/api-routes.md should use planned `should` wording for API behavior until implementation exists.",
   },
   {
+    file: "docs/roadmap.md",
+    pattern: /- GET, POST, PUT, PATCH, DELETE, OPTIONS, and HEAD work\.|- Dynamic API params work\.|- Plain objects become JSON responses\.|- Response objects pass through untouched\.|- Errors are formatted in dev and hidden in production\./i,
+    message: "docs/roadmap.md should use planned `should` wording for API route acceptance criteria until implementation exists.",
+  },
+  {
+    file: "docs/task-backlog.md",
+    pattern: /- Common HTTP methods work\.|- Dynamic API params work\.|- Plain objects become JSON\.|- Response objects pass through\.|- Missing or unsupported methods emit diagnostics\.|- Production error responses hide stack traces\./i,
+    message: "docs/task-backlog.md should use planned `should` wording for API route acceptance criteria until implementation exists.",
+  },
+  {
+    file: "docs/api-route-contract.md",
+    pattern: /`ctx\.request` exposes the raw Web `Request`\.|Handlers can call `request\.json\(\)`, `request\.text\(\)`, `request\.formData\(\)`, or `request\.arrayBuffer\(\)`\.|\| `Response` \| Pass through unchanged\. \||\| Plain object \| JSON response with/i,
+    message: "docs/api-route-contract.md should use planned `should` wording for request and response behavior until implementation exists.",
+  },
+  {
+    file: "docs/runtime-contract.md",
+    pattern: /The compiler generates an adapter-aware server entry\./i,
+    message: "docs/runtime-contract.md should mark adapter-aware server entry generation as planned until implementation exists.",
+  },
+  {
+    file: "docs/public/guides/api-route.md",
+    pattern: /- Common HTTP methods work\.|- Plain objects become JSON responses\.|- Response objects pass through\.|- Errors are readable in development and hidden in production\./i,
+    message: "docs/public/guides/api-route.md should use planned `should` wording for API behavior until implementation exists.",
+  },
+  {
     file: "docs/public/reference/api-routes.md",
     pattern: /- `Response` values pass through\.|- Plain objects and arrays become JSON responses\.|- Strings become text responses/i,
     message: "docs/public/reference/api-routes.md should use planned `should` wording for API return behavior until implementation exists.",

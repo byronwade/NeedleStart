@@ -78,7 +78,7 @@ The `.needle/*` files are the canonical compiler and agent artifacts. `.needle/r
 
 ## Adapter-Aware Entry
 
-The compiler generates an adapter-aware server entry.
+The compiler is planned to generate an adapter-aware server entry.
 
 ```ts
 // .needle/generated/server-entry.ts

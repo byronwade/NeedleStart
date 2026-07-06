@@ -576,14 +576,14 @@ Read first:
 - `docs/runtime-contract.md`
 - `docs/security.md`
 
-Definition of done:
+Planned definition of done:
 
-- Common HTTP methods work.
-- Dynamic API params work.
-- Plain objects become JSON.
-- Response objects pass through.
-- Missing or unsupported methods emit diagnostics.
-- Production error responses hide stack traces.
+- Common HTTP methods should be implemented and tested.
+- Dynamic API params should be implemented and tested.
+- Plain objects should become JSON responses.
+- Response objects should pass through.
+- Missing or unsupported methods should emit diagnostics.
+- Production error responses should hide stack traces.
 
 ## PR 10: Hot API Schema Path
 

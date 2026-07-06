@@ -77,11 +77,11 @@ Planned return normalization:
 
 | Handler return | Response behavior |
 | --- | --- |
-| `Response` | Pass through unchanged. |
-| Plain object | JSON response with `content-type: application/json; charset=utf-8`. |
-| Array | JSON response with `content-type: application/json; charset=utf-8`. |
-| `string` | Text response with `content-type: text/plain; charset=utf-8` unless a helper marks HTML. |
-| `null` or `undefined` | `204 No Content` for methods where an empty response is valid; diagnostic in strict mode. |
+| `Response` | Should pass through unchanged. |
+| Plain object | Should become a JSON response with `content-type: application/json; charset=utf-8`. |
+| Array | Should become a JSON response with `content-type: application/json; charset=utf-8`. |
+| `string` | Should become a text response with `content-type: text/plain; charset=utf-8` unless a helper marks HTML. |
+| `null` or `undefined` | Should become `204 No Content` for methods where an empty response is valid; diagnostic in strict mode. |
 
 Response helper names are not final. If helpers are added, they must be documented in [API Reference](api-reference.md) and versioned through [Versioning And Upgrades](versioning-and-upgrades.md).
 
@@ -91,8 +91,8 @@ The first implementation should keep body parsing explicit.
 
 Planned behavior:
 
-- `ctx.request` exposes the raw Web `Request`.
-- Handlers can call `request.json()`, `request.text()`, `request.formData()`, or `request.arrayBuffer()`.
+- `ctx.request` should expose the raw Web `Request`.
+- Handlers should be able to call `request.json()`, `request.text()`, `request.formData()`, or `request.arrayBuffer()`.
 - The framework should not parse request bodies unless a schema or helper asks it to.
 - Body parsing failures should produce structured diagnostics in development and stable error responses in production.
 - Body size limits should be adapter-configurable before public release.
