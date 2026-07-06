@@ -205,7 +205,7 @@ Security-sensitive routes should follow [Security](security.md) and must not lea
 
 ## Generated Manifest Fields
 
-API routes should appear in `.needle/routes.json` and render/runtime manifests.
+API routes should appear in `.needle/routes.json`, `.needle/render-manifest.json`, `dist/routes.manifest.json`, and `dist/render.manifest.json` when adapter output exists.
 
 Draft route entry extension:
 

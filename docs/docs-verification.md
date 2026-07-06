@@ -271,7 +271,7 @@ Automated coverage in `bun run docs:check` also requires canonical `.needle/*` a
 
 Automated coverage also requires internal and public manifest contract docs to link the same source contracts for routing, API routes, schema, cache, SEO, performance, and diagnostics.
 
-Onboarding and prototype docs must name `.needle/routes.json` and `.needle/render-manifest.json` instead of using generic "route and render manifests" wording.
+Onboarding, prototype, and API route docs must name `.needle/routes.json`, `.needle/render-manifest.json`, and deployment-copy artifacts when relevant instead of generic "route and render manifests" or "render/runtime manifests" wording.
 
 ### 16. Routing Contract Check
 

@@ -1951,6 +1951,11 @@ const staleStatusPatterns = [
     message: "docs/schema-contract.md should name .needle/routes.json and .needle/render-manifest.json instead of generic route and render manifests.",
   },
   {
+    file: "docs/api-route-contract.md",
+    pattern: /render\/runtime manifests/i,
+    message: "docs/api-route-contract.md should name exact route and render manifest artifacts.",
+  },
+  {
     file: "AGENTS.md",
     pattern: /Bun server|Serve through Bun|Adapter-aware Bun server|Bun for runtime paths/i,
     message: "AGENTS.md should describe first-slice Bun serving through @needle/adapter-bun.",
