@@ -154,7 +154,7 @@ needle migrate
 - Do not let Needle Map be the only source of truth for safety-critical decisions.
 - Treat missing semantic contracts as low-confidence graph data instead of guessing.
 - Safe edits must be AST-based, previewable, logged, check-backed, and reversible.
-- User application code should not require Bun-only APIs; Bun-specific behavior belongs inside runtime packages and adapters.
+- User application code should not require Bun-only APIs; Bun-specific behavior belongs inside runtime adapter packages.
 
 ## Generated Files
 
@@ -245,7 +245,7 @@ Planned package responsibilities are documented in `docs/package-map.md`.
 
 Do not add cross-package imports casually. Shared types belong in `@needle/core`. Compiler-only code belongs in `@needle/compiler`. Runtime request handling belongs in runtime adapters, starting with `@needle/adapter-bun`. Agent and MCP code must remain dev/build-time unless explicitly designed as a development server feature.
 
-Phase 1 package scaffolding must follow `docs/phase-1-build-plan.md`. Prefer `@needle/adapter-bun`, `@needle/adapter-node`, and `@needle/adapter-static` for runtime adapter packages unless a later architecture decision reintroduces a separate `@needle/server-bun` package.
+Phase 1 package scaffolding must follow `docs/phase-1-build-plan.md`. The active runtime adapter package names are `@needle/adapter-bun`, `@needle/adapter-node`, and `@needle/adapter-static`. Reintroduce any separate `@needle/server-bun` package only through an architecture decision record.
 
 ## Testing Expectations
 

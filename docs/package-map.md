@@ -29,7 +29,7 @@ Scope: package names and entrypoints are scaffolded; package behavior remains pl
 | `@needle/adapter-bun` | Default Bun adapter using `Bun.serve` and generated route matcher. |
 | `@needle/adapter-node` | Node compatibility adapter using Node HTTP or a lightweight server with shims. |
 | `@needle/adapter-static` | Static export adapter for fully static routes. |
-| `@needle/adapters/*` | Later deployment targets such as Docker, Cloudflare, Vercel, and other cloud adapters. |
+| `packages/adapters/*` | Later deployment targets such as Docker, Cloudflare, Vercel, and other cloud adapters. |
 
 Current scaffold paths:
 
@@ -53,7 +53,7 @@ packages/adapters/node
 packages/adapters/static
 ```
 
-Note: earlier planning docs referred to `@needle/server-bun` as the Bun production runtime package. Phase 1 should prefer `@needle/adapter-bun` as the concrete package name so Bun, Node, and static output share the same adapter model. Reintroduce a separate `@needle/server-bun` package only through an architecture decision record if the adapter package becomes too broad.
+Note: earlier planning docs referred to `@needle/server-bun` as the Bun production runtime package. It is not an active Phase 1 package name. Phase 1 uses `@needle/adapter-bun` so Bun, Node, and static output share the same adapter model. Reintroduce a separate `@needle/server-bun` package only through an architecture decision record if the adapter package becomes too broad.
 
 ## Boundary Rules
 
@@ -78,7 +78,7 @@ Planned direction:
 - `@needle/adapter-bun` should depend on generated output, `@needle/core`, `@needle/router`, and minimal runtime helpers.
 - `@needle/react` should not depend on compiler internals.
 - `@needle/mcp` should use stable APIs from `@needle/map`, `@needle/seo`, `@needle/agent`, and `@needle/core`.
-- Production runtime packages must not depend on agent-only code.
+- Runtime adapter packages must not depend on agent-only code.
 
 ## Adapter Rules
 

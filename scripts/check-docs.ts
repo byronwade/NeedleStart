@@ -564,6 +564,21 @@ const staleStatusPatterns = [
     message: "docs/runtime-contract.md uses stale generated artifact names; canonical compiler artifacts live under .needle/*.",
   },
   {
+    file: "docs/phase-1-build-plan.md",
+    pattern: /remains a planned runtime package name/i,
+    message: "docs/phase-1-build-plan.md should treat @needle/server-bun as historical, not an active planned package.",
+  },
+  {
+    file: "docs/risk-mitigation.md",
+    pattern: /Create `@needle\/adapters` early|framework runtime packages and adapters/i,
+    message: "docs/risk-mitigation.md should use concrete runtime adapter package wording.",
+  },
+  {
+    file: "AGENTS.md",
+    pattern: /runtime packages and adapters|unless a later architecture decision reintroduces a separate `@needle\/server-bun` package/i,
+    message: "AGENTS.md should name active adapter packages and treat @needle/server-bun as ADR-only.",
+  },
+  {
     file: "docs/runtime-contract.md",
     pattern: /"runtime": "bun"/i,
     message: "docs/runtime-contract.md should show adapter manifest runtime.name, not a bare runtime string.",

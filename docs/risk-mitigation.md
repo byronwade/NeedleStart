@@ -201,7 +201,7 @@ All owners must use the same core data model: `NeedleApp`, `RouteNode`, `GraphEd
 
 ### Success Metric
 
-The production runtime packages stay intentionally small, and the first working slice with map plus basic safe metadata edit ships within the planned prototype window.
+The runtime adapter packages stay intentionally small, and the first working slice with map plus basic safe metadata edit ships within the planned prototype window.
 
 ## 3. Adoption Moat
 
@@ -291,11 +291,11 @@ Rules:
 - Document Node compatibility prominently.
 - Move adapter abstraction into the Phase 7-8 window instead of treating it as a late deployment concern.
 - Avoid requiring Bun-only APIs in user application code.
-- Keep Bun-specific APIs inside framework runtime packages and adapters.
+- Keep Bun-specific APIs inside runtime adapter packages.
 
 ### Adapter Abstraction
 
-Create `@needle/adapters` early:
+Create adapter packages early:
 
 - `@needle/adapter-bun`: default, uses `Bun.serve` and generated route matcher.
 - `@needle/adapter-node`: uses Node `http` or a lightweight server with compatibility shims.

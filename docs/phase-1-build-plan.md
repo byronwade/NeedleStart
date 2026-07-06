@@ -85,7 +85,7 @@ create-needle
 @needle/adapter-static
 ```
 
-`@needle/server-bun` remains a planned runtime package name from earlier docs, but Phase 1 should prefer the adapter package path unless a later architecture decision reintroduces a separate server package. Bun-specific request handling belongs in `@needle/adapter-bun`; shared runtime contracts belong in `@needle/core` or generated output.
+Earlier planning docs referred to `@needle/server-bun` as the Bun production runtime package. It is not an active Phase 1 package name. Phase 1 uses the adapter package path unless a later architecture decision record reintroduces a separate server package. Bun-specific request handling belongs in `@needle/adapter-bun`; shared runtime contracts belong in `@needle/core` or generated output.
 
 ## Root Files
 

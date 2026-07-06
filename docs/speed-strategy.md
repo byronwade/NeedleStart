@@ -132,7 +132,7 @@ Before scheduling or merging a feature, answer:
 
 1. Does it preserve static-first rendering where possible?
 2. Does it move work to build time when safe?
-3. Does it keep production runtime packages small?
+3. Does it keep runtime adapter packages small?
 4. Does it add runtime cost to every request or only to configured routes?
 5. Does it affect generated manifest size?
 6. Does it affect agent-facing JSON size?
