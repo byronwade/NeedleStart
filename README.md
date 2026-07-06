@@ -8,7 +8,7 @@ Your app ships with a map.
 
 Build like Next.js.
 
-Type like TanStack.
+Type like TanStack Start.
 
 Ship fast with Bun and Vite.
 

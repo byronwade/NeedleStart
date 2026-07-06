@@ -117,7 +117,7 @@ README feature and differentiator sections must label planned framework capabili
 
 Public API draft examples must say they are planned and not implemented yet unless the behavior has feature-specific implementation evidence.
 
-Automated coverage also requires README, AGENTS, Vision, product strategy, public home, and glossary docs to keep the canonical product identity aligned: NeedleStart is an `app-graph-native, SEO-first React framework` for humans and AI agents, the semantic app graph is the first-class primitive, and public pages can use the short promise `Your app ships with a map`.
+Automated coverage also requires README, AGENTS, Vision, product strategy, public home, and glossary docs to keep the canonical product identity aligned: NeedleStart is an `app-graph-native, SEO-first React framework` for humans and AI agents, the semantic app graph is the first-class primitive, public pages can use the short promise `Your app ships with a map`, and short-form positioning should use `Build like Next.js` and `Type like TanStack Start`.
 
 ### 5. Navigation Coverage Check
 

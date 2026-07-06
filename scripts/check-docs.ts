@@ -528,7 +528,7 @@ const agentEnforcementContractDocs = [
 const productIdentityDocs = [
   {
     file: "README.md",
-    terms: ["app-graph-native, SEO-first React framework", "humans and AI agents", "semantic app graph", "Your app ships with a map"],
+    terms: ["app-graph-native, SEO-first React framework", "humans and AI agents", "semantic app graph", "Your app ships with a map", "Build like Next.js", "Type like TanStack Start"],
   },
   {
     file: "AGENTS.md",
@@ -536,7 +536,7 @@ const productIdentityDocs = [
   },
   {
     file: "VISION.md",
-    terms: ["app-graph-native, SEO-first React framework", "humans and AI agents", "semantic map"],
+    terms: ["app-graph-native, SEO-first React framework", "humans and AI agents", "semantic map", "Build like Next.js", "Type like TanStack Start"],
   },
   {
     file: "docs/product-strategy.md",
@@ -1375,6 +1375,11 @@ const staleStatusPatterns = [
     file: "README.md",
     pattern: /The first public prototype proves:|first working slice is smaller and proves/i,
     message: "README.md should use planned prototype wording until the prototype exists.",
+  },
+  {
+    file: "README.md",
+    pattern: /Type like TanStack\./i,
+    message: "README.md should use the canonical short-form positioning: Type like TanStack Start.",
   },
   {
     file: "docs/prototype-acceptance.md",
