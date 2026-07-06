@@ -1,17 +1,18 @@
 # Release Policy
 
-NeedleStart release behavior is planned. This document defines the target policy for package versions, prereleases, manifest schema versions, generated app compatibility, public docs, benchmark claims, changelogs, and verification.
+NeedleStart release behavior is planned. This document defines the target policy for package versions, prereleases, manifest schema versions, generated app compatibility, public docs, benchmark claims, open source community readiness, changelogs, and verification.
 
 No package is currently published. Until `docs/status.md` marks publish infrastructure verified, this document is a release contract, not an implemented process.
 
 ## Goals
 
 - Avoid publishing planned behavior as implemented behavior.
-- Keep package versions, docs, examples, benchmarks, and generated artifacts aligned.
+- Keep package versions, docs, examples, benchmarks, community process, and generated artifacts aligned.
 - Make manifest schema changes explicit.
 - Give early adopters a clear compatibility story.
 - Keep public docs status-aware.
 - Keep prerelease quality high enough that agents and humans can trust generated output.
+- Keep open source program claims honest and evidence-backed.
 
 ## Package Versioning
 
@@ -64,6 +65,7 @@ A release may include:
 - Examples.
 - Documentation.
 - Public website pages.
+- Open source community updates.
 - Generated manifest schemas.
 - Adapter behavior.
 - MCP tool contracts.
@@ -78,6 +80,7 @@ A release must not claim:
 - Safe edits are trustworthy without rejection tests.
 - Node/static compatibility exists unless verified.
 - Public docs describe implemented behavior unless `docs/status.md` agrees.
+- Vercel Open Source Program acceptance unless it has actually happened.
 
 ## Verification Levels
 
@@ -102,6 +105,7 @@ Before any package release:
 - `docs/status.md` reflects current truth.
 - `README.md` does not overclaim.
 - `AGENTS.md` describes current commands and rules.
+- `CODE_OF_CONDUCT.md`, `GOVERNANCE.md`, `CONTRIBUTING.md`, and `SECURITY.md` are current.
 - `CHANGELOG.md` or release notes exist.
 - Commands advertised as working have been run.
 - Package versions are consistent.
@@ -127,6 +131,7 @@ Before a public prototype release:
 - Production output excludes agent-only metadata.
 - Public docs or docs index can be generated without broken links.
 - Benchmark smoke harness runs without publishing official performance claims.
+- Open source community docs are current.
 
 ## Public Website Release Gate
 
@@ -134,12 +139,33 @@ Before launching the public docs website:
 
 - `docs/public-docs.md` rules are satisfied.
 - `docs/website-content-map.md` reflects current nav.
+- `docs/open-source-community.md` reflects current hosting and community posture.
 - Public pages have title, description, status, audience, and slug metadata where the website pipeline requires it.
 - Public pages show planned vs implemented status.
 - Public pages avoid secret-like content.
 - Public comparison pages include "choose the other tool when" framing.
 - Public benchmark pages link methodology and raw data, or clearly state that results are not published yet.
 - Sitemap and robots output are generated once the website dogfoods NeedleStart.
+- Vercel preview deployments, if used, are for open source project work only.
+
+## Open Source Program Readiness Gate
+
+Before applying to Vercel's Open Source Program or a similar program:
+
+- License is present and permissive.
+- Code of Conduct exists.
+- Contributing guide exists.
+- Security policy exists.
+- Governance doc exists.
+- Public roadmap exists.
+- Public status matrix exists.
+- Public docs or clear public hosting plan exists.
+- Vercel hosting intent is documented without implying Vercel-only deployment.
+- Credits use policy is documented.
+- Community impact or growth potential can be summarized honestly.
+- Maintainer contact path is clear.
+- Project demos or examples show likely developer ecosystem impact.
+- Program application window and current eligibility criteria have been checked against the official source.
 
 ## Manifest Schema Versioning
 
@@ -205,6 +231,7 @@ Use a changelog or release notes with sections:
 - Compatibility
 - Manifest schema changes
 - Public docs changes
+- Open source community changes
 - Benchmark methodology or result changes
 - Migration notes
 
@@ -216,6 +243,7 @@ Every release should mention:
 - Known limitations.
 - Docs status.
 - Public benchmark status, if relevant.
+- Community or open source infrastructure changes, if relevant.
 
 ## Security Releases
 
@@ -262,6 +290,8 @@ Benchmark claims must distinguish:
 - [ ] `docs/status.md` updated.
 - [ ] README current.
 - [ ] AGENTS current.
+- [ ] Code of Conduct and governance current.
+- [ ] Open source community docs current.
 - [ ] Public docs metadata current if website pages changed.
 - [ ] Changelog or release notes written.
 - [ ] Commands run and recorded.
@@ -279,3 +309,4 @@ Benchmark claims must distinguish:
 - Hosted update service.
 - Automatic project migrations for every breaking change.
 - Official benchmark publication before implementation and fixtures exist.
+- Claiming participation in any open source support program before acceptance.
