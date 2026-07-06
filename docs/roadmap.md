@@ -7,6 +7,8 @@ NeedleStart should be built in phases. Each phase must define what it proves, wh
 
 The first public prototype focuses on proving the agent-native and semantic graph wedge.
 
+Unless a phase is explicitly marked `Verified.` or `Scaffolded.` with evidence, its "Definition of done" is planned acceptance criteria, not a claim that the behavior exists today.
+
 ## Major Milestones
 
 ### Foundation
@@ -350,7 +352,7 @@ Definition of done:
 
 Goal: support full-stack API routes.
 
-Planned definition of done:
+Definition of done:
 
 - GET, POST, PUT, PATCH, DELETE, OPTIONS, and HEAD should be implemented and tested.
 - Dynamic API params should be implemented and tested.

@@ -257,7 +257,7 @@ Expected result: API handler context, method exports, request/response behavior,
 
 Automated coverage in `bun run docs:check` also requires API route contract, API route overview, and public API route reference docs to keep `ApiRouteContext`, Web `Request` and `Response`, `VALIDATION_FAILED`, method exports, `API_METHOD_` diagnostics, hot API integration, `bodyLimit`, `no-store`, generated manifests, security, and diagnostics language aligned.
 
-Automated coverage in `bun run docs:check` also requires API route contract, API route overview, public guide, public reference docs, roadmap, and task backlog to use planned `should` wording for request, return, handler behavior, and acceptance criteria until implementation exists. It also requires runtime docs to mark adapter-aware server entry generation as planned until the compiler actually emits it.
+Automated coverage in `bun run docs:check` also requires API route contract, API route overview, public guide, public reference docs, roadmap, and task backlog to use planned `should` wording for request, return, handler behavior, and API route acceptance criteria until implementation exists. Roadmap and backlog docs also state that "Definition of done" sections are planned acceptance criteria unless the section is explicitly marked `Verified.` or `Scaffolded.` with evidence. Runtime docs must mark adapter-aware server entry generation as planned until the compiler actually emits it.
 
 ### 18A. Render Mode Contract Check
 

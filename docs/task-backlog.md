@@ -5,6 +5,8 @@ Audience: maintainers, framework contributors, AI agents.
 
 This backlog turns the roadmap into concrete implementation tasks. Each task should eventually become an issue or implementation plan using `docs/templates/task-template.md`.
 
+Unless a task is explicitly marked `Verified.` or `Scaffolded.` with evidence, its "Definition of done" is planned acceptance criteria, not a claim that the behavior exists today.
+
 ## PR 0A: AI Collaboration Playbooks
 
 Goal: maintain docs-level, vendor-neutral skill and subagent guidance for AI companies and human reviewers.
@@ -576,7 +578,7 @@ Read first:
 - `docs/runtime-contract.md`
 - `docs/security.md`
 
-Planned definition of done:
+Definition of done:
 
 - Common HTTP methods should be implemented and tested.
 - Dynamic API params should be implemented and tested.

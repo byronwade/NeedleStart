@@ -441,7 +441,11 @@ const prototypeScopeTerms = [
   },
   {
     file: "docs/roadmap.md",
-    terms: ["first public prototype", "first working slice"],
+    terms: ["first public prototype", "first working slice", "planned acceptance criteria"],
+  },
+  {
+    file: "docs/task-backlog.md",
+    terms: ["planned acceptance criteria"],
   },
 ];
 
