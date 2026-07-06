@@ -357,6 +357,12 @@ const plannedAgentContextArtifactDocs = [
   "docs/public/guides/agent-context.md",
 ];
 
+const publicProjectStructureGeneratedTreeTerms = [
+  "context/",
+  "*.ctx.json",
+  "agent-index.json",
+];
+
 const generatedArtifactDocs = [
   "AGENTS.md",
   "docs/agent-kernel.md",
@@ -2567,6 +2573,15 @@ for (const file of generatedArtifactDocs) {
   for (const artifact of canonicalGeneratedArtifacts) {
     if (!content.includes(artifact)) {
       failures.push(`${file} does not document canonical generated artifact: ${artifact}.`);
+    }
+  }
+}
+
+if (existsSync(join(root, "docs/public/reference/project-structure.md"))) {
+  const projectStructure = read("docs/public/reference/project-structure.md");
+  for (const term of publicProjectStructureGeneratedTreeTerms) {
+    if (!projectStructure.includes(term)) {
+      failures.push(`docs/public/reference/project-structure.md generated-files tree is missing: ${term}.`);
     }
   }
 }

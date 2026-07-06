@@ -48,6 +48,7 @@ Planned generated files:
   seo.report.json
   perf.report.json
   context/
+    *.ctx.json
     agent-index.json
   mutations.json
   generated/
