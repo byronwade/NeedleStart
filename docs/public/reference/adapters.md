@@ -10,8 +10,8 @@ NeedleStart adapters are planned to turn generated build output into deployable 
 
 | Planned adapter | Package | Purpose |
 | --- | --- | --- |
-| Bun | `@needle/adapter-bun` | Default production server path. |
-| Node | `@needle/adapter-node` | Compatibility server path. |
+| Bun | `@needle/adapter-bun` | Default production adapter path. |
+| Node | `@needle/adapter-node` | Compatibility adapter path. |
 | Static | `@needle/adapter-static` | Static export path. |
 
 ## Planned Generated Output

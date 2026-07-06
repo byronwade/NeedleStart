@@ -10,7 +10,7 @@ Adapter output, manifest fields, capability rules, environment variables, health
 
 ## Planned Adapter Paths
 
-- `@needle/adapter-bun`: default production server path.
+- `@needle/adapter-bun`: default production adapter path.
 - `@needle/adapter-node`: Node compatibility path.
 - `@needle/adapter-static`: static export path.
 

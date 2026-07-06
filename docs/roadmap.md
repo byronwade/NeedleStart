@@ -23,7 +23,7 @@ Unless a phase is explicitly marked `Verified.` or `Scaffolded.` with evidence, 
 
 - Render modes: `staticPage`, `prerender`, `ssr`, `stream`, `clientOnly`, ordinary API routes, and `apiHot`, mapped to the shared `@needle/core` `RenderMode` literals.
 - SEO engine: metadata, sitemap, robots, and audits.
-- Adapter-aware Bun production server.
+- Adapter-aware Bun production output through `@needle/adapter-bun`.
 - API routes and hot API compiler with schemas.
 - Needle Map v1: file and import graph with affected queries.
 - Agent context capsules and basic MCP read tools.
@@ -334,13 +334,13 @@ Definition of done:
 - Static adapter can export static routes.
 - Node adapter can serve a minimal SSR route.
 
-## Phase 8: Bun Production Server
+## Phase 8: Bun Adapter Production Output
 
-Goal: ship a production server that serves static, SSR, and API routes.
+Goal: ship Bun adapter output that serves static, SSR, and API routes.
 
 Definition of done:
 
-- `needle build` emits a runnable server bundle.
+- `needle build` emits a runnable Bun adapter entry.
 - `needle start` serves static pages.
 - `needle start` serves SSR pages.
 - 404 and 500 work.

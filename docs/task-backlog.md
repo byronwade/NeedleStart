@@ -501,7 +501,7 @@ Definition of done:
 - Render manifest records mode.
 - Invalid render export gets helpful diagnostic.
 
-## PR 7: Bun Adapter Server Output
+## PR 7: Bun Adapter Production Output
 
 Goal: support `needle start` for built apps.
 

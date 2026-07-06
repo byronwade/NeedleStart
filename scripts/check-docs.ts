@@ -1353,13 +1353,28 @@ const staleStatusPatterns = [
   },
   {
     file: "docs/roadmap.md",
-    pattern: /Bun server|Serve through Bun|Adapter-aware Bun server/i,
+    pattern: /Bun server|Bun Production Server|Bun production server|Adapter-aware Bun production server|Serve through Bun|Adapter-aware Bun server|runnable server bundle/i,
     message: "docs/roadmap.md should describe Bun serving through @needle/adapter-bun.",
   },
   {
     file: "docs/task-backlog.md",
-    pattern: /Bun server|Serve through Bun|Adapter-aware Bun server/i,
+    pattern: /Bun server|Bun Adapter Server Output|Serve through Bun|Adapter-aware Bun server/i,
     message: "docs/task-backlog.md should describe Bun serving through @needle/adapter-bun.",
+  },
+  {
+    file: "docs/adapter-contract.md",
+    pattern: /Default production server using|Compatibility server using/i,
+    message: "docs/adapter-contract.md should describe Bun and Node as adapter paths, not standalone server packages.",
+  },
+  {
+    file: "docs/deployment.md",
+    pattern: /default production server path/i,
+    message: "docs/deployment.md should describe @needle/adapter-bun as the default production adapter path.",
+  },
+  {
+    file: "docs/public/reference/adapters.md",
+    pattern: /Default production server path|Compatibility server path/i,
+    message: "docs/public/reference/adapters.md should describe Bun and Node as adapter paths.",
   },
   {
     file: "docs/risk-mitigation.md",

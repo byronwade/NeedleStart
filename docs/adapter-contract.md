@@ -41,8 +41,8 @@ Source links:
 
 | Adapter | Package | Status | Purpose |
 | --- | --- | --- | --- |
-| Bun | `@needle/adapter-bun` | Planned | Default production server using Bun runtime APIs. |
-| Node | `@needle/adapter-node` | Planned | Compatibility server using Node HTTP APIs. |
+| Bun | `@needle/adapter-bun` | Planned | Default production adapter path using Bun runtime APIs. |
+| Node | `@needle/adapter-node` | Planned | Compatibility adapter path using Node HTTP APIs. |
 | Static | `@needle/adapter-static` | Planned | Static export for fully static apps. |
 
 Edge, worker, Vercel, Cloudflare, Netlify, Docker, and other deployment-specific adapters are out of scope until the first three paths have evidence.

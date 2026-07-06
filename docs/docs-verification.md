@@ -209,6 +209,8 @@ Expected result: adapter packages, generated output, adapter manifest fields, ca
 
 Automated coverage in `bun run docs:check` also requires adapter contract, adapter architecture, and public adapter reference docs to keep `@needle/adapter-bun`, `@needle/adapter-node`, `@needle/adapter-static`, `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, `dist/adapter.manifest.json`, `runtime.name`, `capabilities`, `nativeRouteDispatch`, `Bun.serve`, health endpoint, static export, `ADAPTER_` diagnostics, compression, Early Hints, `resourceHints`, and bfcache language aligned.
 
+Automated coverage also rejects Bun or Node wording that implies separate runtime package ownership where the intended contract is an adapter path.
+
 ### 15. Manifest Contract Check
 
 ```powershell
