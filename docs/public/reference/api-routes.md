@@ -16,7 +16,7 @@ app/
       [id].ts
 ```
 
-| File | Route |
+| Planned file | Planned route |
 | --- | --- |
 | `app/api/health.ts` | `/api/health` |
 | `app/api/users/[id].ts` | `/api/users/:id` |

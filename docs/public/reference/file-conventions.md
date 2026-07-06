@@ -6,7 +6,7 @@ Audience: app developers, AI agents.
 
 NeedleStart plans to use file-based routing under `app/`.
 
-| File | URL |
+| Planned file | Planned URL |
 | --- | --- |
 | `app/page.tsx` | `/` |
 | `app/about/page.tsx` | `/about` |

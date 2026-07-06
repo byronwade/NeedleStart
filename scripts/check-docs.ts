@@ -863,6 +863,26 @@ const staleStatusPatterns = [
     message: "docs/public/reference/cli.md should label its command table as planned while CLI behavior is unimplemented.",
   },
   {
+    file: "docs/public/reference/adapters.md",
+    pattern: /\| Adapter \| Package \| Purpose \|/i,
+    message: "docs/public/reference/adapters.md should label its adapter table as planned while adapter behavior is unimplemented.",
+  },
+  {
+    file: "docs/public/reference/api-routes.md",
+    pattern: /\| File \| Route \|/i,
+    message: "docs/public/reference/api-routes.md should label API route examples as planned while API routes are unimplemented.",
+  },
+  {
+    file: "docs/public/reference/file-conventions.md",
+    pattern: /\| File \| URL \|/i,
+    message: "docs/public/reference/file-conventions.md should label file convention examples as planned while route discovery is unimplemented.",
+  },
+  {
+    file: "docs/public/reference/routing.md",
+    pattern: /\| File \| Route \| Type \|/i,
+    message: "docs/public/reference/routing.md should label routing examples as planned while route discovery is unimplemented.",
+  },
+  {
     file: "README.md",
     pattern: /examples\/[\s\S]*dashboard\/(?!client)/i,
     message: "README.md should use the planned dashboard-client example path.",

@@ -8,7 +8,7 @@ NeedleStart plans to use file-based routing under `app/`. This page is the publi
 
 ## Planned Route Files
 
-| File | Route | Type |
+| Planned file | Planned route | Planned type |
 | --- | --- | --- |
 | `app/page.tsx` | `/` | Page |
 | `app/about/page.tsx` | `/about` | Page |

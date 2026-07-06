@@ -229,6 +229,8 @@ rg -n "routing-contract|Route ID|ROUTE_DUPLICATE_PATH|ROUTE_UNSUPPORTED_CONVENTI
 
 Expected result: route grammar, dynamic API examples, route IDs, manifest fields, optional catch-all unsupported-convention behavior, diagnostics, fixture requirements, overview docs, and public references remain connected.
 
+Automated coverage in `bun run docs:check` requires public routing and file-convention tables to label planned files, routes, URLs, and route types as planned while route discovery remains unimplemented.
+
 Automated coverage in `bun run docs:check` also requires routing, file-convention, and public routing docs to keep the dynamic API example, optional catch-all status, unsupported-convention diagnostic wording, route IDs, and cross-OS stability language aligned.
 
 ### 17. Examples Contract Check

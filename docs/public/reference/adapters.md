@@ -8,7 +8,7 @@ NeedleStart adapters are planned to turn generated build output into deployable 
 
 ## Initial Adapters
 
-| Adapter | Package | Purpose |
+| Planned adapter | Package | Purpose |
 | --- | --- | --- |
 | Bun | `@needle/adapter-bun` | Default production server path. |
 | Node | `@needle/adapter-node` | Compatibility server path. |
