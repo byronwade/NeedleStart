@@ -6,6 +6,8 @@ Audience: app developers, AI agents, future website visitors.
 
 Lumina is app-graph-native. The framework is planned to generate a semantic map of the application so humans and AI agents can understand what each file affects.
 
+For MVP Alpha, the first map is intentionally smaller: a deterministic file-level graph from discovered routes, route source files, imported components, render mode declarations, and generated manifests.
+
 ## The Problem
 
 Large React apps become hard to change because relationships are scattered:
@@ -36,6 +38,17 @@ Lumina Map is planned to connect:
 - Risk zones.
 
 Every graph edge must include `kind`, `source`, `confidence`, and `why`.
+
+## MVP Alpha Map
+
+The MVP Alpha Map should include:
+
+- Nodes for `route`, `layout`, `page`, `component`, `config`, and `manifest`.
+- Edges for `route.source`, `route.layout`, `file.imports`, `route.renderMode`, and `route.generates`.
+- JSON output under `.lumina/map.json`.
+- CLI inspection through `lumina map --json`, `lumina inspect --json`, and `lumina inspect why`.
+
+Full semantic edges for APIs, schemas, tests, SEO, cache tags, owners, safe edits, and MCP remain future work.
 
 ## What This Enables
 

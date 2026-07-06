@@ -9,6 +9,93 @@ Lumina Map is the semantic dependency graph for a Lumina application.
 
 It must be a core framework feature, not a side widget.
 
+## MVP Alpha Map
+
+For MVP Alpha, the Lumina Map is a deterministic file-level graph generated from discovered routes, route source files, imported components, render mode declarations, and basic ownership or source metadata when present. It should be useful before deeper semantic contracts exist.
+
+MVP Alpha should prove the map can explain a small app through generated JSON and CLI inspection. It should not claim full semantic understanding, affected-test accuracy, MCP write support, safe edit behavior, or benchmark-backed performance until those features exist.
+
+## MVP Alpha Nodes
+
+MVP Alpha map output should use these initial node kinds:
+
+- `route`
+- `layout`
+- `page`
+- `component`
+- `config`
+- `manifest`
+
+## MVP Alpha Edges
+
+MVP Alpha map output should use these initial edge kinds:
+
+- `route.source`
+- `route.layout`
+- `file.imports`
+- `route.renderMode`
+- `route.generates`
+
+Every MVP edge must include `kind`, `source`, `confidence`, and `why`.
+
+## MVP Alpha CLI Inspection
+
+Target MVP behavior:
+
+```bash
+lumina map --json
+lumina inspect / --json
+lumina inspect why /
+lumina inspect why components/Hero.tsx
+```
+
+`lumina map --json` should emit the first map contract. `lumina inspect / --json` should return route-centered evidence. `lumina inspect why /` should explain why the route exists, which file owns it, which layout wraps it, which render mode applies, and which generated artifacts include it.
+
+## MVP Alpha Example Output
+
+Target MVP behavior for the demo app:
+
+```json
+{
+  "schemaVersion": "lumina.map.v0",
+  "generatedAt": "2026-07-06T00:00:00.000Z",
+  "appRoot": ".",
+  "nodes": [
+    { "id": "route:/", "kind": "route", "label": "/" },
+    { "id": "file:app/page.tsx", "kind": "page", "label": "app/page.tsx" },
+    { "id": "file:components/Hero.tsx", "kind": "component", "label": "components/Hero.tsx" }
+  ],
+  "edges": [
+    {
+      "id": "edge:route-home-source",
+      "from": "route:/",
+      "to": "file:app/page.tsx",
+      "kind": "route.source",
+      "source": "file",
+      "confidence": "high",
+      "why": "app/page.tsx defines the root page route."
+    },
+    {
+      "id": "edge:home-imports-hero",
+      "from": "file:app/page.tsx",
+      "to": "file:components/Hero.tsx",
+      "kind": "file.imports",
+      "source": "static-analysis",
+      "confidence": "high",
+      "why": "app/page.tsx imports components/Hero.tsx."
+    }
+  ]
+}
+```
+
+## Why Agents Need The Map
+
+Agents should use the MVP map to narrow context, identify affected routes, explain why a file matters, and choose checks. The MVP map does not authorize writes. safe edits remain future work, and MCP writes remain future work.
+
+## Future Nodes And Edges
+
+The long-term Lumina Map should grow into the full semantic graph below after MVP Alpha proves deterministic route, file, render, manifest, and inspection output.
+
 ## Product Promise
 
 Lumina Map should answer:
