@@ -225,6 +225,12 @@ const configAdapterContractDocs = [
   "docs/public/reference/config.md",
 ];
 
+const statusDefinitionDocs = [
+  "docs/status.md",
+  "docs/documentation-standard.md",
+  "docs/public-frontmatter-standard.md",
+];
+
 function rel(path: string): string {
   return relative(root, path).replaceAll("\\", "/");
 }
@@ -761,6 +767,16 @@ for (const file of configAdapterContractDocs) {
   ]) {
     if (!content.includes(term)) {
       failures.push(`${file} is missing config/adapter contract term: ${term}.`);
+    }
+  }
+}
+
+for (const file of statusDefinitionDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file);
+  for (const term of ["current local evidence", "full required checks"]) {
+    if (!content.includes(term)) {
+      failures.push(`${file} is missing canonical status definition wording: ${term}.`);
     }
   }
 }

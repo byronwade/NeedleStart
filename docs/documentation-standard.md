@@ -29,11 +29,11 @@ Every Markdown doc should make its status clear near the top:
 - Proposed: an architecture decision has been proposed for planning, but implementation has not proven it yet.
 - Planned: design is accepted, but implementation does not exist yet.
 - Scaffolded: package, file, command, or documentation structure exists, but feature behavior is not complete.
-- Implemented: code exists, tests or checks have verified it, and the page describes current behavior.
-- Verified: code exists and the required checks, fixtures, or evidence prove the documented behavior.
+- Implemented: behavior exists in code, current local evidence exists, and the page describes current behavior.
+- Verified: behavior exists and the full required checks, fixtures, or evidence prove the documented behavior.
 - Deprecated: behavior exists but should not be used for new work.
 
-Write status lines as `Status: Planned.` with title case and a period. Add a separate `Scope:` line when the page needs nuance. Do not use "Implemented" until the repository contains the code and checks have run. `bun run docs:check` enforces a top-level `Status:` line for every Markdown file under `docs/`.
+Write status lines as `Status: Planned.` with title case and a period. Add a separate `Scope:` line when the page needs nuance. Do not use "Implemented" until the repository contains the behavior and current local evidence. Do not use "Verified" until the full required checks, fixtures, or evidence for that feature pass. `bun run docs:check` enforces a top-level `Status:` line for every Markdown file under `docs/`.
 
 ## Page Shape
 

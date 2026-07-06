@@ -67,7 +67,7 @@ tags:
 - `planned`: accepted target behavior, not implemented.
 - `scaffolded`: files or packages exist, but behavior is not complete.
 - `implemented`: behavior exists and has current local evidence.
-- `verified`: behavior exists, tests or checks pass, and docs match the current implementation.
+- `verified`: behavior exists, the full required checks, fixtures, or evidence pass, and docs match the current implementation.
 - `deprecated`: behavior remains documented for migration or compatibility but should not be used for new work.
 
 Do not use `implemented` or `verified` on public pages until the repository has code and checks that prove the exact behavior.
