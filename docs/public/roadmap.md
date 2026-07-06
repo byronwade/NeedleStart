@@ -12,7 +12,7 @@ Phase 0 defined the product direction, architecture, package responsibilities, d
 
 The Bun workspace, package placeholders, shared core types, CI, enforcement scripts, `@lumina/compiler` route discovery, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `lumina routes --json`, and early benchmark/status skeletons exist. Phase 1A shared core model hardening is implemented in `@lumina/core`. Runtime implementation is still planned.
 
-The next implementation path is `lumina inspect --json` and `lumina inspect why`.
+The next implementation path is the first `apps/www` and example app fixtures.
 
 MVP Alpha is the upcoming prototype target: route discovery, basic render modes, generated `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, CLI inspection, and a demo app.
 

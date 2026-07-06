@@ -743,19 +743,19 @@ const prototypeScopeTerms = [
 const currentImplementationStepDocs = [
   {
     file: "README.md",
-    terms: ["The next implementation stage is to add `lumina inspect --json` and `lumina inspect why`."],
+    terms: ["The next implementation stage is to add the first `apps/www` and example app fixtures"],
   },
   {
     file: "docs/status.md",
-    terms: ["The next implementation path is adding `lumina inspect --json` and `lumina inspect why`."],
+    terms: ["The next implementation path is adding the first `apps/www` and example app fixtures"],
   },
   {
     file: "docs/roadmap.md",
-    terms: ["The next implementation stage is `lumina inspect --json` and `lumina inspect why`."],
+    terms: ["The next implementation stage is the first `apps/www` and example app fixtures."],
   },
   {
     file: "docs/public/roadmap.md",
-    terms: ["The next implementation path is `lumina inspect --json` and `lumina inspect why`."],
+    terms: ["The next implementation path is the first `apps/www` and example app fixtures."],
   },
   {
     file: "docs/product-build-readiness.md",
@@ -763,7 +763,7 @@ const currentImplementationStepDocs = [
   },
   {
     file: "docs/task-backlog.md",
-    terms: ["Current implementation path: add `lumina inspect --json` and `lumina inspect why`."],
+    terms: ["Current implementation path: add the first `apps/www` and example app fixtures."],
   },
 ];
 

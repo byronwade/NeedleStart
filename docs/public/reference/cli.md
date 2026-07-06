@@ -4,7 +4,7 @@ Status: Scaffolded.
 
 Audience: app developers, AI agents.
 
-The `@lumina/cli` package implements the first route inspection path: `lumina routes <appPath> --json`, available locally as `bun run lumina -- routes <appPath> --json`. Other Lumina CLI commands remain planned.
+The `@lumina/cli` package implements the first route inspection paths: `lumina routes <appPath> --json`, `lumina inspect <appPath> --json`, and `lumina inspect <appPath> why <route>`, available locally as `bun run lumina -- ...`. Other Lumina CLI commands remain planned.
 
 | Command | Purpose | Status |
 | --- | --- | --- |
@@ -12,7 +12,7 @@ The `@lumina/cli` package implements the first route inspection path: `lumina ro
 | `lumina build` | Build app output and generated artifacts. | Planned |
 | `lumina start` | Start a built app. | Planned |
 | `lumina routes` | Inspect discovered routes. | Implemented for `<appPath> --json` |
-| `lumina inspect` | Inspect a route, file, or generated artifact. | Planned |
+| `lumina inspect` | Inspect a route, file, or generated artifact. | Implemented for `<appPath> --json` and `<appPath> why <route>` |
 | `lumina check` | Run framework-aware checks. | Planned |
 | `lumina test` | Run framework-aware test selection. | Planned |
 | `lumina seo` | Run SEO audits. | Planned |
@@ -78,7 +78,7 @@ lumina migrate --json
 lumina bench --json
 ```
 
-`lumina routes <appPath> --json` is implemented. The other JSON outputs are planned, not implemented. The shared envelope, diagnostic shape, exit-code policy, and stability rules live in [CLI JSON Contract](../../cli-json-contract.md).
+`lumina routes <appPath> --json` and `lumina inspect <appPath> --json` are implemented. The other JSON outputs are planned, not implemented. The shared envelope, diagnostic shape, exit-code policy, and stability rules live in [CLI JSON Contract](../../cli-json-contract.md).
 
 ## Source
 

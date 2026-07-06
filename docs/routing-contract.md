@@ -1,10 +1,10 @@
 # Routing Contract
 
-Status: Planned.
+Status: Implemented.
 
 Audience: framework contributors, app developers, runtime adapter authors, AI agents.
 
-This page defines the route-discovery contract for Lumina. The initial `@lumina/compiler` package API now implements the MVP page/API route grammar and in-memory routes manifest shaping covered by fixture tests. CLI integration, generated `.lumina/routes.json` files, unsupported-convention diagnostics, case-collision diagnostics, runtime matching, and broader route conventions remain planned.
+This page defines the route-discovery contract for Lumina. The initial `@lumina/compiler` package API now implements the MVP page/API route grammar, in-memory route manifest shaping, compact `.lumina/routes.json` file emission, and the `lumina routes --json` / `lumina inspect` CLI inspection paths covered by fixture, artifact, and CLI tests. Unsupported-convention diagnostics, case-collision diagnostics, runtime matching, and broader route conventions remain planned.
 
 ## Contract Goals
 
@@ -84,7 +84,7 @@ If these reserved patterns appear before support exists, route discovery should 
 
 ## URL Mapping
 
-Planned mapping examples:
+Implemented mapping examples:
 
 | Source file | Kind | Route path | Params |
 | --- | --- | --- | --- |
@@ -102,7 +102,7 @@ Human docs may show dynamic routes as `/blog/:slug` and catch-all routes as `/do
 
 Route IDs must be stable across operating systems and independent of absolute local paths.
 
-Planned route ID rules:
+Implemented route ID rules:
 
 1. Start from the POSIX-normalized source path relative to the application root, keeping the `app/` prefix.
 2. Remove the file extension.
@@ -122,13 +122,13 @@ Examples:
 | `app/(marketing)/pricing/page.tsx` | `app.$group_marketing.pricing.page` |
 | `app/api/health.ts` | `app.api.health.api` |
 
-The exact syntax can still change before implementation, but the invariant cannot: a route ID must be deterministic, path-derived, and stable enough for manifests, CLI JSON, MCP tools, tests, and mutation logs.
+The exact syntax can still evolve before Alpha, but the invariant cannot: a route ID must be deterministic, path-derived, and stable enough for manifests, CLI JSON, MCP tools, tests, and mutation logs.
 
 ## Route Manifest Shape
 
-`.lumina/routes.json` should include a schema version, generation metadata, source inputs, and sorted route entries.
+`.lumina/routes.json` includes a schema version, generation metadata, source inputs, sorted route entries, and diagnostics.
 
-Draft route entry:
+Current route entry shape:
 
 ```json
 {
@@ -149,27 +149,30 @@ Draft route entry:
 }
 ```
 
-Draft manifest envelope:
+Current manifest envelope:
 
 ```json
 {
   "schemaVersion": "lumina.routes.v0",
-  "generatedAt": "2026-07-06T00:00:00.000Z",
+  "generatedBy": {
+    "package": "@lumina/compiler",
+    "version": "0.0.0"
+  },
   "source": {
-    "config": "lumina.config.ts",
     "routeRoot": "app"
   },
-  "routes": []
+  "routes": [],
+  "diagnostics": []
 }
 ```
 
-The initial in-memory manifest schema is implemented in `@lumina/compiler`. File emission to `.lumina/routes.json` remains planned and must continue to follow [Manifest Contracts](manifest-contracts.md).
+The in-memory manifest schema and compact file emission to `.lumina/routes.json` are implemented in `@lumina/compiler` and must continue to follow [Manifest Contracts](manifest-contracts.md).
 
 ## Sorting And Matching
 
 Generated route arrays must sort deterministically. Matching priority should be documented before runtime adapters rely on it.
 
-Planned sort key:
+Implemented sort key:
 
 1. `kind`, with page routes before API routes only for manifest readability. Runtime matchers may keep separate tables by kind.
 2. Static segment count, descending.

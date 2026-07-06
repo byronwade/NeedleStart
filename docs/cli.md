@@ -4,7 +4,7 @@ Status: Scaffolded.
 
 Audience: app developers, framework contributors, AI agents.
 
-This page is the reference for `lumina` commands. `@lumina/cli` currently implements `lumina routes <appPath> --json` through the local `bun run lumina -- routes <appPath> --json` script. Other commands remain planned.
+This page is the reference for `lumina` commands. `@lumina/cli` currently implements `lumina routes <appPath> --json`, `lumina inspect <appPath> --json`, and `lumina inspect <appPath> why <route>` through the local `bun run lumina -- ...` script. Other commands remain planned.
 
 Machine-readable command behavior is planned in [CLI JSON Contract](cli-json-contract.md). Human output may evolve, but `--json` output, exit codes, diagnostic codes, and schema versions become stable contracts once released.
 
@@ -16,7 +16,7 @@ Machine-readable command behavior is planned in [CLI JSON Contract](cli-json-con
 | `lumina build` | Build app, manifests, graph, SEO, and adapter output. | Planned | Yes |
 | `lumina start` | Start built output. | Planned | No |
 | `lumina routes` | List route manifest entries. | Implemented for `<appPath> --json` | Yes |
-| `lumina inspect` | Inspect route, file, or artifact details. | Planned | Yes |
+| `lumina inspect` | Inspect route, file, or artifact details. | Implemented for `<appPath> --json` and `<appPath> why <route>` | Yes |
 | `lumina check` | Run framework-aware checks. | Planned | Yes |
 | `lumina test` | Run framework-aware test selection. | Planned | Yes |
 | `lumina seo` | Run SEO audit. | Planned | Yes |
@@ -30,11 +30,11 @@ Machine-readable command behavior is planned in [CLI JSON Contract](cli-json-con
 
 ## Planned Command Variants
 
-These variants are referenced by roadmap, guide, and contract docs. They remain planned until `@lumina/cli` implements and tests them:
+These variants are referenced by roadmap, guide, and contract docs. They remain planned until `@lumina/cli` implements and tests them, except for `lumina inspect why`.
 
 | Command variant | Purpose |
 | --- | --- |
-| `lumina inspect why` | Explain route render, cache, SEO, and risk decisions. |
+| `lumina inspect why` | Implemented for route source, layout, render-mode, and artifact evidence. |
 | `lumina build --affected` | Build only apps, routes, packages, and artifacts selected by the workspace graph. |
 | `lumina check --affected` | Run framework checks selected by affected workspace graph output. |
 | `lumina test --affected` | Run tests selected by affected apps, routes, packages, and shared files. |

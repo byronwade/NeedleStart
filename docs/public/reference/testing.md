@@ -17,7 +17,7 @@ bun run performance:check
 bun run check
 ```
 
-These commands are verified for the Phase 1 scaffold, route discovery, route/render/map artifact generation, `lumina routes --json`, and the early benchmark/status skeleton. They prove scaffold integrity, documentation links and guardrails, package structure, performance documentation hygiene, TypeScript validity, scaffold tests, shared core model tests, route-discovery fixture behavior, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, JSON-only CLI output, and benchmark skeleton path/status coverage. They do not prove measured benchmark results, rendering, runtime adapter behavior, Lumina Map queries, MCP tools, or safe edits.
+These commands are verified for the Phase 1 scaffold, route discovery, route/render/map artifact generation, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, and the early benchmark/status skeleton. They prove scaffold integrity, documentation links and guardrails, package structure, performance documentation hygiene, TypeScript validity, scaffold tests, shared core model tests, route-discovery fixture behavior, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, JSON-only CLI output, stable route explanation output, and benchmark skeleton path/status coverage. They do not prove measured benchmark results, rendering, runtime adapter behavior, Lumina Map query CLI, MCP tools, or safe edits.
 
 ## Future Target Commands
 

@@ -15,7 +15,7 @@ Large-repo workspace graph behavior is documented in [Large-Repo Build Architect
 
 For MVP Alpha, the Lumina Map is a deterministic file-level graph generated from discovered routes, route source files, imported components, render mode declarations, and basic ownership or source metadata when present. It should be useful before deeper semantic contracts exist.
 
-MVP Alpha should prove the map can explain a small app through generated JSON and CLI inspection. The generated JSON slice exists; CLI inspection remains planned. It should not claim full semantic understanding, affected-test accuracy, MCP write support, safe edit behavior, or benchmark-backed performance until those features exist.
+MVP Alpha should prove the map can explain a small app through generated JSON and CLI inspection. The generated JSON slice and route-centered inspect commands exist. It should not claim full semantic understanding, affected-test accuracy, MCP write support, safe edit behavior, or benchmark-backed performance until those features exist.
 
 ## MVP Alpha Nodes
 
@@ -51,7 +51,7 @@ lumina inspect why /
 lumina inspect why components/Hero.tsx
 ```
 
-`.lumina/map.json` now emits the first map contract. `lumina map --json`, `lumina inspect / --json`, and `lumina inspect why /` remain planned CLI surfaces. `lumina inspect why /` should explain why the route exists, which file owns it, which layout wraps it, which render mode applies, and which generated artifacts include it.
+`.lumina/map.json` now emits the first map contract. `lumina inspect <appPath> --json` and `lumina inspect <appPath> why <route>` are implemented for route summary and route explanation output. `lumina map --json` remains planned.
 
 ## MVP Alpha Example Output
 

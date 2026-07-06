@@ -1,5 +1,9 @@
 import { resolve } from "node:path";
-import { writeRoutesManifest } from "@lumina/compiler";
+import {
+  writeLuminaMap,
+  writeRenderManifest,
+  writeRoutesManifest,
+} from "@lumina/compiler";
 
 export const luminaCliStatus = {
   name: "@lumina/cli",
@@ -37,8 +41,78 @@ export async function runCli(argv: string[], io: CliIo = {}): Promise<number> {
     return 0;
   }
 
-  stderr("Usage: lumina routes <appPath> --json");
+  if (command === "inspect" && appPath && flags.includes("--json")) {
+    const inspection = inspectApp(resolve(appPath));
+    stdout(
+      JSON.stringify({
+        schemaVersion: "lumina.cli.v0",
+        command: "lumina inspect",
+        status: "ok",
+        data: {
+          target: ".",
+          summary: inspection.summary,
+          related: inspection.artifacts,
+        },
+        diagnostics: inspection.diagnostics,
+        meta: {
+          cwd: ".",
+        },
+      }),
+    );
+    return 0;
+  }
+
+  if (command === "inspect" && appPath && flags[0] === "why" && flags[1]) {
+    const inspection = inspectApp(resolve(appPath));
+    const route = inspection.routes.find((candidate) => candidate.path === flags[1]);
+    if (!route) {
+      stderr(`Route not found: ${flags[1]}`);
+      return 3;
+    }
+
+    stdout(
+      [
+        `Route ${route.path}`,
+        `Source: ${route.sourceFile}`,
+        `Render mode: ${route.renderMode}`,
+        `Layouts: ${route.layouts.length ? route.layouts.join(", ") : "none"}`,
+        `Artifacts: ${inspection.artifacts.join(", ")}`,
+        `Why: ${route.sourceFile} defines the ${route.path} route; ${route.layouts.length ? `${route.layouts.join(", ")} wraps it` : "no layout wraps it"}; the render manifest records ${route.renderMode} mode.`,
+      ].join("\n"),
+    );
+    return 0;
+  }
+
+  stderr("Usage: lumina routes <appPath> --json | lumina inspect <appPath> --json | lumina inspect <appPath> why <route>");
   return 2;
+}
+
+function inspectApp(appRoot: string) {
+  const routesResult = writeRoutesManifest({ appRoot });
+  const renderResult = writeRenderManifest({ appRoot });
+  const mapResult = writeLuminaMap({ appRoot });
+  const routes = routesResult.manifest.routes;
+
+  return {
+    routes,
+    artifacts: [
+      routesResult.path,
+      renderResult.path,
+      mapResult.path,
+    ],
+    diagnostics: [
+      ...routesResult.manifest.diagnostics,
+      ...renderResult.manifest.diagnostics,
+      ...mapResult.map.diagnostics,
+    ],
+    summary: {
+      routeCount: routes.length,
+      pageCount: routes.filter((route) => route.kind === "page").length,
+      apiRouteCount: routes.filter((route) => route.kind === "api").length,
+      staticRouteCount: routes.filter((route) => route.renderMode === "static").length,
+      artifactCount: 3,
+    },
+  };
 }
 
 if (import.meta.main) {

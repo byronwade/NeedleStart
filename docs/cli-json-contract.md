@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: framework contributors, CLI implementers, AI agents.
 
-This page defines the JSON output and exit-code contract for the `lumina` CLI. The first implemented JSON surface is `lumina routes <appPath> --json`; other command outputs remain planned. The shared diagnostic vocabulary lives in [Diagnostics Contract](diagnostics-contract.md). These contracts exist so Phase 1 and later command work can implement stable automation surfaces from the beginning.
+This page defines the JSON output and exit-code contract for the `lumina` CLI. The implemented JSON surfaces are `lumina routes <appPath> --json` and `lumina inspect <appPath> --json`; other command outputs remain planned. The shared diagnostic vocabulary lives in [Diagnostics Contract](diagnostics-contract.md). These contracts exist so Phase 1 and later command work can implement stable automation surfaces from the beginning.
 
 ## Why This Exists
 
@@ -101,7 +101,7 @@ Initial planned command data shapes:
 | Command | `data` shape |
 | --- | --- |
 | `lumina routes --json` | Implemented for `<appPath>`: `{ "artifact": ".lumina/routes.json", "routes": RouteManifestEntry[] }` |
-| `lumina inspect --json` | `{ "target": string, "summary": object, "related": string[] }` |
+| `lumina inspect --json` | Implemented for `<appPath>`: `{ "target": ".", "summary": object, "related": string[] }` |
 | `lumina check --json` | `{ "checks": CheckResult[], "summary": CheckSummary }` |
 | `lumina seo --json` | `{ "report": SeoReport }` |
 | `lumina map --json` | `{ "query": string, "nodes": GraphNode[], "edges": GraphEdge[] }` |

@@ -43,7 +43,7 @@ Unless a phase is explicitly marked `Verified.` or `Scaffolded.` with evidence, 
 
 ## Current Status
 
-The repository is in Phase 1. The monorepo scaffold exists with Bun workspace configuration, package placeholders, contract-backed shared core model types, `@lumina/compiler` route discovery, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `lumina routes --json`, early benchmark/status skeletons, CI, and enforcement scripts. Phase 1A shared core model hardening is implemented. The next implementation stage is `lumina inspect --json` and `lumina inspect why`.
+The repository is in Phase 1. The monorepo scaffold exists with Bun workspace configuration, package placeholders, contract-backed shared core model types, `@lumina/compiler` route discovery, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, early benchmark/status skeletons, CI, and enforcement scripts. Phase 1A shared core model hardening is implemented. The next implementation stage is the first `apps/www` and example app fixtures.
 
 The upcoming prototype target is MVP Alpha, defined in `docs/mvp-alpha-scope.md`. MVP Alpha should keep the first build narrow: route discovery, basic render modes, generated `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, CLI inspection, and a demo app. API routes, MCP, safe edits, migration tooling, Node runtime behavior, and benchmark claims remain post-MVP unless the scope doc changes.
 
@@ -54,7 +54,7 @@ The upcoming prototype target is MVP Alpha, defined in `docs/mvp-alpha-scope.md`
 3. Route discovery, deterministic `.lumina/routes.json`, and `lumina routes --json`. Implemented.
 4. Basic render mode extraction and `.lumina/render-manifest.json`. Implemented for default static/API route modes.
 5. File-level Lumina Map and `.lumina/map.json`. Implemented for route, source, layout, render-mode, and generated-artifact evidence.
-6. CLI inspection: `lumina routes --json` is implemented; `lumina inspect --json` and `lumina inspect why` remain planned.
+6. CLI inspection: `lumina routes --json`, `lumina inspect --json`, and `lumina inspect why` are implemented for app and route evidence.
 7. Demo app proving the workflow.
 
 API routes, MCP, safe edits, migration, Node adapter runtime behavior, and benchmark claims are post-MVP unless `docs/mvp-alpha-scope.md` is updated in the same change.
