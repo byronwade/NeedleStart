@@ -12,6 +12,8 @@ Phase 0 defined the product direction, architecture, package responsibilities, d
 
 The Bun workspace and package placeholders exist. Runtime implementation is still planned.
 
+The next implementation stage is Phase 1A: expand and stabilize the shared core data model, then begin route discovery.
+
 ## Current Phase Work
 
 Phase 1 creates and hardens the Bun workspace and package scaffold. It should keep proving:

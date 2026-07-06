@@ -681,6 +681,10 @@ const currentImplementationStepDocs = [
     terms: ["The next implementation stage is Phase 1A: expand and stabilize the shared core data model, then begin route discovery."],
   },
   {
+    file: "docs/public/roadmap.md",
+    terms: ["The next implementation stage is Phase 1A: expand and stabilize the shared core data model, then begin route discovery."],
+  },
+  {
     file: "docs/product-build-readiness.md",
     terms: ["Phase 1A expands and stabilizes the shared core data model, then begins route discovery."],
   },

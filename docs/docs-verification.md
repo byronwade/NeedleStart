@@ -159,7 +159,7 @@ Vision, prototype, public-roadmap, Phase 1 build plan, task backlog, and contrib
 
 Feature scheduling gates in compiler IR and risk-mitigation docs must use `planned acceptance criteria` wording for tests and agent demos, rather than ambiguous current-tense definition-of-done wording.
 
-The current implementation path must stay aligned across README, project status, roadmap, product-readiness, and backlog docs: Phase 1A expands and stabilizes the shared core data model, then begins route discovery. Current-status and verification docs must distinguish scaffolded adapter packages from unimplemented runtime adapter behavior.
+The current implementation path must stay aligned across README, project status, roadmap, public roadmap, product-readiness, and backlog docs: Phase 1A expands and stabilizes the shared core data model, then begins route discovery. Current-status and verification docs must distinguish scaffolded adapter packages from unimplemented runtime adapter behavior.
 
 ### 7A. Agent Enforcement Matrix Check
 
