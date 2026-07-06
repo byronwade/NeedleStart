@@ -1,5 +1,8 @@
 # Documentation Hub
 
+Status: Scaffolded.
+Audience: all contributors, maintainers, AI agents.
+
 This directory is the source of truth for NeedleStart planning, architecture, roadmap, and future implementation tasks.
 
 ## Start Here

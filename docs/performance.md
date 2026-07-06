@@ -1,5 +1,8 @@
 # Performance
 
+Status: Planned.
+Audience: maintainers, performance reviewers, framework contributors.
+
 NeedleStart should make route performance visible and enforceable. See `docs/speed-strategy.md` for the whole-system speed model across compiler, runtime, client payload, app graph, agents, and benchmarks.
 
 The planned route budget, report, diagnostic, benchmark, and claim-evidence rules are defined in [Performance Contract](performance-contract.md).

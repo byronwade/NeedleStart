@@ -1,5 +1,8 @@
 # MCP Server
 
+Status: Planned.
+Audience: AI agents, framework contributors, maintainers.
+
 The NeedleStart MCP server exposes framework data and selected safe actions to AI agents through structured tools.
 
 ## Goals

@@ -1,5 +1,8 @@
 # NeedleStart Skills
 
+Status: Scaffolded.
+Audience: AI agents, maintainers, documentation contributors.
+
 This directory defines vendor-neutral skill playbooks for AI agents working on NeedleStart.
 
 The skills are documentation-only in Phase 1 scaffold. They do not claim executable automation exists yet. Each skill describes when to use it, required context, workflow, outputs, checks, and handoff notes so agents from different AI companies can collaborate through the same project contracts.

@@ -1,5 +1,8 @@
 # Skill: Project Maintainer
 
+Status: Scaffolded.
+Audience: AI agents, maintainers, framework contributors.
+
 ## Purpose
 
 Use this skill for repository-wide stewardship: phase hygiene, task backlog health, governance, risk tracking, and cross-agent collaboration.

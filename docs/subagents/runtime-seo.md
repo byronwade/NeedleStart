@@ -1,5 +1,8 @@
 # Subagent: Runtime SEO
 
+Status: Scaffolded.
+Audience: AI agents, runtime contributors, SEO reviewers.
+
 ## Mission
 
 Review or design runtime, adapter, render mode, hot API, cache, SEO, and performance work.

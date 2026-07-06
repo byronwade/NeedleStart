@@ -1,5 +1,8 @@
 # Safe Edit Transactions
 
+Status: Planned.
+Audience: AI agents, security reviewers, framework contributors.
+
 Safe edits are the highest-trust part of NeedleStart's agent story. One silent breaking edit damages the whole product.
 
 Every write operation from CLI or MCP must use the same transaction engine.

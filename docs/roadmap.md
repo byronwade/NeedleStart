@@ -1,5 +1,8 @@
 # Roadmap
 
+Status: Scaffolded.
+Audience: maintainers, framework contributors, AI agents.
+
 NeedleStart should be built in phases. Each phase must define what it proves, what it implements, and what remains out of scope.
 
 The first public prototype focuses on proving the agent-native and semantic graph wedge.

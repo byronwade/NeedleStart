@@ -1,5 +1,8 @@
 # Compiler IR
 
+Status: Planned.
+Audience: framework contributors, package owners, AI agents.
+
 The Needle compiler should use one internal representation that feeds CLI output, runtime manifests, SEO reports, Needle Map, devtools, and agent context.
 
 Compiler diagnostics should follow [Diagnostics Contract](diagnostics-contract.md).

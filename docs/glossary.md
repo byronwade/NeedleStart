@@ -1,5 +1,8 @@
 # Glossary
 
+Status: Planned.
+Audience: new users, app developers, framework contributors, AI agents.
+
 ## Adapter Manifest
 
 A generated description of a runtime adapter's supported capabilities, entrypoints, output paths, and unsupported features.

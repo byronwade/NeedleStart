@@ -1,5 +1,8 @@
 # Subagent: Architect
 
+Status: Scaffolded.
+Audience: AI agents, maintainers, architecture reviewers.
+
 ## Mission
 
 Protect NeedleStart's architecture, package boundaries, and phase discipline.

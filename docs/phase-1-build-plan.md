@@ -1,5 +1,8 @@
 # Phase 1 Build Plan
 
+Status: Scaffolded.
+Audience: framework contributors, maintainers, AI agents.
+
 This document turns the planning docs into the first implementation path. It should be read before hardening package scaffolding, expanding shared core types, or claiming framework behavior works.
 
 Test command, fixture, snapshot, and CI expectations are defined in [Testing Contract](testing-contract.md).

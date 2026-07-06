@@ -1,5 +1,8 @@
 # Subagent: Docs Keeper
 
+Status: Scaffolded.
+Audience: AI agents, documentation contributors, maintainers.
+
 ## Mission
 
 Keep repository documentation synchronized, discoverable, and honest.

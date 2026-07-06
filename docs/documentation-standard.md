@@ -23,7 +23,7 @@ The current repository has a scaffold, so several pages remain draft references 
 
 ## Page Status Labels
 
-Every user-facing feature page should make its status clear near the top:
+Every Markdown doc should make its status clear near the top:
 
 - Draft: design is exploratory or incomplete.
 - Proposed: an architecture decision has been proposed for planning, but implementation has not proven it yet.
@@ -33,7 +33,7 @@ Every user-facing feature page should make its status clear near the top:
 - Verified: code exists and the required checks, fixtures, or evidence prove the documented behavior.
 - Deprecated: behavior exists but should not be used for new work.
 
-Write status lines as `Status: Planned.` with title case and a period. Add a separate `Scope:` line when the page needs nuance. Do not use "Implemented" until the repository contains the code and checks have run.
+Write status lines as `Status: Planned.` with title case and a period. Add a separate `Scope:` line when the page needs nuance. Do not use "Implemented" until the repository contains the code and checks have run. `bun run docs:check` enforces a top-level `Status:` line for every Markdown file under `docs/`.
 
 ## Page Shape
 
@@ -43,6 +43,8 @@ Use this structure for feature docs when practical:
 # Feature Name
 
 Status: Planned.
+
+Audience: app developers, framework contributors, AI agents.
 
 ## What It Does
 
@@ -97,11 +99,13 @@ Not every page needs every section. Reference pages should favor exact tables an
 
 ## Audience Labels
 
-When a page serves a specific audience, name it near the top:
+Every Markdown doc should name its audience near the top:
 
 ```md
 Audience: app developers, framework contributors, AI agents.
 ```
+
+`bun run docs:check` enforces a top-level `Audience:` line for every Markdown file under `docs/`.
 
 Common audience labels:
 

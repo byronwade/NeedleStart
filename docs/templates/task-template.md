@@ -1,5 +1,8 @@
 # Task: <name>
 
+Status: Planned.
+Audience: framework contributors, maintainers, AI agents.
+
 ## Goal
 
 One sentence describing the outcome.

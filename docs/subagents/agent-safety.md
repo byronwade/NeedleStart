@@ -1,5 +1,8 @@
 # Subagent: Agent Safety
 
+Status: Scaffolded.
+Audience: AI agents, security reviewers, maintainers.
+
 ## Mission
 
 Review or design Agent Kernel, MCP, safe edit, and AI collaboration workflows.

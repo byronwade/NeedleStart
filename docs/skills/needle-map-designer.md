@@ -1,5 +1,8 @@
 # Skill: Needle Map Designer
 
+Status: Scaffolded.
+Audience: AI agents, framework contributors, map reviewers.
+
 ## Purpose
 
 Use this skill when designing the semantic graph, map query APIs, graph contracts, affected checks, or map-driven developer and agent experiences.

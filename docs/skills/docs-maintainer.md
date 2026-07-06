@@ -1,5 +1,8 @@
 # Skill: Documentation Maintainer
 
+Status: Scaffolded.
+Audience: AI agents, documentation contributors, maintainers.
+
 ## Purpose
 
 Use this skill to keep NeedleStart documentation accurate, synchronized, and honest about planned versus implemented behavior.

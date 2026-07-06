@@ -3,6 +3,7 @@
 Date: 2026-07-06
 
 Status: Proposed.
+Audience: maintainers, documentation contributors, AI agents.
 
 ## Context
 

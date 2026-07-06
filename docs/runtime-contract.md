@@ -1,5 +1,8 @@
 # Runtime Contract
 
+Status: Planned.
+Audience: framework contributors, adapter owners, AI agents.
+
 The Needle runtime must stay small, explicit, fast, and easy to inspect. Runtime speed depends on generated manifests and handlers; see `docs/speed-strategy.md`.
 
 Adapter boundaries, deployment output, adapter manifests, health endpoints, and compatibility evidence are defined in `docs/adapter-contract.md`.

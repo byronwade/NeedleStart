@@ -3,6 +3,7 @@
 Date: 2026-07-05
 
 Status: Proposed.
+Audience: maintainers, framework contributors, security reviewers.
 
 ## Context
 

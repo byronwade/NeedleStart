@@ -1,5 +1,8 @@
 # Skill: SEO Runtime Guardian
 
+Status: Scaffolded.
+Audience: AI agents, SEO reviewers, runtime contributors.
+
 ## Purpose
 
 Use this skill when designing or reviewing rendering, SEO, route modes, API runtime behavior, hot paths, cache behavior, or deployment adapters.

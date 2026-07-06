@@ -119,7 +119,7 @@ Expected result: new durable docs are discoverable from the relevant root, docs 
 bun run docs:check
 ```
 
-Expected result: every Markdown `Status:` line uses a canonical title-case label with a period: `Draft.`, `Proposed.`, `Planned.`, `Scaffolded.`, `Implemented.`, `Verified.`, or `Deprecated.`. Pages that need nuance should add a separate `Scope:`, `Evidence:`, or prose note instead of embedding explanation in the status line.
+Expected result: every Markdown file under `docs/` has top-level `Status:` and `Audience:` lines near the top, and every `Status:` line uses a canonical title-case label with a period: `Draft.`, `Proposed.`, `Planned.`, `Scaffolded.`, `Implemented.`, `Verified.`, or `Deprecated.`. Pages that need nuance should add a separate `Scope:`, `Evidence:`, or prose note instead of embedding explanation in the status line.
 
 ### 7. Package And Prototype Scope Check
 
@@ -298,7 +298,7 @@ The initial Bun workspace exposes these package scripts:
 
 Target behavior:
 
-- `docs:check` validates required docs, required links, local Markdown links, root docs metadata, durable internal docs hub coverage, top-level status/audience pairing, every Markdown status label format, public docs navigation coverage, AI playbook placement, verification-section coverage, scaffold-status language, current-vs-planned structure claims, package-map/build-plan/backlog package coverage, planned CLI command surface and prefix consistency, adapter package paths, and the current `bun.lockb` lockfile name.
+- `docs:check` validates required docs, required links, local Markdown links, root docs metadata, every `docs/` Markdown file's top-level status and audience metadata, durable internal docs hub coverage, every Markdown status label format, public docs navigation coverage, AI playbook placement, verification-section coverage, scaffold-status language, current-vs-planned structure claims, package-map/build-plan/backlog package coverage, planned CLI command surface and prefix consistency, adapter package paths, and the current `bun.lockb` lockfile name.
 - `structure:check` validates workspace scripts, package names, package entrypoints, TypeScript scaffold files, CI, and forbidden runtime dependencies on agent-only packages.
 - `performance:check` validates performance docs, benchmark fixture coverage, raw-result rules, and unsupported root/public speed, benchmark, or SEO positioning claim patterns.
 - `check` runs the automated docs, structure, performance, typecheck, and test gates.
@@ -314,6 +314,7 @@ Every documentation-heavy PR should report:
 - Whether `git diff --check` passed.
 - Whether local Markdown links passed.
 - Whether status language was reviewed.
+- Whether top-level docs status and audience metadata stayed complete.
 - Whether public docs navigation changed.
 - Whether public docs metadata, route mapping, or renderer assumptions changed.
 - Whether machine-readable docs contracts changed.

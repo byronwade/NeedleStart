@@ -1,5 +1,8 @@
 # Skill: Agent Kernel Designer
 
+Status: Scaffolded.
+Audience: AI agents, maintainers, framework contributors.
+
 ## Purpose
 
 Use this skill when designing AI-agent workflows, context capsules, safe edits, MCP tools, or subagent handoffs.

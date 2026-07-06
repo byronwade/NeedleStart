@@ -1,5 +1,8 @@
 # Subagent: Compiler Map
 
+Status: Scaffolded.
+Audience: AI agents, compiler contributors, map reviewers.
+
 ## Mission
 
 Design or review compiler, route intelligence, generated manifests, and Needle Map work.

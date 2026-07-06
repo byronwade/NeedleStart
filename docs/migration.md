@@ -1,5 +1,8 @@
 # Migration Tooling
 
+Status: Planned.
+Audience: app developers, migration contributors, AI agents.
+
 NeedleStart should win adoption through the agent and map workflow, but migration friction still matters.
 
 The migration story should start early as a prototype and mature after the core route, metadata, layout, and graph systems exist.

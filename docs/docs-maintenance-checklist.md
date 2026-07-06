@@ -1,5 +1,8 @@
 # Documentation Maintenance Checklist
 
+Status: Planned.
+Audience: maintainers, documentation contributors, AI agents.
+
 Use this checklist before merging documentation, package, command, architecture, safety, or release changes.
 
 Also apply `docs/docs-freshness-policy.md` for any change that can make docs stale.

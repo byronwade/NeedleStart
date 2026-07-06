@@ -506,16 +506,21 @@ for (const rootDoc of rootDocsWithMetadata) {
   }
 }
 
+for (const doc of walkMarkdown(join(root, "docs")).map((path) => rel(path))) {
+  const topMatter = read(doc).split(/\r?\n/).slice(0, 8).join("\n");
+  if (!/^Status:/m.test(topMatter)) {
+    failures.push(`${doc} has no top-level status.`);
+  }
+  if (!/^Audience:/m.test(topMatter)) {
+    failures.push(`${doc} has no top-level audience.`);
+  }
+}
+
 for (const internalDoc of allDurableInternalDocs()) {
   if (internalDoc === "docs/README.md") continue;
   const hubTarget = internalDoc.slice("docs/".length);
   if (!docsHub.includes(hubTarget)) {
     failures.push(`docs/README.md does not list durable internal doc: ${hubTarget}`);
-  }
-
-  const topMatter = read(internalDoc).split(/\r?\n/).slice(0, 8).join("\n");
-  if (/^Status:/m.test(topMatter) && !/^Audience:/m.test(topMatter)) {
-    failures.push(`${internalDoc} has top-level status but no top-level audience.`);
   }
 }
 

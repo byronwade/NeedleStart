@@ -1,5 +1,8 @@
 # SEO Engine
 
+Status: Planned.
+Audience: app developers, framework contributors, SEO reviewers.
+
 NeedleStart is SEO-first. Public routes should render meaningful HTML by default and expose their indexability through machine-readable reports.
 
 The planned metadata API, merge rules, sitemap output, robots output, structured data behavior, diagnostics, manifest fields, security rules, and fixture requirements are defined in [SEO Contract](seo-contract.md).

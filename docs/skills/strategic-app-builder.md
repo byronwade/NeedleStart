@@ -1,5 +1,8 @@
 # Skill: Strategic App Builder
 
+Status: Scaffolded.
+Audience: AI agents, framework contributors, product reviewers.
+
 ## Purpose
 
 Use this skill when planning or implementing NeedleStart framework work that moves the product from project constitution toward a runnable prototype.

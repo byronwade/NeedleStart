@@ -1,5 +1,8 @@
 # Risk Mitigation Strategy
 
+Status: Planned.
+Audience: maintainers, framework contributors, AI agents.
+
 NeedleStart is taking on hard problems: semantic graph extraction, agent-safe edits, framework execution scope, adoption against incumbents, and Bun adoption concerns. These are solvable only if they are designed into the architecture and process from day one.
 
 ## 1. Semantic Graph Extraction Is Hard

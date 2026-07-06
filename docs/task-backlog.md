@@ -1,5 +1,8 @@
 # Task Backlog
 
+Status: Planned.
+Audience: maintainers, framework contributors, AI agents.
+
 This backlog turns the roadmap into concrete implementation tasks. Each task should eventually become an issue or implementation plan using `docs/templates/task-template.md`.
 
 ## PR 0A: AI Collaboration Playbooks

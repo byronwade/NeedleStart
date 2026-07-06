@@ -1,5 +1,8 @@
 # Agent Kernel
 
+Status: Planned.
+Audience: AI agents, framework contributors, maintainers.
+
 The Agent Kernel is the part of NeedleStart that makes applications understandable and safely editable by AI agents.
 
 ## Goals
