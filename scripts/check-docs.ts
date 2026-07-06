@@ -339,6 +339,12 @@ const apiRouteContractDocs = [
   "docs/public/reference/api-routes.md",
 ];
 
+const schemaContractDocs = [
+  "docs/schema-contract.md",
+  "docs/schema.md",
+  "docs/public/reference/schema.md",
+];
+
 const routingContractDocs = [
   "docs/routing-contract.md",
   "docs/routing.md",
@@ -1009,6 +1015,16 @@ for (const file of apiRouteContractDocs) {
   for (const term of ["apiroutecontext", "request", "response", "validation_failed", "methods", "api_method", "hot api", "bodylimit", "no-store", "generated manifests", "security", "diagnostics"]) {
     if (!content.includes(term)) {
       failures.push(`${file} is missing API route contract term: ${term}.`);
+    }
+  }
+}
+
+for (const file of schemaContractDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file).toLowerCase();
+  for (const term of ["schemaresult", "schemaissue", "inferinput", "inferoutput", "schema_", "openapi", "query coercion", "serializer", "diagnostics", "manifest references"]) {
+    if (!content.includes(term)) {
+      failures.push(`${file} is missing schema contract term: ${term}.`);
     }
   }
 }

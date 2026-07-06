@@ -244,10 +244,12 @@ Expected result: public helper names, ordinary API route mode, manifest literal 
 ### 19. Schema Contract Check
 
 ```powershell
-rg -n "schema-contract|SchemaResult|SchemaIssue|InferInput|InferOutput|SCHEMA_|OpenAPI|query coercion|serializer" README.md AGENTS.md docs\schema-contract.md docs\schema.md docs\api-route-contract.md docs\hot-api-path.md docs\manifest-contracts.md docs\api-reference.md docs\public\reference\schema.md
+rg -n "schema-contract|SchemaResult|SchemaIssue|InferInput|InferOutput|SCHEMA_|OpenAPI|query coercion|serializer|manifest references|diagnostics" README.md AGENTS.md docs\schema-contract.md docs\schema.md docs\api-route-contract.md docs\hot-api-path.md docs\manifest-contracts.md docs\api-reference.md docs\public\reference\schema.md
 ```
 
 Expected result: schema helpers, validation result shape, issue shape, type inference, query coercion, serializer behavior, OpenAPI mapping, diagnostics, manifest references, and public reference docs remain connected.
+
+Automated coverage in `bun run docs:check` also requires schema contract, schema overview, and public schema reference docs to keep `SchemaResult`, `SchemaIssue`, `InferInput`, `InferOutput`, `SCHEMA_` diagnostics, OpenAPI, query coercion, serializer, diagnostics, and manifest-reference language aligned.
 
 ### 20. Cache Contract Check
 

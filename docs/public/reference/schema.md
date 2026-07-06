@@ -37,6 +37,17 @@ export const response = schema.object({
 
 Schemas are planned to validate params, query strings, request bodies, and responses. Hot API routes should use schemas to generate faster validators and serializers.
 
+## Planned Result And Type Shapes
+
+- Safe parsing should return a `SchemaResult`.
+- Validation issues should use a `SchemaIssue` shape.
+- Public type helpers should include `InferInput` and `InferOutput`.
+- Query coercion rules must be explicit before implementation.
+- Response serializers must be deterministic and fixture-tested.
+- OpenAPI mapping should produce stable generated output for supported schemas.
+- Unsupported schema features should produce `SCHEMA_` diagnostics instead of partial output.
+- Manifest references should stay stable and source-linked.
+
 ## Current Status
 
 This behavior is not implemented yet. The repository is in Phase 1 scaffold, so examples are target API design rather than verified commands.

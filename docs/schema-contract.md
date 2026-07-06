@@ -196,9 +196,9 @@ Required planned diagnostics:
 
 Diagnostics must include normalized source file, exported schema name when known, route ID when relevant, and a concise remediation.
 
-## Manifest Fields
+## Manifest Fields And References
 
-Route and render manifests should expose schema usage without embedding large schema definitions in every route entry.
+Route and render manifests should expose schema usage through stable manifest references without embedding large schema definitions in every route entry.
 
 Draft route fields:
 
