@@ -1,8 +1,33 @@
 {
   "name": "lumina",
   "version": "0.0.0",
+  "description": "App-graph-native, SEO-first React framework for humans and AI agents.",
   "private": true,
   "type": "module",
+  "keywords": [
+    "react",
+    "react-framework",
+    "seo",
+    "app-graph",
+    "agent-native",
+    "ai-agents",
+    "typescript",
+    "bun",
+    "vite",
+    "rolldown",
+    "ssr",
+    "static-site-generation",
+    "mcp",
+    "developer-tools"
+  ],
+  "homepage": "https://github.com/byronwade/Lumina#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/byronwade/Lumina.git"
+  },
+  "bugs": {
+    "url": "https://github.com/byronwade/Lumina/issues"
+  },
   "workspaces": [
     "packages/*",
     "packages/adapters/*"
