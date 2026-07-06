@@ -55,6 +55,12 @@ function walkMarkdown(dir: string): string[] {
   return found;
 }
 
+function allPublicDocs(): string[] {
+  return walkMarkdown(join(root, "docs/public"))
+    .map((path) => rel(path))
+    .sort();
+}
+
 for (const doc of requiredDocs) {
   if (!existsSync(join(root, doc))) {
     failures.push(`Missing required doc: ${doc}`);
@@ -243,6 +249,19 @@ for (const staleTreeEntry of ["    adapter-bun/", "    adapter-node/", "    adap
 for (const file of ["README.md", "docs/status.md", "docs/phase-1-build-plan.md", "docs/task-backlog.md"]) {
   if (existsSync(join(root, file)) && /`bun\.lock`/.test(read(file))) {
     failures.push(`${file} documents bun.lock, but this scaffold uses bun.lockb.`);
+  }
+}
+
+const publicReadme = read("docs/public/README.md");
+const websiteContentMap = read("docs/website-content-map.md");
+for (const publicDoc of allPublicDocs()) {
+  if (publicDoc === "docs/public/README.md") continue;
+  const publicRelative = publicDoc.slice("docs/public/".length);
+  if (!publicReadme.includes(publicRelative)) {
+    failures.push(`docs/public/README.md does not list public page: ${publicRelative}`);
+  }
+  if (!websiteContentMap.includes(publicDoc)) {
+    failures.push(`docs/website-content-map.md does not map public page: ${publicDoc}`);
   }
 }
 

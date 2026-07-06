@@ -12,7 +12,7 @@ Phase 0 defined the product direction, architecture, package responsibilities, d
 
 The Bun workspace and package placeholders exist. Runtime implementation is still planned.
 
-## Next Phase
+## Current Phase Work
 
 Phase 1 creates and hardens the Bun workspace and package scaffold. It should keep proving:
 

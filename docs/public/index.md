@@ -24,7 +24,7 @@ See:
 - [Phase 1 Build Plan](../phase-1-build-plan.md)
 - [Roadmap](roadmap.md)
 
-## What NeedleStart Is Optimized For
+## Planned Optimization Targets
 
 - Public pages that are SEO-safe by default.
 - Static-first rendering when possible.

@@ -36,6 +36,7 @@ These guides describe target workflows. They are not verified until implementati
 
 ## Reference
 
+- [CLI Reference](reference/cli.md)
 - [Configuration](reference/config.md)
 - [Diagnostics](reference/diagnostics.md)
 - [Adapters](reference/adapters.md)
@@ -54,6 +55,11 @@ These guides describe target workflows. They are not verified until implementati
 - [Manifest Contracts](reference/manifest-contracts.md)
 - [Testing](reference/testing.md)
 - [MCP Reference](reference/mcp.md)
+
+## Deployment And Operations
+
+- [Deployment Overview](deployment/overview.md)
+- [Benchmark Honesty](deployment/benchmarks.md)
 
 ## Project And Community
 
