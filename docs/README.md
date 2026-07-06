@@ -113,6 +113,7 @@ This directory is the source of truth for Lumina planning, architecture, roadmap
 - [First Contribution Path](first-contribution.md): first safe contribution path for Phase 1 scaffold work.
 - [AI Skill Playbooks](skills/README.md): vendor-neutral skill workflows for agents.
 - [AI Subagent Roles](subagents/README.md): delegated-agent role briefs.
+- [MVP Alpha Documentation Readiness Plan](superpowers/plans/2026-07-06-mvp-alpha-docs-readiness.md): execution plan for the MVP Alpha documentation alignment pass.
 
 ## Checklists
 
