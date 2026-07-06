@@ -241,6 +241,8 @@ Automated coverage in `bun run docs:check` also requires routing, file-conventio
 
 Automated coverage in `bun run docs:check` requires the README first screen to explain that the checkout is still Phase 1 scaffold and that broad product language describes target framework behavior, not current runtime behavior.
 
+Automated coverage in `bun run docs:check` also requires `docs/documentation-completion-audit.md` to use documentation coverage labels, not broad completion status labels. Completion-audit rows must distinguish covered documentation from implemented framework behavior, launch readiness, package readiness, and benchmark evidence.
+
 ### 17. Examples Contract Check
 
 ```powershell

@@ -397,6 +397,19 @@ const documentationMatrixStatusDocs = [
   },
 ];
 
+const documentationCompletionCoverageDocs = [
+  {
+    file: "docs/documentation-completion-audit.md",
+    terms: [
+      "documentation coverage only",
+      "not describe implemented framework behavior",
+      "Covered as documentation",
+      "Covered as planned documentation",
+      "Phase 1 scaffold",
+    ],
+  },
+];
+
 const releaseVersionContractDocs = [
   {
     file: "docs/status.md",
@@ -1843,6 +1856,21 @@ for (const { file, terms } of documentationMatrixStatusDocs) {
     if (!content.includes(term)) {
       failures.push(`${file} is missing documentation matrix status-distinction term: ${term}.`);
     }
+  }
+}
+
+for (const { file, terms } of documentationCompletionCoverageDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const rawContent = read(file);
+  const content = rawContent.toLowerCase();
+  for (const term of terms) {
+    if (!content.includes(term.toLowerCase())) {
+      failures.push(`${file} is missing documentation-completion coverage term: ${term}.`);
+    }
+  }
+
+  if (/\|\s*Status\s*\|/i.test(rawContent) || /\|\s*Satisfied(?: as planned docs)?\s*\|/i.test(rawContent)) {
+    failures.push(`${file} must use documentation coverage labels instead of broad completion status labels.`);
   }
 }
 
