@@ -425,7 +425,7 @@ rg -n "review-checklist|threat-model|benchmark-fixtures|examples-catalog|docs-si
 
 Expected result: review gates, threat-model requirements, benchmark fixture planning, example catalog planning, docs-site implementation phases, and PR template evidence remain connected.
 
-Automated coverage in `bun run docs:check` also requires review checklist, threat model, benchmark fixtures, examples catalog, docs-site build plan, and pull request template docs to keep threat-note, trusted/untrusted input, human sign-off, raw benchmark data, equivalent behavior, field data, examples status, public guide mapping, renderer decision, frontmatter validation, machine-readable output, quality gate, and command-evidence vocabulary aligned.
+Automated coverage in `bun run docs:check` also requires review checklist, threat model, benchmark fixtures, examples catalog, docs-site build plan, and pull request template docs to keep threat-note, trusted/untrusted input, human sign-off, raw benchmark data, equivalent behavior, field data, examples status, public guide mapping, renderer decision, frontmatter validation, machine-readable output, quality gate, and command-evidence vocabulary aligned. Public examples must describe the planned Hot API example through generated validation, serialization, and optional micro-cache behavior rather than unsupported speed wording.
 
 ### 29. Release Version Placeholder Check
 

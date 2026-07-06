@@ -1262,6 +1262,11 @@ const staleStatusPatterns = [
     message: "docs/examples.md should list planned example paths from docs/examples-catalog.md.",
   },
   {
+    file: "docs/public/reference/examples.md",
+    pattern: /Fast API path/i,
+    message: "docs/public/reference/examples.md should describe the planned hot-api example mechanics without unsupported speed wording.",
+  },
+  {
     file: "docs/risk-mitigation.md",
     pattern: /--template agent-demo|large-monorepo-fixture|blog-seo-with-map/i,
     message: "docs/risk-mitigation.md should use examples-catalog names and the planned --example create-command flag.",

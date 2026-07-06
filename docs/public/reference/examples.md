@@ -13,7 +13,7 @@ NeedleStart examples are planned but not implemented yet. This page explains the
 | Basic Starter | `examples/basic/` | Smallest useful generated app. | Planned |
 | Blog SEO | `examples/blog-seo/` | Tutorial app for pages, metadata, sitemap, and public HTML checks. | Planned |
 | API Route | `examples/api-route/` | Focused API route example. | Planned |
-| Hot API | `examples/hot-api/` | Fast API path with schema and serializer behavior. | Planned |
+| Hot API | `examples/hot-api/` | Generated validation, serialization, and optional micro-cache. | Planned |
 | Static Export | `examples/static-export/` | Fully static output and unsupported-route diagnostics. | Planned |
 | Node Adapter | `examples/adapter-node/` | Node compatibility for SSR and static output. | Planned |
 | Dashboard Client | `examples/dashboard-client/` | Intentional client interactivity and hydration boundaries. | Planned |
