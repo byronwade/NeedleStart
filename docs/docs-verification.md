@@ -176,10 +176,12 @@ Expected result: diagnostic code rules, severity values, categories, source loca
 ### 13. Configuration Contract Check
 
 ```powershell
-rg -n "needle.config|defineConfig|environment|env|normalized|schemaVersion|secret|adapter" docs\config-contract.md docs\config.md docs\api-reference.md docs\runtime-contract.md docs\adapters.md docs\security.md docs\manifest-contracts.md
+rg -n "needle.config|defineConfig|environment|env|server-only|public prefix|\\.env\\*|normalized|schemaVersion|secret|adapter|runtime.name" docs\config-contract.md docs\config.md docs\public\reference\config.md docs\api-reference.md docs\runtime-contract.md docs\adapters.md docs\security.md docs\manifest-contracts.md
 ```
 
 Expected result: config loading, validation, environment behavior, normalized output, adapter selection, runtime/adapter ownership, `dist/adapter.manifest.json` `runtime.name`, and secret-exclusion rules remain connected.
+
+Automated coverage in `bun run docs:check` also requires config, public config, and config contract docs to keep server-only env, public prefix, `.env*`, secret, generated artifact, diagnostics, adapter package, and `runtime.name` language aligned.
 
 ### 14. Adapter Contract Check
 

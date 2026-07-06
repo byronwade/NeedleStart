@@ -290,6 +290,12 @@ const configAdapterContractDocs = [
   "docs/public/reference/config.md",
 ];
 
+const configEnvironmentContractDocs = [
+  "docs/config-contract.md",
+  "docs/config.md",
+  "docs/public/reference/config.md",
+];
+
 const statusDefinitionDocs = [
   "docs/status.md",
   "docs/documentation-standard.md",
@@ -867,6 +873,16 @@ for (const file of configAdapterContractDocs) {
   ]) {
     if (!content.includes(term)) {
       failures.push(`${file} is missing config/adapter contract term: ${term}.`);
+    }
+  }
+}
+
+for (const file of configEnvironmentContractDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file).toLowerCase();
+  for (const term of ["server-only", "public prefix", ".env*", "secret", "generated artifacts", "diagnostics"]) {
+    if (!content.includes(term)) {
+      failures.push(`${file} is missing config environment contract term: ${term}.`);
     }
   }
 }

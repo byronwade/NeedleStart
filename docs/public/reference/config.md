@@ -21,6 +21,18 @@ This API is planned and not implemented.
 
 `runtime` is the planned local execution and server-code compatibility target. `adapter` is the planned production output selector: `bun` maps to `@needle/adapter-bun`, `node` maps to `@needle/adapter-node`, and `static` maps to `@needle/adapter-static`. Build output should record the resolved adapter runtime in `dist/adapter.manifest.json` as `runtime.name`.
 
+## Environment Rules
+
+Environment behavior is planned, not implemented. Server-only environment variables must not be exposed to browser bundles by default. Client-exposed values require an explicit public prefix or allow-list. `.env*` loading must be deterministic, diagnostics must not print secret values, and generated artifacts must not serialize secrets.
+
+The planned public prefix is `NEEDLE_PUBLIC_`, but the final prefix must be confirmed before client environment support ships.
+
+## Generated Output Impact
+
+Config fields that affect routes, rendering, SEO, performance, agent context, or adapter behavior must be reflected in generated artifacts such as `.needle/routes.json`, `.needle/render-manifest.json`, `.needle/seo.report.json`, `.needle/perf.report.json`, `.needle/context/*`, `.needle/generated/*`, and `dist/adapter.manifest.json`.
+
+Runtime adapters should consume normalized generated output instead of rediscovering raw source config in production.
+
 ## Source
 
 - [Configuration Reference](../../config.md)
