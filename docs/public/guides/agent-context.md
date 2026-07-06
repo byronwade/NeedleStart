@@ -25,6 +25,11 @@ Agent context should include:
 - danger zones
 - recommended checks
 
+## Planned Generated Outputs
+
+- `.needle/context/*.ctx.json`
+- `.needle/context/agent-index.json`
+
 ## Source
 
 - [Agent-Native Development](../concepts/agent-native.md)

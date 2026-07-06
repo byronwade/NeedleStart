@@ -346,6 +346,17 @@ const canonicalGeneratedArtifacts = [
   "dist/*",
 ];
 
+const plannedAgentContextArtifacts = [
+  ".needle/context/*.ctx.json",
+  ".needle/context/agent-index.json",
+];
+
+const plannedAgentContextArtifactDocs = [
+  "docs/agent-kernel.md",
+  "docs/machine-readable-docs.md",
+  "docs/public/guides/agent-context.md",
+];
+
 const generatedArtifactDocs = [
   "AGENTS.md",
   "docs/agent-kernel.md",
@@ -1876,6 +1887,16 @@ for (const file of plannedMcpResourceDocs) {
   for (const resource of plannedMcpResources) {
     if (!content.includes(resource)) {
       failures.push(`${file} does not document planned MCP resource: ${resource}.`);
+    }
+  }
+}
+
+for (const file of plannedAgentContextArtifactDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file);
+  for (const artifact of plannedAgentContextArtifacts) {
+    if (!content.includes(artifact)) {
+      failures.push(`${file} does not document planned agent context artifact: ${artifact}.`);
     }
   }
 }
