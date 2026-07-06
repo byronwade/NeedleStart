@@ -2,7 +2,7 @@
 
 This file is the operating guide for AI agents working in this repository.
 
-Agents must read this file before editing code or documentation. When the project changes in a way that affects setup, commands, architecture, package boundaries, roadmap, generated artifacts, security, testing, product positioning, or safety rules, agents must update this file and README.md in the same change when those user-facing truths change.
+Agents must read this file before editing code or documentation. When the project changes in a way that affects setup, commands, architecture, package boundaries, roadmap, generated artifacts, security, testing, product positioning, open source governance, public community process, or safety rules, agents must update this file and README.md in the same change when those user-facing truths change.
 
 ## Project Identity
 
@@ -11,6 +11,8 @@ Project name: NeedleStart.
 NeedleStart is the app-graph-native, SEO-first React framework where the application ships with a map. It uses Bun for local workflow and the default adapter path, Vite/Rolldown for frontend build leverage, and a custom Needle compiler for route intelligence, render/cache explanations, SEO, graph, API generation, manifests, and agent context.
 
 The durable product wedge is not generic framework parity. It is making large React apps understandable, auditable, changeable, and verifiable by humans and AI agents through a first-class semantic app graph.
+
+NeedleStart is intended to be fully open source, community-driven, and eligible for open source support programs by maintaining a license, Code of Conduct, governance, public roadmap, public status, security policy, contribution paths, and honest impact metrics.
 
 ## Current Phase
 
@@ -28,9 +30,13 @@ Every agent change must evaluate whether these files need updates:
 - `AGENTS.md`
 - `VISION.md`
 - `ARCHITECTURE.md`
+- `CONTRIBUTING.md`
+- `CODE_OF_CONDUCT.md`
+- `GOVERNANCE.md`
 - `SECURITY.md`
 - `docs/status.md`
 - `docs/product-strategy.md`
+- `docs/open-source-community.md`
 - `docs/roadmap.md`
 - `docs/risk-mitigation.md`
 - `docs/package-map.md`
@@ -52,6 +58,7 @@ Update `README.md` when:
 - Package structure changes.
 - The prototype status changes.
 - Public positioning changes.
+- Open source community posture changes.
 - A user-facing feature becomes real.
 - A planned feature is removed, renamed, or significantly rescoped.
 - Command invocation examples change.
@@ -64,6 +71,7 @@ Update `AGENTS.md` when:
 - Package ownership or edit boundaries change.
 - Agent workflow changes.
 - Product positioning changes.
+- Open source governance or community process changes.
 - New high-risk areas are introduced.
 - Required documentation changes.
 
@@ -74,7 +82,7 @@ Update `docs/status.md` when:
 - A package is added, removed, or renamed.
 - A generated artifact is added, removed, or versioned.
 - A roadmap phase starts, completes, or changes scope.
-- A product strategy, public docs, benchmark, release, or governance artifact changes status.
+- A product strategy, public docs, benchmark, release, governance, or open source program readiness artifact changes status.
 
 Update both `README.md` and `AGENTS.md` when:
 
@@ -84,6 +92,7 @@ Update both `README.md` and `AGENTS.md` when:
 - A new generated artifact is introduced.
 - A phase is completed or redefined.
 - The market positioning changes.
+- The open source/community positioning changes.
 
 ## Setup
 
@@ -165,6 +174,8 @@ needle docs check-public
 - User application code should not require Bun-only APIs; Bun-specific behavior belongs inside adapter packages.
 - Do not expose secret values in manifests, logs, MCP responses, benchmark outputs, public docs, or agent context.
 - Do not publish benchmark claims without raw data and methodology.
+- Do not claim open source program acceptance unless it has actually happened.
+- Do not use open source program credits or hosted infrastructure for non-project work.
 
 ## Generated Files
 
@@ -214,6 +225,8 @@ High-risk areas:
 - Server functions.
 - Public benchmark claims.
 - Public docs that could overclaim planned behavior.
+- Open source program credits or hosting usage.
+- Community moderation and Code of Conduct enforcement.
 
 ## Risk Mitigation Rules
 
@@ -222,6 +235,8 @@ Agents must read `docs/risk-mitigation.md` before changing Needle Map, Agent Ker
 Agents must read `docs/security.md` before changing MCP, safe edits, environment handling, generated manifests, runtime adapters, logging, production output, or file-system tools.
 
 Agents must read `docs/product-strategy.md` before changing public positioning, roadmap priority, benchmark claims, or comparison language.
+
+Agents must read `docs/open-source-community.md`, `GOVERNANCE.md`, and `CODE_OF_CONDUCT.md` before changing open source community process, Vercel program readiness, contribution pathways, community metrics, or infrastructure-credit policy.
 
 Key rules:
 
@@ -234,6 +249,7 @@ Key rules:
 - Safe edit transactions must validate, preview, apply through AST, format, regenerate graph, run affected checks, log, and support undo.
 - High-risk safe edits in production workflows require explicit human sign-off.
 - New feature work must pass the scope gate: improves app graph, explainability, or agent experience; adds minimal production runtime code; and has a clear fixture or agent demo.
+- Open source program claims must be evidence-backed and must not imply acceptance before it happens.
 
 Agents must treat high-risk changes as requiring stronger tests and clearer documentation.
 
@@ -253,13 +269,15 @@ Agents must treat high-risk changes as requiring stronger tests and clearer docu
 12. No invisible caching.
 13. Bun is the speed default, not a portability trap.
 14. Benchmarks must be raw-data-backed and reproducible.
+15. Open source community trust is a product surface.
 
 ## Learning and Collaboration
 
-This project was initially explored with AI assistance for architecture and roadmap clarity. Human maintainers remain accountable for implementation, review, and release decisions. Agents may contribute work only through the same documented contracts, tests, and safety rules as human contributors.
+This project was initially explored with AI assistance for architecture and roadmap clarity. Human maintainers remain accountable for implementation, review, community governance, and release decisions. Agents may contribute work only through the same documented contracts, tests, and safety rules as human contributors.
 
 Contributors, human or agent, are expected to:
 
+- Follow `CODE_OF_CONDUCT.md`.
 - Ask clarifying questions when uncertain, except when a scoped best-effort change can safely proceed.
 - Document tradeoffs and rejected approaches.
 - Update this file and relevant docs when patterns change.
@@ -285,6 +303,7 @@ For implemented features, use the smallest complete test set that proves behavio
 - Security redaction tests for config, manifests, MCP, logs, public docs, benchmarks, and agent context.
 - Safe edit rejection tests as well as success tests.
 - Benchmark smoke tests before benchmark claims.
+- Docs and public site checks before public community launches.
 
 Test output used by agents must be deterministic.
 
@@ -301,6 +320,7 @@ Use `docs/testing.md` as the detailed testing strategy.
 - Keep command examples aligned with `docs/cli.md`.
 - Keep generated artifact examples aligned with `docs/manifest-contracts.md`.
 - Keep public language aligned with the app-graph-native market push.
+- Keep open source and Vercel-readiness language honest and evidence-based.
 
 ## Agent Workflow
 
@@ -308,10 +328,12 @@ Before editing:
 
 1. Read `README.md`.
 2. Read this `AGENTS.md`.
-3. Read `docs/status.md`.
-4. Read `docs/product-strategy.md` for positioning or roadmap work.
-5. Read the relevant docs under `docs/`.
-6. Check whether the task is documentation-only, scaffolding, implementation, or verification.
+3. Read `CODE_OF_CONDUCT.md`.
+4. Read `docs/status.md`.
+5. Read `docs/product-strategy.md` for positioning or roadmap work.
+6. Read `docs/open-source-community.md` for open source or Vercel-readiness work.
+7. Read the relevant docs under `docs/`.
+8. Check whether the task is documentation-only, scaffolding, implementation, or verification.
 
 While editing:
 
@@ -326,5 +348,5 @@ Before finishing:
 1. Run available checks.
 2. If checks cannot run because scaffolding does not exist, state that clearly.
 3. Verify `README.md` and `AGENTS.md` still describe the repository honestly.
-4. Verify docs stay aligned with `docs/status.md`, `docs/product-strategy.md`, `docs/cli.md`, and `docs/manifest-contracts.md` when relevant.
+4. Verify docs stay aligned with `docs/status.md`, `docs/product-strategy.md`, `docs/open-source-community.md`, `docs/cli.md`, and `docs/manifest-contracts.md` when relevant.
 5. Summarize changed files and remaining next steps.
