@@ -48,12 +48,13 @@ Public docs metadata must stay aligned with [Website Content Map](website-conten
 
 ## Not Ready For Public Launch Until
 
-- Phase 1 scaffold exists.
 - At least one verified app example exists.
 - Quick-start commands are real.
 - The docs site navigation is implemented.
 - The docs site accessibility behavior has been reviewed against [Accessibility Contract](accessibility-contract.md).
 - Security, governance, and release docs have maintainer contact details.
+
+The Phase 1 scaffold exists and is covered by the repository checks. Public launch readiness now depends on verified user-facing behavior, docs-site implementation, accessibility review, and maintainer contact details.
 
 ## Public Content Source
 

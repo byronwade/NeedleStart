@@ -797,6 +797,11 @@ const staleStatusPatterns = [
     message: "docs/public/guides/create-app.md still says the package scaffold is missing.",
   },
   {
+    file: "docs/public-docs.md",
+    pattern: /- Phase 1 scaffold exists\./i,
+    message: "docs/public-docs.md still lists the existing Phase 1 scaffold as a future public-launch blocker.",
+  },
+  {
     file: "docs/public/reference/testing.md",
     pattern: /Test tooling is not implemented yet/i,
     message: "docs/public/reference/testing.md ignores scaffold test tooling.",
