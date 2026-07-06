@@ -18,10 +18,13 @@ Planned generated files include:
 - `.needle/context/agent-index.json`
 - `.needle/mutations.json`
 - `.needle/generated/*`
+- `dist/routes.manifest.json`
+- `dist/render.manifest.json`
+- `dist/seo.report.json`
 - `dist/adapter.manifest.json`
 - `dist/*`
 
-Adapters may also emit deployment-oriented copies such as `dist/routes.manifest.json`, `dist/render.manifest.json`, and `dist/seo.report.json`. The canonical compiler and agent contracts stay under `.needle/`; `dist/*` is the planned production build output surface.
+The canonical compiler and agent contracts stay under `.needle/`. The named `dist/*` manifest and report files are deployment-oriented copies for runtime adapters, and `dist/*` is the planned production build output surface.
 
 ## Contract Rules
 

@@ -22,10 +22,13 @@ Shared diagnostic fields in manifests should follow [Diagnostics Contract](diagn
 | `.needle/context/agent-index.json` | Agent context index. |
 | `.needle/mutations.json` | Safe edit mutation log. |
 | `.needle/generated/*` | Generated runtime modules. |
+| `dist/routes.manifest.json` | Deployment-oriented route manifest copy for adapters. |
+| `dist/render.manifest.json` | Deployment-oriented render manifest copy for adapters. |
+| `dist/seo.report.json` | Deployment-oriented SEO report copy for adapters. |
 | `dist/adapter.manifest.json` | Adapter capabilities. |
 | `dist/*` | Production build output. |
 
-Adapters may copy selected canonical artifacts into deployment-oriented files such as `dist/routes.manifest.json`, `dist/render.manifest.json`, and `dist/seo.report.json`. The `.needle/*` files remain the source contracts for compiler, CLI, MCP, Agent Kernel, devtools, and tests.
+The `.needle/*` files remain the source contracts for compiler, CLI, MCP, Agent Kernel, devtools, and tests. The `dist/*.manifest.json` and `dist/*.report.json` files listed above are deployment-oriented copies shaped for runtime adapters.
 
 ## Routes Manifest Draft
 

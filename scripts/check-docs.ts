@@ -248,6 +248,9 @@ const canonicalGeneratedArtifacts = [
   ".needle/context/agent-index.json",
   ".needle/mutations.json",
   ".needle/generated/*",
+  "dist/routes.manifest.json",
+  "dist/render.manifest.json",
+  "dist/seo.report.json",
   "dist/adapter.manifest.json",
   "dist/*",
 ];

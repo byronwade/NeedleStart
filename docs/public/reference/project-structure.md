@@ -52,11 +52,14 @@ Planned generated files:
   mutations.json
   generated/
 dist/
+  routes.manifest.json
+  render.manifest.json
+  seo.report.json
   adapter.manifest.json
   *
 ```
 
-The canonical generated artifact names are `.needle/routes.json`, `.needle/render-manifest.json`, `.needle/map.json`, `.needle/graph.json`, `.needle/seo.report.json`, `.needle/perf.report.json`, `.needle/context/*.ctx.json`, `.needle/context/agent-index.json`, `.needle/mutations.json`, `.needle/generated/*`, `dist/adapter.manifest.json`, and `dist/*`.
+The generated artifact names are `.needle/routes.json`, `.needle/render-manifest.json`, `.needle/map.json`, `.needle/graph.json`, `.needle/seo.report.json`, `.needle/perf.report.json`, `.needle/context/*.ctx.json`, `.needle/context/agent-index.json`, `.needle/mutations.json`, `.needle/generated/*`, `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, `dist/adapter.manifest.json`, and `dist/*`. The `.needle/*` files are canonical compiler and agent contracts; the named `dist/*` files are deployment-oriented adapter copies.
 
 Generated files must be deterministic and must not be edited manually.
 

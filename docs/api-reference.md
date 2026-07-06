@@ -105,6 +105,9 @@ Planned generated files:
 | `.needle/context/agent-index.json` | Planned | Agent context index. |
 | `.needle/mutations.json` | Planned | Safe edit mutation log. |
 | `.needle/generated/*` | Planned | Generated runtime modules. |
+| `dist/routes.manifest.json` | Planned | Deployment-oriented route manifest copy for adapters. |
+| `dist/render.manifest.json` | Planned | Deployment-oriented render manifest copy for adapters. |
+| `dist/seo.report.json` | Planned | Deployment-oriented SEO report copy for adapters. |
 | `dist/adapter.manifest.json` | Planned | Adapter capabilities and deployment output metadata. |
 | `dist/*` | Planned | Production build output. |
 
