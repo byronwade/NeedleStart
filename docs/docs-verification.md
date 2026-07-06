@@ -280,10 +280,12 @@ Automated coverage in `bun run docs:check` also requires accessibility contract,
 ### 23. Security Contract Check
 
 ```powershell
-rg -n "security-contract|Security Contract|threat-model|Threat Model|threat model|secret|production error|security headers|vulnerability|advisory|provenance|supply chain|high-risk" README.md AGENTS.md SECURITY.md .github\PULL_REQUEST_TEMPLATE.md docs\security-contract.md docs\threat-model.md docs\security.md docs\testing-contract.md docs\docs-verification.md docs\product-build-readiness.md docs\public\reference\security.md
+rg -n "security-contract|Security Contract|threat-model|Threat Model|threat model|secret|production error|security headers|vulnerability|advisory|provenance|supply chain|high-risk|human sign-off|testing evidence" README.md AGENTS.md SECURITY.md .github\PULL_REQUEST_TEMPLATE.md docs\security-contract.md docs\threat-model.md docs\security.md docs\testing-contract.md docs\docs-verification.md docs\product-build-readiness.md docs\public\reference\security.md
 ```
 
 Expected result: security target language, high-risk surfaces, threat model requirements, secret handling, production error behavior, security headers, advisory flow, supply-chain release rules, testing evidence, and public reference docs remain connected.
+
+Automated coverage in `bun run docs:check` also requires root security policy, security contract, security overview, and public security reference docs to keep high-risk, threat model, secret handling, production error, security headers, vulnerability, advisory, provenance, supply chain, human sign-off, and testing evidence language aligned.
 
 ### 24. Safe Edit And Agent Write Contract Check
 

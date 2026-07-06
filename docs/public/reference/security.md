@@ -37,12 +37,16 @@ Future high-risk work must include:
 - Production error behavior.
 - Secret redaction rules.
 - Cache and header behavior when relevant.
+- Security headers when adapters or runtime response behavior changes.
 - Tests for rejection paths.
+- Security testing evidence before claims are published.
 - Human sign-off when agent writes can affect high-risk surfaces.
+- Vulnerability and advisory flow review when release or disclosure behavior changes.
+- Provenance and supply chain review before package publishing.
 
 ## Reporting Vulnerabilities
 
-Use the root [Security Policy](../../../SECURITY.md) for reporting guidance. Before public release, maintainers should configure private vulnerability reporting.
+Use the root [Security Policy](../../../SECURITY.md) for reporting guidance. Before public release, maintainers should configure private vulnerability reporting and a repository advisory flow.
 
 ## Source
 

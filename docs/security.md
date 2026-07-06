@@ -6,7 +6,7 @@ Audience: security reviewers, maintainers, AI agents.
 
 This page is the docs-level security guide. See root `SECURITY.md` for vulnerability reporting policy.
 
-The detailed planned security requirements for high-risk implementation work are defined in [Security Contract](security-contract.md).
+The detailed planned security requirements for high-risk implementation work, secret handling, production error behavior, security headers, advisory flow, provenance, supply chain rules, and testing evidence are defined in [Security Contract](security-contract.md).
 
 ## High-Risk Product Areas
 
@@ -33,8 +33,12 @@ High-risk features must include:
 
 - Threat model notes.
 - Validation behavior.
-- Error behavior.
-- Tests required.
+- Production error behavior.
+- Security headers when response behavior changes.
+- Secret handling and redaction rules.
+- Tests and security evidence required.
+- Vulnerability or advisory impact when release behavior changes.
+- Provenance and supply chain impact when package publishing changes.
 - Human sign-off requirements when agent writes are involved.
 
 ## Threat Model Template

@@ -320,6 +320,13 @@ const accessibilityContractDocs = [
   "docs/public/reference/accessibility.md",
 ];
 
+const securityContractDocs = [
+  "SECURITY.md",
+  "docs/security-contract.md",
+  "docs/security.md",
+  "docs/public/reference/security.md",
+];
+
 const routingContractDocs = [
   "docs/routing-contract.md",
   "docs/routing.md",
@@ -960,6 +967,16 @@ for (const file of accessibilityContractDocs) {
   for (const term of ["wcag 2.2 aa", "semantic html", "keyboard", "visible focus", "route focus", "form errors", "a11y_", "diagnostics", "testing evidence", "conformance claim"]) {
     if (!content.includes(term)) {
       failures.push(`${file} is missing accessibility contract term: ${term}.`);
+    }
+  }
+}
+
+for (const file of securityContractDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file).toLowerCase();
+  for (const term of ["high-risk", "threat model", "secret", "production error", "security headers", "vulnerability", "advisory", "provenance", "supply chain", "human sign-off", "testing evidence"]) {
+    if (!content.includes(term)) {
+      failures.push(`${file} is missing security contract term: ${term}.`);
     }
   }
 }

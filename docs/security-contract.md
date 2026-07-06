@@ -155,9 +155,9 @@ Before public release, maintainers should configure a private vulnerability repo
 
 Security issues should not be discussed publicly before maintainers have a chance to triage and coordinate a fix.
 
-## Security Test Evidence
+## Security Testing Evidence
 
-Security-sensitive work should name evidence in review:
+Security-sensitive work should name testing evidence in review:
 
 | Surface | Required future evidence |
 | --- | --- |

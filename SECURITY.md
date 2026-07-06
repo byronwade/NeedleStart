@@ -6,7 +6,7 @@ Audience: maintainers, contributors, security reviewers, AI agents.
 
 NeedleStart has a Phase 1 scaffold, but framework security behavior is not implemented yet. This policy defines how security should be handled as implementation begins.
 
-Detailed planned security requirements for high-risk implementation work live in [Security Contract](docs/security-contract.md).
+Detailed planned security requirements for high-risk implementation work, production error behavior, security headers, vulnerability advisory flow, provenance, supply chain rules, and testing evidence live in [Security Contract](docs/security-contract.md).
 
 ## Supported Versions
 
@@ -20,6 +20,7 @@ Until a private security intake is configured, do not post exploitable vulnerabi
 - Reproduction steps or proof of concept.
 - Impact.
 - Whether secrets, auth, billing, filesystem writes, MCP write tools, or deployment adapters are involved.
+- Whether production error behavior, security headers, generated artifacts, package provenance, or supply chain release paths are involved.
 
 ## High-Risk Areas
 
@@ -42,4 +43,5 @@ NeedleStart treats these areas as high risk:
 - Keep agent metadata out of production bundles.
 - Route all write-capable agent and MCP behavior through safe edit transactions.
 - Require explicit human sign-off for high-risk production edits.
+- Do not publish security, provenance, supply chain, or advisory claims without implementation, tests, and review evidence.
 
