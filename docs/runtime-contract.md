@@ -104,7 +104,7 @@ Cache plans, cache headers, cache tags, revalidation, micro-cache behavior, and 
 
 Runtime diagnostics, source locations, production sanitization, and JSON diagnostic fields are defined in `docs/diagnostics-contract.md`.
 
-Render mode literals must stay aligned with `@needle/core` `RenderMode`: static, prerender, SSR, streaming, client-only, API, and hot API. Client-only routes must be intentional and visible in generated manifests so runtime behavior does not silently hide SEO, hydration, or payload costs.
+Render mode literals must stay aligned with `@needle/core` `RenderMode`: `"static"`, `"prerender"`, `"ssr"`, `"stream"`, `"client-only"`, `"api"`, and `"hot-api"`. Client-only routes must be intentional and visible in generated manifests so runtime behavior does not silently hide SEO, hydration, or payload costs.
 
 ## Server Inputs
 

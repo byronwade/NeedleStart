@@ -21,7 +21,7 @@ Unless a phase is explicitly marked `Verified.` or `Scaffolded.` with evidence, 
 
 ### Core Wedge
 
-- Render modes: `staticPage`, `prerender`, `ssr`, `stream`, `clientOnly`, ordinary API routes, and `apiHot`, mapped to the shared `@needle/core` `RenderMode` literals.
+- Render modes: `staticPage()`, `prerender()`, `ssr()`, `stream()`, `clientOnly()`, ordinary API routes, and `apiHot()`, mapped to the shared `@needle/core` `RenderMode` literals.
 - SEO engine: metadata, sitemap, robots, and audits.
 - Adapter-aware Bun production output through `@needle/adapter-bun`.
 - API routes and hot API compiler with schemas.

@@ -655,7 +655,11 @@ const renderModeContractDocs = [
   },
   {
     file: "docs/runtime-contract.md",
-    terms: ["render mode", ".needle/render-manifest.json", "dist/render.manifest.json", "static asset", "prerendered html", "ssr", "streaming", "client-only", "api", "hot api"],
+    terms: ["render mode", ".needle/render-manifest.json", "dist/render.manifest.json", "static asset", "prerendered html", "\"static\"", "\"prerender\"", "\"ssr\"", "\"stream\"", "\"client-only\"", "\"api\"", "\"hot-api\""],
+  },
+  {
+    file: "docs/roadmap.md",
+    terms: ["staticpage()", "prerender()", "ssr()", "stream()", "clientonly()", "apihot()", "rendermode"],
   },
   {
     file: "docs/public/reference/render-modes.md",
