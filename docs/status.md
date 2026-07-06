@@ -18,12 +18,14 @@ NeedleStart is in Phase 1: monorepo scaffold.
 - Bun workspace package scaffold.
 - Root `package.json`, `bun.lockb`, `tsconfig.base.json`, and `tsconfig.json`.
 - Package placeholders under `packages/` and `packages/adapters/`.
+- Package manifests use `0.0.0` private scaffold placeholder versions; these are not published release versions.
 - Shared `@needle/core` scaffold types for routes, graph edges, diagnostics, cache plans, and adapter manifests.
 - CI workflow and root verification scripts for docs, structure, performance documentation, type checking, and placeholder tests.
 
 ## What Does Not Exist Yet
 
 - Published packages.
+- Released package versions.
 - CLI implementation.
 - Route discovery.
 - React rendering.

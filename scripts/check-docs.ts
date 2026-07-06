@@ -386,6 +386,21 @@ const reviewEvidenceContractDocs = [
   },
 ];
 
+const releaseVersionContractDocs = [
+  {
+    file: "docs/status.md",
+    terms: ["0.0.0", "private scaffold placeholder", "not published release versions"],
+  },
+  {
+    file: "docs/release.md",
+    terms: ["0.0.0", "private scaffold placeholder", "not release tags", "published package versions"],
+  },
+  {
+    file: "docs/versioning-and-upgrades.md",
+    terms: ["0.0.0", "private scaffold placeholder", "workspace metadata", "compatibility guarantees"],
+  },
+];
+
 const historicalAuditDocs = [
   "docs/documentation-audit.md",
   "docs/documentation-completion-audit.md",
@@ -1639,6 +1654,16 @@ for (const { file, terms } of reviewEvidenceContractDocs) {
   for (const term of terms.map((term) => term.toLowerCase())) {
     if (!content.includes(term)) {
       failures.push(`${file} is missing review evidence contract term: ${term}.`);
+    }
+  }
+}
+
+for (const { file, terms } of releaseVersionContractDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file).toLowerCase();
+  for (const term of terms.map((term) => term.toLowerCase())) {
+    if (!content.includes(term)) {
+      failures.push(`${file} is missing release-version contract term: ${term}.`);
     }
   }
 }

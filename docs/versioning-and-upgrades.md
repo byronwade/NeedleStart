@@ -6,6 +6,8 @@ Audience: maintainers, framework contributors, app developers, AI agents.
 
 This page defines how NeedleStart should version packages, documentation, generated manifests, public APIs, and upgrade guides once implementation begins. No package has been published yet, so this is a policy draft.
 
+The current `0.0.0` versions in `package.json` files are private scaffold placeholder versions. Treat them as workspace metadata only, not as release versions, docs versions, API versions, or compatibility guarantees.
+
 ## Why This Exists
 
 Framework users need to know which docs match their installed version. Agents need the same thing, especially when reading `llms.txt`, manifest schemas, or generated context. Mature docs systems keep upgrade guides, changelogs, API versions, migration notes, and compatibility evidence close to release work.

@@ -6,6 +6,8 @@ Audience: maintainers, release reviewers, open source program reviewers.
 
 No packages have been released yet. This page defines the future release process.
 
+The `0.0.0` versions in root and package manifests are private scaffold placeholder versions. They are not release tags, published package versions, or compatibility promises.
+
 ## Planned Release Requirements
 
 - All required checks pass.

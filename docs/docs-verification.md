@@ -361,6 +361,16 @@ Expected result: review gates, threat-model requirements, benchmark fixture plan
 
 Automated coverage in `bun run docs:check` also requires review checklist, threat model, benchmark fixtures, examples catalog, docs-site build plan, and pull request template docs to keep threat-note, trusted/untrusted input, human sign-off, raw benchmark data, equivalent behavior, field data, examples status, public guide mapping, renderer decision, frontmatter validation, machine-readable output, quality gate, and command-evidence vocabulary aligned.
 
+### 29. Release Version Placeholder Check
+
+```powershell
+rg -n "0\.0\.0|private scaffold placeholder|workspace metadata|not release tags|not published release versions|compatibility guarantees" docs\status.md docs\release.md docs\versioning-and-upgrades.md
+```
+
+Expected result: status, release, and versioning docs all state that current `0.0.0` package manifest versions are private scaffold placeholders, not published release versions or compatibility guarantees.
+
+Automated coverage in `bun run docs:check` also requires this wording to stay aligned across project status, release process, and versioning policy docs.
+
 ## Script Targets
 
 The initial Bun workspace exposes these package scripts:
