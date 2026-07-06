@@ -185,6 +185,21 @@ const prototypeScopeTerms = [
   },
 ];
 
+const generatedAppScriptDocs = [
+  {
+    file: "docs/getting-started.md",
+    terms: ["bun run dev", "bun run build", "bun run start", "needle dev", "needle build", "needle start", "call"],
+  },
+  {
+    file: "docs/public/guides/create-app.md",
+    terms: ["bun run dev", "bun run build", "bun run start", "needle dev", "needle build", "needle start", "call"],
+  },
+  {
+    file: "docs/examples-contract.md",
+    terms: ["generated app package scripts", "bun run dev", "bun run build", "bun run start", "needle dev", "needle build", "needle start"],
+  },
+];
+
 const coreModelTypes = [
   "NeedleApp",
   "RouteNode",
@@ -871,11 +886,12 @@ if (existsSync(join(root, "docs/public-frontmatter-standard.md"))) {
   }
 }
 
-if (existsSync(join(root, "docs/cli-json-contract.md"))) {
-  const cliJsonContract = read("docs/cli-json-contract.md");
+for (const file of ["docs/cli-json-contract.md", "docs/public/reference/cli.md"]) {
+  if (!existsSync(join(root, file))) continue;
+  const cliJsonContract = read(file);
   for (const command of plannedJsonCommandContracts) {
     if (!cliJsonContract.includes(command)) {
-      failures.push(`docs/cli-json-contract.md does not document planned JSON command contract: ${command}.`);
+      failures.push(`${file} does not document planned JSON command contract: ${command}.`);
     }
   }
 }
@@ -896,6 +912,16 @@ for (const { file, terms } of prototypeScopeTerms) {
   for (const term of terms) {
     if (!content.includes(term)) {
       failures.push(`${file} does not distinguish prototype scope with required term: ${term}.`);
+    }
+  }
+}
+
+for (const { file, terms } of generatedAppScriptDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file);
+  for (const term of terms) {
+    if (!content.includes(term)) {
+      failures.push(`${file} does not align generated app package scripts with framework command term: ${term}.`);
     }
   }
 }

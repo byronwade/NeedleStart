@@ -24,6 +24,25 @@ The `@needle/cli` package is scaffolded, but no NeedleStart CLI command behavior
 
 Exact options, outputs, and exit codes will be documented after implementation.
 
+## Planned JSON Automation Surface
+
+Commands that agents, scripts, or CI should consume need stable `--json` output once implemented. The initial planned JSON command surfaces are:
+
+```txt
+needle build --json
+needle routes --json
+needle inspect --json
+needle check --json
+needle seo --json
+needle map --json
+needle agent context --json
+needle edit --json
+needle migrate --json
+needle bench --json
+```
+
+These JSON outputs are planned, not implemented. The shared envelope, diagnostic shape, exit-code policy, and stability rules live in [CLI JSON Contract](../../cli-json-contract.md).
+
 ## Source
 
 - [Internal CLI Reference](../../cli.md)

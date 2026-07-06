@@ -101,13 +101,14 @@ Example READMEs should be short enough for a new user to follow, but exact enoug
 
 ## Required Commands
 
-Each verified example should document the smallest complete command set:
+Each verified example should document the smallest complete command set. `bun run dev`, `bun run build`, and `bun run start` are generated app package scripts; they must call the equivalent `needle dev`, `needle build`, and `needle start` framework commands instead of becoming separate framework behavior.
 
 ```bash
 bun install
 bun run dev
 bun run build
 bun test
+needle build
 needle routes --json
 needle inspect --json
 needle check --json

@@ -14,7 +14,7 @@ cd my-app
 needle dev
 ```
 
-Generated apps should also expose `bun run dev`, `bun run build`, and `bun run start` package scripts.
+Generated apps should also expose `bun run dev`, `bun run build`, and `bun run start` package scripts that call the equivalent `needle dev`, `needle build`, and `needle start` framework commands.
 
 ## Target Result
 

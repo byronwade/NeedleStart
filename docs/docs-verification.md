@@ -163,6 +163,8 @@ rg -n "schemaVersion|diagnostics|Exit Codes|--json|stdout|exit-code|needle.cli|C
 
 Expected result: command automation behavior remains connected across CLI reference, API reference, manifests, agent context, and MCP docs.
 
+Automated coverage in `bun run docs:check` also requires `docs/cli-json-contract.md` and `docs/public/reference/cli.md` to list every planned JSON automation command: `needle build --json`, `needle routes --json`, `needle inspect --json`, `needle check --json`, `needle seo --json`, `needle map --json`, `needle agent context --json`, `needle edit --json`, `needle migrate --json`, and `needle bench --json`.
+
 ### 12. Diagnostics Contract Check
 
 ```powershell
@@ -202,6 +204,8 @@ rg -n "examples-contract|examples-catalog|Examples And Templates Contract|Verifi
 ```
 
 Expected result: example status labels, starter-template requirements, create-command examples, fixture expectations, public references, and verification evidence remain connected.
+
+Automated coverage in `bun run docs:check` also requires generated app package scripts (`bun run dev`, `bun run build`, and `bun run start`) to stay documented as wrappers around `needle dev`, `needle build`, and `needle start` in the onboarding and examples docs.
 
 ### 17. API Route Contract Check
 
