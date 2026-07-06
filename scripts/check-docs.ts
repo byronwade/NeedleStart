@@ -743,19 +743,19 @@ const prototypeScopeTerms = [
 const currentImplementationStepDocs = [
   {
     file: "README.md",
-    terms: ["The next implementation stage is to add basic render-mode output and the first map artifact."],
+    terms: ["The next implementation stage is to add `lumina inspect --json` and `lumina inspect why`."],
   },
   {
     file: "docs/status.md",
-    terms: ["The next implementation path is adding basic render-mode output and the first map artifact."],
+    terms: ["The next implementation path is adding `lumina inspect --json` and `lumina inspect why`."],
   },
   {
     file: "docs/roadmap.md",
-    terms: ["The next implementation stage is basic render-mode output and the first map artifact."],
+    terms: ["The next implementation stage is `lumina inspect --json` and `lumina inspect why`."],
   },
   {
     file: "docs/public/roadmap.md",
-    terms: ["The next implementation path is basic render-mode output and the first map artifact."],
+    terms: ["The next implementation path is `lumina inspect --json` and `lumina inspect why`."],
   },
   {
     file: "docs/product-build-readiness.md",
@@ -763,7 +763,7 @@ const currentImplementationStepDocs = [
   },
   {
     file: "docs/task-backlog.md",
-    terms: ["Current implementation path: add basic render-mode output and the first map artifact."],
+    terms: ["Current implementation path: add `lumina inspect --json` and `lumina inspect why`."],
   },
 ];
 
@@ -970,7 +970,7 @@ const plannedOverviewImplementationStatusDocs = [
   },
   {
     file: "docs/lumina-map.md",
-    terms: ["planned Lumina Map behavior", "Lumina Map generation is not implemented yet"],
+    terms: ["first deterministic file-level `.lumina/map.json` generator exists", "CLI map queries"],
   },
   {
     file: "docs/safe-edit-transactions.md",

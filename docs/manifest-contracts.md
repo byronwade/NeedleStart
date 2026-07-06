@@ -74,7 +74,7 @@ Draft route entry:
 }
 ```
 
-The route manifest shape and `.lumina/routes.json` emission are backed by route-discovery, artifact, and CLI JSON tests. Broader generated artifacts remain planned until their owning implementations land.
+The route manifest shape, `.lumina/routes.json`, `.lumina/render-manifest.json`, and `.lumina/map.json` emission are backed by route-discovery, artifact, and CLI JSON tests. Broader generated artifacts remain planned until their owning implementations land.
 
 API route entries should follow [API Route Contract](api-route-contract.md) for method lists, schema flags, cache metadata, hot API flags, and API diagnostics.
 

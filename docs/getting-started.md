@@ -3,7 +3,7 @@
 Status: Planned.
 Audience: new users, app developers, AI agents.
 
-This is the target MVP Alpha onboarding path. The repository currently has the Phase 1 scaffold plus route discovery, `.lumina/routes.json`, and `lumina routes --json`; app creation, dev/build/start, rendering, render/map artifacts, and broader CLI behavior are not implemented yet.
+This is the target MVP Alpha onboarding path. The repository currently has the Phase 1 scaffold plus route discovery, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, and `lumina routes --json`; app creation, dev/build/start, rendering, broader CLI inspection, and runtime serving are not implemented yet.
 
 ## What You Will Build In MVP Alpha
 
@@ -31,7 +31,7 @@ bun run performance:check
 bun run check
 ```
 
-They verify scaffold health, documentation links and guardrails, package structure, TypeScript validity, performance-claim hygiene, scaffold tests, shared core model tests, route-discovery fixture behavior, `.lumina/routes.json`, `lumina routes --json`, and benchmark skeleton path/status coverage. The repository currently contains a Bun workspace, package placeholders, shared core types, route discovery, early benchmark/status skeletons, and enforcement scripts; it does not yet contain dev/build/start CLI behavior, render/map artifacts, measured benchmark results, rendering, or Lumina Map generation.
+They verify scaffold health, documentation links and guardrails, package structure, TypeScript validity, performance-claim hygiene, scaffold tests, shared core model tests, route-discovery fixture behavior, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `lumina routes --json`, and benchmark skeleton path/status coverage. The repository currently contains a Bun workspace, package placeholders, shared core types, route/render/map artifact generation, early benchmark/status skeletons, and enforcement scripts; it does not yet contain dev/build/start CLI behavior, measured benchmark results, rendering, or Lumina Map queries.
 
 ## Target MVP App Creation
 
@@ -167,7 +167,7 @@ Generated files must be deterministic and must not be edited manually.
 - If `bun create lumina` is unavailable, use the repository scaffold and example fixture work until `create-lumina` is implemented.
 - If `lumina dev` is unavailable, the CLI package has not reached the MVP dev-server slice yet.
 - If `.lumina/routes.json` is missing, route discovery has not produced artifacts yet.
-- If `.lumina/map.json` is missing, the Lumina Map generator has not reached the MVP file-level graph slice yet.
+- If `.lumina/map.json` is missing, run the compiler artifact path before using map-based inspection.
 - If docs describe behavior that does not exist, mark it as `Target MVP behavior`, `Planned for MVP Alpha`, or `Future`.
 
 ## What Is Deferred

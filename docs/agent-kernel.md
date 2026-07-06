@@ -29,8 +29,8 @@ Planned public docs and app-agent outputs:
 | `llms-full.txt` | Public docs or app-local artifact | Expanded AI-readable context. |
 | `docs-index.json` | Public docs artifact | Machine-readable docs index for the future docs site. |
 | `.lumina/routes.json` | Planned generated app artifact | Route manifest. |
-| `.lumina/render-manifest.json` | Planned generated app artifact | Render modes and cache metadata. |
-| `.lumina/map.json` | Planned generated app artifact | Queryable Lumina Map output. |
+| `.lumina/render-manifest.json` | Implemented generated app artifact | Default route render modes and generated file metadata. |
+| `.lumina/map.json` | Implemented generated app artifact | First file-level Lumina Map output. |
 | `.lumina/graph.json` | Planned generated app artifact | Semantic app graph. |
 | `.lumina/seo.report.json` | Planned generated app artifact | SEO audit output for agents and tooling. |
 | `.lumina/perf.report.json` | Planned generated app artifact | Performance budget output for agents and tooling. |

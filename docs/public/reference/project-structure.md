@@ -43,7 +43,7 @@ my-app/
 | `components/*.tsx` | Imported UI components for map edges. | Planned |
 | `lumina.config.ts` | Framework config. | Planned |
 | `public/` | Static assets copied to output. | Planned |
-| `.lumina/` | Generated route, render, and map artifacts. | Planned |
+| `.lumina/` | Generated route, render, and map artifacts. | Implemented for routes, default render modes, and first file-level map |
 | `dist/` | Built production output once build behavior exists. | Planned |
 
 ## MVP Alpha Generated Files

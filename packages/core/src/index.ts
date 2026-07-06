@@ -61,6 +61,13 @@ export type GraphEdge = {
   risk?: "low" | "medium" | "high";
 };
 
+export type GraphNode = {
+  id: string;
+  kind: string;
+  label: string;
+  sourceFile?: string;
+};
+
 export type DiagnosticSeverity = "info" | "warning" | "error";
 
 export type DiagnosticCategory =
@@ -183,6 +190,51 @@ export type LuminaApp = {
   routeRoot: string;
   generatedBy: GeneratedBy;
   routes: RouteNode[];
+  diagnostics: LuminaDiagnostic[];
+};
+
+export type GeneratedArtifact = {
+  path: string;
+  kind: string;
+  schemaVersion: string;
+  sourceInputs: string[];
+};
+
+export type RenderManifestRoute = {
+  id: string;
+  path: string;
+  mode: RenderMode;
+  sourceFile: string;
+  cache?: CachePlan;
+  generatedFiles: string[];
+};
+
+export type RenderManifest = {
+  schemaVersion: "lumina.render-manifest.v0" | string;
+  generatedBy: GeneratedBy;
+  source: {
+    routesManifest: string;
+  };
+  routes: RenderManifestRoute[];
+  diagnostics: LuminaDiagnostic[];
+};
+
+export type LuminaMap = {
+  schemaVersion: "lumina.map.v0" | string;
+  generatedBy: GeneratedBy;
+  source: {
+    routesManifest: string;
+    renderManifest: string;
+  };
+  nodes: GraphNode[];
+  edges: GraphEdge[];
+  diagnostics: LuminaDiagnostic[];
+};
+
+export type BuildReport = {
+  schemaVersion: "lumina.build-report.v0" | string;
+  generatedBy: GeneratedBy;
+  artifacts: GeneratedArtifact[];
   diagnostics: LuminaDiagnostic[];
 };
 

@@ -209,7 +209,7 @@ bun run performance:check
 bun run check
 ```
 
-These commands verify the scaffold, docs links, root docs metadata, docs navigation coverage, package-map/build-plan/backlog alignment, planned CLI command surface and prefix consistency, status-drift guardrails, config/adapter contract terms, generated artifact inventories across agent and machine-readable docs, package structure, shared-core type ownership, shared-core contract terminology, performance documentation guardrails, TypeScript surface, route-discovery fixture behavior, generated `.lumina/routes.json` output, `lumina routes --json`, early benchmark/status skeleton paths, and tests. They do not prove render manifests, map output, measured benchmark results, rendering, CLI behavior beyond `routes --json`, runtime adapter behavior, MCP tools, or safe edits.
+These commands verify the scaffold, docs links, root docs metadata, docs navigation coverage, package-map/build-plan/backlog alignment, planned CLI command surface and prefix consistency, status-drift guardrails, config/adapter contract terms, generated artifact inventories across agent and machine-readable docs, package structure, shared-core type ownership, shared-core contract terminology, performance documentation guardrails, TypeScript surface, route-discovery fixture behavior, generated `.lumina/routes.json`, `.lumina/render-manifest.json`, and `.lumina/map.json` output, `lumina routes --json`, early benchmark/status skeleton paths, and tests. They do not prove measured benchmark results, rendering, CLI behavior beyond `routes --json`, runtime adapter behavior, MCP tools, or safe edits.
 
 ## Planned Commands
 

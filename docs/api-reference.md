@@ -98,8 +98,8 @@ Planned generated files:
 | File | Status | Purpose |
 | --- | --- | --- |
 | `.lumina/routes.json` | Planned | Stable route manifest. |
-| `.lumina/render-manifest.json` | Planned | Route render modes and cache metadata. |
-| `.lumina/map.json` | Planned | Public Lumina Map output. |
+| `.lumina/render-manifest.json` | Implemented for default static/API route modes | Route render modes and generated file metadata. |
+| `.lumina/map.json` | Implemented for first file-level route graph | Public Lumina Map output. |
 | `.lumina/graph.json` | Planned | Graph data for compiler, map, and agents. |
 | `.lumina/seo.report.json` | Planned | SEO audit output. |
 | `.lumina/perf.report.json` | Planned | Performance budget output. |

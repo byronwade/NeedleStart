@@ -1,7 +1,11 @@
 import { existsSync, mkdirSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { join, relative } from "node:path";
+import { createGraphEdge } from "@lumina/core";
 import type {
+  GraphNode,
   LuminaDiagnostic,
+  LuminaMap,
+  RenderManifest,
   RouteNode,
   RouteParam,
   RouteSegment,
@@ -40,6 +44,16 @@ export type RoutesManifestWriteResult = {
   manifest: RoutesManifest;
 };
 
+export type RenderManifestWriteResult = {
+  path: string;
+  manifest: RenderManifest;
+};
+
+export type LuminaMapWriteResult = {
+  path: string;
+  map: LuminaMap;
+};
+
 type ParsedSegments = {
   segments: RouteSegment[];
   params: RouteParam[];
@@ -73,12 +87,162 @@ export function writeRoutesManifest(options: RoutesManifestWriteOptions): Routes
   const manifest = createRoutesManifest(options);
   const outputPath = toPosix(join(outputDir, "routes.json"));
 
-  mkdirSync(join(options.appRoot, outputDir), { recursive: true });
-  writeFileSync(join(options.appRoot, outputDir, "routes.json"), JSON.stringify(manifest), "utf8");
+  writeJsonArtifact(options.appRoot, outputPath, manifest);
 
   return {
     path: outputPath,
     manifest,
+  };
+}
+
+export function createRenderManifest(options: RouteDiscoveryOptions): RenderManifest {
+  const routesManifest = createRoutesManifest(options);
+
+  return {
+    schemaVersion: "lumina.render-manifest.v0",
+    generatedBy: {
+      package: "@lumina/compiler",
+      version: "0.0.0",
+    },
+    source: {
+      routesManifest: ".lumina/routes.json",
+    },
+    routes: routesManifest.routes.map((route) => ({
+      id: route.id,
+      path: route.path,
+      mode: route.renderMode,
+      sourceFile: route.sourceFile,
+      ...(route.cache ? { cache: route.cache } : {}),
+      generatedFiles: [
+        ".lumina/routes.json",
+        ".lumina/render-manifest.json",
+      ],
+    })),
+    diagnostics: routesManifest.diagnostics,
+  };
+}
+
+export function writeRenderManifest(options: RoutesManifestWriteOptions): RenderManifestWriteResult {
+  const outputDir = options.outputDir ?? ".lumina";
+  const outputPath = toPosix(join(outputDir, "render-manifest.json"));
+  const manifest = createRenderManifest(options);
+
+  writeJsonArtifact(options.appRoot, outputPath, manifest);
+
+  return {
+    path: outputPath,
+    manifest,
+  };
+}
+
+export function createLuminaMap(options: RouteDiscoveryOptions): LuminaMap {
+  const routesManifest = createRoutesManifest(options);
+  const renderManifest = createRenderManifest(options);
+  const nodes = new Map<string, GraphNode>();
+
+  for (const artifactPath of [".lumina/routes.json", ".lumina/render-manifest.json", ".lumina/map.json"]) {
+    nodes.set(`artifact:${artifactPath}`, {
+      id: `artifact:${artifactPath}`,
+      kind: "manifest",
+      label: artifactPath,
+    });
+  }
+
+  const edges = routesManifest.routes.flatMap((route) => {
+    const routeNodeId = `route:${route.path}`;
+    const sourceNodeId = `file:${route.sourceFile}`;
+    nodes.set(routeNodeId, {
+      id: routeNodeId,
+      kind: "route",
+      label: route.path,
+    });
+    nodes.set(sourceNodeId, {
+      id: sourceNodeId,
+      kind: route.kind === "api" ? "api" : "page",
+      label: route.sourceFile,
+    });
+
+    const routeEdges = [
+      createGraphEdge({
+        id: `edge:route:${route.id}:source`,
+        from: routeNodeId,
+        to: sourceNodeId,
+        kind: "route.source",
+        source: "file",
+        confidence: "high",
+        why: `${route.sourceFile} defines the ${route.path} route.`,
+      }),
+      createGraphEdge({
+        id: `edge:route:${route.id}:render`,
+        from: routeNodeId,
+        to: "artifact:.lumina/render-manifest.json",
+        kind: "route.renderMode",
+        source: "convention",
+        confidence: "medium",
+        why: `The render manifest records ${route.renderMode} mode for ${route.path}.`,
+      }),
+      ...[".lumina/routes.json", ".lumina/map.json"].map((artifactPath) =>
+        createGraphEdge({
+          id: `edge:route:${route.id}:generates:${artifactName(artifactPath)}`,
+          from: routeNodeId,
+          to: `artifact:${artifactPath}`,
+          kind: "route.generates",
+          source: "convention",
+          confidence: "medium",
+          why: `${artifactPath} includes generated evidence for ${route.path}.`,
+        }),
+      ),
+    ];
+
+    for (const layout of route.layouts) {
+      const layoutNodeId = `file:${layout}`;
+      nodes.set(layoutNodeId, {
+        id: layoutNodeId,
+        kind: "layout",
+        label: layout,
+      });
+      routeEdges.push(
+        createGraphEdge({
+          id: `edge:route:${route.id}:layout:${createFileId(layout)}`,
+          from: routeNodeId,
+          to: layoutNodeId,
+          kind: "route.layout",
+          source: "file",
+          confidence: "high",
+          why: `${layout} wraps the ${route.path} route.`,
+        }),
+      );
+    }
+
+    return routeEdges;
+  });
+
+  return {
+    schemaVersion: "lumina.map.v0",
+    generatedBy: {
+      package: "@lumina/compiler",
+      version: "0.0.0",
+    },
+    source: {
+      routesManifest: ".lumina/routes.json",
+      renderManifest: ".lumina/render-manifest.json",
+    },
+    nodes: [...nodes.values()].sort((left, right) => compareStrings(left.id, right.id)),
+    edges: edges.sort((left, right) => compareStrings(left.id, right.id)),
+    diagnostics: [...routesManifest.diagnostics, ...renderManifest.diagnostics],
+  };
+}
+
+export function writeLuminaMap(options: RoutesManifestWriteOptions): LuminaMapWriteResult {
+  const outputDir = options.outputDir ?? ".lumina";
+  const outputPath = toPosix(join(outputDir, "map.json"));
+  const map = createLuminaMap(options);
+
+  writeJsonArtifact(options.appRoot, outputPath, map);
+
+  return {
+    path: outputPath,
+    map,
   };
 }
 
@@ -236,6 +400,11 @@ function collectLayouts(appRoot: string, routeRoot: "app", sourceFile: string): 
   return layouts;
 }
 
+function writeJsonArtifact(appRoot: string, outputPath: string, value: unknown): void {
+  mkdirSync(join(appRoot, ...outputPath.split("/").slice(0, -1)), { recursive: true });
+  writeFileSync(join(appRoot, ...outputPath.split("/")), JSON.stringify(value), "utf8");
+}
+
 function createDuplicatePathDiagnostics(routes: RouteNode[]): LuminaDiagnostic[] {
   const byKindAndPath = new Map<string, RouteNode[]>();
 
@@ -321,6 +490,21 @@ function lastPathPart(path: string): string {
 
 function stripExtension(fileName: string): string {
   return fileName.replace(/\.[^.]+$/, "");
+}
+
+function createFileId(sourceFile: string): string {
+  return stripExtension(sourceFile)
+    .split("/")
+    .map((part) => {
+      const group = /^\(([^()[\]/]+)\)$/.exec(part);
+      if (group) return `$group_${group[1]}`;
+      return part.replace(/^\[\.\.\.([A-Za-z_][A-Za-z0-9_-]*)\]$/, "$1.splat").replace(/^\[([A-Za-z_][A-Za-z0-9_-]*)\]$/, "$1");
+    })
+    .join(".");
+}
+
+function artifactName(path: string): string {
+  return stripExtension(path.split("/").at(-1) ?? path);
 }
 
 function toPosix(path: string): string {
