@@ -31,6 +31,8 @@ export async function GET({ params, query, request }) {
 
 Planned method exports include `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `HEAD`, and `OPTIONS`.
 
+Handlers are planned to receive Web `Request` and route metadata through `ApiRouteContext`.
+
 ## Planned Return Behavior
 
 - `Response` values pass through.
@@ -51,6 +53,16 @@ export const params = schema.object({
 ```
 
 Hot API routes use the same schema direction with generated validators and serializers.
+
+Validation failures should use the planned `VALIDATION_FAILED` response shape.
+
+## Planned Config And Manifests
+
+- API routes default to `no-store` unless explicit cache config opts in.
+- Route config may include planned `bodyLimit` behavior.
+- Generated manifests should list methods, schemas, cache behavior, diagnostics, and hot API status.
+- API route diagnostics should use `API_METHOD_` and related `API_` codes.
+- Production security behavior must hide stack traces, secrets, and local paths.
 
 ## Current Status
 

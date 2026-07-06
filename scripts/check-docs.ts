@@ -333,6 +333,12 @@ const performanceContractDocs = [
   "docs/public/reference/performance.md",
 ];
 
+const apiRouteContractDocs = [
+  "docs/api-route-contract.md",
+  "docs/api-routes.md",
+  "docs/public/reference/api-routes.md",
+];
+
 const routingContractDocs = [
   "docs/routing-contract.md",
   "docs/routing.md",
@@ -993,6 +999,16 @@ for (const file of performanceContractDocs) {
   for (const term of ["core web vitals", "lcp", "inp", "cls", ".needle/perf.report.json", "perf_", "budget", "benchmark evidence", "delivery", "chunk count", "source-map", "rum", "field data", "resource hints", "early hints", "compression", "bfcache"]) {
     if (!content.includes(term)) {
       failures.push(`${file} is missing performance contract term: ${term}.`);
+    }
+  }
+}
+
+for (const file of apiRouteContractDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file).toLowerCase();
+  for (const term of ["apiroutecontext", "request", "response", "validation_failed", "methods", "api_method", "hot api", "bodylimit", "no-store", "generated manifests", "security", "diagnostics"]) {
+    if (!content.includes(term)) {
+      failures.push(`${file} is missing API route contract term: ${term}.`);
     }
   }
 }

@@ -8,7 +8,7 @@ NeedleStart plans to support API route files under `app/api/`.
 
 API route discovery is part of the planned [Routing Contract](routing-contract.md). Handler argument and response typing will be finalized when the API route implementation exists.
 
-The planned handler contract, return normalization, schemas, diagnostics, security requirements, manifest fields, and fixture expectations are defined in [API Route Contract](api-route-contract.md).
+The planned `ApiRouteContext`, method exports, Web `Request` and `Response` behavior, return normalization, schemas, diagnostics, security requirements, generated manifests, and fixture expectations are defined in [API Route Contract](api-route-contract.md).
 
 ## Planned Example
 
@@ -22,8 +22,14 @@ export async function GET() {
 
 - Common HTTP methods work.
 - Dynamic API params work.
+- Handlers receive Web `Request` and route metadata through the planned `ApiRouteContext`.
 - Plain objects become JSON responses.
 - Response objects pass through.
+- Validation failures use the planned `VALIDATION_FAILED` response shape.
+- API routes default to `no-store` unless explicit cache config opts in.
+- Route config may include planned `bodyLimit` behavior.
+- API route diagnostics use `API_METHOD_` and related `API_` codes.
+- Generated manifests list methods, schemas, cache behavior, diagnostics, and hot API status.
 - Errors are readable in development and hidden in production.
 - Hot API routes can opt into generated validation and serialization.
 

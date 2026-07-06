@@ -226,10 +226,12 @@ Automated coverage in `bun run docs:check` also requires generated app package s
 ### 18. API Route Contract Check
 
 ```powershell
-rg -n "api-route-contract|API_METHOD|ApiRouteContext|Request|Response|VALIDATION_FAILED|methods|hot API|bodyLimit" README.md AGENTS.md docs\api-route-contract.md docs\api-routes.md docs\schema.md docs\hot-api-path.md docs\runtime-contract.md docs\security.md docs\manifest-contracts.md docs\public\reference\api-routes.md
+rg -n "api-route-contract|API_METHOD|ApiRouteContext|Request|Response|VALIDATION_FAILED|methods|hot API|bodyLimit|no-store|generated manifests|security|diagnostics" README.md AGENTS.md docs\api-route-contract.md docs\api-routes.md docs\schema.md docs\hot-api-path.md docs\runtime-contract.md docs\security.md docs\manifest-contracts.md docs\public\reference\api-routes.md
 ```
 
 Expected result: API handler context, method exports, request/response behavior, validation, diagnostics, hot API integration, security rules, manifests, and public reference docs remain connected.
+
+Automated coverage in `bun run docs:check` also requires API route contract, API route overview, and public API route reference docs to keep `ApiRouteContext`, Web `Request` and `Response`, `VALIDATION_FAILED`, method exports, `API_METHOD_` diagnostics, hot API integration, `bodyLimit`, `no-store`, generated manifests, security, and diagnostics language aligned.
 
 ### 18A. Render Mode Contract Check
 
