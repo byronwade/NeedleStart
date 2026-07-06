@@ -396,7 +396,7 @@ Checks run:
 
 Checks not run at the time of this audit:
 
-- `bun test` and `bun run typecheck`, because the repository had no package scaffold yet.
+- `bun test` and `bun run typecheck`, because the repository had not scaffolded package scripts yet.
 
 Current note: Phase 1 scaffold work has since added `bun test`, `bun run typecheck`, and the root `bun run check` gate. Treat this audit section as historical context, not current command status.
 

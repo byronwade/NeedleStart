@@ -19,11 +19,11 @@ Browser should show:
 Then:
 
 ```bash
-bun needle routes
-bun needle seo
-bun needle map route /
-bun needle agent context --route / --json
-bun needle mcp
+needle routes
+needle seo
+needle map route /
+needle agent context --route / --json
+needle mcp
 ```
 
 Then ask an AI agent:

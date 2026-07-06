@@ -32,6 +32,26 @@ const requiredEntryLinks = [
   "docs/docs-site-build-plan.md",
 ];
 
+const packageSpecs = [
+  { path: "packages/create-needle", name: "create-needle" },
+  { path: "packages/cli", name: "@needle/cli" },
+  { path: "packages/core", name: "@needle/core" },
+  { path: "packages/compiler", name: "@needle/compiler" },
+  { path: "packages/vite-plugin", name: "@needle/vite-plugin" },
+  { path: "packages/react", name: "@needle/react" },
+  { path: "packages/router", name: "@needle/router" },
+  { path: "packages/seo", name: "@needle/seo" },
+  { path: "packages/map", name: "@needle/map" },
+  { path: "packages/agent", name: "@needle/agent" },
+  { path: "packages/mcp", name: "@needle/mcp" },
+  { path: "packages/cache", name: "@needle/cache" },
+  { path: "packages/schema", name: "@needle/schema" },
+  { path: "packages/devtools", name: "@needle/devtools" },
+  { path: "packages/adapters/bun", name: "@needle/adapter-bun" },
+  { path: "packages/adapters/node", name: "@needle/adapter-node" },
+  { path: "packages/adapters/static", name: "@needle/adapter-static" },
+];
+
 function rel(path: string): string {
   return relative(root, path).replaceAll("\\", "/");
 }
@@ -125,7 +145,7 @@ const staleStatusPatterns = [
   },
   {
     file: "docs/documentation-audit.md",
-    pattern: /because the repository has no package scaffold yet/i,
+    pattern: /because the repository (has|had) no package scaffold yet/i,
     message: "docs/documentation-audit.md still presents pre-scaffold status as current.",
   },
   {
@@ -268,6 +288,28 @@ for (const file of ["README.md", "docs/status.md", "docs/phase-1-build-plan.md",
   }
 }
 
+for (const file of ["docs/package-map.md", "docs/phase-1-build-plan.md"]) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file);
+  for (const spec of packageSpecs) {
+    if (!content.includes(spec.path)) {
+      failures.push(`${file} does not document package path ${spec.path}.`);
+    }
+    if (!content.includes(spec.name)) {
+      failures.push(`${file} does not document package name ${spec.name}.`);
+    }
+  }
+}
+
+if (existsSync(join(root, "docs/task-backlog.md"))) {
+  const backlog = read("docs/task-backlog.md");
+  for (const spec of packageSpecs) {
+    if (!backlog.includes(spec.name)) {
+      failures.push(`docs/task-backlog.md does not include package name ${spec.name}.`);
+    }
+  }
+}
+
 const publicReadme = read("docs/public/README.md");
 const websiteContentMap = read("docs/website-content-map.md");
 for (const publicDoc of allPublicDocs()) {
@@ -311,6 +353,11 @@ for (const file of walkMarkdown(root)) {
   const content = readFileSync(file, "utf8");
   const fileDir = dirname(file);
   const matches = content.matchAll(/\[[^\]]+\]\(([^)#][^)]*)\)/g);
+  const fileRel = rel(file);
+
+  if (/(^|\s)bun needle\b/.test(content)) {
+    failures.push(`${fileRel} uses stale command prefix "bun needle"; document planned CLI commands as "needle ...".`);
+  }
 
   for (const match of matches) {
     const target = match[1]?.trim();
@@ -319,7 +366,7 @@ for (const file of walkMarkdown(root)) {
     if (!pathOnly) continue;
     const resolved = resolve(fileDir, pathOnly);
     if (!existsSync(resolved)) {
-      failures.push(`${rel(file)} has broken local link: ${target}`);
+      failures.push(`${fileRel} has broken local link: ${target}`);
     }
   }
 }
@@ -328,6 +375,7 @@ const docsVerification = read("docs/docs-verification.md");
 for (const term of [
   "Root Playbook Placement Check",
   "Navigation Coverage Check",
+  "Package And Prototype Scope Check",
   "Review, Threat, Fixture, Example, And Docs-Site Check",
 ]) {
   if (!docsVerification.includes(term)) {
