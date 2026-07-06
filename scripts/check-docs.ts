@@ -602,6 +602,17 @@ const prototypeScopeTerms = [
   },
 ];
 
+const featureSchedulingGateDocs = [
+  {
+    file: "docs/compiler-ir.md",
+    terms: ["Does it improve Needle Map or the Agent Kernel?", "minimal production runtime code", "planned acceptance criteria", "tests and an agent demo"],
+  },
+  {
+    file: "docs/risk-mitigation.md",
+    terms: ["Does it improve Needle Map or the Agent Kernel?", "minimal production runtime code", "planned acceptance criteria", "tests and an agent demo"],
+  },
+];
+
 const generatedAppScriptDocs = [
   {
     file: "docs/getting-started.md",
@@ -2365,6 +2376,19 @@ for (const { file, terms } of prototypeScopeTerms) {
     if (!content.includes(term)) {
       failures.push(`${file} does not distinguish prototype scope with required term: ${term}.`);
     }
+  }
+}
+
+for (const { file, terms } of featureSchedulingGateDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file);
+  for (const term of terms) {
+    if (!content.includes(term)) {
+      failures.push(`${file} does not document the feature scheduling gate with required term: ${term}.`);
+    }
+  }
+  if (/clear definition of done with tests and an agent demo/i.test(content)) {
+    failures.push(`${file} should describe scheduling gates as planned acceptance criteria, not ambiguous definition-of-done wording.`);
   }
 }
 

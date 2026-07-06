@@ -169,7 +169,7 @@ Every new feature must answer three questions before being scheduled:
 
 1. Does it improve Needle Map or the Agent Kernel?
 2. Can it be implemented with minimal production runtime code?
-3. Does it have a clear definition of done with tests and an agent demo?
+3. Does it have clear planned acceptance criteria with tests and an agent demo?
 
 If the answer is no, it is lower priority for the first working slice and should not enter the first public prototype unless it directly strengthens the demo.
 

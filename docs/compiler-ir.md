@@ -193,7 +193,7 @@ Before a feature is scheduled, it must answer:
 
 1. Does it improve Needle Map or the Agent Kernel?
 2. Can it be implemented with minimal production runtime code?
-3. Does it have a clear definition of done with tests and an agent demo?
+3. Does it have clear planned acceptance criteria with tests and an agent demo?
 
 Features that do not satisfy these questions are lower priority for the first prototype.
 

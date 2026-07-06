@@ -151,6 +151,8 @@ It also parses the AGENTS required-documentation-sync section directly. Every pa
 
 Prototype, public-roadmap, implementation-sequence, and contributor docs must describe Bun serving through `@needle/adapter-bun` instead of generic "Bun serving" or "Bun server" wording that could imply a separate active runtime package.
 
+Feature scheduling gates in compiler IR and risk-mitigation docs must use `planned acceptance criteria` wording for tests and agent demos, rather than ambiguous current-tense definition-of-done wording.
+
 ### 7A. Agent Enforcement Matrix Check
 
 ```powershell
