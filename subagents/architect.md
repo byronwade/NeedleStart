@@ -19,6 +19,7 @@ Protect NeedleStart's architecture, package boundaries, and phase discipline.
 - `docs/package-map.md`
 - `docs/roadmap.md`
 - `docs/risk-mitigation.md`
+- `docs/phase-1-build-plan.md`
 
 ## Output Format
 

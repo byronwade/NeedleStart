@@ -1,6 +1,6 @@
 # Runtime Contract
 
-The Needle runtime must stay small, explicit, and easy to inspect.
+The Needle runtime must stay small, explicit, fast, and easy to inspect. Runtime speed depends on generated manifests and handlers; see `docs/speed-strategy.md`.
 
 ## Responsibilities
 
@@ -24,6 +24,7 @@ The production runtime is not responsible for:
 - Running agent planning.
 - Serving devtools in production.
 - Reading full source files for normal requests.
+- Recomputing behavior that the compiler already emitted into manifests.
 
 ## Request Pipeline
 

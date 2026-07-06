@@ -20,6 +20,7 @@ Read before editing:
 3. `docs/roadmap.md`
 4. `docs/task-backlog.md`
 5. `docs/risk-mitigation.md`
+6. `docs/phase-1-build-plan.md` for scaffolding or package-boundary changes.
 
 ## Workflow
 

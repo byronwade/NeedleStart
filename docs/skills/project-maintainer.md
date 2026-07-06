@@ -20,6 +20,7 @@ Read before editing:
 3. `../roadmap.md`
 4. `../task-backlog.md`
 5. `../risk-mitigation.md`
+6. `../phase-1-build-plan.md` for scaffolding or package-boundary changes.
 
 ## Workflow
 

@@ -18,13 +18,15 @@ Read before editing:
 2. `README.md`
 3. The specific docs being changed.
 4. `docs/README.md` when adding or reorganizing docs.
+5. `docs/documentation-standard.md` when creating or reorganizing docs.
+6. `docs/phase-1-build-plan.md` when setup, package structure, or scaffolding status changes.
 
 ## Workflow
 
 1. Identify whether the change affects setup, commands, package structure, phase, safety rules, generated files, or public positioning.
 2. Update README.md when user-facing status, public positioning, setup, package structure, or prototype status changes.
 3. Update AGENTS.md when commands, workflow, safety rules, generated files, package ownership, or high-risk areas change.
-4. Keep docs direct and durable.
+4. Keep docs direct, durable, and aligned with the documentation lanes in `docs/documentation-standard.md`.
 5. Mark planned features as planned unless implementation exists and has been verified.
 6. Link new root-level guidance from README.md and `docs/README.md` when it helps discovery.
 

@@ -305,10 +305,26 @@ Start here:
 - [Contributing](CONTRIBUTING.md)
 - [Agent Rules](AGENTS.md)
 - [Documentation Hub](docs/README.md)
+- [Public Website Content](docs/public/README.md)
+- [Project Status](docs/status.md)
+- [Getting Started](docs/getting-started.md)
+- [Guides](docs/guides.md)
+- [API Reference](docs/api-reference.md)
+- [File Conventions](docs/file-conventions.md)
+- [Documentation Standard](docs/documentation-standard.md)
+- [Documentation Freshness Policy](docs/docs-freshness-policy.md)
+- [Documentation Research Notes](docs/documentation-research.md)
+- [Phase 1 Build Plan](docs/phase-1-build-plan.md)
 - [Roadmap](docs/roadmap.md)
 - [Needle Map](docs/needle-map.md)
 - [App Graph Visual Map](docs/app-graph-visual.md)
 - [Risk Mitigation](docs/risk-mitigation.md)
+- [Engineering Standards](docs/engineering-standards.md)
+- [Speed Strategy](docs/speed-strategy.md)
+- [Documentation Audit](docs/documentation-audit.md)
+- [Docs Maintenance Checklist](docs/docs-maintenance-checklist.md)
+- [Machine-Readable Documentation](docs/machine-readable-docs.md)
+- [Maintainer Guide](docs/maintainer-guide.md)
 - [Adapter Architecture](docs/adapters.md)
 - [Safe Edit Transactions](docs/safe-edit-transactions.md)
 - [Migration Tooling](docs/migration.md)
@@ -316,6 +332,9 @@ Start here:
 - [Task Template](docs/templates/task-template.md)
 - [AI Skill Playbooks](skills/README.md)
 - [AI Subagent Roles](subagents/README.md)
+- [Governance](GOVERNANCE.md)
+- [Security Policy](SECURITY.md)
+- [Code of Conduct](CODE_OF_CONDUCT.md)
 
 ## Current Status
 
@@ -323,7 +342,7 @@ This repository is in Phase 0: project constitution and planning.
 
 No runtime implementation exists yet. The current work is to lock the product direction, architecture boundaries, package responsibilities, documentation rules, agent workflow, and vendor-neutral AI collaboration playbooks before implementation begins.
 
-The next implementation stage is Phase 1: monorepo skeleton, then route discovery.
+The next implementation stage is Phase 1: monorepo skeleton, then route discovery. Use the [Phase 1 Build Plan](docs/phase-1-build-plan.md) as the entry guide before adding package scaffolding or claiming local commands work.
 
 ## Philosophy
 

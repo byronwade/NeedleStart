@@ -44,6 +44,7 @@ The repository is in Phase 0. The next implementation stage is Phase 1: monorepo
 - Every major task uses a structured task template.
 - Compiler and map are built as first-class systems from the beginning.
 - Runtime stays minimal.
+- Speed is treated as a whole-system property across compiler, runtime, client payload, graph queries, agent workflows, and benchmarks.
 - All generated artifacts are explainable.
 - NeedleStart should dogfood Needle Map and agent tools on the framework itself as soon as they exist.
 
@@ -78,11 +79,14 @@ Risk mitigation focus:
 
 - Lock the shared data model before implementation diverges.
 - Keep the first prototype centered on compiler IR, route discovery, basic graph, SEO-safe rendering, and a low-risk safe edit.
+- Keep speed strategy visible from the start: static-first output, build-time intelligence, small runtime adapters, compact JSON, and benchmark honesty.
 - Treat `docs/risk-mitigation.md` as required reading for map, agent, MCP, adapter, and safe-edit work.
 
 ## Phase 1: Monorepo Skeleton
 
 Goal: create the Bun workspace and package scaffolds.
+
+Implementation guide: `docs/phase-1-build-plan.md`.
 
 Packages:
 
@@ -92,7 +96,6 @@ Packages:
 - `@needle/compiler`
 - `@needle/vite-plugin`
 - `@needle/react`
-- `@needle/server-bun`
 - `@needle/router`
 - `@needle/seo`
 - `@needle/map`
@@ -101,6 +104,9 @@ Packages:
 - `@needle/cache`
 - `@needle/schema`
 - `@needle/devtools`
+- `@needle/adapter-bun`
+- `@needle/adapter-node`
+- `@needle/adapter-static`
 
 Definition of done:
 
@@ -110,6 +116,7 @@ Definition of done:
 - All packages have `package.json`.
 - All packages expose `src/index.ts`.
 - Placeholder tests exist.
+- README, AGENTS, package map, and backlog reflect the implemented scaffold honestly.
 
 Out of scope:
 

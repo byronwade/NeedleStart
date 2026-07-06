@@ -4,6 +4,17 @@ NeedleStart is currently in planning and constitution mode. The first contributo
 
 We welcome contributions from both humans and AI agents.
 
+Before contributing, read:
+
+- `docs/status.md` for the current project phase.
+- `AGENTS.md` for agent and repository operating rules.
+- `docs/engineering-standards.md` for the project engineering bar.
+- `docs/docs-freshness-policy.md` for keeping documentation current.
+- `docs/docs-maintenance-checklist.md` for documentation sync requirements.
+- `GOVERNANCE.md` for decision-making and maintainer responsibilities.
+- `SECURITY.md` before reporting or changing security-sensitive behavior.
+- `CODE_OF_CONDUCT.md` for community expectations.
+
 ## Areas Where Help Is Especially Needed
 
 - Compiler internals and graph algorithms.
@@ -15,6 +26,7 @@ We welcome contributions from both humans and AI agents.
 
 ## Development Principles
 
+- Follow `docs/engineering-standards.md`.
 - Keep runtime code small.
 - Put framework intelligence in the compiler.
 - Make public behavior visible through manifests.
@@ -44,8 +56,9 @@ Do not claim these commands pass until package scaffolding exists.
 5. Implement the smallest complete slice.
 6. Add or update tests.
 7. Update README and AGENTS when setup, commands, or project behavior changes.
-8. Run checks.
-9. Document remaining scope clearly.
+8. Apply `docs/docs-freshness-policy.md` and `docs/docs-maintenance-checklist.md`.
+9. Run checks.
+10. Document remaining scope clearly.
 
 For larger changes, open a discussion or design note first.
 
@@ -86,8 +99,12 @@ Use the test type that matches the behavior:
 
 ## Pull Request Checklist
 
+- `docs/engineering-standards.md` was applied.
 - `README.md` is still accurate.
 - `AGENTS.md` is still accurate.
+- `docs/status.md` is still accurate.
+- `docs/docs-freshness-policy.md` was applied.
+- `docs/docs-maintenance-checklist.md` was applied.
 - The feature is either implemented or clearly marked as planned.
 - New commands are documented.
 - New generated files are documented.

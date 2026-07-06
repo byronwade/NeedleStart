@@ -15,9 +15,55 @@ Definition of done:
 - README.md and docs hub link to the root-level guidance.
 - Guidance remains documentation-only until executable agent tooling exists.
 
+## PR 0B: Documentation System
+
+Goal: make the documentation structure comparable to a mature framework by separating getting started material, guides, API reference, file conventions, architecture, and contribution rules.
+
+Status: initial documentation structure exists in `docs/getting-started.md`, `docs/guides.md`, `docs/api-reference.md`, `docs/file-conventions.md`, `docs/documentation-standard.md`, `docs/documentation-audit.md`, and `docs/docs-maintenance-checklist.md`.
+
+Definition of done:
+
+- Documentation hub clearly separates start-here, guide, reference, architecture, and contribution lanes.
+- Every planned feature page uses clear status language.
+- CLI, config, helper APIs, file conventions, generated files, and JSON outputs have reference homes.
+- README links to the primary docs lanes.
+- AGENTS.md tells future agents to follow the documentation standard.
+- No page claims unimplemented commands or APIs work.
+
+Remaining follow-up:
+
+- Add verified tutorials after package scaffolding exists.
+- Add public docs frontmatter after a docs site parser is chosen.
+- Add generated `docs-index.json`, `llms.txt`, and `llms-full.txt` plans to Agent Kernel implementation tasks.
+- Add a pull request template that embeds `docs/docs-maintenance-checklist.md`.
+- Decide whether root `skills/` and `subagents/` or `docs/skills/` and `docs/subagents/` are canonical.
+- Expand `docs/machine-readable-docs.md` into generated schemas when packages exist.
+- Use `docs/templates/documentation-page-template.md` for new durable docs pages.
+- Keep `docs/speed-strategy.md` current as performance, runtime, compiler, graph, agent, or benchmark plans change.
+
+## PR 0C: Speed Strategy
+
+Goal: define speed as a whole-system property before implementation begins.
+
+Status: initial documentation exists in `docs/speed-strategy.md`.
+
+Definition of done:
+
+- Speed surfaces are documented for compiler, runtime, client payload, hot APIs, app graph, agent workflows, builds, and benchmarks.
+- Feature scheduling includes speed gates.
+- Benchmark evidence rules link to `docs/benchmark-methodology.md`.
+- Runtime and compiler docs link back to the speed strategy.
+- No public speed claim is marked verified before benchmarks exist.
+
 ## PR 1: Monorepo Skeleton
 
 Goal: create the Bun workspace and package scaffolds.
+
+Read first:
+
+- `docs/phase-1-build-plan.md`
+- `docs/package-map.md`
+- `docs/risk-mitigation.md`
 
 Packages:
 
@@ -27,7 +73,6 @@ Packages:
 - `@needle/compiler`
 - `@needle/vite-plugin`
 - `@needle/react`
-- `@needle/server-bun`
 - `@needle/router`
 - `@needle/seo`
 - `@needle/map`
@@ -36,6 +81,9 @@ Packages:
 - `@needle/cache`
 - `@needle/schema`
 - `@needle/devtools`
+- `@needle/adapter-bun`
+- `@needle/adapter-node`
+- `@needle/adapter-static`
 
 Definition of done:
 
@@ -45,6 +93,17 @@ Definition of done:
 - Every package has `package.json`.
 - Every package has `src/index.ts`.
 - Placeholder tests exist.
+- Root `package.json`, `bun.lock`, and `tsconfig.base.json` exist.
+- No package claims real route, runtime, graph, MCP, or safe-edit behavior yet.
+- README, AGENTS, roadmap, and package map reflect the scaffold.
+
+Out of scope:
+
+- Route discovery.
+- Vite integration.
+- React rendering.
+- Runtime server behavior.
+- Generated `.needle/*` artifacts.
 
 ## PR 1A: Core Data Model
 

@@ -22,11 +22,21 @@ Every agent change must evaluate whether these files need updates:
 
 - `README.md`
 - `AGENTS.md`
+- `CONTRIBUTING.md`
+- `GOVERNANCE.md`
+- `SECURITY.md`
+- `CODE_OF_CONDUCT.md`
 - `VISION.md`
 - `ARCHITECTURE.md`
+- `docs/status.md`
 - `docs/roadmap.md`
 - `docs/risk-mitigation.md`
+- `docs/engineering-standards.md`
 - `docs/package-map.md`
+- `docs/documentation-standard.md`
+- `docs/docs-freshness-policy.md`
+- `docs/docs-maintenance-checklist.md`
+- `docs/phase-1-build-plan.md`
 - `docs/task-backlog.md`
 - `skills/README.md`
 - `subagents/README.md`
@@ -87,6 +97,7 @@ needle mcp
 ## Repository Rules
 
 - Prefer deterministic compiler output.
+- Follow `docs/engineering-standards.md` for definitions of ready, done, review quality, ownership, and evidence.
 - Prefer AST edits over string replacement for TypeScript source.
 - Add or update tests for every implemented feature.
 - Keep production runtime free of agent metadata.
@@ -188,7 +199,9 @@ Contributors, human or agent, are expected to:
 
 Planned package responsibilities are documented in `docs/package-map.md`.
 
-Do not add cross-package imports casually. Shared types belong in `@needle/core`. Compiler-only code belongs in `@needle/compiler`. Runtime code belongs in `@needle/server-bun` or a runtime adapter. Agent and MCP code must remain dev/build-time unless explicitly designed as a development server feature.
+Do not add cross-package imports casually. Shared types belong in `@needle/core`. Compiler-only code belongs in `@needle/compiler`. Runtime request handling belongs in runtime adapters, starting with `@needle/adapter-bun`. Agent and MCP code must remain dev/build-time unless explicitly designed as a development server feature.
+
+Phase 1 package scaffolding must follow `docs/phase-1-build-plan.md`. Prefer `@needle/adapter-bun`, `@needle/adapter-node`, and `@needle/adapter-static` for runtime adapter packages unless a later architecture decision reintroduces a separate `@needle/server-bun` package.
 
 ## Testing Expectations
 
@@ -204,6 +217,9 @@ Test output used by agents must be deterministic.
 
 ## Documentation Style
 
+- Follow `docs/documentation-standard.md` when creating or reorganizing docs.
+- Follow `docs/docs-freshness-policy.md` before finishing any change that can make docs stale.
+- Use `docs/docs-maintenance-checklist.md` before finishing documentation, command, package, status, governance, release, security, benchmark, or public-docs changes.
 - Use direct, durable language.
 - Mark planned features as planned.
 - Mark implemented features as implemented only after verification.
@@ -219,7 +235,9 @@ Before editing:
 2. Read this `AGENTS.md`.
 3. Read the relevant docs under `docs/`.
 4. Check whether the task is documentation-only, scaffolding, implementation, or verification.
-5. For AI collaboration or delegation changes, read `skills/README.md` and `subagents/README.md`.
+5. Read `docs/engineering-standards.md` for non-trivial implementation, architecture, or process work.
+6. For AI collaboration or delegation changes, read `skills/README.md` and `subagents/README.md`.
+7. For Phase 1 scaffolding or package-boundary work, read `docs/phase-1-build-plan.md`.
 
 While editing:
 
@@ -234,4 +252,5 @@ Before finishing:
 1. Run available checks.
 2. If checks cannot run because scaffolding does not exist, state that clearly.
 3. Verify `README.md` and `AGENTS.md` still describe the repository honestly.
-4. Summarize changed files and remaining next steps.
+4. Apply `docs/docs-freshness-policy.md` and `docs/docs-maintenance-checklist.md`.
+5. Summarize changed files and remaining next steps.

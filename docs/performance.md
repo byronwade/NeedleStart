@@ -1,6 +1,6 @@
 # Performance
 
-NeedleStart should make route performance visible and enforceable.
+NeedleStart should make route performance visible and enforceable. See `docs/speed-strategy.md` for the whole-system speed model across compiler, runtime, client payload, app graph, agents, and benchmarks.
 
 ## Goals
 
@@ -64,6 +64,8 @@ needle bench api-hot
 needle bench large-build
 ```
 
+Benchmark claims must follow `docs/benchmark-methodology.md`. Public performance claims need raw data, environment metadata, and comparable fixture details.
+
 ## Definition of Done
 
 - Route JS and CSS sizes are reported.
@@ -71,3 +73,4 @@ needle bench large-build
 - Public page budgets are stricter by default.
 - JSON diagnostics include safe suggestions.
 - Benchmarks are reproducible.
+- Speed claims are backed by the evidence required in `docs/speed-strategy.md` and `docs/benchmark-methodology.md`.

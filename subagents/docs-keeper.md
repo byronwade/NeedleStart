@@ -16,6 +16,8 @@ Keep repository documentation synchronized, discoverable, and honest.
 - `AGENTS.md`
 - `README.md`
 - `docs/README.md`
+- `docs/documentation-standard.md`
+- `docs/phase-1-build-plan.md` for scaffolding, setup, or package-structure changes.
 - Any docs touched by the task.
 
 ## Guardrails

@@ -11,6 +11,7 @@ The Needle compiler should use one internal representation that feeds CLI output
 - Preserve enough information for Needle Map and agents.
 - Avoid runtime recomputation where build-time generation is possible.
 - Keep CLI, compiler, map, agent, MCP, runtime adapters, and devtools aligned on one immutable core data model.
+- Preserve whole-system speed by moving safe work to build time and emitting compact runtime artifacts.
 
 ## Needle App
 
@@ -148,6 +149,8 @@ Planned incremental behavior:
 - Avoid rebuilding unrelated routes.
 - Parallelize independent route compilation where possible.
 - Keep generated JSON stable so agent-facing output can be diffed.
+
+Speed rules for compiler work are defined in `docs/speed-strategy.md`.
 
 ## Feature Scheduling Gate
 

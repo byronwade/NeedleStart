@@ -12,7 +12,6 @@ This document defines planned package responsibilities and boundaries.
 | `@needle/compiler` | App discovery, route IR, render mode extraction, manifests, generated modules, API codegen, graph inputs. |
 | `@needle/vite-plugin` | Vite integration, virtual modules, route HMR, client and server entry wiring. |
 | `@needle/react` | React SSR helpers, layouts, head manager, loaders, hydration, client entry helpers. |
-| `@needle/server-bun` | Production Bun server runtime. |
 | `@needle/router` | Generated route matcher, typed links, params, route helpers. |
 | `@needle/seo` | Metadata, sitemap, robots, OG images, structured data helpers, SEO audits. |
 | `@needle/map` | Semantic graph builder, file graph, query engine, affected checks. |
@@ -26,11 +25,13 @@ This document defines planned package responsibilities and boundaries.
 | `@needle/adapter-static` | Static export adapter for fully static routes. |
 | `@needle/adapters/*` | Later deployment targets such as Docker, Cloudflare, Vercel, and other cloud adapters. |
 
+Note: earlier planning docs referred to `@needle/server-bun` as the Bun production runtime package. Phase 1 should prefer `@needle/adapter-bun` as the concrete package name so Bun, Node, and static output share the same adapter model. Reintroduce a separate `@needle/server-bun` package only through an architecture decision record if the adapter package becomes too broad.
+
 ## Boundary Rules
 
 - Shared public types belong in `@needle/core`.
 - Compiler-only parsing and generation belongs in `@needle/compiler`.
-- Runtime request handling belongs in `@needle/server-bun` or adapters.
+- Runtime request handling belongs in runtime adapters, starting with `@needle/adapter-bun`.
 - Browser-facing React helpers belong in `@needle/react`.
 - Agent context and safe edit code belongs in `@needle/agent`.
 - MCP protocol code belongs in `@needle/mcp`.
@@ -44,7 +45,7 @@ Planned direction:
 
 - `@needle/cli` may depend on most internal packages.
 - `@needle/compiler` may depend on `@needle/core`, `@needle/schema`, `@needle/seo`, and `@needle/map` types.
-- `@needle/server-bun` should depend on generated output, `@needle/core`, `@needle/router`, and minimal runtime helpers.
+- `@needle/adapter-bun` should depend on generated output, `@needle/core`, `@needle/router`, and minimal runtime helpers.
 - `@needle/react` should not depend on compiler internals.
 - `@needle/mcp` should use stable APIs from `@needle/map`, `@needle/seo`, `@needle/agent`, and `@needle/core`.
 - Production runtime packages must not depend on agent-only code.

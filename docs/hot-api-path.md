@@ -73,6 +73,8 @@ Initial schema DSL:
 - OpenAPI file emits for API routes.
 - Benchmarks compare normal API route and hot API route in the same app.
 
+Benchmark comparisons must follow `docs/benchmark-methodology.md`.
+
 ## Out of Scope Initially
 
 - Full Zod compatibility.

@@ -19,6 +19,7 @@ Planned generated files:
 AGENTS.md
 llms.txt
 llms-full.txt
+docs-index.json
 .needle/graph.json
 .needle/routes.json
 .needle/map.json
@@ -26,6 +27,8 @@ llms-full.txt
 .needle/context/api.ctx.json
 .needle/context/agent-index.json
 ```
+
+See `docs/machine-readable-docs.md` for the planned machine-readable documentation contract.
 
 ## Commands
 
