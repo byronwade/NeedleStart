@@ -160,10 +160,10 @@ All planned feature docs should carry status warnings until code exists. This in
 | Improvement | Impact | Effort | Urgency |
 | --- | --- | --- | --- |
 | Keep docs status-aware with implemented/planned/scaffolded/verified labels. | High | Low | Immediate |
-| Add missing governance/security/release/testing docs. | High | Medium | Immediate |
+| Deepen governance/security/release/testing docs as real maintainers, releases, and feature checks exist. | High | Medium | Before public launch |
 | Create exact CLI/config/routing/manifest references. | High | Medium | Phase 1 |
-| Add machine-readable docs index and llms output plan. | High | Medium | Phase 1-2 |
-| Add public website content map. | Medium | Low | Early docs foundation |
+| Implement generated `docs-index.json`, `llms.txt`, and `llms-full.txt` outputs from the planned contract. | High | Medium | Phase 1-2 |
+| Keep the public website content map aligned as public pages move or launch. | Medium | Low | Early docs foundation |
 | Add benchmark methodology before any speed claims. | High | Low | Before benchmarks |
 | Add examples after create-command support and fixture layout exist. | High | Medium | Phase 1-2 |
 
@@ -177,14 +177,14 @@ The table below summarizes the highest-signal findings. The complete matrix is m
 | `VISION.md` | Maintainers, contributors | Strong | Some claims are aspirational | Add status framing if surfaced publicly | Medium | Low | Partial | Yes |
 | `ARCHITECTURE.md` | Contributors | Strong | Dense for beginners | Add diagrams and links | Medium | Medium | No | Yes |
 | `AGENTS.md` | AI agents | Strong | Needs updates as commands become real | Keep synced with scaffold | High | Low | No | Yes |
-| `CONTRIBUTING.md` | Contributors | Good | Lacks governance/security/release links | Link new governance docs | High | Low | Partial | Partial |
+| `CONTRIBUTING.md` | Contributors | Good | Links governance and security; release-specific contributor flow remains future work | Link release process when release work begins | High | Low | Partial | Partial |
 | `CODE_OF_CONDUCT.md` | Community | New | Needs maintainer contact when ready | Add private contact before launch | High | Low | Partial | Partial |
 | `GOVERNANCE.md` | Maintainers | New | Lightweight | Expand roles before public launch | High | Medium | Partial | Partial |
 | `SECURITY.md` | Security reviewers | New | No private intake yet | Add contact and supported versions after release | High | Low | Partial | Partial |
 | `docs/status.md` | All | New | Must stay current | Update every phase change | High | Low | Yes | Yes |
 | `docs/README.md` | All | Good | Navigation still early | Keep as canonical docs hub | High | Low | Yes | Yes |
 | `docs/documentation-standard.md` | Writers, agents | Good | Needs examples as docs grow | Add frontmatter examples later | High | Low | No | Yes |
-| `docs/docs-maintenance-checklist.md` | Maintainers, agents | New | Needs enforcement in PR template | Add PR template later | High | Low | No | Yes |
+| `docs/docs-maintenance-checklist.md` | Maintainers, agents | Strong | Enforced through the PR template; must keep tracking new docs surfaces | Keep PR template and checklist aligned | High | Low | No | Yes |
 | `docs/getting-started.md` | New users | Good planned page | No working app yet | Replace planned flow with verified tutorial after app creation exists | High | Medium | Partial | Yes |
 | `docs/guides.md` | App developers | Good planned index | No implemented guide content | Fill per feature | High | High | Partial | Partial |
 | `docs/api-reference.md` | Developers, agents | Good planned index | Needs split references | Split as APIs stabilize | High | Medium | Partial | Yes |
@@ -405,7 +405,7 @@ Remaining follow-up work:
 
 - Fill each new reference home as implementation lands.
 - Add docs frontmatter when the public docs site exists.
-- Add PR templates and generated docs index.
+- Generate `docs-index.json`, `llms.txt`, and `llms-full.txt` from the planned public docs contract.
 - Add raw benchmark result storage once benchmark commands exist.
 
 ## Research Sources
