@@ -847,6 +847,33 @@ const runtimeImplementationStatusDocs = [
   },
 ];
 
+const adapterBehaviorStatusDocs = [
+  {
+    file: "README.md",
+    terms: ["runtime adapter behavior", "package placeholders"],
+  },
+  {
+    file: "AGENTS.md",
+    terms: ["runtime adapter behavior", "config/adapter contract terms"],
+  },
+  {
+    file: "docs/status.md",
+    terms: ["Package placeholders under `packages/` and `packages/adapters/`", "Runtime adapter behavior"],
+  },
+  {
+    file: "docs/agent-enforcement.md",
+    terms: ["runtime adapter behavior", "Package structure"],
+  },
+  {
+    file: "docs/public/reference/testing.md",
+    terms: ["runtime adapter behavior", "Phase 1 scaffold"],
+  },
+  {
+    file: "docs/docs-verification.md",
+    terms: ["scaffolded adapter packages", "unimplemented runtime adapter behavior"],
+  },
+];
+
 const plannedOverviewImplementationStatusDocs = [
   {
     file: "docs/cache.md",
@@ -1205,6 +1232,31 @@ const staleStatusPatterns = [
     file: "docs/public/concepts/compiler-runtime.md",
     pattern: /NeedleStart keeps framework intelligence in the compiler and keeps production runtime adapters small\./i,
     message: "docs/public/concepts/compiler-runtime.md should describe the compiler/runtime split as planned until implementation exists.",
+  },
+  {
+    file: "docs/status.md",
+    pattern: /- Runtime adapters\./i,
+    message: "docs/status.md should say runtime adapter behavior is missing, because adapter package placeholders exist.",
+  },
+  {
+    file: "README.md",
+    pattern: /runtime adapters, Needle Map generation/i,
+    message: "README.md should distinguish scaffolded adapter packages from unimplemented runtime adapter behavior.",
+  },
+  {
+    file: "AGENTS.md",
+    pattern: /CLI runtime behavior, adapters/i,
+    message: "AGENTS.md should distinguish CLI behavior and runtime adapter behavior.",
+  },
+  {
+    file: "docs/agent-enforcement.md",
+    pattern: /CLI runtime behavior, adapters/i,
+    message: "docs/agent-enforcement.md should distinguish CLI behavior and runtime adapter behavior.",
+  },
+  {
+    file: "docs/public/reference/testing.md",
+    pattern: /rendering, runtime adapters,/i,
+    message: "docs/public/reference/testing.md should say runtime adapter behavior is not proved.",
   },
   {
     file: "docs/public/README.md",
@@ -2244,6 +2296,16 @@ for (const { file, terms } of runtimeImplementationStatusDocs) {
   for (const term of terms) {
     if (!content.includes(term)) {
       failures.push(`${file} is missing runtime implementation status term: ${term}.`);
+    }
+  }
+}
+
+for (const { file, terms } of adapterBehaviorStatusDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file);
+  for (const term of terms) {
+    if (!content.includes(term)) {
+      failures.push(`${file} is missing adapter behavior status term: ${term}.`);
     }
   }
 }

@@ -30,7 +30,7 @@ NeedleStart is in Phase 1: monorepo scaffold.
 - Route discovery.
 - React rendering.
 - Compiler output.
-- Runtime adapters.
+- Runtime adapter behavior.
 - Needle Map generation.
 - Agent Kernel implementation.
 - MCP server.

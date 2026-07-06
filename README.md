@@ -28,7 +28,7 @@ The goal is not to clone Next.js. The goal is to win a newer category:
 
 This checkout is in Phase 1: monorepo scaffold. The product language below describes target framework behavior unless a section explicitly marks behavior as current.
 
-Current implemented scope is the Bun workspace scaffold, package placeholders, shared core types, CI, and verification scripts. Route discovery, rendering, CLI behavior, runtime adapters, Needle Map generation, MCP tools, and safe edits remain planned.
+Current implemented scope is the Bun workspace scaffold, package placeholders, shared core types, CI, and verification scripts. Route discovery, rendering, CLI behavior, runtime adapter behavior, Needle Map generation, MCP tools, and safe edits remain planned.
 
 ## Product Thesis
 
@@ -98,7 +98,7 @@ bun run performance:check
 bun run check
 ```
 
-These commands verify the package scaffold, documentation links, root docs metadata, docs navigation coverage, package-map/build-plan/backlog alignment, planned CLI command surface and prefix consistency, status-drift guardrails, config/adapter contract terms, structure rules, shared-core type ownership, shared-core scaffold terminology, performance-claim guardrails, TypeScript surface, and placeholder tests. They do not prove route discovery, rendering, CLI behavior, runtime adapters, Needle Map generation, MCP tools, or safe edits.
+These commands verify the package scaffold, documentation links, root docs metadata, docs navigation coverage, package-map/build-plan/backlog alignment, planned CLI command surface and prefix consistency, status-drift guardrails, config/adapter contract terms, structure rules, shared-core type ownership, shared-core scaffold terminology, performance-claim guardrails, TypeScript surface, and placeholder tests. They do not prove route discovery, rendering, CLI behavior, runtime adapter behavior, Needle Map generation, MCP tools, or safe edits.
 
 ## Planned Key Features
 
@@ -431,7 +431,7 @@ This repository is in Phase 1: monorepo scaffold.
 
 The repository now has a Bun workspace, package placeholders, shared core types, CI, and enforcement scripts for docs, structure, performance-claim hygiene, type checking, and placeholder tests.
 
-No framework runtime implementation exists yet. Route discovery, rendering, CLI behavior, runtime adapters, Needle Map generation, MCP tools, and safe edits remain planned. The next implementation stage is Phase 1A: expand and stabilize the shared core data model, then begin route discovery.
+No framework runtime implementation exists yet. Route discovery, rendering, CLI behavior, runtime adapter behavior, Needle Map generation, MCP tools, and safe edits remain planned. The next implementation stage is Phase 1A: expand and stabilize the shared core data model, then begin route discovery.
 
 ## Philosophy
 

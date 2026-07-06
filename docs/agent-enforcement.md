@@ -5,7 +5,7 @@ Audience: AI agents, maintainers, contributors.
 
 This page maps NeedleStart's agent rules to the checks that currently enforce them. It is the operational bridge between `AGENTS.md`, the documentation contracts, package structure, performance guardrails, and the verification scripts.
 
-The current enforcement layer proves the Phase 1 scaffold and documentation system. It does not prove unimplemented framework behavior such as route discovery, rendering, CLI runtime behavior, adapters, Needle Map generation, MCP tools, or safe edit transactions.
+The current enforcement layer proves the Phase 1 scaffold and documentation system. It does not prove unimplemented framework behavior such as route discovery, rendering, CLI behavior, runtime adapter behavior, Needle Map generation, MCP tools, or safe edit transactions.
 
 ## Enforcement Rule
 
