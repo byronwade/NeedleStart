@@ -215,7 +215,7 @@ rg -n "diagnostics-contract|NeedleDiagnostic|severity|DiagnosticCategory|remedia
 
 Expected result: diagnostic code rules, severity values, categories, source locations, remediations, docs links, deterministic JSON behavior, stable ordering, command status mapping, manifests, compiler/runtime docs, and public reference docs remain connected.
 
-Automated coverage in `bun run docs:check` also requires internal and public diagnostics docs to keep severity, deterministic ordering, code, message, remediation, and docs-link vocabulary aligned.
+Automated coverage in `bun run docs:check` also requires internal and public diagnostics docs to keep severity, deterministic ordering, code, message, remediation, docs-link, `why`, `related`, `children`, and `tags` vocabulary aligned.
 
 The same automated coverage rejects stale diagnostics summary wording that describes diagnostic severity as generic levels in AGENTS, the docs hub, the maintenance checklist, the product readiness checklist, the completion audit, or manifest contracts.
 

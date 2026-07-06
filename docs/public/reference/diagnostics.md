@@ -24,7 +24,19 @@ The scaffolded `@needle/core` `NeedleDiagnostic` currently uses `code`, `severit
     "column": 1
   },
   "routePath": "/pricing",
-  "remediation": "Move one route to a different public segment or remove the duplicate page."
+  "docs": "https://needlestart.dev/docs/reference/routing#route-conflicts",
+  "why": "Route groups do not affect the public URL path.",
+  "remediation": "Move one route to a different public segment or remove the duplicate page.",
+  "related": [
+    {
+      "file": "app/(shop)/pricing/page.tsx",
+      "line": 1,
+      "column": 1,
+      "message": "This file resolves to the same public path."
+    }
+  ],
+  "children": [],
+  "tags": []
 }
 ```
 
@@ -59,6 +71,7 @@ The scaffolded `@needle/core` `NeedleDiagnostic` currently uses `code`, `severit
 - Human output can include code frames, but automation should use JSON output.
 - Command status maps to diagnostics by default: no diagnostics or only `info` diagnostics means `ok`, one or more `warning` diagnostics means `warning`, and one or more `error` diagnostics means `error`.
 - Diagnostics should link to the most specific docs page once the public docs site exists.
+- `why`, `related`, `children`, and `tags` fields are planned for richer explanations, related locations, nested context, and filtering.
 
 ## Source
 

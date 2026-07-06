@@ -2042,7 +2042,7 @@ for (const file of configEnvironmentContractDocs) {
 for (const file of diagnosticContractDocs) {
   if (!existsSync(join(root, file))) continue;
   const content = read(file).toLowerCase();
-  for (const term of ["severity", "info", "warning", "error", "deterministic", "stable ordering", "code", "message", "remediation", "docs"]) {
+  for (const term of ["severity", "info", "warning", "error", "deterministic", "stable ordering", "code", "message", "remediation", "docs", "why", "related", "children", "tags"]) {
     if (!content.includes(term)) {
       failures.push(`${file} is missing diagnostics contract term: ${term}.`);
     }
