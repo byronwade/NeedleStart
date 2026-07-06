@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: maintainers, reviewers, contributors, AI agents.
 
-This checklist defines the review bar for NeedleStart changes. It complements [Engineering Standards](engineering-standards.md), [Documentation Verification](docs-verification.md), [Documentation Maintenance Checklist](docs-maintenance-checklist.md), [Threat Model](threat-model.md), and the pull request template.
+This checklist defines the review bar for Lumina changes. It complements [Engineering Standards](engineering-standards.md), [Documentation Verification](docs-verification.md), [Documentation Maintenance Checklist](docs-maintenance-checklist.md), [Threat Model](threat-model.md), and the pull request template.
 
 ## Universal Review
 
@@ -35,7 +35,7 @@ Use this for any implementation work that builds on the current package scaffold
 
 - Tests cover the smallest complete behavior.
 - Package boundaries match [Package Map](package-map.md).
-- Shared types live in `@needle/core`.
+- Shared types live in `@lumina/core`.
 - Runtime adapters consume generated manifests instead of rediscovering source.
 - CLI JSON is stable, compact, and schema-versioned where needed.
 - Diagnostics have stable codes and remediation text.

@@ -5,7 +5,7 @@ Audience: AI agents, framework contributors, product reviewers.
 
 ## Purpose
 
-Use this skill when planning or implementing NeedleStart framework work that moves the product from project constitution toward a runnable prototype.
+Use this skill when planning or implementing Lumina framework work that moves the product from project constitution toward a runnable prototype.
 
 ## When To Use
 
@@ -28,7 +28,7 @@ Read before editing:
 
 1. Classify the work as documentation-only, scaffolding, implementation, or verification.
 2. Apply the scope gate from `../risk-mitigation.md`:
-   - Does it improve Needle Map or Agent Kernel?
+   - Does it improve Lumina Map or Agent Kernel?
    - Can it be implemented with minimal production runtime code?
    - Does it have a clear fixture or agent demo?
 3. Define the smallest useful milestone.

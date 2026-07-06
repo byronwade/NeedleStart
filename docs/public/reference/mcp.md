@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: AI agents, framework contributors.
 
-NeedleStart plans to expose framework data and selected safe actions through MCP.
+Lumina plans to expose framework data and selected safe actions through MCP.
 MCP server behavior is not implemented yet.
 
 ## Initial Planned Read Tools
@@ -38,12 +38,12 @@ Write tools are planned only after safe edit transactions exist.
 ## Planned Resources
 
 ```txt
-needle://routes
-needle://route/%2Fpricing
-needle://map/file/components%2FProductCard.tsx
-needle://seo/report
-needle://perf/report
-needle://context/public
+lumina://routes
+lumina://route/%2Fpricing
+lumina://map/file/components%2FProductCard.tsx
+lumina://seo/report
+lumina://perf/report
+lumina://context/public
 ```
 
 ## Source

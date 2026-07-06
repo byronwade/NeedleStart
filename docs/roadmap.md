@@ -3,9 +3,9 @@
 Status: Scaffolded.
 Audience: maintainers, framework contributors, AI agents.
 
-NeedleStart should be built in phases. Each phase must define what it proves, what it implements, and what remains out of scope.
+Lumina should be built in phases. Each phase must define what it proves, what it implements, and what remains out of scope.
 
-The first working slice is intended to prove create app, SEO-safe pages, `@needle/adapter-bun` serving, a basic map, agent inspection, and safe metadata edit. The first public prototype expands that slice into API routes, hot API, read-only MCP tools, adapter-aware server output, and documented Node/static paths.
+The first working slice is intended to prove create app, SEO-safe pages, `@lumina/adapter-bun` serving, a basic map, agent inspection, and safe metadata edit. The first public prototype expands that slice into API routes, hot API, read-only MCP tools, adapter-aware server output, and documented Node/static paths.
 
 Unless a phase is explicitly marked `Verified.` or `Scaffolded.` with evidence, its "Definition of done" is planned acceptance criteria, not a claim that the behavior exists today. Future-phase acceptance bullets should use `should` wording when they describe behavior that does not exist yet.
 
@@ -21,17 +21,17 @@ Unless a phase is explicitly marked `Verified.` or `Scaffolded.` with evidence, 
 
 ### Core Wedge
 
-- Render modes: `staticPage()`, `prerender()`, `ssr()`, `stream()`, `clientOnly()`, ordinary API routes, and `apiHot()`, mapped to the shared `@needle/core` `RenderMode` literals.
+- Render modes: `staticPage()`, `prerender()`, `ssr()`, `stream()`, `clientOnly()`, ordinary API routes, and `apiHot()`, mapped to the shared `@lumina/core` `RenderMode` literals.
 - SEO engine: metadata, sitemap, robots, and audits.
-- Adapter-aware Bun production output through `@needle/adapter-bun`.
+- Adapter-aware Bun production output through `@lumina/adapter-bun`.
 - API routes and hot API compiler with schemas.
-- Needle Map v1: file and import graph with affected queries.
+- Lumina Map v1: file and import graph with affected queries.
 - Agent context capsules and basic MCP read tools.
 - Safe metadata edits with dry-run and affected checks.
 
 ### Advanced
 
-- Needle Map v2 with semantic edges from contracts.
+- Lumina Map v2 with semantic edges from contracts.
 - Full Agent Kernel and write-capable MCP tools.
 - Structured page DSL and content collections.
 - Streaming SSR and experimental partial prerendering.
@@ -51,7 +51,7 @@ The repository is in Phase 1. The monorepo scaffold exists with Bun workspace co
 - Runtime stays minimal.
 - Speed is treated as a whole-system property across compiler, runtime, client payload, graph queries, agent workflows, and benchmarks.
 - All generated artifacts are explainable.
-- NeedleStart should dogfood Needle Map and agent tools on the framework itself as soon as they exist.
+- Lumina should dogfood Lumina Map and agent tools on the framework itself as soon as they exist.
 
 ## Phase 0: Project Constitution
 
@@ -68,7 +68,7 @@ Deliverables:
 - `docs/compiler-ir.md`
 - `docs/runtime-contract.md`
 - `docs/agent-kernel.md`
-- `docs/needle-map.md`
+- `docs/lumina-map.md`
 
 Definition of done:
 
@@ -85,7 +85,7 @@ Scope: complete for initial project constitution.
 Risk mitigation focus:
 
 - Lock the shared data model before implementation diverges.
-- Keep the first working slice scoped to create app, SEO-safe pages, `@needle/adapter-bun` serving, a basic map, agent inspection, and safe metadata edit.
+- Keep the first working slice scoped to create app, SEO-safe pages, `@lumina/adapter-bun` serving, a basic map, agent inspection, and safe metadata edit.
 - Keep speed strategy visible from the start: static-first output, build-time intelligence, small runtime adapters, compact JSON, and benchmark honesty.
 - Treat `docs/risk-mitigation.md` as required reading for map, agent, MCP, adapter, and safe-edit work.
 
@@ -99,23 +99,23 @@ Phase status: Scaffolded.
 
 Packages:
 
-- `create-needle`
-- `@needle/cli`
-- `@needle/core`
-- `@needle/compiler`
-- `@needle/vite-plugin`
-- `@needle/react`
-- `@needle/router`
-- `@needle/seo`
-- `@needle/map`
-- `@needle/agent`
-- `@needle/mcp`
-- `@needle/cache`
-- `@needle/schema`
-- `@needle/devtools`
-- `@needle/adapter-bun`
-- `@needle/adapter-node`
-- `@needle/adapter-static`
+- `create-lumina`
+- `@lumina/cli`
+- `@lumina/core`
+- `@lumina/compiler`
+- `@lumina/vite-plugin`
+- `@lumina/react`
+- `@lumina/router`
+- `@lumina/seo`
+- `@lumina/map`
+- `@lumina/agent`
+- `@lumina/mcp`
+- `@lumina/cache`
+- `@lumina/schema`
+- `@lumina/devtools`
+- `@lumina/adapter-bun`
+- `@lumina/adapter-node`
+- `@lumina/adapter-static`
 
 Definition of done:
 
@@ -139,23 +139,23 @@ Out of scope:
 
 ## Phase 1A: Core Data Model
 
-Goal: stabilize the shared immutable model in `@needle/core`.
+Goal: stabilize the shared immutable model in `@lumina/core`.
 
 The Phase 1 scaffold already exposes placeholder versions of these types. Phase 1A must turn them into contract-backed shapes instead of letting downstream packages invent local substitutes.
 
 Required types:
 
-- `NeedleApp`
+- `LuminaApp`
 - `RouteNode`
 - `GraphEdge`
-- `NeedleDiagnostic`
+- `LuminaDiagnostic`
 - `RenderMode`
 - `CachePlan`
 - `AdapterManifest`
 
 Definition of done:
 
-- CLI, compiler, map, agent, MCP, adapters, and devtools import shared types from `@needle/core`.
+- CLI, compiler, map, agent, MCP, adapters, and devtools import shared types from `@lumina/core`.
 - `GraphEdge` includes `kind`, `source`, `confidence`, and `why`.
 - Docs, type tests, and contract fixtures verify the type contracts.
 - No package defines a competing local route or graph shape.
@@ -166,8 +166,8 @@ Goal: discover routes from an `app/` directory and expose route inspection comma
 
 Commands:
 
-- `needle routes`
-- `needle inspect`
+- `lumina routes`
+- `lumina inspect`
 
 Route conventions:
 
@@ -195,7 +195,7 @@ Goal: make a React app run in dev mode with Vite.
 
 Deliverables:
 
-- `@needle/vite-plugin`
+- `@lumina/vite-plugin`
 - Virtual modules.
 - Dev server middleware.
 - Route manifest HMR.
@@ -205,18 +205,18 @@ Deliverables:
 Virtual modules:
 
 ```txt
-virtual:needle/routes
-virtual:needle/client-entry
-virtual:needle/server-entry
-virtual:needle/manifest
-virtual:needle/head
+virtual:lumina/routes
+virtual:lumina/client-entry
+virtual:lumina/server-entry
+virtual:lumina/manifest
+virtual:lumina/head
 ```
 
 Definition of done:
 
-- `needle dev` should start Vite.
+- `lumina dev` should start Vite.
 - Changing `app/page.tsx` should update browser output.
-- `virtual:needle/routes` should work.
+- `virtual:lumina/routes` should work.
 - React pages should render on the server.
 - Client hydration should work for a simple counter.
 
@@ -263,7 +263,7 @@ Definition of done:
 
 - Render mode should be detected.
 - Static routes should emit `dist/public/*.html`.
-- SSR routes should run through `@needle/adapter-bun`.
+- SSR routes should run through `@lumina/adapter-bun`.
 - Invalid render declarations should produce helpful errors.
 - Manifest should include cache and revalidation metadata.
 
@@ -295,8 +295,8 @@ Definition of done:
 - Head tags should render into SSR and SSG HTML.
 - `sitemap.xml` should be generated from the public route manifest.
 - `robots.txt` should be generated from config.
-- `needle seo` should catch missing title, description, and canonical URL.
-- `needle seo --json` should be stable for agents.
+- `lumina seo` should catch missing title, description, and canonical URL.
+- `lumina seo --json` should be stable for agents.
 - Tests should cover static and dynamic metadata.
 
 ## Phase 7: Core Web Vitals and Performance Budgets
@@ -321,13 +321,13 @@ Goal: create early adapter boundaries so Bun is the speed default but not an ado
 
 Packages:
 
-- `@needle/adapter-bun`
-- `@needle/adapter-node`
-- `@needle/adapter-static`
+- `@lumina/adapter-bun`
+- `@lumina/adapter-node`
+- `@lumina/adapter-static`
 
 Definition of done:
 
-- `needle.config.ts` should support `runtime` and `adapter`.
+- `lumina.config.ts` should support `runtime` and `adapter`.
 - Generated server entry should import the selected adapter.
 - Adapter manifest should document capabilities.
 - User application code should not require Bun-only APIs.
@@ -340,13 +340,13 @@ Goal: ship Bun adapter output that serves static, SSR, and API routes.
 
 Definition of done:
 
-- `needle build` should emit a runnable Bun adapter entry.
-- `needle start` should serve static pages.
-- `needle start` should serve SSR pages.
+- `lumina build` should emit a runnable Bun adapter entry.
+- `lumina start` should serve static pages.
+- `lumina start` should serve SSR pages.
 - 404 and 500 should work.
 - Cache headers should be correct for static assets.
 - Integration tests should make HTTP requests and assert responses.
-- Bun serving should be implemented through `@needle/adapter-bun`.
+- Bun serving should be implemented through `@lumina/adapter-bun`.
 
 ## Phase 9: API Routes
 
@@ -397,7 +397,7 @@ Definition of done:
 - Output validation should work in dev.
 - Map should show which routes call each server function.
 
-## Phase 13: Needle Map v1
+## Phase 13: Lumina Map v1
 
 Goal: build a file-level graph.
 
@@ -416,7 +416,7 @@ Definition of done:
 - Output should be compact and deterministic.
 - Tests should cover graph generation on fixture apps.
 
-## Phase 14: Needle Map v2
+## Phase 14: Lumina Map v2
 
 Goal: move from imports into application meaning.
 
@@ -455,7 +455,7 @@ Goal: expose framework data and actions through structured tools.
 
 Definition of done:
 
-- `needle mcp` should start the server.
+- `lumina mcp` should start the server.
 - MCP clients should list routes.
 - MCP clients should inspect a route.
 - MCP clients should get related files.
@@ -482,11 +482,11 @@ Definition of done:
 - Safe edits should update component contracts.
 - `SafeEditTransaction` shape should be implemented.
 - Dry-runs should apply patches in memory.
-- `.needle/mutations.json` should be append-only.
+- `.lumina/mutations.json` should be append-only.
 - Unsafe fields should be rejected.
 - Mutation log should be written.
 - Affected checks should run after edits.
-- `needle edit undo` should roll back the last safe edit.
+- `lumina edit undo` should roll back the last safe edit.
 
 ## Phase 18: Migration Prototype
 
@@ -494,11 +494,11 @@ Goal: reduce adoption friction through a constrained Next.js migration path.
 
 Command:
 
-- `needle migrate from-next`
+- `lumina migrate from-next`
 
 Definition of done:
 
-- App Router pages should be copied into NeedleStart route shape when compatible.
+- App Router pages should be copied into Lumina route shape when compatible.
 - Layouts should be preserved when compatible.
 - Static metadata should be converted.
 - Dynamic route segments should be mapped.

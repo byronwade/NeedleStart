@@ -1,4 +1,4 @@
-# Skill: Needle Map Designer
+# Skill: Lumina Map Designer
 
 Status: Scaffolded.
 Audience: AI agents, framework contributors, map reviewers.
@@ -13,7 +13,7 @@ Read before editing:
 
 1. `../../AGENTS.md`
 2. `../risk-mitigation.md`
-3. `../needle-map.md`
+3. `../lumina-map.md`
 4. `../package-map.md`
 5. `../compiler-ir.md` when compiler output is involved.
 
@@ -23,7 +23,7 @@ Read before editing:
 2. Prefer explicit `.contract.ts` files for high-confidence semantic edges.
 3. Ensure every planned `GraphEdge` includes `kind`, `source`, `confidence`, and `why`.
 4. Treat missing semantic contracts as low-confidence data.
-5. Keep graph query logic in `@needle/map`; CLI, MCP, devtools, and Agent Kernel should consume that API.
+5. Keep graph query logic in `@lumina/map`; CLI, MCP, devtools, and Agent Kernel should consume that API.
 6. Define deterministic output and fixture expectations for every graph feature.
 
 ## Outputs

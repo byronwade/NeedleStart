@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: future website visitors, contributors, maintainers.
 
-NeedleStart is currently in Phase 1: monorepo scaffold.
+Lumina is currently in Phase 1: monorepo scaffold.
 
 ## Current Phase
 
@@ -42,13 +42,13 @@ The first public prototype should prove:
 - API routes.
 - Hot API route path.
 - Route manifest.
-- Needle Map.
+- Lumina Map.
 - Agent context.
 - Read-only MCP tools.
 - Safe metadata edit.
 - Bun adapter output with documented Node/static paths.
 
-The first working slice is intended to prove create app, SEO-safe pages, `@needle/adapter-bun` serving, a basic map, agent inspection, and safe metadata edit. The public prototype expands that slice into API routes, hot API, read-only MCP tools, adapter-aware server output, and documented Node/static paths.
+The first working slice is intended to prove create app, SEO-safe pages, `@lumina/adapter-bun` serving, a basic map, agent inspection, and safe metadata edit. The public prototype expands that slice into API routes, hot API, read-only MCP tools, adapter-aware server output, and documented Node/static paths.
 
 ## Source Of Truth
 

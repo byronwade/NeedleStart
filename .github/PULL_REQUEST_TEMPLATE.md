@@ -46,7 +46,7 @@ Describe what changed and why.
 - [ ] `docs/accessibility-contract.md` was applied when framework-owned HTML, examples, docs UI, form errors, route focus behavior, accessibility diagnostics, or accessibility evidence changed.
 - [ ] `docs/security-contract.md` was applied when high-risk surfaces, secret handling, production errors, security headers, agent/MCP writes, vulnerability intake, package publishing, or security evidence changed.
 - [ ] `docs/threat-model.md` was applied when high-risk implementation work, agent writes, MCP behavior, generated artifacts, cache behavior, runtime routing, release flow, or public docs outputs changed.
-- [ ] `docs/performance-contract.md` was applied when route budgets, performance diagnostics, `.needle/perf.report.json`, benchmark evidence, Core Web Vitals language, or public speed claims changed.
+- [ ] `docs/performance-contract.md` was applied when route budgets, performance diagnostics, `.lumina/perf.report.json`, benchmark evidence, Core Web Vitals language, or public speed claims changed.
 - [ ] `docs/benchmark-fixtures.md` was applied when benchmark fixture names, fixture scope, raw result layout, or performance evidence paths changed.
 - [ ] `docs/speed-decisions.md` and `docs/speed-capability-audit.md` were applied when rendering defaults, build pipeline, runtime request path, React Compiler, React streaming, resource hints, fetch priority, 103 Early Hints, speculation rules, bfcache, image/font delivery, compression, hot APIs, cache strategy, compiler scaling, or benchmark positioning changed.
 - [ ] `docs/public-docs-site-architecture.md` was applied when public docs metadata, routes, navigation, source mapping, or renderer assumptions changed.

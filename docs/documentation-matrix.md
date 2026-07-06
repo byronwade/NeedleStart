@@ -50,7 +50,7 @@ This matrix evaluates the current documentation system file by file. It uses the
 | `docs/testing-contract.md` | Contributors, maintainers, CI authors, agents | New | Contract only until test tooling exists | Convert test layers, fixture layout, snapshots, CI gates, artifacts, browser rules, and evidence reporting into package scripts and CI | High | Medium | Partial | Yes |
 | `docs/security.md` | Security reviewers, agents | Good planned | Overview depends on deeper contract | Keep paired with `docs/security-contract.md`; add feature-specific threat models as high-risk features land | High | Medium | Partial | Yes |
 | `docs/security-contract.md` | Security reviewers, maintainers, contributors, agents | New | Planned until high-risk features exist | Convert threat model, secret handling, production errors, headers, advisory, and supply-chain evidence rules into implementation checks | High | Medium | Partial | Yes |
-| `docs/needle-map.md` | Contributors, agents | Strong | Needs diagrams and fixtures | Add graph fixture examples | High | Medium | Partial | Yes |
+| `docs/lumina-map.md` | Contributors, agents | Strong | Needs diagrams and fixtures | Add graph fixture examples | High | Medium | Partial | Yes |
 | `docs/app-graph-visual.md` | All | Good planned | Visuals not produced yet | Add diagrams with text equivalents | Medium | Medium | Partial | Partial |
 | `docs/agent-kernel.md` | Agents, contributors | Strong | Needs generated schema examples | Link machine-readable docs and schemas | High | Medium | No | Yes |
 | `docs/mcp-server.md` | Agents | Good planned | Needs exact tool schemas | Add tool schemas as MCP lands | High | Medium | No | Yes |

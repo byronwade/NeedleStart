@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: maintainers, contributors, AI agents.
 
-This document defines the planned rhythm for keeping NeedleStart disciplined as implementation starts. The project is in Phase 1 scaffold, so these are operating targets rather than active release ceremonies.
+This document defines the planned rhythm for keeping Lumina disciplined as implementation starts. The project is in Phase 1 scaffold, so these are operating targets rather than active release ceremonies.
 
 ## Weekly Or Active-Development Cadence
 

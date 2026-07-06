@@ -1,5 +1,5 @@
 export const needleReactStatus = {
-  name: "@needle/react",
+  name: "@lumina/react",
   phase: "scaffold",
   implementsRuntimeBehavior: false,
 } as const;

@@ -1,5 +1,5 @@
 export const needleSchemaStatus = {
-  name: "@needle/schema",
+  name: "@lumina/schema",
   phase: "scaffold",
   implementsRuntimeBehavior: false,
 } as const;

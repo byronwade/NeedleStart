@@ -1,5 +1,5 @@
 export const needleCliStatus = {
-  name: "@needle/cli",
+  name: "@lumina/cli",
   phase: "scaffold",
   implementsRuntimeBehavior: false,
 } as const;

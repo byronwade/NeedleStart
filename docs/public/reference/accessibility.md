@@ -4,13 +4,13 @@ Status: Planned.
 
 Audience: app developers, docs site builders, framework contributors, AI agents.
 
-NeedleStart accessibility tooling is planned but not implemented yet. This page summarizes the public accessibility expectations for future examples, generated pages, and docs.
+Lumina accessibility tooling is planned but not implemented yet. This page summarizes the public accessibility expectations for future examples, generated pages, and docs.
 
 ## Target
 
-NeedleStart should target WCAG 2.2 AA for official examples, generated starter pages, and public docs pages once implementation exists.
+Lumina should target WCAG 2.2 AA for official examples, generated starter pages, and public docs pages once implementation exists.
 
-This is not a conformance claim. Do not treat any NeedleStart page as WCAG-verified until tests and review evidence exist.
+This is not a conformance claim. Do not treat any Lumina page as WCAG-verified until tests and review evidence exist.
 
 ## Planned Defaults
 

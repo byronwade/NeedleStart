@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: maintainers, contributors, AI agents.
 
-NeedleStart documentation must stay accurate as the framework changes. Docs freshness is a release requirement, not a cleanup task.
+Lumina documentation must stay accurate as the framework changes. Docs freshness is a release requirement, not a cleanup task.
 
 ## Freshness Standard
 

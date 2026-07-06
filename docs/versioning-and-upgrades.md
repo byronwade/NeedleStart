@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: maintainers, framework contributors, app developers, AI agents.
 
-This page defines how NeedleStart should version packages, documentation, generated manifests, public APIs, and upgrade guides once implementation begins. No package has been published yet, so this is a policy draft.
+This page defines how Lumina should version packages, documentation, generated manifests, public APIs, and upgrade guides once implementation begins. No package has been published yet, so this is a policy draft.
 
 The current `0.0.0` versions in `package.json` files are private scaffold placeholder versions. Treat them as workspace metadata only, not as release versions, docs versions, API versions, or compatibility guarantees.
 
@@ -12,7 +12,7 @@ The current `0.0.0` versions in `package.json` files are private scaffold placeh
 
 Framework users need to know which docs match their installed version. Agents need the same thing, especially when reading `llms.txt`, manifest schemas, or generated context. Mature docs systems keep upgrade guides, changelogs, API versions, migration notes, and compatibility evidence close to release work.
 
-NeedleStart should keep those rules established before early implementation creates undocumented contracts.
+Lumina should keep those rules established before early implementation creates undocumented contracts.
 
 Research backing:
 
@@ -32,7 +32,7 @@ Research backing:
 | Manifests | Every generated JSON artifact must include `schemaVersion`. | Update [Manifest Contracts](manifest-contracts.md) and machine-readable docs. |
 | Agent context | Context capsule JSON must include schema versions. | Update [Agent Kernel](agent-kernel.md), [MCP Server](mcp-server.md), and [Machine-Readable Documentation](machine-readable-docs.md). |
 | Docs site | Public docs should identify the product version they describe once releases exist. | Add docs-site version switcher or version labels before stable public launch. |
-| Examples | Examples should name compatible NeedleStart versions. | Update example READMEs when examples exist. |
+| Examples | Examples should name compatible Lumina versions. | Update example READMEs when examples exist. |
 
 ## Pre-1.0 Policy
 
@@ -62,7 +62,7 @@ Generated files should use explicit schema versions:
 
 ```json
 {
-  "schemaVersion": "needle.routes.v0",
+  "schemaVersion": "lumina.routes.v0",
   "generatedAt": "2026-07-06T00:00:00.000Z",
   "routes": []
 }

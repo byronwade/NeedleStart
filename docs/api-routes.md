@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, framework contributors, AI agents.
 
-NeedleStart plans to support API route files under `app/api/`.
+Lumina plans to support API route files under `app/api/`.
 
 API route discovery is part of the planned [Routing Contract](routing-contract.md). Handler argument and response typing will be finalized when the API route implementation exists.
 

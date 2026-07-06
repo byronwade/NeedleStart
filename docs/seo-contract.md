@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: framework contributors, app developers, SEO reviewers, runtime adapter authors, AI agents.
 
-This page defines the planned SEO contract for NeedleStart. SEO behavior is not implemented yet. The contract exists so route metadata, public HTML, sitemap output, robots output, structured data, generated manifests, CLI audits, and agent context all describe the same behavior.
+This page defines the planned SEO contract for Lumina. SEO behavior is not implemented yet. The contract exists so route metadata, public HTML, sitemap output, robots output, structured data, generated manifests, CLI audits, and agent context all describe the same behavior.
 
 ## Goals
 
@@ -46,7 +46,7 @@ Source links:
 Route metadata should be declared with a static object or a generated function.
 
 ```ts
-import { defineMeta, staticPage } from "needlestart"
+import { defineMeta, staticPage } from "lumina"
 
 export const render = staticPage()
 
@@ -84,7 +84,7 @@ export const meta = defineMeta({
 Dynamic metadata is planned but must stay deterministic for static or prerendered routes.
 
 ```ts
-import { defineMeta } from "needlestart"
+import { defineMeta } from "lumina"
 
 export async function generateMeta({ params }) {
   const article = await getArticle(params.slug)
@@ -138,7 +138,7 @@ Metadata should merge from root layout to nested layout to page.
 
 Planned merge order:
 
-1. Project SEO defaults from `needle.config.ts`.
+1. Project SEO defaults from `lumina.config.ts`.
 2. Root layout metadata.
 3. Nested layout metadata in route order.
 4. Page metadata.
@@ -199,7 +199,7 @@ Rules:
 - Sitemaps list canonical URLs, not every reachable URL.
 - Sitemap URLs must be absolute at output time.
 - Large sitemap splitting must be deterministic.
-- Sitemap entries must include source route ID, source file, and reason in `.needle/seo.report.json`.
+- Sitemap entries must include source route ID, source file, and reason in `.lumina/seo.report.json`.
 - `lastModified`, `changeFrequency`, and `priority` are allowed only when configured or known from source facts.
 
 ## Robots Rules
@@ -232,7 +232,7 @@ Rules:
 
 ## Generated Report
 
-Planned `.needle/seo.report.json` shape:
+Planned `.lumina/seo.report.json` shape:
 
 ```json
 {
@@ -300,14 +300,14 @@ Diagnostics must use the shared CLI JSON diagnostic shape from [CLI JSON Contrac
 Planned commands:
 
 ```bash
-needle seo
-needle seo --json
-needle seo --route /pricing
-needle seo --sitemap
-needle seo --strict
+lumina seo
+lumina seo --json
+lumina seo --route /pricing
+lumina seo --sitemap
+lumina seo --strict
 ```
 
-`needle seo --json` must use the shared envelope from [CLI JSON Contract](cli-json-contract.md).
+`lumina seo --json` must use the shared envelope from [CLI JSON Contract](cli-json-contract.md).
 
 Planned command data shape:
 
@@ -317,7 +317,7 @@ Planned command data shape:
   "routesPassed": 22,
   "routesFailed": 2,
   "sitemapEntries": 18,
-  "reportPath": ".needle/seo.report.json"
+  "reportPath": ".lumina/seo.report.json"
 }
 ```
 

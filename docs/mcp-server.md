@@ -5,7 +5,7 @@ Audience: AI agents, framework contributors, maintainers.
 
 This page describes the planned MCP server behavior. MCP server behavior is not implemented yet.
 
-The planned NeedleStart MCP server will expose framework data and selected safe actions to AI agents through structured tools.
+The planned Lumina MCP server will expose framework data and selected safe actions to AI agents through structured tools.
 
 ## Goals
 
@@ -51,12 +51,12 @@ Planned write tools after safe edit support exists:
 Planned resources:
 
 ```txt
-needle://routes
-needle://route/%2Fpricing
-needle://map/file/components%2FProductCard.tsx
-needle://seo/report
-needle://perf/report
-needle://context/public
+lumina://routes
+lumina://route/%2Fpricing
+lumina://map/file/components%2FProductCard.tsx
+lumina://seo/report
+lumina://perf/report
+lumina://context/public
 ```
 
 ## Safety Rules
@@ -71,7 +71,7 @@ needle://context/public
 - MCP write tools must apply changes through the same AST-based safe edit path as CLI writes.
 - MCP write tools must support dry-run previews before applying changes.
 - MCP write tools must use the safe edit formatter before writing files.
-- MCP responses must expose risk tier, affected files, affected routes, checks, and `.needle/mutations.json` mutation log ID.
+- MCP responses must expose risk tier, affected files, affected routes, checks, and `.lumina/mutations.json` mutation log ID.
 - High-risk production write tools require explicit human sign-off before applying changes.
 
 MCP write tools must return the same `SafeEditTransaction` shape as CLI write commands.
@@ -107,7 +107,7 @@ The first MCP demo should prove:
 
 ## Planned Acceptance Criteria
 
-- `needle mcp` should start the server.
+- `lumina mcp` should start the server.
 - An MCP client should list routes.
 - An MCP client should inspect a route.
 - An MCP client should get related files.

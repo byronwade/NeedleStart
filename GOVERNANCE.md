@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: maintainers, contributors, open source program reviewers, AI agents.
 
-NeedleStart is currently in Phase 1: monorepo scaffold. Governance is intentionally lightweight until the project has package releases, regular contributors, and release activity.
+Lumina is currently in Phase 1: monorepo scaffold. Governance is intentionally lightweight until the project has package releases, regular contributors, and release activity.
 
 ## Current Decision Model
 
@@ -30,7 +30,7 @@ Planned ownership areas:
 | Area | Scope | Required docs |
 | --- | --- | --- |
 | Docs and community | README, docs hub, public docs, contributor docs | `docs/documentation-standard.md`, `CONTRIBUTING.md` |
-| Compiler and map | IR, manifests, graph extraction, affected queries | `docs/compiler-ir.md`, `docs/needle-map.md` |
+| Compiler and map | IR, manifests, graph extraction, affected queries | `docs/compiler-ir.md`, `docs/lumina-map.md` |
 | Runtime and SEO | render modes, adapters, SEO output, performance | `docs/runtime-contract.md`, `docs/seo-engine.md` |
 | Agent safety | Agent Kernel, MCP, safe edits, machine-readable docs | `docs/agent-kernel.md`, `docs/mcp-server.md`, `docs/safe-edit-transactions.md` |
 | Verification | tests, benchmarks, release readiness | `docs/testing.md`, `docs/benchmark-methodology.md`, `docs/release.md` |
@@ -74,7 +74,7 @@ Use `docs/templates/adr-template.md` for decisions that affect:
 
 - Runtime or adapter architecture.
 - Compiler IR and manifest contracts.
-- Needle Map graph semantics.
+- Lumina Map graph semantics.
 - Safe edit behavior.
 - MCP write tools.
 - Public API shape.

@@ -6,13 +6,13 @@ Audience: maintainers, contributors, AI agents.
 
 Scope: target architecture for the planned framework; current implemented behavior is limited to the Phase 1 scaffold.
 
-NeedleStart is built around a simple split:
+Lumina is built around a simple split:
 
-- Runtime adapters handle server execution, with Bun-specific request handling isolated in `@needle/adapter-bun`.
+- Runtime adapters handle server execution, with Bun-specific request handling isolated in `@lumina/adapter-bun`.
 - Vite/Rolldown handles frontend build mechanics.
-- The Needle compiler handles framework intelligence.
-- Needle runtime adapters handle production request routing.
-- The Agent Kernel and Needle Map expose structure to humans and agents.
+- The Lumina compiler handles framework intelligence.
+- Lumina runtime adapters handle production request routing.
+- The Agent Kernel and Lumina Map expose structure to humans and agents.
 
 ## Strategic Technology Decision
 
@@ -20,10 +20,10 @@ Recommended stack:
 
 - Bun: package manager, test runner, local workflow, and default production adapter runtime.
 - Vite and Rolldown: frontend build, React transforms, HMR, assets, and plugin ecosystem.
-- Custom Needle compiler: route graph, render modes, SEO generation, Needle Map, codegen, and manifests.
-- Needle adapters: thin integration layers around generated server artifacts.
+- Custom Lumina compiler: route graph, render modes, SEO generation, Lumina Map, codegen, and manifests.
+- Lumina adapters: thin integration layers around generated server artifacts.
 
-This split lets NeedleStart move quickly without reinventing a bundler while putting framework intelligence where it belongs: at build time.
+This split lets Lumina move quickly without reinventing a bundler while putting framework intelligence where it belongs: at build time.
 
 Speed-sensitive architecture choices must follow `docs/speed-decisions.md`. That decision record is the guardrail for Vite/Rolldown, Bun, React streaming, route budgets, hot APIs, explicit caching, compiler scaling, and benchmark evidence.
 
@@ -35,7 +35,7 @@ Responsible for file-based routes, layouts, React rendering, metadata, API route
 
 ### Layer 2: Compiler
 
-Responsible for app discovery, route graph, render modes, server/client boundaries, SEO manifests, API code generation, hot API handlers, Needle Map generation, agent context generation, and deployment manifests.
+Responsible for app discovery, route graph, render modes, server/client boundaries, SEO manifests, API code generation, hot API handlers, Lumina Map generation, agent context generation, and deployment manifests.
 
 ### Layer 3: Runtime
 
@@ -45,7 +45,7 @@ Responsible for static file serving, prerendered HTML serving, SSR requests, str
 
 Responsible for AGENTS.md generation, llms.txt and llms-full.txt generation, route context capsules, safe edit plans, safe edit transactions, mutation logs, agent-facing diagnostics, and MCP server integration.
 
-### Layer 5: Needle Map
+### Layer 5: Lumina Map
 
 Responsible for file graph, semantic graph, route impact, affected checks, ownership, cache tag visibility, SEO impact, risk scoring, and human or agent queries.
 
@@ -57,13 +57,13 @@ Bun is the default production adapter runtime because it provides a high-perform
 
 ### Frontend Build
 
-Vite/Rolldown is the initial frontend build foundation. It provides HMR, React transforms, CSS handling, asset handling, and plugin compatibility. NeedleStart should not begin with a custom bundler.
+Vite/Rolldown is the initial frontend build foundation. It provides HMR, React transforms, CSS handling, asset handling, and plugin compatibility. Lumina should not begin with a custom bundler.
 
 Large-app development may evaluate Vite bundled dev mode when unbundled module fan-out becomes measurable, but that must be fixture-backed before becoming a default.
 
 ### Compiler
 
-The custom Needle compiler owns framework-specific intelligence that Vite does not understand:
+The custom Lumina compiler owns framework-specific intelligence that Vite does not understand:
 
 - Route modes.
 - SEO metadata.
@@ -105,7 +105,7 @@ source app
   -> route manifest
   -> render manifest
   -> SEO manifest
-  -> Needle Map
+  -> Lumina Map
   -> agent context capsules
   -> Vite build
   -> server bundle
@@ -115,9 +115,9 @@ source app
 ## Core Internal Model
 
 ```ts
-export type NeedleApp = {
+export type LuminaApp = {
   root: string
-  config: NeedleConfig
+  config: LuminaConfig
   routes: RouteNode[]
   layouts: LayoutNode[]
   components: ComponentNode[]
@@ -125,7 +125,7 @@ export type NeedleApp = {
   serverFns: ServerFunctionNode[]
   schemas: SchemaNode[]
   content: ContentNode[]
-  graph: NeedleGraph
+  graph: LuminaGraph
 }
 ```
 
@@ -134,9 +134,9 @@ export type NeedleApp = {
 Target structure:
 
 ```txt
-needlestart/
+lumina/
   packages/
-    create-needle/
+    create-lumina/
     cli/
     core/
     compiler/
@@ -213,4 +213,4 @@ Production server bundles must not include agent context capsules, MCP server im
 
 No invisible caching.
 
-Every cacheable route, function, component, or API response must expose its cache plan in a manifest. Cache tags must be queryable by Needle Map and agent diagnostics.
+Every cacheable route, function, component, or API response must expose its cache plan in a manifest. Cache tags must be queryable by Lumina Map and agent diagnostics.

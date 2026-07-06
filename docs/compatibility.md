@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, deployers, maintainers.
 
-NeedleStart should document runtime, platform, framework, and migration compatibility honestly.
+Lumina should document runtime, platform, framework, and migration compatibility honestly.
 
 ## Planned Compatibility Areas
 

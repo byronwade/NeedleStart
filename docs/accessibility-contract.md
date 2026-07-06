@@ -4,11 +4,11 @@ Status: Planned.
 
 Audience: framework contributors, app developers, docs maintainers, QA reviewers, AI agents.
 
-This page defines the planned accessibility contract for NeedleStart applications, examples, generated pages, and public documentation. Accessibility behavior is not implemented yet. The contract exists so routing, rendering, forms, diagnostics, browser tests, SEO checks, and examples all use the same expectations.
+This page defines the planned accessibility contract for Lumina applications, examples, generated pages, and public documentation. Accessibility behavior is not implemented yet. The contract exists so routing, rendering, forms, diagnostics, browser tests, SEO checks, and examples all use the same expectations.
 
 ## Research Notes
 
-NeedleStart should align its public-page and example requirements with current accessibility guidance:
+Lumina should align its public-page and example requirements with current accessibility guidance:
 
 - [WCAG 2.2](https://www.w3.org/TR/WCAG22/) defines the current W3C accessibility success criteria for web content.
 - [WAI WCAG overview](https://www.w3.org/WAI/standards-guidelines/wcag/) explains that W3C encourages using the latest WCAG version and that WCAG 2.2 is backwards compatible with 2.1 and 2.0 in practice.
@@ -20,7 +20,7 @@ NeedleStart should align its public-page and example requirements with current a
 
 ## Target Standard
 
-NeedleStart should target WCAG 2.2 AA for generated examples, public docs pages, and framework-owned UI once implementation exists.
+Lumina should target WCAG 2.2 AA for generated examples, public docs pages, and framework-owned UI once implementation exists.
 
 This is a quality target, not a legal certification claim. Do not claim WCAG conformance until the relevant pages have been tested and reviewed.
 
@@ -37,7 +37,7 @@ The accessibility contract applies to:
 - Browser fixtures and smoke tests.
 - Diagnostics and agent context that report accessibility risks.
 
-It does not make NeedleStart responsible for all user-authored application content. The framework should provide safe defaults, diagnostics, examples, and testing hooks that make accessible work easier.
+It does not make Lumina responsible for all user-authored application content. The framework should provide safe defaults, diagnostics, examples, and testing hooks that make accessible work easier.
 
 ## Semantic HTML Rules
 
@@ -66,7 +66,7 @@ Interactive examples must be operable by keyboard:
 - Escape, arrow-key, and tab behavior follows WAI-ARIA Authoring Practices when custom widgets exist.
 - Positive `tabindex` values are avoided.
 
-When NeedleStart introduces client-side navigation, the router contract must define focus restoration and route-announcement behavior before it is marked verified.
+When Lumina introduces client-side navigation, the router contract must define focus restoration and route-announcement behavior before it is marked verified.
 
 ## Forms And Validation
 
@@ -83,7 +83,7 @@ The [API Route Contract](api-route-contract.md), [Schema Contract](schema-contra
 
 ## Motion, Media, And Visual Design
 
-NeedleStart examples and docs should:
+Lumina examples and docs should:
 
 - Respect reduced-motion preferences for non-essential animation.
 - Avoid flashing or rapidly changing content.
@@ -165,7 +165,7 @@ Public docs Markdown must keep status and audience text readable without dependi
 
 ## Build Readiness
 
-Before public examples or docs pages are marked verified, NeedleStart should have:
+Before public examples or docs pages are marked verified, Lumina should have:
 
 - Accessibility expectations documented in this contract.
 - Browser test hooks for keyboard and visible behavior.

@@ -74,6 +74,6 @@ Before marking an adapter verified:
 Pause and create a decision record if:
 
 - adapter behavior requires a new generated artifact,
-- platform-specific code leaks into `@needle/core`,
+- platform-specific code leaks into `@lumina/core`,
 - a capability cannot be tested locally,
 - cache, security, or routing behavior conflicts with a contract.

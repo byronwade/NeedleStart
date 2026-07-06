@@ -4,11 +4,11 @@ Status: Planned.
 
 Audience: new users, app developers, AI agents.
 
-This page describes the target app onboarding path for NeedleStart. The repository is in Phase 1 scaffold, so repository maintenance commands are available, but the app creation commands below are not verified local commands yet.
+This page describes the target app onboarding path for Lumina. The repository is in Phase 1 scaffold, so repository maintenance commands are available, but the app creation commands below are not verified local commands yet.
 
 ## Current Repository Status
 
-NeedleStart currently contains planning, architecture, roadmap, risk, skill, and subagent documentation plus the Phase 1 Bun workspace, package placeholders, shared core types, CI, and enforcement scripts. It does not yet contain CLI behavior, compiler behavior, runtime behavior, or generated artifacts.
+Lumina currently contains planning, architecture, roadmap, risk, skill, and subagent documentation plus the Phase 1 Bun workspace, package placeholders, shared core types, CI, and enforcement scripts. It does not yet contain CLI behavior, compiler behavior, runtime behavior, or generated artifacts.
 
 Use these docs first:
 
@@ -23,9 +23,9 @@ Use these docs first:
 Planned command once app creation behavior exists:
 
 ```bash
-bun create needle my-app
+bun create lumina my-app
 cd my-app
-needle dev
+lumina dev
 ```
 
 Generated apps should also expose `bun run dev`, `bun run build`, and `bun run start` package scripts that call the framework commands.
@@ -35,10 +35,10 @@ Target result:
 - A React app should start locally.
 - The home page should render server HTML.
 - Public routes should include SEO metadata.
-- `.needle/routes.json` and `.needle/render-manifest.json` should be generated.
-- Needle Map and agent context should be inspectable.
+- `.lumina/routes.json` and `.lumina/render-manifest.json` should be generated.
+- Lumina Map and agent context should be inspectable.
 
-Do not claim this flow works until `create-needle`, `@needle/cli`, and the runtime path exist and have been verified.
+Do not claim this flow works until `create-lumina`, `@lumina/cli`, and the runtime path exist and have been verified.
 
 The default generated app must eventually map to a verified starter example as defined in [Examples And Templates Contract](examples-contract.md).
 
@@ -53,7 +53,7 @@ my-app/
     page.tsx
     api/
       health.ts
-  needle.config.ts
+  lumina.config.ts
   package.json
   public/
 ```
@@ -61,7 +61,7 @@ my-app/
 Planned generated output:
 
 ```txt
-.needle/
+.lumina/
   routes.json
   render-manifest.json
   map.json
@@ -81,7 +81,7 @@ dist/
   *
 ```
 
-The generated artifact names are `.needle/routes.json`, `.needle/render-manifest.json`, `.needle/map.json`, `.needle/graph.json`, `.needle/seo.report.json`, `.needle/perf.report.json`, `.needle/context/*.ctx.json`, `.needle/context/agent-index.json`, `.needle/mutations.json`, `.needle/generated/*`, `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, `dist/adapter.manifest.json`, and `dist/*`.
+The generated artifact names are `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/graph.json`, `.lumina/seo.report.json`, `.lumina/perf.report.json`, `.lumina/context/*.ctx.json`, `.lumina/context/agent-index.json`, `.lumina/mutations.json`, `.lumina/generated/*`, `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, `dist/adapter.manifest.json`, and `dist/*`.
 
 Generated files must not be edited manually.
 
@@ -90,19 +90,19 @@ Generated files must not be edited manually.
 Planned CLI commands:
 
 ```bash
-needle dev
-needle build
-needle start
-needle routes
-needle inspect
-needle check
-needle seo
-needle map
-needle agent
-needle mcp
-needle edit
-needle migrate
-needle bench
+lumina dev
+lumina build
+lumina start
+lumina routes
+lumina inspect
+lumina check
+lumina seo
+lumina map
+lumina agent
+lumina mcp
+lumina edit
+lumina migrate
+lumina bench
 ```
 
 The repository must keep CLI JSON output stable, compact, and documented as commands become real.
@@ -111,17 +111,17 @@ The repository must keep CLI JSON output stable, compact, and documented as comm
 
 The next implementation work is:
 
-1. Expand and stabilize shared core types in `@needle/core`.
+1. Expand and stabilize shared core types in `@lumina/core`.
 2. Implement deterministic route discovery.
-3. Emit `.needle/routes.json`.
+3. Emit `.lumina/routes.json`.
 4. Add the stable CLI JSON envelope.
-5. Make `needle dev` start the first verified app path.
+5. Make `lumina dev` start the first verified app path.
 
 See [Phase 1 Build Plan](phase-1-build-plan.md) and [Task Backlog](task-backlog.md).
 
 ## Out Of Scope Until Implementation
 
-- Running a local NeedleStart app.
+- Running a local Lumina app.
 - Publishing packages.
 - Real route discovery.
 - Real SSR or static build output.

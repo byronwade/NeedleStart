@@ -4,13 +4,13 @@ Status: Planned.
 
 Audience: app developers, deployers.
 
-NeedleStart is planned to default to Bun while keeping Node and static output credible through adapters.
+Lumina is planned to default to Bun while keeping Node and static output credible through adapters.
 
 ## Planned Adapters
 
-- `@needle/adapter-bun`
-- `@needle/adapter-node`
-- `@needle/adapter-static`
+- `@lumina/adapter-bun`
+- `@lumina/adapter-node`
+- `@lumina/adapter-static`
 
 Do not treat any adapter as supported until implementation and tests exist.
 

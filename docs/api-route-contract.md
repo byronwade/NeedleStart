@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: framework contributors, app developers, runtime adapter authors, security reviewers, AI agents.
 
-This page defines the planned contract for NeedleStart API route files. It is not implemented yet. The goal is to make API route behavior precise before `@needle/compiler`, `@needle/router`, `@needle/schema`, `@needle/adapter-bun`, `@needle/adapter-node`, and `@needle/adapter-static` depend on it.
+This page defines the planned contract for Lumina API route files. It is not implemented yet. The goal is to make API route behavior precise before `@lumina/compiler`, `@lumina/router`, `@lumina/schema`, `@lumina/adapter-bun`, `@lumina/adapter-node`, and `@lumina/adapter-static` depend on it.
 
 ## Contract Goals
 
@@ -19,7 +19,7 @@ API route behavior must be:
 
 ## Source Files
 
-NeedleStart plans API route files under `app/api/`.
+Lumina plans API route files under `app/api/`.
 
 ```txt
 app/
@@ -60,7 +60,7 @@ type ApiRouteContext = {
   query: URLSearchParams
   headers: Headers
   cookies: RequestCookies
-  env: NeedlePublicRuntimeEnv
+  env: LuminaPublicRuntimeEnv
   route: {
     id: string
     path: string
@@ -69,7 +69,7 @@ type ApiRouteContext = {
 }
 ```
 
-The exact type belongs in `@needle/core` once implementation starts. The stable design rule is that handlers receive a Web-standard request and structured route metadata; they should not depend on Express-style `req` and `res` mutation.
+The exact type belongs in `@lumina/core` once implementation starts. The stable design rule is that handlers receive a Web-standard request and structured route metadata; they should not depend on Express-style `req` and `res` mutation.
 
 ## Return Values
 
@@ -123,7 +123,7 @@ Params are strings unless the route uses a schema. Catch-all params are string a
 Planned schema exports:
 
 ```ts
-import { schema } from "needlestart"
+import { schema } from "lumina"
 
 export const params = schema.object({
   id: schema.uint64(),
@@ -205,7 +205,7 @@ Security-sensitive routes should follow [Security](security.md) and must not lea
 
 ## Generated Manifest Fields
 
-API routes should appear in `.needle/routes.json`, `.needle/render-manifest.json`, `dist/routes.manifest.json`, and `dist/render.manifest.json` when adapter output exists.
+API routes should appear in `.lumina/routes.json`, `.lumina/render-manifest.json`, `dist/routes.manifest.json`, and `dist/render.manifest.json` when adapter output exists.
 
 Draft route entry extension:
 
@@ -238,7 +238,7 @@ Required planned diagnostic cases:
 | Code | Severity | When |
 | --- | --- | --- |
 | `API_METHOD_MISSING` | `warning` | API file exports no supported HTTP method. |
-| `API_METHOD_UNSUPPORTED` | `error` | API file exports a method-like name that NeedleStart does not support. |
+| `API_METHOD_UNSUPPORTED` | `error` | API file exports a method-like name that Lumina does not support. |
 | `API_BODY_SCHEMA_WITHOUT_BODY_METHOD` | `warning` | Body schema is exported for a method where body parsing is unexpected. |
 | `API_RESPONSE_SCHEMA_MISMATCH` | `error` in tests/dev | Handler output fails the declared response schema. |
 | `API_CACHE_UNSAFE_DEFAULT` | `error` | Auth/session-sensitive API route opts into cache without required explicit policy. |
@@ -303,7 +303,7 @@ This contract adapts current patterns from mature endpoint systems:
 - Astro endpoints expose API routes through file-based endpoint files and distinguish static build-time endpoints from live SSR endpoints.
 - Hono shows the value of small request/response abstractions, explicit validation middleware, route params, and OpenAPI integration.
 
-NeedleStart should keep the API route surface familiar while making schemas, generated manifests, cache defaults, and diagnostics first-class from the beginning.
+Lumina should keep the API route surface familiar while making schemas, generated manifests, cache defaults, and diagnostics first-class from the beginning.
 
 ## Out Of Scope
 

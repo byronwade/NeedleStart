@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, future website visitors, AI agents.
 
-NeedleStart is planned to make public pages SEO-safe by default. That means public routes should render meaningful HTML, declare metadata explicitly, and produce machine-readable SEO diagnostics.
+Lumina is planned to make public pages SEO-safe by default. That means public routes should render meaningful HTML, declare metadata explicitly, and produce machine-readable SEO diagnostics.
 
 ## Goals
 
@@ -18,18 +18,18 @@ NeedleStart is planned to make public pages SEO-safe by default. That means publ
 
 ## Why It Matters
 
-SEO problems often appear late because metadata, rendering mode, sitemap behavior, and client-side rendering are handled separately. NeedleStart plans to make SEO visible at the route and manifest level.
+SEO problems often appear late because metadata, rendering mode, sitemap behavior, and client-side rendering are handled separately. Lumina plans to make SEO visible at the route and manifest level.
 
 ## Planned Example
 
 ```ts
-import { defineMeta, staticPage } from "needlestart"
+import { defineMeta, staticPage } from "lumina"
 
 export const render = staticPage()
 
 export const meta = defineMeta({
   title: "Pricing",
-  description: "Pricing for a NeedleStart app.",
+  description: "Pricing for a Lumina app.",
   canonical: "/pricing",
 })
 ```

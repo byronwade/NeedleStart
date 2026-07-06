@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, docs maintainers, framework contributors, AI agents.
 
-This catalog names the official examples NeedleStart should grow into. It complements [Examples And Templates Contract](examples-contract.md), [Getting Started](getting-started.md), [Public Examples Reference](public/reference/examples.md), and [Benchmark Fixtures](benchmark-fixtures.md).
+This catalog names the official examples Lumina should grow into. It complements [Examples And Templates Contract](examples-contract.md), [Getting Started](getting-started.md), [Public Examples Reference](public/reference/examples.md), and [Benchmark Fixtures](benchmark-fixtures.md).
 
 No example app exists yet. Every entry is planned until files, commands, tests, and generated artifacts prove otherwise.
 
@@ -30,7 +30,7 @@ Use the same status values as [Examples And Templates Contract](examples-contrac
 | Node Adapter | `examples/adapter-node/` | Planned | Node compatibility for SSR and static output. |
 | Dashboard Client | `examples/dashboard-client/` | Planned | Intentional client interactivity and hydration boundaries. |
 | Ecommerce | `examples/ecommerce/` | Planned | Product pages, cache tags, API routes, SEO, and performance budgets. |
-| Agent Demo | `examples/agent-demo/` | Planned | Needle Map inspection, context capsules, safe edit, mutation log, and undo. |
+| Agent Demo | `examples/agent-demo/` | Planned | Lumina Map inspection, context capsules, safe edit, mutation log, and undo. |
 | Large App Fixture | `playgrounds/large-app-fixture/` | Planned | Route discovery scale, graph generation, diagnostics, and benchmark evidence. |
 | Docs Site | `examples/docs-site/` | Planned | Future public docs renderer, frontmatter, navigation, search, and machine-readable outputs. |
 
@@ -59,7 +59,7 @@ The default starter should not include auth, database setup, billing, third-part
 | Add SEO Metadata | Blog SEO |
 | Create An API Route | API Route |
 | Create A Hot API Route | Hot API |
-| Inspect Needle Map | Agent Demo or Large App Fixture |
+| Inspect Lumina Map | Agent Demo or Large App Fixture |
 | Use Agent Context | Agent Demo |
 
 Public guides may describe planned workflows before examples exist, but they must not claim the examples run until verified.

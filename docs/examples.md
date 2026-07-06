@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, framework contributors, AI agents.
 
-Examples should become the fastest way to understand NeedleStart behavior once implementation exists.
+Examples should become the fastest way to understand Lumina behavior once implementation exists.
 
 The detailed requirements for examples, templates, verification evidence, and create-command integration are defined in [Examples And Templates Contract](examples-contract.md).
 
@@ -51,10 +51,10 @@ Every example should eventually include:
 
 - What it demonstrates.
 - Status label.
-- Compatible NeedleStart version or workspace commit.
+- Compatible Lumina version or workspace commit.
 - Commands to run.
 - Expected pages or endpoints.
-- Generated `.needle/*` artifacts.
+- Generated `.lumina/*` artifacts.
 - Tests to run.
 - Known limitations.
 - Agent workflow notes when relevant.
@@ -66,7 +66,7 @@ Do not link an example from public onboarding as verified until the example meet
 The `agent-demo` example should eventually prove:
 
 - Route context inspection.
-- Needle Map affected query.
+- Lumina Map affected query.
 - Safe metadata edit dry run.
 - Safe metadata edit apply.
 - Affected checks.

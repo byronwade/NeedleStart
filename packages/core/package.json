@@ -1,5 +1,5 @@
 {
-  "name": "@needle/core",
+  "name": "@lumina/core",
   "version": "0.0.0",
   "private": true,
   "type": "module",

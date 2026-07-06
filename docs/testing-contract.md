@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: framework contributors, maintainers, CI authors, AI agents.
 
-This page defines the testing contract for NeedleStart. Initial scaffold checks exist; feature-specific test tooling is still planned. The contract exists so package scaffolding, compiler work, runtime adapters, route fixtures, public docs, diagnostics, benchmarks, and agent workflows share one evidence model.
+This page defines the testing contract for Lumina. Initial scaffold checks exist; feature-specific test tooling is still planned. The contract exists so package scaffolding, compiler work, runtime adapters, route fixtures, public docs, diagnostics, benchmarks, and agent workflows share one evidence model.
 
 ## Goals
 
@@ -51,7 +51,7 @@ Source links:
 | --- | --- | --- |
 | Unit | Prove pure functions and small modules. | Path normalization, route segment parsing, schema parsing, cache header generation. |
 | Fixture | Prove compiler behavior against realistic project trees. | Route discovery, manifests, diagnostics, SEO reports, map generation. |
-| Snapshot | Prove stable JSON and generated output. | CLI JSON, `.needle/*.json`, generated route manifests, diagnostics. |
+| Snapshot | Prove stable JSON and generated output. | CLI JSON, `.lumina/*.json`, generated route manifests, diagnostics. |
 | Integration | Prove packages work together. | CLI commands, compiler plus Vite plugin, config loading, generated output. |
 | HTTP | Prove runtime behavior through requests. | SSR, static assets, API routes, hot APIs, cache headers, errors. |
 | Browser | Prove user-visible browser behavior. | Hydration, navigation, public HTML, accessibility smoke tests, error pages. |
@@ -122,10 +122,10 @@ Snapshot tests are required for stable generated outputs.
 
 Use snapshots for:
 
-- `.needle/routes.json`
-- `.needle/render-manifest.json`
-- `.needle/seo.report.json`
-- `.needle/perf.report.json` shape, not raw benchmark values
+- `.lumina/routes.json`
+- `.lumina/render-manifest.json`
+- `.lumina/seo.report.json`
+- `.lumina/perf.report.json` shape, not raw benchmark values
 - CLI `--json` envelopes
 - Diagnostics ordering and compact fields
 - Context capsule output

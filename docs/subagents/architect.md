@@ -5,7 +5,7 @@ Audience: AI agents, maintainers, architecture reviewers.
 
 ## Mission
 
-Protect NeedleStart's architecture, package boundaries, and phase discipline.
+Protect Lumina's architecture, package boundaries, and phase discipline.
 
 ## Owns
 

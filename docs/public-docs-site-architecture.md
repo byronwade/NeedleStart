@@ -4,11 +4,11 @@ Status: Planned.
 
 Audience: docs site builders, maintainers, framework contributors, AI agents.
 
-This page defines the planned content model for turning `docs/public/` into an advanced public documentation site. It does not choose a final renderer yet. It defines the contracts that a VitePress, Docusaurus, Nextra, Mintlify, or custom NeedleStart docs app would need to consume. Use [Docs Site Build Plan](docs-site-build-plan.md) for implementation phases and renderer decision gates.
+This page defines the planned content model for turning `docs/public/` into an advanced public documentation site. It does not choose a final renderer yet. It defines the contracts that a VitePress, Docusaurus, Nextra, Mintlify, or custom Lumina docs app would need to consume. Use [Docs Site Build Plan](docs-site-build-plan.md) for implementation phases and renderer decision gates.
 
 ## Why This Exists
 
-NeedleStart already has public-facing Markdown under `docs/public/`, but a polished docs site needs more than pages. It needs consistent metadata, navigation, route rules, source links, status labels, version context, machine-readable outputs, and validation. Mature docs systems use frontmatter, sidebar configuration, file-based routing, generated indexes, and page-level metadata to keep documentation navigable for humans and agents.
+Lumina already has public-facing Markdown under `docs/public/`, but a polished docs site needs more than pages. It needs consistent metadata, navigation, route rules, source links, status labels, version context, machine-readable outputs, and validation. Mature docs systems use frontmatter, sidebar configuration, file-based routing, generated indexes, and page-level metadata to keep documentation navigable for humans and agents.
 
 Research backing:
 
@@ -62,7 +62,7 @@ The detailed field contract lives in [Public Frontmatter Standard](public-frontm
 ```yaml
 ---
 title: Project Structure
-description: Planned NeedleStart app structure, generated files, and documentation layout.
+description: Planned Lumina app structure, generated files, and documentation layout.
 status: planned
 audience:
   - app developers
@@ -145,7 +145,7 @@ Navigation rules:
 | Operations | Explain deployment, compatibility, benchmarks, release, and security. | Deployment overview, benchmark honesty. |
 | Comparison | Explain fit and tradeoffs. | Comparisons overview. |
 
-This follows the same separation used elsewhere in NeedleStart docs: start, guides, reference, concepts, operations, community, and agent-readable contracts.
+This follows the same separation used elsewhere in Lumina docs: start, guides, reference, concepts, operations, community, and agent-readable contracts.
 
 ## Search And Table Of Contents
 
@@ -209,7 +209,7 @@ Choose a docs renderer by evaluating:
 - Versioned docs support.
 - Static output quality.
 - Ability to expose Markdown or machine-readable docs to agents.
-- Ability to integrate with the eventual NeedleStart website without duplicating content.
+- Ability to integrate with the eventual Lumina website without duplicating content.
 
 Do not choose a renderer solely because it is popular. Choose the path that keeps public docs, source docs, and machine-readable docs synchronized.
 

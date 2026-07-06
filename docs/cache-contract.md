@@ -4,15 +4,15 @@ Status: Planned.
 
 Audience: framework contributors, app developers, runtime adapter authors, performance reviewers, security reviewers, AI agents.
 
-This page defines the planned cache contract for NeedleStart. Caching is not implemented yet. The contract exists so render modes, API routes, hot APIs, runtime adapters, Needle Map, CLI output, and agent context all explain cache behavior the same way.
+This page defines the planned cache contract for Lumina. Caching is not implemented yet. The contract exists so render modes, API routes, hot APIs, runtime adapters, Lumina Map, CLI output, and agent context all explain cache behavior the same way.
 
 ## Contract Goals
 
-NeedleStart caching must be:
+Lumina caching must be:
 
 - explicit rather than inferred silently,
 - visible in generated manifests and CLI JSON,
-- explainable through Needle Map and `needle inspect`,
+- explainable through Lumina Map and `lumina inspect`,
 - safe by default for SSR and API routes,
 - compatible with HTTP cache headers,
 - precise about invalidation and stale behavior,
@@ -36,7 +36,7 @@ Authenticated, session-sensitive, billing, webhook, and admin routes must never 
 
 ## Cache Plan Shape
 
-The Phase 1 scaffold currently exposes a minimal `CachePlan` placeholder from `@needle/core`:
+The Phase 1 scaffold currently exposes a minimal `CachePlan` placeholder from `@lumina/core`:
 
 ```ts
 type CachePlan =
@@ -73,14 +73,14 @@ Rules:
 - Tags must be deterministic strings.
 - Header output must be derived from the plan, not separately hand-authored by adapters.
 
-The final expanded type belongs in `@needle/core` when implementation starts. Any implementation PR that changes `CachePlan` must update this page, the public cache reference, fixtures, scaffold tests, and generated manifest examples in the same change.
+The final expanded type belongs in `@lumina/core` when implementation starts. Any implementation PR that changes `CachePlan` must update this page, the public cache reference, fixtures, scaffold tests, and generated manifest examples in the same change.
 
 ## Public API Draft
 
 Cache APIs are not final, but route-level cache behavior should be explicit in source.
 
 ```ts
-import { prerender } from "needlestart"
+import { prerender } from "lumina"
 
 export const render = prerender({
   revalidate: 300,
@@ -143,7 +143,7 @@ Cache tags are planned as named invalidation handles.
 Rules:
 
 - Tags must be deterministic.
-- Tags must appear in Needle Map when they connect routes, APIs, data sources, or generated artifacts.
+- Tags must appear in Lumina Map when they connect routes, APIs, data sources, or generated artifacts.
 - Tags must be listed in route context capsules for affected routes.
 - Tags must be excluded from production bundles when they are agent-only metadata.
 - Tag names must not include secrets, user tokens, raw emails, or private identifiers.
@@ -194,7 +194,7 @@ Rules:
 
 ## Generated Manifest Fields
 
-Cache metadata should be generated once and consumed by runtime adapters, CLI, MCP, Needle Map, and tests.
+Cache metadata should be generated once and consumed by runtime adapters, CLI, MCP, Lumina Map, and tests.
 
 Draft render manifest fields:
 
@@ -221,14 +221,14 @@ Draft cache report fields:
 
 ```json
 {
-  "schemaVersion": "needle.cache-report.v0",
+  "schemaVersion": "lumina.cache-report.v0",
   "routes": [],
   "tags": [],
   "diagnostics": []
 }
 ```
 
-The exact artifact may be part of `.needle/render-manifest.json`, `.needle/perf.report.json`, `.needle/map.json`, or a future `.needle/cache.report.json`. If a new artifact is added, update [Manifest Contracts](manifest-contracts.md), [Versioning And Upgrades](versioning-and-upgrades.md), and AGENTS generated-file rules.
+The exact artifact may be part of `.lumina/render-manifest.json`, `.lumina/perf.report.json`, `.lumina/map.json`, or a future `.lumina/cache.report.json`. If a new artifact is added, update [Manifest Contracts](manifest-contracts.md), [Versioning And Upgrades](versioning-and-upgrades.md), and AGENTS generated-file rules.
 
 ## Diagnostics
 
@@ -252,7 +252,7 @@ Diagnostics must include route ID, source file, cache plan, and remediation when
 - Public/shared caching for user-specific data requires explicit policy and tests.
 - Cache tags and keys must not expose secrets or private identifiers.
 - Revalidation endpoints or tools must require authorization before public use.
-- Cache invalidation must not rely only on inferred Needle Map edges.
+- Cache invalidation must not rely only on inferred Lumina Map edges.
 
 Security-sensitive cache behavior should be reviewed with [Security](security.md) and [Risk Mitigation](risk-mitigation.md).
 
@@ -284,7 +284,7 @@ This contract adapts current cache documentation patterns:
 - SvelteKit exposes response header control for route data and pages.
 - Astro route caching documents route-level cache options and adapter translation.
 
-NeedleStart should keep the underlying HTTP behavior familiar while making cache decisions more inspectable through manifests, diagnostics, and agent-facing context.
+Lumina should keep the underlying HTTP behavior familiar while making cache decisions more inspectable through manifests, diagnostics, and agent-facing context.
 
 ## Out Of Scope
 

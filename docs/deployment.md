@@ -4,15 +4,15 @@ Status: Planned.
 
 Audience: app developers, deployers, adapter maintainers.
 
-NeedleStart should support Bun by default while keeping Node and static output credible through adapters.
+Lumina should support Bun by default while keeping Node and static output credible through adapters.
 
 Adapter output, manifest fields, capability rules, environment variables, health endpoint behavior, and deployment evidence requirements are defined in [Adapter Contract](adapter-contract.md).
 
 ## Planned Adapter Paths
 
-- `@needle/adapter-bun`: default production adapter path.
-- `@needle/adapter-node`: Node compatibility path.
-- `@needle/adapter-static`: static export path.
+- `@lumina/adapter-bun`: default production adapter path.
+- `@lumina/adapter-node`: Node compatibility path.
+- `@lumina/adapter-static`: static export path.
 
 ## Deployment Docs Must Cover
 

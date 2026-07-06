@@ -4,8 +4,8 @@ export type PackageStatus = {
   implementsRuntimeBehavior: false;
 };
 
-export const needleCoreStatus = {
-  name: "@needle/core",
+export const luminaCoreStatus = {
+  name: "@lumina/core",
   phase: "scaffold",
   implementsRuntimeBehavior: false,
 } as const satisfies PackageStatus;
@@ -40,7 +40,7 @@ export type GraphEdge = {
 
 export type DiagnosticSeverity = "info" | "warning" | "error";
 
-export type NeedleDiagnostic = {
+export type LuminaDiagnostic = {
   code: string;
   severity: DiagnosticSeverity;
   message: string;
@@ -71,11 +71,11 @@ export type RouteNode = {
   cache?: CachePlan;
 };
 
-export type NeedleApp = {
+export type LuminaApp = {
   name: string;
   root: string;
   routes: RouteNode[];
-  diagnostics: NeedleDiagnostic[];
+  diagnostics: LuminaDiagnostic[];
 };
 
 export type AdapterManifest = {

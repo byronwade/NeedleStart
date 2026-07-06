@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: adapter maintainers, runtime contributors, deployers, AI agents.
 
-This page defines the planned adapter and deployment-output contract for NeedleStart. Adapter behavior is not implemented yet. The contract exists so Bun, Node, static export, runtime manifests, deployment docs, compatibility claims, cache behavior, health checks, and tests all use the same expectations.
+This page defines the planned adapter and deployment-output contract for Lumina. Adapter behavior is not implemented yet. The contract exists so Bun, Node, static export, runtime manifests, deployment docs, compatibility claims, cache behavior, health checks, and tests all use the same expectations.
 
 ## Goals
 
@@ -25,7 +25,7 @@ This contract follows current patterns from framework and platform docs:
 - Astro chooses adapters by deployment environment and documents that different adapters can require different configuration.
 - Vercel Build Output API uses generated file-system output and config to describe routes, headers, functions, and routing behavior.
 - Vercel project configuration separates build commands, output directories, redirects, headers, functions, runtime versions, and regions.
-- SvelteKit adapter-auto detects known deployment environments, but NeedleStart should start with explicit adapters before auto-detection.
+- SvelteKit adapter-auto detects known deployment environments, but Lumina should start with explicit adapters before auto-detection.
 
 Source links:
 
@@ -41,9 +41,9 @@ Source links:
 
 | Adapter | Package | Status | Purpose |
 | --- | --- | --- | --- |
-| Bun | `@needle/adapter-bun` | Planned | Default production adapter path using Bun runtime APIs. |
-| Node | `@needle/adapter-node` | Planned | Compatibility adapter path using Node HTTP APIs. |
-| Static | `@needle/adapter-static` | Planned | Static export for fully static apps. |
+| Bun | `@lumina/adapter-bun` | Planned | Default production adapter path using Bun runtime APIs. |
+| Node | `@lumina/adapter-node` | Planned | Compatibility adapter path using Node HTTP APIs. |
+| Static | `@lumina/adapter-static` | Planned | Static export for fully static apps. |
 
 Edge, worker, Vercel, Cloudflare, Netlify, Docker, and other deployment-specific adapters are out of scope until the first three paths have evidence.
 
@@ -54,7 +54,7 @@ Adapters consume generated build artifacts. They do not rediscover source files.
 Required planned inputs:
 
 ```txt
-.needle/
+.lumina/
   routes.json
   render-manifest.json
   graph.json
@@ -66,7 +66,7 @@ dist/
   adapter.manifest.json
 ```
 
-Adapter output files are deployment-oriented copies or adapter-owned metadata. Canonical compiler and agent artifacts remain under `.needle/`.
+Adapter output files are deployment-oriented copies or adapter-owned metadata. Canonical compiler and agent artifacts remain under `.lumina/`.
 
 Adapter inputs must include:
 
@@ -96,7 +96,7 @@ dist/
 
 The named deployment artifacts are `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, and `dist/adapter.manifest.json`.
 
-`@needle/adapter-static` may omit `server/` only when all routes are exportable and static output is complete.
+`@lumina/adapter-static` may omit `server/` only when all routes are exportable and static output is complete.
 
 ## Adapter Manifest
 
@@ -104,9 +104,9 @@ Planned `dist/adapter.manifest.json`:
 
 ```json
 {
-  "schemaVersion": "needle.adapter.v0",
+  "schemaVersion": "lumina.adapter.v0",
   "adapter": "bun",
-  "package": "@needle/adapter-bun",
+  "package": "@lumina/adapter-bun",
   "runtime": {
     "name": "bun",
     "versionRange": ">=1.2.3"
@@ -184,7 +184,7 @@ Planned responsibilities:
 
 Planned Bun-specific behavior:
 
-- Bun-only APIs stay inside `@needle/adapter-bun`.
+- Bun-only APIs stay inside `@lumina/adapter-bun`.
 - Bun server options must be documented when surfaced.
 - HTTP/3, WebSockets, Unix sockets, and advanced Bun server metrics are out of scope until explicitly added to capabilities.
 - If native route dispatch is disabled or unsupported for a route mode, the adapter must fall back to the generated matcher without changing observable route behavior.
@@ -241,7 +241,7 @@ Planned runtime variables:
 | `PORT` | Server port for Bun/Node adapters. | Adapter-defined, documented in manifest. |
 | `HOST` | Server host for Bun/Node adapters. | Adapter-defined, usually `0.0.0.0`. |
 | `NODE_ENV` | Runtime mode. | Set by deployment environment. |
-| `NEEDLE_HEALTH_PATH` | Optional health endpoint override. | `/_needle/health` when enabled. |
+| `LUMINA_HEALTH_PATH` | Optional health endpoint override. | `/_lumina/health` when enabled. |
 
 Rules:
 
@@ -254,7 +254,7 @@ Rules:
 Planned default path:
 
 ```txt
-/_needle/health
+/_lumina/health
 ```
 
 Rules:

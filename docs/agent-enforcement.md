@@ -3,9 +3,9 @@
 Status: Scaffolded.
 Audience: AI agents, maintainers, contributors.
 
-This page maps NeedleStart's agent rules to the checks that currently enforce them. It is the operational bridge between `AGENTS.md`, the documentation contracts, package structure, performance guardrails, and the verification scripts.
+This page maps Lumina's agent rules to the checks that currently enforce them. It is the operational bridge between `AGENTS.md`, the documentation contracts, package structure, performance guardrails, and the verification scripts.
 
-The current enforcement layer proves the Phase 1 scaffold and documentation system. It does not prove unimplemented framework behavior such as route discovery, rendering, CLI behavior, runtime adapter behavior, Needle Map generation, MCP tools, or safe edit transactions.
+The current enforcement layer proves the Phase 1 scaffold and documentation system. It does not prove unimplemented framework behavior such as route discovery, rendering, CLI behavior, runtime adapter behavior, Lumina Map generation, MCP tools, or safe edit transactions.
 
 ## Enforcement Rule
 
@@ -60,7 +60,7 @@ Agents must preserve these structure rules:
 - AI skill playbooks live under `docs/skills/`.
 - AI subagent role briefs live under `docs/subagents/`.
 - Root `skills/` and `subagents/` directories are forbidden.
-- Shared model types live in `@needle/core`.
+- Shared model types live in `@lumina/core`.
 - Runtime packages must not depend on agent-only packages.
 - User application code should not require Bun-only APIs; Bun-specific behavior belongs in adapter packages.
 

@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
-  <title id="title">NeedleStart route context capsule</title>
+  <title id="title">Lumina route context capsule</title>
   <desc id="desc">A professional diagram showing how one route is summarized as a compact context capsule with source files, manifests, checks, and explanations.</desc>
   <defs>
     <style>
@@ -23,7 +23,7 @@
   <rect class="muted" x="84" y="458" width="222" height="38" rx="9"/><text class="code" x="104" y="482">seo.report.json</text>
 
   <rect class="card shadow" x="430" y="115" width="340" height="470" rx="20"/>
-  <text class="h" x="458" y="152">.needle/context/pricing.ctx.json</text>
+  <text class="h" x="458" y="152">.lumina/context/pricing.ctx.json</text>
   <text class="small" x="458" y="176">Compact, stable, source-linked context</text>
   <rect class="muted" x="458" y="202" width="284" height="300" rx="14"/>
   <text class="codeblue" x="482" y="232">{</text>

@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: maintainers, contributors, AI agents.
 
-This directory stores NeedleStart architecture decision records. ADRs are durable records of important choices, tradeoffs, and rejected alternatives. They are not implementation evidence.
+This directory stores Lumina architecture decision records. ADRs are durable records of important choices, tradeoffs, and rejected alternatives. They are not implementation evidence.
 
 Use an ADR when a decision affects:
 

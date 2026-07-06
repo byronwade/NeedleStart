@@ -4,11 +4,11 @@ Status: Planned.
 
 Audience: framework contributors, performance reviewers, app developers, CI authors, AI agents.
 
-This page defines the planned performance contract for NeedleStart. Performance tooling is not implemented yet. The contract exists so route budgets, Core Web Vitals, build timing, hot API benchmarks, generated reports, public claims, and agent-facing diagnostics use the same evidence model.
+This page defines the planned performance contract for Lumina. Performance tooling is not implemented yet. The contract exists so route budgets, Core Web Vitals, build timing, hot API benchmarks, generated reports, public claims, and agent-facing diagnostics use the same evidence model.
 
 ## Research Notes
 
-NeedleStart should connect speed claims to current web performance guidance:
+Lumina should connect speed claims to current web performance guidance:
 
 - [web.dev Web Vitals](https://web.dev/articles/vitals) defines LCP, INP, and CLS thresholds for good user experience.
 - [Google Search Core Web Vitals](https://developers.google.com/search/docs/appearance/core-web-vitals) describes Core Web Vitals as real-world user experience metrics for loading, interactivity, and visual stability.
@@ -17,7 +17,7 @@ NeedleStart should connect speed claims to current web performance guidance:
 - [Lighthouse performance budgets](https://web.dev/articles/use-lighthouse-for-performance-budgets) show that budgets can track metric values plus resource size and count.
 - [Lighthouse variability](https://developers.google.com/web/tools/lighthouse/variability) explains why lab scores vary and why repeated runs and controlled environments matter.
 - [Vite performance guide](https://vite.dev/guide/performance) frames performance work around slow server starts, page loads, and builds.
-- [Vite production build guide](https://vite.dev/guide/build) documents the production build path that NeedleStart should not obscure.
+- [Vite production build guide](https://vite.dev/guide/build) documents the production build path that Lumina should not obscure.
 - [Vite build options](https://vite.dev/config/build-options) documents CSS code splitting, production source-map controls, minification, and build manifests that affect public payloads.
 - [React 19](https://react.dev/blog/2024/12/05/react-19) documents resource loading APIs such as `preload`, `preinit`, `preconnect`, and `prefetchDNS`.
 - [React Compiler](https://react.dev/learn/react-compiler) documents build-time automatic memoization.
@@ -37,7 +37,7 @@ NeedleStart should connect speed claims to current web performance guidance:
 
 | Surface | What to measure | Initial evidence |
 | --- | --- | --- |
-| Public HTML route | HTML size, JS size, CSS size, render mode, metadata/SEO status. | `.needle/perf.report.json`, route manifest, browser smoke test. |
+| Public HTML route | HTML size, JS size, CSS size, render mode, metadata/SEO status. | `.lumina/perf.report.json`, route manifest, browser smoke test. |
 | Interactive route | Hydration component count, route JS, route CSS, browser metrics. | Browser fixture, payload report, diagnostics. |
 | Streaming route | Time to first useful HTML, Suspense boundary behavior, hydration integrity. | Streaming fixture and browser test. |
 | Route chunks | Route JS chunks, async chunks, CSS chunks, preloaded chunks, and waterfall risk. | Chunk manifest snapshot and browser waterfall trace. |
@@ -50,7 +50,7 @@ NeedleStart should connect speed claims to current web performance guidance:
 
 ## Core Web Vitals Target
 
-NeedleStart should treat Core Web Vitals as public-page quality signals:
+Lumina should treat Core Web Vitals as public-page quality signals:
 
 | Metric | Planned target for public examples | Notes |
 | --- | --- | --- |
@@ -62,7 +62,7 @@ These are targets, not verified claims. Public docs must not claim examples meet
 
 ## Budget Types
 
-NeedleStart should support several budget kinds:
+Lumina should support several budget kinds:
 
 | Budget | Applies to | Example |
 | --- | --- | --- |
@@ -91,7 +91,7 @@ Exact default thresholds must be finalized with fixtures before implementation m
 Draft config:
 
 ```ts
-import { defineConfig } from "needlestart"
+import { defineConfig } from "lumina"
 
 export default defineConfig({
   performance: {
@@ -142,7 +142,7 @@ This is a target API. It must stay aligned with [Configuration Contract](config-
 
 ## Performance Report
 
-Planned `.needle/perf.report.json` shape:
+Planned `.lumina/perf.report.json` shape:
 
 ```json
 {
@@ -273,7 +273,7 @@ Do not compare hot API routes against normal API routes without explaining gener
 
 ## Lab And Field Data
 
-NeedleStart can generate lab evidence through local browser or benchmark fixtures. Field data depends on real user traffic and hosting conditions.
+Lumina can generate lab evidence through local browser or benchmark fixtures. Field data depends on real user traffic and hosting conditions.
 
 Docs must distinguish:
 
@@ -290,7 +290,7 @@ Real-user monitoring may be documented later as an optional app integration. It 
 
 Agents and CI should be able to:
 
-- Read `.needle/perf.report.json`.
+- Read `.lumina/perf.report.json`.
 - Identify budget failures by route ID.
 - Link performance diagnostics to source docs.
 - Suggest scoped remediation.
@@ -310,7 +310,7 @@ Agents and CI should be able to:
 
 ## Build Readiness
 
-Before NeedleStart makes public speed claims, it should have:
+Before Lumina makes public speed claims, it should have:
 
 - Performance report contract.
 - Budget config contract.

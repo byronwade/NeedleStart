@@ -3,12 +3,12 @@ import { existsSync, readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import {
   createGraphEdge,
-  needleCoreStatus,
+  luminaCoreStatus,
   type AdapterManifest,
   type CachePlan,
   type GraphEdge,
-  type NeedleApp,
-  type NeedleDiagnostic,
+  type LuminaApp,
+  type LuminaDiagnostic,
   type RenderMode,
   type RouteNode,
 } from "../packages/core/src/index";
@@ -50,7 +50,7 @@ describe("Phase 1 scaffold", () => {
 
   test("shared core types are available for future packages", () => {
     const renderMode: RenderMode = "static";
-    const app: NeedleApp = {
+    const app: LuminaApp = {
       name: "fixture",
       root: "/repo",
       routes: [],
@@ -62,8 +62,8 @@ describe("Phase 1 scaffold", () => {
       sourceFile: "app/page.tsx",
       renderMode,
     };
-    const diagnostic: NeedleDiagnostic = {
-      code: "NEEDLE_PLACEHOLDER",
+    const diagnostic: LuminaDiagnostic = {
+      code: "LUMINA_PLACEHOLDER",
       severity: "info",
       message: "Placeholder diagnostic shape.",
     };
@@ -75,9 +75,9 @@ describe("Phase 1 scaffold", () => {
       tags: ["home"],
     };
     const adapter: AdapterManifest = {
-      schemaVersion: "needle.adapter.v0",
+      schemaVersion: "lumina.adapter.v0",
       adapter: "bun",
-      package: "@needle/adapter-bun",
+      package: "@lumina/adapter-bun",
       runtime: { name: "bun" },
       capabilities: {},
       unsupported: [],
@@ -100,7 +100,7 @@ describe("Phase 1 scaffold", () => {
     expect(publicCache.staleWhileRevalidateSeconds).toBe(300);
     expect(adapter.runtime.name).toBe("bun");
     expect(edge.why).toContain("scaffold");
-    expect(needleCoreStatus.implementsRuntimeBehavior).toBe(false);
+    expect(luminaCoreStatus.implementsRuntimeBehavior).toBe(false);
   });
 
   test("agent playbooks stay under docs", () => {

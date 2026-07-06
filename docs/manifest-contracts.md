@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: framework contributors, runtime adapter authors, AI agents.
 
-Manifest contracts are the stable bridge between the compiler, runtime adapters, CLI, Needle Map, Agent Kernel, MCP, devtools, and tests.
+Manifest contracts are the stable bridge between the compiler, runtime adapters, CLI, Lumina Map, Agent Kernel, MCP, devtools, and tests.
 
 Shared diagnostic fields in manifests should follow [Diagnostics Contract](diagnostics-contract.md).
 
@@ -12,36 +12,36 @@ Shared diagnostic fields in manifests should follow [Diagnostics Contract](diagn
 
 | Manifest | Purpose |
 | --- | --- |
-| `.needle/routes.json` | Discovered routes. |
-| `.needle/render-manifest.json` | Render modes and cache metadata. |
-| `.needle/map.json` | Public app graph output. |
-| `.needle/graph.json` | Compiler and agent graph data. |
-| `.needle/seo.report.json` | SEO audit output. |
-| `.needle/perf.report.json` | Performance and budget output. Follows [Performance Contract](performance-contract.md). |
-| `.needle/context/*.ctx.json` | Route or surface context capsules for agents and tools. |
-| `.needle/context/agent-index.json` | Agent context index. |
-| `.needle/mutations.json` | Safe edit mutation log. |
-| `.needle/generated/*` | Generated runtime modules. |
+| `.lumina/routes.json` | Discovered routes. |
+| `.lumina/render-manifest.json` | Render modes and cache metadata. |
+| `.lumina/map.json` | Public app graph output. |
+| `.lumina/graph.json` | Compiler and agent graph data. |
+| `.lumina/seo.report.json` | SEO audit output. |
+| `.lumina/perf.report.json` | Performance and budget output. Follows [Performance Contract](performance-contract.md). |
+| `.lumina/context/*.ctx.json` | Route or surface context capsules for agents and tools. |
+| `.lumina/context/agent-index.json` | Agent context index. |
+| `.lumina/mutations.json` | Safe edit mutation log. |
+| `.lumina/generated/*` | Generated runtime modules. |
 | `dist/routes.manifest.json` | Deployment-oriented route manifest copy for adapters. |
 | `dist/render.manifest.json` | Deployment-oriented render manifest copy for adapters. |
 | `dist/seo.report.json` | Deployment-oriented SEO report copy for adapters. |
 | `dist/adapter.manifest.json` | Adapter capabilities. |
 | `dist/*` | Production build output. |
 
-The `.needle/*` files remain the source contracts for compiler, CLI, MCP, Agent Kernel, devtools, and tests. The `dist/*.manifest.json` and `dist/*.report.json` files listed above are deployment-oriented copies shaped for runtime adapters.
+The `.lumina/*` files remain the source contracts for compiler, CLI, MCP, Agent Kernel, devtools, and tests. The `dist/*.manifest.json` and `dist/*.report.json` files listed above are deployment-oriented copies shaped for runtime adapters.
 
 ## Routes Manifest Draft
 
-`.needle/routes.json` should be the source of truth for discovered route files after compilation. The detailed planned route grammar lives in [Routing Contract](routing-contract.md).
+`.lumina/routes.json` should be the source of truth for discovered route files after compilation. The detailed planned route grammar lives in [Routing Contract](routing-contract.md).
 
 Draft route manifest envelope:
 
 ```json
 {
-  "schemaVersion": "needle.routes.v0",
+  "schemaVersion": "lumina.routes.v0",
   "generatedAt": "2026-07-06T00:00:00.000Z",
   "source": {
-    "config": "needle.config.ts",
+    "config": "lumina.config.ts",
     "routeRoot": "app"
   },
   "routes": []
@@ -77,7 +77,7 @@ Performance report fields should follow [Performance Contract](performance-contr
 
 ## Performance And Delivery Fields
 
-`.needle/perf.report.json` should become the shared place for browser-delivery evidence that the compiler, adapters, CLI, docs, and agents can inspect.
+`.lumina/perf.report.json` should become the shared place for browser-delivery evidence that the compiler, adapters, CLI, docs, and agents can inspect.
 
 Planned route-level delivery fields:
 
@@ -161,10 +161,10 @@ Every generated JSON artifact should eventually use a predictable envelope:
 
 ```json
 {
-  "schemaVersion": "needle.routes.v0",
+  "schemaVersion": "lumina.routes.v0",
   "generatedAt": "2026-07-06T00:00:00.000Z",
   "source": {
-    "config": "needle.config.ts"
+    "config": "lumina.config.ts"
   }
 }
 ```

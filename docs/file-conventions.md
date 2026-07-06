@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, framework contributors, AI agents.
 
-This page documents the planned file and folder conventions for NeedleStart apps. These conventions are not implemented yet.
+This page documents the planned file and folder conventions for Lumina apps. These conventions are not implemented yet.
 
 For exact route parsing, route IDs, sorting, conflict diagnostics, and fixture requirements, see [Routing Contract](routing-contract.md).
 
@@ -14,7 +14,7 @@ Planned files:
 
 ```txt
 app/
-needle.config.ts
+lumina.config.ts
 package.json
 public/
 ```
@@ -79,7 +79,7 @@ API files should export HTTP method handlers such as `GET`, `POST`, `PUT`, `PATC
 Planned render mode export:
 
 ```ts
-import { staticPage } from "needlestart"
+import { staticPage } from "lumina"
 
 export const render = staticPage()
 ```
@@ -91,16 +91,16 @@ Render modes should compile into the render manifest rather than being rediscove
 Planned metadata export:
 
 ```ts
-import { defineMeta } from "needlestart"
+import { defineMeta } from "lumina"
 
 export const meta = defineMeta({
   title: "Pricing",
-  description: "Pricing for a NeedleStart app.",
+  description: "Pricing for a Lumina app.",
   canonical: "/pricing",
 })
 ```
 
-Public pages should fail SEO checks when required metadata is missing once `needle seo` exists.
+Public pages should fail SEO checks when required metadata is missing once `lumina seo` exists.
 
 ## Contract Files
 
@@ -111,7 +111,7 @@ components/ProductCard.contract.ts
 app/pricing/page.contract.ts
 ```
 
-Contract files are planned as high-confidence semantic inputs for Needle Map. They should describe relationships that are too important for agents to infer from imports alone.
+Contract files are planned as high-confidence semantic inputs for Lumina Map. They should describe relationships that are too important for agents to infer from imports alone.
 
 ## Special Files
 
@@ -121,14 +121,14 @@ Planned special files:
 | --- | --- | --- |
 | `app/not-found.tsx` | Planned | Route-level or app-level 404 UI. |
 | `app/error.tsx` | Planned | Route-level or app-level error UI. |
-| `needle.config.ts` | Planned | Framework config. |
-| `AGENTS.md` | Planned app-local generated artifact | Agent operating guide for a user app. This does not describe the hand-maintained NeedleStart repository root `AGENTS.md`. |
+| `lumina.config.ts` | Planned | Framework config. |
+| `AGENTS.md` | Planned app-local generated artifact | Agent operating guide for a user app. This does not describe the hand-maintained Lumina repository root `AGENTS.md`. |
 | `llms.txt` | Planned app-local or public-docs artifact | Compact AI-readable project summary. |
 | `llms-full.txt` | Planned app-local or public-docs artifact | Full AI-readable project context. |
 
 ## Generated Files
 
-Generated files are planned under `.needle/` and `dist/`. They must not be edited manually.
+Generated files are planned under `.lumina/` and `dist/`. They must not be edited manually.
 
 See [API Reference](api-reference.md), [Manifest Contracts](manifest-contracts.md), and [Routing Contract](routing-contract.md) for planned generated file responsibilities.
 
@@ -139,7 +139,7 @@ When implemented, file convention output must:
 - Normalize paths across operating systems.
 - Sort routes deterministically.
 - Ignore route groups in URL paths.
-- Preserve enough source information for Needle Map and agent context.
+- Preserve enough source information for Lumina Map and agent context.
 - Emit helpful diagnostics for invalid or conflicting routes.
 - Keep route IDs stable across operating systems and independent of absolute local paths.
 - Snapshot route order, parameters, and diagnostics in route-discovery fixtures once implementation exists.

@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: first-time contributors, maintainers, AI agents.
 
-This page gives a focused path for a first contribution. NeedleStart is in Phase 1 scaffold, so first contributions should keep framework behavior clearly separated from scaffold and documentation work.
+This page gives a focused path for a first contribution. Lumina is in Phase 1 scaffold, so first contributions should keep framework behavior clearly separated from scaffold and documentation work.
 
 ## Before You Start
 

@@ -21,7 +21,7 @@ The `0.0.0` versions in root and package manifests are private scaffold placehol
 
 ## Versioning
 
-NeedleStart should use semantic versioning once packages are published.
+Lumina should use semantic versioning once packages are published.
 
 See [Versioning And Upgrades](versioning-and-upgrades.md) for package, docs, manifest, API, deprecation, and upgrade-guide policy.
 

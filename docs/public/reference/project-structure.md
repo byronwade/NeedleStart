@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, framework contributors, AI agents.
 
-NeedleStart apps are planned to use a small application root, file-based routes under `app/`, generated framework artifacts under `.needle/`, and production output under `dist/`.
+Lumina apps are planned to use a small application root, file-based routes under `app/`, generated framework artifacts under `.lumina/`, and production output under `dist/`.
 
 The repository is in Phase 1 scaffold. This page describes target application structure and scaffolded repository structure, not verified generated app output.
 
@@ -19,7 +19,7 @@ my-app/
     page.tsx
     api/
       health.ts
-  needle.config.ts
+  lumina.config.ts
   package.json
   public/
 ```
@@ -30,9 +30,9 @@ my-app/
 | `app/page.tsx` | Home page route. | Planned |
 | `app/layout.tsx` | Root layout for nested pages. | Planned |
 | `app/api/*` | API route handlers. | Planned |
-| `needle.config.ts` | Framework config. | Planned |
+| `lumina.config.ts` | Framework config. | Planned |
 | `public/` | Static assets copied to output. | Planned |
-| `.needle/` | Generated route, render, SEO, graph, and agent artifacts. | Planned |
+| `.lumina/` | Generated route, render, SEO, graph, and agent artifacts. | Planned |
 | `dist/` | Built production output. | Planned |
 
 ## Generated Files
@@ -40,7 +40,7 @@ my-app/
 Planned generated files:
 
 ```txt
-.needle/
+.lumina/
   routes.json
   render-manifest.json
   map.json
@@ -60,13 +60,13 @@ dist/
   *
 ```
 
-The generated artifact names are `.needle/routes.json`, `.needle/render-manifest.json`, `.needle/map.json`, `.needle/graph.json`, `.needle/seo.report.json`, `.needle/perf.report.json`, `.needle/context/*.ctx.json`, `.needle/context/agent-index.json`, `.needle/mutations.json`, `.needle/generated/*`, `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, `dist/adapter.manifest.json`, and `dist/*`. The `.needle/*` files are canonical compiler and agent contracts; the named `dist/*` files are deployment-oriented adapter copies.
+The generated artifact names are `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/graph.json`, `.lumina/seo.report.json`, `.lumina/perf.report.json`, `.lumina/context/*.ctx.json`, `.lumina/context/agent-index.json`, `.lumina/mutations.json`, `.lumina/generated/*`, `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, `dist/adapter.manifest.json`, and `dist/*`. The `.lumina/*` files are canonical compiler and agent contracts; the named `dist/*` files are deployment-oriented adapter copies.
 
 Generated files must be deterministic and must not be edited manually.
 
 ## Repository Structure
 
-NeedleStart itself is scaffolded as a Bun workspace with package workspaces under `packages/`, adapter package workspaces under `packages/adapters/`, repository scripts under `scripts/`, tests under `tests/`, and documentation under `docs/`.
+Lumina itself is scaffolded as a Bun workspace with package workspaces under `packages/`, adapter package workspaces under `packages/adapters/`, repository scripts under `scripts/`, tests under `tests/`, and documentation under `docs/`.
 
 The planned example and large-fixture directories, including `examples/` and `playgrounds/`, do not exist yet. Public docs may name them as planned paths, but they must not describe those directories as scaffolded, runnable, or verified until the files, commands, tests, and example status labels exist.
 

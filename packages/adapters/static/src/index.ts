@@ -1,5 +1,5 @@
 export const needleAdapterStaticStatus = {
-  name: "@needle/adapter-static",
+  name: "@lumina/adapter-static",
   phase: "scaffold",
   implementsRuntimeBehavior: false,
 } as const;

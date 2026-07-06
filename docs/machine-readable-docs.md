@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: AI agents, maintainers, framework contributors.
 
-NeedleStart should make documentation consumable by humans and AI agents. Machine-readable docs are planned outputs, not implemented behavior.
+Lumina should make documentation consumable by humans and AI agents. Machine-readable docs are planned outputs, not implemented behavior.
 
 ## Planned Outputs
 
@@ -14,31 +14,33 @@ NeedleStart should make documentation consumable by humans and AI agents. Machin
 | `llms.txt` | Compact public docs or app-local summary for AI tools. | Docs or agent artifact; not a production runtime bundle |
 | `llms-full.txt` | Full AI-readable public docs or app-local context. | Docs or agent artifact; not a production runtime bundle |
 | `docs-index.json` | Index of docs pages, status, audience, tags, and source paths. | Public docs artifact only |
-| `.needle/routes.json` | Stable route manifest for apps. | Compiler source contract; adapter output consumes deployment-shaped `dist/*` copies |
-| `.needle/render-manifest.json` | Render modes and cache metadata for apps. | Compiler source contract; adapter output consumes deployment-shaped `dist/*` copies |
-| `.needle/map.json` | Queryable Needle Map output for apps. | Compiler and agent source contract; not a production runtime bundle |
-| `.needle/graph.json` | Compiler and agent graph data for apps. | Compiler and agent source contract; not a production runtime bundle |
-| `.needle/seo.report.json` | SEO audit output for apps. | Compiler and audit source contract; adapter output may copy report data into `dist/seo.report.json` |
-| `.needle/perf.report.json` | Performance and budget output for apps. | Compiler and audit source contract; not a production runtime bundle |
-| `.needle/context/*.ctx.json` | Route or surface context capsules for apps. | Agent source contract; not a production runtime bundle |
-| `.needle/context/agent-index.json` | Index of generated agent context. | Agent source contract; not a production runtime bundle |
-| `.needle/mutations.json` | Safe edit mutation log for apps. | Agent and safe-edit source contract; not a production runtime bundle |
-| `.needle/generated/*` | Generated runtime modules for apps. | May feed production build output, but not agent metadata |
+| `.lumina/routes.json` | Stable route manifest for apps. | Compiler source contract; adapter output consumes deployment-shaped `dist/*` copies |
+| `.lumina/render-manifest.json` | Render modes and cache metadata for apps. | Compiler source contract; adapter output consumes deployment-shaped `dist/*` copies |
+| `.lumina/map.json` | Queryable Lumina Map output for apps. | Compiler and agent source contract; not a production runtime bundle |
+| `.lumina/map.readable.json` | Human- and agent-oriented Lumina Map export with labels, summaries, and source-doc links. | Agent and docs source contract; not a production runtime bundle |
+| `.lumina/map.summary.md` | Markdown summary of routes, owners, risk surfaces, generated files, and recommended checks. | Agent and docs source contract; not a production runtime bundle |
+| `.lumina/graph.json` | Compiler and agent graph data for apps. | Compiler and agent source contract; not a production runtime bundle |
+| `.lumina/seo.report.json` | SEO audit output for apps. | Compiler and audit source contract; adapter output may copy report data into `dist/seo.report.json` |
+| `.lumina/perf.report.json` | Performance and budget output for apps. | Compiler and audit source contract; not a production runtime bundle |
+| `.lumina/context/*.ctx.json` | Route or surface context capsules for apps. | Agent source contract; not a production runtime bundle |
+| `.lumina/context/agent-index.json` | Index of generated agent context. | Agent source contract; not a production runtime bundle |
+| `.lumina/mutations.json` | Safe edit mutation log for apps. | Agent and safe-edit source contract; not a production runtime bundle |
+| `.lumina/generated/*` | Generated runtime modules for apps. | May feed production build output, but not agent metadata |
 | `dist/routes.manifest.json` | Deployment-oriented route manifest copy for adapters. | Adapter artifact |
 | `dist/render.manifest.json` | Deployment-oriented render manifest copy for adapters. | Adapter artifact |
 | `dist/seo.report.json` | Deployment-oriented SEO report copy for adapters. | Adapter artifact |
 | `dist/adapter.manifest.json` | Adapter capabilities and deployment output metadata. | Adapter artifact |
 | `dist/*` | Production build output. | Yes |
 
-The root `AGENTS.md` in this repository is not generated. It remains the authoritative hand-maintained operating guide for contributors and AI agents working on NeedleStart itself. Generated `AGENTS.md` files are planned only for user applications created or managed by NeedleStart.
+The root `AGENTS.md` in this repository is not generated. It remains the authoritative hand-maintained operating guide for contributors and AI agents working on Lumina itself. Generated `AGENTS.md` files are planned only for user applications created or managed by Lumina.
 
-Canonical generated artifact names must stay aligned with [Manifest Contracts](manifest-contracts.md), [API Reference](api-reference.md), [Runtime Contract](runtime-contract.md), [Agent Kernel](agent-kernel.md), and public reference docs. The `.needle/*` files are compiler and agent source contracts. The named `dist/*` files are adapter-shaped deployment outputs.
+Canonical generated artifact names must stay aligned with [Manifest Contracts](manifest-contracts.md), [API Reference](api-reference.md), [Runtime Contract](runtime-contract.md), [Agent Kernel](agent-kernel.md), and public reference docs. The `.lumina/*` files are compiler and agent source contracts. The named `dist/*` files are adapter-shaped deployment outputs. The readable map exports are planned documentation products: they should explain graph evidence without becoming production runtime inputs.
 
 ## `docs-index.json` Draft
 
 ```json
 {
-  "schemaVersion": "needle.docs-index.v0",
+  "schemaVersion": "lumina.docs-index.v0",
   "docsVersion": "unreleased",
   "generatedAt": "2026-07-06T00:00:00.000Z",
   "pages": [

@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, framework contributors, AI agents.
 
-NeedleStart examples are planned but not implemented yet. This page explains the public rules for official examples and starter templates.
+Lumina examples are planned but not implemented yet. This page explains the public rules for official examples and starter templates.
 
 ## Planned Examples
 
@@ -37,8 +37,8 @@ No example in this repository exists or is verified yet.
 Planned examples may eventually be used by the create command:
 
 ```bash
-bun create needle my-app
-bun create needle my-blog --example blog-seo
+bun create lumina my-app
+bun create lumina my-blog --example blog-seo
 ```
 
 These commands are not implemented yet.
@@ -49,7 +49,7 @@ A verified example must include:
 
 - README with status, purpose, prerequisites, commands, expected output, and limitations.
 - Tests or fixture assertions.
-- Expected `.needle/*` artifacts.
+- Expected `.lumina/*` artifacts.
 - Public HTML or HTTP assertions when relevant.
 - Links to the contracts it exercises.
 - Evidence from the current repository state.

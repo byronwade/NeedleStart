@@ -1,5 +1,5 @@
 export const needleAdapterNodeStatus = {
-  name: "@needle/adapter-node",
+  name: "@lumina/adapter-node",
   phase: "scaffold",
   implementsRuntimeBehavior: false,
 } as const;

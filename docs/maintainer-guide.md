@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: maintainers, area reviewers, open source program reviewers.
 
-This guide collects the operational responsibilities that keep NeedleStart honest as it moves from planning to implementation.
+This guide collects the operational responsibilities that keep Lumina honest as it moves from planning to implementation.
 
 Use `docs/operating-cadence.md` for planned active-development, phase-boundary, release, and AI-agent review rhythms.
 
@@ -24,7 +24,7 @@ Use `docs/operating-cadence.md` for planned active-development, phase-boundary, 
 | --- | --- | --- |
 | Compiler and IR | `docs/compiler-ir.md`, `docs/manifest-contracts.md` | Determinism, schema versions, stable manifests |
 | Runtime and adapters | `docs/runtime-contract.md`, `docs/adapters.md`, `docs/deployment.md` | Small runtime, adapter boundaries, no Bun leakage |
-| Needle Map | `docs/needle-map.md`, `docs/risk-mitigation.md` | Edge confidence, source, why, safety limits |
+| Lumina Map | `docs/lumina-map.md`, `docs/risk-mitigation.md` | Edge confidence, source, why, safety limits |
 | Agent Kernel and MCP | `docs/agent-kernel.md`, `docs/mcp-server.md`, `docs/safe-edit-transactions.md` | Stable JSON, safe writes, rollback, no production metadata |
 | SEO and performance | `docs/seo-engine.md`, `docs/performance.md`, `docs/benchmarks.md` | Public HTML, SEO reports, evidence-backed claims |
 | Governance and release | `GOVERNANCE.md`, `docs/release.md`, `SECURITY.md` | Review process, supported versions, security intake |

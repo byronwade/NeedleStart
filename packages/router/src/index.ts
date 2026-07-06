@@ -1,5 +1,5 @@
 export const needleRouterStatus = {
-  name: "@needle/router",
+  name: "@lumina/router",
   phase: "scaffold",
   implementsRuntimeBehavior: false,
 } as const;

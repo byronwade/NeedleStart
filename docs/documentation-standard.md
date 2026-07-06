@@ -4,18 +4,18 @@ Status: Planned.
 
 Audience: documentation contributors, maintainers, AI agents.
 
-NeedleStart should have documentation quality comparable to a mature framework. That means the docs must help a new developer start quickly, help an experienced developer find exact API details, and help an agent distinguish implemented behavior from planned behavior.
+Lumina should have documentation quality comparable to a mature framework. That means the docs must help a new developer start quickly, help an experienced developer find exact API details, and help an agent distinguish implemented behavior from planned behavior.
 
-This standard is inspired by mature framework docs that separate getting started material, task guides, API reference, and architecture notes. NeedleStart should use the same separation while remaining honest about the current scaffold status.
+This standard is inspired by mature framework docs that separate getting started material, task guides, API reference, and architecture notes. Lumina should use the same separation while remaining honest about the current scaffold status.
 
 ## Documentation Lanes
 
-NeedleStart docs should be organized into these lanes:
+Lumina docs should be organized into these lanes:
 
 1. Getting Started: the fastest path from zero to a working app.
 2. Guides: task-focused walkthroughs for common jobs.
 3. API Reference: exact technical contracts for commands, config, helpers, file conventions, generated files, and JSON output.
-4. Concepts: durable explanations of rendering, routing, SEO, Needle Map, Agent Kernel, adapters, and safe edits.
+4. Concepts: durable explanations of rendering, routing, SEO, Lumina Map, Agent Kernel, adapters, and safe edits.
 5. Architecture: internal design, package boundaries, compiler/runtime contracts, and decision records.
 6. Contributing: how humans and agents safely change the repository.
 
@@ -160,7 +160,7 @@ When the public docs site exists, each public page should include frontmatter eq
 
 ```yaml
 title: Routing
-description: File-based routing conventions in NeedleStart.
+description: File-based routing conventions in Lumina.
 status: planned
 audience:
   - app developers
@@ -177,7 +177,7 @@ Do not add frontmatter until the docs site parser exists or a static-site direct
 - Link from prose pages to exact reference pages.
 - Never ask agents to rely on inferred behavior when a manifest, schema, or contract should exist.
 - Generated app-local or public-docs agent artifacts such as app-local `AGENTS.md`, `llms.txt`, `llms-full.txt`, and `docs-index.json` must not include secrets.
-- Canonical `.needle/*` compiler and agent artifacts and named `dist/*` deployment artifacts must stay aligned across manifest, runtime, agent-kernel, machine-readable, API, and public reference docs.
+- Canonical `.lumina/*` compiler and agent artifacts and named `dist/*` deployment artifacts must stay aligned across manifest, runtime, agent-kernel, machine-readable, API, and public reference docs.
 
 ## Benchmark Claim Rules
 
@@ -209,18 +209,18 @@ Use `docs/docs-maintenance-checklist.md` before finishing changes that affect do
 
 ## Reference Coverage Target
 
-Before the first public prototype, NeedleStart should have reference pages for:
+Before the first public prototype, Lumina should have reference pages for:
 
 - CLI commands.
-- `needle.config.ts`.
+- `lumina.config.ts`.
 - Project structure and file conventions.
 - Route conventions.
 - Render modes.
 - Metadata and SEO APIs.
 - API route conventions.
 - Hot API schema path.
-- Generated `.needle/*` and `dist/*` artifacts.
-- Needle Map JSON shape and query APIs.
+- Generated `.lumina/*` and `dist/*` artifacts.
+- Lumina Map JSON shape and query APIs.
 - Agent context JSON shape.
 - MCP tools and resources.
 - Adapter manifests.
@@ -228,7 +228,7 @@ Before the first public prototype, NeedleStart should have reference pages for:
 
 ## Guide Coverage Target
 
-Before the first public prototype, NeedleStart should have guides for:
+Before the first public prototype, Lumina should have guides for:
 
 - Creating an app.
 - Building static pages.
@@ -237,7 +237,7 @@ Before the first public prototype, NeedleStart should have guides for:
 - Creating API routes.
 - Creating hot API routes.
 - Inspecting routes.
-- Reading Needle Map output.
+- Reading Lumina Map output.
 - Running affected checks.
 - Using agent context.
 - Running the MCP server.

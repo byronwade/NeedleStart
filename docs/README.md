@@ -3,7 +3,7 @@
 Status: Scaffolded.
 Audience: all contributors, maintainers, AI agents.
 
-This directory is the source of truth for NeedleStart planning, architecture, roadmap, and future implementation tasks.
+This directory is the source of truth for Lumina planning, architecture, roadmap, and future implementation tasks.
 
 ## Start Here
 
@@ -12,7 +12,6 @@ This directory is the source of truth for NeedleStart planning, architecture, ro
 - [Getting Started](getting-started.md): current status and target onboarding flow.
 - [Roadmap](roadmap.md): complete phase plan.
 - [Phase 1 Build Plan](phase-1-build-plan.md): concrete monorepo scaffold path and verification expectations.
-- [Lumina Rename And Documentation Overhaul Plan](superpowers/plans/2026-07-06-lumina-rename-documentation.md): approval-gated plan for the rename and Alpha documentation upgrade.
 - [Product Build Readiness](product-build-readiness.md): documentation and evidence gates before full product build work.
 - [Versioning And Upgrades](versioning-and-upgrades.md): package, docs, manifest, API, and upgrade policy.
 - [Documentation Standard](documentation-standard.md): docs information architecture, status labels, and page quality bar.
@@ -36,7 +35,7 @@ This directory is the source of truth for NeedleStart planning, architecture, ro
 - [CLI Reference](cli.md): planned `needle` command reference.
 - [CLI JSON Contract](cli-json-contract.md): planned `--json` envelope, diagnostics, and exit-code policy.
 - [Diagnostics Contract](diagnostics-contract.md): planned diagnostic codes, severity values, locations, remediations, docs links, and JSON behavior.
-- [Configuration Reference](config.md): planned `needle.config.ts` reference.
+- [Configuration Reference](config.md): planned `lumina.config.ts` reference.
 - [Configuration Contract](config-contract.md): planned config loading, validation, env handling, and normalized output rules.
 - [Adapter Contract](adapter-contract.md): planned Bun, Node, and static adapter inputs, outputs, manifests, capabilities, and tests.
 - [Routing](routing.md): planned route conventions.
@@ -63,7 +62,7 @@ This directory is the source of truth for NeedleStart planning, architecture, ro
 - [Adapter Contract](adapter-contract.md): planned adapter manifests, deployment output, health endpoints, environment variables, and compatibility evidence.
 - [Agent Kernel](agent-kernel.md): agent context, safe edits, and generated agent files.
 - [Safe Edit Transactions](safe-edit-transactions.md): transaction engine, risk tiers, dry runs, mutation logs, and undo.
-- [Needle Map](needle-map.md): graph model, nodes, edges, and queries.
+- [Lumina Map](lumina-map.md): graph model, nodes, edges, and queries.
 - [Migration Tooling](migration.md): migration commands, contract stubs, and reports.
 - [Risk Mitigation](risk-mitigation.md): mitigation plan for semantic graph, scope, adoption, Bun perception, and safe edits.
 - [Speed Strategy](speed-strategy.md): whole-system speed principles, surfaces, gates, and evidence rules.

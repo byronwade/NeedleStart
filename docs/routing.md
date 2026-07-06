@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, framework contributors, AI agents.
 
-NeedleStart plans to use file-based routing under `app/`.
+Lumina plans to use file-based routing under `app/`.
 
 For the exact planned route-discovery rules, route IDs, diagnostics, sorting, and fixture expectations, see [Routing Contract](routing-contract.md).
 

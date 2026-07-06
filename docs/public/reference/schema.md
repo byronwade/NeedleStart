@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, AI agents.
 
-NeedleStart plans a small schema DSL for API route validation, hot API serializers, and generated API documentation. The exact planned contract lives in [Schema Contract](../../schema-contract.md).
+Lumina plans a small schema DSL for API route validation, hot API serializers, and generated API documentation. The exact planned contract lives in [Schema Contract](../../schema-contract.md).
 
 ## Planned Helpers
 
@@ -23,7 +23,7 @@ Initial helpers:
 ## Planned API Route Usage
 
 ```ts
-import { schema } from "needlestart"
+import { schema } from "lumina"
 
 export const params = schema.object({
   id: schema.uint64(),

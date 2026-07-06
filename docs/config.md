@@ -4,14 +4,14 @@ Status: Planned.
 
 Audience: app developers, framework contributors, adapter maintainers, AI agents.
 
-NeedleStart configuration is planned to live in `needle.config.ts`.
+Lumina configuration is planned to live in `lumina.config.ts`.
 
 The deeper loading, validation, environment, normalized-config, and generated-output rules are defined in [Configuration Contract](config-contract.md).
 
 ## Planned Minimal Config
 
 ```ts
-import { defineConfig } from "needlestart"
+import { defineConfig } from "lumina"
 
 export default defineConfig({
   runtime: "bun",
@@ -19,7 +19,7 @@ export default defineConfig({
 })
 ```
 
-`runtime` describes the default local execution target and compatibility target for generated server code. `adapter` selects the production output package: `bun` maps to `@needle/adapter-bun`, `node` maps to `@needle/adapter-node`, and `static` maps to `@needle/adapter-static`. Resolved adapter output should be reported in `dist/adapter.manifest.json` with `runtime.name`.
+`runtime` describes the default local execution target and compatibility target for generated server code. `adapter` selects the production output package: `bun` maps to `@lumina/adapter-bun`, `node` maps to `@lumina/adapter-node`, and `static` maps to `@lumina/adapter-static`. Resolved adapter output should be reported in `dist/adapter.manifest.json` with `runtime.name`.
 
 ## Planned Config Areas
 

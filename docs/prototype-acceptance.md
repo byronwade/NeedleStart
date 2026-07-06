@@ -5,12 +5,12 @@ Audience: maintainers, framework contributors, product reviewers.
 
 The first public prototype should prove the wedge end to end.
 
-Scope note: this is broader than the first working slice in `docs/risk-mitigation.md`. The working slice is intended to prove create app, SEO-safe pages, `@needle/adapter-bun` serving, basic map, agent inspection, and safe metadata edit before the public prototype expands into API routes, hot API, read-only MCP tools, adapter-aware server output, and documented Node/static paths.
+Scope note: this is broader than the first working slice in `docs/risk-mitigation.md`. The working slice is intended to prove create app, SEO-safe pages, `@lumina/adapter-bun` serving, basic map, agent inspection, and safe metadata edit before the public prototype expands into API routes, hot API, read-only MCP tools, adapter-aware server output, and documented Node/static paths.
 
 ## Demo Script
 
 ```bash
-bun create needle demo
+bun create lumina demo
 cd demo
 bun run dev
 ```
@@ -24,18 +24,18 @@ Browser should show:
 Then:
 
 ```bash
-needle routes
-needle seo
-needle map route /
-needle agent context --route / --json
-needle mcp
+lumina routes
+lumina seo
+lumina map route /
+lumina agent context --route / --json
+lumina mcp
 ```
 
 Then ask an AI agent:
 
 ```txt
 Add a static /enterprise page with SEO metadata, hero, feature grid,
-FAQ structured data, and a CTA to /contact. Use Needle tools.
+FAQ structured data, and a CTA to /contact. Use Lumina tools.
 Run affected checks.
 ```
 
@@ -55,8 +55,8 @@ The safe edit flow should:
 1. Dry-run the metadata change.
 2. Return a `SafeEditTransaction`.
 3. Apply only after checks pass.
-4. Write `.needle/mutations.json`.
-5. Allow `needle edit undo <mutationId>`.
+4. Write `.lumina/mutations.json`.
+5. Allow `lumina edit undo <mutationId>`.
 
 Then:
 
@@ -65,7 +65,7 @@ bun run build
 bun run start
 ```
 
-Production output from `@needle/adapter-bun` should serve:
+Production output from `@lumina/adapter-bun` should serve:
 
 - `/`
 - `/enterprise`
@@ -79,11 +79,11 @@ The prototype is credible when it can:
 
 - Create a React app.
 - Render SEO-safe pages.
-- Serve static and SSR routes through `@needle/adapter-bun`.
+- Serve static and SSR routes through `@lumina/adapter-bun`.
 - Run API routes.
 - Run a hot API route.
 - Generate a route manifest.
-- Generate a Needle Map.
+- Generate a Lumina Map.
 - Generate route context for agents.
 - Expose read-only MCP tools.
 - Apply a safe metadata edit.

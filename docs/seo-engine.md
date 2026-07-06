@@ -3,7 +3,7 @@
 Status: Planned.
 Audience: app developers, framework contributors, SEO reviewers.
 
-NeedleStart is SEO-first. Public routes should render meaningful HTML by default and expose their indexability through machine-readable reports.
+Lumina is SEO-first. Public routes should render meaningful HTML by default and expose their indexability through machine-readable reports.
 
 The planned metadata API, `generateMeta()` behavior, merge rules, sitemap output, robots output, structured data behavior, diagnostic severity, manifest fields, security rules, and fixture requirements are defined in [SEO Contract](seo-contract.md).
 
@@ -27,7 +27,7 @@ No SEO archaeology. Every route tells you whether it can be crawled, indexed, sh
 This API is planned and not implemented yet.
 
 ```ts
-import { defineMeta } from "needlestart"
+import { defineMeta } from "lumina"
 
 export const meta = defineMeta({
   title: "Pricing | Acme",
@@ -68,7 +68,7 @@ Dynamic metadata is planned through `generateMeta()` for routes that need params
 - SEO audit CLI.
 - Crawler preview.
 - Stable SEO diagnostics.
-- Generated `.needle/seo.report.json`.
+- Generated `.lumina/seo.report.json`.
 - Diagnostic severity values follow the shared `info`, `warning`, and `error` vocabulary.
 
 ## SEO Audit Output
@@ -94,9 +94,9 @@ Dynamic metadata is planned through `generateMeta()` for routes that need params
 Planned commands:
 
 ```bash
-needle seo
-needle seo --json
-needle seo --route /pricing
+lumina seo
+lumina seo --json
+lumina seo --route /pricing
 ```
 
 ## Required Checks

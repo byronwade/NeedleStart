@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
-  <title id="title">NeedleStart safe edit transaction</title>
+  <title id="title">Lumina safe edit transaction</title>
   <desc id="desc">A professional process diagram showing a validated edit moving through preview, graph update, affected checks, mutation log, and rollback.</desc>
   <defs>
     <style>
@@ -72,7 +72,7 @@
   <text class="t" x="408" y="452">3 routes</text>
   <text class="t" x="408" y="478">6 tests</text>
   <text class="t" x="408" y="504">1 owner</text>
-  <text class="small" x="408" y="530">from .needle/map.json</text>
+  <text class="small" x="408" y="530">from .lumina/map.json</text>
 
   <rect class="card shadow" x="690" y="385" width="260" height="168" rx="18"/>
   <text class="h" x="718" y="420">Check result</text>
@@ -81,5 +81,5 @@
   <rect x="862" y="444" width="60" height="34" rx="9" fill="#eef6ff" stroke="#bfdbfe"/><text class="t" x="879" y="466">1 review</text>
   <text class="small" x="718" y="526">Result is returned as stable JSON.</text>
 
-  <text class="code" x="70" y="612">$ needle edit route /pricing --set meta.title="Pricing | Acme" --dry-run</text>
+  <text class="code" x="70" y="612">$ lumina edit route /pricing --set meta.title="Pricing | Acme" --dry-run</text>
 </svg>

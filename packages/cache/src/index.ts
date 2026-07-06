@@ -1,5 +1,5 @@
 export const needleCacheStatus = {
-  name: "@needle/cache",
+  name: "@lumina/cache",
   phase: "scaffold",
   implementsRuntimeBehavior: false,
 } as const;

@@ -5,7 +5,7 @@ Audience: AI agents, security reviewers, framework contributors.
 
 This page describes the planned safe edit transaction model. Safe edit behavior is not implemented yet.
 
-Safe edits are the highest-trust part of NeedleStart's agent story. One silent breaking edit damages the whole product.
+Safe edits are the highest-trust part of Lumina's agent story. One silent breaking edit damages the whole product.
 
 Every write operation from CLI or MCP must use the same transaction engine.
 
@@ -70,7 +70,7 @@ Apply only if dry run passes or an explicit override is present.
 Apply must:
 
 - Write files.
-- Append to `.needle/mutations.json`.
+- Append to `.lumina/mutations.json`.
 - Trigger incremental rebuild.
 - Emit a mutation ID.
 
@@ -94,10 +94,10 @@ Post-apply verification must:
 ## Required Commands
 
 ```bash
-needle edit route /pricing --set meta.title="Pricing | Acme" --dry-run
-needle edit route /pricing --set meta.title="Pricing | Acme"
-needle edit transaction <mutationId>
-needle edit undo <mutationId>
+lumina edit route /pricing --set meta.title="Pricing | Acme" --dry-run
+lumina edit route /pricing --set meta.title="Pricing | Acme"
+lumina edit transaction <mutationId>
+lumina edit undo <mutationId>
 ```
 
 ## MCP Requirements

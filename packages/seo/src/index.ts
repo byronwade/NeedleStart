@@ -1,5 +1,5 @@
 export const needleSeoStatus = {
-  name: "@needle/seo",
+  name: "@lumina/seo",
   phase: "scaffold",
   implementsRuntimeBehavior: false,
 } as const;

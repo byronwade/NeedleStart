@@ -6,13 +6,13 @@ Audience: maintainers, contributors, AI agents, future website visitors.
 
 Scope: target product direction, not implementation evidence.
 
-NeedleStart exists because the next generation of web frameworks must serve both humans and AI agents.
+Lumina exists because the next generation of web frameworks must serve both humans and AI agents.
 
 The framework should make applications faster to ship, easier to audit, safer to modify, and better at exposing their own structure.
 
 ## One-Sentence Pitch
 
-NeedleStart is an app-graph-native, SEO-first React framework for humans and AI agents, with a semantic map of every route, component, API, schema, test, cache, and content relationship.
+Lumina is an app-graph-native, SEO-first React framework for humans and AI agents, with a semantic map of every route, component, API, schema, test, cache, and content relationship.
 
 ## The Enemy
 
@@ -30,7 +30,7 @@ The enemy is the large React application that becomes:
 
 ## Market Promise
 
-NeedleStart should let teams:
+Lumina should let teams:
 
 - Build with familiar React framework ergonomics.
 - Get route-level type safety.
@@ -48,9 +48,9 @@ Short form:
 - Run through the Bun adapter path when server execution is needed.
 - Let agents inspect, plan, and safely edit through a native semantic graph instead of searching the repo.
 
-## What NeedleStart Should Own
+## What Lumina Should Own
 
-NeedleStart should own the category of app-graph-native, SEO-first React applications for humans and AI agents.
+Lumina should own the category of app-graph-native, SEO-first React applications for humans and AI agents.
 
 The core bet is that agents will become normal contributors to large codebases. A framework that provides a semantic app graph, safe edit APIs, affected checks, and MCP tools will be easier for agents and humans to operate than a framework that only provides file routing and rendering.
 
@@ -58,7 +58,7 @@ The core bet is that agents will become normal contributors to large codebases. 
 
 ### Agent-Safe Workflows
 
-NeedleStart is designed to give agents useful context and safe actions:
+Lumina is designed to give agents useful context and safe actions:
 
 - Route context capsules.
 - Related files.
@@ -74,7 +74,7 @@ Public pages should render meaningful HTML by default. The framework should make
 
 ### Graph-Aware
 
-Needle Map should answer:
+Lumina Map should answer:
 
 - What uses this?
 - What does this use?
@@ -113,13 +113,13 @@ No SEO archaeology. Every public route ships meaningful HTML with explicit metad
 
 Your framework should be the map, not the maze. Agents can inspect, plan changes, run affected checks, and apply safe edits through structured tools.
 
-### Needle Map Promise
+### Lumina Map Promise
 
-Needle Map should make impact questions fast to answer once implementation and benchmarks prove the graph path: what uses this, what does this use, what breaks if this changes, and which tests, SEO surfaces, cache tags, and owners are affected.
+Lumina Map should make impact questions fast to answer once implementation and benchmarks prove the graph path: what uses this, what does this use, what breaks if this changes, and which tests, SEO surfaces, cache tags, and owners are affected.
 
-## What NeedleStart Is Not
+## What Lumina Is Not
 
-NeedleStart is not:
+Lumina is not:
 
 - A clone of Next.js.
 - A custom bundler project at the start.
@@ -132,11 +132,11 @@ NeedleStart is not:
 
 ## Positioning
 
-NeedleStart is not trying to clone Next.js. It is building a new category: a framework designed from the ground up for the era where humans and AI agents collaborate on large applications.
+Lumina is not trying to clone Next.js. It is building a new category: a framework designed from the ground up for the era where humans and AI agents collaborate on large applications.
 
 ## Success Criteria
 
-NeedleStart becomes credible when it can say:
+Lumina becomes credible when it can say:
 
 - Create a React app with one command.
 - Render SEO-safe pages.

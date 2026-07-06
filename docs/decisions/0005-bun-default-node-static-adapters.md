@@ -7,19 +7,19 @@ Audience: maintainers, framework contributors, adapter owners.
 
 ## Context
 
-NeedleStart wants a fast default adapter path, but Bun adoption concerns should not make the framework feel locked to one runtime. The first adapter model must support speed while preserving a credible compatibility story.
+Lumina wants a fast default adapter path, but Bun adoption concerns should not make the framework feel locked to one runtime. The first adapter model must support speed while preserving a credible compatibility story.
 
 ## Decision
 
 Use Bun as the default runtime adapter path, and design Node and static adapters early.
 
-User application code must not require Bun-only APIs. Bun-specific behavior belongs in `@needle/adapter-bun`. Node compatibility belongs in `@needle/adapter-node`. Static export belongs in `@needle/adapter-static`.
+User application code must not require Bun-only APIs. Bun-specific behavior belongs in `@lumina/adapter-bun`. Node compatibility belongs in `@lumina/adapter-node`. Static export belongs in `@lumina/adapter-static`.
 
 The adapter manifest records runtime capabilities, unsupported features, native route dispatch, compression, Early Hints, resource hints, bfcache-aware headers, environment variables, and diagnostics.
 
 ## Consequences
 
-This gives NeedleStart:
+This gives Lumina:
 
 - A fast default.
 - Clear runtime boundaries.

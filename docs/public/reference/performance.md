@@ -4,11 +4,11 @@ Status: Planned.
 
 Audience: app developers, performance reviewers, framework contributors, AI agents.
 
-NeedleStart performance tooling is planned but not implemented yet. This page summarizes the public performance expectations for future route budgets, reports, and benchmark evidence.
+Lumina performance tooling is planned but not implemented yet. This page summarizes the public performance expectations for future route budgets, reports, and benchmark evidence.
 
 ## Planned Surfaces
 
-NeedleStart should eventually report:
+Lumina should eventually report:
 
 - Route JavaScript size.
 - Route CSS size.
@@ -39,10 +39,10 @@ These are targets, not verified claims.
 
 ## Planned Report
 
-NeedleStart plans to generate:
+Lumina plans to generate:
 
 ```txt
-.needle/perf.report.json
+.lumina/perf.report.json
 ```
 
 The report should include route IDs, paths, render modes, payload sizes, chunk count, source-map exposure, budget status, and diagnostics. Budget status values should use `pass`, `warning`, or `fail`.
@@ -51,7 +51,7 @@ It should also include planned route delivery metadata for scripts, styles, imag
 
 ## Public Claims
 
-Do not claim NeedleStart is faster than another framework unless the claim links to:
+Do not claim Lumina is faster than another framework unless the claim links to:
 
 - Fixture source.
 - Runtime versions.

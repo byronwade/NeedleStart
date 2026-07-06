@@ -4,15 +4,15 @@ Status: Planned.
 
 Audience: deployers, app developers, adapter maintainers, AI agents.
 
-NeedleStart adapters are planned to turn generated build output into deployable Bun, Node, or static output. Adapter packages are scaffolded; adapter behavior is not implemented yet.
+Lumina adapters are planned to turn generated build output into deployable Bun, Node, or static output. Adapter packages are scaffolded; adapter behavior is not implemented yet.
 
 ## Initial Adapters
 
 | Planned adapter | Package | Purpose |
 | --- | --- | --- |
-| Bun | `@needle/adapter-bun` | Default production adapter path. |
-| Node | `@needle/adapter-node` | Compatibility adapter path. |
-| Static | `@needle/adapter-static` | Static export path. |
+| Bun | `@lumina/adapter-bun` | Default production adapter path. |
+| Node | `@lumina/adapter-node` | Compatibility adapter path. |
+| Static | `@lumina/adapter-static` | Static export path. |
 
 ## Planned Generated Output
 
@@ -26,7 +26,7 @@ dist/
   seo.report.json
 ```
 
-These files are deployment output. Canonical compiler and agent artifacts stay under `.needle/`.
+These files are deployment output. Canonical compiler and agent artifacts stay under `.lumina/`.
 
 The named deployment artifacts are `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, and `dist/adapter.manifest.json`.
 
@@ -58,7 +58,7 @@ The named deployment artifacts are `dist/routes.manifest.json`, `dist/render.man
 
 Public adapter docs are checked against the same planned contract terms as internal docs:
 
-- `@needle/adapter-bun`, `@needle/adapter-node`, and `@needle/adapter-static`.
+- `@lumina/adapter-bun`, `@lumina/adapter-node`, and `@lumina/adapter-static`.
 - `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, `dist/adapter.manifest.json`, `runtime.name`, `capabilities`, and `nativeRouteDispatch`.
 - `Bun.serve` and `Bun.serve({ routes })` when the Bun adapter proves native route dispatch is faster.
 - health endpoint behavior and static export rules.

@@ -25,7 +25,7 @@ The broader application graph that connects routes, layouts, components, APIs, s
 
 ## App-Graph-Native
 
-NeedleStart's public category language: a framework where the semantic app graph is a first-class product primitive, not a later tool layered on top of routing and rendering.
+Lumina's public category language: a framework where the semantic app graph is a first-class product primitive, not a later tool layered on top of routing and rendering.
 
 ## Benchmark Fixture
 
@@ -49,11 +49,11 @@ A structured warning or error with a stable code, severity, source location when
 
 ## Docs Site Renderer
 
-The future tool or NeedleStart app that turns `docs/public/` Markdown, metadata, navigation, and machine-readable outputs into the public documentation site.
+The future tool or Lumina app that turns `docs/public/` Markdown, metadata, navigation, and machine-readable outputs into the public documentation site.
 
 ## Example Catalog
 
-The planned inventory of official NeedleStart examples, their paths, statuses, purposes, and public guide relationships.
+The planned inventory of official Lumina examples, their paths, statuses, purposes, and public guide relationships.
 
 ## Field Data
 
@@ -65,7 +65,7 @@ A file produced from source inputs by the framework, compiler, docs tooling, or 
 
 ## Graph Edge
 
-A relationship between two graph nodes. NeedleStart graph edges must include `kind`, `source`, `confidence`, and `why`.
+A relationship between two graph nodes. Lumina graph edges must include `kind`, `source`, `confidence`, and `why`.
 
 ## Hot API
 
@@ -75,9 +75,9 @@ An API route compiled into a specialized handler with generated validation, seri
 
 Model Context Protocol. A planned development-time integration surface for exposing read-only and eventually safe write tools to agents.
 
-## Needle Map
+## Lumina Map
 
-The file-level and semantic graph of a NeedleStart application.
+The file-level and semantic graph of a Lumina application.
 
 ## Native Route Dispatch
 

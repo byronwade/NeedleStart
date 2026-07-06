@@ -5,7 +5,7 @@ Audience: AI agents, maintainers, verification reviewers.
 
 ## Mission
 
-Plan and run the smallest useful checks for NeedleStart changes.
+Plan and run the smallest useful checks for Lumina changes.
 
 ## Owns
 

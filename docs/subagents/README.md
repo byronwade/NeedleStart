@@ -1,4 +1,4 @@
-# NeedleStart Subagents
+# Lumina Subagents
 
 Status: Scaffolded.
 Audience: AI agents, maintainers, documentation contributors.
@@ -10,7 +10,7 @@ This directory defines vendor-neutral subagent role briefs for AI systems that s
 | Subagent | Best for | Must read |
 | --- | --- | --- |
 | [`architect`](architect.md) | Architecture consistency and package boundaries. | `../../ARCHITECTURE.md`, `../package-map.md` |
-| [`compiler-map`](compiler-map.md) | Compiler IR, route discovery, Needle Map, graph output. | `../compiler-ir.md`, `../needle-map.md`, `../risk-mitigation.md` |
+| [`compiler-map`](compiler-map.md) | Compiler IR, route discovery, Lumina Map, graph output. | `../compiler-ir.md`, `../lumina-map.md`, `../risk-mitigation.md` |
 | [`runtime-seo`](runtime-seo.md) | Runtime, rendering, SEO, adapters, performance. | `../runtime-contract.md`, `../seo-engine.md`, `../adapters.md` |
 | [`agent-safety`](agent-safety.md) | Agent Kernel, MCP, safe edits, AI collaboration safety. | `../agent-kernel.md`, `../mcp-server.md`, `../safe-edit-transactions.md` |
 | [`docs-keeper`](docs-keeper.md) | Documentation sync and status honesty. | `../../README.md`, `../../AGENTS.md`, `../README.md` |

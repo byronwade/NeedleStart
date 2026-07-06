@@ -1,5 +1,5 @@
 export const needleVitePluginStatus = {
-  name: "@needle/vite-plugin",
+  name: "@lumina/vite-plugin",
   phase: "scaffold",
   implementsRuntimeBehavior: false,
 } as const;

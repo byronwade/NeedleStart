@@ -1,5 +1,5 @@
 export const needleCompilerStatus = {
-  name: "@needle/compiler",
+  name: "@lumina/compiler",
   phase: "scaffold",
   implementsRuntimeBehavior: false,
 } as const;

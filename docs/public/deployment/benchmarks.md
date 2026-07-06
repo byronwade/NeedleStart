@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, maintainers, performance reviewers.
 
-NeedleStart should be fast, but public performance claims require evidence.
+Lumina should be fast, but public performance claims require evidence.
 
 Every performance claim must link to:
 

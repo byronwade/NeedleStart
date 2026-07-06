@@ -4,12 +4,12 @@ Status: Planned.
 
 Audience: app developers, SEO reviewers, AI agents.
 
-NeedleStart is planned to make technical SEO inspectable through route metadata, sitemap output, robots output, structured data, and machine-readable SEO reports. This behavior is not implemented yet.
+Lumina is planned to make technical SEO inspectable through route metadata, sitemap output, robots output, structured data, and machine-readable SEO reports. This behavior is not implemented yet.
 
 ## Planned API
 
 ```ts
-import { defineMeta, staticPage } from "needlestart"
+import { defineMeta, staticPage } from "lumina"
 
 export const render = staticPage()
 
@@ -43,7 +43,7 @@ Public indexable routes should eventually check:
 ## Planned Outputs
 
 ```txt
-.needle/seo.report.json
+.lumina/seo.report.json
 dist/sitemap.xml
 dist/sitemap-index.xml
 dist/robots.txt
@@ -55,7 +55,7 @@ dist/robots.txt
 - Robots output should not be treated as a privacy or security mechanism.
 - JSON-LD structured data must be escaped safely.
 - Client-only routes should not pass indexable public-page checks unless they provide meaningful static fallback HTML.
-- `.needle/seo.report.json` should include route IDs, canonical status, sitemap reasons, robots policy, structured data status, and diagnostics.
+- `.lumina/seo.report.json` should include route IDs, canonical status, sitemap reasons, robots policy, structured data status, and diagnostics.
 
 ## Source
 

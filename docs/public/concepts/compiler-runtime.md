@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, framework contributors, AI agents.
 
-NeedleStart is planned to keep framework intelligence in the compiler and keep production runtime adapters small.
+Lumina is planned to keep framework intelligence in the compiler and keep production runtime adapters small.
 
 ## Compiler Owns
 
@@ -14,7 +14,7 @@ NeedleStart is planned to keep framework intelligence in the compiler and keep p
 - Schema extraction.
 - API code generation.
 - Manifest generation.
-- Needle Map output.
+- Lumina Map output.
 - Agent context output.
 
 ## Runtime Owns

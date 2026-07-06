@@ -9,7 +9,7 @@ This guide describes the planned agent context workflow. Agent context commands 
 ## Planned Command
 
 ```bash
-needle agent context --route /pricing --json
+lumina agent context --route /pricing --json
 ```
 
 ## Planned Context
@@ -27,8 +27,8 @@ Agent context should include:
 
 ## Planned Generated Outputs
 
-- `.needle/context/*.ctx.json`
-- `.needle/context/agent-index.json`
+- `.lumina/context/*.ctx.json`
+- `.lumina/context/agent-index.json`
 
 ## Source
 

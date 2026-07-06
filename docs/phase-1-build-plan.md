@@ -9,7 +9,7 @@ Test command, fixture, snapshot, and CI expectations are defined in [Testing Con
 
 ## Current Truth
 
-NeedleStart now has the initial Phase 1 scaffold: Bun workspace configuration, package directories, placeholder source files, shared core scaffold types, root verification scripts, and placeholder tests.
+Lumina now has the initial Phase 1 scaffold: Bun workspace configuration, package directories, placeholder source files, shared core scaffold types, root verification scripts, and placeholder tests.
 
 Current verified scaffold commands:
 
@@ -23,7 +23,7 @@ bun run performance:check
 bun run check
 ```
 
-`needle dev`, `needle build`, and the other CLI commands remain target UX, not implemented behavior. Public API examples in the docs are still drafts.
+`lumina dev`, `lumina build`, and the other CLI commands remain target UX, not implemented behavior. Public API examples in the docs are still drafts.
 
 ## Phase 1 Goal
 
@@ -44,7 +44,7 @@ Future Phase 1 hardening should preserve those guarantees while adding the small
 The scaffold uses these package paths:
 
 ```txt
-packages/create-needle
+packages/create-lumina
 packages/cli
 packages/core
 packages/compiler
@@ -66,26 +66,26 @@ packages/adapters/static
 Package names should be:
 
 ```txt
-create-needle
-@needle/cli
-@needle/core
-@needle/compiler
-@needle/vite-plugin
-@needle/react
-@needle/router
-@needle/seo
-@needle/map
-@needle/agent
-@needle/mcp
-@needle/cache
-@needle/schema
-@needle/devtools
-@needle/adapter-bun
-@needle/adapter-node
-@needle/adapter-static
+create-lumina
+@lumina/cli
+@lumina/core
+@lumina/compiler
+@lumina/vite-plugin
+@lumina/react
+@lumina/router
+@lumina/seo
+@lumina/map
+@lumina/agent
+@lumina/mcp
+@lumina/cache
+@lumina/schema
+@lumina/devtools
+@lumina/adapter-bun
+@lumina/adapter-node
+@lumina/adapter-static
 ```
 
-Earlier planning docs referred to `@needle/server-bun` as the Bun production runtime package. It is not an active Phase 1 package name. Phase 1 uses the adapter package path unless a later architecture decision record reintroduces a separate server package. Bun-specific request handling belongs in `@needle/adapter-bun`; shared runtime contracts belong in `@needle/core` or generated output.
+Earlier planning docs referred to `@lumina/server-bun` as the Bun production runtime package. It is not an active Phase 1 package name. Phase 1 uses the adapter package path unless a later architecture decision record reintroduces a separate server package. Bun-specific request handling belongs in `@lumina/adapter-bun`; shared runtime contracts belong in `@lumina/core` or generated output.
 
 ## Root Files
 
@@ -122,48 +122,48 @@ For Phase 1, exports can point to empty or placeholder entrypoints if they do no
 Start with this conservative dependency flow:
 
 ```txt
-@needle/core
+@lumina/core
   -> no internal dependencies
 
-@needle/compiler
-@needle/router
-@needle/seo
-@needle/map
-@needle/cache
-@needle/schema
-  -> @needle/core
+@lumina/compiler
+@lumina/router
+@lumina/seo
+@lumina/map
+@lumina/cache
+@lumina/schema
+  -> @lumina/core
 
-@needle/agent
-@needle/mcp
-@needle/devtools
-  -> @needle/core and stable package APIs only
+@lumina/agent
+@lumina/mcp
+@lumina/devtools
+  -> @lumina/core and stable package APIs only
 
-@needle/cli
+@lumina/cli
   -> package APIs, not package internals
 
-@needle/adapter-bun
-@needle/adapter-node
-@needle/adapter-static
-  -> @needle/core and generated runtime contracts
+@lumina/adapter-bun
+@lumina/adapter-node
+@lumina/adapter-static
+  -> @lumina/core and generated runtime contracts
 ```
 
-Production runtime packages must not depend on `@needle/agent`, `@needle/mcp`, or `@needle/devtools`.
+Production runtime packages must not depend on `@lumina/agent`, `@lumina/mcp`, or `@lumina/devtools`.
 
 ## First Types To Lock
 
-Phase 1A should stabilize the shared model in `@needle/core` before any package creates local substitutes. The current scaffold exports placeholder versions of these names so package boundaries and checks can be wired early:
+Phase 1A should stabilize the shared model in `@lumina/core` before any package creates local substitutes. The current scaffold exports placeholder versions of these names so package boundaries and checks can be wired early:
 
-- `NeedleApp`
+- `LuminaApp`
 - `RouteNode`
 - `GraphEdge`
-- `NeedleDiagnostic`
+- `LuminaDiagnostic`
 - `RenderMode`
 - `CachePlan`
 - `AdapterManifest`
 
 `GraphEdge` must include `kind`, `source`, `confidence`, and `why`.
 
-`NeedleDiagnostic` must follow [Diagnostics Contract](diagnostics-contract.md).
+`LuminaDiagnostic` must follow [Diagnostics Contract](diagnostics-contract.md).
 
 ## Verification
 
@@ -190,10 +190,10 @@ Phase 1 should not implement:
 - Vite dev server integration.
 - React rendering.
 - Runtime request handling.
-- Needle Map extraction.
+- Lumina Map extraction.
 - MCP tools.
 - Safe edit transactions.
-- Generated `.needle/*` artifacts.
+- Generated `.lumina/*` artifacts.
 
 Those belong to later roadmap tasks after the package foundation exists.
 

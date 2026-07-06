@@ -108,7 +108,7 @@ const agentRequiredSyncDocs = [
   "docs/agent-kernel.md",
   "docs/mcp-server.md",
   "docs/safe-edit-transactions.md",
-  "docs/needle-map.md",
+  "docs/lumina-map.md",
   "docs/hot-api-path.md",
   "docs/migration.md",
   "docs/deployment.md",
@@ -147,23 +147,23 @@ const agentRequiredSyncDocs = [
 ];
 
 const packageSpecs = [
-  { path: "packages/create-needle", name: "create-needle" },
-  { path: "packages/cli", name: "@needle/cli" },
-  { path: "packages/core", name: "@needle/core" },
-  { path: "packages/compiler", name: "@needle/compiler" },
-  { path: "packages/vite-plugin", name: "@needle/vite-plugin" },
-  { path: "packages/react", name: "@needle/react" },
-  { path: "packages/router", name: "@needle/router" },
-  { path: "packages/seo", name: "@needle/seo" },
-  { path: "packages/map", name: "@needle/map" },
-  { path: "packages/agent", name: "@needle/agent" },
-  { path: "packages/mcp", name: "@needle/mcp" },
-  { path: "packages/cache", name: "@needle/cache" },
-  { path: "packages/schema", name: "@needle/schema" },
-  { path: "packages/devtools", name: "@needle/devtools" },
-  { path: "packages/adapters/bun", name: "@needle/adapter-bun" },
-  { path: "packages/adapters/node", name: "@needle/adapter-node" },
-  { path: "packages/adapters/static", name: "@needle/adapter-static" },
+  { path: "packages/create-lumina", name: "create-lumina" },
+  { path: "packages/cli", name: "@lumina/cli" },
+  { path: "packages/core", name: "@lumina/core" },
+  { path: "packages/compiler", name: "@lumina/compiler" },
+  { path: "packages/vite-plugin", name: "@lumina/vite-plugin" },
+  { path: "packages/react", name: "@lumina/react" },
+  { path: "packages/router", name: "@lumina/router" },
+  { path: "packages/seo", name: "@lumina/seo" },
+  { path: "packages/map", name: "@lumina/map" },
+  { path: "packages/agent", name: "@lumina/agent" },
+  { path: "packages/mcp", name: "@lumina/mcp" },
+  { path: "packages/cache", name: "@lumina/cache" },
+  { path: "packages/schema", name: "@lumina/schema" },
+  { path: "packages/devtools", name: "@lumina/devtools" },
+  { path: "packages/adapters/bun", name: "@lumina/adapter-bun" },
+  { path: "packages/adapters/node", name: "@lumina/adapter-node" },
+  { path: "packages/adapters/static", name: "@lumina/adapter-static" },
 ];
 
 const canonicalStatusLabels = [
@@ -178,23 +178,23 @@ const canonicalStatusLabels = [
 
 const allowedTopLevelStatuses = canonicalStatusLabels.map((status) => status.title);
 
-const plannedNeedleCommands = [
-  "needle dev",
-  "needle build",
-  "needle start",
-  "needle routes",
-  "needle inspect",
-  "needle check",
-  "needle seo",
-  "needle map",
-  "needle agent",
-  "needle mcp",
-  "needle edit",
-  "needle migrate",
-  "needle bench",
+const plannedLuminaCommands = [
+  "lumina dev",
+  "lumina build",
+  "lumina start",
+  "lumina routes",
+  "lumina inspect",
+  "lumina check",
+  "lumina seo",
+  "lumina map",
+  "lumina agent",
+  "lumina mcp",
+  "lumina edit",
+  "lumina migrate",
+  "lumina bench",
 ];
 
-const plannedNeedleCommandDocs = [
+const plannedLuminaCommandDocs = [
   "README.md",
   "AGENTS.md",
   "docs/cli.md",
@@ -205,35 +205,35 @@ const plannedNeedleCommandDocs = [
 ];
 
 const plannedJsonCommandContracts = [
-  "needle build --json",
-  "needle routes --json",
-  "needle inspect --json",
-  "needle check --json",
-  "needle seo --json",
-  "needle map --json",
-  "needle agent context --json",
-  "needle edit --json",
-  "needle migrate --json",
-  "needle bench --json",
+  "lumina build --json",
+  "lumina routes --json",
+  "lumina inspect --json",
+  "lumina check --json",
+  "lumina seo --json",
+  "lumina map --json",
+  "lumina agent context --json",
+  "lumina edit --json",
+  "lumina migrate --json",
+  "lumina bench --json",
 ];
 
 const plannedCommandVariants = [
-  "needle inspect why",
-  "needle map file",
-  "needle map route",
-  "needle map affected",
-  "needle map explain",
-  "needle agent init",
-  "needle agent context",
-  "needle agent task",
-  "needle agent plan",
-  "needle agent apply",
-  "needle agent log",
-  "needle edit undo",
-  "needle migrate from-next",
-  "needle seo --route",
-  "needle seo --sitemap",
-  "needle seo --strict",
+  "lumina inspect why",
+  "lumina map file",
+  "lumina map route",
+  "lumina map affected",
+  "lumina map explain",
+  "lumina agent init",
+  "lumina agent context",
+  "lumina agent task",
+  "lumina agent plan",
+  "lumina agent apply",
+  "lumina agent log",
+  "lumina edit undo",
+  "lumina migrate from-next",
+  "lumina seo --route",
+  "lumina seo --sitemap",
+  "lumina seo --strict",
 ];
 
 const plannedCommandVariantDocs = [
@@ -242,17 +242,17 @@ const plannedCommandVariantDocs = [
 ];
 
 const plannedMapCommandSurfaces = [
-  "needle map",
-  "needle map --json",
-  "needle map file",
-  "needle map route",
-  "needle map affected",
-  "needle map explain",
+  "lumina map",
+  "lumina map --json",
+  "lumina map file",
+  "lumina map route",
+  "lumina map affected",
+  "lumina map explain",
 ];
 
 const plannedMapCommandDocs = [
-  "docs/needle-map.md",
-  "docs/public/guides/needle-map.md",
+  "docs/lumina-map.md",
+  "docs/public/guides/lumina-map.md",
 ];
 
 const plannedMcpReadTools = [
@@ -292,12 +292,12 @@ const plannedMcpWriteToolDocs = [
 ];
 
 const plannedMcpResources = [
-  "needle://routes",
-  "needle://route/%2Fpricing",
-  "needle://map/file/components%2FProductCard.tsx",
-  "needle://seo/report",
-  "needle://perf/report",
-  "needle://context/public",
+  "lumina://routes",
+  "lumina://route/%2Fpricing",
+  "lumina://map/file/components%2FProductCard.tsx",
+  "lumina://seo/report",
+  "lumina://perf/report",
+  "lumina://context/public",
 ];
 
 const plannedMcpResourceDocs = [
@@ -329,16 +329,16 @@ const scaffoldVerificationDocs = [
 ];
 
 const canonicalGeneratedArtifacts = [
-  ".needle/routes.json",
-  ".needle/render-manifest.json",
-  ".needle/map.json",
-  ".needle/graph.json",
-  ".needle/seo.report.json",
-  ".needle/perf.report.json",
-  ".needle/context/*.ctx.json",
-  ".needle/context/agent-index.json",
-  ".needle/mutations.json",
-  ".needle/generated/*",
+  ".lumina/routes.json",
+  ".lumina/render-manifest.json",
+  ".lumina/map.json",
+  ".lumina/graph.json",
+  ".lumina/seo.report.json",
+  ".lumina/perf.report.json",
+  ".lumina/context/*.ctx.json",
+  ".lumina/context/agent-index.json",
+  ".lumina/mutations.json",
+  ".lumina/generated/*",
   "dist/routes.manifest.json",
   "dist/render.manifest.json",
   "dist/seo.report.json",
@@ -347,8 +347,8 @@ const canonicalGeneratedArtifacts = [
 ];
 
 const plannedAgentContextArtifacts = [
-  ".needle/context/*.ctx.json",
-  ".needle/context/agent-index.json",
+  ".lumina/context/*.ctx.json",
+  ".lumina/context/agent-index.json",
 ];
 
 const plannedAgentContextArtifactDocs = [
@@ -677,7 +677,7 @@ const prototypeScopeTerms = [
     terms: [
       "first public prototype",
       "first working slice",
-      "first working slice is intended to prove create app, SEO-safe pages, `@needle/adapter-bun` serving, a basic map, agent inspection, and safe metadata edit",
+      "first working slice is intended to prove create app, SEO-safe pages, `@lumina/adapter-bun` serving, a basic map, agent inspection, and safe metadata edit",
       "public prototype expands that slice into API routes, hot API, read-only MCP tools, adapter-aware server output, and documented Node/static paths",
       "Bun adapter output with documented Node/static paths",
     ],
@@ -722,26 +722,26 @@ const currentImplementationStepDocs = [
 const featureSchedulingGateDocs = [
   {
     file: "docs/compiler-ir.md",
-    terms: ["Does it improve Needle Map or the Agent Kernel?", "minimal production runtime code", "planned acceptance criteria", "tests and an agent demo"],
+    terms: ["Does it improve Lumina Map or the Agent Kernel?", "minimal production runtime code", "planned acceptance criteria", "tests and an agent demo"],
   },
   {
     file: "docs/risk-mitigation.md",
-    terms: ["Does it improve Needle Map or the Agent Kernel?", "minimal production runtime code", "planned acceptance criteria", "tests and an agent demo"],
+    terms: ["Does it improve Lumina Map or the Agent Kernel?", "minimal production runtime code", "planned acceptance criteria", "tests and an agent demo"],
   },
 ];
 
 const generatedAppScriptDocs = [
   {
     file: "docs/getting-started.md",
-    terms: ["bun run dev", "bun run build", "bun run start", "needle dev", "needle build", "needle start", "call"],
+    terms: ["bun run dev", "bun run build", "bun run start", "lumina dev", "lumina build", "lumina start", "call"],
   },
   {
     file: "docs/public/guides/create-app.md",
-    terms: ["bun run dev", "bun run build", "bun run start", "needle dev", "needle build", "needle start", "call"],
+    terms: ["bun run dev", "bun run build", "bun run start", "lumina dev", "lumina build", "lumina start", "call"],
   },
   {
     file: "docs/examples-contract.md",
-    terms: ["generated app package scripts", "bun run dev", "bun run build", "bun run start", "needle dev", "needle build", "needle start"],
+    terms: ["generated app package scripts", "bun run dev", "bun run build", "bun run start", "lumina dev", "lumina build", "lumina start"],
   },
 ];
 
@@ -763,7 +763,7 @@ const publicGuideImplementationStatusDocs = [
     terms: ["planned hot API route workflow", "not implemented yet"],
   },
   {
-    file: "docs/public/guides/needle-map.md",
+    file: "docs/public/guides/lumina-map.md",
     terms: ["planned workflow for inspecting the app graph", "not implemented yet"],
   },
   {
@@ -800,10 +800,10 @@ const safeEditTransactionResultTerms = [
 ];
 
 const coreModelTypes = [
-  "NeedleApp",
+  "LuminaApp",
   "RouteNode",
   "GraphEdge",
-  "NeedleDiagnostic",
+  "LuminaDiagnostic",
   "RenderMode",
   "CachePlan",
   "AdapterManifest",
@@ -819,31 +819,31 @@ const coreModelDocs = [
 const sharedCoreScaffoldTerms = [
   {
     file: "docs/cache-contract.md",
-    terms: ["@needle/core", "CachePlan", "no-store", "public", "ttlSeconds", "staleWhileRevalidateSeconds"],
+    terms: ["@lumina/core", "CachePlan", "no-store", "public", "ttlSeconds", "staleWhileRevalidateSeconds"],
   },
   {
     file: "docs/public/reference/cache.md",
-    terms: ["@needle/core", "CachePlan", "no-store", "public", "ttlSeconds", "staleWhileRevalidateSeconds"],
+    terms: ["@lumina/core", "CachePlan", "no-store", "public", "ttlSeconds", "staleWhileRevalidateSeconds"],
   },
   {
     file: "docs/compiler-ir.md",
-    terms: ["@needle/core", "NeedleApp", "RouteNode", "RenderMode", "sourceFile", "client-only", "hot-api"],
+    terms: ["@lumina/core", "LuminaApp", "RouteNode", "RenderMode", "sourceFile", "client-only", "hot-api"],
   },
   {
     file: "docs/api-reference.md",
-    terms: ["@needle/core", "RenderMode", "\"static\"", "\"prerender\"", "\"ssr\"", "\"stream\"", "\"client-only\"", "\"api\"", "\"hot-api\""],
+    terms: ["@lumina/core", "RenderMode", "\"static\"", "\"prerender\"", "\"ssr\"", "\"stream\"", "\"client-only\"", "\"api\"", "\"hot-api\""],
   },
   {
     file: "docs/public/reference/render-modes.md",
-    terms: ["@needle/core", "RenderMode", "\"static\"", "\"prerender\"", "\"ssr\"", "\"stream\"", "\"client-only\"", "\"api\"", "\"hot-api\""],
+    terms: ["@lumina/core", "RenderMode", "\"static\"", "\"prerender\"", "\"ssr\"", "\"stream\"", "\"client-only\"", "\"api\"", "\"hot-api\""],
   },
   {
     file: "docs/diagnostics-contract.md",
-    terms: ["@needle/core", "NeedleDiagnostic", "severity", "info", "warning", "error", "docsUrl"],
+    terms: ["@lumina/core", "LuminaDiagnostic", "severity", "info", "warning", "error", "docsUrl"],
   },
   {
     file: "docs/public/reference/diagnostics.md",
-    terms: ["@needle/core", "NeedleDiagnostic", "severity", "info", "warning", "error", "docsUrl"],
+    terms: ["@lumina/core", "LuminaDiagnostic", "severity", "info", "warning", "error", "docsUrl"],
   },
 ];
 
@@ -921,8 +921,8 @@ const plannedOverviewImplementationStatusDocs = [
     terms: ["planned cache overview", "Cache behavior is not implemented yet"],
   },
   {
-    file: "docs/needle-map.md",
-    terms: ["planned Needle Map behavior", "Needle Map generation is not implemented yet"],
+    file: "docs/lumina-map.md",
+    terms: ["planned Lumina Map behavior", "Lumina Map generation is not implemented yet"],
   },
   {
     file: "docs/safe-edit-transactions.md",
@@ -1064,7 +1064,7 @@ const renderModeContractDocs = [
   },
   {
     file: "docs/compiler-ir.md",
-    terms: ["rendermode", ".needle/render-manifest.json", "rendermanifest", "\"static\"", "\"prerender\"", "\"ssr\"", "\"stream\"", "\"client-only\"", "\"api\"", "\"hot-api\""],
+    terms: ["rendermode", ".lumina/render-manifest.json", "rendermanifest", "\"static\"", "\"prerender\"", "\"ssr\"", "\"stream\"", "\"client-only\"", "\"api\"", "\"hot-api\""],
   },
   {
     file: "docs/api-reference.md",
@@ -1072,7 +1072,7 @@ const renderModeContractDocs = [
   },
   {
     file: "docs/runtime-contract.md",
-    terms: ["render mode", ".needle/render-manifest.json", "dist/render.manifest.json", "static asset", "prerendered html", "\"static\"", "\"prerender\"", "\"ssr\"", "\"stream\"", "\"client-only\"", "\"api\"", "\"hot-api\""],
+    terms: ["render mode", ".lumina/render-manifest.json", "dist/render.manifest.json", "static asset", "prerendered html", "\"static\"", "\"prerender\"", "\"ssr\"", "\"stream\"", "\"client-only\"", "\"api\"", "\"hot-api\""],
   },
   {
     file: "docs/roadmap.md",
@@ -1080,7 +1080,7 @@ const renderModeContractDocs = [
   },
   {
     file: "docs/public/reference/render-modes.md",
-    terms: ["@needle/core", "rendermode", ".needle/render-manifest.json", "staticpage()", "prerender()", "ssr()", "stream()", "clientonly()", "apihot()", "\"static\"", "\"prerender\"", "\"ssr\"", "\"stream\"", "\"client-only\"", "\"api\"", "\"hot-api\""],
+    terms: ["@lumina/core", "rendermode", ".lumina/render-manifest.json", "staticpage()", "prerender()", "ssr()", "stream()", "clientonly()", "apihot()", "\"static\"", "\"prerender\"", "\"ssr\"", "\"stream\"", "\"client-only\"", "\"api\"", "\"hot-api\""],
   },
   {
     file: "docs/public/reference/api-routes.md",
@@ -1271,7 +1271,7 @@ const staleStatusPatterns = [
   },
   {
     file: "docs/public/concepts/compiler-runtime.md",
-    pattern: /NeedleStart keeps framework intelligence in the compiler and keeps production runtime adapters small\./i,
+    pattern: /Lumina keeps framework intelligence in the compiler and keeps production runtime adapters small\./i,
     message: "docs/public/concepts/compiler-runtime.md should describe the compiler/runtime split as planned until implementation exists.",
   },
   {
@@ -1281,7 +1281,7 @@ const staleStatusPatterns = [
   },
   {
     file: "README.md",
-    pattern: /runtime adapters, Needle Map generation/i,
+    pattern: /runtime adapters, Lumina Map generation/i,
     message: "README.md should distinguish scaffolded adapter packages from unimplemented runtime adapter behavior.",
   },
   {
@@ -1351,7 +1351,7 @@ const staleStatusPatterns = [
   },
   {
     file: "docs/decisions/0007-agent-safe-edits.md",
-    pattern: /NeedleStart is agent-native/i,
+    pattern: /Lumina is agent-native/i,
     message: "ADR 0007 should tie safe edits to app-graph-native and agent-safe workflow wording.",
   },
   {
@@ -1362,7 +1362,7 @@ const staleStatusPatterns = [
   {
     file: "CONTRIBUTING.md",
     pattern: /Bun server runtime details|Bun server details|Bun runtime package/i,
-    message: "CONTRIBUTING.md should direct runtime help to @needle/adapter-bun adapter work, not generic Bun server wording.",
+    message: "CONTRIBUTING.md should direct runtime help to @lumina/adapter-bun adapter work, not generic Bun server wording.",
   },
   {
     file: "docs/documentation-audit.md",
@@ -1471,8 +1471,8 @@ const staleStatusPatterns = [
   },
   {
     file: "docs/examples-contract.md",
-    pattern: /```bash[\s\S]*bun run build[\s\S]*needle build[\s\S]*```/i,
-    message: "docs/examples-contract.md should not list bun run build and direct needle build as separate required example build steps.",
+    pattern: /```bash[\s\S]*bun run build[\s\S]*lumina build[\s\S]*```/i,
+    message: "docs/examples-contract.md should not list bun run build and direct lumina build as separate required example build steps.",
   },
   {
     file: "README.md",
@@ -1486,8 +1486,8 @@ const staleStatusPatterns = [
   },
   {
     file: "docs/agent-kernel.md",
-    pattern: /\|\s*`\.needle\/[^`]+`\s*\|\s*Generated app artifact\s*\|/i,
-    message: "docs/agent-kernel.md should label .needle outputs as planned generated app artifacts until implementation exists.",
+    pattern: /\|\s*`\.lumina\/[^`]+`\s*\|\s*Generated app artifact\s*\|/i,
+    message: "docs/agent-kernel.md should label .lumina outputs as planned generated app artifacts until implementation exists.",
   },
   {
     file: "docs/agent-kernel.md",
@@ -1496,7 +1496,7 @@ const staleStatusPatterns = [
   },
   {
     file: "docs/package-map.md",
-    pattern: /\| `@needle\/agent` \| AGENTS\.md generation/i,
+    pattern: /\| `@lumina\/agent` \| AGENTS\.md generation/i,
     message: "docs/package-map.md must describe app-local AGENTS.md generation.",
   },
   {
@@ -1531,7 +1531,7 @@ const staleStatusPatterns = [
   },
   {
     file: "SECURITY.md",
-    pattern: /NeedleStart is not yet implemented\./i,
+    pattern: /Lumina is not yet implemented\./i,
     message: "SECURITY.md should distinguish the scaffold from unimplemented framework security behavior.",
   },
   {
@@ -1627,26 +1627,26 @@ const staleStatusPatterns = [
   {
     file: "docs/getting-started.md",
     pattern: /\bbun dev\b|Add the Bun monorepo scaffold|Add package entrypoints and placeholder tests/i,
-    message: "docs/getting-started.md should use current scaffold status and `needle dev` target command language.",
+    message: "docs/getting-started.md should use current scaffold status and `lumina dev` target command language.",
   },
   {
     file: "docs/public/guides/create-app.md",
     pattern: /\bbun dev\b|remaining scaffold hardening/i,
-    message: "docs/public/guides/create-app.md should use `needle dev` target command language and current scaffold status.",
+    message: "docs/public/guides/create-app.md should use `lumina dev` target command language and current scaffold status.",
   },
   {
     file: "docs/getting-started.md",
-    pattern: /- A React app starts locally\.|- The home page renders server HTML\.|- Public routes include SEO metadata\.|- `\.needle\/routes\.json` and `\.needle\/render-manifest\.json` are generated\.|- Needle Map and agent context can be inspected\./i,
+    pattern: /- A React app starts locally\.|- The home page renders server HTML\.|- Public routes include SEO metadata\.|- `\.lumina\/routes\.json` and `\.lumina\/render-manifest\.json` are generated\.|- Lumina Map and agent context can be inspected\./i,
     message: "docs/getting-started.md should use planned `should` wording for target app results until implementation exists.",
   },
   {
     file: "docs/public/guides/create-app.md",
-    pattern: /- A local development server starts\.|- A React page renders\.|- `\.needle\/routes\.json` and `\.needle\/render-manifest\.json` are generated\.|- SEO metadata is visible for public pages\.|- Needle Map and agent context can be inspected\./i,
+    pattern: /- A local development server starts\.|- A React page renders\.|- `\.lumina\/routes\.json` and `\.lumina\/render-manifest\.json` are generated\.|- SEO metadata is visible for public pages\.|- Lumina Map and agent context can be inspected\./i,
     message: "docs/public/guides/create-app.md should use planned `should` wording for target app results until implementation exists.",
   },
   {
     file: "README.md",
-    pattern: /The framework emits a structured map|The framework generates `\.needle\/routes\.json`|The framework exposes read-only MCP tools|An AI agent can inspect routes, edit metadata safely/i,
+    pattern: /The framework emits a structured map|The framework generates `\.lumina\/routes\.json`|The framework exposes read-only MCP tools|An AI agent can inspect routes, edit metadata safely/i,
     message: "README.md prototype and differentiator language should use planned `should` wording until framework behavior exists.",
   },
   {
@@ -1661,7 +1661,7 @@ const staleStatusPatterns = [
   },
   {
     file: "docs/roadmap.md",
-    pattern: /- `needle dev` starts Vite\.|- `virtual:needle\/routes` works\.|- Affected query works from changed file|- `needle mcp` starts server\.|- `SafeEditTransaction` shape is implemented\./i,
+    pattern: /- `lumina dev` starts Vite\.|- `virtual:needle\/routes` works\.|- Affected query works from changed file|- `lumina mcp` starts server\.|- `SafeEditTransaction` shape is implemented\./i,
     message: "docs/roadmap.md future acceptance criteria should use planned `should` wording until behavior exists.",
   },
   {
@@ -1671,7 +1671,7 @@ const staleStatusPatterns = [
   },
   {
     file: "docs/mcp-server.md",
-    pattern: /The NeedleStart MCP server exposes/i,
+    pattern: /The Lumina MCP server exposes/i,
     message: "docs/mcp-server.md should describe MCP behavior as planned until MCP tooling exists.",
   },
   {
@@ -1690,9 +1690,9 @@ const staleStatusPatterns = [
     message: "docs/performance.md should use planned acceptance criteria until performance tooling exists.",
   },
   {
-    file: "docs/needle-map.md",
+    file: "docs/lumina-map.md",
     pattern: /^Definition of done:$/m,
-    message: "docs/needle-map.md should use planned acceptance criteria until Needle Map behavior exists.",
+    message: "docs/lumina-map.md should use planned acceptance criteria until Lumina Map behavior exists.",
   },
   {
     file: "docs/public/guides/api-route.md",
@@ -1705,9 +1705,9 @@ const staleStatusPatterns = [
     message: "docs/public/guides/agent-context.md should state agent context commands are not implemented yet.",
   },
   {
-    file: "docs/public/guides/needle-map.md",
+    file: "docs/public/guides/lumina-map.md",
     pattern: /^This guide describes the planned workflow for inspecting the app graph\.$/m,
-    message: "docs/public/guides/needle-map.md should state Needle Map commands are not implemented yet.",
+    message: "docs/public/guides/lumina-map.md should state Lumina Map commands are not implemented yet.",
   },
   {
     file: "docs/public/guides/seo-metadata.md",
@@ -1852,22 +1852,22 @@ const staleStatusPatterns = [
   {
     file: "docs/runtime-contract.md",
     pattern: /needle\.manifest\.json|map\.manifest\.json|cache\.manifest\.json/i,
-    message: "docs/runtime-contract.md uses stale generated artifact names; canonical compiler artifacts live under .needle/*.",
+    message: "docs/runtime-contract.md uses stale generated artifact names; canonical compiler artifacts live under .lumina/*.",
   },
   {
     file: "docs/phase-1-build-plan.md",
     pattern: /remains a planned runtime package name/i,
-    message: "docs/phase-1-build-plan.md should treat @needle/server-bun as historical, not an active planned package.",
+    message: "docs/phase-1-build-plan.md should treat @lumina/server-bun as historical, not an active planned package.",
   },
   {
     file: "docs/risk-mitigation.md",
-    pattern: /Create `@needle\/adapters` early|framework runtime packages and adapters/i,
+    pattern: /Create `@lumina\/adapters` early|framework runtime packages and adapters/i,
     message: "docs/risk-mitigation.md should use concrete runtime adapter package wording.",
   },
   {
     file: "AGENTS.md",
-    pattern: /runtime packages and adapters|unless a later architecture decision reintroduces a separate `@needle\/server-bun` package/i,
-    message: "AGENTS.md should name active adapter packages and treat @needle/server-bun as ADR-only.",
+    pattern: /runtime packages and adapters|unless a later architecture decision reintroduces a separate `@lumina\/server-bun` package/i,
+    message: "AGENTS.md should name active adapter packages and treat @lumina/server-bun as ADR-only.",
   },
   {
     file: "docs/runtime-contract.md",
@@ -1912,7 +1912,7 @@ const staleStatusPatterns = [
   {
     file: "docs/diagnostics-contract.md",
     pattern: /"level":|`level`|level: "info"|diagnostic code rules, levels/i,
-    message: "docs/diagnostics-contract.md should use NeedleDiagnostic severity, not level.",
+    message: "docs/diagnostics-contract.md should use LuminaDiagnostic severity, not level.",
   },
   {
     file: "docs/cli-json-contract.md",
@@ -1921,13 +1921,13 @@ const staleStatusPatterns = [
   },
   {
     file: "docs/cli-json-contract.md",
-    pattern: /NEEDLE_ROUTE_CONFLICT/i,
+    pattern: /LUMINA_ROUTE_CONFLICT/i,
     message: "docs/cli-json-contract.md should use ROUTE_DUPLICATE_PATH for the route-conflict example.",
   },
   {
     file: "docs/cli.md",
     pattern: /Yes for diagnostics/i,
-    message: "docs/cli.md should treat needle build JSON output as a full planned automation contract.",
+    message: "docs/cli.md should treat lumina build JSON output as a full planned automation contract.",
   },
   {
     file: "docs/cli.md",
@@ -1982,22 +1982,22 @@ const staleStatusPatterns = [
   {
     file: "README.md",
     pattern: /route and render manifests/i,
-    message: "README.md should name .needle/routes.json and .needle/render-manifest.json instead of generic route and render manifests.",
+    message: "README.md should name .lumina/routes.json and .lumina/render-manifest.json instead of generic route and render manifests.",
   },
   {
     file: "docs/getting-started.md",
     pattern: /route and render manifests/i,
-    message: "docs/getting-started.md should name .needle/routes.json and .needle/render-manifest.json instead of generic route and render manifests.",
+    message: "docs/getting-started.md should name .lumina/routes.json and .lumina/render-manifest.json instead of generic route and render manifests.",
   },
   {
     file: "docs/public/guides/create-app.md",
     pattern: /route and render manifests/i,
-    message: "docs/public/guides/create-app.md should name .needle/routes.json and .needle/render-manifest.json instead of generic route and render manifests.",
+    message: "docs/public/guides/create-app.md should name .lumina/routes.json and .lumina/render-manifest.json instead of generic route and render manifests.",
   },
   {
     file: "docs/schema-contract.md",
     pattern: /route and render manifests/i,
-    message: "docs/schema-contract.md should name .needle/routes.json and .needle/render-manifest.json instead of generic route and render manifests.",
+    message: "docs/schema-contract.md should name .lumina/routes.json and .lumina/render-manifest.json instead of generic route and render manifests.",
   },
   {
     file: "docs/api-route-contract.md",
@@ -2007,12 +2007,12 @@ const staleStatusPatterns = [
   {
     file: "AGENTS.md",
     pattern: /Bun server|Serve through Bun|Adapter-aware Bun server|Bun for runtime paths/i,
-    message: "AGENTS.md should describe first-slice Bun serving through @needle/adapter-bun.",
+    message: "AGENTS.md should describe first-slice Bun serving through @lumina/adapter-bun.",
   },
   {
     file: "README.md",
-    pattern: /Bun serving(?! is implemented through `@needle\/adapter-bun`)|Bun server|Serve through Bun|Adapter-aware Bun server/i,
-    message: "README.md should describe prototype Bun serving through @needle/adapter-bun.",
+    pattern: /Bun serving(?! is implemented through `@lumina\/adapter-bun`)|Bun server|Serve through Bun|Adapter-aware Bun server/i,
+    message: "README.md should describe prototype Bun serving through @lumina/adapter-bun.",
   },
   {
     file: "VISION.md",
@@ -2022,7 +2022,7 @@ const staleStatusPatterns = [
   {
     file: "ARCHITECTURE.md",
     pattern: /Bun handles runtime execution|Bun: runtime, package manager, test runner, and production server path|fast runtime path/i,
-    message: "ARCHITECTURE.md should describe Bun-specific execution through @needle/adapter-bun and the default adapter runtime.",
+    message: "ARCHITECTURE.md should describe Bun-specific execution through @lumina/adapter-bun and the default adapter runtime.",
   },
   {
     file: "docs/product-strategy.md",
@@ -2066,23 +2066,23 @@ const staleStatusPatterns = [
   },
   {
     file: "docs/prototype-acceptance.md",
-    pattern: /Bun serving(?! is implemented through `@needle\/adapter-bun`)|Serve static and SSR routes through Bun|Production Bun server|Bun server|Serve through Bun|Adapter-aware Bun server/i,
-    message: "docs/prototype-acceptance.md should describe production serving through @needle/adapter-bun.",
+    pattern: /Bun serving(?! is implemented through `@lumina\/adapter-bun`)|Serve static and SSR routes through Bun|Production Bun server|Bun server|Serve through Bun|Adapter-aware Bun server/i,
+    message: "docs/prototype-acceptance.md should describe production serving through @lumina/adapter-bun.",
   },
   {
     file: "docs/public/roadmap.md",
-    pattern: /Bun serving(?! is implemented through `@needle\/adapter-bun`)|Bun server|Serve through Bun|Adapter-aware Bun server/i,
-    message: "docs/public/roadmap.md should describe first-slice Bun serving through @needle/adapter-bun.",
+    pattern: /Bun serving(?! is implemented through `@lumina\/adapter-bun`)|Bun server|Serve through Bun|Adapter-aware Bun server/i,
+    message: "docs/public/roadmap.md should describe first-slice Bun serving through @lumina/adapter-bun.",
   },
   {
     file: "docs/roadmap.md",
     pattern: /Bun server|Bun Production Server|Bun production server|Adapter-aware Bun production server|Serve through Bun|Adapter-aware Bun server|runnable server bundle/i,
-    message: "docs/roadmap.md should describe Bun serving through @needle/adapter-bun.",
+    message: "docs/roadmap.md should describe Bun serving through @lumina/adapter-bun.",
   },
   {
     file: "docs/task-backlog.md",
     pattern: /Bun server|Bun Adapter Server Output|Serve through Bun|Adapter-aware Bun server/i,
-    message: "docs/task-backlog.md should describe Bun serving through @needle/adapter-bun.",
+    message: "docs/task-backlog.md should describe Bun serving through @lumina/adapter-bun.",
   },
   {
     file: "docs/adapter-contract.md",
@@ -2092,7 +2092,7 @@ const staleStatusPatterns = [
   {
     file: "docs/deployment.md",
     pattern: /default production server path/i,
-    message: "docs/deployment.md should describe @needle/adapter-bun as the default production adapter path.",
+    message: "docs/deployment.md should describe @lumina/adapter-bun as the default production adapter path.",
   },
   {
     file: "docs/public/reference/adapters.md",
@@ -2102,7 +2102,7 @@ const staleStatusPatterns = [
   {
     file: "docs/risk-mitigation.md",
     pattern: /Bun server|Serve through Bun|Adapter-aware Bun server|Bun-first runtime paths/i,
-    message: "docs/risk-mitigation.md should describe first-slice Bun serving through @needle/adapter-bun.",
+    message: "docs/risk-mitigation.md should describe first-slice Bun serving through @lumina/adapter-bun.",
   },
   {
     file: "docs/cache.md",
@@ -2185,9 +2185,9 @@ const staleStatusPatterns = [
     message: "docs/public/reference/adapters.md should reference dist/adapter.manifest.json.",
   },
   {
-    file: "docs/assets/needle-map-data-flow.svg",
+    file: "docs/assets/lumina-map-data-flow.svg",
     pattern: /map\.manifest\.json|cache\.manifest\.json/i,
-    message: "docs/assets/needle-map-data-flow.svg uses stale generated artifact names.",
+    message: "docs/assets/lumina-map-data-flow.svg uses stale generated artifact names.",
   },
   {
     file: "docs/assets/safe-edit-transaction.svg",
@@ -2248,10 +2248,10 @@ for (const file of ["README.md", "docs/status.md", "docs/phase-1-build-plan.md",
   }
 }
 
-for (const file of plannedNeedleCommandDocs) {
+for (const file of plannedLuminaCommandDocs) {
   if (!existsSync(join(root, file))) continue;
   const content = read(file);
-  for (const command of plannedNeedleCommands) {
+  for (const command of plannedLuminaCommands) {
     if (!content.includes(command)) {
       failures.push(`${file} does not document planned CLI command: ${command}.`);
     }
@@ -2273,7 +2273,7 @@ for (const file of plannedMapCommandDocs) {
   const content = read(file);
   for (const command of plannedMapCommandSurfaces) {
     if (!content.includes(command)) {
-      failures.push(`${file} does not document planned Needle Map command surface: ${command}.`);
+      failures.push(`${file} does not document planned Lumina Map command surface: ${command}.`);
     }
   }
 }
@@ -2344,9 +2344,9 @@ for (const file of configAdapterContractDocs) {
   for (const term of [
     "runtime",
     "adapter",
-    "@needle/adapter-bun",
-    "@needle/adapter-node",
-    "@needle/adapter-static",
+    "@lumina/adapter-bun",
+    "@lumina/adapter-node",
+    "@lumina/adapter-static",
     "dist/adapter.manifest.json",
     "runtime.name",
   ]) {
@@ -2360,9 +2360,9 @@ for (const file of adapterContractDocs) {
   if (!existsSync(join(root, file))) continue;
   const content = read(file).toLowerCase();
   for (const term of [
-    "@needle/adapter-bun",
-    "@needle/adapter-node",
-    "@needle/adapter-static",
+    "@lumina/adapter-bun",
+    "@lumina/adapter-node",
+    "@lumina/adapter-static",
     "dist/routes.manifest.json",
     "dist/render.manifest.json",
     "dist/seo.report.json",
@@ -2469,7 +2469,7 @@ for (const file of cacheContractDocs) {
 for (const file of seoContractDocs) {
   if (!existsSync(join(root, file))) continue;
   const content = read(file).toLowerCase();
-  for (const term of ["definemeta", "generatemeta", "sitemap", "robots", "structured data", "canonical", ".needle/seo.report.json", "severity", "meaningful initial html", "client-only"]) {
+  for (const term of ["definemeta", "generatemeta", "sitemap", "robots", "structured data", "canonical", ".lumina/seo.report.json", "severity", "meaningful initial html", "client-only"]) {
     if (!content.includes(term)) {
       failures.push(`${file} is missing SEO contract term: ${term}.`);
     }
@@ -2499,7 +2499,7 @@ for (const file of securityContractDocs) {
 for (const file of performanceContractDocs) {
   if (!existsSync(join(root, file))) continue;
   const content = read(file).toLowerCase();
-  for (const term of ["core web vitals", "lcp", "inp", "cls", ".needle/perf.report.json", "perf_", "budget", "benchmark evidence", "delivery", "chunk count", "source-map", "rum", "field data", "resource hints", "early hints", "compression", "bfcache"]) {
+  for (const term of ["core web vitals", "lcp", "inp", "cls", ".lumina/perf.report.json", "perf_", "budget", "benchmark evidence", "delivery", "chunk count", "source-map", "rum", "field data", "resource hints", "early hints", "compression", "bfcache"]) {
     if (!content.includes(term)) {
       failures.push(`${file} is missing performance contract term: ${term}.`);
     }
@@ -2802,7 +2802,7 @@ for (const { file, terms } of prototypeScopeTerms) {
 }
 
 const canonicalFirstWorkingSlice =
-  "first working slice scoped to create app, SEO-safe pages, `@needle/adapter-bun` serving, a basic map, agent inspection, and safe metadata edit";
+  "first working slice scoped to create app, SEO-safe pages, `@lumina/adapter-bun` serving, a basic map, agent inspection, and safe metadata edit";
 
 if (existsSync(join(root, "docs/roadmap.md"))) {
   const roadmap = read("docs/roadmap.md");
@@ -2860,7 +2860,7 @@ for (const { file, terms } of publicGuideImplementationStatusDocs) {
 for (const file of safeEditContractDocs) {
   if (!existsSync(join(root, file))) continue;
   const content = read(file).toLowerCase();
-  for (const term of ["dry-run", "ast", "format", "affected checks", ".needle/mutations.json", "undo", "human sign-off"]) {
+  for (const term of ["dry-run", "ast", "format", "affected checks", ".lumina/mutations.json", "undo", "human sign-off"]) {
     if (!content.includes(term)) {
       failures.push(`${file} is missing safe-edit contract term: ${term}.`);
     }
@@ -3036,7 +3036,7 @@ for (const file of walkMarkdown(root)) {
   }
 
   if (/(^|\s)bun needle\b/.test(content)) {
-    failures.push(`${fileRel} uses stale command prefix "bun needle"; document planned CLI commands as "needle ...".`);
+    failures.push(`${fileRel} uses stale command prefix "bun needle"; document planned CLI commands as "lumina ...".`);
   }
 
   for (const match of matches) {

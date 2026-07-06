@@ -3,7 +3,7 @@
 Status: Planned.
 Audience: maintainers, framework contributors, AI agents.
 
-NeedleStart is taking on hard problems: semantic graph extraction, agent-safe edits, framework execution scope, adoption against incumbents, and Bun adoption concerns. These are solvable only if they are designed into the architecture and process from day one.
+Lumina is taking on hard problems: semantic graph extraction, agent-safe edits, framework execution scope, adoption against incumbents, and Bun adoption concerns. These are solvable only if they are designed into the architecture and process from day one.
 
 ## 1. Semantic Graph Extraction Is Hard
 
@@ -11,18 +11,18 @@ NeedleStart is taking on hard problems: semantic graph extraction, agent-safe ed
 
 File imports are easy. Real semantic understanding is harder: data flow, prop usage, SEO impact, cache impact, ownership, and affected checks are expensive and error-prone.
 
-Simple dependency tools capture syntactic relationships. NeedleStart's value comes from semantic relationships:
+Simple dependency tools capture syntactic relationships. Lumina's value comes from semantic relationships:
 
 - A component reads `product.price` from a schema.
 - A layout affects LCP and structured data across many routes.
 - A cache tag invalidates prerendered pages and API responses.
 - A file is owned by a team through CODEOWNERS or an explicit contract.
 
-Heavy convention and deep static analysis both create maintenance burden. NeedleStart must use both carefully and never pretend low-confidence inference is certain.
+Heavy convention and deep static analysis both create maintenance burden. Lumina must use both carefully and never pretend low-confidence inference is certain.
 
 ### Strategy
 
-Needle Map must use a layered extraction model.
+Lumina Map must use a layered extraction model.
 
 Layer 0, structural graph:
 
@@ -30,7 +30,7 @@ Layer 0, structural graph:
 - Nodes: files, routes, components, APIs, schemas, tests, content.
 - Edges: `imports`, `renders`, `defines`, `coveredByTest`.
 - Implementation: use `ts-morph`, Oxc, or another structured parser plus a deterministic dependency walker.
-- Output: persist to `.needle/map.json` with stable IDs.
+- Output: persist to `.lumina/map.json` with stable IDs.
 - Performance target: deterministic and fast, with incremental rebuilds designed for sub-200ms updates on large apps.
 
 Layer 1, contract graph:
@@ -81,9 +81,9 @@ Layer 3, later:
 ### Implementation Recommendations
 
 - Keep the full graph in memory during dev and build.
-- Persist graph cache to `.needle/cache/graph.json`.
+- Persist graph cache to `.lumina/cache/graph.json`.
 - Key persistent cache entries by source content hash, config hash, parser version, and graph schema version.
-- Add `@needle/map` query APIs:
+- Add `@lumina/map` query APIs:
   - `getAffected(node)`
   - `explainEdge(edgeId)`
   - `query("route:/pricing affectedBy component:ProductCard")`
@@ -114,15 +114,15 @@ Missing contracts should produce low-confidence edges rather than confident gues
 
 ### Guardrail
 
-Never let Needle Map be the only source of truth for safety-critical decisions. Combine graph data with explicit contracts, allow-lists, runtime validation, and affected checks.
+Never let Lumina Map be the only source of truth for safety-critical decisions. Combine graph data with explicit contracts, allow-lists, runtime validation, and affected checks.
 
 ### Dogfooding Requirement
 
-NeedleStart should use its own Needle Map once the map exists. If the graph lies during framework development, the project should feel that pain early and fix it.
+Lumina should use its own Lumina Map once the map exists. If the graph lies during framework development, the project should feel that pain early and fix it.
 
 ### Success Metric
 
-An agent using only Needle Map and MCP tools can answer "What must change if I edit ProductCard?" with more than 90 percent recall on a fixture app, and humans prefer it over manual searching.
+An agent using only Lumina Map and MCP tools can answer "What must change if I edit ProductCard?" with more than 90 percent recall on a fixture app, and humans prefer it over manual searching.
 
 ## 2. Execution Scope Is Brutal
 
@@ -138,8 +138,8 @@ The first working slice must stay ruthlessly scoped:
 
 - Create app.
 - Render SEO-safe pages.
-- Serve through `@needle/adapter-bun`.
-- Generate a basic Needle Map.
+- Serve through `@lumina/adapter-bun`.
+- Generate a basic Lumina Map.
 - Let an agent inspect the app.
 - Let an agent safely edit metadata through MCP or CLI.
 
@@ -159,7 +159,7 @@ Cut from the first public release:
 
 - Runtime stays tiny.
 - Compiler and build-time graph carry the complexity.
-- Shared immutable data model must be stabilized in `@needle/core`: `NeedleApp`, `RouteNode`, `GraphEdge`, `NeedleDiagnostic`, `RenderMode`, `CachePlan`, and `AdapterManifest`.
+- Shared immutable data model must be stabilized in `@lumina/core`: `LuminaApp`, `RouteNode`, `GraphEdge`, `LuminaDiagnostic`, `RenderMode`, `CachePlan`, and `AdapterManifest`.
 - CLI, compiler, map, agent, MCP, and devtools must read the same core model instead of duplicating local shapes.
 - Build pipeline is discovery -> IR -> graph augmentation -> codegen -> manifests.
 - Runtime consumes generated artifacts and should not rediscover source structure.
@@ -167,7 +167,7 @@ Cut from the first public release:
 
 Every new feature must answer three questions before being scheduled:
 
-1. Does it improve Needle Map or the Agent Kernel?
+1. Does it improve Lumina Map or the Agent Kernel?
 2. Can it be implemented with minimal production runtime code?
 3. Does it have clear planned acceptance criteria with tests and an agent demo?
 
@@ -184,20 +184,20 @@ If the answer is no, it is lower priority for the first working slice and should
 ### Process Discipline
 
 - Use `docs/templates/task-template.md` for every implementation issue.
-- Keep `docs/compiler-ir.md` and `docs/needle-map.md` current.
+- Keep `docs/compiler-ir.md` and `docs/lumina-map.md` current.
 - Run regular graph integrity reviews.
-- Break known dependencies on purpose and verify that Needle Map plus affected checks catch the impact.
+- Break known dependencies on purpose and verify that Lumina Map plus affected checks catch the impact.
 - Phases 0 through 7 should focus on compiler IR, route discovery, rendering basics, and the first graph.
 
 ### Ownership Model
 
 Small-team ownership should split along these lines:
 
-- Compiler and Needle Map.
+- Compiler and Lumina Map.
 - Runtime and Vite plugin.
 - Agent Kernel, MCP, and safe edits.
 
-All owners must use the same core data model: `NeedleApp`, `RouteNode`, `GraphEdge`, `NeedleDiagnostic`, `RenderMode`, `CachePlan`, and `AdapterManifest`.
+All owners must use the same core data model: `LuminaApp`, `RouteNode`, `GraphEdge`, `LuminaDiagnostic`, `RenderMode`, `CachePlan`, and `AdapterManifest`.
 
 ### Success Metric
 
@@ -211,11 +211,11 @@ Next.js has massive inertia. TanStack Start already owns much of the typed and e
 
 ### Strategy
 
-NeedleStart must win on a new axis instead of trying to lead with parity:
+Lumina must win on a new axis instead of trying to lead with parity:
 
 - Market as the framework built for the age of AI agents building and maintaining apps.
-- Lead with a demo where an agent safely changes a large app using Needle tools.
-- Make `needle map explain` and `needle agent plan` output useful enough to share.
+- Lead with a demo where an agent safely changes a large app using Lumina tools.
+- Make `lumina map explain` and `lumina agent plan` output useful enough to share.
 - Build migration tools and guides that preserve as much existing app structure as possible.
 
 ### Positioning Hierarchy
@@ -228,17 +228,17 @@ Use this order in marketing and user-facing documentation:
 
 ### Killer Onboarding Experiences
 
-- `bun create needle my-app --example agent-demo`
-- `needle agent context --route /pricing --json`
-- `needle map explain components/ProductCard.tsx`
-- A simple visual Needle Map explorer at `http://localhost:3434/__needle/map`
+- `bun create lumina my-app --example agent-demo`
+- `lumina agent context --route /pricing --json`
+- `lumina map explain components/ProductCard.tsx`
+- A simple visual Lumina Map explorer at `http://localhost:3434/__lumina/map`
 - A demo where an agent uses MCP to inspect, edit metadata, run affected checks, and report the mutation log.
 
 ### Migration Tooling
 
 Prototype migration before the full deployment adapter phase:
 
-- `needle migrate from-next`
+- `lumina migrate from-next`
 - Convert App Router pages, metadata, layouts, and simple dynamic routes.
 - Preserve as much source as possible.
 - Generate `.contract.ts` stubs where semantics are ambiguous instead of guessing.
@@ -250,7 +250,7 @@ See `docs/migration.md`.
 
 - Ship static, Bun, Docker, and Node adapters early enough to reduce adoption risk.
 - Provide first-class rules for agent tools through `AGENTS.md`, `llms.txt`, and MCP.
-- Build a simple visual Needle Map early, even before a polished devtools dashboard.
+- Build a simple visual Lumina Map early, even before a polished devtools dashboard.
 - Provide examples or plugins for popular stacks such as Tailwind, shadcn/ui, Drizzle, and Better Auth.
 - Provide Cursor, Windsurf, and Claude rule files that point agents to `AGENTS.md` and the MCP server.
 - Publish benchmarks for hot APIs and agent task completion time.
@@ -260,7 +260,7 @@ See `docs/migration.md`.
 - Open source from the beginning.
 - Keep `CONTRIBUTING.md` and `AGENTS.md` strong.
 - Generate excellent `llms.txt` and `llms-full.txt`.
-- Host a public Needle Map showcase repository for anonymized real app graphs.
+- Host a public Lumina Map showcase repository for anonymized real app graphs.
 - Maintain high-quality examples:
   - `examples/agent-demo/`
   - `playgrounds/large-app-fixture/`
@@ -269,11 +269,11 @@ See `docs/migration.md`.
 
 ### Revenue Direction
 
-Keep the framework open source. If revenue is needed later, consider hosted Needle Map, enterprise audit logs, safe edit governance, or CI graph services.
+Keep the framework open source. If revenue is needed later, consider hosted Lumina Map, enterprise audit logs, safe edit governance, or CI graph services.
 
 ### Success Metric
 
-Within six months of public launch, three to five non-trivial production apps or open-source projects choose NeedleStart specifically because of Needle Map and agent workflows.
+Within six months of public launch, three to five non-trivial production apps or open-source projects choose Lumina specifically because of Lumina Map and agent workflows.
 
 ## 4. Bun Dependency Perception
 
@@ -283,11 +283,11 @@ Some teams still treat Bun as too risky for production adoption.
 
 ### Strategy
 
-Bun should remain the default because speed matters, but NeedleStart must avoid making Bun a hard adoption blocker.
+Bun should remain the default because speed matters, but Lumina must avoid making Bun a hard adoption blocker.
 
 Rules:
 
-- Default to Bun for `needle dev` and `needle start`.
+- Default to Bun for `lumina dev` and `lumina start`.
 - Document Node compatibility prominently.
 - Move adapter abstraction into the Phase 7-8 window instead of treating it as a late deployment concern.
 - Avoid requiring Bun-only APIs in user application code.
@@ -297,9 +297,9 @@ Rules:
 
 Create adapter packages early:
 
-- `@needle/adapter-bun`: default, uses `Bun.serve` and generated route matcher.
-- `@needle/adapter-node`: uses Node `http` or a lightweight server with compatibility shims.
-- `@needle/adapter-static`: pure static export.
+- `@lumina/adapter-bun`: default, uses `Bun.serve` and generated route matcher.
+- `@lumina/adapter-node`: uses Node `http` or a lightweight server with compatibility shims.
+- `@lumina/adapter-static`: pure static export.
 - Later: Cloudflare, Vercel, Docker, and other deployment targets.
 
 Config:
@@ -314,8 +314,8 @@ export default defineConfig({
 Generated server entry:
 
 ```ts
-// .needle/generated/server-entry.ts
-import { createServer } from "@needle/adapter-bun"
+// .lumina/generated/server-entry.ts
+import { createServer } from "@lumina/adapter-bun"
 ```
 
 See `docs/adapters.md`.
@@ -365,11 +365,11 @@ Safe edits must use a full `SafeEditTransaction` model:
 7. Produce a dry-run diff and impact report.
 8. Apply only when dry-run passes or an explicit override is present.
 9. Write files.
-10. Append to `.needle/mutations.json`.
+10. Append to `.lumina/mutations.json`.
 11. Trigger incremental rebuild.
 12. Re-run affected checks.
 13. Emit structured result for MCP and CLI.
-14. Support rollback through `needle edit undo`.
+14. Support rollback through `lumina edit undo`.
 
 See `docs/safe-edit-transactions.md`.
 
@@ -438,9 +438,9 @@ Safe edits produce zero silent breaks in demo scenarios and catch nearly all int
 
 | Risk | Primary mitigation | When to tackle | Success metric |
 | --- | --- | --- | --- |
-| Semantic graph | Layered extraction with contracts first | Phases 11-13 | Agents prefer Needle Map over search. |
+| Semantic graph | Layered extraction with contracts first | Phases 11-13 | Agents prefer Lumina Map over search. |
 | Execution scope | Tight first working slice and shared data model | Day 1 | First working slice proves the map and safe-edit wedge quickly. |
-| Adoption | Lead with agent demo and migration story | Marketing and examples | Teams choose NeedleStart because of map and agent workflows. |
+| Adoption | Lead with agent demo and migration story | Marketing and examples | Teams choose Lumina because of map and agent workflows. |
 | Bun perception | Adapter abstraction and benchmarks | Phase 7-8 | Bun by default, Node-compatible by design. |
 | Safe edits | Defense in depth and risk tiers | Safe edit phase | No silent breaks in demo scenarios. |
 
@@ -448,7 +448,7 @@ Safe edits produce zero silent breaks in demo scenarios and catch nearly all int
 
 After the monorepo skeleton:
 
-1. Stabilize `NeedleApp`, `RouteNode`, `GraphEdge`, `NeedleDiagnostic`, `RenderMode`, `CachePlan`, and `AdapterManifest` in `@needle/core` beyond the current scaffold placeholders.
+1. Stabilize `LuminaApp`, `RouteNode`, `GraphEdge`, `LuminaDiagnostic`, `RenderMode`, `CachePlan`, and `AdapterManifest` in `@lumina/core` beyond the current scaffold placeholders.
 2. Implement the file-level graph and basic affected query as the first non-trivial feature.
 3. Build an agent simulator script that uses MCP tools once available to perform metadata edits and assert that checks pass.
-4. Write the marketing one-pager: "NeedleStart: the framework where changing code does not feel like operating without a map."
+4. Write the marketing one-pager: "Lumina: the framework where changing code does not feel like operating without a map."

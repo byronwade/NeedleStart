@@ -19,7 +19,7 @@ Evidence: initial documentation exists in `docs/skills/` and `docs/subagents/`.
 
 Definition of done:
 
-- Skill index covers strategic app building, documentation maintenance, project maintenance, Needle Map design, Agent Kernel design, and SEO/runtime review.
+- Skill index covers strategic app building, documentation maintenance, project maintenance, Lumina Map design, Agent Kernel design, and SEO/runtime review.
 - Subagent index covers architecture, compiler/map, runtime/SEO, agent safety, documentation, and verification roles.
 - README.md, AGENTS.md, and docs hub link to the docs-level guidance.
 - Guidance remains documentation-only until executable agent tooling exists.
@@ -156,7 +156,7 @@ Definition of done:
 
 ## PR 0I: CLI JSON Contract
 
-Goal: define machine-readable CLI output before `@needle/cli` implementation begins.
+Goal: define machine-readable CLI output before `@lumina/cli` implementation begins.
 
 Task status: Planned.
 
@@ -193,7 +193,7 @@ Evidence: initial documentation exists in `docs/config-contract.md`.
 
 Definition of done:
 
-- Planned `needle.config.ts`, loading order, normalized config shape, config fields, environment-variable policy, env file order, diagnostics, generated-output impact, security rules, and tests are documented.
+- Planned `lumina.config.ts`, loading order, normalized config shape, config fields, environment-variable policy, env file order, diagnostics, generated-output impact, security rules, and tests are documented.
 - Config, API reference, runtime, adapters, security, manifests, versioning, build-readiness, freshness, maintenance, README, AGENTS, docs hub, verification, research, and matrix docs link to the contract.
 - The contract is clearly marked planned and does not claim config loading or env behavior exists.
 - Future implementation tasks require config normalization tests, invalid config diagnostics, env loading fixtures, and secret-exclusion tests.
@@ -228,7 +228,7 @@ Definition of done:
 
 ## PR 0N: Routing Contract
 
-Goal: define route discovery, route IDs, sorting, diagnostics, and fixture expectations before `@needle/compiler` route discovery starts.
+Goal: define route discovery, route IDs, sorting, diagnostics, and fixture expectations before `@lumina/compiler` route discovery starts.
 
 Task status: Planned.
 
@@ -331,7 +331,7 @@ Definition of done:
 
 ## PR 0U: Performance Contract
 
-Goal: define route budgets, Core Web Vitals target language, `.needle/perf.report.json`, route chunk and CSS delivery fields, source-map exposure checks, performance diagnostics, benchmark evidence, lab-vs-field language, optional RUM policy, agent/CI behavior, and public speed-claim rules before performance tooling or claims are implemented.
+Goal: define route budgets, Core Web Vitals target language, `.lumina/perf.report.json`, route chunk and CSS delivery fields, source-map exposure checks, performance diagnostics, benchmark evidence, lab-vs-field language, optional RUM policy, agent/CI behavior, and public speed-claim rules before performance tooling or claims are implemented.
 
 Task status: Planned.
 
@@ -361,31 +361,31 @@ Read first:
 - `docs/adapter-contract.md` before Bun, Node, static, deployment, or adapter manifest work starts
 - `docs/examples-contract.md` before create-command example support, starter templates, fixture examples, or public guide snippets are added
 - `docs/routing-contract.md` before route-discovery package work starts
-- `docs/seo-contract.md` before `@needle/seo` package work starts
+- `docs/seo-contract.md` before `@lumina/seo` package work starts
 - `docs/accessibility-contract.md` before framework-owned HTML, examples, docs UI, form errors, route focus behavior, or accessibility diagnostics are added
 - `docs/security-contract.md` before high-risk surfaces, secret handling, production errors, security headers, agent/MCP writes, package publishing, or vulnerability-intake behavior are added
-- `docs/performance-contract.md` before route budgets, `.needle/perf.report.json`, performance diagnostics, benchmark evidence, Core Web Vitals language, or public speed claims are added
+- `docs/performance-contract.md` before route budgets, `.lumina/perf.report.json`, performance diagnostics, benchmark evidence, Core Web Vitals language, or public speed claims are added
 - `docs/speed-decisions.md` and `docs/speed-capability-audit.md` before rendering defaults, build pipeline, runtime request path, React Compiler, React streaming, resource hints, fetch priority, 103 Early Hints, speculation rules, bfcache, image/font delivery, compression, hot API behavior, cache strategy, compiler scaling, or benchmark positioning changes
 
 Packages:
 
-- `create-needle`
-- `@needle/cli`
-- `@needle/core`
-- `@needle/compiler`
-- `@needle/vite-plugin`
-- `@needle/react`
-- `@needle/router`
-- `@needle/seo`
-- `@needle/map`
-- `@needle/agent`
-- `@needle/mcp`
-- `@needle/cache`
-- `@needle/schema`
-- `@needle/devtools`
-- `@needle/adapter-bun`
-- `@needle/adapter-node`
-- `@needle/adapter-static`
+- `create-lumina`
+- `@lumina/cli`
+- `@lumina/core`
+- `@lumina/compiler`
+- `@lumina/vite-plugin`
+- `@lumina/react`
+- `@lumina/router`
+- `@lumina/seo`
+- `@lumina/map`
+- `@lumina/agent`
+- `@lumina/mcp`
+- `@lumina/cache`
+- `@lumina/schema`
+- `@lumina/devtools`
+- `@lumina/adapter-bun`
+- `@lumina/adapter-node`
+- `@lumina/adapter-static`
 
 Definition of done:
 
@@ -409,20 +409,20 @@ Out of scope:
 - Vite integration.
 - React rendering.
 - Runtime server behavior.
-- Generated `.needle/*` artifacts.
+- Generated `.lumina/*` artifacts.
 
 ## PR 1A: Core Data Model
 
-Goal: stabilize the shared immutable data model in `@needle/core`.
+Goal: stabilize the shared immutable data model in `@lumina/core`.
 
 The Phase 1 scaffold already exposes placeholder versions of the shared types. This task promotes them into contract-backed shapes before compiler, CLI, runtime adapter, map, agent, MCP, or devtools work depends on them.
 
 Definition of done:
 
-- `NeedleApp` is contract-backed.
+- `LuminaApp` is contract-backed.
 - `RouteNode` is contract-backed.
 - `GraphEdge` is contract-backed and includes `kind`, `source`, `confidence`, and `why`.
-- `NeedleDiagnostic` is contract-backed.
+- `LuminaDiagnostic` is contract-backed.
 - `RenderMode` is contract-backed.
 - `CachePlan` is contract-backed.
 - `AdapterManifest` is contract-backed.
@@ -435,15 +435,15 @@ Goal: create early adapter package boundaries.
 
 Definition of done:
 
-- `@needle/adapter-bun` package exists.
-- `@needle/adapter-node` package exists.
-- `@needle/adapter-static` package exists.
-- Adapter capability type exists in `@needle/core`.
+- `@lumina/adapter-bun` package exists.
+- `@lumina/adapter-node` package exists.
+- `@lumina/adapter-static` package exists.
+- Adapter capability type exists in `@lumina/core`.
 - User-facing docs explain Bun default plus Node/static compatibility.
 
 ## PR 2: Route Discovery
 
-Goal: discover `app/` routes and emit `.needle/routes.json`.
+Goal: discover `app/` routes and emit `.lumina/routes.json`.
 
 Read first:
 
@@ -462,11 +462,11 @@ Definition of done:
 
 ## PR 3: Vite Dev Integration
 
-Goal: make `needle dev` start Vite and render a basic React page.
+Goal: make `lumina dev` start Vite and render a basic React page.
 
 Definition of done:
 
-- `needle dev` should start.
+- `lumina dev` should start.
 - Page should render on the server.
 - Client should hydrate.
 - Route manifest virtual module should exist.
@@ -505,7 +505,7 @@ Definition of done:
 
 ## PR 7: Bun Adapter Production Output
 
-Goal: support `needle start` for built apps.
+Goal: support `lumina start` for built apps.
 
 Read first:
 
@@ -519,7 +519,7 @@ Definition of done:
 - 404 should work.
 - 500 should work.
 - Cache headers should be tested.
-- Bun serving should be implemented through `@needle/adapter-bun`.
+- Bun serving should be implemented through `@lumina/adapter-bun`.
 
 ## PR 7A: Adapter-Aware Server Entry
 
@@ -527,15 +527,15 @@ Goal: make generated server output adapter-aware.
 
 Definition of done:
 
-- `needle.config.ts` should support `runtime` and `adapter`.
-- `.needle/generated/server-entry.ts` should import the selected adapter.
+- `lumina.config.ts` should support `runtime` and `adapter`.
+- `.lumina/generated/server-entry.ts` should import the selected adapter.
 - `dist/adapter.manifest.json` should be emitted.
 - Static adapter should export compatible static routes.
 - Node adapter should serve a minimal SSR route.
 
 ## PR 8: Metadata and SEO Audit
 
-Goal: implement `defineMeta()` and `needle seo`.
+Goal: implement `defineMeta()` and `lumina seo`.
 
 Definition of done:
 
@@ -563,7 +563,7 @@ Definition of done:
 - Static and prerendered route cache plans should be emitted.
 - SSR and API routes should default to `no-store`.
 - Explicit API TTL cache config should appear in manifests.
-- Cache tags should appear in manifests and Needle Map inputs.
+- Cache tags should appear in manifests and Lumina Map inputs.
 - Cache diagnostics should cover invalid tags, unsafe auth caching, invalid TTL, and header conflicts.
 - Bun adapter HTTP tests should verify generated cache headers.
 
@@ -608,7 +608,7 @@ Definition of done:
 - Invalid input should return structured 400.
 - Benchmark fixture should compare normal and hot API.
 
-## PR 11: Needle Map File Graph
+## PR 11: Lumina Map File Graph
 
 Goal: generate a file-level map.
 
@@ -631,7 +631,7 @@ Goal: generate route context capsules.
 
 Definition of done:
 
-- `needle agent context --route / --json` should work.
+- `lumina agent context --route / --json` should work.
 - Context should include route, source, mode, SEO, components, checks, and safe edits.
 - Production build should exclude agent metadata.
 
@@ -641,7 +641,7 @@ Goal: expose read-only framework tools through MCP.
 
 Definition of done:
 
-- `needle mcp` should start.
+- `lumina mcp` should start.
 - `list_routes` should work.
 - `get_route` should work.
 - `get_related_files` should work.
@@ -665,10 +665,10 @@ Definition of done:
 - AST edit should be used.
 - Dry-run diff preview should work.
 - `SafeEditTransaction` result should be emitted.
-- `.needle/mutations.json` should be append-only.
+- `.lumina/mutations.json` should be append-only.
 - Affected checks should run.
 - Mutation log should be written.
-- `needle edit undo <mutationId>` should work.
+- `lumina edit undo <mutationId>` should work.
 
 ## PR 15: Node Adapter Baseline
 
@@ -697,7 +697,7 @@ Definition of done:
 
 ## PR 17: Migration Prototype
 
-Goal: prototype `needle migrate from-next`.
+Goal: prototype `lumina migrate from-next`.
 
 Definition of done:
 

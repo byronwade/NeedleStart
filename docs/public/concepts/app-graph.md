@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, AI agents, future website visitors.
 
-NeedleStart is app-graph-native. The framework is planned to generate a semantic map of the application so humans and AI agents can understand what each file affects.
+Lumina is app-graph-native. The framework is planned to generate a semantic map of the application so humans and AI agents can understand what each file affects.
 
 ## The Problem
 
@@ -19,9 +19,9 @@ Large React apps become hard to change because relationships are scattered:
 
 AI agents struggle when they have to infer all of this by reading the whole repository.
 
-## The NeedleStart Approach
+## The Lumina Approach
 
-Needle Map is planned to connect:
+Lumina Map is planned to connect:
 
 - Routes.
 - Layouts.
@@ -50,7 +50,7 @@ Planned workflows:
 
 ## Source
 
-- [Needle Map](../../needle-map.md)
+- [Lumina Map](../../lumina-map.md)
 - [Manifest Contracts](../reference/manifest-contracts.md)
 - [Machine-Readable Documentation](../../machine-readable-docs.md)
 

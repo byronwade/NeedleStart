@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: future website visitors, app developers, framework contributors, AI agents.
 
-This is the planned public documentation landing page for NeedleStart.
+This is the planned public documentation landing page for Lumina.
 
 ## Start Here
 
@@ -23,7 +23,7 @@ This is the planned public documentation landing page for NeedleStart.
 - [Whole-System Speed](concepts/speed.md)
 - [Safe Edits](concepts/safe-edits.md)
 
-## Build With NeedleStart
+## Build With Lumina
 
 These guides describe target workflows. They are not verified until implementation exists.
 
@@ -31,7 +31,7 @@ These guides describe target workflows. They are not verified until implementati
 - [Add SEO Metadata](guides/seo-metadata.md)
 - [Create An API Route](guides/api-route.md)
 - [Create A Hot API Route](guides/hot-api.md)
-- [Inspect Needle Map](guides/needle-map.md)
+- [Inspect Lumina Map](guides/lumina-map.md)
 - [Use Agent Context](guides/agent-context.md)
 
 ## Reference

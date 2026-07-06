@@ -4,27 +4,27 @@ Status: Planned.
 
 Audience: framework contributors, adapter authors, AI agents.
 
-NeedleStart planned manifests are the contracts between compiler, runtime adapters, CLI, Needle Map, Agent Kernel, MCP, devtools, and tests.
+Lumina planned manifests are the contracts between compiler, runtime adapters, CLI, Lumina Map, Agent Kernel, MCP, devtools, and tests.
 
 Planned generated files include:
 
-- `.needle/routes.json`
-- `.needle/render-manifest.json`
-- `.needle/map.json`
-- `.needle/graph.json`
-- `.needle/seo.report.json`
-- `.needle/perf.report.json`
-- `.needle/context/*.ctx.json`
-- `.needle/context/agent-index.json`
-- `.needle/mutations.json`
-- `.needle/generated/*`
+- `.lumina/routes.json`
+- `.lumina/render-manifest.json`
+- `.lumina/map.json`
+- `.lumina/graph.json`
+- `.lumina/seo.report.json`
+- `.lumina/perf.report.json`
+- `.lumina/context/*.ctx.json`
+- `.lumina/context/agent-index.json`
+- `.lumina/mutations.json`
+- `.lumina/generated/*`
 - `dist/routes.manifest.json`
 - `dist/render.manifest.json`
 - `dist/seo.report.json`
 - `dist/adapter.manifest.json`
 - `dist/*`
 
-The canonical compiler and agent contracts stay under `.needle/`. The named `dist/*` manifest and report files are deployment-oriented copies for runtime adapters, and `dist/*` is the planned production build output surface.
+The canonical compiler and agent contracts stay under `.lumina/`. The named `dist/*` manifest and report files are deployment-oriented copies for runtime adapters, and `dist/*` is the planned production build output surface.
 
 ## Contract Rules
 

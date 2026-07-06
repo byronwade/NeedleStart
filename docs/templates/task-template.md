@@ -26,7 +26,7 @@ One sentence describing the outcome.
 
 ## Scope Gate
 
-- Does this improve Needle Map or the Agent Kernel?
+- Does this improve Lumina Map or the Agent Kernel?
 - Can this be implemented with minimal production runtime code?
 - Does this have a clear agent demo or fixture proof?
 

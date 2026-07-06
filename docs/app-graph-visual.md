@@ -4,16 +4,16 @@ Status: Planned.
 
 Audience: app developers, framework contributors, AI agents.
 
-NeedleStart should eventually include visual explanations of Needle Map and the generated app graph.
+Lumina should eventually include visual explanations of Lumina Map and the generated app graph.
 
 ## Current Asset
 
-The repository includes `docs/assets/needle-map-data-flow.svg`.
+The repository includes `docs/assets/lumina-map-data-flow.svg`.
 
 ## Needed Diagrams
 
 - Compiler pipeline to manifests.
-- Needle Map layers.
+- Lumina Map layers.
 - Route to component to schema to test graph.
 - Safe edit transaction lifecycle.
 - MCP read and write safety flow.

@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, framework contributors, AI agents.
 
-This page is the index for exact NeedleStart API contracts. It should become the place developers and agents use when they need precise command syntax, config fields, helper signatures, file conventions, generated JSON, and manifest shapes.
+This page is the index for exact Lumina API contracts. It should become the place developers and agents use when they need precise command syntax, config fields, helper signatures, file conventions, generated JSON, and manifest shapes.
 
 ## Reference Page Rules
 
@@ -23,19 +23,19 @@ Planned commands:
 
 | Command | Status | Purpose |
 | --- | --- | --- |
-| `needle dev` | Planned | Start local development server. |
-| `needle build` | Planned | Build static, SSR, API, graph, SEO, and adapter outputs. |
-| `needle start` | Planned | Start a built app with the selected adapter. |
-| `needle routes` | Planned | Inspect discovered routes. |
-| `needle inspect` | Planned | Inspect a route, file, or generated artifact. |
-| `needle check` | Planned | Run framework-aware checks. |
-| `needle seo` | Planned | Run SEO audits. |
-| `needle map` | Planned | Query Needle Map. |
-| `needle agent` | Planned | Generate and inspect agent context. |
-| `needle mcp` | Planned | Start the MCP server. |
-| `needle edit` | Planned | Preview, apply, inspect, and undo safe-edit transactions. |
-| `needle migrate` | Planned | Prototype migration workflows such as `from-next`. |
-| `needle bench` | Planned | Run benchmark fixtures and emit evidence metadata. |
+| `lumina dev` | Planned | Start local development server. |
+| `lumina build` | Planned | Build static, SSR, API, graph, SEO, and adapter outputs. |
+| `lumina start` | Planned | Start a built app with the selected adapter. |
+| `lumina routes` | Planned | Inspect discovered routes. |
+| `lumina inspect` | Planned | Inspect a route, file, or generated artifact. |
+| `lumina check` | Planned | Run framework-aware checks. |
+| `lumina seo` | Planned | Run SEO audits. |
+| `lumina map` | Planned | Query Lumina Map. |
+| `lumina agent` | Planned | Generate and inspect agent context. |
+| `lumina mcp` | Planned | Start the MCP server. |
+| `lumina edit` | Planned | Preview, apply, inspect, and undo safe-edit transactions. |
+| `lumina migrate` | Planned | Prototype migration workflows such as `from-next`. |
+| `lumina bench` | Planned | Run benchmark fixtures and emit evidence metadata. |
 
 Each command should eventually document human output, `--json` output, exit codes, and affected generated files.
 
@@ -48,8 +48,8 @@ The shared diagnostic code, severity, source-location, remediation, docs-link, a
 Planned config file:
 
 ```ts
-// needle.config.ts
-import { defineConfig } from "needlestart"
+// lumina.config.ts
+import { defineConfig } from "lumina"
 
 export default defineConfig({
   runtime: "bun",
@@ -77,17 +77,17 @@ Planned helpers:
 
 | API | Status | Package | Purpose |
 | --- | --- | --- | --- |
-| `defineConfig()` | Planned | `needlestart` | Define project config. |
-| `defineMeta()` | Planned | `needlestart` | Define route metadata for SEO, social cards, sitemap output, robots policy, and structured data. |
-| `staticPage()` | Planned | `needlestart` | Mark a route as static. |
-| `prerender()` | Planned | `needlestart` | Mark a route as prerendered with revalidation metadata. |
-| `ssr()` | Planned | `needlestart` | Mark a route as server-rendered. |
-| `stream()` | Planned | `needlestart` | Mark a route as streaming SSR. |
-| `clientOnly()` | Planned | `needlestart` | Intentionally skip server-rendered content. |
-| `apiHot()` | Planned | `needlestart` | Compile a specialized API handler path. |
-| `schema` | Planned | `needlestart` | Define validation and serialization contracts. |
+| `defineConfig()` | Planned | `lumina` | Define project config. |
+| `defineMeta()` | Planned | `lumina` | Define route metadata for SEO, social cards, sitemap output, robots policy, and structured data. |
+| `staticPage()` | Planned | `lumina` | Mark a route as static. |
+| `prerender()` | Planned | `lumina` | Mark a route as prerendered with revalidation metadata. |
+| `ssr()` | Planned | `lumina` | Mark a route as server-rendered. |
+| `stream()` | Planned | `lumina` | Mark a route as streaming SSR. |
+| `clientOnly()` | Planned | `lumina` | Intentionally skip server-rendered content. |
+| `apiHot()` | Planned | `lumina` | Compile a specialized API handler path. |
+| `schema` | Planned | `lumina` | Define validation and serialization contracts. |
 
-Planned render helper outputs must map to the shared `@needle/core` `RenderMode` literals: `"static"`, `"prerender"`, `"ssr"`, `"stream"`, `"client-only"`, `"api"`, and `"hot-api"`. Ordinary API route files under `app/api/` compile to `renderMode: "api"` without a separate `api()` helper. `apiHot()` is an explicit opt-in to `renderMode: "hot-api"`.
+Planned render helper outputs must map to the shared `@lumina/core` `RenderMode` literals: `"static"`, `"prerender"`, `"ssr"`, `"stream"`, `"client-only"`, `"api"`, and `"hot-api"`. Ordinary API route files under `app/api/` compile to `renderMode: "api"` without a separate `api()` helper. `apiHot()` is an explicit opt-in to `renderMode: "hot-api"`.
 
 ## Manifest Reference
 
@@ -95,16 +95,16 @@ Planned generated files:
 
 | File | Status | Purpose |
 | --- | --- | --- |
-| `.needle/routes.json` | Planned | Stable route manifest. |
-| `.needle/render-manifest.json` | Planned | Route render modes and cache metadata. |
-| `.needle/map.json` | Planned | Public Needle Map output. |
-| `.needle/graph.json` | Planned | Graph data for compiler, map, and agents. |
-| `.needle/seo.report.json` | Planned | SEO audit output. |
-| `.needle/perf.report.json` | Planned | Performance budget output. |
-| `.needle/context/*.ctx.json` | Planned | Route or surface context capsules. |
-| `.needle/context/agent-index.json` | Planned | Agent context index. |
-| `.needle/mutations.json` | Planned | Safe edit mutation log. |
-| `.needle/generated/*` | Planned | Generated runtime modules. |
+| `.lumina/routes.json` | Planned | Stable route manifest. |
+| `.lumina/render-manifest.json` | Planned | Route render modes and cache metadata. |
+| `.lumina/map.json` | Planned | Public Lumina Map output. |
+| `.lumina/graph.json` | Planned | Graph data for compiler, map, and agents. |
+| `.lumina/seo.report.json` | Planned | SEO audit output. |
+| `.lumina/perf.report.json` | Planned | Performance budget output. |
+| `.lumina/context/*.ctx.json` | Planned | Route or surface context capsules. |
+| `.lumina/context/agent-index.json` | Planned | Agent context index. |
+| `.lumina/mutations.json` | Planned | Safe edit mutation log. |
+| `.lumina/generated/*` | Planned | Generated runtime modules. |
 | `dist/routes.manifest.json` | Planned | Deployment-oriented route manifest copy for adapters. |
 | `dist/render.manifest.json` | Planned | Deployment-oriented render manifest copy for adapters. |
 | `dist/seo.report.json` | Planned | Deployment-oriented SEO report copy for adapters. |
@@ -126,7 +126,7 @@ Generated JSON must use schema versions, normalized paths, stable ordering, comp
 - [Diagnostics Contract](diagnostics-contract.md)
 - [Configuration Contract](config-contract.md)
 - [Runtime Contract](runtime-contract.md)
-- [Needle Map](needle-map.md)
+- [Lumina Map](lumina-map.md)
 - [Agent Kernel](agent-kernel.md)
 - [MCP Server](mcp-server.md)
 - [Safe Edit Transactions](safe-edit-transactions.md)

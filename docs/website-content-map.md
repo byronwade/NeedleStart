@@ -28,7 +28,7 @@ This map is also the planned source mapping input for the future docs renderer, 
   - SEO metadata: `docs/public/guides/seo-metadata.md`.
   - API route: `docs/public/guides/api-route.md`.
   - Hot API route: `docs/public/guides/hot-api.md`.
-  - Needle Map: `docs/public/guides/needle-map.md`.
+  - Lumina Map: `docs/public/guides/lumina-map.md`.
   - Agent context: `docs/public/guides/agent-context.md`.
 - Reference:
   - CLI: `docs/public/reference/cli.md`.
@@ -69,7 +69,7 @@ This map is also the planned source mapping input for the future docs renderer, 
 | Getting Started | `docs/public/guides/create-app.md`, `docs/public/reference/examples.md`, `docs/getting-started.md`, `docs/examples-contract.md`, `docs/status.md` |
 | Guides | `docs/public/guides/*`, `docs/guides.md` |
 | API Reference | `docs/public/reference/*`, `docs/api-reference.md`, `docs/cli.md`, `docs/cli-json-contract.md`, `docs/diagnostics-contract.md`, `docs/config.md`, `docs/adapter-contract.md`, `docs/examples-contract.md`, `docs/examples-catalog.md`, `docs/file-conventions.md`, `docs/routing-contract.md`, `docs/api-route-contract.md`, `docs/schema-contract.md`, `docs/cache-contract.md`, `docs/seo-contract.md`, `docs/accessibility-contract.md`, `docs/security-contract.md`, `docs/threat-model.md`, `docs/performance-contract.md`, `docs/benchmark-fixtures.md`, `docs/testing-contract.md`, `docs/product-build-readiness.md` |
-| Concepts | `docs/public/concepts/*`, `ARCHITECTURE.md`, `docs/needle-map.md`, `docs/agent-kernel.md` |
+| Concepts | `docs/public/concepts/*`, `ARCHITECTURE.md`, `docs/lumina-map.md`, `docs/agent-kernel.md` |
 | Deployment | `docs/public/deployment/*`, `docs/deployment.md`, `docs/adapters.md`, `docs/compatibility.md` |
 | Community | `docs/public/community/*`, `CONTRIBUTING.md`, `GOVERNANCE.md`, `CODE_OF_CONDUCT.md`, `docs/first-contribution.md` |
 | Comparisons | `docs/public/comparisons/*`, `docs/comparisons.md`, `docs/documentation-research.md` |

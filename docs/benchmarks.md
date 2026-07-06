@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: maintainers, performance reviewers, future website visitors.
 
-NeedleStart must not make benchmark claims without raw data and methodology.
+Lumina must not make benchmark claims without raw data and methodology.
 
 ## Planned Benchmark Areas
 

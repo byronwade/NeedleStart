@@ -22,7 +22,7 @@ Read before editing:
 ## Workflow
 
 1. Prefer static-first output, SSR only when needed, and client-only rendering only when intentional.
-2. Keep Bun-specific behavior inside `@needle/adapter-bun`.
+2. Keep Bun-specific behavior inside `@lumina/adapter-bun`.
 3. Keep user application code free of Bun-only API requirements.
 4. Do not add invisible caching; cache rules must be explicit and explainable.
 5. Ensure public SEO behavior has testable acceptance criteria.

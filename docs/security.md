@@ -55,4 +55,4 @@ High-risk feature docs should answer:
 
 ## Agent Security Rule
 
-AI agents must not use Needle Map as the only authority for safety-critical changes. Safe edit validation, tests, explicit contracts, and human sign-off are required for high-risk writes.
+AI agents must not use Lumina Map as the only authority for safety-critical changes. Safe edit validation, tests, explicit contracts, and human sign-off are required for high-risk writes.

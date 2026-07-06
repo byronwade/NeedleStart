@@ -23,13 +23,13 @@ This is a ready-to-adapt PR summary for the documentation-system work.
 - Added planned contracts for CLI JSON, diagnostics, config loading, versioning/upgrades, public docs site architecture, product-build readiness, route discovery, API routes, schemas, cache behavior, and SEO behavior.
 - Added accessibility contract docs for WCAG target language, semantic HTML, keyboard and focus behavior, form errors, diagnostics, public docs UI, and evidence requirements.
 - Added security contract docs for high-risk surfaces, threat models, secret handling, production errors, security headers, agent/MCP writes, vulnerability intake, supply-chain release planning, and evidence requirements.
-- Added performance contract docs for route budgets, Core Web Vitals targets, `.needle/perf.report.json`, diagnostics, benchmark evidence, lab-vs-field language, and public speed-claim rules.
+- Added performance contract docs for route budgets, Core Web Vitals targets, `.lumina/perf.report.json`, diagnostics, benchmark evidence, lab-vs-field language, and public speed-claim rules.
 - Added speed decision and capability audit docs for Vite/Rolldown, Bun, React Compiler, React streaming, resource hints, fetch priority, 103 Early Hints, speculation rules, bfcache, image/font delivery, compression, hot APIs, explicit caching, payload budgets, compiler scaling, rejected defaults, and benchmark gates.
 - Added open source readiness docs: code of conduct, governance, security policy, maintainer guide, release process, and PR template.
 
 ## Why It Matters
 
-NeedleStart now has a Phase 1 scaffold. This documentation-system summary remains useful as historical context for the planning pass that made the repository easier to understand before implementation began. It gave contributors a clean Phase 1 path, gave maintainers governance and review surfaces, gave AI agents structured rules and stable-contract expectations, and gave future public website content a source architecture.
+Lumina now has a Phase 1 scaffold. This documentation-system summary remains useful as historical context for the planning pass that made the repository easier to understand before implementation began. It gave contributors a clean Phase 1 path, gave maintainers governance and review surfaces, gave AI agents structured rules and stable-contract expectations, and gave future public website content a source architecture.
 
 ## Audiences That Benefit
 

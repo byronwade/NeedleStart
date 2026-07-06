@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: framework contributors, maintainers, performance reviewers, AI agents.
 
-NeedleStart should be fast as a whole system, not only fast on one benchmark. Speed must be designed into the compiler, runtime, route model, app graph, agent workflows, generated artifacts, and documentation.
+Lumina should be fast as a whole system, not only fast on one benchmark. Speed must be designed into the compiler, runtime, route model, app graph, agent workflows, generated artifacts, and documentation.
 
 The goal is not to make vague speed claims. The goal is to make fast paths the default, make slow paths visible, and require evidence before publishing performance claims.
 
@@ -18,7 +18,7 @@ The concrete technology and architecture choices that support this strategy are 
 4. Explicit render modes: every route should explain whether it is static, prerendered, SSR, streaming, client-only, API, or hot API.
 5. Hot APIs for hot paths: performance-critical API routes can opt into generated validation and serialization.
 6. Inspectable caching: cache plans must be explicit, manifest-backed, and visible to agents.
-7. Fast agent workflows: agents should use compact JSON, Needle Map, affected checks, and context capsules instead of reading the whole repo.
+7. Fast agent workflows: agents should use compact JSON, Lumina Map, affected checks, and context capsules instead of reading the whole repo.
 8. Large-app readiness: incremental work must be designed for thousands of routes, not toy apps only.
 9. Benchmark honesty: public claims require raw data, methodology, fixture source, and comparable behavior.
 10. Waterfall resistance: independent async work should start early, await late, and stream only when it improves the critical path.
@@ -30,11 +30,11 @@ The concrete technology and architecture choices that support this strategy are 
 | Surface | Speed goal | Primary docs | Evidence required |
 | --- | --- | --- | --- |
 | Dev startup | Start quickly after config and route discovery. | `docs/roadmap.md`, `docs/compiler-ir.md` | Dev fixture timing after route discovery and dev server work exist |
-| HMR and route updates | Recompute changed route slices, not the whole app. | `docs/compiler-ir.md`, `docs/needle-map.md` | Incremental route fixture |
+| HMR and route updates | Recompute changed route slices, not the whole app. | `docs/compiler-ir.md`, `docs/lumina-map.md` | Incremental route fixture |
 | Static pages | Serve prebuilt HTML with minimal runtime work. | `docs/runtime-contract.md`, `docs/seo-engine.md` | Static output and HTTP tests |
 | SSR routes | Keep request routing small and manifest-driven. | `docs/runtime-contract.md`, `docs/adapters.md` | Adapter HTTP latency fixture |
 | Hot APIs | Avoid generic framework overhead for selected APIs. | `docs/hot-api-path.md`, `docs/schema.md`, `docs/cache-contract.md` | Normal vs hot API benchmark |
-| App graph | Query affected files and routes quickly. | `docs/needle-map.md`, `docs/risk-mitigation.md` | Large graph fixture and query timing |
+| App graph | Query affected files and routes quickly. | `docs/lumina-map.md`, `docs/risk-mitigation.md` | Large graph fixture and query timing |
 | Agent context | Return compact context without repository-wide reads. | `docs/agent-kernel.md`, `docs/machine-readable-docs.md` | Stable JSON size and response timing |
 | Client payload | Keep public page JS, CSS, chunk count, hydration, and debug payload budgets visible. | `docs/performance.md` | Route budget report |
 | Builds | Avoid unnecessary rebuilds with content/config hashing. | `docs/compiler-ir.md` | Build cache fixture |
@@ -61,7 +61,7 @@ The concrete technology and architecture choices that support this strategy are 
 
 - Adapters must consume generated manifests and handlers.
 - Runtime must not discover routes from source files.
-- Runtime must not build Needle Map.
+- Runtime must not build Lumina Map.
 - Runtime must not load agent context in production bundles.
 - Static asset and prerendered HTML lookup should happen before SSR work.
 - SSR should default to no-store unless route config explicitly opts into caching.
@@ -87,9 +87,9 @@ The concrete technology and architecture choices that support this strategy are 
 
 ## Agent Workflow Speed Rules
 
-- Agents should start from `AGENTS.md`, docs indexes, route context, and Needle Map outputs.
+- Agents should start from `AGENTS.md`, docs indexes, route context, and Lumina Map outputs.
 - Agent-facing JSON should be compact and schema-versioned where possible.
-- `needle map affected` and `needle agent context` should avoid requiring repository-wide reads.
+- `lumina map affected` and `lumina agent context` should avoid requiring repository-wide reads.
 - Affected checks should run only relevant checks when the graph can identify them safely.
 - Safe edits should run affected checks, not unrelated full-suite checks by default.
 
@@ -146,7 +146,7 @@ If the answer is unclear, add a risk note to the task before implementation.
 
 ## Out Of Scope
 
-- Claiming NeedleStart is faster than another framework before benchmarks exist.
+- Claiming Lumina is faster than another framework before benchmarks exist.
 - Building a custom bundler before the Vite/Rolldown path is proven.
 - Adding broad runtime magic to compensate for missing compiler output.
 - Making hot API behavior the default for every route before generic correctness exists.

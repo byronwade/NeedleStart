@@ -12,29 +12,29 @@ Scope: package names and entrypoints are scaffolded; package behavior remains pl
 
 | Package | Responsibility |
 | --- | --- |
-| `create-needle` | One-command project creation. |
-| `@needle/cli` | Planned `needle` command surface: `needle dev`, `needle build`, `needle start`, `needle routes`, `needle inspect`, `needle check`, `needle seo`, `needle map`, `needle agent`, `needle mcp`, `needle edit`, `needle migrate`, and `needle bench`. |
-| `@needle/core` | Shared types, config, route definitions, render modes, diagnostics, and public helper types. |
-| `@needle/compiler` | App discovery, route IR, render mode extraction, manifests, generated modules, route asset metadata, API codegen, graph inputs. |
-| `@needle/vite-plugin` | Vite integration, virtual modules, route HMR, client and server entry wiring. |
-| `@needle/react` | React SSR helpers, layouts, head manager, loaders, hydration, client entry helpers. |
-| `@needle/router` | Generated route matcher, typed links, params, route helpers. |
-| `@needle/seo` | Metadata, sitemap, robots, OG images, structured data helpers, SEO audits. |
-| `@needle/map` | Semantic graph builder, file graph, query engine, affected checks. |
-| `@needle/agent` | App-local `AGENTS.md` generation, context capsules, task skeletons, safe edit orchestration. |
-| `@needle/mcp` | MCP server tools and resources. |
-| `@needle/cache` | Cache tags, route cache, response cache, invalidation primitives. |
-| `@needle/schema` | Schema DSL, validators, serializers, OpenAPI generation. |
-| `@needle/devtools` | Local-only dashboard for routes, map, SEO, performance, cache, and agent context. |
-| `@needle/adapter-bun` | Default Bun adapter using `Bun.serve` and generated route matcher. |
-| `@needle/adapter-node` | Node compatibility adapter using Node HTTP or a lightweight server with shims. |
-| `@needle/adapter-static` | Static export adapter for fully static routes. |
+| `create-lumina` | One-command project creation. |
+| `@lumina/cli` | Planned `needle` command surface: `lumina dev`, `lumina build`, `lumina start`, `lumina routes`, `lumina inspect`, `lumina check`, `lumina seo`, `lumina map`, `lumina agent`, `lumina mcp`, `lumina edit`, `lumina migrate`, and `lumina bench`. |
+| `@lumina/core` | Shared types, config, route definitions, render modes, diagnostics, and public helper types. |
+| `@lumina/compiler` | App discovery, route IR, render mode extraction, manifests, generated modules, route asset metadata, API codegen, graph inputs. |
+| `@lumina/vite-plugin` | Vite integration, virtual modules, route HMR, client and server entry wiring. |
+| `@lumina/react` | React SSR helpers, layouts, head manager, loaders, hydration, client entry helpers. |
+| `@lumina/router` | Generated route matcher, typed links, params, route helpers. |
+| `@lumina/seo` | Metadata, sitemap, robots, OG images, structured data helpers, SEO audits. |
+| `@lumina/map` | Semantic graph builder, file graph, query engine, affected checks. |
+| `@lumina/agent` | App-local `AGENTS.md` generation, context capsules, task skeletons, safe edit orchestration. |
+| `@lumina/mcp` | MCP server tools and resources. |
+| `@lumina/cache` | Cache tags, route cache, response cache, invalidation primitives. |
+| `@lumina/schema` | Schema DSL, validators, serializers, OpenAPI generation. |
+| `@lumina/devtools` | Local-only dashboard for routes, map, SEO, performance, cache, and agent context. |
+| `@lumina/adapter-bun` | Default Bun adapter using `Bun.serve` and generated route matcher. |
+| `@lumina/adapter-node` | Node compatibility adapter using Node HTTP or a lightweight server with shims. |
+| `@lumina/adapter-static` | Static export adapter for fully static routes. |
 | `packages/adapters/*` | Later deployment targets such as Docker, Cloudflare, Vercel, and other cloud adapters. |
 
 Current scaffold paths:
 
 ```txt
-packages/create-needle
+packages/create-lumina
 packages/cli
 packages/core
 packages/compiler
@@ -53,43 +53,43 @@ packages/adapters/node
 packages/adapters/static
 ```
 
-Note: earlier planning docs referred to `@needle/server-bun` as the Bun production runtime package. It is not an active Phase 1 package name. Phase 1 uses `@needle/adapter-bun` so Bun, Node, and static output share the same adapter model. Reintroduce a separate `@needle/server-bun` package only through an architecture decision record if the adapter package becomes too broad.
+Note: earlier planning docs referred to `@lumina/server-bun` as the Bun production runtime package. It is not an active Phase 1 package name. Phase 1 uses `@lumina/adapter-bun` so Bun, Node, and static output share the same adapter model. Reintroduce a separate `@lumina/server-bun` package only through an architecture decision record if the adapter package becomes too broad.
 
 ## Boundary Rules
 
-- Shared public types belong in `@needle/core`.
-- Compiler-only parsing and generation belongs in `@needle/compiler`.
-- Runtime request handling belongs in runtime adapters, starting with `@needle/adapter-bun`.
-- Browser-facing React helpers belong in `@needle/react`.
-- Route asset discovery, resource-hint metadata, likely LCP asset metadata, and performance report generation belong in `@needle/compiler` until a dedicated performance package is justified.
+- Shared public types belong in `@lumina/core`.
+- Compiler-only parsing and generation belongs in `@lumina/compiler`.
+- Runtime request handling belongs in runtime adapters, starting with `@lumina/adapter-bun`.
+- Browser-facing React helpers belong in `@lumina/react`.
+- Route asset discovery, resource-hint metadata, likely LCP asset metadata, and performance report generation belong in `@lumina/compiler` until a dedicated performance package is justified.
 - Compression serving, 103 Early Hints emission, final `Link` headers, and adapter-specific bfcache-safe delivery behavior belong in runtime adapters.
-- Agent context and safe edit code belongs in `@needle/agent`.
-- MCP protocol code belongs in `@needle/mcp`.
-- SEO metadata helpers and audits belong in `@needle/seo`.
-- Graph storage and graph queries belong in `@needle/map`.
-- Schema validation and serialization belongs in `@needle/schema`.
+- Agent context and safe edit code belongs in `@lumina/agent`.
+- MCP protocol code belongs in `@lumina/mcp`.
+- SEO metadata helpers and audits belong in `@lumina/seo`.
+- Graph storage and graph queries belong in `@lumina/map`.
+- Schema validation and serialization belongs in `@lumina/schema`.
 
 ## Import Rules
 
 Planned direction:
 
-- `@needle/cli` may depend on most internal packages.
-- `@needle/compiler` may depend on `@needle/core`, `@needle/schema`, `@needle/seo`, and `@needle/map` types.
-- `@needle/adapter-bun` should depend on generated output, `@needle/core`, `@needle/router`, and minimal runtime helpers.
-- `@needle/react` should not depend on compiler internals.
-- `@needle/mcp` should use stable APIs from `@needle/map`, `@needle/seo`, `@needle/agent`, and `@needle/core`.
+- `@lumina/cli` may depend on most internal packages.
+- `@lumina/compiler` may depend on `@lumina/core`, `@lumina/schema`, `@lumina/seo`, and `@lumina/map` types.
+- `@lumina/adapter-bun` should depend on generated output, `@lumina/core`, `@lumina/router`, and minimal runtime helpers.
+- `@lumina/react` should not depend on compiler internals.
+- `@lumina/mcp` should use stable APIs from `@lumina/map`, `@lumina/seo`, `@lumina/agent`, and `@lumina/core`.
 - Runtime adapter packages must not depend on agent-only code.
 
 ## Adapter Rules
 
-- Bun-specific APIs belong in `@needle/adapter-bun`.
-- Node compatibility code belongs in `@needle/adapter-node`.
-- Static export logic belongs in `@needle/adapter-static`.
+- Bun-specific APIs belong in `@lumina/adapter-bun`.
+- Node compatibility code belongs in `@lumina/adapter-node`.
+- Static export logic belongs in `@lumina/adapter-static`.
 - User application code must not require Bun-only APIs.
 - Adapter capability output belongs in `dist/adapter.manifest.json`.
 - Adapter delivery capabilities must match [Adapter Contract](adapter-contract.md), including compression, resource hints, 103 Early Hints, and bfcache-aware headers.
 
-## `@needle/map` Query API
+## `@lumina/map` Query API
 
 The map package should expose one query engine for CLI, MCP, devtools, and Agent Kernel.
 
@@ -101,7 +101,7 @@ explainEdge(edgeId)
 query("route:/pricing affectedBy component:ProductCard")
 ```
 
-Do not duplicate graph query logic in MCP or CLI packages. Those packages should call `@needle/map`.
+Do not duplicate graph query logic in MCP or CLI packages. Those packages should call `@lumina/map`.
 
 ## Package README Rule
 

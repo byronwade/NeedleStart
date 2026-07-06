@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: contributors, maintainers, open source program reviewers.
 
-NeedleStart should be open source, community-driven, and evidence-led.
+Lumina should be open source, community-driven, and evidence-led.
 
 ## Community Principles
 

@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: framework contributors, CLI implementers, runtime adapter authors, AI agents.
 
-This page defines the planned diagnostics contract for NeedleStart. Diagnostics are not implemented yet. The contract exists so compiler errors, route warnings, config validation, API route errors, schema issues, cache warnings, SEO audits, CLI JSON, manifests, MCP tools, and public docs all use one stable vocabulary.
+This page defines the planned diagnostics contract for Lumina. Diagnostics are not implemented yet. The contract exists so compiler errors, route warnings, config validation, API route errors, schema issues, cache warnings, SEO audits, CLI JSON, manifests, MCP tools, and public docs all use one stable vocabulary.
 
 ## Goals
 
@@ -40,10 +40,10 @@ Source links:
 
 ## Diagnostic Shape
 
-The Phase 1 scaffold currently exposes a minimal `NeedleDiagnostic` from `@needle/core`:
+The Phase 1 scaffold currently exposes a minimal `LuminaDiagnostic` from `@lumina/core`:
 
 ```ts
-type NeedleDiagnostic = {
+type LuminaDiagnostic = {
   code: string
   severity: "info" | "warning" | "error"
   message: string
@@ -61,7 +61,7 @@ This scaffold shape is intentionally smaller than the planned diagnostics contra
 Planned expanded shared shape:
 
 ```ts
-type NeedleDiagnostic = {
+type LuminaDiagnostic = {
   code: string
   severity: "info" | "warning" | "error"
   message: string
@@ -73,7 +73,7 @@ type NeedleDiagnostic = {
   docs?: string
   why?: string
   remediation?: string
-  children?: NeedleDiagnosticChild[]
+  children?: LuminaDiagnosticChild[]
   related?: DiagnosticRelatedLocation[]
   tags?: DiagnosticTag[]
 }
@@ -96,7 +96,7 @@ JSON example:
     "column": 1
   },
   "routePath": "/pricing",
-  "docs": "https://needlestart.dev/docs/reference/routing#route-conflicts",
+  "docs": "https://lumina.dev/docs/reference/routing#route-conflicts",
   "why": "Route groups do not affect the public URL path.",
   "remediation": "Move one route to a different public segment or remove the duplicate page.",
   "related": [
@@ -217,13 +217,13 @@ Human output may include colors, code frames, grouping, and summaries. Scripts a
 
 Diagnostics appear in:
 
-- `needle <command> --json`
-- `.needle/routes.json`
-- `.needle/render-manifest.json`
-- `.needle/seo.report.json`
-- `.needle/perf.report.json`
-- `.needle/map.json`
-- `.needle/context/*.ctx.json`
+- `lumina <command> --json`
+- `.lumina/routes.json`
+- `.lumina/render-manifest.json`
+- `.lumina/seo.report.json`
+- `.lumina/perf.report.json`
+- `.lumina/map.json`
+- `.lumina/context/*.ctx.json`
 - MCP resource responses when relevant
 
 Rules:

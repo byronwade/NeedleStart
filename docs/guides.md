@@ -6,7 +6,7 @@ Audience: app developers, documentation contributors, AI agents.
 
 Guides are task-focused walkthroughs. They should become the practical layer between the high-level README and exact API reference.
 
-The current repository has a Phase 1 scaffold, so this page defines the guide set NeedleStart should grow into as framework behavior is implemented.
+The current repository has a Phase 1 scaffold, so this page defines the guide set Lumina should grow into as framework behavior is implemented.
 
 ## Guide Format
 
@@ -19,7 +19,7 @@ Each guide should include:
 - Commands to run.
 - Files changed.
 - Generated files.
-- Agent notes when the workflow affects Needle Map, Agent Kernel, MCP, or safe edits.
+- Agent notes when the workflow affects Lumina Map, Agent Kernel, MCP, or safe edits.
 - Troubleshooting notes.
 - Out-of-scope notes.
 
@@ -27,7 +27,7 @@ Each guide should include:
 
 Planned guides:
 
-- Create a new NeedleStart app.
+- Create a new Lumina app.
 - Understand the project structure.
 - Add a static page.
 - Add an SSR page.
@@ -45,11 +45,11 @@ Planned guides:
 - Add route metadata.
 - Generate sitemap and robots output.
 - Add structured data.
-- Run `needle seo`.
+- Run `lumina seo`.
 - Fix missing title, description, and canonical URL diagnostics.
 - Preview crawler-visible HTML.
 
-## Needle Map Guides
+## Lumina Map Guides
 
 Planned guides:
 
@@ -65,7 +65,7 @@ Planned guides:
 Planned guides:
 
 - Generate route context capsules.
-- Run `needle agent context`.
+- Run `lumina agent context`.
 - Start the read-only MCP server.
 - Use MCP to inspect routes.
 - Dry-run a safe metadata edit.

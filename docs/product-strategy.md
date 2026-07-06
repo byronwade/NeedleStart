@@ -4,11 +4,11 @@ Status: Planned.
 
 Audience: maintainers, contributors, future website visitors, AI agents.
 
-NeedleStart's product strategy is to make the framework itself the map of the application.
+Lumina's product strategy is to make the framework itself the map of the application.
 
 ## Positioning
 
-NeedleStart is an app-graph-native, SEO-first React framework for humans and AI agents.
+Lumina is an app-graph-native, SEO-first React framework for humans and AI agents.
 
 ## Strategic Wedge
 

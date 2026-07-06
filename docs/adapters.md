@@ -5,7 +5,7 @@ Audience: app developers, framework contributors, deployment owners.
 
 This page describes planned adapter architecture. Adapter packages are scaffolded, but adapter behavior is not implemented yet.
 
-NeedleStart is planned to default to Bun, but the framework must not create an all-in Bun adoption risk.
+Lumina is planned to default to Bun, but the framework must not create an all-in Bun adoption risk.
 
 Adapter support begins early so Bun is the fast default and Node/static output are credible deployment paths.
 
@@ -24,12 +24,12 @@ The planned adapter input/output contract, manifest shape, capability rules, env
 ## Initial Adapters
 
 ```txt
-@needle/adapter-bun
-@needle/adapter-node
-@needle/adapter-static
+@lumina/adapter-bun
+@lumina/adapter-node
+@lumina/adapter-static
 ```
 
-### `@needle/adapter-bun`
+### `@lumina/adapter-bun`
 
 Default adapter.
 
@@ -43,7 +43,7 @@ Responsibilities:
 - Invoke SSR handlers.
 - Invoke API and hot API handlers.
 
-### `@needle/adapter-node`
+### `@lumina/adapter-node`
 
 Compatibility adapter.
 
@@ -54,7 +54,7 @@ Responsibilities:
 - Run the same generated route matcher and handler contracts.
 - Avoid requiring Bun-only APIs in user code.
 
-### `@needle/adapter-static`
+### `@lumina/adapter-static`
 
 Static export adapter.
 
@@ -68,7 +68,7 @@ Responsibilities:
 ## Config
 
 ```ts
-import { defineConfig } from "needlestart"
+import { defineConfig } from "lumina"
 
 export default defineConfig({
   runtime: "bun",
@@ -83,8 +83,8 @@ Config loading and validation rules are documented in `docs/config-contract.md`.
 ## Generated Server Entry
 
 ```ts
-// .needle/generated/server-entry.ts
-import { createServer } from "@needle/adapter-bun"
+// .lumina/generated/server-entry.ts
+import { createServer } from "@lumina/adapter-bun"
 
 export default createServer({
   manifest,
@@ -101,9 +101,9 @@ Adapter deployment output uses `dist/routes.manifest.json`, `dist/render.manifes
 
 ```json
 {
-  "schemaVersion": "needle.adapter.v0",
+  "schemaVersion": "lumina.adapter.v0",
   "adapter": "bun",
-  "package": "@needle/adapter-bun",
+  "package": "@lumina/adapter-bun",
   "runtime": {
     "name": "bun"
   },
@@ -139,7 +139,7 @@ Detailed manifest fields and capability semantics are defined in [Adapter Contra
 
 Adapter docs are checked automatically so internal docs, public docs, and agent rules keep the same contract language. Keep these terms aligned when adapter behavior changes:
 
-- `@needle/adapter-bun`, `@needle/adapter-node`, and `@needle/adapter-static`.
+- `@lumina/adapter-bun`, `@lumina/adapter-node`, and `@lumina/adapter-static`.
 - `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, `dist/adapter.manifest.json`, `runtime.name`, `capabilities`, and `nativeRouteDispatch`.
 - `Bun.serve` and optional `Bun.serve({ routes })` lowering for proven faster paths.
 - health endpoint behavior and static export rules.
@@ -176,7 +176,7 @@ Performance claims must be backed by reproducible benchmarks.
 ## Failure Modes
 
 - User app imports Bun-only APIs directly.
-- Adapter-specific code leaks into `@needle/core`.
+- Adapter-specific code leaks into `@lumina/core`.
 - Node adapter lags far enough to become theoretical.
 - Benchmarks only cover unrealistic toy routes.
 - Adapter manifests do not clearly document unsupported features.

@@ -4,11 +4,11 @@ Status: Scaffolded.
 
 Audience: maintainers, contributors, AI agents.
 
-This page defines the repeatable checks that keep NeedleStart documentation build-ready. It complements [Documentation Freshness Policy](docs-freshness-policy.md) and [Documentation Maintenance Checklist](docs-maintenance-checklist.md) by naming exact checks, expected evidence, implemented scaffold checks, and current scaffold limitations.
+This page defines the repeatable checks that keep Lumina documentation build-ready. It complements [Documentation Freshness Policy](docs-freshness-policy.md) and [Documentation Maintenance Checklist](docs-maintenance-checklist.md) by naming exact checks, expected evidence, implemented scaffold checks, and current scaffold limitations.
 
 ## Why This Exists
 
-Documentation quality needs proof. Mature documentation systems combine editorial standards, link validation, reference consistency, machine-readable contracts, and status discipline. NeedleStart now has a lightweight Bun workspace scaffold, so the first verification layer exists as local scripts and CI. This page remains the human-readable source of truth for what those checks mean and what evidence reviewers should report.
+Documentation quality needs proof. Mature documentation systems combine editorial standards, link validation, reference consistency, machine-readable contracts, and status discipline. Lumina now has a lightweight Bun workspace scaffold, so the first verification layer exists as local scripts and CI. This page remains the human-readable source of truth for what those checks mean and what evidence reviewers should report.
 
 Research backing:
 
@@ -107,7 +107,7 @@ This is a review aid, not a binary test.
 
 Automated coverage in `bun run docs:check` also rejects pre-scaffold command-limitation language, stale pre-expansion audit tasks, stale improvement-matrix PR-template tasks, public compiler/runtime wording that implies implemented behavior, and PR-template diagnostic severity wording, so old "no scaffold," "missing docs homes," "add PR template later," or unimplemented present-tense behavior evidence cannot be mistaken for current repository status. It also requires documentation audit matrix pages to distinguish editorial `Current quality` values from canonical `Status:` labels.
 
-Planned overview pages for Cache, Needle Map, Agent Kernel, MCP, and Safe Edit Transactions must state that the behavior is not implemented yet until package behavior and feature-specific evidence exist.
+Planned overview pages for Cache, Lumina Map, Agent Kernel, MCP, and Safe Edit Transactions must state that the behavior is not implemented yet until package behavior and feature-specific evidence exist.
 
 Planned feature overviews must use planned acceptance criteria and `should` wording instead of current-tense "Definition of Done" bullets until the behavior exists and feature-specific evidence proves it.
 
@@ -117,9 +117,9 @@ README feature and differentiator sections must label planned framework capabili
 
 Public API draft examples must say they are planned and not implemented yet unless the behavior has feature-specific implementation evidence.
 
-Internal and public CLI reference tables must make the planned status visible in their headings or status columns. For example, use `JSON output required once implemented?` instead of a present-tense `JSON output required?` heading while `@needle/cli` has no behavior.
+Internal and public CLI reference tables must make the planned status visible in their headings or status columns. For example, use `JSON output required once implemented?` instead of a present-tense `JSON output required?` heading while `@lumina/cli` has no behavior.
 
-Automated coverage also requires README, AGENTS, Vision, product strategy, public home, and glossary docs to keep the canonical product identity aligned: NeedleStart is an `app-graph-native, SEO-first React framework` for humans and AI agents, the semantic app graph is the first-class primitive, public pages can use the short promise `Your app ships with a map`, short-form positioning should use `Build like Next.js` and `Type like TanStack Start`, and public agent workflow pages should use the `Agent-Safe Workflows` label instead of older agent-native product wording. Public index and roadmap pages must also name the current Phase 1 scaffold evidence: Bun workspace, package placeholders, shared core types, CI, and enforcement scripts.
+Automated coverage also requires README, AGENTS, Vision, product strategy, public home, and glossary docs to keep the canonical product identity aligned: Lumina is an `app-graph-native, SEO-first React framework` for humans and AI agents, the semantic app graph is the first-class primitive, public pages can use the short promise `Your app ships with a map`, short-form positioning should use `Build like Next.js` and `Type like TanStack Start`, and public agent workflow pages should use the `Agent-Safe Workflows` label instead of older agent-native product wording. Public index and roadmap pages must also name the current Phase 1 scaffold evidence: Bun workspace, package placeholders, shared core types, CI, and enforcement scripts.
 
 Top-level speed positioning must stay static-first and evidence-aware until benchmarks exist. `bun run performance:check` rejects unsupported public speed slogans such as `Ship fast with Bun and Vite`, `Bun-speed`, `Bun-first runtime paths`, generic `planned fast runtime paths`, `fastest safe rendering strategy`, or `maximum speed`.
 
@@ -151,13 +151,13 @@ Automated coverage also requires embedded planning fields in `docs/roadmap.md` a
 bun run docs:check
 ```
 
-Expected result: package names and paths stay aligned across `docs/package-map.md`, `docs/phase-1-build-plan.md`, and `docs/task-backlog.md`; prototype CLI examples use the planned `needle ...` command form; adapter docs use `packages/adapters/bun`, `packages/adapters/node`, and `packages/adapters/static`; adapter manifest prose uses `dist/adapter.manifest.json`; and scaffold status language does not drift back to pre-scaffold wording.
+Expected result: package names and paths stay aligned across `docs/package-map.md`, `docs/phase-1-build-plan.md`, and `docs/task-backlog.md`; prototype CLI examples use the planned `lumina ...` command form; adapter docs use `packages/adapters/bun`, `packages/adapters/node`, and `packages/adapters/static`; adapter manifest prose uses `dist/adapter.manifest.json`; and scaffold status language does not drift back to pre-scaffold wording.
 
 Automated coverage in `bun run docs:check` also requires the AGENTS required-documentation-sync list to include existing root docs, docs hub, status, roadmap, package map, documentation standards, freshness rules, maintenance rules, verification rules, feature contracts, runtime and compiler contracts, public-docs planning, public docs root pages, release and migration docs, speed and performance docs, Phase 1 build plan, product build readiness, and task backlog files that agents must evaluate on every change.
 
 It also parses the AGENTS required-documentation-sync section directly. Every path listed there must exist, and every canonical must-check documentation contract, security, performance, public-docs, and checklist file must remain listed there. It also discovers every Markdown file under `docs/skills/` and `docs/subagents/` and requires each playbook file to appear in the AGENTS sync list.
 
-Vision, prototype, public-roadmap, Phase 1 build plan, task backlog, and contributor docs must describe Bun serving through `@needle/adapter-bun` or the Bun adapter path instead of generic "Bun serving" or "Bun server" wording that could imply a separate active runtime package.
+Vision, prototype, public-roadmap, Phase 1 build plan, task backlog, and contributor docs must describe Bun serving through `@lumina/adapter-bun` or the Bun adapter path instead of generic "Bun serving" or "Bun server" wording that could imply a separate active runtime package.
 
 Feature scheduling gates in compiler IR and risk-mitigation docs must use `planned acceptance criteria` wording for tests and agent demos, rather than ambiguous current-tense definition-of-done wording.
 
@@ -181,13 +181,13 @@ rg -n "llms\.txt|llms-full\.txt|docs-index\.json|schemaVersion|generatedAt" docs
 
 Expected result: machine-readable docs outputs remain documented as planned, schema-versioned, deterministic, and separate from production runtime bundles.
 
-Automated coverage in `bun run docs:check` also requires machine-readable docs, Agent Kernel, MCP, and public docs readiness docs to keep `llms.txt`, `llms-full.txt`, `docs-index.json`, `schemaVersion`, `generatedAt`, deterministic output, and production-runtime-bundle exclusion language aligned. It also requires Agent Kernel artifact tables to label `.needle/*` and `dist/*` outputs as planned while generated artifacts remain unimplemented.
+Automated coverage in `bun run docs:check` also requires machine-readable docs, Agent Kernel, MCP, and public docs readiness docs to keep `llms.txt`, `llms-full.txt`, `docs-index.json`, `schemaVersion`, `generatedAt`, deterministic output, and production-runtime-bundle exclusion language aligned. It also requires Agent Kernel artifact tables to label `.lumina/*` and `dist/*` outputs as planned while generated artifacts remain unimplemented.
 
-Automated coverage also requires machine-readable docs to distinguish `.needle/*` compiler or agent source contracts from deployment-shaped `dist/*` copies.
+Automated coverage also requires machine-readable docs to distinguish `.lumina/*` compiler or agent source contracts from deployment-shaped `dist/*` copies.
 
-Automated coverage also requires the Agent Kernel, machine-readable docs, and public Agent Context guide to name the planned context artifacts `.needle/context/*.ctx.json` and `.needle/context/agent-index.json`.
+Automated coverage also requires the Agent Kernel, machine-readable docs, and public Agent Context guide to name the planned context artifacts `.lumina/context/*.ctx.json` and `.lumina/context/agent-index.json`.
 
-Automated coverage also requires the internal MCP server contract and public MCP reference to list the same initial planned read tools: `list_routes`, `get_route`, `get_route_context`, `get_related_files`, `get_impact_map`, `get_component_contract`, `get_schema`, `get_seo_report`, `get_perf_report`, and `get_cache_report`. It also requires both docs to list the same planned write tools: `create_page`, `create_api_route`, `edit_route_meta`, `edit_component_contract`, `add_component_to_route`, `run_affected_checks`, `apply_safe_patch`, `read_agent_log`, `get_mutation`, and `undo_mutation`. Planned MCP resources must stay aligned too: `needle://routes`, `needle://route/%2Fpricing`, `needle://map/file/components%2FProductCard.tsx`, `needle://seo/report`, `needle://perf/report`, and `needle://context/public`.
+Automated coverage also requires the internal MCP server contract and public MCP reference to list the same initial planned read tools: `list_routes`, `get_route`, `get_route_context`, `get_related_files`, `get_impact_map`, `get_component_contract`, `get_schema`, `get_seo_report`, `get_perf_report`, and `get_cache_report`. It also requires both docs to list the same planned write tools: `create_page`, `create_api_route`, `edit_route_meta`, `edit_component_contract`, `add_component_to_route`, `run_affected_checks`, `apply_safe_patch`, `read_agent_log`, `get_mutation`, and `undo_mutation`. Planned MCP resources must stay aligned too: `lumina://routes`, `lumina://route/%2Fpricing`, `lumina://map/file/components%2FProductCard.tsx`, `lumina://seo/report`, `lumina://perf/report`, and `lumina://context/public`.
 
 ### 9. Public Docs Site Contract Check
 
@@ -212,19 +212,19 @@ Expected result: test layers, fixture layout, snapshot policy, CI gates, network
 ### 11. CLI JSON Contract Check
 
 ```powershell
-rg -n "schemaVersion|diagnostics|Exit Codes|--json|stdout|exit-code|needle.cli|CLI JSON|cli-json-contract|diagnostics-contract|needle inspect why|needle map file|needle map route|needle map affected|needle map explain|needle agent init|needle agent context|needle agent task|needle agent plan|needle agent apply|needle agent log|needle edit undo|needle migrate from-next|needle seo --route|needle seo --sitemap|needle seo --strict" docs\cli-json-contract.md docs\cli.md docs\api-reference.md docs\manifest-contracts.md docs\needle-map.md docs\agent-kernel.md docs\mcp-server.md docs\diagnostics-contract.md docs\public\reference\cli.md docs\public\guides\needle-map.md
+rg -n "schemaVersion|diagnostics|Exit Codes|--json|stdout|exit-code|lumina.cli|CLI JSON|cli-json-contract|diagnostics-contract|lumina inspect why|lumina map file|lumina map route|lumina map affected|lumina map explain|lumina agent init|lumina agent context|lumina agent task|lumina agent plan|lumina agent apply|lumina agent log|lumina edit undo|lumina migrate from-next|lumina seo --route|lumina seo --sitemap|lumina seo --strict" docs\cli-json-contract.md docs\cli.md docs\api-reference.md docs\manifest-contracts.md docs\lumina-map.md docs\agent-kernel.md docs\mcp-server.md docs\diagnostics-contract.md docs\public\reference\cli.md docs\public\guides\lumina-map.md
 ```
 
-Expected result: command automation behavior and planned command variants remain connected across CLI reference, API reference, manifests, Needle Map, Agent Kernel, MCP docs, and public CLI docs.
+Expected result: command automation behavior and planned command variants remain connected across CLI reference, API reference, manifests, Lumina Map, Agent Kernel, MCP docs, and public CLI docs.
 
-Automated coverage in `bun run docs:check` also requires `docs/cli-json-contract.md` and `docs/public/reference/cli.md` to list every planned JSON automation command: `needle build --json`, `needle routes --json`, `needle inspect --json`, `needle check --json`, `needle seo --json`, `needle map --json`, `needle agent context --json`, `needle edit --json`, `needle migrate --json`, and `needle bench --json`. Public CLI docs must also label the command table as planned while no CLI behavior exists.
+Automated coverage in `bun run docs:check` also requires `docs/cli-json-contract.md` and `docs/public/reference/cli.md` to list every planned JSON automation command: `lumina build --json`, `lumina routes --json`, `lumina inspect --json`, `lumina check --json`, `lumina seo --json`, `lumina map --json`, `lumina agent context --json`, `lumina edit --json`, `lumina migrate --json`, and `lumina bench --json`. Public CLI docs must also label the command table as planned while no CLI behavior exists.
 
-Automated coverage also requires the internal Needle Map contract and public Needle Map guide to list the same planned map command surfaces: `needle map`, `needle map --json`, `needle map file`, `needle map route`, `needle map affected`, and `needle map explain`.
+Automated coverage also requires the internal Lumina Map contract and public Lumina Map guide to list the same planned map command surfaces: `lumina map`, `lumina map --json`, `lumina map file`, `lumina map route`, `lumina map affected`, and `lumina map explain`.
 
 ### 12. Diagnostics Contract Check
 
 ```powershell
-rg -n "diagnostics-contract|NeedleDiagnostic|severity|DiagnosticCategory|remediation|related|source location|code frame|ROUTE_DUPLICATE_PATH|diagnostic codes|deterministic|stable ordering|Command status" README.md AGENTS.md docs\diagnostics-contract.md docs\cli-json-contract.md docs\api-reference.md docs\manifest-contracts.md docs\compiler-ir.md docs\runtime-contract.md docs\public\reference\diagnostics.md
+rg -n "diagnostics-contract|LuminaDiagnostic|severity|DiagnosticCategory|remediation|related|source location|code frame|ROUTE_DUPLICATE_PATH|diagnostic codes|deterministic|stable ordering|Command status" README.md AGENTS.md docs\diagnostics-contract.md docs\cli-json-contract.md docs\api-reference.md docs\manifest-contracts.md docs\compiler-ir.md docs\runtime-contract.md docs\public\reference\diagnostics.md
 ```
 
 Expected result: diagnostic code rules, severity values, categories, source locations, remediations, docs links, deterministic JSON behavior, stable ordering, command status mapping, manifests, compiler/runtime docs, and public reference docs remain connected.
@@ -236,7 +236,7 @@ The same automated coverage rejects stale diagnostics summary wording that descr
 ### 13. Configuration Contract Check
 
 ```powershell
-rg -n "needle.config|defineConfig|environment|env|server-only|public prefix|\\.env\\*|normalized|schemaVersion|secret|adapter|runtime.name" docs\config-contract.md docs\config.md docs\public\reference\config.md docs\api-reference.md docs\runtime-contract.md docs\adapters.md docs\security.md docs\manifest-contracts.md
+rg -n "lumina.config|defineConfig|environment|env|server-only|public prefix|\\.env\\*|normalized|schemaVersion|secret|adapter|runtime.name" docs\config-contract.md docs\config.md docs\public\reference\config.md docs\api-reference.md docs\runtime-contract.md docs\adapters.md docs\security.md docs\manifest-contracts.md
 ```
 
 Expected result: config loading, validation, environment behavior, normalized output, adapter selection, runtime/adapter ownership, `dist/adapter.manifest.json` `runtime.name`, and secret-exclusion rules remain connected.
@@ -250,12 +250,12 @@ Automated coverage also requires config, public config, and config contract docs
 ### 14. Adapter Contract Check
 
 ```powershell
-rg -n "adapter-contract|Adapter Contract|routes\.manifest\.json|render\.manifest\.json|seo\.report\.json|adapter\.manifest\.json|ADAPTER_|health endpoint|static export|@needle/adapter-bun|@needle/adapter-node|@needle/adapter-static|capabilities|nativeRouteDispatch|Bun\.serve|compression|Early Hints|resourceHints|bfcache" README.md AGENTS.md docs\adapter-contract.md docs\adapters.md docs\deployment.md docs\compatibility.md docs\runtime-contract.md docs\manifest-contracts.md docs\public\reference\adapters.md
+rg -n "adapter-contract|Adapter Contract|routes\.manifest\.json|render\.manifest\.json|seo\.report\.json|adapter\.manifest\.json|ADAPTER_|health endpoint|static export|@lumina/adapter-bun|@lumina/adapter-node|@lumina/adapter-static|capabilities|nativeRouteDispatch|Bun\.serve|compression|Early Hints|resourceHints|bfcache" README.md AGENTS.md docs\adapter-contract.md docs\adapters.md docs\deployment.md docs\compatibility.md docs\runtime-contract.md docs\manifest-contracts.md docs\public\reference\adapters.md
 ```
 
 Expected result: adapter packages, generated output, adapter manifest fields, capabilities, native route dispatch, compression, Early Hints, resource hints, bfcache-aware delivery, environment behavior, health endpoint behavior, static export rules, diagnostics, deployment docs, compatibility docs, and public reference docs remain connected.
 
-Automated coverage in `bun run docs:check` also requires adapter contract, adapter architecture, and public adapter reference docs to keep `@needle/adapter-bun`, `@needle/adapter-node`, `@needle/adapter-static`, `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, `dist/adapter.manifest.json`, `runtime.name`, `capabilities`, `nativeRouteDispatch`, `Bun.serve`, health endpoint, static export, `ADAPTER_` diagnostics, compression, Early Hints, `resourceHints`, and bfcache language aligned.
+Automated coverage in `bun run docs:check` also requires adapter contract, adapter architecture, and public adapter reference docs to keep `@lumina/adapter-bun`, `@lumina/adapter-node`, `@lumina/adapter-static`, `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, `dist/adapter.manifest.json`, `runtime.name`, `capabilities`, `nativeRouteDispatch`, `Bun.serve`, health endpoint, static export, `ADAPTER_` diagnostics, compression, Early Hints, `resourceHints`, and bfcache language aligned.
 
 Adapter and runtime docs must explicitly distinguish scaffolded adapter packages from unimplemented adapter and runtime behavior.
 
@@ -269,11 +269,11 @@ rg -n "routes\.json|render-manifest\.json|map\.json|graph\.json|seo\.report\.jso
 
 Expected result: generated artifact names, deployment-copy artifact names, schema version rules, normalized paths, stable ordering, source-input documentation, public-artifact path safety, and generated-file edit rules remain connected across agent rules, Agent Kernel docs, API reference, config contract, examples contract, getting-started output, machine-readable docs, internal manifests, runtime contract, public config reference, public manifest reference, and public project structure docs.
 
-Automated coverage in `bun run docs:check` also requires canonical `.needle/*` artifact names, named `dist/*` deployment-copy artifacts, and generated artifact contract-rule vocabulary to stay aligned across these docs.
+Automated coverage in `bun run docs:check` also requires canonical `.lumina/*` artifact names, named `dist/*` deployment-copy artifacts, and generated artifact contract-rule vocabulary to stay aligned across these docs.
 
 Automated coverage also requires internal and public manifest contract docs to link the same source contracts for routing, API routes, schema, cache, SEO, performance, and diagnostics.
 
-Onboarding, prototype, and API route docs must name `.needle/routes.json`, `.needle/render-manifest.json`, and deployment-copy artifacts when relevant instead of generic "route and render manifests" or "render/runtime manifests" wording.
+Onboarding, prototype, and API route docs must name `.lumina/routes.json`, `.lumina/render-manifest.json`, and deployment-copy artifacts when relevant instead of generic "route and render manifests" or "render/runtime manifests" wording.
 
 ### 16. Routing Contract Check
 
@@ -299,19 +299,19 @@ rg -n "examples-contract|examples-catalog|Examples And Templates Contract|Verifi
 
 Expected result: example status labels, starter-template requirements, create-command examples, fixture expectations, risk-mitigation example names, public references, and verification evidence remain connected.
 
-Automated coverage in `bun run docs:check` also requires generated app package scripts (`bun run dev`, `bun run build`, and `bun run start`) to stay documented as wrappers around `needle dev`, `needle build`, and `needle start` in the onboarding and examples docs. Example command blocks must not list both `bun run build` and direct `needle build` as separate required build steps.
+Automated coverage in `bun run docs:check` also requires generated app package scripts (`bun run dev`, `bun run build`, and `bun run start`) to stay documented as wrappers around `lumina dev`, `lumina build`, and `lumina start` in the onboarding and examples docs. Example command blocks must not list both `bun run build` and direct `lumina build` as separate required build steps.
 
 Onboarding and create-app docs must name the current scaffold evidence consistently: Bun workspace, package placeholders, shared core types, CI, and enforcement scripts. They must also keep app creation and CLI behavior marked as not implemented.
 
 Automated coverage also rejects stale example names or create-command flags such as `--template agent-demo`, `large-monorepo-fixture`, and `blog-seo-with-map`; use `--example`, `examples/agent-demo/`, `playgrounds/large-app-fixture/`, and `examples/blog-seo/` instead.
 
-Automated coverage in `bun run docs:check` also requires onboarding target-result bullets in `docs/getting-started.md` and `docs/public/guides/create-app.md` to use planned `should` wording until app creation, route output, SEO metadata, Needle Map, and agent context behavior are implemented.
+Automated coverage in `bun run docs:check` also requires onboarding target-result bullets in `docs/getting-started.md` and `docs/public/guides/create-app.md` to use planned `should` wording until app creation, route output, SEO metadata, Lumina Map, and agent context behavior are implemented.
 
 Prototype docs must describe the first public prototype and first working slice as planned proof targets until the prototype exists. Use `should prove` or `is intended to prove` for target scope, not wording that implies the proof has already happened.
 
 Prototype-scope docs should use `first working slice` and `first public prototype` instead of stale `MVP` shorthand or older "agent-native wedge" phrasing. The first working slice is the smaller proof path; the first public prototype is the broader demo target. The public roadmap must use `is intended to prove` wording for the first working slice until that slice is implemented and verified. Prototype-scope docs should use `adapter-aware server output` and `documented Node/static paths` for the broader prototype adapter boundary.
 
-Automated coverage in `bun run docs:check` also requires every public guide page that shows planned commands or APIs to state the matching behavior is not implemented yet. This includes create-app, static page, API route, hot API route, SEO metadata, Needle Map, and agent context workflows.
+Automated coverage in `bun run docs:check` also requires every public guide page that shows planned commands or APIs to state the matching behavior is not implemented yet. This includes create-app, static page, API route, hot API route, SEO metadata, Lumina Map, and agent context workflows.
 
 ### 18. API Route Contract Check
 
@@ -331,9 +331,9 @@ Automated coverage in `bun run docs:check` also requires API route contract, API
 rg -n "RenderMode|staticPage|prerender|ssr|stream|clientOnly|client-only|app/api|hot-api|apiHot" README.md AGENTS.md packages\core\src\index.ts docs\api-reference.md docs\compiler-ir.md docs\runtime-contract.md docs\roadmap.md docs\public\reference\render-modes.md docs\public\reference\api-routes.md
 ```
 
-Expected result: public helper names, ordinary API route mode, manifest literal values, compiler IR, runtime docs, roadmap, and the `@needle/core` `RenderMode` union remain connected.
+Expected result: public helper names, ordinary API route mode, manifest literal values, compiler IR, runtime docs, roadmap, and the `@lumina/core` `RenderMode` union remain connected.
 
-Automated coverage in `bun run docs:check` also requires `@needle/core`, compiler IR, API reference, runtime contract, roadmap, public render-mode reference, and public API route reference docs to keep `RenderMode`, `staticPage()`, `prerender()`, `ssr()`, `stream()`, `clientOnly()`, ordinary `app/api/` `renderMode: "api"`, explicit `apiHot()` `renderMode: "hot-api"`, `.needle/render-manifest.json`, and every render-mode literal aligned.
+Automated coverage in `bun run docs:check` also requires `@lumina/core`, compiler IR, API reference, runtime contract, roadmap, public render-mode reference, and public API route reference docs to keep `RenderMode`, `staticPage()`, `prerender()`, `ssr()`, `stream()`, `clientOnly()`, ordinary `app/api/` `renderMode: "api"`, explicit `apiHot()` `renderMode: "hot-api"`, `.lumina/render-manifest.json`, and every render-mode literal aligned.
 
 ### 19. Schema Contract Check
 
@@ -353,7 +353,7 @@ rg -n "cache-contract|CachePlan|CACHE_|Cache-Control|revalidateTag|micro-cache|s
 
 Expected result: cache plan shape, defaults, headers, tags, revalidation, micro-cache behavior, diagnostics, generated manifests, security rules, speed docs, and public reference docs remain connected.
 
-Automated coverage in `bun run docs:check` also requires cache contract, cache overview, and public cache reference docs to keep `Cache-Control`, cache tags, `revalidateTag`, micro-cache, `no-store`, diagnostics, generated manifests, and secret-exclusion language aligned. It also requires cache reference docs to name the current scaffolded `@needle/core` `CachePlan` fields so planned expanded APIs cannot be mistaken for implemented behavior.
+Automated coverage in `bun run docs:check` also requires cache contract, cache overview, and public cache reference docs to keep `Cache-Control`, cache tags, `revalidateTag`, micro-cache, `no-store`, diagnostics, generated manifests, and secret-exclusion language aligned. It also requires cache reference docs to name the current scaffolded `@lumina/core` `CachePlan` fields so planned expanded APIs cannot be mistaken for implemented behavior.
 
 ### 21. SEO Contract Check
 
@@ -363,7 +363,7 @@ rg -n "seo-contract|defineMeta|generateMeta|SEO_|sitemap|robots|structured data|
 
 Expected result: metadata API, merge rules, sitemap output, robots output, structured data, diagnostics, manifests, runtime/cache interaction, and public reference docs remain connected.
 
-Automated coverage in `bun run docs:check` also requires SEO contract, SEO overview, public SEO reference, and public SEO metadata guide docs to keep `defineMeta`, `generateMeta`, sitemap, robots, structured data, canonical URLs, `.needle/seo.report.json`, diagnostic severity, meaningful initial HTML, and client-only fallback language aligned.
+Automated coverage in `bun run docs:check` also requires SEO contract, SEO overview, public SEO reference, and public SEO metadata guide docs to keep `defineMeta`, `generateMeta`, sitemap, robots, structured data, canonical URLs, `.lumina/seo.report.json`, diagnostic severity, meaningful initial HTML, and client-only fallback language aligned.
 
 Performance report examples and references must use budget status values of `pass`, `warning`, or `fail`; use `warning`, not `warn`, to keep report wording aligned with diagnostic severity values.
 
@@ -390,7 +390,7 @@ Automated coverage in `bun run docs:check` also requires root security policy, s
 ### 24. Safe Edit And Agent Write Contract Check
 
 ```powershell
-rg -n "dry-run|AST|format|affected checks|\\.needle/mutations\\.json|undo|human sign-off|MCP write tools|CLI writes" AGENTS.md docs\safe-edit-transactions.md docs\agent-kernel.md docs\mcp-server.md docs\public\concepts\safe-edits.md docs\security-contract.md docs\threat-model.md docs\product-build-readiness.md
+rg -n "dry-run|AST|format|affected checks|\\.lumina/mutations\\.json|undo|human sign-off|MCP write tools|CLI writes" AGENTS.md docs\safe-edit-transactions.md docs\agent-kernel.md docs\mcp-server.md docs\public\concepts\safe-edits.md docs\security-contract.md docs\threat-model.md docs\product-build-readiness.md
 ```
 
 Expected result: safe edits, Agent Kernel, MCP write tools, security rules, threat model, and readiness gates agree on dry-run previews, AST edits, formatting, affected checks, mutation logs, undo, shared CLI/MCP write paths, and high-risk human sign-off.
@@ -407,7 +407,7 @@ rg -n "performance-contract|Performance Contract|benchmark-fixtures|Core Web Vit
 
 Expected result: route budgets, Core Web Vitals target language, performance reports, delivery fields, chunk counts, source-map exposure, optional RUM and field-data policy, diagnostics, benchmark evidence, testing evidence, manifest references, public claim rules, and public reference docs remain connected.
 
-Automated coverage in `bun run docs:check` also requires performance contract, performance overview, and public performance reference docs to keep Core Web Vitals, LCP, INP, CLS, `.needle/perf.report.json`, `PERF_` diagnostics, budgets, benchmark evidence, delivery metadata, chunk count, source-map, RUM, field data, resource hints, Early Hints, compression, and bfcache language aligned.
+Automated coverage in `bun run docs:check` also requires performance contract, performance overview, and public performance reference docs to keep Core Web Vitals, LCP, INP, CLS, `.lumina/perf.report.json`, `PERF_` diagnostics, budgets, benchmark evidence, delivery metadata, chunk count, source-map, RUM, field data, resource hints, Early Hints, compression, and bfcache language aligned.
 
 ### 26. Speed Decision Check
 
@@ -469,7 +469,7 @@ The initial Bun workspace exposes these package scripts:
 Target behavior:
 
 - `docs:check` validates required docs, required links, local Markdown links, root docs metadata, every `docs/` Markdown file's top-level status and audience metadata, status definition wording, durable internal docs hub coverage, local directory index coverage for prompts, decisions, checklists, skills, and subagents, every Markdown status label format, public docs navigation, source-section consistency, and source-map coverage, AI playbook placement, AGENTS required-sync coverage, agent enforcement matrix coverage, verification-section coverage, scaffold-status and public scaffold-status language, historical pre-scaffold status labeling, scaffolded-package-versus-implemented-package wording, current-vs-planned structure claims, current root placeholder-test wording, build-readiness evidence wording, agent-output naming guardrails, package-map/build-plan/backlog package coverage, planned CLI command surface and prefix consistency, config/adapter contract terms, adapter package paths, render-mode contract wording, generated artifact names and rules, machine-readable docs contracts, public docs-site contracts, contributor and review-evidence vocabulary, speed-decision vocabulary, safe-edit contract vocabulary, shared-core scaffold terminology, and the current `bun.lockb` lockfile name.
-- `structure:check` validates workspace script commands, package names, package entrypoints, TypeScript scaffold files, CI, forbidden runtime dependencies on agent-only packages, and shared-core type ownership outside `@needle/core`.
+- `structure:check` validates workspace script commands, package names, package entrypoints, TypeScript scaffold files, CI, forbidden runtime dependencies on agent-only packages, and shared-core type ownership outside `@lumina/core`.
 - `performance:check` validates performance docs, benchmark fixture coverage, raw-result rules, and unsupported root/public speed, benchmark, or SEO positioning claim patterns.
 - `check` runs the automated docs, structure, performance, typecheck, and test gates.
 
@@ -503,7 +503,7 @@ Every documentation-heavy PR should report:
 - Whether metadata helpers, metadata merge rules, sitemap output, robots output, structured data behavior, SEO diagnostics, security rules, or SEO report fields changed.
 - Whether accessibility target language, semantic HTML, keyboard behavior, focus behavior, form errors, accessibility diagnostics, public docs UI, or accessibility evidence changed.
 - Whether high-risk surfaces, threat models, secret handling, production errors, security headers, vulnerability intake, package provenance, or security evidence changed.
-- Whether route budgets, Core Web Vitals target language, performance diagnostics, `.needle/perf.report.json`, route chunk fields, source-map exposure, RUM policy, benchmark evidence, or public speed claims changed.
+- Whether route budgets, Core Web Vitals target language, performance diagnostics, `.lumina/perf.report.json`, route chunk fields, source-map exposure, RUM policy, benchmark evidence, or public speed claims changed.
 - Whether rendering defaults, build pipeline, runtime request path, route code splitting, CSS delivery, production source maps, React Compiler, React streaming, resource hints, fetch priority, 103 Early Hints, speculation rules, bfcache, compression, image/font delivery, client payload, optional RUM, hot API behavior, cache strategy, compiler scaling, or speed decision gates changed.
 - Which code checks were unavailable and why.
 

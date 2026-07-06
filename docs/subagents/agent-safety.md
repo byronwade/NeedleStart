@@ -20,7 +20,7 @@ Review or design Agent Kernel, MCP, safe edit, and AI collaboration workflows.
 - `../agent-kernel.md`
 - `../mcp-server.md`
 - `../safe-edit-transactions.md`
-- `../needle-map.md`
+- `../lumina-map.md`
 - `../risk-mitigation.md`
 
 ## Guardrails

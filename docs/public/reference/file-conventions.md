@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, AI agents.
 
-NeedleStart plans to use file-based routing under `app/`.
+Lumina plans to use file-based routing under `app/`.
 
 | Planned file | Planned URL |
 | --- | --- |

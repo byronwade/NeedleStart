@@ -10,33 +10,33 @@ type PackageSpec = {
 const root = resolve(import.meta.dir, "..");
 const failures: string[] = [];
 const sharedCoreTypes = [
-  "NeedleApp",
+  "LuminaApp",
   "RouteNode",
   "GraphEdge",
-  "NeedleDiagnostic",
+  "LuminaDiagnostic",
   "RenderMode",
   "CachePlan",
   "AdapterManifest",
 ];
 
 const packages: PackageSpec[] = [
-  { path: "packages/create-needle", name: "create-needle" },
-  { path: "packages/cli", name: "@needle/cli" },
-  { path: "packages/core", name: "@needle/core" },
-  { path: "packages/compiler", name: "@needle/compiler" },
-  { path: "packages/vite-plugin", name: "@needle/vite-plugin" },
-  { path: "packages/react", name: "@needle/react" },
-  { path: "packages/router", name: "@needle/router", runtime: true },
-  { path: "packages/seo", name: "@needle/seo" },
-  { path: "packages/map", name: "@needle/map" },
-  { path: "packages/agent", name: "@needle/agent" },
-  { path: "packages/mcp", name: "@needle/mcp" },
-  { path: "packages/cache", name: "@needle/cache", runtime: true },
-  { path: "packages/schema", name: "@needle/schema", runtime: true },
-  { path: "packages/devtools", name: "@needle/devtools" },
-  { path: "packages/adapters/bun", name: "@needle/adapter-bun", runtime: true },
-  { path: "packages/adapters/node", name: "@needle/adapter-node", runtime: true },
-  { path: "packages/adapters/static", name: "@needle/adapter-static", runtime: true },
+  { path: "packages/create-lumina", name: "create-lumina" },
+  { path: "packages/cli", name: "@lumina/cli" },
+  { path: "packages/core", name: "@lumina/core" },
+  { path: "packages/compiler", name: "@lumina/compiler" },
+  { path: "packages/vite-plugin", name: "@lumina/vite-plugin" },
+  { path: "packages/react", name: "@lumina/react" },
+  { path: "packages/router", name: "@lumina/router", runtime: true },
+  { path: "packages/seo", name: "@lumina/seo" },
+  { path: "packages/map", name: "@lumina/map" },
+  { path: "packages/agent", name: "@lumina/agent" },
+  { path: "packages/mcp", name: "@lumina/mcp" },
+  { path: "packages/cache", name: "@lumina/cache", runtime: true },
+  { path: "packages/schema", name: "@lumina/schema", runtime: true },
+  { path: "packages/devtools", name: "@lumina/devtools" },
+  { path: "packages/adapters/bun", name: "@lumina/adapter-bun", runtime: true },
+  { path: "packages/adapters/node", name: "@lumina/adapter-node", runtime: true },
+  { path: "packages/adapters/static", name: "@lumina/adapter-static", runtime: true },
 ];
 
 function readJson<T>(path: string): T {
@@ -119,7 +119,7 @@ for (const spec of packages) {
   if (packageJson.types !== "./src/index.ts") failures.push(`${packageJsonPath} must set types to ./src/index.ts`);
 
   if (spec.runtime) {
-    for (const forbidden of ["@needle/agent", "@needle/mcp", "@needle/devtools"]) {
+    for (const forbidden of ["@lumina/agent", "@lumina/mcp", "@lumina/devtools"]) {
       if (packageJson.dependencies?.[forbidden]) {
         failures.push(`${spec.name} must not depend on agent-only package ${forbidden}`);
       }
@@ -143,7 +143,7 @@ for (const file of walkTsFiles("packages")) {
   for (const typeName of sharedCoreTypes) {
     const localTypePattern = new RegExp(`\\b(?:export\\s+)?(?:type|interface)\\s+${typeName}\\b`);
     if (localTypePattern.test(content)) {
-      failures.push(`${file} defines ${typeName}; shared core types must come from @needle/core.`);
+      failures.push(`${file} defines ${typeName}; shared core types must come from @lumina/core.`);
     }
   }
 }

@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: maintainers, performance reviewers, compiler contributors, runtime adapter authors, AI agents.
 
-This page defines the planned fixture set for proving NeedleStart speed claims. It complements [Benchmark Methodology](benchmark-methodology.md), [Performance Contract](performance-contract.md), [Speed Strategy](speed-strategy.md), [Speed Decisions](speed-decisions.md), and [Performance Evidence Checklist](checklists/performance-evidence.md).
+This page defines the planned fixture set for proving Lumina speed claims. It complements [Benchmark Methodology](benchmark-methodology.md), [Performance Contract](performance-contract.md), [Speed Strategy](speed-strategy.md), [Speed Decisions](speed-decisions.md), and [Performance Evidence Checklist](checklists/performance-evidence.md).
 
 No benchmark fixture exists yet. Do not report results from this page.
 
@@ -122,4 +122,4 @@ benchmarks/results/<date>-<commit>/<fixture>/
 - Benchmark implementation.
 - Synthetic results.
 - CI performance gates.
-- Public claims that NeedleStart is faster than another framework.
+- Public claims that Lumina is faster than another framework.

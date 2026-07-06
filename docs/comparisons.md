@@ -11,17 +11,17 @@ Comparison docs should help users understand fit, not attack other projects.
 - Compare specific workflows.
 - Cite sources.
 - Separate current implementation from vision.
-- Be explicit about what NeedleStart does not do.
+- Be explicit about what Lumina does not do.
 - Avoid performance claims without benchmarks.
 
 ## Planned Comparisons
 
-- NeedleStart and Next.js.
-- NeedleStart and TanStack Start.
-- NeedleStart and Astro.
-- NeedleStart and SvelteKit.
-- NeedleStart and Nuxt.
-- NeedleStart and Vite-based custom stacks.
+- Lumina and Next.js.
+- Lumina and TanStack Start.
+- Lumina and Astro.
+- Lumina and SvelteKit.
+- Lumina and Nuxt.
+- Lumina and Vite-based custom stacks.
 
 ## Out Of Scope
 

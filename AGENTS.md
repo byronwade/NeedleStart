@@ -6,9 +6,9 @@ Agents must read this file before editing code or documentation. When the projec
 
 ## Project Identity
 
-Project name: NeedleStart.
+Project name: Lumina.
 
-NeedleStart is an app-graph-native, SEO-first React framework for humans and AI agents. It uses Bun for package management, local workflow, testing, and the default adapter path; Vite/Rolldown for frontend build leverage; and a custom Needle compiler for route intelligence, SEO, graph, API generation, and agent context.
+Lumina is an app-graph-native, SEO-first React framework for humans and AI agents. It uses Bun for package management, local workflow, testing, and the default adapter path; Vite/Rolldown for frontend build leverage; and a custom Lumina compiler for route intelligence, SEO, graph, API generation, and agent context.
 
 ## Current Phase
 
@@ -84,7 +84,7 @@ Every agent change must evaluate whether these files need updates:
 - `docs/agent-kernel.md`
 - `docs/mcp-server.md`
 - `docs/safe-edit-transactions.md`
-- `docs/needle-map.md`
+- `docs/lumina-map.md`
 - `docs/hot-api-path.md`
 - `docs/migration.md`
 - `docs/deployment.md`
@@ -121,7 +121,7 @@ Every agent change must evaluate whether these files need updates:
 - `docs/skills/README.md`
 - `docs/skills/agent-kernel-designer.md`
 - `docs/skills/docs-maintainer.md`
-- `docs/skills/needle-map-designer.md`
+- `docs/skills/lumina-map-designer.md`
 - `docs/skills/project-maintainer.md`
 - `docs/skills/seo-runtime-guardian.md`
 - `docs/skills/strategic-app-builder.md`
@@ -173,24 +173,24 @@ bun run performance:check
 bun run check
 ```
 
-These commands verify the scaffold, docs links, root docs metadata, docs navigation coverage, package-map/build-plan/backlog alignment, planned CLI command surface and prefix consistency, status-drift guardrails, config/adapter contract terms, generated artifact inventories across agent and machine-readable docs, package structure, shared-core type ownership, shared-core scaffold terminology, performance documentation guardrails, TypeScript surface, and placeholder tests. They do not prove route discovery, rendering, CLI behavior, runtime adapter behavior, Needle Map generation, MCP tools, or safe edits.
+These commands verify the scaffold, docs links, root docs metadata, docs navigation coverage, package-map/build-plan/backlog alignment, planned CLI command surface and prefix consistency, status-drift guardrails, config/adapter contract terms, generated artifact inventories across agent and machine-readable docs, package structure, shared-core type ownership, shared-core scaffold terminology, performance documentation guardrails, TypeScript surface, and placeholder tests. They do not prove route discovery, rendering, CLI behavior, runtime adapter behavior, Lumina Map generation, MCP tools, or safe edits.
 
 ## Planned Commands
 
 ```bash
-needle dev
-needle build
-needle start
-needle routes
-needle inspect
-needle check
-needle seo
-needle map
-needle agent
-needle mcp
-needle edit
-needle migrate
-needle bench
+lumina dev
+lumina build
+lumina start
+lumina routes
+lumina inspect
+lumina check
+lumina seo
+lumina map
+lumina agent
+lumina mcp
+lumina edit
+lumina migrate
+lumina bench
 ```
 
 ## Repository Rules
@@ -204,14 +204,14 @@ needle bench
 - Public SEO behavior must be tested when implemented.
 - New graph edges must include `kind`, `source`, `confidence`, and `why`.
 - Claims about scaffolded directories, examples, commands, generated files, and performance evidence must match the current filesystem and checks; otherwise mark them as planned.
-- Shared core model types belong in `@needle/core`; other packages must import them instead of defining local `NeedleApp`, `RouteNode`, `GraphEdge`, `NeedleDiagnostic`, `RenderMode`, `CachePlan`, or `AdapterManifest` substitutes.
+- Shared core model types belong in `@lumina/core`; other packages must import them instead of defining local `LuminaApp`, `RouteNode`, `GraphEdge`, `LuminaDiagnostic`, `RenderMode`, `CachePlan`, or `AdapterManifest` substitutes.
 - Docs that describe planned expansions of shared core model types must also state the current scaffold shape and add or preserve an automated docs guardrail when drift would mislead readers.
 - Do not edit generated files manually.
 - Do not add network calls in tests unless explicitly required.
 - Do not introduce global mutable state in the server runtime.
 - Do not implement a custom bundler before the Vite/Rolldown path is proven.
 - Do not make React Server Components the default render path before stable SSR, SSG, streaming, and the route compiler exist.
-- Do not let Needle Map be the only source of truth for safety-critical decisions.
+- Do not let Lumina Map be the only source of truth for safety-critical decisions.
 - Treat missing semantic contracts as low-confidence graph data instead of guessing.
 - Safe edits must be AST-based, previewable, logged, check-backed, and reversible.
 - User application code should not require Bun-only APIs; Bun-specific behavior belongs inside runtime adapter packages.
@@ -221,16 +221,16 @@ needle bench
 Planned generated files include:
 
 ```txt
-.needle/routes.json
-.needle/render-manifest.json
-.needle/map.json
-.needle/graph.json
-.needle/seo.report.json
-.needle/perf.report.json
-.needle/context/*.ctx.json
-.needle/context/agent-index.json
-.needle/mutations.json
-.needle/generated/*
+.lumina/routes.json
+.lumina/render-manifest.json
+.lumina/map.json
+.lumina/graph.json
+.lumina/seo.report.json
+.lumina/perf.report.json
+.lumina/context/*.ctx.json
+.lumina/context/agent-index.json
+.lumina/mutations.json
+.lumina/generated/*
 dist/routes.manifest.json
 dist/render.manifest.json
 dist/seo.report.json
@@ -261,18 +261,18 @@ High-risk areas:
 
 ## Risk Mitigation Rules
 
-Agents must read `docs/risk-mitigation.md` before changing Needle Map, Agent Kernel, MCP, runtime adapters, or safe edit behavior.
+Agents must read `docs/risk-mitigation.md` before changing Lumina Map, Agent Kernel, MCP, runtime adapters, or safe edit behavior.
 
 Key rules:
 
 - Build semantic graph extraction in layers: file graph, explicit contracts, convention inference, then optional static analysis.
 - Prefer explicit `.contract.ts` files for high-confidence semantic edges.
 - Every `GraphEdge` must include `kind`, `source`, `confidence`, and `why`.
-- Keep the first working slice scoped to create app, SEO-safe pages, `@needle/adapter-bun` serving, basic map, agent inspection, and safe metadata edit.
+- Keep the first working slice scoped to create app, SEO-safe pages, `@lumina/adapter-bun` serving, basic map, agent inspection, and safe metadata edit.
 - Treat `docs/prototype-acceptance.md`, README, and the public roadmap as the broader first public prototype acceptance scope.
 - Move Node adapter work earlier than the long-term adapter phase to reduce Bun adoption friction.
-- Keep adapter boundaries early: Bun-specific APIs stay in `@needle/adapter-bun`, Node compatibility stays in `@needle/adapter-node`, and static export logic stays in `@needle/adapter-static`.
-- Safe edit transactions must validate, produce a dry-run preview, apply through AST, format, regenerate graph, run affected checks, log to `.needle/mutations.json`, and support undo.
+- Keep adapter boundaries early: Bun-specific APIs stay in `@lumina/adapter-bun`, Node compatibility stays in `@lumina/adapter-node`, and static export logic stays in `@lumina/adapter-static`.
+- Safe edit transactions must validate, produce a dry-run preview, apply through AST, format, regenerate graph, run affected checks, log to `.lumina/mutations.json`, and support undo.
 - High-risk safe edits in production workflows require explicit human sign-off.
 - New feature work must pass the scope gate: improves map or agent experience, adds minimal production runtime code, and has a clear fixture or agent demo.
 
@@ -307,9 +307,9 @@ Contributors, human or agent, are expected to:
 
 Planned package responsibilities are documented in `docs/package-map.md`.
 
-Do not add cross-package imports casually. Shared types belong in `@needle/core`. Compiler-only code belongs in `@needle/compiler`. Runtime request handling belongs in runtime adapters, starting with `@needle/adapter-bun`. Agent and MCP code must remain dev/build-time unless explicitly designed as a development server feature.
+Do not add cross-package imports casually. Shared types belong in `@lumina/core`. Compiler-only code belongs in `@lumina/compiler`. Runtime request handling belongs in runtime adapters, starting with `@lumina/adapter-bun`. Agent and MCP code must remain dev/build-time unless explicitly designed as a development server feature.
 
-Phase 1 package scaffolding must follow `docs/phase-1-build-plan.md`. The active runtime adapter package names are `@needle/adapter-bun`, `@needle/adapter-node`, and `@needle/adapter-static`. Reintroduce any separate `@needle/server-bun` package only through an architecture decision record.
+Phase 1 package scaffolding must follow `docs/phase-1-build-plan.md`. The active runtime adapter package names are `@lumina/adapter-bun`, `@lumina/adapter-node`, and `@lumina/adapter-static`. Reintroduce any separate `@lumina/server-bun` package only through an architecture decision record.
 
 ## Testing Expectations
 
@@ -352,7 +352,7 @@ Test output used by agents must be deterministic.
 - Use `docs/accessibility-contract.md` when changing framework-owned HTML, examples, docs UI, form errors, route focus behavior, accessibility diagnostics, or accessibility test evidence.
 - Use `docs/security-contract.md` when changing high-risk surfaces, secret handling, production errors, security headers, agent or MCP writes, package publishing, vulnerability intake, or security test evidence.
 - Use `docs/threat-model.md` when changing high-risk implementation work, generated artifacts, runtime routing, cache behavior, docs outputs, Agent Kernel, MCP tools, safe edits, or release flow.
-- Use `docs/performance-contract.md` when changing route budgets, performance diagnostics, `.needle/perf.report.json`, benchmark evidence, Core Web Vitals language, or public speed claims.
+- Use `docs/performance-contract.md` when changing route budgets, performance diagnostics, `.lumina/perf.report.json`, benchmark evidence, Core Web Vitals language, or public speed claims.
 - Use `docs/benchmark-fixtures.md` when changing benchmark fixture scope, fixture names, raw result layout, performance evidence paths, or benchmark claim gates.
 - Use `docs/speed-decisions.md` when changing rendering defaults, build pipeline choices, runtime request path, route code splitting, CSS delivery, production source maps, React Compiler, React streaming or hydration behavior, browser delivery hints, 103 Early Hints, optional RUM or field-data policy, API hot paths, caching strategy, compiler scaling, agent context size, or benchmark positioning.
 - Use `docs/speed-capability-audit.md` when reviewing whether all major speed surfaces have a documented decision, proof gate, and remaining implementation evidence.

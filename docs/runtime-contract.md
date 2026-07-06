@@ -5,7 +5,7 @@ Audience: framework contributors, adapter owners, AI agents.
 
 This page describes the planned runtime contract. Runtime behavior is not implemented yet.
 
-The Needle runtime must stay small, explicit, fast, and easy to inspect. Runtime speed depends on generated manifests and handlers; see `docs/speed-strategy.md`.
+The Lumina runtime must stay small, explicit, fast, and easy to inspect. Runtime speed depends on generated manifests and handlers; see `docs/speed-strategy.md`.
 
 Adapter boundaries, deployment output, adapter manifests, health endpoints, and compatibility evidence are defined in `docs/adapter-contract.md`.
 
@@ -53,7 +53,7 @@ request
 Planned output:
 
 ```txt
-.needle/
+.lumina/
   routes.json
   render-manifest.json
   map.json
@@ -74,20 +74,20 @@ dist/
   adapter.manifest.json
 ```
 
-The generated artifact names are `.needle/routes.json`, `.needle/render-manifest.json`, `.needle/map.json`, `.needle/graph.json`, `.needle/seo.report.json`, `.needle/perf.report.json`, `.needle/context/*.ctx.json`, `.needle/context/agent-index.json`, `.needle/mutations.json`, `.needle/generated/*`, `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, `dist/adapter.manifest.json`, and `dist/*`.
+The generated artifact names are `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/graph.json`, `.lumina/seo.report.json`, `.lumina/perf.report.json`, `.lumina/context/*.ctx.json`, `.lumina/context/agent-index.json`, `.lumina/mutations.json`, `.lumina/generated/*`, `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, `dist/adapter.manifest.json`, and `dist/*`.
 
-The `.needle/*` files are the canonical compiler and agent artifacts. `.needle/render-manifest.json` is the canonical render-mode contract for routes. The `dist/*.manifest.json` files, including `dist/render.manifest.json`, and `dist/*.report.json` deployment reports are adapter-specific output shaped for runtime loading.
+The `.lumina/*` files are the canonical compiler and agent artifacts. `.lumina/render-manifest.json` is the canonical render-mode contract for routes. The `dist/*.manifest.json` files, including `dist/render.manifest.json`, and `dist/*.report.json` deployment reports are adapter-specific output shaped for runtime loading.
 
 ## Adapter-Aware Entry
 
 The compiler is planned to generate an adapter-aware server entry.
 
 ```ts
-// .needle/generated/server-entry.ts
-import { createServer } from "@needle/adapter-bun"
+// .lumina/generated/server-entry.ts
+import { createServer } from "@lumina/adapter-bun"
 ```
 
-The selected adapter is controlled by `needle.config.ts`.
+The selected adapter is controlled by `lumina.config.ts`.
 
 ```ts
 export default defineConfig({
@@ -106,7 +106,7 @@ Cache plans, cache headers, cache tags, revalidation, micro-cache behavior, and 
 
 Runtime diagnostics, source locations, production sanitization, and JSON diagnostic fields are defined in `docs/diagnostics-contract.md`.
 
-Render mode literals must stay aligned with `@needle/core` `RenderMode`: `"static"`, `"prerender"`, `"ssr"`, `"stream"`, `"client-only"`, `"api"`, and `"hot-api"`. Client-only routes must be intentional and visible in generated manifests so runtime behavior does not silently hide SEO, hydration, or payload costs.
+Render mode literals must stay aligned with `@lumina/core` `RenderMode`: `"static"`, `"prerender"`, `"ssr"`, `"stream"`, `"client-only"`, `"api"`, and `"hot-api"`. Client-only routes must be intentional and visible in generated manifests so runtime behavior does not silently hide SEO, hydration, or payload costs.
 
 ## Server Inputs
 
@@ -126,9 +126,9 @@ Example:
 
 ```json
 {
-  "schemaVersion": "needle.adapter.v0",
+  "schemaVersion": "lumina.adapter.v0",
   "adapter": "bun",
-  "package": "@needle/adapter-bun",
+  "package": "@lumina/adapter-bun",
   "runtime": {
     "name": "bun"
   },
@@ -190,7 +190,7 @@ The server should expose a lightweight health endpoint when enabled.
 Planned path:
 
 ```txt
-/_needle/health
+/_lumina/health
 ```
 
 Production exposure must be configurable.

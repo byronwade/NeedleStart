@@ -5,7 +5,7 @@ Audience: AI agents, framework contributors, maintainers.
 
 This page describes the planned Agent Kernel behavior. Agent Kernel behavior is not implemented yet.
 
-The Agent Kernel is the part of NeedleStart that makes applications understandable and safely editable by AI agents.
+The Agent Kernel is the part of Lumina that makes applications understandable and safely editable by AI agents.
 
 ## Goals
 
@@ -18,33 +18,33 @@ The Agent Kernel is the part of NeedleStart that makes applications understandab
 
 ## Generated Outputs
 
-The repository root `AGENTS.md` is a hand-maintained operating guide for NeedleStart contributors. The Agent Kernel must not overwrite it.
+The repository root `AGENTS.md` is a hand-maintained operating guide for Lumina contributors. The Agent Kernel must not overwrite it.
 
 Planned public docs and app-agent outputs:
 
 | Output | Scope | Purpose |
 | --- | --- | --- |
-| `AGENTS.md` | Generated app-local artifact | Agent operating guide for a user application created or managed by NeedleStart. |
+| `AGENTS.md` | Generated app-local artifact | Agent operating guide for a user application created or managed by Lumina. |
 | `llms.txt` | Public docs or app-local artifact | Compact AI-readable summary. |
 | `llms-full.txt` | Public docs or app-local artifact | Expanded AI-readable context. |
 | `docs-index.json` | Public docs artifact | Machine-readable docs index for the future docs site. |
-| `.needle/routes.json` | Planned generated app artifact | Route manifest. |
-| `.needle/render-manifest.json` | Planned generated app artifact | Render modes and cache metadata. |
-| `.needle/map.json` | Planned generated app artifact | Queryable Needle Map output. |
-| `.needle/graph.json` | Planned generated app artifact | Semantic app graph. |
-| `.needle/seo.report.json` | Planned generated app artifact | SEO audit output for agents and tooling. |
-| `.needle/perf.report.json` | Planned generated app artifact | Performance budget output for agents and tooling. |
-| `.needle/context/*.ctx.json` | Planned generated app artifact | Route or surface context capsules. |
-| `.needle/context/agent-index.json` | Planned generated app artifact | Index of generated agent context. |
-| `.needle/mutations.json` | Planned generated app artifact | Safe edit mutation log. |
-| `.needle/generated/*` | Planned generated app artifact | Generated runtime modules. |
+| `.lumina/routes.json` | Planned generated app artifact | Route manifest. |
+| `.lumina/render-manifest.json` | Planned generated app artifact | Render modes and cache metadata. |
+| `.lumina/map.json` | Planned generated app artifact | Queryable Lumina Map output. |
+| `.lumina/graph.json` | Planned generated app artifact | Semantic app graph. |
+| `.lumina/seo.report.json` | Planned generated app artifact | SEO audit output for agents and tooling. |
+| `.lumina/perf.report.json` | Planned generated app artifact | Performance budget output for agents and tooling. |
+| `.lumina/context/*.ctx.json` | Planned generated app artifact | Route or surface context capsules. |
+| `.lumina/context/agent-index.json` | Planned generated app artifact | Index of generated agent context. |
+| `.lumina/mutations.json` | Planned generated app artifact | Safe edit mutation log. |
+| `.lumina/generated/*` | Planned generated app artifact | Generated runtime modules. |
 | `dist/routes.manifest.json` | Planned deployment artifact | Adapter-shaped route manifest copy. |
 | `dist/render.manifest.json` | Planned deployment artifact | Adapter-shaped render manifest copy. |
 | `dist/seo.report.json` | Planned deployment artifact | Adapter-shaped SEO report copy. |
 | `dist/adapter.manifest.json` | Planned deployment artifact | Adapter capabilities and deployment output metadata. |
 | `dist/*` | Planned deployment artifact | Production build output. |
 
-The `.needle/*` files are the canonical compiler, CLI, MCP, Agent Kernel, devtools, and test contracts. The named `dist/*` files are deployment-oriented adapter outputs. Agent-facing docs must preserve that distinction so agent metadata stays out of production runtime bundles.
+The `.lumina/*` files are the canonical compiler, CLI, MCP, Agent Kernel, devtools, and test contracts. The named `dist/*` files are deployment-oriented adapter outputs. Agent-facing docs must preserve that distinction so agent metadata stays out of production runtime bundles.
 
 See `docs/machine-readable-docs.md` for the planned machine-readable documentation contract.
 
@@ -57,12 +57,12 @@ Machine-readable public docs outputs must stay schema-versioned and deterministi
 Planned commands:
 
 ```bash
-needle agent init
-needle agent context
-needle agent task
-needle agent plan
-needle agent apply
-needle agent log
+lumina agent init
+lumina agent context
+lumina agent task
+lumina agent plan
+lumina agent apply
+lumina agent log
 ```
 
 ## Context Capsule
@@ -100,11 +100,11 @@ Planned transaction flow:
 7. Regenerate affected graph slices.
 8. Run affected checks.
 9. Apply file writes only after dry-run passes or override is explicit.
-10. Append to `.needle/mutations.json`.
+10. Append to `.lumina/mutations.json`.
 11. Trigger incremental rebuild.
 12. Re-run affected checks.
 13. Return structured result for CLI and MCP.
-14. Support rollback through `needle edit undo`.
+14. Support rollback through `lumina edit undo`.
 
 String replacement is not allowed for safe edits.
 
@@ -181,7 +181,7 @@ Example:
 
 ## Deterministic Agent Plans
 
-`needle agent plan "task"` should return a structured task skeleton based on graph data and templates. It should not call an external LLM.
+`lumina agent plan "task"` should return a structured task skeleton based on graph data and templates. It should not call an external LLM.
 
 The plan should include:
 

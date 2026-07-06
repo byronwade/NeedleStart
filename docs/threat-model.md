@@ -4,11 +4,11 @@ Status: Planned.
 
 Audience: maintainers, security reviewers, runtime adapter authors, Agent Kernel contributors, MCP contributors, AI agents.
 
-This page defines the planned threat-model structure for NeedleStart. It complements [Security Contract](security-contract.md), [Risk Mitigation](risk-mitigation.md), [Safe Edit Transactions](safe-edit-transactions.md), [Agent Kernel](agent-kernel.md), and [MCP Server](mcp-server.md). It is not a security audit and does not claim implemented security behavior.
+This page defines the planned threat-model structure for Lumina. It complements [Security Contract](security-contract.md), [Risk Mitigation](risk-mitigation.md), [Safe Edit Transactions](safe-edit-transactions.md), [Agent Kernel](agent-kernel.md), and [MCP Server](mcp-server.md). It is not a security audit and does not claim implemented security behavior.
 
 ## Purpose
 
-NeedleStart has security-sensitive surfaces even before user applications add auth, billing, or private data. The framework plans to generate manifests, route graphs, agent context, MCP resources, safe edit plans, docs indexes, and runtime adapter output. These surfaces need a shared threat model before implementation starts.
+Lumina has security-sensitive surfaces even before user applications add auth, billing, or private data. The framework plans to generate manifests, route graphs, agent context, MCP resources, safe edit plans, docs indexes, and runtime adapter output. These surfaces need a shared threat model before implementation starts.
 
 The goal is to make future PRs answer the same questions:
 
@@ -29,7 +29,7 @@ Protect these assets:
 | --- | --- |
 | User source files | Safe edits, migration tools, and MCP write tools can modify them. |
 | Environment variables | Secrets must not leak into client bundles, diagnostics, manifests, docs outputs, or agent context. |
-| Generated manifests | `.needle/*` files become shared contracts for runtime, CLI, MCP, agents, and checks. |
+| Generated manifests | `.lumina/*` files become shared contracts for runtime, CLI, MCP, agents, and checks. |
 | Production bundles | Runtime output must not include agent-only metadata or private graph details. |
 | Route cache behavior | Incorrect cache rules can expose private data or stale user state. |
 | Runtime request routing | Incorrect routing can serve the wrong handler, method, cache headers, or error body. |

@@ -5,7 +5,7 @@ Audience: AI agents, documentation contributors, maintainers.
 
 ## Purpose
 
-Use this skill to keep NeedleStart documentation accurate, synchronized, and honest about planned versus implemented behavior.
+Use this skill to keep Lumina documentation accurate, synchronized, and honest about planned versus implemented behavior.
 
 ## When To Use
 

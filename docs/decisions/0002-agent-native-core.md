@@ -17,7 +17,7 @@ This includes:
 
 - App-local `AGENTS.md` generation.
 - Route context capsules.
-- Needle Map.
+- Lumina Map.
 - Stable JSON diagnostics.
 - Safe edit operations.
 - Mutation logs.
@@ -27,7 +27,7 @@ This includes:
 
 The compiler and graph must preserve application relationships that many frameworks ignore.
 
-This increases build-time complexity, but it gives NeedleStart a clear wedge:
+This increases build-time complexity, but it gives Lumina a clear wedge:
 
 - Agents can inspect without reading the entire repo.
 - Humans can audit agent changes.

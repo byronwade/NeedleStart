@@ -19,7 +19,7 @@ This page defines the planned frontmatter contract for future public documentati
 ```yaml
 ---
 title: Project Structure
-description: Planned NeedleStart app structure, generated files, and documentation layout.
+description: Planned Lumina app structure, generated files, and documentation layout.
 status: planned
 audience:
   - app developers

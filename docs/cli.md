@@ -12,42 +12,42 @@ Machine-readable command behavior is planned in [CLI JSON Contract](cli-json-con
 
 | Command | Purpose | JSON output required once implemented? |
 | --- | --- | --- |
-| `needle dev` | Start local development. | No |
-| `needle build` | Build app, manifests, graph, SEO, and adapter output. | Yes |
-| `needle start` | Start built output. | No |
-| `needle routes` | List route manifest entries. | Yes |
-| `needle inspect` | Inspect route, file, or artifact details. | Yes |
-| `needle check` | Run framework-aware checks. | Yes |
-| `needle seo` | Run SEO audit. | Yes |
-| `needle map` | Query Needle Map. | Yes |
-| `needle agent` | Generate or inspect agent context. | Yes |
-| `needle mcp` | Start MCP server. | No |
-| `needle edit` | Preview, apply, inspect, and undo safe-edit transactions. | Yes |
-| `needle migrate` | Prototype framework migration workflows. | Yes |
-| `needle bench` | Run planned benchmark fixtures and emit evidence metadata. | Yes |
+| `lumina dev` | Start local development. | No |
+| `lumina build` | Build app, manifests, graph, SEO, and adapter output. | Yes |
+| `lumina start` | Start built output. | No |
+| `lumina routes` | List route manifest entries. | Yes |
+| `lumina inspect` | Inspect route, file, or artifact details. | Yes |
+| `lumina check` | Run framework-aware checks. | Yes |
+| `lumina seo` | Run SEO audit. | Yes |
+| `lumina map` | Query Lumina Map. | Yes |
+| `lumina agent` | Generate or inspect agent context. | Yes |
+| `lumina mcp` | Start MCP server. | No |
+| `lumina edit` | Preview, apply, inspect, and undo safe-edit transactions. | Yes |
+| `lumina migrate` | Prototype framework migration workflows. | Yes |
+| `lumina bench` | Run planned benchmark fixtures and emit evidence metadata. | Yes |
 
 ## Planned Command Variants
 
-These variants are referenced by roadmap, guide, and contract docs. They remain planned until `@needle/cli` implements and tests them:
+These variants are referenced by roadmap, guide, and contract docs. They remain planned until `@lumina/cli` implements and tests them:
 
 | Command variant | Purpose |
 | --- | --- |
-| `needle inspect why` | Explain route render, cache, SEO, and risk decisions. |
-| `needle map file` | Show graph details, route usage, and risk notes for one source file. |
-| `needle map route` | Show the graph slice and route context for one route. |
-| `needle map affected` | Show affected routes, files, and checks for a changed target. |
-| `needle map explain` | Explain why a graph relationship or impact result exists. |
-| `needle agent init` | Generate or refresh app-local agent guidance once app generation exists. |
-| `needle agent context` | Emit a route or surface context capsule. |
-| `needle agent task` | Create a structured task record from graph data and templates. |
-| `needle agent plan` | Generate a deterministic task skeleton from graph data. |
-| `needle agent apply` | Apply a validated safe-edit plan through the safe edit transaction path. |
-| `needle agent log` | Read agent mutation, task, or context history. |
-| `needle edit undo` | Roll back an applied safe edit by mutation ID. |
-| `needle migrate from-next` | Prototype migration from a Next.js-style app. |
-| `needle seo --route` | Run SEO checks for one route. |
-| `needle seo --sitemap` | Inspect planned sitemap output. |
-| `needle seo --strict` | Treat warnings as check failures for SEO automation. |
+| `lumina inspect why` | Explain route render, cache, SEO, and risk decisions. |
+| `lumina map file` | Show graph details, route usage, and risk notes for one source file. |
+| `lumina map route` | Show the graph slice and route context for one route. |
+| `lumina map affected` | Show affected routes, files, and checks for a changed target. |
+| `lumina map explain` | Explain why a graph relationship or impact result exists. |
+| `lumina agent init` | Generate or refresh app-local agent guidance once app generation exists. |
+| `lumina agent context` | Emit a route or surface context capsule. |
+| `lumina agent task` | Create a structured task record from graph data and templates. |
+| `lumina agent plan` | Generate a deterministic task skeleton from graph data. |
+| `lumina agent apply` | Apply a validated safe-edit plan through the safe edit transaction path. |
+| `lumina agent log` | Read agent mutation, task, or context history. |
+| `lumina edit undo` | Roll back an applied safe edit by mutation ID. |
+| `lumina migrate from-next` | Prototype migration from a Next.js-style app. |
+| `lumina seo --route` | Run SEO checks for one route. |
+| `lumina seo --sitemap` | Inspect planned sitemap output. |
+| `lumina seo --strict` | Treat warnings as check failures for SEO automation. |
 
 ## Reference Requirements
 
@@ -69,11 +69,11 @@ These global flags are planned, not implemented:
 | --- | --- |
 | `--json` | Emit structured JSON for commands that support automation. |
 | `--cwd <path>` | Run against a specific project root. |
-| `--config <path>` | Use a specific `needle.config.ts`. |
+| `--config <path>` | Use a specific `lumina.config.ts`. |
 | `--verbose` | Emit additional human-readable progress or diagnostic detail. |
 | `--quiet` | Reduce non-essential human output. |
 
-Do not rely on these flags until `@needle/cli` exists and tests pass.
+Do not rely on these flags until `@lumina/cli` exists and tests pass.
 
 ## Planned Exit Code Policy
 
@@ -81,6 +81,6 @@ Exit codes are planned in [CLI JSON Contract](cli-json-contract.md). Commands sh
 
 ## Out Of Scope
 
-- Claiming command behavior before `@needle/cli` exists.
+- Claiming command behavior before `@lumina/cli` exists.
 - Defining final option names before implementation.
 - Human-output formatting beyond planned examples.

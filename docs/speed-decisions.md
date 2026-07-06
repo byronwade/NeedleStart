@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: framework contributors, runtime authors, compiler authors, performance reviewers, AI agents.
 
-This page records the speed-sensitive product and engineering decisions NeedleStart should carry into implementation. It is not benchmark evidence. It is the decision guardrail that keeps the project pointed at proven fast paths while preventing premature custom infrastructure.
+This page records the speed-sensitive product and engineering decisions Lumina should carry into implementation. It is not benchmark evidence. It is the decision guardrail that keeps the project pointed at proven fast paths while preventing premature custom infrastructure.
 
 ## Research Baseline
 
@@ -13,7 +13,7 @@ Current primary guidance supports these choices. This baseline was refreshed on 
 - [Vite performance guide](https://vite.dev/guide/performance) emphasizes keeping browser and transform work lean during development.
 - [Vite 8](https://vite.dev/blog/announcing-vite8) moved Vite to a single Rolldown-powered bundler, and [Vite 8.1](https://vite.dev/blog/announcing-vite8-1) continues that stable line. If scaffolding started from this research snapshot, the default candidate would be current stable Vite 8.x with Rolldown.
 - Vite's current documentation exposes Rolldown options through Vite rather than asking frameworks to build their own bundler.
-- Vite supports production dynamic imports, CSS code splitting, minification, build manifests, and production source-map controls that NeedleStart should expose through framework decisions instead of custom build machinery.
+- Vite supports production dynamic imports, CSS code splitting, minification, build manifests, and production source-map controls that Lumina should expose through framework decisions instead of custom build machinery.
 - Vite has introduced experimental bundled dev mode for large apps where unbundled module fan-out becomes the bottleneck.
 - [React 19](https://react.dev/blog/2024/12/05/react-19) exposes resource loading APIs such as `preload`, `preinit`, `preconnect`, and `prefetchDNS`.
 - React's current guidance favors framework or router-integrated code splitting over lazy imports that only start after a component renders.
@@ -39,12 +39,12 @@ Current primary guidance supports these choices. This baseline was refreshed on 
 | Custom bundler | Do not build one before Vite/Rolldown limits are measured. | Bundler work is high cost and not the product wedge. | Documented bottleneck, failed mitigation, benchmark evidence. |
 | Runtime default | Bun adapter first, with Node and static adapters early. | Bun gives the speed default; Node/static reduce adoption risk. | Adapter parity tests and separate Bun/Node/static benchmark tracks. |
 | Runtime shape | Generated, manifest-driven server with no source discovery on request. | Request path stays small and predictable. | Runtime tests proving only generated artifacts are loaded. |
-| Bun route dispatch | Keep generated route tables canonical; let `@needle/adapter-bun` lower compatible routes into native `Bun.serve({ routes })` only when parity and timing tests prove it is faster. | Bun's router can be a fast adapter primitive, but cross-adapter behavior must stay generated and inspectable. | Bun route-dispatch benchmark, route parity fixtures, fallback-path tests. |
+| Bun route dispatch | Keep generated route tables canonical; let `@lumina/adapter-bun` lower compatible routes into native `Bun.serve({ routes })` only when parity and timing tests prove it is faster. | Bun's router can be a fast adapter primitive, but cross-adapter behavior must stay generated and inspectable. | Bun route-dispatch benchmark, route parity fixtures, fallback-path tests. |
 | React rendering | Use streaming SSR and Suspense as opt-in route capabilities. | Streams useful HTML sooner without making every route dynamic. | Streaming fixture, hydration tests, error-boundary tests. |
 | Resource loading | Generate React resource hints only from known route assets. | Preload and preinit help only when accurate; wrong hints waste bandwidth. | Browser tests and report snapshots for generated hints. |
 | React Compiler | Evaluate as an opt-in build capability before making it a default. | Automatic memoization can reduce re-render cost, but compiler compatibility must be proven against framework output. | React fixture, compiler diagnostics, render behavior snapshots. |
 | Route code splitting | Split route code from the generated route graph, and preload route chunks from navigation intent or known route transitions. | Route-integrated splitting avoids initial-bundle bloat without introducing render-triggered waterfalls. | Route chunk manifest snapshots, browser waterfall trace, navigation fixture. |
-| Client payload | Enforce public route JS, CSS, hydration, LCP asset, and other payload budgets. | INP and LCP regressions often come from excess client work. | `.needle/perf.report.json`, browser evidence, budget diagnostics. |
+| Client payload | Enforce public route JS, CSS, hydration, LCP asset, and other payload budgets. | INP and LCP regressions often come from excess client work. | `.lumina/perf.report.json`, browser evidence, budget diagnostics. |
 | CSS delivery | Use Vite/Rolldown CSS splitting by default; keep CSS route-aware and budgeted. | One global CSS payload hurts first load, while late CSS can cause visual instability. | CSS chunk snapshots, FOUC/browser fixture, route CSS budget. |
 | Bundle hygiene | Avoid broad barrels and non-analyzable imports in generated code. | Static imports and route-level chunks keep bundling predictable. | Bundle report and route chunk snapshots. |
 | Production debug payloads | Do not expose production source maps or verbose debug payloads by default; allow hidden source maps only through explicit config. | Debug artifacts can increase deploy size and leak source detail without improving user speed. | Build output inspection, source-map config test, public asset scan. |
@@ -98,7 +98,7 @@ If a decision adds runtime work to every request, it needs a stronger justificat
 - Static asset and prerendered HTML lookup happen before SSR and API handlers.
 - API and hot API handlers bypass React rendering.
 - Request routing uses precomputed route tables.
-- `@needle/adapter-bun` may use native `Bun.serve({ routes })` dispatch for compatible static, API, and parameter routes, but the generated route table remains the canonical source and every native-lowered route needs parity coverage.
+- `@lumina/adapter-bun` may use native `Bun.serve({ routes })` dispatch for compatible static, API, and parameter routes, but the generated route table remains the canonical source and every native-lowered route needs parity coverage.
 - Per-request mutable state must stay request-scoped.
 - Node compatibility must not force user application code to use Bun-only APIs.
 

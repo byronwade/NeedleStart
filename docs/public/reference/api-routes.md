@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, AI agents.
 
-NeedleStart plans to support API route files under `app/api/`. This public reference summarizes the target developer-facing behavior. The exact planned compiler and runtime contract lives in [API Route Contract](../../api-route-contract.md).
+Lumina plans to support API route files under `app/api/`. This public reference summarizes the target developer-facing behavior. The exact planned compiler and runtime contract lives in [API Route Contract](../../api-route-contract.md).
 
 ## Planned File Convention
 
@@ -45,7 +45,7 @@ Handlers are planned to receive Web `Request` and route metadata through `ApiRou
 API routes may export schemas for params, query, body, and response values once the schema package exists.
 
 ```ts
-import { schema } from "needlestart"
+import { schema } from "lumina"
 
 export const params = schema.object({
   id: schema.uint64(),

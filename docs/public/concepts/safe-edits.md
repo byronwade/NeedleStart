@@ -36,7 +36,7 @@ Safe edit results should expose:
 - No string replacement for safe edits.
 - High-risk edits require explicit human sign-off in production workflows.
 - MCP write tools must use the same transaction path as CLI writes.
-- Mutation logs in `.needle/mutations.json` must be append-only.
+- Mutation logs in `.lumina/mutations.json` must be append-only.
 
 ## Source
 

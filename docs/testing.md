@@ -4,7 +4,7 @@ Status: Scaffolded.
 
 Audience: framework contributors, maintainers, AI agents.
 
-This page defines expected test categories for NeedleStart as implementation begins.
+This page defines expected test categories for Lumina as implementation begins.
 
 The planned test layers, fixture layout, snapshot policy, CI gates, artifact rules, browser-test rules, and evidence reporting requirements are defined in [Testing Contract](testing-contract.md).
 

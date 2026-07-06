@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: maintainers, contributors, AI agents, open source program reviewers.
 
-NeedleStart should read and operate like a serious engineering project from the first commit. This document defines the working standards expected from humans and AI agents.
+Lumina should read and operate like a serious engineering project from the first commit. This document defines the working standards expected from humans and AI agents.
 
 The standard is not "look busy" or "sound enterprise." The standard is evidence, ownership, review discipline, clear contracts, small safe changes, and honest docs.
 
@@ -41,7 +41,7 @@ If those answers are unclear, the change is not ready.
 | Runtime and adapters | Small request path, generated manifests, no source rediscovery, no Bun-only leakage into user apps. |
 | Routing | File conventions are documented, deterministic, and tested with fixtures. |
 | SEO | Public routes produce meaningful HTML and machine-readable audit output when implemented. |
-| Needle Map | Every edge includes `kind`, `source`, `confidence`, and `why`. Safety-critical decisions need more than graph inference. |
+| Lumina Map | Every edge includes `kind`, `source`, `confidence`, and `why`. Safety-critical decisions need more than graph inference. |
 | Agent Kernel and MCP | Stable compact JSON, safe edit validation, no production agent metadata, shared write path with CLI. |
 | Safe edits | AST-based, previewable, logged, check-backed, reversible. |
 | Performance | Speed-sensitive changes use `docs/speed-strategy.md`; claims require `docs/benchmark-methodology.md`. |

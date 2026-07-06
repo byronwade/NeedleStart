@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, AI agents.
 
-NeedleStart caching is planned to be explicit, manifest-backed, and inspectable. The exact planned contract lives in [Cache Contract](../../cache-contract.md).
+Lumina caching is planned to be explicit, manifest-backed, and inspectable. The exact planned contract lives in [Cache Contract](../../cache-contract.md).
 
 ## Planned Defaults
 
@@ -20,7 +20,7 @@ NeedleStart caching is planned to be explicit, manifest-backed, and inspectable.
 ## Planned Route Cache Example
 
 ```ts
-import { prerender } from "needlestart"
+import { prerender } from "lumina"
 
 export const render = prerender({
   revalidate: 300,
@@ -50,14 +50,14 @@ export const config = {
 - Cache tags must be deterministic and must not contain secrets, raw emails, user tokens, or private identifiers.
 - Revalidation through `revalidateTag(tag)` is planned, but live invalidation behavior is not implemented.
 - Hot API micro-cache behavior must be explicit, opt-in, deterministic, and unsafe for auth or session-sensitive data unless policy and tests prove it safe.
-- Cache metadata must appear in generated manifests or reports so CLI, MCP, Needle Map, runtime adapters, tests, and agents explain cache behavior the same way.
+- Cache metadata must appear in generated manifests or reports so CLI, MCP, Lumina Map, runtime adapters, tests, and agents explain cache behavior the same way.
 - Manual cache header overrides must produce diagnostics when they conflict with the generated cache plan.
 
 ## Current Status
 
 This behavior is not implemented yet. The repository is in Phase 1 scaffold, so examples are target API design rather than verified commands.
 
-The scaffolded `@needle/core` `CachePlan` currently supports only `{ mode: "no-store" }` and a public placeholder with `ttlSeconds`, optional `staleWhileRevalidateSeconds`, and `tags`. The broader cache API shown above remains planned until runtime behavior, manifests, fixtures, and adapter tests exist.
+The scaffolded `@lumina/core` `CachePlan` currently supports only `{ mode: "no-store" }` and a public placeholder with `ttlSeconds`, optional `staleWhileRevalidateSeconds`, and `tags`. The broader cache API shown above remains planned until runtime behavior, manifests, fixtures, and adapter tests exist.
 
 ## Source
 

@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: framework contributors, app developers, adapter maintainers, AI agents.
 
-This page defines how NeedleStart should load, validate, type, and use `needle.config.ts`. No implementation exists yet. The goal is to prevent configuration behavior from becoming implicit during the first product build.
+This page defines how Lumina should load, validate, type, and use `lumina.config.ts`. No implementation exists yet. The goal is to prevent configuration behavior from becoming implicit during the first product build.
 
 ## Why This Exists
 
@@ -19,16 +19,16 @@ Research backing:
 
 ## Planned Config File
 
-NeedleStart apps should use:
+Lumina apps should use:
 
 ```txt
-needle.config.ts
+lumina.config.ts
 ```
 
 Planned minimal config:
 
 ```ts
-import { defineConfig } from "needlestart"
+import { defineConfig } from "lumina"
 
 export default defineConfig({
   runtime: "bun",
@@ -44,9 +44,9 @@ export default defineConfig({
 
 - `runtime` describes the default local execution target and compatibility target for generated server code.
 - `adapter` selects the production output package that turns generated artifacts into deployable output.
-- `adapter: "bun"` maps to `@needle/adapter-bun`.
-- `adapter: "node"` maps to `@needle/adapter-node`.
-- `adapter: "static"` maps to `@needle/adapter-static`.
+- `adapter: "bun"` maps to `@lumina/adapter-bun`.
+- `adapter: "node"` maps to `@lumina/adapter-node`.
+- `adapter: "static"` maps to `@lumina/adapter-static`.
 
 If both fields are present, config validation must ensure they resolve to a compatible pair before generated output is emitted. Adapter packages must report their resolved runtime through `dist/adapter.manifest.json` as `runtime.name`, not through ad hoc config re-evaluation at startup.
 
@@ -56,7 +56,7 @@ Planned loading order:
 
 1. Resolve project root.
 2. Resolve CLI flags such as `--cwd`, `--config`, and future `--mode`.
-3. Load `needle.config.ts`.
+3. Load `lumina.config.ts`.
 4. Validate config shape.
 5. Resolve defaults.
 6. Load environment files only after config identifies env behavior.
@@ -71,12 +71,12 @@ The compiler should eventually produce or use a normalized config shape similar 
 
 ```json
 {
-  "schemaVersion": "needle.config.v0",
+  "schemaVersion": "lumina.config.v0",
   "root": ".",
   "runtime": "bun",
   "adapter": "bun",
   "outDir": "dist",
-  "needleDir": ".needle",
+  "needleDir": ".lumina",
   "mode": "development"
 }
 ```
@@ -163,7 +163,7 @@ Rules:
 - `"adapter"` means the compiler records route eligibility and the adapter manifest decides whether the output can be served correctly.
 - Config must not enable blanket resource hints, blanket 103 Early Hints, blanket speculation rules, or request-time image transforms by default.
 - Public source maps, hidden source maps, debug payloads, and RUM instrumentation must be disabled by default.
-- Fields that change generated delivery metadata must appear in `.needle/perf.report.json` or `dist/adapter.manifest.json`.
+- Fields that change generated delivery metadata must appear in `.lumina/perf.report.json` or `dist/adapter.manifest.json`.
 
 ## Environment Variable Policy
 
@@ -183,7 +183,7 @@ Planned rules:
 Potential public prefix:
 
 ```txt
-NEEDLE_PUBLIC_
+LUMINA_PUBLIC_
 ```
 
 The exact prefix is planned, not implemented. It should be finalized before client environment support ships.
@@ -207,11 +207,11 @@ Config validation should produce structured diagnostics:
 
 ```json
 {
-  "code": "NEEDLE_CONFIG_INVALID_ADAPTER",
+  "code": "LUMINA_CONFIG_INVALID_ADAPTER",
   "severity": "error",
   "message": "Unknown adapter \"edge\".",
-  "file": "needle.config.ts",
-  "docs": "https://needlestart.dev/docs/reference/config"
+  "file": "lumina.config.ts",
+  "docs": "https://lumina.dev/docs/reference/config"
 }
 ```
 
@@ -230,16 +230,16 @@ Validation should catch:
 
 Config can affect:
 
-- `.needle/routes.json`.
-- `.needle/render-manifest.json`.
-- `.needle/map.json`.
-- `.needle/graph.json`.
-- `.needle/seo.report.json`.
-- `.needle/perf.report.json`.
-- `.needle/context/*.ctx.json`.
-- `.needle/context/agent-index.json`.
-- `.needle/mutations.json`.
-- `.needle/generated/*`.
+- `.lumina/routes.json`.
+- `.lumina/render-manifest.json`.
+- `.lumina/map.json`.
+- `.lumina/graph.json`.
+- `.lumina/seo.report.json`.
+- `.lumina/perf.report.json`.
+- `.lumina/context/*.ctx.json`.
+- `.lumina/context/agent-index.json`.
+- `.lumina/mutations.json`.
+- `.lumina/generated/*`.
 - `dist/routes.manifest.json`.
 - `dist/render.manifest.json`.
 - `dist/seo.report.json`.
@@ -251,7 +251,7 @@ Any config field that changes generated output must be documented in [Manifest C
 ## Security Rules
 
 - Do not log secrets.
-- Do not serialize secrets into `.needle/*`, `dist/*`, `docs-index.json`, `llms.txt`, or `llms-full.txt`.
+- Do not serialize secrets into `.lumina/*`, `dist/*`, `docs-index.json`, `llms.txt`, or `llms-full.txt`.
 - Do not expose server-only env vars to client code.
 - Do not allow adapter config to bypass safe edit rules.
 - Do not enable MCP write tools through config without safe edit validation.

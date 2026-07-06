@@ -1,5 +1,5 @@
 export const needleAgentStatus = {
-  name: "@needle/agent",
+  name: "@lumina/agent",
   phase: "scaffold",
   implementsRuntimeBehavior: false,
 } as const;

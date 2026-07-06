@@ -7,7 +7,7 @@ Audience: maintainers, framework contributors, AI agents.
 
 ## Context
 
-NeedleStart is app-graph-native and designed for agent-safe workflows, but unrestricted agent writes are not trustworthy enough for framework-scale projects. The project needs a path where agents can inspect, plan, edit, verify, and explain changes without bypassing human-maintainable safety rules.
+Lumina is app-graph-native and designed for agent-safe workflows, but unrestricted agent writes are not trustworthy enough for framework-scale projects. The project needs a path where agents can inspect, plan, edit, verify, and explain changes without bypassing human-maintainable safety rules.
 
 ## Decision
 
@@ -17,12 +17,12 @@ Safe edits must validate the target, preview the change, apply structured AST ed
 
 ## Consequences
 
-This gives NeedleStart:
+This gives Lumina:
 
 - A concrete safety story for agent workflows.
 - Auditability for edits.
 - Reversible changes.
-- Better affected-check selection through Needle Map.
+- Better affected-check selection through Lumina Map.
 
 This requires:
 

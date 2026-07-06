@@ -3,7 +3,7 @@
 Status: Planned.
 Audience: app developers, framework contributors, performance reviewers.
 
-The hot API path is NeedleStart's performance path for selected API routes.
+The hot API path is Lumina's performance path for selected API routes.
 
 Normal API route behavior is defined in [API Route Contract](api-route-contract.md). Schema behavior is defined in [Schema Contract](schema-contract.md). Hot API routes should reuse the same route discovery, handler context, schema, diagnostic, and manifest vocabulary while replacing generic validation and serialization with generated fast paths.
 
@@ -16,7 +16,7 @@ Selected API routes should avoid generic framework overhead through generated ma
 This API is planned and not implemented yet.
 
 ```ts
-import { apiHot, schema } from "needlestart"
+import { apiHot, schema } from "lumina"
 
 export const render = apiHot({
   validate: true,

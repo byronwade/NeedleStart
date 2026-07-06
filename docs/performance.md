@@ -3,7 +3,7 @@
 Status: Planned.
 Audience: maintainers, performance reviewers, framework contributors.
 
-NeedleStart should make route performance visible and enforceable. See `docs/speed-strategy.md` for the whole-system speed model across compiler, runtime, client payload, app graph, agents, and benchmarks.
+Lumina should make route performance visible and enforceable. See `docs/speed-strategy.md` for the whole-system speed model across compiler, runtime, client payload, app graph, agents, and benchmarks.
 
 The planned route budget, Core Web Vitals target, performance report, diagnostic, delivery-field, benchmark, and claim-evidence rules are defined in [Performance Contract](performance-contract.md).
 
@@ -23,7 +23,7 @@ Core Web Vitals targets use LCP, INP, and CLS. These are targets, not verified c
 ## Budget Config Draft
 
 ```ts
-import { defineConfig } from "needlestart"
+import { defineConfig } from "lumina"
 
 export default defineConfig({
   performance: {
@@ -50,7 +50,7 @@ Route                  Mode       JS      CSS     SEO    Budget
 
 ## Planned Report And Diagnostics
 
-NeedleStart plans to emit `.needle/perf.report.json` with route IDs, render modes, budgets, delivery metadata, chunk count, source-map exposure, diagnostics, and benchmark evidence references when claims are made. Budget status values should use `pass`, `warning`, or `fail`.
+Lumina plans to emit `.lumina/perf.report.json` with route IDs, render modes, budgets, delivery metadata, chunk count, source-map exposure, diagnostics, and benchmark evidence references when claims are made. Budget status values should use `pass`, `warning`, or `fail`.
 
 Performance diagnostics should use `PERF_` code prefixes and follow [Diagnostics Contract](diagnostics-contract.md).
 
@@ -78,9 +78,9 @@ benchmarks/
 Planned commands:
 
 ```bash
-needle bench basic-static
-needle bench hot-api
-needle bench large-route-graph
+lumina bench basic-static
+lumina bench hot-api
+lumina bench large-route-graph
 ```
 
 Benchmark claims must follow `docs/benchmark-methodology.md`. Public performance claims need raw data, environment metadata, and comparable fixture details.

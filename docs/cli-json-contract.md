@@ -8,7 +8,7 @@ This page defines the planned JSON output and exit-code contract for the `needle
 
 ## Why This Exists
 
-NeedleStart's CLI is part human tool and part agent contract. Human output can become more helpful over time, but machine-readable output must stay stable enough for scripts, CI, MCP clients, and AI agents.
+Lumina's CLI is part human tool and part agent contract. Human output can become more helpful over time, but machine-readable output must stay stable enough for scripts, CI, MCP clients, and AI agents.
 
 Research backing:
 
@@ -33,8 +33,8 @@ Commands that support JSON should use this envelope:
 
 ```json
 {
-  "schemaVersion": "needle.cli.v0",
-  "command": "needle routes",
+  "schemaVersion": "lumina.cli.v0",
+  "command": "lumina routes",
   "status": "ok",
   "data": {},
   "diagnostics": [],
@@ -67,7 +67,7 @@ Diagnostics should follow [Diagnostics Contract](diagnostics-contract.md). CLI J
   "message": "Two route files resolve to the same path.",
   "file": "app/(marketing)/pricing/page.tsx",
   "route": "/pricing",
-  "docs": "https://needlestart.dev/docs/reference/routing#route-conflicts"
+  "docs": "https://lumina.dev/docs/reference/routing#route-conflicts"
 }
 ```
 
@@ -100,16 +100,16 @@ Initial planned command data shapes:
 
 | Command | `data` shape |
 | --- | --- |
-| `needle routes --json` | `{ "routes": RouteManifestEntry[] }` |
-| `needle inspect --json` | `{ "target": string, "summary": object, "related": string[] }` |
-| `needle check --json` | `{ "checks": CheckResult[], "summary": CheckSummary }` |
-| `needle seo --json` | `{ "report": SeoReport }` |
-| `needle map --json` | `{ "query": string, "nodes": GraphNode[], "edges": GraphEdge[] }` |
-| `needle agent context --json` | `{ "context": RouteContextCapsule }` |
-| `needle build --json` | `{ "outputs": BuildOutput[], "manifests": string[], "checks": CheckResult[] }` |
-| `needle edit --json` | `{ "transaction": SafeEditTransaction, "diff": DiffSummary, "checks": CheckResult[] }` |
-| `needle migrate --json` | `{ "migration": MigrationReport, "contracts": string[], "manualReview": string[] }` |
-| `needle bench --json` | `{ "fixture": string, "runs": BenchmarkRun[], "environment": BenchmarkEnvironment, "summary": BenchmarkSummary }` |
+| `lumina routes --json` | `{ "routes": RouteManifestEntry[] }` |
+| `lumina inspect --json` | `{ "target": string, "summary": object, "related": string[] }` |
+| `lumina check --json` | `{ "checks": CheckResult[], "summary": CheckSummary }` |
+| `lumina seo --json` | `{ "report": SeoReport }` |
+| `lumina map --json` | `{ "query": string, "nodes": GraphNode[], "edges": GraphEdge[] }` |
+| `lumina agent context --json` | `{ "context": RouteContextCapsule }` |
+| `lumina build --json` | `{ "outputs": BuildOutput[], "manifests": string[], "checks": CheckResult[] }` |
+| `lumina edit --json` | `{ "transaction": SafeEditTransaction, "diff": DiffSummary, "checks": CheckResult[] }` |
+| `lumina migrate --json` | `{ "migration": MigrationReport, "contracts": string[], "manualReview": string[] }` |
+| `lumina bench --json` | `{ "fixture": string, "runs": BenchmarkRun[], "environment": BenchmarkEnvironment, "summary": BenchmarkSummary }` |
 
 The exact schemas belong in command-specific reference docs once implementation exists.
 
@@ -155,7 +155,7 @@ Once implemented:
 
 ## Out Of Scope
 
-- Final command option names before `@needle/cli` exists.
+- Final command option names before `@lumina/cli` exists.
 - Claiming any command works before implementation.
 - Supporting arbitrary output formats before JSON is stable.
 - Exposing secrets, tokens, or absolute local paths in JSON output.

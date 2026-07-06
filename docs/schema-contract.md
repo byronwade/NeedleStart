@@ -4,11 +4,11 @@ Status: Planned.
 
 Audience: framework contributors, app developers, API route authors, runtime adapter authors, AI agents.
 
-This page defines the planned schema contract for NeedleStart. The schema package is not implemented yet. This contract exists so API routes, hot APIs, generated serializers, OpenAPI output, CLI diagnostics, and agent context use the same validation vocabulary from the beginning.
+This page defines the planned schema contract for Lumina. The schema package is not implemented yet. This contract exists so API routes, hot APIs, generated serializers, OpenAPI output, CLI diagnostics, and agent context use the same validation vocabulary from the beginning.
 
 ## Contract Goals
 
-NeedleStart schemas should:
+Lumina schemas should:
 
 - validate unknown input at API boundaries,
 - infer stable TypeScript input and output types,
@@ -70,7 +70,7 @@ Defaults and optional fields can make input and output differ. Implementation mu
 
 ## Parse Results
 
-NeedleStart should provide a throwing parse path for tests and internal compiler checks, plus a non-throwing safe parse path for request handling.
+Lumina should provide a throwing parse path for tests and internal compiler checks, plus a non-throwing safe parse path for request handling.
 
 Draft result shape:
 
@@ -170,7 +170,7 @@ Serializer requirements:
 
 ## OpenAPI Mapping
 
-NeedleStart should generate OpenAPI-compatible schema output after the schema DSL and API routes exist.
+Lumina should generate OpenAPI-compatible schema output after the schema DSL and API routes exist.
 
 Rules:
 
@@ -198,7 +198,7 @@ Diagnostics must include normalized source file, exported schema name when known
 
 ## Manifest Fields And References
 
-`.needle/routes.json` and `.needle/render-manifest.json` should expose schema usage through stable manifest references without embedding large schema definitions in every route entry.
+`.lumina/routes.json` and `.lumina/render-manifest.json` should expose schema usage through stable manifest references without embedding large schema definitions in every route entry.
 
 Draft route fields:
 
@@ -225,7 +225,7 @@ Draft schema index entry:
 }
 ```
 
-The exact schema manifest can live in `.needle/graph.json`, `.needle/map.json`, or a future schema manifest. The important invariant is that schema references are stable and source-linked.
+The exact schema manifest can live in `.lumina/graph.json`, `.lumina/map.json`, or a future schema manifest. The important invariant is that schema references are stable and source-linked.
 
 ## Fixture Requirements
 
@@ -256,7 +256,7 @@ This contract adapts current patterns from schema and API documentation:
 - Standard Schema shows the ecosystem value of common validation interfaces and consistent issue shapes.
 - OpenAPI 3.1 models data with Schema Objects aligned with JSON Schema concepts, so generated API docs need explicit schema mapping rules.
 
-NeedleStart should learn from these systems without promising full compatibility before the small first schema path is implemented and benchmarked.
+Lumina should learn from these systems without promising full compatibility before the small first schema path is implemented and benchmarked.
 
 ## Out Of Scope
 

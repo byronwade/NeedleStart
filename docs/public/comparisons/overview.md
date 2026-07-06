@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: future website visitors, app developers.
 
-NeedleStart comparison docs should help people decide whether the framework fits their workflow. They should compare specific tradeoffs, not attack other projects.
+Lumina comparison docs should help people decide whether the framework fits their workflow. They should compare specific tradeoffs, not attack other projects.
 
 ## Planned Comparisons
 

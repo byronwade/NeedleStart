@@ -1,9 +1,9 @@
-# NeedleStart Skills
+# Lumina Skills
 
 Status: Scaffolded.
 Audience: AI agents, maintainers, documentation contributors.
 
-This directory defines vendor-neutral skill playbooks for AI agents working on NeedleStart.
+This directory defines vendor-neutral skill playbooks for AI agents working on Lumina.
 
 The skills are documentation-only in Phase 1 scaffold. They do not claim executable automation exists yet. Each skill describes when to use it, required context, workflow, outputs, checks, and handoff notes so agents from different AI companies can collaborate through the same project contracts.
 
@@ -14,7 +14,7 @@ The skills are documentation-only in Phase 1 scaffold. They do not claim executa
 | [`strategic-app-builder`](strategic-app-builder.md) | Planning or implementing roadmap-aligned framework work. | Scoped plan, task file, architecture notes, tests/checks. |
 | [`docs-maintainer`](docs-maintainer.md) | Updating README, AGENTS, architecture, roadmap, package, or risk docs. | Honest documentation updates and sync notes. |
 | [`project-maintainer`](project-maintainer.md) | Keeping repository health, task backlog, governance, and cross-doc consistency intact. | Backlog updates, risk notes, release/phase hygiene. |
-| [`needle-map-designer`](needle-map-designer.md) | Designing graph nodes, edges, contracts, affected checks, or map APIs. | Graph contract notes with confidence and safety rules. |
+| [`lumina-map-designer`](lumina-map-designer.md) | Designing graph nodes, edges, contracts, affected checks, or map APIs. | Graph contract notes with confidence and safety rules. |
 | [`agent-kernel-designer`](agent-kernel-designer.md) | Designing agent context, safe edits, MCP tools, or AI collaboration flows. | Agent workflow contracts and safety gates. |
 | [`seo-runtime-guardian`](seo-runtime-guardian.md) | Designing SEO, rendering, route modes, hot APIs, runtime, or adapters. | Runtime/SEO boundary notes and acceptance criteria. |
 
@@ -24,7 +24,7 @@ All skills must follow the root [`../../AGENTS.md`](../../AGENTS.md). In particu
 
 - Keep planned behavior separate from implemented behavior.
 - Update README.md and AGENTS.md when setup, commands, structure, safety rules, or phase status changes.
-- Read `../risk-mitigation.md` before changing Needle Map, Agent Kernel, MCP, runtime adapters, or safe edit behavior.
+- Read `../risk-mitigation.md` before changing Lumina Map, Agent Kernel, MCP, runtime adapters, or safe edit behavior.
 - Prefer deterministic outputs and testable acceptance criteria.
 - Do not invent passing feature commands; scaffold checks are real, but framework behavior still needs implementation evidence.
 

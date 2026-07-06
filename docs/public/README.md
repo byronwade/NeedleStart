@@ -4,9 +4,9 @@ Status: Planned.
 
 Audience: future website visitors, docs site builders, maintainers, AI agents.
 
-This directory is the public-facing Markdown source layer for the future NeedleStart website. These pages are written for readers evaluating or learning the framework, not for internal planning. They link back to deeper repository docs for exact contracts and implementation status.
+This directory is the public-facing Markdown source layer for the future Lumina website. These pages are written for readers evaluating or learning the framework, not for internal planning. They link back to deeper repository docs for exact contracts and implementation status.
 
-NeedleStart is in Phase 1 scaffold. Public pages must not claim that app commands, runtime behavior, generated artifacts, benchmarks, or safe-edit workflows exist until implementation and verification prove them.
+Lumina is in Phase 1 scaffold. Public pages must not claim that app commands, runtime behavior, generated artifacts, benchmarks, or safe-edit workflows exist until implementation and verification prove them.
 
 ## Navigation
 
@@ -32,7 +32,7 @@ NeedleStart is in Phase 1 scaffold. Public pages must not claim that app command
 - [Add SEO Metadata](guides/seo-metadata.md)
 - [Create An API Route](guides/api-route.md)
 - [Create A Hot API Route](guides/hot-api.md)
-- [Inspect Needle Map](guides/needle-map.md)
+- [Inspect Lumina Map](guides/lumina-map.md)
 - [Use Agent Context](guides/agent-context.md)
 
 ### Reference

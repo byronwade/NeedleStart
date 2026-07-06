@@ -15,13 +15,13 @@ app/about/page.tsx
 ## Planned Example
 
 ```tsx
-import { defineMeta, staticPage } from "needlestart"
+import { defineMeta, staticPage } from "lumina"
 
 export const render = staticPage()
 
 export const meta = defineMeta({
   title: "About",
-  description: "About this NeedleStart app.",
+  description: "About this Lumina app.",
   canonical: "/about",
 })
 

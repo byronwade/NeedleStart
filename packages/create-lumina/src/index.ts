@@ -1,5 +1,5 @@
-export const createNeedleStatus = {
-  name: "create-needle",
+export const createLuminaStatus = {
+  name: "create-lumina",
   phase: "scaffold",
   implementsRuntimeBehavior: false,
 } as const;

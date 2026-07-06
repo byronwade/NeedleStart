@@ -61,7 +61,7 @@ When touched, collect evidence for:
 
 ## Report Checks
 
-`.needle/perf.report.json` should eventually show:
+`.lumina/perf.report.json` should eventually show:
 
 - route ID,
 - path,

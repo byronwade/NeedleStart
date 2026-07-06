@@ -1,10 +1,10 @@
-# Contributing to NeedleStart
+# Contributing to Lumina
 
 Status: Scaffolded.
 
 Audience: contributors, AI agents.
 
-NeedleStart is currently in Phase 1: monorepo scaffold. The first contributor responsibility is to keep the product direction, architecture, implementation tasks, and documentation coherent while the prototype foundation is built.
+Lumina is currently in Phase 1: monorepo scaffold. The first contributor responsibility is to keep the product direction, architecture, implementation tasks, and documentation coherent while the prototype foundation is built.
 
 We welcome contributions from both humans and AI agents.
 
@@ -23,7 +23,7 @@ Before contributing, read:
 
 - Compiler internals and graph algorithms.
 - Vite plugin and virtual modules.
-- `@needle/adapter-bun` runtime adapter details.
+- `@lumina/adapter-bun` runtime adapter details.
 - MCP tool implementations.
 - Documentation and examples.
 - Testing and benchmarks.
@@ -53,7 +53,7 @@ bun run performance:check
 bun run check
 ```
 
-These commands prove scaffold integrity, documentation links and guardrails, package structure, TypeScript validity, and placeholder tests. They do not prove framework runtime behavior, route discovery, CLI behavior, runtime adapters, Needle Map generation, MCP tools, or safe edits.
+These commands prove scaffold integrity, documentation links and guardrails, package structure, TypeScript validity, and placeholder tests. They do not prove framework runtime behavior, route discovery, CLI behavior, runtime adapters, Lumina Map generation, MCP tools, or safe edits.
 
 ## Contribution Flow
 
@@ -78,7 +78,7 @@ AI-assisted contributions require the same review standard as human-authored cod
 
 ## Code of Conduct
 
-Be respectful. Focus on technical substance. The project values clarity, determinism, and dogfooding Needle Map and agent tools.
+Be respectful. Focus on technical substance. The project values clarity, determinism, and dogfooding Lumina Map and agent tools.
 
 ## Documentation Requirements
 

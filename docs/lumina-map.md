@@ -1,17 +1,17 @@
-# Needle Map
+# Lumina Map
 
 Status: Planned.
 Audience: app developers, framework contributors, AI agents.
 
-This page describes the planned Needle Map behavior. Needle Map generation is not implemented yet.
+This page describes the planned Lumina Map behavior. Lumina Map generation is not implemented yet.
 
-Needle Map is the semantic dependency graph for a NeedleStart application.
+Lumina Map is the semantic dependency graph for a Lumina application.
 
 It must be a core framework feature, not a side widget.
 
 ## Product Promise
 
-Needle Map should answer:
+Lumina Map should answer:
 
 - What uses this?
 - What does this use?
@@ -80,30 +80,32 @@ export type GraphEdge = {
   from: string
   to: string
   kind: EdgeKind
-  source: "compiler" | "import" | "typescript" | "contract" | "convention" | "manual"
-  confidence: number
+  source: "file" | "contract" | "convention" | "static-analysis" | "manual"
+  confidence: "high" | "medium" | "low"
   why: string
   fields?: string[]
   risk?: "low" | "medium" | "high"
 }
 ```
 
+The current scaffolded `@lumina/core` `GraphEdge` type already requires `kind`, `source`, `confidence`, and `why`. Additional semantic fields remain planned until graph generation exists.
+
 ## CLI
 
 Planned commands:
 
 ```bash
-needle map
-needle map --json
-needle map file components/ProductCard.tsx
-needle map affected components/ProductCard.tsx
-needle map route /pricing
-needle map explain components/ProductCard.tsx
+lumina map
+lumina map --json
+lumina map file components/ProductCard.tsx
+lumina map affected components/ProductCard.tsx
+lumina map route /pricing
+lumina map explain components/ProductCard.tsx
 ```
 
 ## Query API
 
-`@needle/map` should expose a programmatic query API used by CLI, MCP, devtools, and the Agent Kernel.
+`@lumina/map` should expose a programmatic query API used by CLI, MCP, devtools, and the Agent Kernel.
 
 Planned API:
 
@@ -115,14 +117,47 @@ query("route:/pricing affectedBy component:ProductCard")
 
 The same query engine should power:
 
-- `needle map file`
-- `needle map route`
-- `needle map affected`
-- `needle map explain`
+- `lumina map file`
+- `lumina map route`
+- `lumina map affected`
+- `lumina map explain`
 - MCP `get_impact_map`
 - MCP `get_related_files`
 - Devtools map explorer
 - Agent context capsules
+
+## Agent Read Surface
+
+Planned agent-readable surfaces:
+
+- Route context capsules with source files, render mode, metadata, cache plan, related tests, owners, and allowed edit surfaces.
+- Lumina Map queries for affected routes, related files, impact chains, and edge explanations.
+- Machine-readable reports for SEO, performance budgets, cache behavior, diagnostics, and generated artifacts.
+- MCP read tools that expose compact JSON rather than full-repository context dumps.
+
+## Agent Edit Surface
+
+The Lumina Map should inform agent edits, but it must not be the write path by itself.
+
+Planned agent write behavior must go through safe edit transactions:
+
+- Validate the requested change.
+- Produce a dry-run preview.
+- Apply through AST-aware edits where TypeScript source is involved.
+- Format the affected files.
+- Regenerate the relevant map or route context slice.
+- Run affected checks.
+- Log the mutation.
+- Support undo.
+
+High-risk edits require explicit human sign-off. Low-confidence map edges should narrow review scope, not authorize unsafe changes.
+
+## Out Of Scope Until Implementation
+
+- Treating import analysis as full semantic understanding.
+- Letting agents edit files directly because a map edge exists.
+- Claiming affected-test accuracy before fixture evidence exists.
+- Shipping map or agent metadata in production runtime bundles.
 
 ## Example Query Output
 
@@ -155,7 +190,7 @@ The same query engine should power:
 
 ## v1 Scope
 
-Needle Map v1 is a file-level graph.
+Lumina Map v1 is a file-level graph.
 
 This is Layer 0 of graph extraction. It should be deterministic, fast, and honest about what it knows.
 
@@ -180,7 +215,7 @@ Planned v1 acceptance criteria:
 
 ## Layered Semantic Extraction
 
-Needle Map must not jump directly from imports to confident semantic claims.
+Lumina Map must not jump directly from imports to confident semantic claims.
 
 Layer 0:
 
@@ -234,13 +269,13 @@ Layer 3:
 - Inferred edges must explain the convention that created them.
 - Safety-critical decisions must not rely on graph data alone.
 - Runtime checks, explicit contracts, and affected checks must be used alongside the graph.
-- NeedleStart should dogfood Needle Map once the map exists.
+- Lumina should dogfood Lumina Map once the map exists.
 
 ## Performance and Persistence
 
 - Keep the graph in memory during dev and build.
-- Persist graph cache to `.needle/cache/graph.json`.
-- Persist public graph output to `.needle/map.json`.
+- Persist graph cache to `.lumina/cache/graph.json`.
+- Persist public graph output to `.lumina/map.json`.
 - Normalize paths across operating systems.
 - Keep IDs stable across runs.
 - Target sub-200ms incremental graph updates on large apps.
@@ -254,7 +289,7 @@ Layer 3:
 
 ## v2 Scope
 
-Needle Map v2 is semantic.
+Lumina Map v2 is semantic.
 
 Inputs:
 

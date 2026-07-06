@@ -7,7 +7,7 @@ Audience: maintainers, framework contributors, app developers.
 
 ## Context
 
-NeedleStart is SEO-first and speed-sensitive. Public routes should avoid request-time work when static output is safe. SSR, streaming, and client-only rendering remain important, but making them implicit defaults would hurt predictability, crawler behavior, cache clarity, and performance evidence.
+Lumina is SEO-first and speed-sensitive. Public routes should avoid request-time work when static output is safe. SSR, streaming, and client-only rendering remain important, but making them implicit defaults would hurt predictability, crawler behavior, cache clarity, and performance evidence.
 
 ## Decision
 
@@ -17,7 +17,7 @@ Every route should explain its render mode through compiler output and manifests
 
 ## Consequences
 
-This gives NeedleStart:
+This gives Lumina:
 
 - Better default SEO behavior.
 - Less request-path work.

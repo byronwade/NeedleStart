@@ -1,22 +1,32 @@
-# NeedleStart
+# Lumina
 
 Status: Planned.
 
 Audience: future website visitors, app developers, AI agents.
 
-NeedleStart is an app-graph-native, SEO-first React framework for humans and AI agents.
+Lumina is an app-graph-native, agent-native, SEO-first React framework for humans and AI agents.
+
+In short: Lumina is an app-graph-native, SEO-first React framework for humans and AI agents.
 
 The promise is simple:
 
 > Your app ships with a map.
 
-NeedleStart is designed so routes, components, APIs, schemas, tests, metadata, cache tags, ownership, and agent-safe edit boundaries can be understood through framework-generated structure instead of repository-wide guessing.
+Lumina is designed to illuminate the full structure of large React applications. Routes, components, APIs, schemas, tests, metadata, cache tags, ownership, and agent-safe edit boundaries should be understood through framework-generated structure instead of repository-wide guessing.
+
+## Product Themes
+
+- Illumination And Clarity: make hidden application structure visible.
+- Lumina Map: treat the semantic app graph as a first-class product surface.
+- Agent-Native Workflows: give humans and AI agents stable contracts, context capsules, and safe edit paths.
+- Explicit SEO-First Behavior: keep render modes, cache plans, public HTML, metadata, and diagnostics inspectable.
+- Built For Scale: plan around ownership, affected checks, package boundaries, and evidence-backed performance work.
 
 ## Current Status
 
-NeedleStart is in Phase 1: monorepo scaffold. The Bun workspace, package placeholders, shared core types, CI, and enforcement scripts exist; framework runtime behavior is still planned.
+Lumina is in Phase 1: monorepo scaffold. The Bun workspace, package placeholders, shared core types, CI, and enforcement scripts exist; framework runtime behavior is still planned.
 
-No runtime implementation, CLI behavior, route compiler, Needle Map generator, MCP server, or safe edit system exists yet. The current repository defines the product direction, architecture, safety rules, docs system, package boundaries, and first implementation path.
+No runtime implementation, CLI behavior, route compiler, Lumina Map generator, MCP server, or safe edit system exists yet. The current repository defines the product direction, architecture, safety rules, docs system, package boundaries, and first implementation path.
 
 See:
 
@@ -36,9 +46,9 @@ See:
 
 ## What Makes It Different
 
-Most web frameworks make the app run. NeedleStart should also make the app explain itself.
+Most web frameworks make the app run. Lumina should also make the app explain itself.
 
-Needle Map is planned as a first-class graph of how files, routes, components, APIs, schemas, metadata, cache tags, tests, and owners relate. Agent Kernel and MCP support are planned so AI agents can inspect structure, plan changes, run affected checks, and apply safe edits through guardrails.
+Lumina Map is planned as a first-class graph of how files, routes, components, APIs, schemas, metadata, cache tags, tests, and owners relate. Agent Kernel and MCP support are planned so AI agents can inspect structure, plan changes, run affected checks, and apply safe edits through guardrails.
 
 ## Start Reading
 

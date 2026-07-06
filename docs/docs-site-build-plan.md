@@ -52,9 +52,9 @@ Evaluate:
 - Accessibility controls.
 - Versioned docs support.
 - Machine-readable output support.
-- Integration with the eventual NeedleStart site.
+- Integration with the eventual Lumina site.
 
-Renderer candidates may include VitePress, Docusaurus, Nextra, Mintlify, or a custom NeedleStart docs app. The final choice should be recorded in an ADR.
+Renderer candidates may include VitePress, Docusaurus, Nextra, Mintlify, or a custom Lumina docs app. The final choice should be recorded in an ADR.
 
 ### Phase C: Navigation And Search
 

@@ -7,7 +7,7 @@ Audience: maintainers, documentation contributors, AI agents.
 
 ## Context
 
-NeedleStart includes guidance for AI skills and subagent roles, but executable local agent tooling does not exist yet. Keeping root-level `skills/` and `subagents/` directories would make the repository look like it ships operational tooling before it does.
+Lumina includes guidance for AI skills and subagent roles, but executable local agent tooling does not exist yet. Keeping root-level `skills/` and `subagents/` directories would make the repository look like it ships operational tooling before it does.
 
 ## Decision
 
@@ -17,7 +17,7 @@ These files are documentation, not runtime code. Root-level `skills/` and `subag
 
 ## Consequences
 
-This gives NeedleStart:
+This gives Lumina:
 
 - Clearer repository structure.
 - Honest status language.

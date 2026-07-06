@@ -30,7 +30,7 @@ Also apply `docs/docs-freshness-policy.md` for any change that can make docs sta
 - `docs/seo-contract.md` still reflects metadata helpers, metadata merge behavior, sitemap output, robots output, structured data, diagnostics, security rules, SEO report fields, and fixtures.
 - `docs/accessibility-contract.md` still reflects WCAG target language, semantic HTML, keyboard behavior, focus behavior, forms, diagnostics, public docs requirements, and test evidence.
 - `docs/security-contract.md` still reflects high-risk surfaces, threat model rules, secret handling, production error behavior, security headers, agent/MCP write rules, vulnerability intake, supply-chain release rules, and evidence requirements.
-- `docs/performance-contract.md` still reflects route budgets, Core Web Vitals target language, `.needle/perf.report.json`, performance diagnostics, benchmark evidence, and public speed-claim rules.
+- `docs/performance-contract.md` still reflects route budgets, Core Web Vitals target language, `.lumina/perf.report.json`, performance diagnostics, benchmark evidence, and public speed-claim rules.
 - `docs/speed-decisions.md` still reflects rendering defaults, build pipeline choices, runtime request path, React Compiler, React streaming, resource hints, fetch priority, speculation rules, bfcache, image/font delivery, compression, hot APIs, cache strategy, compiler scaling, rejected defaults, and benchmark positioning.
 - `docs/speed-capability-audit.md` still maps every major speed surface to a decision, source docs, proof gate, and implementation follow-up.
 - `docs/public-docs-site-architecture.md` and `docs/website-content-map.md` still reflect public docs metadata, routing, navigation, source mapping, and renderer decisions.
@@ -118,7 +118,7 @@ Also apply `docs/docs-freshness-policy.md` for any change that can make docs sta
 - A benchmark fixture changes.
 - Hardware, runtime version, dependency version, or methodology changes.
 - Raw benchmark data changes.
-- Route budgets, Core Web Vitals target language, performance diagnostics, or `.needle/perf.report.json` changes.
+- Route budgets, Core Web Vitals target language, performance diagnostics, or `.lumina/perf.report.json` changes.
 
 Performance-sensitive changes should update `docs/performance.md`, `docs/performance-contract.md`, `docs/speed-strategy.md`, `docs/benchmark-methodology.md`, `docs/testing-contract.md`, `docs/manifest-contracts.md`, and public performance reference when applicable.
 Speed-sensitive architecture decisions should also update `docs/speed-decisions.md` and explain whether the change follows or revises an existing decision.

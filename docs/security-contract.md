@@ -4,11 +4,11 @@ Status: Planned.
 
 Audience: framework contributors, maintainers, security reviewers, runtime adapter authors, AI agents.
 
-This page defines the planned security contract for NeedleStart implementation work. Security behavior is not implemented yet. The contract exists so high-risk features, diagnostics, runtime adapters, configuration, generated artifacts, release work, and agent tooling use the same security expectations. Use [Threat Model](threat-model.md) for trust boundaries, assets, threat notes, and high-risk review gates.
+This page defines the planned security contract for Lumina implementation work. Security behavior is not implemented yet. The contract exists so high-risk features, diagnostics, runtime adapters, configuration, generated artifacts, release work, and agent tooling use the same security expectations. Use [Threat Model](threat-model.md) for trust boundaries, assets, threat notes, and high-risk review gates.
 
 ## Research Notes
 
-NeedleStart should use established security guidance without claiming compliance before implementation exists:
+Lumina should use established security guidance without claiming compliance before implementation exists:
 
 - [OWASP ASVS](https://owasp.org/www-project-application-security-verification-standard/) provides a basis for testing web application technical security controls and secure development requirements.
 - [OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/index.html) provides concise application-security guidance for specific topics.
@@ -22,7 +22,7 @@ NeedleStart should use established security guidance without claiming compliance
 
 ## Security Claims
 
-Do not claim NeedleStart is secure, hardened, compliant, audited, or production-ready until implementation, tests, review evidence, and release notes support the exact claim.
+Do not claim Lumina is secure, hardened, compliant, audited, or production-ready until implementation, tests, review evidence, and release notes support the exact claim.
 
 Allowed current scaffold language:
 
@@ -41,7 +41,7 @@ Disallowed without evidence:
 
 ## High-Risk Surfaces
 
-NeedleStart treats these areas as high risk:
+Lumina treats these areas as high risk:
 
 | Surface | Initial concern | Required docs before implementation |
 | --- | --- | --- |
@@ -76,10 +76,10 @@ Short tasks can answer these in a PR description. Durable features should add or
 
 ## Secret Handling
 
-NeedleStart must not expose secrets through:
+Lumina must not expose secrets through:
 
 - Client bundles.
-- `.needle/*` manifests.
+- `.lumina/*` manifests.
 - `dist/*` static output.
 - `docs-index.json`, `llms.txt`, or `llms-full.txt`.
 - CLI `--json` output.
@@ -105,7 +105,7 @@ Development output can be more detailed, but any detailed output must stay out o
 
 ## Security Headers
 
-NeedleStart should define framework-owned header behavior before adapters are marked verified.
+Lumina should define framework-owned header behavior before adapters are marked verified.
 
 Planned header areas:
 
@@ -131,11 +131,11 @@ Agent and MCP write behavior must:
 - Run affected checks when checks exist.
 - Provide an undo path for supported edits.
 
-Needle Map may inform safety decisions, but it must not be the only authority for high-risk writes.
+Lumina Map may inform safety decisions, but it must not be the only authority for high-risk writes.
 
 ## Supply Chain And Release Rules
 
-Before publishing packages, NeedleStart should define:
+Before publishing packages, Lumina should define:
 
 - Package provenance target.
 - Release workflow ownership.
@@ -182,7 +182,7 @@ Security-sensitive work should name testing evidence in review:
 
 ## Build Readiness
 
-Before full product build work touches high-risk surfaces, NeedleStart should have:
+Before full product build work touches high-risk surfaces, Lumina should have:
 
 - This security contract.
 - The shared [Threat Model](threat-model.md).

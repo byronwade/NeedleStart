@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, performance reviewers, maintainers.
 
-NeedleStart should be fast across the whole workflow: development startup, route updates, build output, runtime request handling, hot APIs, graph queries, agent context, and client payloads.
+Lumina should be fast across the whole workflow: development startup, route updates, build output, runtime request handling, hot APIs, graph queries, agent context, and client payloads.
 
 ## Speed Principles
 

@@ -4,17 +4,17 @@ Status: Planned.
 
 Audience: app developers, security reviewers, maintainers, AI agents.
 
-NeedleStart security behavior is planned but not implemented yet. This page summarizes the public security expectations for future framework features.
+Lumina security behavior is planned but not implemented yet. This page summarizes the public security expectations for future framework features.
 
 ## Current Status
 
 No released packages exist. No runtime, adapter, auth, MCP write tool, or safe edit implementation exists yet.
 
-Do not treat NeedleStart as security-audited, production-hardened, or compliant.
+Do not treat Lumina as security-audited, production-hardened, or compliant.
 
 ## High-Risk Areas
 
-NeedleStart treats these as high risk:
+Lumina treats these as high risk:
 
 - Auth and sessions.
 - Billing or payment integrations.

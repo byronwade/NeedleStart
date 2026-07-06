@@ -5,7 +5,7 @@ Audience: AI agents, compiler contributors, map reviewers.
 
 ## Mission
 
-Design or review compiler, route intelligence, generated manifests, and Needle Map work.
+Design or review compiler, route intelligence, generated manifests, and Lumina Map work.
 
 ## Owns
 
@@ -18,7 +18,7 @@ Design or review compiler, route intelligence, generated manifests, and Needle M
 
 - `../../AGENTS.md`
 - `../compiler-ir.md`
-- `../needle-map.md`
+- `../lumina-map.md`
 - `../package-map.md`
 - `../risk-mitigation.md`
 
@@ -26,7 +26,7 @@ Design or review compiler, route intelligence, generated manifests, and Needle M
 
 - Every graph edge must include `kind`, `source`, `confidence`, and `why`.
 - Prefer explicit contracts over inference.
-- Do not make Needle Map the only source of truth for safety-critical decisions.
+- Do not make Lumina Map the only source of truth for safety-critical decisions.
 
 ## Output Format
 

@@ -4,15 +4,15 @@ Status: Planned.
 
 Audience: framework contributors, app developers, runtime adapter authors, AI agents.
 
-This page defines the planned route-discovery contract for NeedleStart. It is more exact than the overview in [Routing](routing.md) and [File Conventions](file-conventions.md), but it still describes target behavior because route discovery is not implemented yet.
+This page defines the planned route-discovery contract for Lumina. It is more exact than the overview in [Routing](routing.md) and [File Conventions](file-conventions.md), but it still describes target behavior because route discovery is not implemented yet.
 
 ## Contract Goals
 
 Route discovery must produce one deterministic route graph that can feed:
 
-- `.needle/routes.json`.
+- `.lumina/routes.json`.
 - render and adapter manifests.
-- Needle Map route nodes.
+- Lumina Map route nodes.
 - CLI and MCP route inspection.
 - fixture tests and public reference docs.
 
@@ -20,7 +20,7 @@ Runtime adapters must consume generated route artifacts instead of rediscovering
 
 ## App Route Root
 
-NeedleStart plans to discover app routes under `app/`.
+Lumina plans to discover app routes under `app/`.
 
 ```txt
 app/
@@ -41,7 +41,7 @@ app/
     health.ts
 ```
 
-The route root may become configurable later through `needle.config.ts`, but the first route-discovery implementation should treat `app/` as the only supported source root.
+The route root may become configurable later through `lumina.config.ts`, but the first route-discovery implementation should treat `app/` as the only supported source root.
 
 ## Route File Kinds
 
@@ -126,7 +126,7 @@ The exact syntax can still change before implementation, but the invariant canno
 
 ## Route Manifest Shape
 
-`.needle/routes.json` should include a schema version, generation metadata, source inputs, and sorted route entries.
+`.lumina/routes.json` should include a schema version, generation metadata, source inputs, and sorted route entries.
 
 Draft route entry:
 
@@ -153,10 +153,10 @@ Draft manifest envelope:
 
 ```json
 {
-  "schemaVersion": "needle.routes.v0",
+  "schemaVersion": "lumina.routes.v0",
   "generatedAt": "2026-07-06T00:00:00.000Z",
   "source": {
-    "config": "needle.config.ts",
+    "config": "lumina.config.ts",
     "routeRoot": "app"
   },
   "routes": []
@@ -243,7 +243,7 @@ This contract adapts current patterns from mature file-based routers:
 - Nuxt documents dynamic and catch-all file routing plus precedence between named parent routes and nested dynamic routes.
 - Astro documents file-based routing, dynamic routes, rest parameters, endpoint files, and route precedence.
 
-NeedleStart should keep the beginner-facing convention familiar while making the machine-readable manifest stricter than most framework docs from the start.
+Lumina should keep the beginner-facing convention familiar while making the machine-readable manifest stricter than most framework docs from the start.
 
 ## Out Of Scope
 

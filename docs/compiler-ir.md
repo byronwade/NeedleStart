@@ -3,7 +3,7 @@
 Status: Planned.
 Audience: framework contributors, package owners, AI agents.
 
-The Needle compiler should use one internal representation that feeds CLI output, runtime manifests, SEO reports, Needle Map, devtools, and agent context.
+The Lumina compiler should use one internal representation that feeds CLI output, runtime manifests, SEO reports, Lumina Map, devtools, and agent context.
 
 Compiler diagnostics should follow [Diagnostics Contract](diagnostics-contract.md).
 
@@ -13,21 +13,21 @@ Compiler diagnostics should follow [Diagnostics Contract](diagnostics-contract.m
 - Generate stable manifests.
 - Give every route a clear render mode.
 - Provide structured diagnostics.
-- Preserve enough information for Needle Map and agents.
+- Preserve enough information for Lumina Map and agents.
 - Avoid runtime recomputation where build-time generation is possible.
 - Keep CLI, compiler, map, agent, MCP, runtime adapters, and devtools aligned on one immutable core data model.
 - Preserve whole-system speed by moving safe work to build time and emitting compact runtime artifacts.
 
-## Needle App
+## Lumina App
 
-The Phase 1 scaffold currently exposes a minimal `NeedleApp` from `@needle/core`:
+The Phase 1 scaffold currently exposes a minimal `LuminaApp` from `@lumina/core`:
 
 ```ts
-export type NeedleApp = {
+export type LuminaApp = {
   name: string
   root: string
   routes: RouteNode[]
-  diagnostics: NeedleDiagnostic[]
+  diagnostics: LuminaDiagnostic[]
 }
 ```
 
@@ -36,9 +36,9 @@ This scaffold shape is intentionally smaller than the planned compiler IR. It ex
 Planned expanded compiler IR shape:
 
 ```ts
-export type NeedleApp = {
+export type LuminaApp = {
   root: string
-  config: NeedleConfig
+  config: LuminaConfig
   routes: RouteNode[]
   layouts: LayoutNode[]
   components: ComponentNode[]
@@ -46,13 +46,13 @@ export type NeedleApp = {
   serverFns: ServerFunctionNode[]
   schemas: SchemaNode[]
   content: ContentNode[]
-  graph: NeedleGraph
+  graph: LuminaGraph
 }
 ```
 
 ## Route Node
 
-The Phase 1 scaffold currently exposes a minimal `RouteNode` and `RenderMode` from `@needle/core`:
+The Phase 1 scaffold currently exposes a minimal `RouteNode` and `RenderMode` from `@lumina/core`:
 
 ```ts
 export type RenderMode =
@@ -73,7 +73,7 @@ export type RouteNode = {
 }
 ```
 
-The planned compiler IR below adds route kind, params, layouts, metadata, ownership, and other compiler-only details. Any implementation PR that changes the shared scaffold types must update this page, `@needle/core`, scaffold tests, and generated manifest examples together.
+The planned compiler IR below adds route kind, params, layouts, metadata, ownership, and other compiler-only details. Any implementation PR that changes the shared scaffold types must update this page, `@lumina/core`, scaffold tests, and generated manifest examples together.
 
 ```ts
 export type RouteNode = {
@@ -121,7 +121,7 @@ Example:
 
 ## Render Manifest
 
-The `.needle/render-manifest.json` render manifest records how every route should execute. Deployment adapters may copy that canonical compiler artifact into `dist/render.manifest.json`, but the `.needle/` file remains the source contract for compiler, CLI, MCP, Agent Kernel, devtools, and tests.
+The `.lumina/render-manifest.json` render manifest records how every route should execute. Deployment adapters may copy that canonical compiler artifact into `dist/render.manifest.json`, but the `.lumina/` file remains the source contract for compiler, CLI, MCP, Agent Kernel, devtools, and tests.
 
 ```ts
 export type RenderManifest = {
@@ -170,7 +170,7 @@ Detailed stages:
 10. Generate manifests.
 11. Generate runtime modules.
 12. Generate SEO inputs.
-13. Generate Needle Map outputs.
+13. Generate Lumina Map outputs.
 14. Generate agent context capsules.
 15. Emit diagnostics.
 
@@ -179,7 +179,7 @@ Detailed stages:
 Planned incremental behavior:
 
 - Cache compiler artifacts by source content hash, config hash, compiler version, and graph schema version.
-- Persist build and graph cache under `.needle/cache/`.
+- Persist build and graph cache under `.lumina/cache/`.
 - Use graph edges to invalidate changed routes and dependents.
 - Avoid rebuilding unrelated routes.
 - Parallelize independent route compilation where possible.
@@ -191,7 +191,7 @@ Speed rules for compiler work are defined in `docs/speed-strategy.md`.
 
 Before a feature is scheduled, it must answer:
 
-1. Does it improve Needle Map or the Agent Kernel?
+1. Does it improve Lumina Map or the Agent Kernel?
 2. Can it be implemented with minimal production runtime code?
 3. Does it have clear planned acceptance criteria with tests and an agent demo?
 

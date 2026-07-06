@@ -6,7 +6,7 @@ Audience: app developers, runtime contributors, AI agents.
 
 This page describes the planned cache overview. Cache behavior is not implemented yet.
 
-NeedleStart caching must be explicit and inspectable.
+Lumina caching must be explicit and inspectable.
 
 The planned cache plan shape, `Cache-Control` header mapping, cache tags, revalidation behavior, diagnostics, generated manifests, security rules, and fixture requirements are defined in [Cache Contract](cache-contract.md).
 
@@ -14,7 +14,7 @@ The planned cache plan shape, `Cache-Control` header mapping, cache tags, revali
 
 - No invisible caching.
 - Every cacheable route, API, or generated artifact must expose its cache plan.
-- Cache tags must be visible to Needle Map.
+- Cache tags must be visible to Lumina Map.
 - Agent diagnostics must explain cache behavior.
 - SSR and API routes default to `no-store` unless explicit route or API config opts into a safer cache plan.
 - Cache keys and tags must not include secrets, raw emails, user tokens, or private identifiers.

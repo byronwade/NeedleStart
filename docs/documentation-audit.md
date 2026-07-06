@@ -4,14 +4,14 @@ Status: Draft.
 
 Audience: maintainers, documentation contributors, AI agents.
 
-This audit evaluates the NeedleStart documentation system against the goal of becoming a top-tier framework documentation experience. It is based on the current repository state and current public documentation patterns from leading framework and developer-tool projects.
+This audit evaluates the Lumina documentation system against the goal of becoming a top-tier framework documentation experience. It is based on the current repository state and current public documentation patterns from leading framework and developer-tool projects.
 
 Detailed research notes live in `docs/documentation-research.md`.
 The full file-by-file improvement matrix lives in `docs/documentation-matrix.md`.
 
 ## 1. Executive Summary
 
-NeedleStart already has unusually strong early architecture, risk, agent-safety, and product-positioning documentation. Its biggest gap is not depth of thought; it is information architecture for different audiences. Mature framework docs separate onboarding, guides, reference, concepts, examples, deployment, release, security, governance, and contributor workflows. NeedleStart now has initial lanes for those areas, but most are still planned reference homes.
+Lumina already has unusually strong early architecture, risk, agent-safety, and product-positioning documentation. Its biggest gap is not depth of thought; it is information architecture for different audiences. Mature framework docs separate onboarding, guides, reference, concepts, examples, deployment, release, security, governance, and contributor workflows. Lumina now has initial lanes for those areas, but most are still planned reference homes.
 
 The highest-impact move is to keep building a docs system where every feature has a status, a quick example, exact API/reference details, generated artifacts, agent notes, verification requirements, and out-of-scope boundaries.
 
@@ -38,12 +38,12 @@ The highest-impact move is to keep building a docs system where every feature ha
 - Own the app-graph-native docs category with first-class map, manifest, and agent-context references.
 - Make AI-agent docs a product surface, not a side note.
 - Make benchmark honesty a trust advantage by requiring raw data and methodology before performance claims.
-- Publish migration and comparison docs that are frank about what NeedleStart does not replace.
+- Publish migration and comparison docs that are frank about what Lumina does not replace.
 - Turn generated app metadata into docs artifacts: `llms.txt`, `docs-index.json`, route context capsules, manifest references, and graph explanations.
 
 ## 5. Competitor Documentation Lessons
 
-| Reference project | Docs strength | Docs weakness | What NeedleStart should learn | What NeedleStart should avoid |
+| Reference project | Docs strength | Docs weakness | What Lumina should learn | What Lumina should avoid |
 | --- | --- | --- | --- | --- |
 | [Next.js](https://nextjs.org/docs) | Clear Getting Started, Guides, and API Reference lanes. | Large surface can be hard to scan across App/Pages history. | Use simple top-level lanes and exact API reference pages. | Letting historical modes make new users unsure which path to follow. |
 | [Astro](https://docs.astro.build/en/getting-started/) | Beginner-friendly tutorials, recipes, and contributor-friendly docs culture. | Some feature depth is spread across guide and reference pages. | Use recipes for task workflows and make docs contribution easy. | Hiding exact contracts inside prose guides only. |
@@ -55,7 +55,7 @@ The highest-impact move is to keep building a docs system where every feature ha
 | [Nuxt](https://nuxt.com/docs/4.x/getting-started/introduction) | Strong directory-structure docs, deployment breadth, and convention clarity. | Module ecosystem can expand navigation quickly. | Document directory structure and adapters early. | Letting plugin/module growth obscure the core path. |
 | [Supabase](https://supabase.com/docs) | Product-oriented docs lanes: Start, Products, Build, Manage, Reference, Resources. | Very broad platform surface requires heavy navigation. | Segment audiences by job and product surface. | Over-broad navigation before the product exists. |
 | [Stripe](https://docs.stripe.com/) and [Stripe API Reference](https://docs.stripe.com/api) | Deep API reference, quickstarts, versioning, sandbox/test-mode clarity. | Payment domain complexity requires many cross-links. | Treat APIs, versions, examples, and test modes as first-class. | Performance or safety claims without test environments and evidence. |
-| [Vercel](https://vercel.com/docs) and [Build Output API](https://vercel.com/docs/build-output-api) | Deployment docs connect guides, APIs, build output, and platform concepts. | Platform breadth can blur framework-neutral guidance. | Document adapter/build output contracts precisely. | Tying NeedleStart docs too tightly to one host. |
+| [Vercel](https://vercel.com/docs) and [Build Output API](https://vercel.com/docs/build-output-api) | Deployment docs connect guides, APIs, build output, and platform concepts. | Platform breadth can blur framework-neutral guidance. | Document adapter/build output contracts precisely. | Tying Lumina docs too tightly to one host. |
 | [Open Source Guides](https://opensource.guide/leadership-and-governance/) | Clear governance questions and role framing. | General advice needs project-specific translation. | Define maintainer roles, escalation, and decision records. | Leaving governance implicit until conflict appears. |
 
 See `docs/documentation-research.md` for project-by-project notes.
@@ -80,7 +80,7 @@ The desired IA is:
 - Start Here: README, status, getting started, roadmap.
 - Learn: guides, examples, file conventions, routing.
 - Reference: CLI, config, APIs, manifests, generated files, adapters.
-- Concepts: architecture, compiler IR, runtime, Needle Map, Agent Kernel, SEO, safe edits.
+- Concepts: architecture, compiler IR, runtime, Lumina Map, Agent Kernel, SEO, safe edits.
 - Operations: deployment, testing, benchmarks, release, security, governance.
 - Community: contributing, code of conduct, open source community, decisions.
 - Agent Docs: AGENTS, skills, subagents, MCP, safe edit transactions, machine-readable outputs.
@@ -108,13 +108,13 @@ Before this pass, requested docs missing from the repo included code of conduct,
 ## 13. Duplicated Or Confusing Docs
 
 - `docs/skills/` and `docs/subagents/` are the canonical AI collaboration playbooks; do not add root mirrors.
-- Runtime package naming previously mixed `@needle/server-bun` and adapter packages; current docs now prefer adapter package names.
+- Runtime package naming previously mixed `@lumina/server-bun` and adapter packages; current docs now prefer adapter package names.
 
 ## 14. Docs That Should Be Split
 
 - `README.md` should stay concise; deeper setup and status belong in `docs/getting-started.md` and `docs/status.md`.
 - `docs/api-reference.md` should eventually split into `docs/cli.md`, `docs/config.md`, helper APIs, and manifest contracts.
-- `docs/needle-map.md` may later split graph model, query API, contracts, and generated JSON reference.
+- `docs/lumina-map.md` may later split graph model, query API, contracts, and generated JSON reference.
 
 ## 15. Docs That Should Be Merged
 
@@ -126,19 +126,19 @@ Before this pass, requested docs missing from the repo included code of conduct,
 - Compiler pipeline.
 - Request lifecycle.
 - Generated artifact flow.
-- Needle Map layered extraction.
+- Lumina Map layered extraction.
 - Safe edit transaction lifecycle.
 - MCP read/write safety path.
 - Adapter build output path.
 
 ## 17. Docs That Need Examples
 
-- `needle.config.ts`.
+- `lumina.config.ts`.
 - File-based routing.
 - Metadata and SEO.
 - API routes.
 - Hot API routes.
-- Needle Map query output.
+- Lumina Map query output.
 - Agent context capsules.
 - Safe edit transaction JSON.
 - Adapter manifest.
@@ -198,7 +198,7 @@ The table below summarizes the highest-signal findings. The complete matrix is m
 | `docs/compiler-ir.md` | Contributors, agents | Strong | Needs schema version examples | Add manifest contracts | High | Medium | No | Yes |
 | `docs/runtime-contract.md` | Contributors | Good | Needs adapter test expectations | Link deployment/testing docs | Medium | Low | No | Yes |
 | `docs/adapters.md` | Contributors, deployers | Good | Needs deployment guide | Link deployment and compatibility | Medium | Low | Partial | Partial |
-| `docs/needle-map.md` | Contributors, agents | Strong | Needs visual examples | Add diagrams and fixtures | High | Medium | Partial | Yes |
+| `docs/lumina-map.md` | Contributors, agents | Strong | Needs visual examples | Add diagrams and fixtures | High | Medium | Partial | Yes |
 | `docs/agent-kernel.md` | Agents | Strong | Needs schemas | Add stable JSON schema references | High | Medium | No | Yes |
 | `docs/mcp-server.md` | Agents | Good | Needs tool schemas | Add exact schemas as implemented | High | Medium | No | Yes |
 | `docs/safe-edit-transactions.md` | Maintainers, agents | Strong | Needs threat tests | Add security test plan | High | Medium | No | Yes |
@@ -220,7 +220,7 @@ README structure:
 - Product promise.
 - Current status.
 - Quick start.
-- Why NeedleStart.
+- Why Lumina.
 - Core concepts.
 - Documentation links.
 - Contributing/security/governance links.
@@ -228,7 +228,7 @@ README structure:
 Docs website navigation:
 
 - Start: Introduction, Status, Installation, Project Structure.
-- Learn: Routing, Rendering, SEO, API Routes, Needle Map, Agent Workflows.
+- Learn: Routing, Rendering, SEO, API Routes, Lumina Map, Agent Workflows.
 - Guides: Task walkthroughs.
 - Reference: CLI, Config, File Conventions, APIs, Manifests, JSON Schemas.
 - Deploy: Bun, Node, Static, adapter capabilities.

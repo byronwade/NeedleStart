@@ -4,11 +4,11 @@ Status: Planned.
 
 Audience: maintainers, framework contributors, AI agents.
 
-This page defines the documentation and evidence gates that must remain true as NeedleStart moves from scaffold into full product build work. It is not an implementation plan by itself; it is the readiness checklist that keeps implementation work tied to clear contracts, user-facing docs, speed expectations, and verification.
+This page defines the documentation and evidence gates that must remain true as Lumina moves from scaffold into full product build work. It is not an implementation plan by itself; it is the readiness checklist that keeps implementation work tied to clear contracts, user-facing docs, speed expectations, and verification.
 
 ## Why This Exists
 
-Mature framework docs give builders a fast path, a precise reference surface, and clear project structure before they scale the product surface. NeedleStart needs the same discipline as package work moves from scaffold into real framework behavior:
+Mature framework docs give builders a fast path, a precise reference surface, and clear project structure before they scale the product surface. Lumina needs the same discipline as package work moves from scaffold into real framework behavior:
 
 - Getting started docs must distinguish target commands from verified commands.
 - Project structure must be explicit enough for generated apps, examples, and agents to follow.
@@ -42,7 +42,7 @@ Before expanding beyond the monorepo scaffold, the repository should have:
 - A planned CLI JSON envelope, diagnostic shape, and exit-code policy.
 - A shared planned diagnostic contract for codes, severity values, categories, locations, remediations, docs links, child diagnostics, and safe JSON output.
 - A planned configuration loading, validation, environment-variable, and normalized-output contract.
-- A stable generated-file list for `.needle/*` and `dist/*`.
+- A stable generated-file list for `.lumina/*` and `dist/*`.
 - A first-pass docs hub and public docs navigation.
 - A planned example and starter-template contract with evidence rules.
 - A planned accessibility contract for examples, public docs, generated pages, diagnostics, and tests.
@@ -98,7 +98,7 @@ Runtime work may begin only when:
 
 - [Runtime Contract](runtime-contract.md), [Adapter Architecture](adapters.md), [Deployment](deployment.md), and [Compatibility](compatibility.md) agree on adapter responsibilities.
 - [Adapter Contract](adapter-contract.md) defines adapter inputs, outputs, manifests, capabilities, static export behavior, health endpoint behavior, environment variables, diagnostics, and fixtures.
-- Bun-only APIs are contained in `@needle/adapter-bun`.
+- Bun-only APIs are contained in `@lumina/adapter-bun`.
 - Node and static compatibility are not presented as verified until tested.
 - Runtime code does not depend on agent-only packages.
 
@@ -167,7 +167,7 @@ Public claims may be added only when:
 Performance work may produce public claims only when:
 
 - [Speed Strategy](speed-strategy.md), [Speed Decisions](speed-decisions.md), [Speed Capability Audit](speed-capability-audit.md), [Performance](performance.md), [Performance Contract](performance-contract.md), [Benchmark Methodology](benchmark-methodology.md), [Testing Contract](testing-contract.md), and [Public Performance Reference](public/reference/performance.md) agree on the evidence.
-- `.needle/perf.report.json` fields are documented in [Manifest Contracts](manifest-contracts.md) or the report contract.
+- `.lumina/perf.report.json` fields are documented in [Manifest Contracts](manifest-contracts.md) or the report contract.
 - Core Web Vitals language is framed as a target until browser evidence exists.
 - Benchmark comparisons include raw results, fixture source, command, environment metadata, and variance.
 - Lab metrics, build-time budgets, synthetic benchmarks, and field data are not mixed together.
@@ -205,13 +205,13 @@ These docs should become more exact as implementation starts:
 
 ## Completion Standard
 
-NeedleStart is ready for a full product build when a contributor can:
+Lumina is ready for a full product build when a contributor can:
 
 1. Read README and know the current phase.
 2. Read the docs hub and find start, guide, reference, concept, deployment, community, and agent lanes.
 3. Read the Phase 1 build plan and know the next Phase 1A task.
 4. Read package map and know where each responsibility belongs.
-5. Read project structure docs and know what goes in the root, `app/`, `packages/`, `.needle/`, `dist/`, and `docs/`.
+5. Read project structure docs and know what goes in the root, `app/`, `packages/`, `.lumina/`, `dist/`, and `docs/`.
 6. Read examples docs and know which starter or fixture proves an onboarding workflow.
 7. Read testing docs and know which checks prove the current implementation.
 8. Read public docs and see no unsupported implementation, speed, security, or compatibility claims.

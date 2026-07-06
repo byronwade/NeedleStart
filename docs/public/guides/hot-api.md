@@ -11,7 +11,7 @@ Hot API routes are planned for performance-critical endpoints that need generate
 ## Planned Example
 
 ```ts
-import { apiHot, schema } from "needlestart"
+import { apiHot, schema } from "lumina"
 
 export const render = apiHot({
   validate: true,

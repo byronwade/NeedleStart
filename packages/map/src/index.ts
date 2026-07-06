@@ -1,5 +1,5 @@
 export const needleMapStatus = {
-  name: "@needle/map",
+  name: "@lumina/map",
   phase: "scaffold",
   implementsRuntimeBehavior: false,
 } as const;

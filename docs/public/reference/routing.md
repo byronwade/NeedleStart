@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, AI agents.
 
-NeedleStart plans to use file-based routing under `app/`. This page is the public-facing summary. The exact planned compiler contract lives in the internal [Routing Contract](../../routing-contract.md).
+Lumina plans to use file-based routing under `app/`. This page is the public-facing summary. The exact planned compiler contract lives in the internal [Routing Contract](../../routing-contract.md).
 
 ## Planned Route Files
 
@@ -31,7 +31,7 @@ NeedleStart plans to use file-based routing under `app/`. This page is the publi
 
 ## Planned Generated Output
 
-Route discovery should emit `.needle/routes.json` with route IDs, route paths, source files, params, layouts, route groups, and diagnostics.
+Route discovery should emit `.lumina/routes.json` with route IDs, route paths, source files, params, layouts, route groups, and diagnostics.
 
 This output does not exist yet because route discovery is still planned.
 

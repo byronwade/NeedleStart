@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
-  <title id="title">NeedleStart Needle Map data flow</title>
-  <desc id="desc">A professional architecture diagram showing source application files flowing through the Needle compiler into AI-readable manifests and consumers.</desc>
+  <title id="title">Lumina Lumina Map data flow</title>
+  <desc id="desc">A professional architecture diagram showing source application files flowing through the Lumina compiler into AI-readable manifests and consumers.</desc>
   <defs>
     <style>
       .bg{fill:#f8fafc}.panel{fill:#fff;stroke:#d8e0ea;stroke-width:1.5}.soft{fill:#f1f5f9;stroke:#d8e0ea;stroke-width:1}.title{font:700 34px -apple-system,BlinkMacSystemFont,Segoe UI,Inter,Arial,sans-serif;fill:#0f172a}.subtitle{font:400 16px -apple-system,BlinkMacSystemFont,Segoe UI,Inter,Arial,sans-serif;fill:#475569}.h{font:700 16px -apple-system,BlinkMacSystemFont,Segoe UI,Inter,Arial,sans-serif;fill:#0f172a}.t{font:500 13px -apple-system,BlinkMacSystemFont,Segoe UI,Inter,Arial,sans-serif;fill:#334155}.small{font:500 12px -apple-system,BlinkMacSystemFont,Segoe UI,Inter,Arial,sans-serif;fill:#64748b}.code{font:500 12px SFMono-Regular,Consolas,Menlo,monospace;fill:#334155}.lineblue{stroke:#2563eb;stroke-width:2.6;fill:none}.chip{fill:#eef6ff;stroke:#bfdbfe}.chip2{fill:#ecfdf5;stroke:#bbf7d0}.chip3{fill:#faf5ff;stroke:#ddd6fe}.shadow{filter:url(#shadow)}
@@ -9,7 +9,7 @@
     <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/></marker>
   </defs>
   <rect class="bg" width="1200" height="675" rx="28"/>
-  <text class="title" x="60" y="62">Needle Map: the AI-readable app graph</text>
+  <text class="title" x="60" y="62">Lumina Map: the AI-readable app graph</text>
   <text class="subtitle" x="60" y="92">Source files compile into stable manifests, context capsules, and graph edges that humans and agents can query.</text>
 
   <rect class="panel shadow" x="60" y="135" width="235" height="385" rx="18"/>
@@ -22,7 +22,7 @@
   <rect class="soft" x="84" y="412" width="187" height="38" rx="10"/><text class="t" x="104" y="436">tests and metadata</text>
 
   <rect class="panel shadow" x="365" y="135" width="235" height="385" rx="18"/>
-  <text class="h" x="389" y="170">2. Needle compiler</text>
+  <text class="h" x="389" y="170">2. Lumina compiler</text>
   <text class="small" x="389" y="194">Build-time intelligence</text>
   <rect class="chip" x="389" y="220" width="187" height="38" rx="10"/><text class="t" x="409" y="244">route discovery</text>
   <rect class="chip" x="389" y="268" width="187" height="38" rx="10"/><text class="t" x="409" y="292">render classification</text>
@@ -33,8 +33,8 @@
   <rect class="panel shadow" x="670" y="135" width="235" height="385" rx="18"/>
   <text class="h" x="694" y="170">3. Generated contracts</text>
   <text class="small" x="694" y="194">Stable JSON for tools</text>
-  <rect class="chip2" x="694" y="220" width="187" height="38" rx="10"/><text class="code" x="714" y="244">.needle/routes.json</text>
-  <rect class="chip2" x="694" y="268" width="187" height="38" rx="10"/><text class="code" x="714" y="292">.needle/map.json</text>
+  <rect class="chip2" x="694" y="220" width="187" height="38" rx="10"/><text class="code" x="714" y="244">.lumina/routes.json</text>
+  <rect class="chip2" x="694" y="268" width="187" height="38" rx="10"/><text class="code" x="714" y="292">.lumina/map.json</text>
   <rect class="chip2" x="694" y="316" width="187" height="38" rx="10"/><text class="code" x="714" y="340">seo.report.json</text>
   <rect class="chip2" x="694" y="364" width="187" height="38" rx="10"/><text class="code" x="714" y="388">render-manifest.json</text>
   <rect class="chip2" x="694" y="412" width="187" height="38" rx="10"/><text class="code" x="714" y="436">context/*.ctx.json</text>

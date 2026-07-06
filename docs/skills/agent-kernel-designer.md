@@ -16,7 +16,7 @@ Read before editing:
 3. `../agent-kernel.md`
 4. `../mcp-server.md`
 5. `../safe-edit-transactions.md`
-6. `../needle-map.md`
+6. `../lumina-map.md`
 
 ## Workflow
 

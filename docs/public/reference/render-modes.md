@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, framework contributors.
 
-Render modes tell NeedleStart how each route should execute. The shared scaffold contract is the `RenderMode` type in `@needle/core`.
+Render modes tell Lumina how each route should execute. The shared scaffold contract is the `RenderMode` type in `@lumina/core`.
 
 ## Planned APIs
 
@@ -31,7 +31,7 @@ These APIs are planned and not implemented.
 | API route file under `app/api/` | `"api"` |
 | `apiHot()` | `"hot-api"` |
 
-The manifest values above must stay aligned with `@needle/core` `RenderMode`, [Compiler IR](../../compiler-ir.md), `.needle/render-manifest.json`, and generated route manifests.
+The manifest values above must stay aligned with `@lumina/core` `RenderMode`, [Compiler IR](../../compiler-ir.md), `.lumina/render-manifest.json`, and generated route manifests.
 
 ## Contract Vocabulary
 
@@ -41,7 +41,7 @@ Public render-mode docs are checked against the same planned contract terms as t
 - `RenderMode` literals: `"static"`, `"prerender"`, `"ssr"`, `"stream"`, `"client-only"`, `"api"`, and `"hot-api"`.
 - Ordinary `app/api/` files compile to `renderMode: "api"`.
 - `apiHot()` is the explicit opt-in to `renderMode: "hot-api"`.
-- `.needle/render-manifest.json` is the canonical planned render manifest.
+- `.lumina/render-manifest.json` is the canonical planned render manifest.
 
 ## Source
 

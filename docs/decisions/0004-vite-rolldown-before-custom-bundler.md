@@ -7,7 +7,7 @@ Audience: maintainers, framework contributors, performance reviewers.
 
 ## Context
 
-NeedleStart needs a fast frontend build path, React ecosystem compatibility, CSS and asset handling, HMR, and production build output. Building a custom bundler first would consume the project before the app graph, SEO, and agent-safe workflow wedge is proven.
+Lumina needs a fast frontend build path, React ecosystem compatibility, CSS and asset handling, HMR, and production build output. Building a custom bundler first would consume the project before the app graph, SEO, and agent-safe workflow wedge is proven.
 
 Current speed research in [Speed Decisions](../speed-decisions.md) points to the stable Vite 8.x/Rolldown path as the default candidate, subject to a fresh source check before implementation pins dependency versions.
 
@@ -15,13 +15,13 @@ Current speed research in [Speed Decisions](../speed-decisions.md) points to the
 
 Use Vite/Rolldown as the frontend build foundation before considering a custom bundler.
 
-The Needle compiler owns route intelligence, render modes, SEO extraction, cache plans, API codegen, agent context, app graph generation, and framework manifests. Vite/Rolldown owns frontend build mechanics such as React transforms, CSS, assets, chunks, HMR, minification, and build manifests.
+The Lumina compiler owns route intelligence, render modes, SEO extraction, cache plans, API codegen, agent context, app graph generation, and framework manifests. Vite/Rolldown owns frontend build mechanics such as React transforms, CSS, assets, chunks, HMR, minification, and build manifests.
 
-Do not start custom bundler work until Vite/Rolldown limits are measured in NeedleStart fixtures and documented in benchmark evidence.
+Do not start custom bundler work until Vite/Rolldown limits are measured in Lumina fixtures and documented in benchmark evidence.
 
 ## Consequences
 
-This gives NeedleStart:
+This gives Lumina:
 
 - A credible build system earlier.
 - Ecosystem plugin leverage.
@@ -38,7 +38,7 @@ This requires:
 ## Alternatives Considered
 
 - Build a custom bundler immediately.
-- Use only Vite with no Needle compiler.
+- Use only Vite with no Lumina compiler.
 - Defer frontend build decisions until after runtime work.
 
 ## Related

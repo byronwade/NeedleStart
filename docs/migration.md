@@ -3,7 +3,7 @@
 Status: Planned.
 Audience: app developers, migration contributors, AI agents.
 
-NeedleStart should win adoption through the agent and map workflow, but migration friction still matters.
+Lumina should win adoption through the agent and map workflow, but migration friction still matters.
 
 The migration story should start early as a prototype and mature after the core route, metadata, layout, and graph systems exist.
 
@@ -11,13 +11,13 @@ The migration story should start early as a prototype and mature after the core 
 
 - Preserve as much user code as possible.
 - Generate route and component contracts when semantics are ambiguous.
-- Make migration output inspectable through Needle Map.
+- Make migration output inspectable through Lumina Map.
 - Give agents useful context after migration.
 
 ## Initial Command
 
 ```bash
-needle migrate from-next
+lumina migrate from-next
 ```
 
 ## Initial Scope
@@ -64,9 +64,9 @@ The command should emit:
 After migration, agents should be able to run:
 
 ```bash
-needle map --json
-needle agent context --route /pricing --json
-needle check
+lumina map --json
+lumina agent context --route /pricing --json
+lumina check
 ```
 
 ## Out of Scope Initially

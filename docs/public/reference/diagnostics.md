@@ -4,11 +4,11 @@ Status: Planned.
 
 Audience: app developers, framework contributors, AI agents.
 
-NeedleStart diagnostics are planned to use stable codes, structured source locations, remediation text, and docs links across CLI output, manifests, reports, MCP tools, and agent context. This behavior is not implemented yet.
+Lumina diagnostics are planned to use stable codes, structured source locations, remediation text, and docs links across CLI output, manifests, reports, MCP tools, and agent context. This behavior is not implemented yet.
 
 ## Planned Shape
 
-The scaffolded `@needle/core` `NeedleDiagnostic` currently uses `code`, `severity`, `message`, optional `docsUrl`, and optional `source.file`, `source.line`, and `source.column`. The expanded fields below remain planned until diagnostics are implemented across compiler, CLI, manifests, and public docs.
+The scaffolded `@lumina/core` `LuminaDiagnostic` currently uses `code`, `severity`, `message`, optional `docsUrl`, and optional `source.file`, `source.line`, and `source.column`. The expanded fields below remain planned until diagnostics are implemented across compiler, CLI, manifests, and public docs.
 
 ```json
 {
@@ -24,7 +24,7 @@ The scaffolded `@needle/core` `NeedleDiagnostic` currently uses `code`, `severit
     "column": 1
   },
   "routePath": "/pricing",
-  "docs": "https://needlestart.dev/docs/reference/routing#route-conflicts",
+  "docs": "https://lumina.dev/docs/reference/routing#route-conflicts",
   "why": "Route groups do not affect the public URL path.",
   "remediation": "Move one route to a different public segment or remove the duplicate page.",
   "related": [

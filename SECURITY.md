@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: maintainers, contributors, security reviewers, AI agents.
 
-NeedleStart has a Phase 1 scaffold, but framework security behavior is not implemented yet. This policy defines how security should be handled as implementation begins.
+Lumina has a Phase 1 scaffold, but framework security behavior is not implemented yet. This policy defines how security should be handled as implementation begins.
 
 Detailed planned security requirements for high-risk implementation work, production error behavior, security headers, vulnerability advisory flow, provenance, supply chain rules, and testing evidence live in [Security Contract](docs/security-contract.md).
 
@@ -24,7 +24,7 @@ Until a private security intake is configured, do not post exploitable vulnerabi
 
 ## High-Risk Areas
 
-NeedleStart treats these areas as high risk:
+Lumina treats these areas as high risk:
 
 - Auth and sessions.
 - Billing or payment integrations.

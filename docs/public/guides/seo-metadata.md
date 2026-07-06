@@ -9,7 +9,7 @@ This guide describes the planned workflow for adding route metadata. Metadata AP
 ## Planned API
 
 ```ts
-import { defineMeta } from "needlestart"
+import { defineMeta } from "lumina"
 
 export const meta = defineMeta({
   title: "Pricing",
@@ -22,7 +22,7 @@ Use planned `generateMeta()` only when a route needs params or data to resolve m
 
 ## Planned Checks
 
-`needle seo` should eventually verify:
+`lumina seo` should eventually verify:
 
 - title
 - description
@@ -31,7 +31,7 @@ Use planned `generateMeta()` only when a route needs params or data to resolve m
 - meaningful initial HTML
 - sitemap inclusion
 - structured data when configured
-- `.needle/seo.report.json` output
+- `.lumina/seo.report.json` output
 - diagnostic severity values of `info`, `warning`, and `error`
 - client-only fallback HTML before a route is treated as indexable
 

@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, framework contributors, docs maintainers, AI agents.
 
-This page defines how NeedleStart examples, starter templates, and public guide snippets should work once implementation exists. The repository is in Phase 1 scaffold, so no example is verified yet. The planned official inventory lives in [Examples Catalog](examples-catalog.md).
+This page defines how Lumina examples, starter templates, and public guide snippets should work once implementation exists. The repository is in Phase 1 scaffold, so no example is verified yet. The planned official inventory lives in [Examples Catalog](examples-catalog.md).
 
 ## Research Notes
 
@@ -17,7 +17,7 @@ Mature framework docs make examples part of the product surface, not an aftertho
 - [Vite getting started](https://vite.dev/guide/) keeps scaffolding commands concise and template-driven.
 - [Vite SSR guide](https://vite.dev/guide/ssr) points to example projects for advanced rendering setups.
 
-NeedleStart should learn from those patterns while staying honest about the current scaffold. Examples must be runnable evidence before they become marketing or onboarding claims.
+Lumina should learn from those patterns while staying honest about the current scaffold. Examples must be runnable evidence before they become marketing or onboarding claims.
 
 ## Example Categories
 
@@ -44,8 +44,8 @@ examples/
     README.md
     package.json
     app/
-    needle.config.ts
-    .needle/
+    lumina.config.ts
+    .lumina/
       expected/
     tests/
       example.test.ts
@@ -85,7 +85,7 @@ An example cannot be called verified until the evidence requirements below are m
 Every example README must include:
 
 - Status label.
-- NeedleStart version or workspace commit it targets.
+- Lumina version or workspace commit it targets.
 - What the example demonstrates.
 - Prerequisites.
 - Commands to install, run, build, inspect, and test.
@@ -101,9 +101,9 @@ Example READMEs should be short enough for a new user to follow, but exact enoug
 
 ## Required Commands
 
-Each verified example should document the smallest complete command set. `bun run dev`, `bun run build`, and `bun run start` are generated app package scripts; they must call the equivalent `needle dev`, `needle build`, and `needle start` framework commands instead of becoming separate framework behavior.
+Each verified example should document the smallest complete command set. `bun run dev`, `bun run build`, and `bun run start` are generated app package scripts; they must call the equivalent `lumina dev`, `lumina build`, and `lumina start` framework commands instead of becoming separate framework behavior.
 
-Use generated app package scripts for the normal run/build/start path. Use direct `needle ... --json` commands only when the example needs machine-readable framework inspection output that package scripts do not wrap.
+Use generated app package scripts for the normal run/build/start path. Use direct `lumina ... --json` commands only when the example needs machine-readable framework inspection output that package scripts do not wrap.
 
 ```bash
 bun install
@@ -111,9 +111,9 @@ bun run dev
 bun run build
 bun run start
 bun test
-needle routes --json
-needle inspect --json
-needle check --json
+lumina routes --json
+lumina inspect --json
+lumina check --json
 ```
 
 Do not publish these as working commands until CLI behavior, example files, and verification evidence exist.
@@ -123,16 +123,16 @@ Do not publish these as working commands until CLI behavior, example files, and 
 Verified examples must document expected artifacts:
 
 ```txt
-.needle/routes.json
-.needle/render-manifest.json
-.needle/map.json
-.needle/graph.json
-.needle/seo.report.json
-.needle/perf.report.json
-.needle/context/*.ctx.json
-.needle/context/agent-index.json
-.needle/mutations.json
-.needle/generated/*
+.lumina/routes.json
+.lumina/render-manifest.json
+.lumina/map.json
+.lumina/graph.json
+.lumina/seo.report.json
+.lumina/perf.report.json
+.lumina/context/*.ctx.json
+.lumina/context/agent-index.json
+.lumina/mutations.json
+.lumina/generated/*
 dist/routes.manifest.json
 dist/render.manifest.json
 dist/seo.report.json
@@ -180,9 +180,9 @@ If an example cannot be verified on Windows, macOS, and Linux, document the know
 The future create command may support examples:
 
 ```bash
-bun create needle my-app
-bun create needle my-blog --example blog-seo
-bun create needle my-api --example api-route
+bun create lumina my-app
+bun create lumina my-blog --example blog-seo
+bun create lumina my-api --example api-route
 ```
 
 The default generated app must be the smallest useful verified starter. Other examples can be selectable only after they meet the verified requirements.
@@ -206,7 +206,7 @@ Before that point, public guides may describe target workflows but must say they
 The `agent-demo` example must eventually prove:
 
 - Route context inspection.
-- Needle Map affected query.
+- Lumina Map affected query.
 - Safe metadata edit dry run.
 - Safe metadata edit apply.
 - Affected checks.
@@ -240,7 +240,7 @@ Scale fixture claims must link to [Benchmark Methodology](benchmark-methodology.
 
 ## Build Readiness
 
-Before NeedleStart can call onboarding build-ready, it should have:
+Before Lumina can call onboarding build-ready, it should have:
 
 - A default starter example plan.
 - A verified-example definition.
