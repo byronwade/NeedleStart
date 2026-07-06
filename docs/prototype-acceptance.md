@@ -5,7 +5,7 @@ Audience: maintainers, framework contributors, product reviewers.
 
 The first public prototype should prove the wedge end to end.
 
-Scope note: this is broader than the first working slice in `docs/risk-mitigation.md`. The working slice proves create app, SEO-safe pages, Bun serving, basic map, agent inspection, and safe metadata edit before the public prototype expands into API routes, hot API, read-only MCP tools, adapter-aware output, and Node/static documentation.
+Scope note: this is broader than the first working slice in `docs/risk-mitigation.md`. The working slice proves create app, SEO-safe pages, `@needle/adapter-bun` serving, basic map, agent inspection, and safe metadata edit before the public prototype expands into API routes, hot API, read-only MCP tools, adapter-aware output, and Node/static documentation.
 
 ## Demo Script
 
@@ -79,7 +79,7 @@ The prototype is credible when it can:
 
 - Create a React app.
 - Render SEO-safe pages.
-- Serve static and SSR routes through Bun.
+- Serve static and SSR routes through `@needle/adapter-bun`.
 - Run API routes.
 - Run a hot API route.
 - Generate a route manifest.

@@ -1193,13 +1193,18 @@ const staleStatusPatterns = [
   },
   {
     file: "README.md",
-    pattern: /Bun server|Serve through Bun|Adapter-aware Bun server/i,
+    pattern: /Bun serving(?! is implemented through `@needle\/adapter-bun`)|Bun server|Serve through Bun|Adapter-aware Bun server/i,
     message: "README.md should describe prototype Bun serving through @needle/adapter-bun.",
   },
   {
     file: "docs/prototype-acceptance.md",
-    pattern: /Production Bun server|Bun server|Serve through Bun|Adapter-aware Bun server/i,
+    pattern: /Bun serving(?! is implemented through `@needle\/adapter-bun`)|Serve static and SSR routes through Bun|Production Bun server|Bun server|Serve through Bun|Adapter-aware Bun server/i,
     message: "docs/prototype-acceptance.md should describe production serving through @needle/adapter-bun.",
+  },
+  {
+    file: "docs/public/roadmap.md",
+    pattern: /Bun serving(?! is implemented through `@needle\/adapter-bun`)|Bun server|Serve through Bun|Adapter-aware Bun server/i,
+    message: "docs/public/roadmap.md should describe first-slice Bun serving through @needle/adapter-bun.",
   },
   {
     file: "docs/roadmap.md",

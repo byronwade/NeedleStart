@@ -46,7 +46,7 @@ The first public prototype should prove:
 - Safe metadata edit.
 - Bun adapter output with Node/static compatibility path documented.
 
-The first working slice is smaller: create app, SEO-safe pages, Bun serving, basic map, agent inspection, and safe metadata edit. The public prototype expands that slice into the full demo list above.
+The first working slice is smaller: create app, SEO-safe pages, `@needle/adapter-bun` serving, basic map, agent inspection, and safe metadata edit. The public prototype expands that slice into the full demo list above.
 
 ## Source Of Truth
 

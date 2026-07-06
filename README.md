@@ -264,7 +264,7 @@ The first public prototype proves:
 12. An AI agent can inspect routes, edit metadata safely, run affected checks, and report the mutation log.
 13. Build output can run on the Bun adapter, with Node and static adapter paths documented.
 
-Terminology: the first working slice is smaller and proves create app, SEO-safe pages, Bun serving, a basic map, agent inspection, and safe metadata edit. The first public prototype is the broader demo target listed above.
+Terminology: the first working slice is smaller and proves create app, SEO-safe pages, `@needle/adapter-bun` serving, a basic map, agent inspection, and safe metadata edit. The first public prototype is the broader demo target listed above.
 
 ## First Prototype Sequence
 
