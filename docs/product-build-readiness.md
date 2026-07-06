@@ -71,7 +71,7 @@ Build work may add the Bun workspace only when:
 - [Phase 1 Build Plan](phase-1-build-plan.md) and [Package Map](package-map.md) agree on package names.
 - README and AGENTS still say commands are planned until they pass locally.
 - Package README expectations are known.
-- `bun install`, `bun test`, and `bun run typecheck` are either implemented and passing or explicitly not available yet.
+- `bun install`, `bun test`, `bun run typecheck`, and `bun run check` are implemented for the scaffold and passing locally before feature work builds on them.
 
 ### Gate 2: Route Discovery
 

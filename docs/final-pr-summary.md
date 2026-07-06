@@ -127,12 +127,14 @@ Major updated files:
 - `bun test`
 - `bun run typecheck`
 
-Reason: the repository has no Bun workspace or package scaffold yet. The docs explicitly keep those commands marked as planned, not verified.
+Historical reason: the repository had no Bun workspace or package scaffold yet, so the docs explicitly kept those commands marked as planned, not verified.
+
+Current note: Phase 1 scaffold work has since added the Bun workspace, package placeholders, `bun test`, `bun run typecheck`, and the root `bun run check` gate.
 
 ## Remaining Follow-Up Work
 
 - Fill planned reference docs with exact API details as implementation lands.
-- Add verified tutorials after the Phase 1 scaffold exists.
+- Add verified tutorials after app creation and runtime behavior exist.
 - Add generated `docs-index.json`, `llms.txt`, and `llms-full.txt` once tooling exists.
 - Add docs-site frontmatter after the docs site parser is chosen.
 - Add raw benchmark result storage after benchmark commands exist.

@@ -58,12 +58,14 @@ Checks run during this documentation pass:
 - Required strategic-audit-section search.
 - Documentation-standard coverage search.
 
-Checks intentionally not run:
+Checks intentionally not run at the time of this audit:
 
 - `bun test`
 - `bun run typecheck`
 
-Reason: the repository has no Bun workspace or package scaffold yet. The docs explicitly mark these commands as planned and unverified.
+Reason: the repository had no Bun workspace or package scaffold yet. The docs explicitly marked these commands as planned and unverified.
+
+Current note: Phase 1 scaffold work has since added the Bun workspace, package placeholders, `bun test`, `bun run typecheck`, and the root `bun run check` gate. Treat this section as historical context, not current command status.
 
 ## Deferred By Design
 

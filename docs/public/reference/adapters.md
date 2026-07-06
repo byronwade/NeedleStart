@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: deployers, app developers, adapter maintainers, AI agents.
 
-NeedleStart adapters are planned to turn generated build output into deployable Bun, Node, or static output. Adapter behavior is not implemented yet.
+NeedleStart adapters are planned to turn generated build output into deployable Bun, Node, or static output. Adapter packages are scaffolded; adapter behavior is not implemented yet.
 
 ## Initial Adapters
 

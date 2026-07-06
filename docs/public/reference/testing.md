@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, contributors, AI agents.
 
-NeedleStart testing is planned around deterministic fixtures, stable JSON snapshots, HTTP adapter checks, browser checks for user-visible behavior, and explicit evidence reporting. Test tooling is not implemented yet.
+NeedleStart testing is planned around deterministic fixtures, stable JSON snapshots, HTTP adapter checks, browser checks for user-visible behavior, and explicit evidence reporting. Initial scaffold checks exist; feature-specific test tooling is still planned.
 
 ## Planned Commands
 
@@ -17,7 +17,7 @@ bun run test:browser
 bun run docs:check
 ```
 
-These commands are target commands, not verified commands.
+`bun test`, `bun run typecheck`, `bun run docs:check`, and the root `bun run check` gate are verified for the scaffold. Fixture, HTTP, and browser commands are target commands until implementation lands.
 
 ## Planned Test Layers
 

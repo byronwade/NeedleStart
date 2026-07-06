@@ -55,7 +55,7 @@ This audit is based on current primary guidance and the repository contracts:
 
 The documentation now covers the major speed decision surfaces as planned behavior. The largest remaining risk is not missing docs, but future implementation drift:
 
-- Vite/Rolldown version choices must be refreshed at package scaffold time; the 2026-07-06 snapshot points to current stable Vite 8.x/Rolldown.
+- Vite/Rolldown version choices must be refreshed before speed-sensitive implementation pins runtime or build dependencies; the 2026-07-06 snapshot points to current stable Vite 8.x/Rolldown.
 - React Compiler must not become a default before fixtures prove compatibility.
 - Browser-delivery optimizations must stay route-aware and budget-backed.
 - Route code splitting, CSS splitting, source-map output, and telemetry must stay explicit defaults with fixture evidence before any exception.
@@ -64,7 +64,7 @@ The documentation now covers the major speed decision surfaces as planned behavi
 
 ## Required Follow-Up At Implementation Time
 
-Before Phase 1 package scaffold:
+After Phase 1 scaffold and before speed-sensitive implementation:
 
 - Pin actual Vite/Rolldown/Bun/React versions in package docs and lockfile evidence after a fresh source check.
 - Default to current stable Vite 8.x/Rolldown if scaffold work starts from the 2026-07-06 research snapshot and no blocking regression is found.
@@ -86,5 +86,5 @@ Before public performance claims:
 
 - Claiming any speed decision is implemented.
 - Claiming NeedleStart beats another framework.
-- Choosing exact package versions before scaffold work.
+- Changing exact package versions without refreshing source evidence.
 - Treating this audit as benchmark data.

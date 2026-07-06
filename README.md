@@ -188,9 +188,10 @@ needlestart/
     cache/
     schema/
     devtools/
-    adapter-bun/
-    adapter-node/
-    adapter-static/
+    adapters/
+      bun/
+      node/
+      static/
   examples/
     basic/
     blog-seo/
@@ -205,6 +206,8 @@ needlestart/
     performance/
   docs/
 ```
+
+Adapter package paths are `packages/adapters/bun`, `packages/adapters/node`, and `packages/adapters/static`.
 
 ## Product Layers
 

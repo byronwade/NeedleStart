@@ -75,6 +75,62 @@ for (const dir of ["docs/skills", "docs/subagents"]) {
   }
 }
 
+const staleStatusPatterns = [
+  {
+    file: "docs/public/index.md",
+    pattern: /No runtime implementation, CLI, package scaffold/i,
+    message: "docs/public/index.md still says the package scaffold is missing.",
+  },
+  {
+    file: "docs/public/roadmap.md",
+    pattern: /No package scaffold/i,
+    message: "docs/public/roadmap.md still says the package scaffold is missing.",
+  },
+  {
+    file: "docs/public/guides/create-app.md",
+    pattern: /no package scaffold yet/i,
+    message: "docs/public/guides/create-app.md still says the package scaffold is missing.",
+  },
+  {
+    file: "docs/public/reference/testing.md",
+    pattern: /Test tooling is not implemented yet/i,
+    message: "docs/public/reference/testing.md ignores scaffold test tooling.",
+  },
+  {
+    file: "docs/speed-capability-audit.md",
+    pattern: /Before Phase 1 package scaffold/i,
+    message: "docs/speed-capability-audit.md still uses pre-scaffold language.",
+  },
+  {
+    file: "docs/documentation-audit.md",
+    pattern: /because the repository has no package scaffold yet/i,
+    message: "docs/documentation-audit.md still presents pre-scaffold status as current.",
+  },
+];
+
+for (const { file, pattern, message } of staleStatusPatterns) {
+  if (existsSync(join(root, file)) && pattern.test(read(file))) {
+    failures.push(message);
+  }
+}
+
+const readme = read("README.md");
+for (const requiredPath of [
+  "packages/adapters/bun",
+  "packages/adapters/node",
+  "packages/adapters/static",
+]) {
+  if (!readme.includes(requiredPath)) {
+    failures.push(`README.md does not document ${requiredPath}`);
+  }
+}
+
+for (const staleTreeEntry of ["    adapter-bun/", "    adapter-node/", "    adapter-static/"]) {
+  if (readme.includes(staleTreeEntry)) {
+    failures.push(`README.md still documents stale flat adapter path: ${staleTreeEntry.trim()}`);
+  }
+}
+
 for (const doc of requiredEntryLinks) {
   const plain = doc.replaceAll("\\", "/");
   const markdownTarget = plain.startsWith("docs/") ? plain.slice("docs/".length) : plain;

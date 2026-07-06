@@ -6,19 +6,19 @@ This page describes the target app onboarding path for NeedleStart. The reposito
 
 ## Current Repository Status
 
-NeedleStart currently contains planning, architecture, roadmap, risk, skill, and subagent documentation. It does not yet contain the Bun workspace, package scaffold, CLI, compiler, runtime, or generated artifacts.
+NeedleStart currently contains planning, architecture, roadmap, risk, skill, and subagent documentation plus the Phase 1 Bun workspace and package placeholders. It does not yet contain CLI behavior, compiler behavior, runtime behavior, or generated artifacts.
 
 Use these docs first:
 
 - [README](../README.md): product overview and current status.
-- [Phase 1 Build Plan](phase-1-build-plan.md): the next implementation path.
+- [Phase 1 Build Plan](phase-1-build-plan.md): the scaffold hardening and first implementation path.
 - [Task Backlog](task-backlog.md): concrete implementation sequence.
 - [Examples And Templates Contract](examples-contract.md): how future starter examples become verified.
 - [Documentation Standard](documentation-standard.md): how docs should grow.
 
 ## Target App Creation Flow
 
-Planned command once the package exists:
+Planned command once app creation behavior exists:
 
 ```bash
 bun create needle my-app

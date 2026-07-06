@@ -57,7 +57,7 @@ Generated files must be deterministic and must not be edited manually.
 
 ## Repository Structure
 
-NeedleStart itself is planned as a Bun workspace with packages under `packages/`, examples under `examples/`, fixtures under `tests/`, and documentation under `docs/`.
+NeedleStart itself is scaffolded as a Bun workspace with packages under `packages/`, adapter packages under `packages/adapters/`, examples under `examples/`, tests under `tests/`, and documentation under `docs/`.
 
 Planned test fixture structure is defined in [Testing](testing.md) and the internal [Testing Contract](../../testing-contract.md).
 

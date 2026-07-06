@@ -10,11 +10,11 @@ NeedleStart is currently in Phase 1: monorepo scaffold.
 
 Phase 0 defined the product direction, architecture, package responsibilities, documentation system, safety rules, and implementation sequence.
 
-No package scaffold or runtime implementation exists yet.
+The Bun workspace and package placeholders exist. Runtime implementation is still planned.
 
 ## Next Phase
 
-Phase 1 creates the Bun workspace and package scaffold. It should prove:
+Phase 1 creates and hardens the Bun workspace and package scaffold. It should keep proving:
 
 - `bun install` works.
 - `bun test` works.

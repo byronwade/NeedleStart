@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, AI agents.
 
-No NeedleStart CLI exists yet. This page is the public-facing reference home for planned commands.
+The `@needle/cli` package is scaffolded, but no NeedleStart CLI command behavior exists yet. This page is the public-facing reference home for planned commands.
 
 | Command | Purpose |
 | --- | --- |
