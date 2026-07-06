@@ -299,6 +299,8 @@ Terminology: the first working slice is smaller and is intended to prove create 
 
 ## Public API Draft
 
+These examples are planned API design, not implemented or verified behavior in the current scaffold.
+
 ```ts
 import { defineMeta, staticPage } from "needlestart"
 

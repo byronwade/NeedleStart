@@ -628,6 +628,25 @@ const plannedOverviewImplementationStatusDocs = [
   },
 ];
 
+const publicApiDraftImplementationStatusDocs = [
+  {
+    file: "README.md",
+    terms: ["These examples are planned API design", "not implemented or verified behavior"],
+  },
+  {
+    file: "docs/hot-api-path.md",
+    terms: ["This API is planned and not implemented yet."],
+  },
+  {
+    file: "docs/seo-engine.md",
+    terms: ["This API is planned and not implemented yet."],
+  },
+  {
+    file: "docs/cache-contract.md",
+    terms: ["Cache APIs are not final"],
+  },
+];
+
 const configEnvironmentContractDocs = [
   "docs/config-contract.md",
   "docs/config.md",
@@ -1782,6 +1801,16 @@ for (const { file, terms } of plannedOverviewImplementationStatusDocs) {
   for (const term of terms) {
     if (!content.includes(term)) {
       failures.push(`${file} is missing planned overview implementation status term: ${term}.`);
+    }
+  }
+}
+
+for (const { file, terms } of publicApiDraftImplementationStatusDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file);
+  for (const term of terms) {
+    if (!content.includes(term)) {
+      failures.push(`${file} is missing public API draft implementation status term: ${term}.`);
     }
   }
 }

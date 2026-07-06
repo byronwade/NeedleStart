@@ -115,6 +115,8 @@ README prototype goals and future roadmap or backlog acceptance bullets must als
 
 README feature and differentiator sections must label planned framework capabilities as planned and avoid public-facing present-tense capability claims until the prototype exists.
 
+Public API draft examples must say they are planned and not implemented yet unless the behavior has feature-specific implementation evidence.
+
 ### 5. Navigation Coverage Check
 
 ```powershell

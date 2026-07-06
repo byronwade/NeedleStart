@@ -24,6 +24,8 @@ No SEO archaeology. Every route tells you whether it can be crawled, indexed, sh
 
 ## Public API Draft
 
+This API is planned and not implemented yet.
+
 ```ts
 import { defineMeta } from "needlestart"
 

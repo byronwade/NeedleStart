@@ -13,6 +13,8 @@ Selected API routes should avoid generic framework overhead through generated ma
 
 ## Public API Draft
 
+This API is planned and not implemented yet.
+
 ```ts
 import { apiHot, schema } from "needlestart"
 
