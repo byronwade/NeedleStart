@@ -69,14 +69,14 @@ Initial schema DSL:
 - optional fields
 - default values
 
-## Definition of Done
+## Planned Acceptance Criteria
 
-- Params, query, and body schemas validate.
-- Response schema serializes.
-- Invalid input returns 400 with structured errors.
-- Hot API route avoids generic JSON path where possible.
-- OpenAPI file emits for API routes.
-- Benchmarks compare normal API route and hot API route in the same app.
+- Params, query, and body schemas should validate.
+- Response schema should serialize.
+- Invalid input should return 400 with structured errors.
+- Hot API routes should avoid generic JSON paths where possible.
+- OpenAPI output should emit for API routes.
+- Benchmarks should compare normal API routes and hot API routes in the same app.
 
 Benchmark comparisons must follow `docs/benchmark-methodology.md`.
 API route correctness and diagnostics must follow [API Route Contract](api-route-contract.md).

@@ -87,11 +87,11 @@ Benchmark claims must follow `docs/benchmark-methodology.md`. Public performance
 
 Public-facing performance expectations live in [Public Performance Reference](public/reference/performance.md).
 
-## Definition of Done
+## Planned Acceptance Criteria
 
-- Route JS and CSS sizes are reported.
-- Budgets can warn or fail.
-- Public page budgets are stricter by default.
-- JSON diagnostics include safe suggestions.
-- Benchmarks are reproducible.
-- Speed claims are backed by the evidence required in `docs/speed-strategy.md` and `docs/benchmark-methodology.md`.
+- Route JS and CSS sizes should be reported.
+- Budgets should warn or fail according to config.
+- Public page budgets should be stricter by default.
+- JSON diagnostics should include safe suggestions.
+- Benchmarks should be reproducible.
+- Speed claims should be backed by the evidence required in `docs/speed-strategy.md` and `docs/benchmark-methodology.md`.

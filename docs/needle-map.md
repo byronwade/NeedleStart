@@ -168,13 +168,13 @@ Inputs:
 - Metadata files.
 - Schema files.
 
-Definition of done:
+Planned v1 acceptance criteria:
 
-- Graph includes routes, components, APIs, schemas, tests, styles, metadata.
-- Affected query works from changed file to impacted routes and tests.
-- Explain query includes why edges exist.
-- Output is compact and deterministic.
-- Tests cover graph generation on fixture apps.
+- Graph should include routes, components, APIs, schemas, tests, styles, and metadata.
+- Affected query should connect changed files to impacted routes and tests.
+- Explain query should include why edges exist.
+- Output should be compact and deterministic.
+- Tests should cover graph generation on fixture apps.
 
 ## Layered Semantic Extraction
 
@@ -263,10 +263,10 @@ Inputs:
 - Cache tags.
 - Render modes.
 
-Definition of done:
+Planned v2 acceptance criteria:
 
-- Map distinguishes hard and soft edges.
-- Component contracts create `usesProps` edges.
-- Route metadata creates `affectsSeo` edges.
-- Cache tags appear as nodes.
-- Affected checks include SEO, visual, schema, and cache impact.
+- Map should distinguish hard and soft edges.
+- Component contracts should create `usesProps` edges.
+- Route metadata should create `affectsSeo` edges.
+- Cache tags should appear as nodes.
+- Affected checks should include SEO, visual, schema, and cache impact.

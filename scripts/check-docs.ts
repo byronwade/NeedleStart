@@ -1165,6 +1165,31 @@ const staleStatusPatterns = [
     message: "docs/public/guides/create-app.md should use planned `should` wording for target app results until implementation exists.",
   },
   {
+    file: "docs/mcp-server.md",
+    pattern: /The NeedleStart MCP server exposes/i,
+    message: "docs/mcp-server.md should describe MCP behavior as planned until MCP tooling exists.",
+  },
+  {
+    file: "docs/mcp-server.md",
+    pattern: /^## Definition of Done$/m,
+    message: "docs/mcp-server.md should use planned acceptance criteria until MCP behavior exists.",
+  },
+  {
+    file: "docs/hot-api-path.md",
+    pattern: /^## Definition of Done$/m,
+    message: "docs/hot-api-path.md should use planned acceptance criteria until hot API behavior exists.",
+  },
+  {
+    file: "docs/performance.md",
+    pattern: /^## Definition of Done$/m,
+    message: "docs/performance.md should use planned acceptance criteria until performance tooling exists.",
+  },
+  {
+    file: "docs/needle-map.md",
+    pattern: /^Definition of done:$/m,
+    message: "docs/needle-map.md should use planned acceptance criteria until Needle Map behavior exists.",
+  },
+  {
     file: "docs/public/guides/api-route.md",
     pattern: /^This guide describes the planned API route workflow\.$/m,
     message: "docs/public/guides/api-route.md should state API route behavior is not implemented yet.",

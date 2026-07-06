@@ -5,7 +5,7 @@ Audience: AI agents, framework contributors, maintainers.
 
 This page describes the planned MCP server behavior. MCP server behavior is not implemented yet.
 
-The NeedleStart MCP server exposes framework data and selected safe actions to AI agents through structured tools.
+The planned NeedleStart MCP server will expose framework data and selected safe actions to AI agents through structured tools.
 
 ## Goals
 
@@ -105,12 +105,12 @@ The first MCP demo should prove:
 8. `read_agent_log`
 9. `undo_mutation`
 
-## Definition of Done
+## Planned Acceptance Criteria
 
-- `needle mcp` starts server.
-- MCP client can list routes.
-- MCP client can inspect a route.
-- MCP client can get related files.
-- MCP client can get SEO report.
-- MCP client can run affected checks.
-- Write tools are guarded by safe edit rules.
+- `needle mcp` should start the server.
+- An MCP client should list routes.
+- An MCP client should inspect a route.
+- An MCP client should get related files.
+- An MCP client should get an SEO report.
+- An MCP client should run affected checks.
+- Write tools should be guarded by safe edit rules.

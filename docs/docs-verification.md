@@ -109,6 +109,8 @@ Automated coverage in `bun run docs:check` also rejects pre-scaffold command-lim
 
 Planned overview pages for Cache, Needle Map, Agent Kernel, MCP, and Safe Edit Transactions must state that the behavior is not implemented yet until package behavior and feature-specific evidence exist.
 
+Planned feature overviews must use planned acceptance criteria and `should` wording instead of current-tense "Definition of Done" bullets until the behavior exists and feature-specific evidence proves it.
+
 ### 5. Navigation Coverage Check
 
 ```powershell
