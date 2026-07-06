@@ -983,6 +983,26 @@ const staleStatusPatterns = [
     message: "docs/documentation-completion-audit.md should reference diagnostic severity values, not diagnostic levels.",
   },
   {
+    file: "README.md",
+    pattern: /route and render manifests/i,
+    message: "README.md should name .needle/routes.json and .needle/render-manifest.json instead of generic route and render manifests.",
+  },
+  {
+    file: "docs/getting-started.md",
+    pattern: /route and render manifests/i,
+    message: "docs/getting-started.md should name .needle/routes.json and .needle/render-manifest.json instead of generic route and render manifests.",
+  },
+  {
+    file: "docs/public/guides/create-app.md",
+    pattern: /route and render manifests/i,
+    message: "docs/public/guides/create-app.md should name .needle/routes.json and .needle/render-manifest.json instead of generic route and render manifests.",
+  },
+  {
+    file: "docs/schema-contract.md",
+    pattern: /route and render manifests/i,
+    message: "docs/schema-contract.md should name .needle/routes.json and .needle/render-manifest.json instead of generic route and render manifests.",
+  },
+  {
     file: "docs/cache.md",
     pattern: /Cache manifest fields/i,
     message: "docs/cache.md should reference cache metadata, not a required cache manifest.",

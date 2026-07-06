@@ -215,6 +215,8 @@ Expected result: generated artifact names, schema version rules, normalized path
 
 Automated coverage in `bun run docs:check` also requires canonical generated artifact names and generated artifact contract-rule vocabulary to stay aligned across these docs.
 
+Onboarding and prototype docs must name `.needle/routes.json` and `.needle/render-manifest.json` instead of using generic "route and render manifests" wording.
+
 ### 16. Routing Contract Check
 
 ```powershell

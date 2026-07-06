@@ -35,7 +35,7 @@ Target result:
 - A React app starts locally.
 - The home page renders server HTML.
 - Public routes include SEO metadata.
-- Route and render manifests are generated.
+- `.needle/routes.json` and `.needle/render-manifest.json` are generated.
 - Needle Map and agent context can be inspected.
 
 Do not claim this flow works until `create-needle`, `@needle/cli`, and the runtime path exist and have been verified.

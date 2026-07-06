@@ -20,7 +20,7 @@ Generated apps should also expose `bun run dev`, `bun run build`, and `bun run s
 
 - A local development server starts.
 - A React page renders.
-- Route and render manifests are generated.
+- `.needle/routes.json` and `.needle/render-manifest.json` are generated.
 - SEO metadata is visible for public pages.
 - Needle Map and agent context can be inspected.
 

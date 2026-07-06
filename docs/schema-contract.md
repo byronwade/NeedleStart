@@ -198,7 +198,7 @@ Diagnostics must include normalized source file, exported schema name when known
 
 ## Manifest Fields And References
 
-Route and render manifests should expose schema usage through stable manifest references without embedding large schema definitions in every route entry.
+`.needle/routes.json` and `.needle/render-manifest.json` should expose schema usage through stable manifest references without embedding large schema definitions in every route entry.
 
 Draft route fields:
 

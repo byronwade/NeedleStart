@@ -257,7 +257,7 @@ The first public prototype proves:
 5. Static and SSR routes both work.
 6. API routes work.
 7. Hot API routes use generated validators and serializers.
-8. The framework generates route and render manifests.
+8. The framework generates `.needle/routes.json` and `.needle/render-manifest.json`.
 9. The framework explains route, render, cache, and SEO decisions in stable JSON.
 10. The framework generates a semantic Needle Map.
 11. The framework exposes read-only MCP tools for agents.
