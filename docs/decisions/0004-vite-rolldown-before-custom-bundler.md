@@ -7,7 +7,7 @@ Audience: maintainers, framework contributors, performance reviewers.
 
 ## Context
 
-NeedleStart needs a fast frontend build path, React ecosystem compatibility, CSS and asset handling, HMR, and production build output. Building a custom bundler first would consume the project before the app graph, SEO, and agent-native wedge is proven.
+NeedleStart needs a fast frontend build path, React ecosystem compatibility, CSS and asset handling, HMR, and production build output. Building a custom bundler first would consume the project before the app graph, SEO, and agent-safe workflow wedge is proven.
 
 Current speed research in [Speed Decisions](../speed-decisions.md) points to the stable Vite 8.x/Rolldown path as the default candidate, subject to a fresh source check before implementation pins dependency versions.
 

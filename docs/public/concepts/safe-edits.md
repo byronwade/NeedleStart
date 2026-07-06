@@ -41,6 +41,6 @@ Safe edit results should expose:
 ## Source
 
 - [Safe Edit Transactions](../../safe-edit-transactions.md)
-- [Agent-Native Development](agent-native.md)
+- [Agent-Safe Workflows](agent-native.md)
 - [Security](../../security.md)
 

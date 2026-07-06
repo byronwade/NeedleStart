@@ -56,9 +56,9 @@ The core bet is that agents will become normal contributors to large codebases. 
 
 ## Product Pillars
 
-### Agent-Native
+### Agent-Safe Workflows
 
-NeedleStart is designed to generate useful context for agents:
+NeedleStart is designed to give agents useful context and safe actions:
 
 - Route context capsules.
 - Related files.

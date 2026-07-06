@@ -281,7 +281,7 @@ Agents must treat high-risk changes as requiring stronger tests and clearer docu
 ## Architecture Principles
 
 1. Static-first, SSR when needed, client-only only when intentional.
-2. Agent-native, human-auditable.
+2. Agent-safe, human-auditable.
 3. Compiler intelligence over runtime magic.
 4. Typed route graph is the app contract.
 5. SEO must pass by default for public pages.

@@ -20,7 +20,7 @@ NeedleStart is in Phase 1 scaffold. Public pages must not claim that app command
 
 - [Your App Ships With A Map](concepts/app-graph.md)
 - [SEO-First Rendering](concepts/seo-first.md)
-- [Agent-Native Development](concepts/agent-native.md)
+- [Agent-Safe Workflows](concepts/agent-native.md)
 - [Whole-System Speed](concepts/speed.md)
 - [Compiler And Runtime Split](concepts/compiler-runtime.md)
 - [Safe Edits](concepts/safe-edits.md)

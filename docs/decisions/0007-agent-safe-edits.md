@@ -7,7 +7,7 @@ Audience: maintainers, framework contributors, AI agents.
 
 ## Context
 
-NeedleStart is agent-native, but unrestricted agent writes are not trustworthy enough for framework-scale projects. The project needs a path where agents can inspect, plan, edit, verify, and explain changes without bypassing human-maintainable safety rules.
+NeedleStart is app-graph-native and designed for agent-safe workflows, but unrestricted agent writes are not trustworthy enough for framework-scale projects. The project needs a path where agents can inspect, plan, edit, verify, and explain changes without bypassing human-maintainable safety rules.
 
 ## Decision
 

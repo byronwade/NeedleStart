@@ -18,7 +18,7 @@ This map is also the planned source mapping input for the future docs renderer, 
 - Concepts:
   - App graph: `docs/public/concepts/app-graph.md`.
   - SEO-first rendering: `docs/public/concepts/seo-first.md`.
-  - Agent-native development: `docs/public/concepts/agent-native.md`.
+  - Agent-safe workflows: `docs/public/concepts/agent-native.md`.
   - Whole-system speed: `docs/public/concepts/speed.md`.
   - Compiler/runtime split: `docs/public/concepts/compiler-runtime.md`.
   - Safe edits: `docs/public/concepts/safe-edits.md`.

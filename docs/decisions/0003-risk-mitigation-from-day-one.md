@@ -7,7 +7,7 @@ Audience: maintainers, framework contributors, security reviewers.
 
 ## Context
 
-NeedleStart is intentionally competing on difficult axes: semantic graph extraction, agent-native workflows, safe automated edits, Bun-first adapter paths, and adoption against mature React frameworks.
+NeedleStart is intentionally competing on difficult axes: semantic graph extraction, agent-safe workflows, safe automated edits, Bun-first adapter paths, and adoption against mature React frameworks.
 
 If these risks are handled as late additions, the project will likely become too broad, too fragile, or too hard to trust.
 

@@ -140,7 +140,7 @@ NeedleStart is planned to combine:
 - Bun-first adapter paths.
 - Vite and Rolldown ecosystem leverage.
 - SEO-first public HTML.
-- Agent-native development through stable contracts.
+- Agent-safe workflows through stable contracts.
 - Safe edit transactions instead of free-form agent writes.
 - A hot API path for performance-critical endpoints.
 

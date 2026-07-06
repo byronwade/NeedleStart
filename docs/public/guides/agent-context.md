@@ -32,7 +32,7 @@ Agent context should include:
 
 ## Source
 
-- [Agent-Native Development](../concepts/agent-native.md)
+- [Agent-Safe Workflows](../concepts/agent-native.md)
 - [Agent Kernel](../../agent-kernel.md)
 - [Machine-Readable Documentation](../../machine-readable-docs.md)
 

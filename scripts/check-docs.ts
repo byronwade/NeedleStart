@@ -552,6 +552,33 @@ const productIdentityDocs = [
   },
 ];
 
+const publicAgentWorkflowLabelDocs = [
+  {
+    file: "docs/public/README.md",
+    terms: ["Agent-Safe Workflows", "concepts/agent-native.md"],
+  },
+  {
+    file: "docs/public/docs.md",
+    terms: ["Agent-Safe Workflows", "concepts/agent-native.md"],
+  },
+  {
+    file: "docs/public/index.md",
+    terms: ["Agent-Safe Workflows", "concepts/agent-native.md"],
+  },
+  {
+    file: "docs/public/concepts/agent-native.md",
+    terms: ["# Agent-Safe Workflows", "app-graph-native framework core", "App-local `AGENTS.md` generation"],
+  },
+  {
+    file: "docs/website-content-map.md",
+    terms: ["Agent-safe workflows", "docs/public/concepts/agent-native.md"],
+  },
+  {
+    file: "docs/docs-verification.md",
+    terms: ["Agent-Safe Workflows", "older agent-native product wording"],
+  },
+];
+
 const documentationMatrixStatusDocs = [
   {
     file: "docs/documentation-audit.md",
@@ -1178,6 +1205,61 @@ const staleStatusPatterns = [
     file: "docs/public/concepts/compiler-runtime.md",
     pattern: /NeedleStart keeps framework intelligence in the compiler and keeps production runtime adapters small\./i,
     message: "docs/public/concepts/compiler-runtime.md should describe the compiler/runtime split as planned until implementation exists.",
+  },
+  {
+    file: "docs/public/README.md",
+    pattern: /Agent-Native Development/i,
+    message: "docs/public/README.md should use the public concept label Agent-Safe Workflows.",
+  },
+  {
+    file: "docs/public/docs.md",
+    pattern: /Agent-Native Development/i,
+    message: "docs/public/docs.md should use the public concept label Agent-Safe Workflows.",
+  },
+  {
+    file: "docs/public/index.md",
+    pattern: /Agent-Native Development/i,
+    message: "docs/public/index.md should use the public concept label Agent-Safe Workflows.",
+  },
+  {
+    file: "docs/public/concepts/agent-native.md",
+    pattern: /# Agent-Native Development/i,
+    message: "docs/public/concepts/agent-native.md should use the public concept title Agent-Safe Workflows.",
+  },
+  {
+    file: "docs/website-content-map.md",
+    pattern: /Agent-native development/i,
+    message: "docs/website-content-map.md should use the public concept label Agent-safe workflows.",
+  },
+  {
+    file: "README.md",
+    pattern: /Agent-native development through stable contracts/i,
+    message: "README.md should describe agent-safe workflows, not the older agent-native development wording.",
+  },
+  {
+    file: "AGENTS.md",
+    pattern: /Agent-native, human-auditable/i,
+    message: "AGENTS.md should describe agent-safe, human-auditable architecture.",
+  },
+  {
+    file: "VISION.md",
+    pattern: /### Agent-Native/i,
+    message: "VISION.md should use the Agent-Safe Workflows pillar heading.",
+  },
+  {
+    file: "docs/decisions/0003-risk-mitigation-from-day-one.md",
+    pattern: /agent-native workflows/i,
+    message: "ADR 0003 should describe agent-safe workflows in current risk wording.",
+  },
+  {
+    file: "docs/decisions/0004-vite-rolldown-before-custom-bundler.md",
+    pattern: /agent-native wedge/i,
+    message: "ADR 0004 should describe the agent-safe workflow wedge.",
+  },
+  {
+    file: "docs/decisions/0007-agent-safe-edits.md",
+    pattern: /NeedleStart is agent-native/i,
+    message: "ADR 0007 should tie safe edits to app-graph-native and agent-safe workflow wording.",
   },
   {
     file: "docs/phase-1-build-plan.md",
@@ -2457,6 +2539,16 @@ for (const { file, terms } of productIdentityDocs) {
   for (const term of terms.map((term) => term.toLowerCase())) {
     if (!content.includes(term)) {
       failures.push(`${file} is missing product identity term: ${term}.`);
+    }
+  }
+}
+
+for (const { file, terms } of publicAgentWorkflowLabelDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file).toLowerCase();
+  for (const term of terms.map((term) => term.toLowerCase())) {
+    if (!content.includes(term)) {
+      failures.push(`${file} is missing public agent workflow label term: ${term}.`);
     }
   }
 }
