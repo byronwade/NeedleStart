@@ -40,12 +40,30 @@ Source links:
 
 ## Diagnostic Shape
 
-Planned shared shape:
+The Phase 1 scaffold currently exposes a minimal `NeedleDiagnostic` from `@needle/core`:
 
 ```ts
 type NeedleDiagnostic = {
   code: string
-  level: "info" | "warning" | "error"
+  severity: "info" | "warning" | "error"
+  message: string
+  docsUrl?: string
+  source?: {
+    file: string
+    line?: number
+    column?: number
+  }
+}
+```
+
+This scaffold shape is intentionally smaller than the planned diagnostics contract. It establishes the shared field name `severity` and the allowed severity values before categories, remediations, related locations, and code frames exist.
+
+Planned expanded shared shape:
+
+```ts
+type NeedleDiagnostic = {
+  code: string
+  severity: "info" | "warning" | "error"
   message: string
   category: DiagnosticCategory
   source?: DiagnosticSource
@@ -66,7 +84,7 @@ JSON example:
 ```json
 {
   "code": "ROUTE_DUPLICATE_PATH",
-  "level": "error",
+  "severity": "error",
   "category": "routing",
   "message": "Two route files resolve to the same path.",
   "source": {
@@ -97,7 +115,7 @@ JSON example:
 | Field | Required | Notes |
 | --- | --- | --- |
 | `code` | Yes | Stable uppercase code once released. |
-| `level` | Yes | `info`, `warning`, or `error`. |
+| `severity` | Yes | `info`, `warning`, or `error`. |
 | `message` | Yes | Human-readable summary. May improve over time without schema change. |
 | `category` | Yes | One of the documented diagnostic categories. |
 | `source.file` | Required when file-backed | Normalized relative path. |
@@ -211,7 +229,7 @@ Diagnostics appear in:
 Rules:
 
 - JSON diagnostics must be deterministic.
-- Arrays are sorted by `level`, `code`, file, line, column, and message unless a command documents a more specific order.
+- Arrays are sorted by `severity`, `code`, file, line, column, and message unless a command documents a more specific order.
 - Warnings do not fail a command unless strict mode or a check command says they do.
 - Diagnostics never include secrets, absolute local paths, raw environment values, stack traces, or auth-only data.
 

@@ -167,7 +167,7 @@ Definition of done:
 
 ## PR 0J: Diagnostics Contract
 
-Goal: define diagnostic codes, levels, categories, source locations, related locations, remediation text, docs links, child diagnostics, JSON ordering, and fixture expectations before compiler, CLI, runtime, and agent diagnostics are implemented.
+Goal: define diagnostic codes, severity values, categories, source locations, related locations, remediation text, docs links, child diagnostics, JSON ordering, and fixture expectations before compiler, CLI, runtime, and agent diagnostics are implemented.
 
 Status: Planned.
 

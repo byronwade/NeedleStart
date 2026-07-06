@@ -196,7 +196,7 @@ Config validation should produce structured diagnostics:
 ```json
 {
   "code": "NEEDLE_CONFIG_INVALID_ADAPTER",
-  "level": "error",
+  "severity": "error",
   "message": "Unknown adapter \"edge\".",
   "file": "needle.config.ts",
   "docs": "https://needlestart.dev/docs/reference/config"

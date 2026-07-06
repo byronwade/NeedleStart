@@ -164,10 +164,10 @@ Expected result: command automation behavior remains connected across CLI refere
 ### 12. Diagnostics Contract Check
 
 ```powershell
-rg -n "diagnostics-contract|NeedleDiagnostic|DiagnosticCategory|remediation|related|source location|code frame|ROUTE_DUPLICATE_PATH|diagnostic codes" README.md AGENTS.md docs\diagnostics-contract.md docs\cli-json-contract.md docs\api-reference.md docs\manifest-contracts.md docs\compiler-ir.md docs\runtime-contract.md docs\public\reference\diagnostics.md
+rg -n "diagnostics-contract|NeedleDiagnostic|severity|DiagnosticCategory|remediation|related|source location|code frame|ROUTE_DUPLICATE_PATH|diagnostic codes" README.md AGENTS.md docs\diagnostics-contract.md docs\cli-json-contract.md docs\api-reference.md docs\manifest-contracts.md docs\compiler-ir.md docs\runtime-contract.md docs\public\reference\diagnostics.md
 ```
 
-Expected result: diagnostic code rules, levels, categories, source locations, remediations, docs links, JSON behavior, manifests, compiler/runtime docs, and public reference docs remain connected.
+Expected result: diagnostic code rules, severity values, categories, source locations, remediations, docs links, JSON behavior, manifests, compiler/runtime docs, and public reference docs remain connected.
 
 ### 13. Configuration Contract Check
 

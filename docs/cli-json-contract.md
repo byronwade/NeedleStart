@@ -63,7 +63,7 @@ Diagnostics should follow [Diagnostics Contract](diagnostics-contract.md). CLI J
 ```json
 {
   "code": "NEEDLE_ROUTE_CONFLICT",
-  "level": "error",
+  "severity": "error",
   "message": "Two files resolve to the same route.",
   "file": "app/(marketing)/pricing/page.tsx",
   "route": "/pricing",
@@ -73,7 +73,7 @@ Diagnostics should follow [Diagnostics Contract](diagnostics-contract.md). CLI J
 
 Rules:
 
-- `code`, `level`, `message`, source location, docs links, related locations, and remediation follow [Diagnostics Contract](diagnostics-contract.md).
+- `code`, `severity`, `message`, source location, docs links, related locations, and remediation follow [Diagnostics Contract](diagnostics-contract.md).
 - CLI JSON may include only the compact diagnostic fields needed by automation.
 - Human output may render richer code frames from the same source locations.
 

@@ -237,9 +237,9 @@ Required planned diagnostic cases:
 
 | Code | Severity | When |
 | --- | --- | --- |
-| `API_METHOD_MISSING` | `warn` | API file exports no supported HTTP method. |
+| `API_METHOD_MISSING` | `warning` | API file exports no supported HTTP method. |
 | `API_METHOD_UNSUPPORTED` | `error` | API file exports a method-like name that NeedleStart does not support. |
-| `API_BODY_SCHEMA_WITHOUT_BODY_METHOD` | `warn` | Body schema is exported for a method where body parsing is unexpected. |
+| `API_BODY_SCHEMA_WITHOUT_BODY_METHOD` | `warning` | Body schema is exported for a method where body parsing is unexpected. |
 | `API_RESPONSE_SCHEMA_MISMATCH` | `error` in tests/dev | Handler output fails the declared response schema. |
 | `API_CACHE_UNSAFE_DEFAULT` | `error` | Auth/session-sensitive API route opts into cache without required explicit policy. |
 | `API_HOT_SCHEMA_REQUIRED` | `error` | `apiHot()` route is missing required params, body, or response schema. |

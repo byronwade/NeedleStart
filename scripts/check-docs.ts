@@ -174,6 +174,14 @@ const sharedCoreScaffoldTerms = [
     file: "docs/compiler-ir.md",
     terms: ["@needle/core", "NeedleApp", "RouteNode", "RenderMode", "sourceFile", "client-only", "hot-api"],
   },
+  {
+    file: "docs/diagnostics-contract.md",
+    terms: ["@needle/core", "NeedleDiagnostic", "severity", "info", "warning", "error", "docsUrl"],
+  },
+  {
+    file: "docs/public/reference/diagnostics.md",
+    terms: ["@needle/core", "NeedleDiagnostic", "severity", "info", "warning", "error", "docsUrl"],
+  },
 ];
 
 function rel(path: string): string {
@@ -497,6 +505,51 @@ const staleStatusPatterns = [
     file: "docs/compiler-ir.md",
     pattern: /\bfile: string\b|"file":|"renderMode": "auto"|api-hot/i,
     message: "docs/compiler-ir.md should use sourceFile and supported RenderMode values that match the shared core model.",
+  },
+  {
+    file: "docs/diagnostics-contract.md",
+    pattern: /"level":|`level`|level: "info"|diagnostic code rules, levels/i,
+    message: "docs/diagnostics-contract.md should use NeedleDiagnostic severity, not level.",
+  },
+  {
+    file: "docs/cli-json-contract.md",
+    pattern: /"level":|`level`|`code`, `level`/i,
+    message: "docs/cli-json-contract.md should embed diagnostics with severity, not level.",
+  },
+  {
+    file: "docs/config-contract.md",
+    pattern: /"level":/i,
+    message: "docs/config-contract.md should show diagnostic severity, not level.",
+  },
+  {
+    file: "docs/public/reference/diagnostics.md",
+    pattern: /"level":|`level`/i,
+    message: "docs/public/reference/diagnostics.md should show diagnostic severity, not level.",
+  },
+  {
+    file: "docs/api-route-contract.md",
+    pattern: /\| `API_[^`]+` \| `warn`/i,
+    message: "docs/api-route-contract.md should use diagnostic severity `warning`, not `warn`.",
+  },
+  {
+    file: "docs/cache-contract.md",
+    pattern: /\| `CACHE_[^`]+` \| `warn`/i,
+    message: "docs/cache-contract.md should use diagnostic severity `warning`, not `warn`.",
+  },
+  {
+    file: "docs/routing-contract.md",
+    pattern: /\| `ROUTE_[^`]+` \| `warn(?:`| or)/i,
+    message: "docs/routing-contract.md should use diagnostic severity `warning`, not `warn`.",
+  },
+  {
+    file: "docs/seo-contract.md",
+    pattern: /\| `SEO_[^`]+` \| `warn`/i,
+    message: "docs/seo-contract.md should use diagnostic severity `warning`, not `warn`.",
+  },
+  {
+    file: "docs/schema-contract.md",
+    pattern: /\| `SCHEMA_[^`]+` \| `warn(?:`| or)/i,
+    message: "docs/schema-contract.md should use diagnostic severity `warning`, not `warn`.",
   },
   {
     file: "docs/adapters.md",

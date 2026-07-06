@@ -236,13 +236,13 @@ Required planned diagnostics:
 
 | Code | Severity | When |
 | --- | --- | --- |
-| `CACHE_IMPLICIT_DYNAMIC` | `warn` | A dynamic route could be cacheable but has no explicit cache plan. |
+| `CACHE_IMPLICIT_DYNAMIC` | `warning` | A dynamic route could be cacheable but has no explicit cache plan. |
 | `CACHE_UNSAFE_AUTH` | `error` | Auth/session-sensitive route opts into public/shared caching without an explicit safe policy. |
 | `CACHE_TAG_INVALID` | `error` | Cache tag is empty, non-deterministic, or contains disallowed characters. |
 | `CACHE_HEADER_CONFLICT` | `error` | Manual cache header conflicts with generated cache plan. |
 | `CACHE_TTL_INVALID` | `error` | TTL or stale duration is invalid. |
 | `CACHE_MICRO_KEY_UNSAFE` | `error` | Hot API micro-cache key is missing, non-deterministic, or includes unsafe data. |
-| `CACHE_REVALIDATION_UNSUPPORTED` | `warn` | Adapter cannot support requested revalidation mode. |
+| `CACHE_REVALIDATION_UNSUPPORTED` | `warning` | Adapter cannot support requested revalidation mode. |
 
 Diagnostics must include route ID, source file, cache plan, and remediation when practical.
 

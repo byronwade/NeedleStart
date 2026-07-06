@@ -191,7 +191,7 @@ Required planned diagnostics:
 | `SCHEMA_INVALID_DEFAULT` | `error` | A default value does not satisfy its schema. |
 | `SCHEMA_QUERY_COERCION_FAILED` | `error` | A query value cannot be coerced according to schema rules. |
 | `SCHEMA_RESPONSE_MISMATCH` | `error` in tests/dev | Handler output does not satisfy response schema. |
-| `SCHEMA_OPENAPI_UNSUPPORTED` | `warn` or `error` | A schema cannot be represented accurately in OpenAPI output. |
+| `SCHEMA_OPENAPI_UNSUPPORTED` | `warning` or `error` | A schema cannot be represented accurately in OpenAPI output. |
 | `SCHEMA_SERIALIZER_UNSUPPORTED` | `error` | A hot API response schema cannot produce a safe serializer. |
 
 Diagnostics must include normalized source file, exported schema name when known, route ID when relevant, and a concise remediation.

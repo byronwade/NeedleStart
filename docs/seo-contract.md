@@ -286,12 +286,12 @@ Planned diagnostic codes:
 | `SEO_CANONICAL_MISSING` | `error` | Public indexable route has no canonical URL. |
 | `SEO_CANONICAL_CONFLICT` | `error` | Multiple metadata layers define incompatible canonical URLs. |
 | `SEO_CANONICAL_INVALID` | `error` | Canonical URL cannot be normalized from site URL and route path. |
-| `SEO_ROBOTS_CONFLICT` | `warn` | Robots policy conflicts with sitemap inclusion or route visibility. |
-| `SEO_SITEMAP_DYNAMIC_UNBOUNDED` | `warn` | Dynamic route requests sitemap inclusion without an enumerated URL source. |
+| `SEO_ROBOTS_CONFLICT` | `warning` | Robots policy conflicts with sitemap inclusion or route visibility. |
+| `SEO_SITEMAP_DYNAMIC_UNBOUNDED` | `warning` | Dynamic route requests sitemap inclusion without an enumerated URL source. |
 | `SEO_STRUCTURED_DATA_INVALID` | `error` | JSON-LD helper output is invalid or missing required fields. |
 | `SEO_STRUCTURED_DATA_UNSAFE` | `error` | Structured data includes unsafe request, secret, or auth-only data. |
 | `SEO_HTML_EMPTY` | `error` | Public route does not render meaningful initial HTML. |
-| `SEO_CLIENT_ONLY_INDEXABLE` | `warn` | Client-only route is marked indexable without a static fallback. |
+| `SEO_CLIENT_ONLY_INDEXABLE` | `warning` | Client-only route is marked indexable without a static fallback. |
 
 Diagnostics must use the shared CLI JSON diagnostic shape from [CLI JSON Contract](cli-json-contract.md).
 

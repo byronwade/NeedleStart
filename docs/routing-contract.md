@@ -196,8 +196,8 @@ Required planned diagnostic cases:
 | --- | --- | --- |
 | `ROUTE_DUPLICATE_PATH` | `error` | Two files of the same kind produce the same route path. |
 | `ROUTE_INVALID_SEGMENT` | `error` | A bracketed segment is malformed. |
-| `ROUTE_UNSUPPORTED_CONVENTION` | `warn` or `error` | A known but unsupported convention appears, such as optional catch-all before support exists. |
-| `ROUTE_API_METHOD_MISSING` | `warn` | An API route has no supported HTTP method export once API parsing exists. |
+| `ROUTE_UNSUPPORTED_CONVENTION` | `warning` or `error` | A known but unsupported convention appears, such as optional catch-all before support exists. |
+| `ROUTE_API_METHOD_MISSING` | `warning` | An API route has no supported HTTP method export once API parsing exists. |
 | `ROUTE_CASE_COLLISION` | `error` | Two source paths differ only by case on a case-insensitive filesystem. |
 
 Diagnostics must include normalized `file`, route `path` when known, and a concise remediation.

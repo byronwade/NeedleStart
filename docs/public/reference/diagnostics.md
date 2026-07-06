@@ -8,10 +8,12 @@ NeedleStart diagnostics are planned to use stable codes, structured source locat
 
 ## Planned Shape
 
+The scaffolded `@needle/core` `NeedleDiagnostic` currently uses `code`, `severity`, `message`, optional `docsUrl`, and optional `source.file`, `source.line`, and `source.column`. The expanded fields below remain planned until diagnostics are implemented across compiler, CLI, manifests, and public docs.
+
 ```json
 {
   "code": "ROUTE_DUPLICATE_PATH",
-  "level": "error",
+  "severity": "error",
   "category": "routing",
   "message": "Two route files resolve to the same path.",
   "source": {
