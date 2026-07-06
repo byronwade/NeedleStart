@@ -59,7 +59,9 @@ Planned output:
   seo.report.json
   perf.report.json
   context/
+    *.ctx.json
     agent-index.json
+  mutations.json
   generated/
 dist/
   public/
@@ -70,7 +72,9 @@ dist/
   adapter.manifest.json
 ```
 
-The `.needle/*` files are the canonical compiler and agent artifacts. `.needle/render-manifest.json` is the canonical render-mode contract for routes. The `dist/*.manifest.json` files, including `dist/render.manifest.json`, are deployment copies or adapter-specific output shaped for runtime loading.
+The generated artifact names are `.needle/routes.json`, `.needle/render-manifest.json`, `.needle/map.json`, `.needle/graph.json`, `.needle/seo.report.json`, `.needle/perf.report.json`, `.needle/context/*.ctx.json`, `.needle/context/agent-index.json`, `.needle/mutations.json`, `.needle/generated/*`, `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, `dist/adapter.manifest.json`, and `dist/*`.
+
+The `.needle/*` files are the canonical compiler and agent artifacts. `.needle/render-manifest.json` is the canonical render-mode contract for routes. The `dist/*.manifest.json` files, including `dist/render.manifest.json`, and `dist/*.report.json` deployment reports are adapter-specific output shaped for runtime loading.
 
 ## Adapter-Aware Entry
 

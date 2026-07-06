@@ -259,6 +259,7 @@ const generatedArtifactDocs = [
   "AGENTS.md",
   "docs/api-reference.md",
   "docs/manifest-contracts.md",
+  "docs/runtime-contract.md",
   "docs/public/reference/manifest-contracts.md",
   "docs/public/reference/project-structure.md",
 ];
