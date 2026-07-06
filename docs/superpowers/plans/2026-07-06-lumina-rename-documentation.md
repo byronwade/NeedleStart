@@ -87,6 +87,42 @@ Planned primary files and responsibilities:
 - **Public docs links:** file renames can break local links. Mitigation: run `bun run docs:check` after each file move.
 - **Search false positives:** historical notes may intentionally mention the old name. Mitigation: allow old name only in a dedicated "formerly NeedleStart" rename note and migration/ADR files.
 
+## Maintainer Approval Checklist
+
+The rename executor must not start Tasks 2 through 7 until these decisions are approved. Recommended defaults are selected for a clean Alpha rename while the product has no published packages or generated artifacts.
+
+| Decision | Recommended default | Why | Approval needed |
+| --- | --- | --- | --- |
+| Product name | Lumina | Matches the new identity and illumination/clarity positioning. | Yes |
+| Public import name | `lumina` | Short, memorable, aligned with `bun create lumina`. Package availability must be confirmed before publication. | Yes |
+| Package scope | `@lumina/*` | Clean package boundary and consistent with the product name. Scope availability must be confirmed before publication. | Yes |
+| CLI command | `lumina ...` | Avoids carrying pre-Alpha `needle` terminology into Alpha docs. | Yes |
+| Old CLI aliases | No Alpha alias unless requested | No CLI behavior exists yet, so compatibility cost is avoidable. Add aliases only if the owner wants a softer transition. | Yes |
+| Create command | `bun create lumina my-app` | Aligns onboarding with package and CLI naming. | Yes |
+| Config file | `lumina.config.ts` | Matches CLI and package identity. | Yes |
+| Generated artifact directory | `.lumina/*` | No generated artifacts exist yet, so the planned path can be renamed without migration burden. | Yes |
+| MCP resource prefix | `lumina://...` | Keeps machine-readable contracts aligned with product naming before MCP exists. | Yes |
+| Environment prefix | `LUMINA_*` | Avoids shipping old `NEEDLE_*` names in Alpha docs. | Yes |
+| Schema version prefix | `lumina.*.v0` | Planned schemas are not released, so this can change before compatibility matters. | Yes |
+| Docs file rename | `docs/lumina-map.md` | Makes the Lumina Map a first-class docs surface. | Yes |
+| GitHub repository rename | Owner action: rename `byronwade/NeedleStart` to the approved Lumina repo name | Requires owner confirmation and may affect remote URLs and external links. | Yes |
+| Historical old-name note | Keep one short "formerly NeedleStart" note in status or README | Gives continuity without letting old branding remain in user-facing copy. | Yes |
+
+Approval response format:
+
+```txt
+Approved defaults. Execute inline.
+```
+
+Or override specific decisions:
+
+```txt
+Approved with changes:
+- Keep old `needle` CLI aliases for Alpha.
+- Defer GitHub repo rename.
+Execute inline.
+```
+
 ## Task 1: Approval Gate And Plan Publication
 
 **Priority:** P0.
