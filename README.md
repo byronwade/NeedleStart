@@ -278,7 +278,7 @@ Terminology: the first working slice is smaller and proves create app, SEO-safe 
 8. React SSR and hydration.
 9. Layouts and params.
 10. Static build.
-11. Adapter-aware Bun server.
+11. Adapter-aware `@needle/adapter-bun` server output.
 12. Metadata and SEO audit.
 13. Cache metadata baseline.
 14. API routes.

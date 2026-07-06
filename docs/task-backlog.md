@@ -499,7 +499,7 @@ Definition of done:
 - Render manifest records mode.
 - Invalid render export gets helpful diagnostic.
 
-## PR 7: Bun Server
+## PR 7: Bun Adapter Server Output
 
 Goal: support `needle start` for built apps.
 
@@ -515,7 +515,7 @@ Definition of done:
 - 404 works.
 - 500 works.
 - Cache headers are tested.
-- Bun server is implemented behind `@needle/adapter-bun`.
+- Bun serving is implemented through `@needle/adapter-bun`.
 
 ## PR 7A: Adapter-Aware Server Entry
 

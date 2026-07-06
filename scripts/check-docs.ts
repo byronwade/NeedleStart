@@ -1003,6 +1003,36 @@ const staleStatusPatterns = [
     message: "docs/schema-contract.md should name .needle/routes.json and .needle/render-manifest.json instead of generic route and render manifests.",
   },
   {
+    file: "AGENTS.md",
+    pattern: /Bun server|Serve through Bun|Adapter-aware Bun server/i,
+    message: "AGENTS.md should describe first-slice Bun serving through @needle/adapter-bun.",
+  },
+  {
+    file: "README.md",
+    pattern: /Bun server|Serve through Bun|Adapter-aware Bun server/i,
+    message: "README.md should describe prototype Bun serving through @needle/adapter-bun.",
+  },
+  {
+    file: "docs/prototype-acceptance.md",
+    pattern: /Production Bun server|Bun server|Serve through Bun|Adapter-aware Bun server/i,
+    message: "docs/prototype-acceptance.md should describe production serving through @needle/adapter-bun.",
+  },
+  {
+    file: "docs/roadmap.md",
+    pattern: /Bun server|Serve through Bun|Adapter-aware Bun server/i,
+    message: "docs/roadmap.md should describe Bun serving through @needle/adapter-bun.",
+  },
+  {
+    file: "docs/task-backlog.md",
+    pattern: /Bun server|Serve through Bun|Adapter-aware Bun server/i,
+    message: "docs/task-backlog.md should describe Bun serving through @needle/adapter-bun.",
+  },
+  {
+    file: "docs/risk-mitigation.md",
+    pattern: /Bun server|Serve through Bun|Adapter-aware Bun server/i,
+    message: "docs/risk-mitigation.md should describe first-slice Bun serving through @needle/adapter-bun.",
+  },
+  {
     file: "docs/cache.md",
     pattern: /Cache manifest fields/i,
     message: "docs/cache.md should reference cache metadata, not a required cache manifest.",

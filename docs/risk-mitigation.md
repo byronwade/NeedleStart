@@ -138,7 +138,7 @@ The first working slice must stay ruthlessly scoped:
 
 - Create app.
 - Render SEO-safe pages.
-- Serve through Bun.
+- Serve through `@needle/adapter-bun`.
 - Generate a basic Needle Map.
 - Let an agent inspect the app.
 - Let an agent safely edit metadata through MCP or CLI.

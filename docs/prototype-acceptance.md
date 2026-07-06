@@ -65,7 +65,7 @@ bun run build
 bun run start
 ```
 
-Production Bun server should serve:
+Production output from `@needle/adapter-bun` should serve:
 
 - `/`
 - `/enterprise`

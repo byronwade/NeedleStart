@@ -261,7 +261,7 @@ Definition of done:
 
 - Render mode is detected.
 - Static routes emit `dist/public/*.html`.
-- SSR routes run through Bun server.
+- SSR routes run through `@needle/adapter-bun`.
 - Invalid render declarations produce helpful errors.
 - Manifest includes cache and revalidation metadata.
 
@@ -344,7 +344,7 @@ Definition of done:
 - 404 and 500 work.
 - Cache headers are correct for static assets.
 - Integration tests make HTTP requests and assert responses.
-- Bun server is implemented as `@needle/adapter-bun`.
+- Bun serving is implemented through `@needle/adapter-bun`.
 
 ## Phase 9: API Routes
 
