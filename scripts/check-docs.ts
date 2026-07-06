@@ -662,7 +662,7 @@ const prototypeScopeTerms = [
   },
   {
     file: "docs/prototype-acceptance.md",
-    terms: ["first public prototype", "first working slice"],
+    terms: ["first public prototype", "first working slice", "adapter-aware server output", "documented Node/static paths", "Demonstrate Bun default with documented Node/static paths"],
   },
   {
     file: "docs/public/roadmap.md",
@@ -670,12 +670,13 @@ const prototypeScopeTerms = [
       "first public prototype",
       "first working slice",
       "first working slice is intended to prove create app, SEO-safe pages, `@needle/adapter-bun` serving, a basic map, agent inspection, and safe metadata edit",
-      "public prototype expands that slice into API routes, hot API, read-only MCP tools, adapter-aware output, and documented Node/static paths",
+      "public prototype expands that slice into API routes, hot API, read-only MCP tools, adapter-aware server output, and documented Node/static paths",
+      "Bun adapter output with documented Node/static paths",
     ],
   },
   {
     file: "docs/roadmap.md",
-    terms: ["first public prototype", "first working slice", "planned acceptance criteria"],
+    terms: ["first public prototype", "first working slice", "planned acceptance criteria", "adapter-aware server output, and documented Node/static paths"],
   },
   {
     file: "docs/task-backlog.md",
@@ -1579,6 +1580,21 @@ const staleStatusPatterns = [
     file: "docs/prototype-acceptance.md",
     pattern: /The working slice proves/i,
     message: "docs/prototype-acceptance.md should describe the working slice as intended proof until implementation exists.",
+  },
+  {
+    file: "docs/prototype-acceptance.md",
+    pattern: /adapter-aware output|Node\/static documentation|Node\/static adapter path documented/i,
+    message: "docs/prototype-acceptance.md should use adapter-aware server output and documented Node/static paths wording.",
+  },
+  {
+    file: "docs/public/roadmap.md",
+    pattern: /adapter-aware output|Node\/static compatibility path documented|Node\/static adapter path documented/i,
+    message: "docs/public/roadmap.md should use adapter-aware server output and documented Node/static paths wording.",
+  },
+  {
+    file: "docs/roadmap.md",
+    pattern: /adapter-aware output|Node\/static documentation|Node\/static compatibility path documented|Node\/static adapter path documented/i,
+    message: "docs/roadmap.md should use adapter-aware server output and documented Node/static paths wording.",
   },
   {
     file: "docs/roadmap.md",
