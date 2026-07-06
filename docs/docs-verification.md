@@ -299,6 +299,8 @@ Expected result: example status labels, starter-template requirements, create-co
 
 Automated coverage in `bun run docs:check` also requires generated app package scripts (`bun run dev`, `bun run build`, and `bun run start`) to stay documented as wrappers around `needle dev`, `needle build`, and `needle start` in the onboarding and examples docs. Example command blocks must not list both `bun run build` and direct `needle build` as separate required build steps.
 
+Onboarding and create-app docs must name the current scaffold evidence consistently: Bun workspace, package placeholders, shared core types, CI, and enforcement scripts. They must also keep app creation and CLI behavior marked as not implemented.
+
 Automated coverage also rejects stale example names or create-command flags such as `--template agent-demo`, `large-monorepo-fixture`, and `blog-seo-with-map`; use `--example`, `examples/agent-demo/`, `playgrounds/large-app-fixture/`, and `examples/blog-seo/` instead.
 
 Automated coverage in `bun run docs:check` also requires onboarding target-result bullets in `docs/getting-started.md` and `docs/public/guides/create-app.md` to use planned `should` wording until app creation, route output, SEO metadata, Needle Map, and agent context behavior are implemented.

@@ -8,7 +8,7 @@ This page describes the target app onboarding path for NeedleStart. The reposito
 
 ## Current Repository Status
 
-NeedleStart currently contains planning, architecture, roadmap, risk, skill, and subagent documentation plus the Phase 1 Bun workspace and package placeholders. It does not yet contain CLI behavior, compiler behavior, runtime behavior, or generated artifacts.
+NeedleStart currently contains planning, architecture, roadmap, risk, skill, and subagent documentation plus the Phase 1 Bun workspace, package placeholders, shared core types, CI, and enforcement scripts. It does not yet contain CLI behavior, compiler behavior, runtime behavior, or generated artifacts.
 
 Use these docs first:
 

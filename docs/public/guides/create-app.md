@@ -26,7 +26,7 @@ Generated apps should also expose `bun run dev`, `bun run build`, and `bun run s
 
 ## Current Reality
 
-The repository has a Bun workspace and package placeholders. The `create-needle` package is scaffolded, but app creation behavior is not implemented yet. Use [Phase 1 Build Plan](../../phase-1-build-plan.md) for shared-core expansion, route discovery, and the first implementation sequence.
+The repository has a Bun workspace, package placeholders, shared core types, CI, and enforcement scripts. The `create-needle` package is scaffolded, but app creation behavior is not implemented yet. Use [Phase 1 Build Plan](../../phase-1-build-plan.md) for shared-core expansion, route discovery, and the first implementation sequence.
 
 The future default starter must follow [Examples And Templates Contract](../../examples-contract.md) before this guide can be marked verified.
 

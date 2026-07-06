@@ -560,8 +560,16 @@ const productIdentityDocs = [
 
 const publicScaffoldStatusDocs = [
   {
+    file: "docs/getting-started.md",
+    terms: ["Bun workspace", "package placeholders", "shared core types", "CI", "enforcement scripts", "does not yet contain CLI behavior"],
+  },
+  {
     file: "docs/public/index.md",
     terms: ["Bun workspace", "package placeholders", "shared core types", "CI", "enforcement scripts", "framework runtime behavior is still planned"],
+  },
+  {
+    file: "docs/public/guides/create-app.md",
+    terms: ["Bun workspace", "package placeholders", "shared core types", "CI", "enforcement scripts", "app creation behavior is not implemented yet"],
   },
   {
     file: "docs/public/roadmap.md",
