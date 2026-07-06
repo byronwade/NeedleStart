@@ -202,12 +202,12 @@ Automated coverage in `bun run docs:check` also requires config, public config, 
 ### 14. Adapter Contract Check
 
 ```powershell
-rg -n "adapter-contract|Adapter Contract|adapter.manifest|ADAPTER_|health endpoint|static export|@needle/adapter-bun|@needle/adapter-node|@needle/adapter-static|capabilities|nativeRouteDispatch|Bun\.serve|compression|Early Hints|resourceHints|bfcache" README.md AGENTS.md docs\adapter-contract.md docs\adapters.md docs\deployment.md docs\compatibility.md docs\runtime-contract.md docs\manifest-contracts.md docs\public\reference\adapters.md
+rg -n "adapter-contract|Adapter Contract|routes\.manifest\.json|render\.manifest\.json|seo\.report\.json|adapter\.manifest\.json|ADAPTER_|health endpoint|static export|@needle/adapter-bun|@needle/adapter-node|@needle/adapter-static|capabilities|nativeRouteDispatch|Bun\.serve|compression|Early Hints|resourceHints|bfcache" README.md AGENTS.md docs\adapter-contract.md docs\adapters.md docs\deployment.md docs\compatibility.md docs\runtime-contract.md docs\manifest-contracts.md docs\public\reference\adapters.md
 ```
 
 Expected result: adapter packages, generated output, adapter manifest fields, capabilities, native route dispatch, compression, Early Hints, resource hints, bfcache-aware delivery, environment behavior, health endpoint behavior, static export rules, diagnostics, deployment docs, compatibility docs, and public reference docs remain connected.
 
-Automated coverage in `bun run docs:check` also requires adapter contract, adapter architecture, and public adapter reference docs to keep `@needle/adapter-bun`, `@needle/adapter-node`, `@needle/adapter-static`, `dist/adapter.manifest.json`, `runtime.name`, `capabilities`, `nativeRouteDispatch`, `Bun.serve`, health endpoint, static export, `ADAPTER_` diagnostics, compression, Early Hints, `resourceHints`, and bfcache language aligned.
+Automated coverage in `bun run docs:check` also requires adapter contract, adapter architecture, and public adapter reference docs to keep `@needle/adapter-bun`, `@needle/adapter-node`, `@needle/adapter-static`, `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, `dist/adapter.manifest.json`, `runtime.name`, `capabilities`, `nativeRouteDispatch`, `Bun.serve`, health endpoint, static export, `ADAPTER_` diagnostics, compression, Early Hints, `resourceHints`, and bfcache language aligned.
 
 ### 15. Manifest Contract Check
 

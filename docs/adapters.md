@@ -95,7 +95,7 @@ The compiler chooses the adapter import during build. Runtime packages consume g
 
 ## Adapter Manifest
 
-The manifest is emitted as `dist/adapter.manifest.json`; every adapter manifest must include `runtime.name`, adapter package identity, explicit `capabilities`, unsupported features, environment-variable names, and diagnostics.
+Adapter deployment output uses `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, and `dist/adapter.manifest.json`. Every adapter manifest must include `runtime.name`, adapter package identity, explicit `capabilities`, unsupported features, environment-variable names, and diagnostics.
 
 ```json
 {
@@ -138,7 +138,7 @@ Detailed manifest fields and capability semantics are defined in [Adapter Contra
 Adapter docs are checked automatically so internal docs, public docs, and agent rules keep the same contract language. Keep these terms aligned when adapter behavior changes:
 
 - `@needle/adapter-bun`, `@needle/adapter-node`, and `@needle/adapter-static`.
-- `dist/adapter.manifest.json`, `runtime.name`, `capabilities`, and `nativeRouteDispatch`.
+- `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, `dist/adapter.manifest.json`, `runtime.name`, `capabilities`, and `nativeRouteDispatch`.
 - `Bun.serve` and optional `Bun.serve({ routes })` lowering for proven faster paths.
 - health endpoint behavior and static export rules.
 - `ADAPTER_` diagnostics.

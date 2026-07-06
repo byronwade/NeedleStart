@@ -28,6 +28,8 @@ dist/
 
 These files are deployment output. Canonical compiler and agent artifacts stay under `.needle/`.
 
+The named deployment artifacts are `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, and `dist/adapter.manifest.json`.
+
 ## Planned Manifest
 
 `dist/adapter.manifest.json` should describe:
@@ -57,7 +59,7 @@ These files are deployment output. Canonical compiler and agent artifacts stay u
 Public adapter docs are checked against the same planned contract terms as internal docs:
 
 - `@needle/adapter-bun`, `@needle/adapter-node`, and `@needle/adapter-static`.
-- `dist/adapter.manifest.json`, `runtime.name`, `capabilities`, and `nativeRouteDispatch`.
+- `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, `dist/adapter.manifest.json`, `runtime.name`, `capabilities`, and `nativeRouteDispatch`.
 - `Bun.serve` and `Bun.serve({ routes })` when the Bun adapter proves native route dispatch is faster.
 - health endpoint behavior and static export rules.
 - `ADAPTER_` diagnostics.

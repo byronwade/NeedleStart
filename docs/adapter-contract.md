@@ -94,6 +94,8 @@ dist/
   seo.report.json
 ```
 
+The named deployment artifacts are `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, and `dist/adapter.manifest.json`.
+
 `@needle/adapter-static` may omit `server/` only when all routes are exportable and static output is complete.
 
 ## Adapter Manifest
