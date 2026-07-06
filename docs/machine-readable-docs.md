@@ -8,21 +8,21 @@ NeedleStart should make documentation consumable by humans and AI agents. Machin
 
 ## Planned Outputs
 
-| Output | Purpose | Production bundle? |
+| Output | Purpose | Production surface |
 | --- | --- | --- |
-| `AGENTS.md` | App-local operating guide for AI agents in generated user applications. | No production runtime bundles |
-| `llms.txt` | Compact public docs or app-local summary for AI tools. | No production runtime bundles |
-| `llms-full.txt` | Full AI-readable public docs or app-local context. | No production runtime bundles |
+| `AGENTS.md` | App-local operating guide for AI agents in generated user applications. | Agent-only app-local artifact; not a production runtime bundle |
+| `llms.txt` | Compact public docs or app-local summary for AI tools. | Docs or agent artifact; not a production runtime bundle |
+| `llms-full.txt` | Full AI-readable public docs or app-local context. | Docs or agent artifact; not a production runtime bundle |
 | `docs-index.json` | Index of docs pages, status, audience, tags, and source paths. | Public docs artifact only |
-| `.needle/routes.json` | Stable route manifest for apps. | No production runtime bundles |
-| `.needle/render-manifest.json` | Render modes and cache metadata for apps. | No production runtime bundles |
-| `.needle/map.json` | Queryable Needle Map output for apps. | No production runtime bundles |
-| `.needle/graph.json` | Compiler and agent graph data for apps. | No production runtime bundles |
-| `.needle/seo.report.json` | SEO audit output for apps. | No production runtime bundles |
-| `.needle/perf.report.json` | Performance and budget output for apps. | No production runtime bundles |
-| `.needle/context/*.ctx.json` | Route or surface context capsules for apps. | No production runtime bundles |
-| `.needle/context/agent-index.json` | Index of generated agent context. | No production runtime bundles |
-| `.needle/mutations.json` | Safe edit mutation log for apps. | No production runtime bundles |
+| `.needle/routes.json` | Stable route manifest for apps. | Compiler source contract; adapter output consumes deployment-shaped `dist/*` copies |
+| `.needle/render-manifest.json` | Render modes and cache metadata for apps. | Compiler source contract; adapter output consumes deployment-shaped `dist/*` copies |
+| `.needle/map.json` | Queryable Needle Map output for apps. | Compiler and agent source contract; not a production runtime bundle |
+| `.needle/graph.json` | Compiler and agent graph data for apps. | Compiler and agent source contract; not a production runtime bundle |
+| `.needle/seo.report.json` | SEO audit output for apps. | Compiler and audit source contract; adapter output may copy report data into `dist/seo.report.json` |
+| `.needle/perf.report.json` | Performance and budget output for apps. | Compiler and audit source contract; not a production runtime bundle |
+| `.needle/context/*.ctx.json` | Route or surface context capsules for apps. | Agent source contract; not a production runtime bundle |
+| `.needle/context/agent-index.json` | Index of generated agent context. | Agent source contract; not a production runtime bundle |
+| `.needle/mutations.json` | Safe edit mutation log for apps. | Agent and safe-edit source contract; not a production runtime bundle |
 | `.needle/generated/*` | Generated runtime modules for apps. | May feed production build output, but not agent metadata |
 | `dist/routes.manifest.json` | Deployment-oriented route manifest copy for adapters. | Adapter artifact |
 | `dist/render.manifest.json` | Deployment-oriented render manifest copy for adapters. | Adapter artifact |

@@ -297,7 +297,7 @@ const generatedArtifactRuleDocs = [
 const machineReadableDocsContractDocs = [
   {
     file: "docs/machine-readable-docs.md",
-    terms: ["llms.txt", "llms-full.txt", "docs-index.json", "schemaversion", "generatedat", "deterministic", "production runtime bundles"],
+    terms: ["llms.txt", "llms-full.txt", "docs-index.json", "schemaversion", "generatedat", "deterministic", "production runtime bundles", "compiler source contract", "agent source contract", "deployment-shaped `dist/*` copies"],
   },
   {
     file: "docs/agent-kernel.md",

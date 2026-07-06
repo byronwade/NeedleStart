@@ -149,6 +149,8 @@ Expected result: machine-readable docs outputs remain documented as planned, sch
 
 Automated coverage in `bun run docs:check` also requires machine-readable docs, Agent Kernel, MCP, and public docs readiness docs to keep `llms.txt`, `llms-full.txt`, `docs-index.json`, `schemaVersion`, `generatedAt`, deterministic output, and production-runtime-bundle exclusion language aligned. It also requires Agent Kernel artifact tables to label `.needle/*` and `dist/*` outputs as planned while generated artifacts remain unimplemented.
 
+Automated coverage also requires machine-readable docs to distinguish `.needle/*` compiler or agent source contracts from deployment-shaped `dist/*` copies.
+
 ### 9. Public Docs Site Contract Check
 
 ```powershell
