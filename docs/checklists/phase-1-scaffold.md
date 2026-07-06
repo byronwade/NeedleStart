@@ -42,6 +42,9 @@ Before treating scaffold behavior as current evidence:
 - `bun install` runs.
 - `bun test` runs.
 - `bun run typecheck` runs.
+- `bun run docs:check` runs.
+- `bun run structure:check` runs.
+- `bun run performance:check` runs.
 - `bun run check` runs.
 - Package entrypoints do not claim real framework behavior unless tests cover it.
 - README and AGENTS describe the current scaffold honestly.

@@ -108,6 +108,28 @@ const plannedJsonCommandContracts = [
   "needle migrate --json",
 ];
 
+const scaffoldVerificationCommands = [
+  "bun test",
+  "bun run typecheck",
+  "bun run docs:check",
+  "bun run structure:check",
+  "bun run performance:check",
+  "bun run check",
+];
+
+const scaffoldVerificationDocs = [
+  "README.md",
+  "AGENTS.md",
+  "docs/phase-1-build-plan.md",
+  "docs/roadmap.md",
+  "docs/public/roadmap.md",
+  "docs/checklists/phase-1-scaffold.md",
+  "docs/task-backlog.md",
+  "docs/testing.md",
+  "docs/testing-contract.md",
+  "docs/public/reference/testing.md",
+];
+
 const canonicalGeneratedArtifacts = [
   ".needle/routes.json",
   ".needle/render-manifest.json",
@@ -754,6 +776,16 @@ for (const file of plannedNeedleCommandDocs) {
   for (const command of plannedNeedleCommands) {
     if (!content.includes(command)) {
       failures.push(`${file} does not document planned CLI command: ${command}.`);
+    }
+  }
+}
+
+for (const file of scaffoldVerificationDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file);
+  for (const command of scaffoldVerificationCommands) {
+    if (!content.includes(command)) {
+      failures.push(`${file} does not document scaffold verification command: ${command}.`);
     }
   }
 }

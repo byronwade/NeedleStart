@@ -388,6 +388,10 @@ Definition of done:
 - `bun install` works.
 - `bun test` works.
 - `bun run typecheck` works.
+- `bun run docs:check` works.
+- `bun run structure:check` works.
+- `bun run performance:check` works.
+- `bun run check` works.
 - Every package has `package.json`.
 - Every package has `src/index.ts`.
 - Placeholder tests exist.

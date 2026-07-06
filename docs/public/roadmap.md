@@ -19,6 +19,10 @@ Phase 1 creates and hardens the Bun workspace and package scaffold. It should ke
 - `bun install` works.
 - `bun test` works.
 - `bun run typecheck` works.
+- `bun run docs:check` works.
+- `bun run structure:check` works.
+- `bun run performance:check` works.
+- `bun run check` works.
 - Planned packages exist with entrypoints.
 - Docs accurately describe the scaffold.
 

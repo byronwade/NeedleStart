@@ -6,18 +6,28 @@ Audience: app developers, contributors, AI agents.
 
 NeedleStart testing is planned around deterministic fixtures, stable JSON snapshots, HTTP adapter checks, browser checks for user-visible behavior, and explicit evidence reporting. Initial scaffold checks exist; feature-specific test tooling is still planned.
 
-## Planned Commands
+## Scaffold Commands
 
 ```bash
 bun test
 bun run typecheck
+bun run docs:check
+bun run structure:check
+bun run performance:check
+bun run check
+```
+
+These commands are verified for the Phase 1 scaffold. They prove scaffold integrity, documentation links and guardrails, package structure, performance documentation hygiene, TypeScript validity, and placeholder tests. They do not prove route discovery, rendering, runtime adapters, Needle Map generation, MCP tools, or safe edits.
+
+## Future Target Commands
+
+```bash
 bun run test:fixtures
 bun run test:http
 bun run test:browser
-bun run docs:check
 ```
 
-`bun test`, `bun run typecheck`, `bun run docs:check`, and the root `bun run check` gate are verified for the scaffold. Fixture, HTTP, and browser commands are target commands until implementation lands.
+Fixture, HTTP, and browser commands are target commands until implementation lands.
 
 ## Planned Test Layers
 
