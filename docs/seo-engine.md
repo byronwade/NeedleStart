@@ -2,6 +2,8 @@
 
 NeedleStart is SEO-first. Public routes should render meaningful HTML by default and expose their indexability through machine-readable reports.
 
+The planned metadata API, merge rules, sitemap output, robots output, structured data behavior, diagnostics, manifest fields, security rules, and fixture requirements are defined in [SEO Contract](seo-contract.md).
+
 ## Product Promise
 
 No SEO archaeology. Every route tells you whether it can be crawled, indexed, shared, and trusted.
@@ -56,6 +58,8 @@ export const meta = defineMeta({
 - 404 and 410 status helpers.
 - SEO audit CLI.
 - Crawler preview.
+- Stable SEO diagnostics.
+- Generated `.needle/seo.report.json`.
 
 ## SEO Audit Output
 

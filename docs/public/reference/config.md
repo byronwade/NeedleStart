@@ -22,4 +22,5 @@ This API is planned and not implemented.
 ## Source
 
 - [Configuration Reference](../../config.md)
+- [Configuration Contract](../../config-contract.md)
 

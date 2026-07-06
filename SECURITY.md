@@ -4,6 +4,8 @@ Status: Planned.
 
 NeedleStart is not yet implemented. This policy defines how security should be handled as implementation begins.
 
+Detailed planned security requirements for high-risk implementation work live in [Security Contract](docs/security-contract.md).
+
 ## Supported Versions
 
 No released versions exist yet. Security support begins when the project publishes packages or release artifacts.

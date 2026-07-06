@@ -4,6 +4,8 @@ Status: Planned.
 
 This page documents the planned file and folder conventions for NeedleStart apps. These conventions are not implemented yet.
 
+For exact route parsing, route IDs, sorting, conflict diagnostics, and fixture requirements, see [Routing Contract](routing-contract.md).
+
 ## Application Root
 
 Planned files:
@@ -124,7 +126,7 @@ Planned special files:
 
 Generated files are planned under `.needle/` and `dist/`. They must not be edited manually.
 
-See [API Reference](api-reference.md) for planned generated file responsibilities.
+See [API Reference](api-reference.md), [Manifest Contracts](manifest-contracts.md), and [Routing Contract](routing-contract.md) for planned generated file responsibilities.
 
 ## Determinism Rules
 
@@ -135,4 +137,6 @@ When implemented, file convention output must:
 - Ignore route groups in URL paths.
 - Preserve enough source information for Needle Map and agent context.
 - Emit helpful diagnostics for invalid or conflicting routes.
+- Keep route IDs stable across operating systems.
+- Snapshot route order, parameters, and diagnostics in route-discovery fixtures once implementation exists.
 

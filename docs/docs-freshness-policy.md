@@ -37,15 +37,32 @@ Docs are stale when:
 | --- | --- |
 | Setup command changes | `README.md`, `AGENTS.md`, `CONTRIBUTING.md`, `docs/status.md` |
 | New package | `README.md`, `AGENTS.md`, `docs/package-map.md`, `docs/phase-1-build-plan.md` when relevant |
-| New command | `README.md`, `AGENTS.md`, `docs/cli.md`, `docs/api-reference.md` |
+| New command | `README.md`, `AGENTS.md`, `docs/cli.md`, `docs/cli-json-contract.md`, `docs/api-reference.md` |
 | New generated artifact | `AGENTS.md`, `docs/manifest-contracts.md`, `docs/machine-readable-docs.md` when agent-facing |
+| Manifest schema change | `docs/manifest-contracts.md`, `docs/versioning-and-upgrades.md`, `docs/machine-readable-docs.md`, affected reference docs |
+| Diagnostic shape or code change | `docs/diagnostics-contract.md`, `docs/cli-json-contract.md`, `docs/manifest-contracts.md`, affected feature contracts, public diagnostics reference |
 | Phase/status change | `README.md`, `docs/status.md`, `docs/roadmap.md`, `docs/task-backlog.md` |
 | Public API change | `docs/api-reference.md`, feature guide, examples, tests |
-| Public website content change | `docs/public/`, `docs/public-docs.md`, `docs/website-content-map.md`, `README.md` when prominent |
-| Routing or file convention change | `docs/routing.md`, `docs/file-conventions.md`, `docs/compiler-ir.md` |
+| Example, starter template, fixture, or create-command flow change | `docs/examples.md`, `docs/examples-contract.md`, `docs/getting-started.md`, `docs/public/guides/create-app.md`, `docs/public/reference/examples.md`, `docs/testing-contract.md` |
+| Public API, config, or CLI breaking change | `docs/versioning-and-upgrades.md`, `docs/release.md`, `docs/cli-json-contract.md`, `docs/config-contract.md`, `docs/api-reference.md`, affected guide/reference docs |
+| Test command, fixture, snapshot, or CI behavior change | `docs/testing.md`, `docs/testing-contract.md`, `docs/docs-verification.md`, `docs/product-build-readiness.md`, affected feature contracts |
+| Config loading or environment behavior change | `docs/config.md`, `docs/config-contract.md`, `docs/security.md`, `docs/manifest-contracts.md`, affected runtime or adapter docs |
+| Adapter, deployment output, or compatibility behavior change | `docs/adapters.md`, `docs/adapter-contract.md`, `docs/deployment.md`, `docs/compatibility.md`, `docs/runtime-contract.md`, `docs/manifest-contracts.md`, public adapter reference |
+| Public website content change | `docs/public/`, `docs/public-docs.md`, `docs/public-docs-site-architecture.md`, `docs/website-content-map.md`, `README.md` when prominent |
+| Public docs metadata, route, or navigation change | `docs/public-docs-site-architecture.md`, `docs/website-content-map.md`, `docs/public/README.md`, `docs/machine-readable-docs.md` |
+| Documentation verification change | `docs/docs-verification.md`, `.github/PULL_REQUEST_TEMPLATE.md`, `AGENTS.md`, `docs/docs-maintenance-checklist.md` |
+| Routing or file convention change | `docs/routing.md`, `docs/routing-contract.md`, `docs/file-conventions.md`, `docs/compiler-ir.md`, `docs/manifest-contracts.md`, public reference docs |
+| API route behavior change | `docs/api-routes.md`, `docs/api-route-contract.md`, `docs/schema.md`, `docs/hot-api-path.md`, `docs/runtime-contract.md`, `docs/security.md`, `docs/manifest-contracts.md`, public API route reference |
+| Schema behavior change | `docs/schema.md`, `docs/schema-contract.md`, `docs/api-route-contract.md`, `docs/hot-api-path.md`, `docs/manifest-contracts.md`, `docs/api-reference.md`, public schema reference |
+| Cache behavior change | `docs/cache.md`, `docs/cache-contract.md`, `docs/runtime-contract.md`, `docs/speed-strategy.md`, `docs/api-route-contract.md`, `docs/hot-api-path.md`, `docs/manifest-contracts.md`, `docs/security.md`, public cache reference |
+| SEO behavior change | `docs/seo-engine.md`, `docs/seo-contract.md`, `docs/api-reference.md`, `docs/manifest-contracts.md`, `docs/runtime-contract.md`, `docs/cache-contract.md`, public SEO reference |
+| Accessibility behavior, diagnostics, browser evidence, docs UI, or framework-owned HTML change | `docs/accessibility.md`, `docs/accessibility-contract.md`, `docs/testing-contract.md`, `docs/seo-contract.md`, public accessibility reference |
 | Runtime or adapter change | `docs/runtime-contract.md`, `docs/adapters.md`, `docs/deployment.md`, `docs/speed-strategy.md` |
-| Performance claim | `docs/performance.md`, `docs/benchmarks.md`, `docs/benchmark-methodology.md`, raw results |
-| Security-sensitive change | `SECURITY.md`, `docs/security.md`, relevant feature docs |
+| Compatibility claim | `docs/compatibility.md`, `docs/versioning-and-upgrades.md`, test or fixture evidence |
+| Performance claim | `docs/performance.md`, `docs/performance-contract.md`, `docs/benchmarks.md`, `docs/benchmark-methodology.md`, raw results |
+| Route budget, performance diagnostic, perf report, Core Web Vitals language, or benchmark evidence change | `docs/performance.md`, `docs/performance-contract.md`, `docs/testing-contract.md`, `docs/manifest-contracts.md`, public performance reference |
+| Rendering default, build pipeline, runtime speed path, React Compiler, React streaming, resource hint, fetch priority, 103 Early Hints, speculation, bfcache, image/font delivery, compression, hot API, cache strategy, compiler scaling, or benchmark-positioning decision change | `docs/speed-decisions.md`, `docs/speed-capability-audit.md`, `docs/speed-strategy.md`, `docs/performance-contract.md`, `docs/benchmark-methodology.md`, `docs/product-build-readiness.md` |
+| Security-sensitive change | `SECURITY.md`, `docs/security.md`, `docs/security-contract.md`, `docs/testing-contract.md`, relevant feature docs |
 | Agent or MCP behavior change | `AGENTS.md`, `docs/agent-kernel.md`, `docs/mcp-server.md`, `docs/safe-edit-transactions.md`, `docs/machine-readable-docs.md` |
 
 ## Pull Request Requirement
@@ -70,7 +87,8 @@ Before each release, and at least once per implementation phase:
 5. Compare roadmap status against `docs/task-backlog.md`.
 6. Run the local Markdown link check.
 7. Search for unsupported claims such as "works", "implemented", "verified", "fastest", or "secure".
-8. Update `docs/documentation-matrix.md` when quality or readiness changes.
+8. Apply `docs/docs-verification.md`.
+9. Update `docs/documentation-matrix.md` when quality or readiness changes.
 
 ## AI-Agent Rule
 

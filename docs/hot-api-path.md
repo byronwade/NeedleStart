@@ -2,6 +2,8 @@
 
 The hot API path is NeedleStart's performance path for selected API routes.
 
+Normal API route behavior is defined in [API Route Contract](api-route-contract.md). Schema behavior is defined in [Schema Contract](schema-contract.md). Hot API routes should reuse the same route discovery, handler context, schema, diagnostic, and manifest vocabulary while replacing generic validation and serialization with generated fast paths.
+
 ## Goal
 
 Selected API routes should avoid generic framework overhead through generated matchers, validators, serializers, and optional micro-caches.
@@ -74,6 +76,8 @@ Initial schema DSL:
 - Benchmarks compare normal API route and hot API route in the same app.
 
 Benchmark comparisons must follow `docs/benchmark-methodology.md`.
+API route correctness and diagnostics must follow [API Route Contract](api-route-contract.md).
+Schema validation and serializer behavior must follow [Schema Contract](schema-contract.md).
 
 ## Out of Scope Initially
 

@@ -15,10 +15,13 @@ No packages have been released yet. This page defines the future release process
 - Security notes are reviewed.
 - Benchmarks are updated when performance claims change.
 - Migration notes are included when behavior changes.
+- Versioned surfaces and schema changes are documented.
 
 ## Versioning
 
 NeedleStart should use semantic versioning once packages are published.
+
+See [Versioning And Upgrades](versioning-and-upgrades.md) for package, docs, manifest, API, deprecation, and upgrade-guide policy.
 
 ## Release Types
 
@@ -38,6 +41,8 @@ Future release notes should include:
 - Fixes.
 - Breaking changes.
 - Migration notes.
+- Manifest or schema version changes.
+- Deprecations.
 - Security notes.
 - Benchmark notes when performance claims changed.
 - Docs updates.

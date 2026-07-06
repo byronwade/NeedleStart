@@ -13,6 +13,7 @@ Use these docs first:
 - [README](../README.md): product overview and current status.
 - [Phase 1 Build Plan](phase-1-build-plan.md): the next implementation path.
 - [Task Backlog](task-backlog.md): concrete implementation sequence.
+- [Examples And Templates Contract](examples-contract.md): how future starter examples become verified.
 - [Documentation Standard](documentation-standard.md): how docs should grow.
 
 ## Target App Creation Flow
@@ -34,6 +35,8 @@ Target result:
 - Needle Map and agent context can be inspected.
 
 Do not claim this flow works until `create-needle`, `@needle/cli`, and the runtime path exist and have been verified.
+
+The default generated app must eventually map to a verified starter example as defined in [Examples And Templates Contract](examples-contract.md).
 
 ## Target Project Structure
 

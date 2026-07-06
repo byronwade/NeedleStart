@@ -2,6 +2,8 @@
 
 This document turns the planning docs into the first implementation path. It should be read before creating package scaffolding or claiming local commands work.
 
+Test command, fixture, snapshot, and CI expectations are defined in [Testing Contract](testing-contract.md).
+
 ## Current Truth
 
 NeedleStart is still documentation-only. Phase 1 starts when the repository adds a Bun workspace, package directories, placeholder source files, and placeholder tests.
@@ -83,6 +85,7 @@ The Phase 1 scaffold should add or update:
 - Package-level `package.json` files.
 - Package-level `src/index.ts` files.
 - Package-level placeholder tests where practical.
+- Initial `tests/` folders only when they match the planned fixture layout in [Testing Contract](testing-contract.md).
 
 Do not add framework behavior in the same change unless the task explicitly says so.
 
@@ -147,6 +150,8 @@ Phase 1A should define the shared model in `@needle/core` before any package cre
 
 `GraphEdge` must include `kind`, `source`, `confidence`, and `why`.
 
+`NeedleDiagnostic` must follow [Diagnostics Contract](diagnostics-contract.md).
+
 ## Verification
 
 After Phase 1 scaffolding exists, the minimum checks are:
@@ -158,6 +163,8 @@ bun run typecheck
 ```
 
 If a command is not available yet, the PR must say so and update the relevant docs. Do not leave stale claims that the command passes.
+
+Placeholder tests should prove package entrypoints and type surfaces only. They should not imply route discovery, rendering, adapter behavior, or generated artifacts exist.
 
 ## Out Of Scope
 
@@ -182,5 +189,6 @@ When Phase 1 lands, update:
 - `AGENTS.md`: real commands, package boundaries, generated-file rules if any.
 - `docs/roadmap.md`: Phase 1 status.
 - `docs/package-map.md`: package names and dependency rules.
+- `docs/testing.md` and `docs/testing-contract.md`: real scripts, fixture layout, and CI behavior.
 - `docs/task-backlog.md`: completed and next tasks.
 

@@ -22,4 +22,6 @@ Exact options, outputs, and exit codes will be documented after implementation.
 ## Source
 
 - [Internal CLI Reference](../../cli.md)
+- [CLI JSON Contract](../../cli-json-contract.md)
+- [Diagnostics Contract](../../diagnostics-contract.md)
 

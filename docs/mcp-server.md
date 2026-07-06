@@ -68,6 +68,8 @@ needle://context/public
 
 MCP write tools must return the same `SafeEditTransaction` shape as CLI write commands.
 
+Where practical, MCP tool payloads should reuse the same core route, graph, SEO, check, context, and safe-edit object shapes as the CLI JSON contract in `docs/cli-json-contract.md`.
+
 Required transaction fields:
 
 - Mutation ID.

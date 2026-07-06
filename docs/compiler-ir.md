@@ -2,6 +2,8 @@
 
 The Needle compiler should use one internal representation that feeds CLI output, runtime manifests, SEO reports, Needle Map, devtools, and agent context.
 
+Compiler diagnostics should follow [Diagnostics Contract](diagnostics-contract.md).
+
 ## Goals
 
 - Keep framework intelligence in build-time code.
@@ -49,6 +51,8 @@ export type RouteNode = {
 
 ## Route Manifest
 
+The route manifest must follow the planned grammar in [Routing Contract](routing-contract.md).
+
 Example:
 
 ```json
@@ -92,17 +96,7 @@ export type RenderManifest = {
 
 ## Diagnostic
 
-```ts
-export type NeedleDiagnostic = {
-  code: string
-  severity: "info" | "warn" | "error"
-  message: string
-  file?: string
-  route?: string
-  node?: string
-  safeFix?: SafeFix
-}
-```
+The shared diagnostic shape, source location rules, remediation fields, related locations, and JSON ordering rules are defined in [Diagnostics Contract](diagnostics-contract.md). Compiler IR nodes may reference diagnostics by code, route ID, source file, or generated artifact, but must not define a competing diagnostic shape.
 
 ## Determinism Requirements
 

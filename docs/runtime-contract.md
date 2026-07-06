@@ -2,6 +2,8 @@
 
 The Needle runtime must stay small, explicit, fast, and easy to inspect. Runtime speed depends on generated manifests and handlers; see `docs/speed-strategy.md`.
 
+Adapter boundaries, deployment output, adapter manifests, health endpoints, and compatibility evidence are defined in `docs/adapter-contract.md`.
+
 ## Responsibilities
 
 The production runtime is responsible for:
@@ -77,6 +79,14 @@ export default defineConfig({
 
 Adapters consume generated manifests and handlers. They do not rediscover source files.
 
+Config loading, validation, and normalization are defined in `docs/config-contract.md`. Runtime adapters should consume normalized generated output instead of evaluating raw config in production.
+
+Normal API handler semantics, return normalization, validation diagnostics, and generated handler registry requirements are defined in `docs/api-route-contract.md`.
+
+Cache plans, cache headers, cache tags, revalidation, micro-cache behavior, and cache diagnostics are defined in `docs/cache-contract.md`.
+
+Runtime diagnostics, source locations, production sanitization, and JSON diagnostic fields are defined in `docs/diagnostics-contract.md`.
+
 ## Server Inputs
 
 The server should load:
@@ -144,6 +154,8 @@ API routes:
 Hot API routes:
 
 - May use micro-cache when explicitly configured.
+
+Cache header behavior must follow `docs/cache-contract.md`.
 
 ## Health Endpoint
 

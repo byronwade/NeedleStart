@@ -9,7 +9,7 @@ This document defines planned package responsibilities and boundaries.
 | `create-needle` | One-command project creation. |
 | `@needle/cli` | CLI commands such as `dev`, `build`, `start`, `routes`, `inspect`, `seo`, `map`, `agent`, and `check`. |
 | `@needle/core` | Shared types, config, route definitions, render modes, diagnostics, and public helper types. |
-| `@needle/compiler` | App discovery, route IR, render mode extraction, manifests, generated modules, API codegen, graph inputs. |
+| `@needle/compiler` | App discovery, route IR, render mode extraction, manifests, generated modules, route asset metadata, API codegen, graph inputs. |
 | `@needle/vite-plugin` | Vite integration, virtual modules, route HMR, client and server entry wiring. |
 | `@needle/react` | React SSR helpers, layouts, head manager, loaders, hydration, client entry helpers. |
 | `@needle/router` | Generated route matcher, typed links, params, route helpers. |
@@ -33,6 +33,8 @@ Note: earlier planning docs referred to `@needle/server-bun` as the Bun producti
 - Compiler-only parsing and generation belongs in `@needle/compiler`.
 - Runtime request handling belongs in runtime adapters, starting with `@needle/adapter-bun`.
 - Browser-facing React helpers belong in `@needle/react`.
+- Route asset discovery, resource-hint metadata, likely LCP asset metadata, and performance report generation belong in `@needle/compiler` until a dedicated performance package is justified.
+- Compression serving, 103 Early Hints emission, final `Link` headers, and adapter-specific bfcache-safe delivery behavior belong in runtime adapters.
 - Agent context and safe edit code belongs in `@needle/agent`.
 - MCP protocol code belongs in `@needle/mcp`.
 - SEO metadata helpers and audits belong in `@needle/seo`.
@@ -57,6 +59,7 @@ Planned direction:
 - Static export logic belongs in `@needle/adapter-static`.
 - User application code must not require Bun-only APIs.
 - Adapter capability output belongs in `adapter.manifest.json`.
+- Adapter delivery capabilities must match [Adapter Contract](adapter-contract.md), including compression, resource hints, 103 Early Hints, and bfcache-aware headers.
 
 ## `@needle/map` Query API
 
@@ -82,3 +85,5 @@ Every package should eventually include a local `README.md` with:
 - Generated files.
 - Tests.
 - Out of scope.
+
+Package tests and fixture ownership should follow [Testing Contract](testing-contract.md).

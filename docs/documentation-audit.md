@@ -18,7 +18,7 @@ The highest-impact move is to keep building a docs system where every feature ha
 - Clear product thesis: app-graph-native, SEO-first, React, human and AI agent collaboration.
 - Strong architecture split between compiler intelligence and small runtime adapters.
 - Explicit risk mitigation for semantic graphs, safe edits, MCP tools, and Bun adoption.
-- Good agent workflow foundations in `AGENTS.md`, `skills/`, and `subagents/`.
+- Good agent workflow foundations in `AGENTS.md`, `docs/skills/`, and `docs/subagents/`.
 - Repeated warnings against claiming implementation before it exists.
 - Early acceptance demo and task backlog give contributors a concrete direction.
 
@@ -105,8 +105,7 @@ Before this pass, requested docs missing from the repo included code of conduct,
 
 ## 13. Duplicated Or Confusing Docs
 
-- Root `skills/` and `docs/skills/` duplicate content intentionally for root-level and docs-level access; keep them synchronized or replace with one canonical source plus generated mirrors later.
-- Root `subagents/` and `docs/subagents/` have the same duplication risk.
+- `docs/skills/` and `docs/subagents/` are the canonical AI collaboration playbooks; do not add root mirrors.
 - Runtime package naming previously mixed `@needle/server-bun` and adapter packages; current docs now prefer adapter package names.
 
 ## 14. Docs That Should Be Split
@@ -117,7 +116,7 @@ Before this pass, requested docs missing from the repo included code of conduct,
 
 ## 15. Docs That Should Be Merged
 
-- If root and docs copies of skills/subagents become hard to maintain, keep root as canonical and generate or link docs copies.
+- Keep AI collaboration playbooks in `docs/skills/` and `docs/subagents/`; link them from root docs instead of duplicating them at the repository root.
 - Benchmark content should eventually merge around methodology plus raw-results folders rather than scattered claims.
 
 ## 16. Docs That Need Diagrams
@@ -207,7 +206,7 @@ The table below summarizes the highest-signal findings. The complete matrix is m
 | `docs/glossary.md` | All | Basic | Sparse | Expand as APIs land | Low | Low | Yes | Yes |
 | `docs/decisions/*` | Maintainers | Good | Need more ADRs as direction changes | Keep using ADR template | Medium | Low | No | Yes |
 | `docs/templates/*` | Contributors | Good | Could include docs task template | Add docs template later | Low | Low | No | Yes |
-| `skills/*` and `subagents/*` | AI agents | Good | Duplicate mirrored copies | Decide canonical source later | Medium | Medium | No | Yes |
+| `docs/skills/*` and `docs/subagents/*` | AI agents | Good | Canonical docs-side playbooks | Keep linked from README, AGENTS, and docs hub | Medium | Low | No | Yes |
 | Requested but newly scaffolded reference docs | All | New | Need content as implementation lands | Fill by phase | High | Medium | Partial | Partial |
 
 ## Proposed Final Documentation Architecture
@@ -242,7 +241,7 @@ Maintainer docs:
 
 Agent docs:
 
-- AGENTS, skills, subagents, MCP, safe edits, agent context, stable JSON schemas.
+- AGENTS, docs skills, docs subagents, MCP, safe edits, agent context, stable JSON schemas.
 
 Reference docs:
 

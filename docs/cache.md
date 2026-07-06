@@ -6,6 +6,8 @@ Audience: app developers, runtime contributors, AI agents.
 
 NeedleStart caching must be explicit and inspectable.
 
+The planned cache plan shape, HTTP header mapping, cache tags, revalidation behavior, diagnostics, manifest fields, security rules, and fixture requirements are defined in [Cache Contract](cache-contract.md).
+
 ## Principles
 
 - No invisible caching.
@@ -21,6 +23,9 @@ NeedleStart caching must be explicit and inspectable.
 - Cache tags.
 - `revalidateTag`.
 - Cache report in dev and JSON output.
+- Cache diagnostics.
+- Cache manifest fields.
+- Public cache reference.
 
 ## Out Of Scope
 

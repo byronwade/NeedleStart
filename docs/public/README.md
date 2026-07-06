@@ -38,10 +38,23 @@ NeedleStart is still Phase 0. Public pages must not claim that commands, package
 ### Reference
 
 - [CLI Reference](reference/cli.md)
+- [Diagnostics](reference/diagnostics.md)
 - [Configuration Reference](reference/config.md)
+- [Adapters](reference/adapters.md)
+- [Examples](reference/examples.md)
+- [Project Structure](reference/project-structure.md)
 - [File Conventions](reference/file-conventions.md)
+- [Routing](reference/routing.md)
+- [API Routes](reference/api-routes.md)
+- [Schema](reference/schema.md)
+- [Cache](reference/cache.md)
+- [SEO](reference/seo.md)
+- [Accessibility](reference/accessibility.md)
+- [Security](reference/security.md)
+- [Performance](reference/performance.md)
 - [Render Modes](reference/render-modes.md)
 - [Manifest Contracts](reference/manifest-contracts.md)
+- [Testing](reference/testing.md)
 - [MCP Reference](reference/mcp.md)
 
 ### Deployment And Operations

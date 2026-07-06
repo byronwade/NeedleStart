@@ -34,6 +34,10 @@ Planned commands:
 
 Each command should eventually document human output, `--json` output, exit codes, and affected generated files.
 
+The shared JSON envelope, diagnostics, and exit-code policy are documented in [CLI JSON Contract](cli-json-contract.md).
+
+The shared diagnostic code, severity, source-location, remediation, docs-link, and JSON diagnostic behavior is documented in [Diagnostics Contract](diagnostics-contract.md).
+
 ## Config Reference
 
 Planned config file:
@@ -60,6 +64,8 @@ Planned config areas:
 - Devtools.
 - Performance budgets.
 
+Config loading, validation, environment behavior, and normalized output are documented in [Configuration Contract](config-contract.md).
+
 ## Public Helper APIs
 
 Planned helpers:
@@ -67,7 +73,7 @@ Planned helpers:
 | API | Status | Package | Purpose |
 | --- | --- | --- | --- |
 | `defineConfig()` | Planned | `needlestart` | Define project config. |
-| `defineMeta()` | Planned | `needlestart` | Define route metadata. |
+| `defineMeta()` | Planned | `needlestart` | Define route metadata for SEO, social cards, sitemap output, robots policy, and structured data. |
 | `staticPage()` | Planned | `needlestart` | Mark a route as static. |
 | `prerender()` | Planned | `needlestart` | Mark a route as prerendered with revalidation metadata. |
 | `ssr()` | Planned | `needlestart` | Mark a route as server-rendered. |
@@ -98,7 +104,15 @@ Generated JSON must use normalized paths, stable ordering, schema versions, and 
 ## Related References
 
 - [File Conventions](file-conventions.md)
+- [Routing Contract](routing-contract.md)
+- [API Route Contract](api-route-contract.md)
+- [Schema Contract](schema-contract.md)
+- [Cache Contract](cache-contract.md)
+- [SEO Contract](seo-contract.md)
 - [Compiler IR](compiler-ir.md)
+- [CLI JSON Contract](cli-json-contract.md)
+- [Diagnostics Contract](diagnostics-contract.md)
+- [Configuration Contract](config-contract.md)
 - [Runtime Contract](runtime-contract.md)
 - [Needle Map](needle-map.md)
 - [Agent Kernel](agent-kernel.md)

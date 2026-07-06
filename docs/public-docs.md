@@ -8,6 +8,8 @@ This page defines what must be true before repository docs become public website
 
 The future public website Markdown source lives in `docs/public/`.
 
+The planned content model, route mapping, frontmatter contract, and renderer decision criteria live in [Public Docs Site Architecture](public-docs-site-architecture.md).
+
 ## Requirements
 
 - Each public page has a clear audience.
@@ -18,10 +20,14 @@ The future public website Markdown source lives in `docs/public/`.
 - Security claims link to implementation and tests.
 - Navigation matches `docs/website-content-map.md`.
 - Public-facing pages in `docs/public/` link back to source-of-truth reference docs.
+- Public project structure pages distinguish app structure, repository structure, generated files, and docs-only agent playbooks.
+- Public pages have metadata or a documented frontmatter path before launch.
+- Public docs can generate or validate `docs-index.json`, `llms.txt`, and `llms-full.txt`.
 
 ## Public Page Readiness Checklist
 
 - Page has status and audience.
+- Page has title, description, source path, and canonical route metadata once the docs parser exists.
 - Page has a one-paragraph summary.
 - Page links to reference docs for exact APIs.
 - Page links to related guides when appropriate.
@@ -29,6 +35,7 @@ The future public website Markdown source lives in `docs/public/`.
 - Page avoids unsupported comparisons.
 - Page has examples that are verified or marked planned.
 - Page has no local-only file paths except repository links.
+- Page content and navigation do not rely on color alone, keyboard traps, or hidden status text.
 
 ## Public Website Tone
 
@@ -43,6 +50,7 @@ The future public website Markdown source lives in `docs/public/`.
 - At least one verified app example exists.
 - Quick-start commands are real.
 - The docs site navigation is implemented.
+- The docs site accessibility behavior has been reviewed against [Accessibility Contract](accessibility-contract.md).
 - Security, governance, and release docs have maintainer contact details.
 
 ## Public Content Source

@@ -19,4 +19,6 @@ NeedleStart plans to use file-based routing under `app/`.
 
 - [File Conventions](../../file-conventions.md)
 - [Routing](../../routing.md)
+- [Routing Contract](../../routing-contract.md)
+- [Public Routing Reference](routing.md)
 

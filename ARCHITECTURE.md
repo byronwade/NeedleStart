@@ -19,6 +19,8 @@ Recommended stack:
 
 This split lets NeedleStart move quickly without reinventing a bundler while putting framework intelligence where it belongs: at build time.
 
+Speed-sensitive architecture choices must follow `docs/speed-decisions.md`. That decision record is the guardrail for Vite/Rolldown, Bun, React streaming, route budgets, hot APIs, explicit caching, compiler scaling, and benchmark evidence.
+
 ## System Layers
 
 ### Layer 1: Developer Framework
@@ -51,6 +53,8 @@ Bun is the default runtime because it provides a high-performance HTTP server, p
 
 Vite/Rolldown is the initial frontend build foundation. It provides HMR, React transforms, CSS handling, asset handling, and plugin compatibility. NeedleStart should not begin with a custom bundler.
 
+Large-app development may evaluate Vite bundled dev mode when unbundled module fan-out becomes measurable, but that must be fixture-backed before becoming a default.
+
 ### Compiler
 
 The custom Needle compiler owns framework-specific intelligence that Vite does not understand:
@@ -66,6 +70,8 @@ The custom Needle compiler owns framework-specific intelligence that Vite does n
 ### Server
 
 The production server should be generated and small. It should load the build manifest, route requests, serve static assets, call SSR handlers, call API handlers, and expose predictable error behavior.
+
+Request routing must stay manifest-driven. Runtime route discovery, source-file crawling, and app graph generation do not belong on the production request path.
 
 ## Request Flow
 

@@ -26,9 +26,12 @@ bun dev
 
 The repository has no package scaffold yet. Use [Phase 1 Build Plan](../../phase-1-build-plan.md) to start implementation.
 
+The future default starter must follow [Examples And Templates Contract](../../examples-contract.md) before this guide can be marked verified.
+
 ## Related
 
 - [Getting Started](../../getting-started.md)
+- [Examples](../reference/examples.md)
 - [CLI Reference](../reference/cli.md)
 - [File Conventions](../reference/file-conventions.md)
 

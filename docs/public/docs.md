@@ -9,6 +9,7 @@ This is the planned public documentation landing page for NeedleStart.
 ## Start Here
 
 - [Create An App](guides/create-app.md): target onboarding flow.
+- [Project Structure](reference/project-structure.md): planned app structure, generated output, and repository layout.
 - [File Conventions](reference/file-conventions.md): planned app structure and route files.
 - [CLI Reference](reference/cli.md): planned `needle` commands.
 - [Roadmap](roadmap.md): what exists now and what comes next.
@@ -36,8 +37,22 @@ These guides describe target workflows. They are not verified until implementati
 ## Reference
 
 - [Configuration](reference/config.md)
+- [Diagnostics](reference/diagnostics.md)
+- [Adapters](reference/adapters.md)
+- [Examples](reference/examples.md)
+- [Project Structure](reference/project-structure.md)
+- [File Conventions](reference/file-conventions.md)
+- [Routing](reference/routing.md)
+- [API Routes](reference/api-routes.md)
+- [Schema](reference/schema.md)
+- [Cache](reference/cache.md)
+- [SEO](reference/seo.md)
+- [Accessibility](reference/accessibility.md)
+- [Security](reference/security.md)
+- [Performance](reference/performance.md)
 - [Render Modes](reference/render-modes.md)
 - [Manifest Contracts](reference/manifest-contracts.md)
+- [Testing](reference/testing.md)
 - [MCP Reference](reference/mcp.md)
 
 ## Project And Community

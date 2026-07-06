@@ -32,5 +32,7 @@ export const meta = defineMeta({
 ## Related
 
 - [SEO-First Rendering](../concepts/seo-first.md)
+- [SEO Reference](../reference/seo.md)
 - [SEO Engine](../../seo-engine.md)
+- [SEO Contract](../../seo-contract.md)
 

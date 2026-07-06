@@ -2,12 +2,15 @@
 
 NeedleStart should make route performance visible and enforceable. See `docs/speed-strategy.md` for the whole-system speed model across compiler, runtime, client payload, app graph, agents, and benchmarks.
 
+The planned route budget, report, diagnostic, benchmark, and claim-evidence rules are defined in [Performance Contract](performance-contract.md).
+
 ## Goals
 
 - Report per-route JS size.
 - Report per-route CSS size.
 - Warn on public-page hydration bloat.
 - Track route mode.
+- Track route delivery evidence for images, fonts, scripts, resource hints, compression, 103 Early Hints, and bfcache eligibility.
 - Expose JSON diagnostics for agents.
 - Support reproducible benchmarks.
 
@@ -65,6 +68,8 @@ needle bench large-build
 ```
 
 Benchmark claims must follow `docs/benchmark-methodology.md`. Public performance claims need raw data, environment metadata, and comparable fixture details.
+
+Public-facing performance expectations live in [Public Performance Reference](public/reference/performance.md).
 
 ## Definition of Done
 

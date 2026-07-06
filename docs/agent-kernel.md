@@ -30,6 +30,8 @@ docs-index.json
 
 See `docs/machine-readable-docs.md` for the planned machine-readable documentation contract.
 
+CLI-facing agent commands should follow `docs/cli-json-contract.md` for `--json` envelopes, diagnostics, and exit codes.
+
 ## Commands
 
 Planned commands:

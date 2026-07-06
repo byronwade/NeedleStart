@@ -6,6 +6,8 @@ Audience: app developers, framework contributors, AI agents.
 
 This page is the future reference for `needle` commands. No CLI implementation exists yet.
 
+Machine-readable command behavior is planned in [CLI JSON Contract](cli-json-contract.md). Human output may evolve, but `--json` output, exit codes, diagnostic codes, and schema versions become stable contracts once released.
+
 ## Planned Commands
 
 | Command | Purpose | JSON output required? |
@@ -32,6 +34,24 @@ Each command must eventually document:
 - Stable `--json` output.
 - Generated files read or written.
 - Checks or tests that prove behavior.
+
+## Planned Global Flags
+
+These global flags are planned, not implemented:
+
+| Flag | Purpose |
+| --- | --- |
+| `--json` | Emit structured JSON for commands that support automation. |
+| `--cwd <path>` | Run against a specific project root. |
+| `--config <path>` | Use a specific `needle.config.ts`. |
+| `--verbose` | Emit additional human-readable progress or diagnostic detail. |
+| `--quiet` | Reduce non-essential human output. |
+
+Do not rely on these flags until `@needle/cli` exists and tests pass.
+
+## Planned Exit Code Policy
+
+Exit codes are planned in [CLI JSON Contract](cli-json-contract.md). Commands should return `0` for success and non-zero for usage errors, validation failures, check failures, unsafe edit rejection, missing implementation, or unavailable dependencies.
 
 ## Out Of Scope
 

@@ -6,6 +6,8 @@ Audience: security reviewers, maintainers, AI agents.
 
 This page is the docs-level security guide. See root `SECURITY.md` for vulnerability reporting policy.
 
+The detailed planned security requirements for high-risk implementation work are defined in [Security Contract](security-contract.md).
+
 ## High-Risk Product Areas
 
 - Auth and sessions.
@@ -17,6 +19,13 @@ This page is the docs-level security guide. See root `SECURITY.md` for vulnerabi
 - MCP write tools.
 - Environment variables.
 - Runtime request routing.
+
+Configuration and environment-variable behavior is documented in [Configuration Contract](config-contract.md).
+API route request, validation, cache, and error behavior is documented in [API Route Contract](api-route-contract.md).
+Cache safety rules are documented in [Cache Contract](cache-contract.md).
+Diagnostic sanitization and secret-exclusion rules are documented in [Diagnostics Contract](diagnostics-contract.md).
+Runtime and adapter production-error behavior is documented in [Runtime Contract](runtime-contract.md) and [Adapter Contract](adapter-contract.md).
+Public-facing security expectations are summarized in [Public Security Reference](public/reference/security.md).
 
 ## Documentation Requirements
 

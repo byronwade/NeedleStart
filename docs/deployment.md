@@ -6,6 +6,8 @@ Audience: app developers, deployers, adapter maintainers.
 
 NeedleStart should support Bun by default while keeping Node and static output credible through adapters.
 
+Adapter output, manifest fields, capability rules, environment variables, health endpoint behavior, and deployment evidence requirements are defined in [Adapter Contract](adapter-contract.md).
+
 ## Planned Adapter Paths
 
 - `@needle/adapter-bun`: default production server path.
@@ -27,6 +29,8 @@ NeedleStart should support Bun by default while keeping Node and static output c
 ## Rule
 
 Do not publish deployment claims until the adapter path exists and has integration tests.
+
+Do not mark Bun, Node, static, or hosted-platform deployment as supported until [Compatibility](compatibility.md) has evidence and [Adapter Contract](adapter-contract.md) fixture requirements are satisfied.
 
 ## Out Of Scope
 

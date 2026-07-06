@@ -11,8 +11,10 @@ NeedleStart should be fast across the whole workflow: development startup, route
 - Static first when safe.
 - Move work to build time when possible.
 - Keep runtime adapters small.
+- Follow documented speed decisions before changing defaults.
 - Use explicit render modes.
 - Generate hot API handlers for selected performance-critical routes.
+- Keep images, fonts, scripts, compression, resource hints, and navigation behavior budgeted.
 - Keep app graph queries fast and deterministic.
 - Keep agent context compact.
 - Require raw benchmark evidence before public speed claims.
@@ -31,6 +33,7 @@ No public benchmark claim should be made without:
 ## Reference
 
 - [Speed Strategy](../../speed-strategy.md)
+- [Speed Decisions](../../speed-decisions.md)
 - [Benchmark Honesty](../deployment/benchmarks.md)
 - [Performance](../../performance.md)
 

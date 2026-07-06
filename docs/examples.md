@@ -6,10 +6,15 @@ Audience: app developers, framework contributors, AI agents.
 
 Examples should become the fastest way to understand NeedleStart behavior once implementation exists.
 
+The detailed requirements for examples, templates, verification evidence, and create-command integration are defined in [Examples And Templates Contract](examples-contract.md).
+
 ## Planned Examples
 
 - `basic`
 - `blog-seo`
+- `api-route`
+- `hot-api`
+- `adapter-node`
 - `ecommerce`
 - `dashboard`
 - `agent-demo`
@@ -30,19 +35,25 @@ Use these labels:
 
 - Planned: example is a target.
 - Scaffolded: files exist, behavior incomplete.
-- Verified: commands and checks pass.
+- Runnable: commands start, but full evidence is incomplete.
+- Verified: commands, tests, generated artifacts, and docs claims pass.
+- Deprecated: retained for migration or compatibility notes.
 
 ## Minimum Example README
 
 Every example should eventually include:
 
 - What it demonstrates.
+- Status label.
+- Compatible NeedleStart version or workspace commit.
 - Commands to run.
 - Expected pages or endpoints.
 - Generated `.needle/*` artifacts.
 - Tests to run.
 - Known limitations.
 - Agent workflow notes when relevant.
+
+Do not link an example from public onboarding as verified until the example meets [Examples And Templates Contract](examples-contract.md).
 
 ## Agent Demo Requirements
 

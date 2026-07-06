@@ -4,12 +4,16 @@ NeedleStart defaults to Bun, but the framework must not create an all-in Bun ado
 
 Adapter support begins early so Bun is the fast default and Node/static output are credible deployment paths.
 
+The planned adapter input/output contract, manifest shape, capability rules, environment variables, health endpoint behavior, diagnostics, fixture requirements, and compatibility evidence are defined in [Adapter Contract](adapter-contract.md).
+
 ## Goals
 
 - Keep user application code runtime-portable.
 - Isolate Bun-specific APIs inside adapter packages.
 - Generate adapter-aware server entries.
 - Document adapter capabilities in build output.
+- Keep compression, 103 Early Hints, final `Link` headers, and bfcache-aware delivery adapter-owned and evidence-backed.
+- Keep generated route tables canonical, while allowing adapter-native route dispatch only after parity and timing evidence.
 - Benchmark Bun, Node, static, and comparable framework paths publicly.
 
 ## Initial Adapters
@@ -28,6 +32,7 @@ Responsibilities:
 
 - Use `Bun.serve`.
 - Use generated route matcher.
+- Optionally lower compatible generated routes into native `Bun.serve({ routes })` when evidence proves it is faster.
 - Serve static assets.
 - Serve prerendered HTML.
 - Invoke SSR handlers.
@@ -68,6 +73,8 @@ export default defineConfig({
 
 `runtime` describes the default local execution target. `adapter` controls production build output.
 
+Config loading and validation rules are documented in `docs/config-contract.md`. Adapter packages should consume normalized generated output and should not require user application code to import Bun-only APIs.
+
 ## Generated Server Entry
 
 ```ts
@@ -94,10 +101,27 @@ The compiler chooses the adapter import during build. Runtime packages consume g
     "ssr": true,
     "api": true,
     "hotApi": true,
-    "streaming": false
+    "streaming": false,
+    "nativeRouteDispatch": {
+      "enabled": false,
+      "source": "generated-route-table",
+      "modes": []
+    },
+    "compression": {
+      "staticPrecompressed": true,
+      "dynamicText": true,
+      "encodings": ["br", "gzip"]
+    },
+    "resourceHints": {
+      "htmlLinks": true,
+      "earlyHints103": false
+    },
+    "bfcacheAwareHeaders": true
   }
 }
 ```
+
+Detailed manifest fields and capability semantics are defined in [Adapter Contract](adapter-contract.md).
 
 ## Benchmark Requirements
 
@@ -122,7 +146,7 @@ Measure:
 
 Use this public message:
 
-> Default experience is Bun for maximum speed. Everything also works on Node through the adapter layer.
+> Default experience is Bun for maximum speed, with Node and static adapter paths designed early enough to avoid Bun lock-in.
 
 Performance claims must be backed by reproducible benchmarks.
 

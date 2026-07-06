@@ -20,5 +20,10 @@ Planned generated files include:
 ## Source
 
 - [Manifest Contracts](../../manifest-contracts.md)
+- [Routing Contract](../../routing-contract.md)
+- [API Route Contract](../../api-route-contract.md)
+- [Schema Contract](../../schema-contract.md)
+- [Cache Contract](../../cache-contract.md)
+- [Diagnostics Contract](../../diagnostics-contract.md)
 - [Machine-Readable Documentation](../../machine-readable-docs.md)
 
