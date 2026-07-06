@@ -36,6 +36,7 @@ NeedleStart is still in Phase 0. Unless `docs/status.md` marks a behavior implem
 - [Benchmark System](benchmarks.md): benchmark harness, fixtures, metrics, results contracts, and comparison targets.
 - [Benchmark Methodology](benchmark-methodology.md): fairness rules, reproducibility, raw data, and public reporting policy.
 - [Accessibility Strategy](accessibility.md): semantic HTML, accessibility diagnostics, and safe edit considerations.
+- [App Graph Visual Map](app-graph-visual.md): Mermaid diagrams showing the product spine, node families, route-level map, affected checks, MCP flow, and safe edits.
 - [Needle Map](needle-map.md): graph model, nodes, edges, and queries.
 - [Agent Kernel](agent-kernel.md): agent context, safe edits, and generated agent files.
 - [MCP Server](mcp-server.md): planned MCP resources and tools.
