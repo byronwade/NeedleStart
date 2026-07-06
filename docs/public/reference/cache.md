@@ -57,7 +57,7 @@ export const config = {
 
 This behavior is not implemented yet. The repository is in Phase 1 scaffold, so examples are target API design rather than verified commands.
 
-The scaffolded `@lumina/core` `CachePlan` currently supports only `{ mode: "no-store" }` and a public placeholder with `ttlSeconds`, optional `staleWhileRevalidateSeconds`, and `tags`. The broader cache API shown above remains planned until runtime behavior, manifests, fixtures, and adapter tests exist.
+The Phase 1A `@lumina/core` `CachePlan` is contract-backed for metadata shape. It supports explicit `mode` values of `no-store`, `immutable`, `ttl`, and `stale-while-revalidate`; `scope` values of `browser`, `shared`, `server`, and `micro`; optional `ttlSeconds`, `staleSeconds`, `tags`, and `headers`; and a required `reason`. Runtime behavior, manifests, fixtures, revalidation, micro-cache storage, and adapter tests remain planned.
 
 ## Source
 

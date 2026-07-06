@@ -51,33 +51,56 @@ describe("Phase 1 scaffold", () => {
   test("shared core types are available for future packages", () => {
     const renderMode: RenderMode = "static";
     const app: LuminaApp = {
+      schemaVersion: "lumina.app.v0",
       name: "fixture",
-      root: "/repo",
+      root: ".",
+      routeRoot: "app",
+      generatedBy: {
+        package: "@lumina/compiler",
+        version: "0.0.0",
+      },
       routes: [],
       diagnostics: [],
     };
     const route: RouteNode = {
       id: "route:/",
+      kind: "page",
       path: "/",
       sourceFile: "app/page.tsx",
       renderMode,
+      segments: [],
+      params: [],
+      layouts: [],
+      routeGroups: [],
+      diagnostics: [],
     };
     const diagnostic: LuminaDiagnostic = {
       code: "LUMINA_PLACEHOLDER",
       severity: "info",
+      category: "manifest",
       message: "Placeholder diagnostic shape.",
     };
-    const cache: CachePlan = { mode: "no-store" };
+    const cache: CachePlan = {
+      mode: "no-store",
+      scope: "server",
+      reason: "Dynamic route defaults to no-store until explicit caching is configured.",
+    };
     const publicCache: CachePlan = {
-      mode: "public",
+      mode: "ttl",
+      scope: "shared",
       ttlSeconds: 60,
-      staleWhileRevalidateSeconds: 300,
+      staleSeconds: 300,
       tags: ["home"],
+      reason: "Explicit shared TTL cache policy.",
     };
     const adapter: AdapterManifest = {
       schemaVersion: "lumina.adapter.v0",
       adapter: "bun",
       package: "@lumina/adapter-bun",
+      generatedBy: {
+        package: "@lumina/compiler",
+        version: "0.0.0",
+      },
       runtime: { name: "bun" },
       capabilities: {},
       unsupported: [],
@@ -97,7 +120,7 @@ describe("Phase 1 scaffold", () => {
     expect(diagnostic.severity).toBe("info");
     expect(cache.mode).toBe("no-store");
     expect(publicCache.ttlSeconds).toBe(60);
-    expect(publicCache.staleWhileRevalidateSeconds).toBe(300);
+    expect(publicCache.staleSeconds).toBe(300);
     expect(adapter.runtime.name).toBe("bun");
     expect(edge.why).toContain("scaffold");
     expect(luminaCoreStatus.implementsRuntimeBehavior).toBe(false);

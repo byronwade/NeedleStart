@@ -1,14 +1,35 @@
 export type PackageStatus = {
   name: string;
-  phase: "scaffold";
+  phase: "scaffold" | "implemented";
   implementsRuntimeBehavior: false;
 };
 
 export const luminaCoreStatus = {
   name: "@lumina/core",
-  phase: "scaffold",
+  phase: "implemented",
   implementsRuntimeBehavior: false,
 } as const satisfies PackageStatus;
+
+export type GeneratedBy = {
+  package: string;
+  version: string;
+};
+
+export type SourceReference = {
+  file: string;
+  owner?: "compiler" | "runtime" | "adapter" | "cli" | "agent" | "mcp" | "devtools" | string;
+};
+
+export type DiagnosticSource = SourceReference;
+
+export type SourceLocation = {
+  line: number;
+  column: number;
+  endLine?: number;
+  endColumn?: number;
+};
+
+export type DiagnosticLocation = SourceLocation;
 
 export type RenderMode =
   | "static"
@@ -36,44 +57,131 @@ export type GraphEdge = {
   source: GraphEdgeSource;
   confidence: GraphEdgeConfidence;
   why: string;
+  fields?: string[];
+  risk?: "low" | "medium" | "high";
 };
 
 export type DiagnosticSeverity = "info" | "warning" | "error";
 
+export type DiagnosticCategory =
+  | "config"
+  | "routing"
+  | "rendering"
+  | "api"
+  | "schema"
+  | "cache"
+  | "seo"
+  | "manifest"
+  | "agent"
+  | "security"
+  | "performance"
+  | "runtime";
+
+export type DiagnosticRelatedLocation = {
+  file: string;
+  line?: number;
+  column?: number;
+  message?: string;
+};
+
+export type DiagnosticTag =
+  | "routing"
+  | "rendering"
+  | "api"
+  | "schema"
+  | "cache"
+  | "seo"
+  | "manifest"
+  | "agent"
+  | "security"
+  | "performance"
+  | "runtime"
+  | "conflict"
+  | "unsupported"
+  | "strict";
+
+export type LuminaDiagnosticChild = {
+  code?: string;
+  message: string;
+  source?: SourceReference;
+  location?: SourceLocation;
+};
+
 export type LuminaDiagnostic = {
   code: string;
   severity: DiagnosticSeverity;
+  category: DiagnosticCategory;
   message: string;
   docsUrl?: string;
-  source?: {
-    file: string;
-    line?: number;
-    column?: number;
-  };
+  docs?: string;
+  source?: SourceReference;
+  location?: SourceLocation;
+  routeId?: string;
+  routePath?: string;
+  why?: string;
+  remediation?: string;
+  children?: LuminaDiagnosticChild[];
+  related?: DiagnosticRelatedLocation[];
+  tags?: DiagnosticTag[];
 };
 
-export type CachePlan =
+export type CacheMode = "no-store" | "immutable" | "ttl" | "stale-while-revalidate";
+
+export type CacheScope = "browser" | "shared" | "server" | "micro";
+
+export type CachePlan = {
+  mode: CacheMode;
+  scope: CacheScope;
+  ttlSeconds?: number;
+  staleSeconds?: number;
+  tags?: string[];
+  headers?: Record<string, string>;
+  reason: string;
+};
+
+export type RouteKind = "page" | "layout" | "api" | "notFound" | "error";
+
+export type RouteSegment =
   | {
-      mode: "no-store";
+      kind: "static" | "group";
+      value: string;
     }
   | {
-      mode: "public";
-      ttlSeconds: number;
-      staleWhileRevalidateSeconds?: number;
-      tags?: string[];
+      kind: "dynamic";
+      name: string;
+    }
+  | {
+      kind: "catchAll";
+      name: string;
     };
+
+export type RouteParam = {
+  name: string;
+  type: "string" | "string[]";
+  required: boolean;
+};
 
 export type RouteNode = {
   id: string;
+  kind: RouteKind;
   path: string;
   sourceFile: string;
   renderMode: RenderMode;
+  segments: RouteSegment[];
+  params: RouteParam[];
+  layouts: string[];
+  routeGroups: string[];
   cache?: CachePlan;
+  diagnostics: LuminaDiagnostic[];
+  metadata?: Record<string, unknown>;
 };
 
 export type LuminaApp = {
+  schemaVersion: "lumina.app.v0" | string;
   name: string;
   root: string;
+  routeRoot: string;
+  generatedBy: GeneratedBy;
   routes: RouteNode[];
   diagnostics: LuminaDiagnostic[];
 };
@@ -82,6 +190,12 @@ export type AdapterManifest = {
   schemaVersion: string;
   adapter: "bun" | "node" | "static" | string;
   package: string;
+  generatedBy: GeneratedBy;
+  source?: {
+    routesManifest?: string;
+    renderManifest?: string;
+    seoReport?: string;
+  };
   runtime: {
     name: "bun" | "node" | "static" | string;
     versionRange?: string;
@@ -93,6 +207,7 @@ export type AdapterManifest = {
     feature: string;
     reason: string;
   }>;
+  diagnostics?: LuminaDiagnostic[];
 };
 
 export function createGraphEdge(edge: GraphEdge): GraphEdge {

@@ -30,7 +30,7 @@ Lumina is moving toward Alpha. This checkout is in Phase 1: monorepo scaffold. T
 
 Lumina is preparing an MVP Alpha focused on route discovery, explicit render modes, the first Lumina Map output, and CLI inspection. The current repository is still Phase 1 scaffold; MVP commands below are target behavior until implementation and fixture evidence exist.
 
-Current implemented scope is the Bun workspace scaffold, package placeholders, shared core types, CI, and verification scripts. Route discovery, rendering, CLI behavior, runtime adapter behavior, Lumina Map generation, MCP tools, and safe edits remain planned.
+Current implemented scope is the Bun workspace scaffold, package placeholders, contract-backed shared core model types, CI, and verification scripts. Route discovery, rendering, CLI behavior, runtime adapter behavior, Lumina Map generation, MCP tools, and safe edits remain planned.
 
 Package manifest versions currently use `0.0.0` as private scaffold placeholder metadata. No packages are published, and these placeholder versions are not release tags, published package versions, or compatibility guarantees.
 
@@ -117,7 +117,7 @@ bun run performance:check
 bun run check
 ```
 
-These commands verify the package scaffold, documentation links, root docs metadata, docs navigation coverage, package-map/build-plan/backlog alignment, planned CLI command surface and prefix consistency, status-drift guardrails, config/adapter contract terms, structure rules, shared-core type ownership, shared-core scaffold terminology, performance-claim guardrails, TypeScript surface, and placeholder tests. They do not prove route discovery, rendering, CLI behavior, runtime adapter behavior, Lumina Map generation, MCP tools, or safe edits.
+These commands verify the package scaffold, documentation links, root docs metadata, docs navigation coverage, package-map/build-plan/backlog alignment, planned CLI command surface and prefix consistency, status-drift guardrails, config/adapter contract terms, structure rules, shared-core type ownership, shared-core contract terminology, performance-claim guardrails, TypeScript surface, and tests. They do not prove route discovery, rendering, CLI behavior, runtime adapter behavior, Lumina Map generation, MCP tools, or safe edits.
 
 ## Planned Key Features
 
@@ -458,9 +458,9 @@ Start here:
 
 This repository is in Phase 1: monorepo scaffold.
 
-The repository now has a Bun workspace, package placeholders, shared core types, CI, and enforcement scripts for docs, structure, performance-claim hygiene, type checking, and placeholder tests.
+The repository now has a Bun workspace, package placeholders, contract-backed shared core model types, CI, and enforcement scripts for docs, structure, performance-claim hygiene, type checking, and package tests.
 
-No framework runtime implementation exists yet. Route discovery, rendering, CLI behavior, runtime adapter behavior, Lumina Map generation, MCP tools, and safe edits remain planned. The next implementation stage is Phase 1A shared core model hardening, Phase 1B early benchmark and fixture skeleton, Phase 1C large-repo workspace graph planning, then route discovery.
+No framework runtime implementation exists yet. Route discovery, rendering, CLI behavior, runtime adapter behavior, Lumina Map generation, MCP tools, and safe edits remain planned. The next implementation stage is Phase 1B early benchmark and fixture skeleton, Phase 1C large-repo workspace graph planning, then route discovery.
 
 ## Philosophy
 

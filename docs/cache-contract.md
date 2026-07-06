@@ -36,22 +36,7 @@ Authenticated, session-sensitive, billing, webhook, and admin routes must never 
 
 ## Cache Plan Shape
 
-The Phase 1 scaffold currently exposes a minimal `CachePlan` placeholder from `@lumina/core`:
-
-```ts
-type CachePlan =
-  | { mode: "no-store" }
-  | {
-      mode: "public"
-      ttlSeconds: number
-      staleWhileRevalidateSeconds?: number
-      tags?: string[]
-    }
-```
-
-This scaffold shape exists so packages, docs, and tests can share one owner for cache metadata before cache behavior exists. It is not the final cache model.
-
-Planned expanded cache plan:
+Phase 1A implements the shared `CachePlan` type in `@lumina/core`:
 
 ```ts
 type CachePlan = {
@@ -65,6 +50,8 @@ type CachePlan = {
 }
 ```
 
+This is a contract-backed metadata shape, not implemented runtime caching behavior. Cache header generation, cache reports, revalidation, micro-cache storage, adapter HTTP tests, and cache diagnostics remain planned until the owning implementation tasks land.
+
 Rules:
 
 - `mode` must be explicit.
@@ -73,7 +60,7 @@ Rules:
 - Tags must be deterministic strings.
 - Header output must be derived from the plan, not separately hand-authored by adapters.
 
-The final expanded type belongs in `@lumina/core` when implementation starts. Any implementation PR that changes `CachePlan` must update this page, the public cache reference, fixtures, scaffold tests, and generated manifest examples in the same change.
+Any implementation PR that changes `CachePlan` must update this page, the public cache reference, fixtures, type tests, and generated manifest examples in the same change.
 
 ## Public API Draft
 

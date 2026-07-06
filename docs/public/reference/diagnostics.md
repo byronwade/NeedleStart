@@ -8,7 +8,7 @@ Lumina diagnostics are planned to use stable codes, structured source locations,
 
 ## Planned Shape
 
-The scaffolded `@lumina/core` `LuminaDiagnostic` currently uses `code`, `severity`, `message`, optional `docsUrl`, and optional `source.file`, `source.line`, and `source.column`. The expanded fields below remain planned until diagnostics are implemented across compiler, CLI, manifests, and public docs.
+The Phase 1A `@lumina/core` `LuminaDiagnostic` is contract-backed for shared metadata shape. It includes `code`, `severity`, `category`, `message`, optional `docsUrl`, optional `docs`, optional `source.file`, optional `location`, optional route fields, `why`, `remediation`, `related`, `children`, and `tags`. Diagnostic production and rendering across compiler, CLI, manifests, and public docs remain planned.
 
 ```json
 {
@@ -71,7 +71,7 @@ The scaffolded `@lumina/core` `LuminaDiagnostic` currently uses `code`, `severit
 - Human output can include code frames, but automation should use JSON output.
 - Command status maps to diagnostics by default: no diagnostics or only `info` diagnostics means `ok`, one or more `warning` diagnostics means `warning`, and one or more `error` diagnostics means `error`.
 - Diagnostics should link to the most specific docs page once the public docs site exists.
-- `why`, `related`, `children`, and `tags` fields are planned for richer explanations, related locations, nested context, and filtering.
+- `why`, `related`, `children`, and `tags` fields are part of the shared type; framework behavior that populates them remains planned.
 
 ## Source
 

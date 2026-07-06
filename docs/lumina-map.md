@@ -186,7 +186,7 @@ export type GraphEdge = {
 }
 ```
 
-The current scaffolded `@lumina/core` `GraphEdge` type already requires `kind`, `source`, `confidence`, and `why`. Additional semantic fields remain planned until graph generation exists.
+The Phase 1A `@lumina/core` `GraphEdge` type requires `kind`, `source`, `confidence`, and `why`, with optional `fields` and `risk` context. Graph generation and semantic edge production remain planned.
 
 ## CLI
 

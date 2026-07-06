@@ -21,18 +21,21 @@ Compiler diagnostics should follow [Diagnostics Contract](diagnostics-contract.m
 
 ## Lumina App
 
-The Phase 1 scaffold currently exposes a minimal `LuminaApp` from `@lumina/core`:
+Phase 1A implements the shared `LuminaApp` shape in `@lumina/core`:
 
 ```ts
 export type LuminaApp = {
+  schemaVersion: "lumina.app.v0" | string
   name: string
   root: string
+  routeRoot: string
+  generatedBy: GeneratedBy
   routes: RouteNode[]
   diagnostics: LuminaDiagnostic[]
 }
 ```
 
-This scaffold shape is intentionally smaller than the planned compiler IR. It exists so package boundaries, docs, and tests share one owner for the app-level model before route discovery, layout discovery, schema extraction, and graph generation exist.
+This contract-backed shared shape exists so package boundaries, docs, and tests share one owner for the app-level model before route discovery, layout discovery, schema extraction, and graph generation exist.
 
 Planned expanded compiler IR shape:
 
@@ -55,7 +58,7 @@ Large-repo workspace graph, shared-file identity, and affected build planning ar
 
 ## Route Node
 
-The Phase 1 scaffold currently exposes a minimal `RouteNode` and `RenderMode` from `@lumina/core`:
+Phase 1A implements the shared `RouteNode` and `RenderMode` contracts in `@lumina/core`:
 
 ```ts
 export type RenderMode =
@@ -69,22 +72,29 @@ export type RenderMode =
 
 export type RouteNode = {
   id: string
+  kind: "page" | "layout" | "api" | "notFound" | "error"
   path: string
   sourceFile: string
   renderMode: RenderMode
+  segments: RouteSegment[]
+  params: RouteParam[]
+  layouts: string[]
+  routeGroups: string[]
   cache?: CachePlan
+  diagnostics: LuminaDiagnostic[]
+  metadata?: Record<string, unknown>
 }
 ```
 
-The planned compiler IR below adds route kind, params, layouts, metadata, ownership, and other compiler-only details. Any implementation PR that changes the shared scaffold types must update this page, `@lumina/core`, scaffold tests, and generated manifest examples together.
+The planned compiler IR below adds ownership, discovered components, APIs, schemas, graph data, and other compiler-only details. Any implementation PR that changes the shared core model must update this page, `@lumina/core`, type tests, and generated manifest examples together.
 
 ```ts
 export type RouteNode = {
   id: string
   path: string
   sourceFile: string
-  kind: "page" | "api"
-  params: Param[]
+  kind: "page" | "layout" | "api" | "notFound" | "error"
+  params: RouteParam[]
   layouts: string[]
   renderMode: RenderMode
   meta?: MetaDefinition

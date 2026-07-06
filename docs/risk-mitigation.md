@@ -159,7 +159,7 @@ Cut from the first public release:
 
 - Runtime stays tiny.
 - Compiler and build-time graph carry the complexity.
-- Shared immutable data model must be stabilized in `@lumina/core`: `LuminaApp`, `RouteNode`, `GraphEdge`, `LuminaDiagnostic`, `RenderMode`, `CachePlan`, and `AdapterManifest`.
+- Shared immutable data model is stabilized in `@lumina/core`: `LuminaApp`, `RouteNode`, `GraphEdge`, `LuminaDiagnostic`, `RenderMode`, `CachePlan`, and `AdapterManifest`.
 - CLI, compiler, map, agent, MCP, and devtools must read the same core model instead of duplicating local shapes.
 - Build pipeline is discovery -> IR -> graph augmentation -> codegen -> manifests.
 - Runtime consumes generated artifacts and should not rediscover source structure.
@@ -448,7 +448,7 @@ Safe edits produce zero silent breaks in demo scenarios and catch nearly all int
 
 After the monorepo skeleton:
 
-1. Stabilize `LuminaApp`, `RouteNode`, `GraphEdge`, `LuminaDiagnostic`, `RenderMode`, `CachePlan`, and `AdapterManifest` in `@lumina/core` beyond the current scaffold placeholders.
+1. Keep `LuminaApp`, `RouteNode`, `GraphEdge`, `LuminaDiagnostic`, `RenderMode`, `CachePlan`, and `AdapterManifest` centralized in `@lumina/core` as downstream packages begin using them.
 2. Implement the file-level graph and basic affected query as the first non-trivial feature.
 3. Build an agent simulator script that uses MCP tools once available to perform metadata edits and assert that checks pass.
 4. Write the marketing one-pager: "Lumina: the framework where changing code does not feel like operating without a map."

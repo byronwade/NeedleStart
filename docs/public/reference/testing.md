@@ -17,7 +17,7 @@ bun run performance:check
 bun run check
 ```
 
-These commands are verified for the Phase 1 scaffold. They prove scaffold integrity, documentation links and guardrails, package structure, performance documentation hygiene, TypeScript validity, and placeholder tests. They do not prove route discovery, rendering, runtime adapter behavior, Lumina Map generation, MCP tools, or safe edits.
+These commands are verified for the Phase 1 scaffold. They prove scaffold integrity, documentation links and guardrails, package structure, performance documentation hygiene, TypeScript validity, scaffold tests, and shared core model tests. They do not prove route discovery, rendering, runtime adapter behavior, Lumina Map generation, MCP tools, or safe edits.
 
 ## Future Target Commands
 

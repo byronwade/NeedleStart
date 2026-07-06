@@ -14,7 +14,7 @@ Lumina is an app-graph-native, SEO-first React framework for humans and AI agent
 
 Current phase: Phase 1, monorepo scaffold.
 
-The repository currently contains documentation, a Bun workspace scaffold, package placeholders, shared core types, CI, and enforcement scripts. Do not invent implemented framework behavior in docs unless the implementation exists or the text clearly marks it as planned.
+The repository currently contains documentation, a Bun workspace scaffold, package placeholders, contract-backed shared core model types, CI, and enforcement scripts. Do not invent implemented framework behavior in docs unless the implementation exists or the text clearly marks it as planned.
 
 The next prototype target is defined in `docs/mvp-alpha-scope.md`. Agents must keep MVP Alpha scope language aligned with README.md, this file, status, roadmap, getting started, examples, file conventions, and Lumina Map docs.
 
@@ -208,7 +208,7 @@ bun run performance:check
 bun run check
 ```
 
-These commands verify the scaffold, docs links, root docs metadata, docs navigation coverage, package-map/build-plan/backlog alignment, planned CLI command surface and prefix consistency, status-drift guardrails, config/adapter contract terms, generated artifact inventories across agent and machine-readable docs, package structure, shared-core type ownership, shared-core scaffold terminology, performance documentation guardrails, TypeScript surface, and placeholder tests. They do not prove route discovery, rendering, CLI behavior, runtime adapter behavior, Lumina Map generation, MCP tools, or safe edits.
+These commands verify the scaffold, docs links, root docs metadata, docs navigation coverage, package-map/build-plan/backlog alignment, planned CLI command surface and prefix consistency, status-drift guardrails, config/adapter contract terms, generated artifact inventories across agent and machine-readable docs, package structure, shared-core type ownership, shared-core contract terminology, performance documentation guardrails, TypeScript surface, and tests. They do not prove route discovery, rendering, CLI behavior, runtime adapter behavior, Lumina Map generation, MCP tools, or safe edits.
 
 ## Planned Commands
 
@@ -241,7 +241,7 @@ lumina bench
 - Claims about scaffolded directories, examples, commands, generated files, and performance evidence must match the current filesystem and checks; otherwise mark them as planned.
 - MVP Alpha docs and implementation must keep route discovery, basic render modes, Lumina Map output, CLI inspection, and the demo app as the center. Do not pull MCP, safe edits, API routes, migration, or benchmark claims into MVP Alpha unless the scope doc is updated in the same change.
 - Shared core model types belong in `@lumina/core`; other packages must import them instead of defining local `LuminaApp`, `RouteNode`, `GraphEdge`, `LuminaDiagnostic`, `RenderMode`, `CachePlan`, or `AdapterManifest` substitutes.
-- Docs that describe planned expansions of shared core model types must also state the current scaffold shape and add or preserve an automated docs guardrail when drift would mislead readers.
+- Docs that describe planned expansions of shared core model types must also state the current contract-backed shape and add or preserve an automated docs guardrail when drift would mislead readers.
 - Do not edit generated files manually.
 - Do not add network calls in tests unless explicitly required.
 - Do not introduce global mutable state in the server runtime.

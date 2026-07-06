@@ -9,7 +9,7 @@ Test command, fixture, snapshot, and CI expectations are defined in [Testing Con
 
 ## Current Truth
 
-Lumina now has the initial Phase 1 scaffold: Bun workspace configuration, package directories, placeholder source files, shared core scaffold types, root verification scripts, and placeholder tests.
+Lumina now has the initial Phase 1 scaffold plus Phase 1A shared core model hardening: Bun workspace configuration, package directories, placeholder source files outside `@lumina/core`, contract-backed shared core model types, root verification scripts, and tests.
 
 Current verified scaffold commands:
 
@@ -37,7 +37,7 @@ The initial scaffold proves this foundation:
 - Placeholder tests and type checks run.
 - Documentation still clearly separates planned behavior from implemented behavior.
 
-Future Phase 1 hardening should preserve those guarantees while adding the smallest implementation surface needed for Phase 1A.
+Future Phase 1 hardening should preserve those guarantees while adding the smallest implementation surface needed for Phase 1B and route discovery.
 
 Before route discovery expands, Phase 1 should also add the early benchmark and fixture skeleton described in [Implementation Speed Rules](implementation-speed-rules.md). That skeleton may report `not implemented`; it must not publish speed claims or synthetic results.
 
@@ -99,7 +99,7 @@ The Phase 1 scaffold includes:
 - Root test and typecheck scripts.
 - Package-level `package.json` files.
 - Package-level `src/index.ts` files.
-- Root placeholder tests that verify package entrypoints and shared type surfaces.
+- Root tests that verify package entrypoints and shared type surfaces.
 - Initial `tests/` folders only when they match the planned fixture layout in [Testing Contract](testing-contract.md).
 
 Do not add framework behavior in the same change unless the task explicitly says so.
@@ -153,7 +153,7 @@ Production runtime packages must not depend on `@lumina/agent`, `@lumina/mcp`, o
 
 ## First Types To Lock
 
-Phase 1A should stabilize the shared model in `@lumina/core` before any package creates local substitutes. The current scaffold exports placeholder versions of these names so package boundaries and checks can be wired early:
+Phase 1A stabilizes the shared model in `@lumina/core` before any package creates local substitutes. The current core package exports contract-backed versions of these names so package boundaries and checks can be wired early:
 
 - `LuminaApp`
 - `RouteNode`
@@ -182,7 +182,7 @@ bun run performance:check
 
 If a command is not available yet, the PR must say so and update the relevant docs. Do not leave stale claims that the command passes.
 
-Placeholder tests should prove package entrypoints and type surfaces only. They should not imply route discovery, rendering, adapter behavior, or generated artifacts exist.
+Tests should prove package entrypoints and shared type surfaces only. They should not imply route discovery, rendering, adapter behavior, or generated artifacts exist.
 
 When benchmark skeletons are added, checks should verify path existence, deterministic fixture naming, and claim hygiene only. They should not treat skeleton files as performance evidence.
 

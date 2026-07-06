@@ -61,7 +61,7 @@ Before expanding beyond the monorepo scaffold, the repository should have:
 - A testing contract for fixtures, snapshots, HTTP checks, browser checks, security checks, CI gates, and evidence reporting.
 - A repeatable documentation verification runbook with exact checks and evidence expectations.
 
-This documentation foundation is present for the Phase 1 scaffold when `bun run check` passes. The current follow-up is keeping the readiness checklist aligned with implementation issues, PR descriptions, and any scaffold changes before Phase 1A shared core model hardening, Phase 1B early benchmark skeleton work, Phase 1C large-repo workspace graph planning, and route discovery.
+This documentation foundation is present for the Phase 1 scaffold when `bun run check` passes. Phase 1A shared core model hardening is implemented in `@lumina/core`. The current follow-up is keeping the readiness checklist aligned with implementation issues, PR descriptions, and any scaffold changes before Phase 1B early benchmark skeleton work, Phase 1C large-repo workspace graph planning, and route discovery.
 
 ## Product Build Gates
 
@@ -211,7 +211,7 @@ Lumina is ready for a full product build when a contributor can:
 
 1. Read README and know the current phase.
 2. Read the docs hub and find start, guide, reference, concept, deployment, community, and agent lanes.
-3. Read the Phase 1 build plan and know the next Phase 1A, Phase 1B, and Phase 1C tasks.
+3. Read the Phase 1 build plan and know the implemented Phase 1A contract and the next Phase 1B and Phase 1C tasks.
 4. Read package map and know where each responsibility belongs.
 5. Read project structure docs and know what goes in the root, `app/`, `packages/`, `.lumina/`, `dist/`, and `docs/`.
 6. Read examples docs and know which starter or fixture proves an onboarding workflow.

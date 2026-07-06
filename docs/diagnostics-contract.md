@@ -40,32 +40,14 @@ Source links:
 
 ## Diagnostic Shape
 
-The Phase 1 scaffold currently exposes a minimal `LuminaDiagnostic` from `@lumina/core`:
+Phase 1A implements the shared `LuminaDiagnostic` type in `@lumina/core`:
 
 ```ts
 type LuminaDiagnostic = {
   code: string
   severity: "info" | "warning" | "error"
-  message: string
-  docsUrl?: string
-  source?: {
-    file: string
-    line?: number
-    column?: number
-  }
-}
-```
-
-This scaffold shape is intentionally smaller than the planned diagnostics contract. It establishes the shared field name `severity` and the allowed severity values before categories, remediations, related locations, and code frames exist.
-
-Planned expanded shared shape:
-
-```ts
-type LuminaDiagnostic = {
-  code: string
-  severity: "info" | "warning" | "error"
-  message: string
   category: DiagnosticCategory
+  docsUrl?: string
   source?: DiagnosticSource
   location?: DiagnosticLocation
   routeId?: string
@@ -78,6 +60,8 @@ type LuminaDiagnostic = {
   tags?: DiagnosticTag[]
 }
 ```
+
+This is a contract-backed shared type, not implemented diagnostic behavior. Compiler diagnostics, CLI rendering, manifest emission, docs-link enforcement, code frames, and fixture coverage remain planned until the owning implementation tasks land.
 
 JSON example:
 

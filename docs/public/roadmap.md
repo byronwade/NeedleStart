@@ -10,9 +10,9 @@ Lumina is currently in Phase 1: monorepo scaffold.
 
 Phase 0 defined the product direction, architecture, package responsibilities, documentation system, safety rules, and implementation sequence.
 
-The Bun workspace, package placeholders, shared core types, CI, and enforcement scripts exist. Runtime implementation is still planned.
+The Bun workspace, package placeholders, shared core types, CI, and enforcement scripts exist. Phase 1A shared core model hardening is implemented in `@lumina/core`. Runtime implementation is still planned.
 
-The next implementation path is Phase 1A shared core model hardening, Phase 1B early benchmark and fixture skeleton, Phase 1C large-repo workspace graph planning, then route discovery.
+The next implementation path is Phase 1B early benchmark and fixture skeleton, Phase 1C large-repo workspace graph planning, then route discovery.
 
 MVP Alpha is the upcoming prototype target: route discovery, basic render modes, generated `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, CLI inspection, and a demo app.
 

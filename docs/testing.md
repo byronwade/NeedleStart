@@ -28,7 +28,7 @@ bun run performance:check
 bun run check
 ```
 
-These commands are available after the Phase 1 scaffold. They currently prove scaffold integrity, documentation links, package structure, performance documentation guardrails, TypeScript validity, and placeholder tests. They do not prove framework runtime behavior.
+These commands are available after the Phase 1 scaffold. They currently prove scaffold integrity, documentation links, package structure, performance documentation guardrails, TypeScript validity, scaffold tests, and shared core model tests. They do not prove framework runtime behavior.
 
 ## Documentation Checks
 

@@ -721,27 +721,27 @@ const prototypeScopeTerms = [
 const currentImplementationStepDocs = [
   {
     file: "README.md",
-    terms: ["The next implementation stage is Phase 1A shared core model hardening, Phase 1B early benchmark and fixture skeleton, Phase 1C large-repo workspace graph planning, then route discovery."],
+    terms: ["The next implementation stage is Phase 1B early benchmark and fixture skeleton, Phase 1C large-repo workspace graph planning, then route discovery."],
   },
   {
     file: "docs/status.md",
-    terms: ["The next implementation path is Phase 1A shared core model hardening, Phase 1B early benchmark and fixture skeleton, Phase 1C large-repo workspace graph planning, then route discovery."],
+    terms: ["The next implementation path is Phase 1B early benchmark and fixture skeleton, Phase 1C large-repo workspace graph planning, then route discovery."],
   },
   {
     file: "docs/roadmap.md",
-    terms: ["The next implementation stage is Phase 1A shared core model hardening, Phase 1B early benchmark and fixture skeleton, Phase 1C large-repo workspace graph planning, then route discovery."],
+    terms: ["The next implementation stage is Phase 1B early benchmark and fixture skeleton, Phase 1C large-repo workspace graph planning, then route discovery."],
   },
   {
     file: "docs/public/roadmap.md",
-    terms: ["The next implementation path is Phase 1A shared core model hardening, Phase 1B early benchmark and fixture skeleton, Phase 1C large-repo workspace graph planning, then route discovery."],
+    terms: ["The next implementation path is Phase 1B early benchmark and fixture skeleton, Phase 1C large-repo workspace graph planning, then route discovery."],
   },
   {
     file: "docs/product-build-readiness.md",
-    terms: ["Phase 1A shared core model hardening, Phase 1B early benchmark skeleton work, Phase 1C large-repo workspace graph planning, and route discovery."],
+    terms: ["Phase 1B early benchmark skeleton work, Phase 1C large-repo workspace graph planning, and route discovery."],
   },
   {
     file: "docs/task-backlog.md",
-    terms: ["Current implementation path: Phase 1A expands and stabilizes the shared core data model, Phase 1B adds an early benchmark and fixture skeleton with no public claims, Phase 1C documents the large-repo workspace graph lane, then route discovery begins."],
+    terms: ["Current implementation path: Phase 1B adds an early benchmark and fixture skeleton with no public claims, Phase 1C documents the large-repo workspace graph lane, then route discovery begins."],
   },
 ];
 
@@ -845,11 +845,11 @@ const coreModelDocs = [
 const sharedCoreScaffoldTerms = [
   {
     file: "docs/cache-contract.md",
-    terms: ["@lumina/core", "CachePlan", "no-store", "public", "ttlSeconds", "staleWhileRevalidateSeconds"],
+    terms: ["@lumina/core", "CachePlan", "no-store", "immutable", "ttl", "stale-while-revalidate", "ttlSeconds", "staleSeconds", "reason"],
   },
   {
     file: "docs/public/reference/cache.md",
-    terms: ["@lumina/core", "CachePlan", "no-store", "public", "ttlSeconds", "staleWhileRevalidateSeconds"],
+    terms: ["@lumina/core", "CachePlan", "no-store", "immutable", "ttl", "stale-while-revalidate", "ttlSeconds", "staleSeconds", "reason"],
   },
   {
     file: "docs/compiler-ir.md",
@@ -2948,7 +2948,7 @@ for (const { file, terms } of sharedCoreScaffoldTerms) {
   const content = read(file);
   for (const requiredTerm of terms) {
     if (!content.includes(requiredTerm)) {
-      failures.push(`${file} does not document the current shared-core scaffold term: ${requiredTerm}.`);
+      failures.push(`${file} does not document the current shared-core contract term: ${requiredTerm}.`);
     }
   }
 }

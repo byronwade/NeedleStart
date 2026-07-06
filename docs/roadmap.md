@@ -43,13 +43,13 @@ Unless a phase is explicitly marked `Verified.` or `Scaffolded.` with evidence, 
 
 ## Current Status
 
-The repository is in Phase 1. The monorepo scaffold exists with Bun workspace configuration, package placeholders, shared core scaffold types, CI, and enforcement scripts. The next implementation stage is Phase 1A shared core model hardening, Phase 1B early benchmark and fixture skeleton, Phase 1C large-repo workspace graph planning, then route discovery.
+The repository is in Phase 1. The monorepo scaffold exists with Bun workspace configuration, package placeholders, contract-backed shared core model types, CI, and enforcement scripts. Phase 1A shared core model hardening is implemented. The next implementation stage is Phase 1B early benchmark and fixture skeleton, Phase 1C large-repo workspace graph planning, then route discovery.
 
 The upcoming prototype target is MVP Alpha, defined in `docs/mvp-alpha-scope.md`. MVP Alpha should keep the first build narrow: route discovery, basic render modes, generated `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, CLI inspection, and a demo app. API routes, MCP, safe edits, migration tooling, Node runtime behavior, and benchmark claims remain post-MVP unless the scope doc changes.
 
 ## MVP Alpha Lane
 
-1. Core model hardening for route, render, manifest, and graph output.
+1. Core model hardening for route, render, manifest, and graph output. Implemented in `@lumina/core`.
 2. Early benchmark and fixture skeleton with measured or `not implemented` status only.
 3. Route discovery and deterministic `.lumina/routes.json`.
 4. Basic render mode extraction and `.lumina/render-manifest.json`.
@@ -157,7 +157,7 @@ Out of scope:
 
 Goal: stabilize the shared immutable model in `@lumina/core`.
 
-The Phase 1 scaffold already exposes placeholder versions of these types. Phase 1A must turn them into contract-backed shapes instead of letting downstream packages invent local substitutes.
+The Phase 1 scaffold originally exposed placeholder versions of these types. Phase 1A turns them into contract-backed shapes instead of letting downstream packages invent local substitutes.
 
 Required types:
 
@@ -175,6 +175,10 @@ Definition of done:
 - `GraphEdge` includes `kind`, `source`, `confidence`, and `why`.
 - Docs, type tests, and contract fixtures verify the type contracts.
 - No package defines a competing local route or graph shape.
+
+Phase status: Implemented.
+
+Evidence: `packages/core/src/index.ts`, `tests/core-model.test.ts`, and `tests/scaffold.test.ts` cover the shared type contracts. Runtime behavior, route discovery, generated manifests, and CLI output remain planned.
 
 ## Phase 1B: Early Benchmark And Fixture Skeleton
 
