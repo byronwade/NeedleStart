@@ -169,7 +169,7 @@ Measure:
 
 Use this public message:
 
-> Default experience is Bun for maximum speed, with Node and static adapter paths designed early enough to avoid Bun lock-in.
+> Bun is the default adapter path for speed-sensitive deployments, with Node and static adapter paths designed early enough to avoid Bun lock-in.
 
 Performance claims must be backed by reproducible benchmarks.
 

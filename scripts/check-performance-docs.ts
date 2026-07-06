@@ -60,12 +60,14 @@ const forbiddenPublicClaims = [
   /Ship fast with Bun and Vite/i,
   /answer\s+instantly/i,
   /extremely\s+fast/i,
+  /maximum\s+speed/i,
 ];
 
 for (const file of [
   "README.md",
   "VISION.md",
   "ARCHITECTURE.md",
+  "docs/adapters.md",
   "docs/product-strategy.md",
   "docs/risk-mitigation.md",
   "docs/public/index.md",

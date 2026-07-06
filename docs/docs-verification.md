@@ -119,7 +119,7 @@ Public API draft examples must say they are planned and not implemented yet unle
 
 Automated coverage also requires README, AGENTS, Vision, product strategy, public home, and glossary docs to keep the canonical product identity aligned: NeedleStart is an `app-graph-native, SEO-first React framework` for humans and AI agents, the semantic app graph is the first-class primitive, public pages can use the short promise `Your app ships with a map`, and short-form positioning should use `Build like Next.js` and `Type like TanStack Start`.
 
-Top-level speed positioning must stay static-first and evidence-aware until benchmarks exist. `bun run performance:check` rejects unsupported public speed slogans such as `Ship fast with Bun and Vite`, `Bun-speed`, `Bun-first runtime paths`, or generic `planned fast runtime paths`.
+Top-level speed positioning must stay static-first and evidence-aware until benchmarks exist. `bun run performance:check` rejects unsupported public speed slogans such as `Ship fast with Bun and Vite`, `Bun-speed`, `Bun-first runtime paths`, generic `planned fast runtime paths`, or `maximum speed`.
 
 ### 5. Navigation Coverage Check
 

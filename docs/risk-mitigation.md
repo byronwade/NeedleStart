@@ -333,7 +333,7 @@ Public benchmarks should compare:
 - Bundle size.
 - Bun adapter vs Node adapter vs comparable Next.js path.
 
-The target message is: default experience is Bun for maximum speed, with Node and static adapter paths designed early enough to avoid Bun lock-in.
+The target message is: Bun is the default adapter path for speed-sensitive deployments, with Node and static adapter paths designed early enough to avoid Bun lock-in.
 
 ### Failure Modes to Prevent
 
