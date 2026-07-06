@@ -1,103 +1,71 @@
 # Getting Started
 
 Status: Planned.
-
 Audience: new users, app developers, AI agents.
 
-This page describes the target app onboarding path for Lumina. The repository is in Phase 1 scaffold, so repository maintenance commands are available, but the app creation commands below are not verified local commands yet.
+This is the target MVP Alpha onboarding path. The repository currently has the Phase 1 scaffold; app creation, CLI behavior, route discovery, rendering, and generated artifacts are not implemented yet.
 
-## Current Repository Status
+## What You Will Build In MVP Alpha
 
-Lumina currently contains planning, architecture, roadmap, risk, skill, and subagent documentation plus the Phase 1 Bun workspace, package placeholders, shared core types, CI, and enforcement scripts. It does not yet contain CLI behavior, compiler behavior, runtime behavior, or generated artifacts.
+MVP Alpha should create a small React app that Lumina can discover, render, map, and explain. The first experience should make the Lumina Map visible before the framework grows into API routes, MCP tools, safe edits, migration, or benchmark claims.
 
-Use these docs first:
+The prototype should demonstrate:
 
-- [README](../README.md): product overview and current status.
-- [Phase 1 Build Plan](phase-1-build-plan.md): the scaffold hardening and first implementation path.
-- [Task Backlog](task-backlog.md): concrete implementation sequence.
-- [Examples And Templates Contract](examples-contract.md): how future starter examples become verified.
-- [Documentation Standard](documentation-standard.md): how docs should grow.
+- File-based routes under `app/`.
+- A root layout and a few basic pages.
+- Explicit static and minimal SSR render modes.
+- Deterministic `.lumina/routes.json`, `.lumina/render-manifest.json`, and `.lumina/map.json`.
+- CLI inspection through `lumina routes --json`, `lumina inspect --json`, and `lumina inspect why`.
 
-## Target App Creation Flow
+## Current Repository Commands
 
-Planned command once app creation behavior exists:
+These commands are available in this checkout:
+
+```bash
+bun install
+bun test
+bun run typecheck
+bun run docs:check
+bun run structure:check
+bun run performance:check
+bun run check
+```
+
+They verify scaffold health, documentation links and guardrails, package structure, TypeScript validity, performance-claim hygiene, and placeholder tests. The repository currently contains a Bun workspace, package placeholders, shared core types, and enforcement scripts; it does not yet contain CLI behavior, route discovery, rendering, Lumina Map generation, or generated `.lumina/*` artifacts.
+
+## Target MVP App Creation
+
+Target MVP behavior:
 
 ```bash
 bun create lumina my-app
 cd my-app
 lumina dev
+lumina routes --json
+lumina inspect / --json
+lumina inspect why /
+lumina map --json
 ```
 
-Generated apps should also expose `bun run dev`, `bun run build`, and `bun run start` package scripts that call the framework commands.
+Target MVP behavior: these commands are the intended prototype experience. They must not be described as working until implementation and fixture evidence exist.
 
-Target result:
-
-- A React app should start locally.
-- The home page should render server HTML.
-- Public routes should include SEO metadata.
-- `.lumina/routes.json` and `.lumina/render-manifest.json` should be generated.
-- Lumina Map and agent context should be inspectable.
-
-Do not claim this flow works until `create-lumina`, `@lumina/cli`, and the runtime path exist and have been verified.
-
-The default generated app must eventually map to a verified starter example as defined in [Examples And Templates Contract](examples-contract.md).
-
-## Target Project Structure
-
-Planned application structure:
-
-```txt
-my-app/
-  app/
-    layout.tsx
-    page.tsx
-    api/
-      health.ts
-  lumina.config.ts
-  package.json
-  public/
-```
-
-Planned generated output:
-
-```txt
-.lumina/
-  routes.json
-  render-manifest.json
-  map.json
-  graph.json
-  seo.report.json
-  perf.report.json
-  context/
-    *.ctx.json
-    agent-index.json
-  mutations.json
-  generated/
-dist/
-  routes.manifest.json
-  render.manifest.json
-  seo.report.json
-  adapter.manifest.json
-  *
-```
-
-The generated artifact names are `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/graph.json`, `.lumina/seo.report.json`, `.lumina/perf.report.json`, `.lumina/context/*.ctx.json`, `.lumina/context/agent-index.json`, `.lumina/mutations.json`, `.lumina/generated/*`, `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, `dist/adapter.manifest.json`, and `dist/*`.
-
-Generated files must not be edited manually.
-
-## Target Development Commands
-
-Planned CLI commands:
+Generated apps should also expose package scripts that call the framework commands:
 
 ```bash
-lumina dev
+bun run dev
+bun run build
+bun run start
+```
+
+Those package scripts should call `lumina dev`, `lumina build`, and `lumina start` respectively once framework commands exist.
+
+Future planned commands outside the MVP Alpha first-run path include:
+
+```bash
 lumina build
 lumina start
-lumina routes
-lumina inspect
 lumina check
 lumina seo
-lumina map
 lumina agent
 lumina mcp
 lumina edit
@@ -105,26 +73,124 @@ lumina migrate
 lumina bench
 ```
 
-The repository must keep CLI JSON output stable, compact, and documented as commands become real.
+## Demo App Structure
 
-## What To Build First
+The MVP Alpha demo app should use this structure:
 
-The next implementation work is:
+```txt
+my-app/
+  app/
+    layout.tsx
+    page.tsx
+    about/
+      page.tsx
+    (marketing)/
+      pricing/
+        page.tsx
+    blog/
+      [slug]/
+        page.tsx
+  components/
+    Hero.tsx
+    PricingCard.tsx
+  lumina.config.ts
+  package.json
+  public/
+```
 
-1. Expand and stabilize shared core types in `@lumina/core`.
-2. Implement deterministic route discovery.
-3. Emit `.lumina/routes.json`.
-4. Add the stable CLI JSON envelope.
-5. Make `lumina dev` start the first verified app path.
+Route mapping:
 
-See [Phase 1 Build Plan](phase-1-build-plan.md) and [Task Backlog](task-backlog.md).
+```txt
+app/page.tsx -> /
+app/about/page.tsx -> /about
+app/(marketing)/pricing/page.tsx -> /pricing
+app/blog/[slug]/page.tsx -> /blog/:slug
+```
 
-## Out Of Scope Until Implementation
+## Start The Dev Server
 
-- Running a local Lumina app.
-- Publishing packages.
-- Real route discovery.
-- Real SSR or static build output.
-- Real MCP tools.
-- Safe edit writes.
+Target MVP behavior:
 
+```bash
+lumina dev
+```
+
+The dev server should start the demo app, render the root route, and keep generated route, render, and map artifacts in sync with source changes. Until implementation exists, use repository maintenance checks instead of treating this command as verified.
+
+## Inspect Routes
+
+Target MVP behavior:
+
+```bash
+lumina routes --json
+```
+
+The command should print deterministic route data for the demo app. The route list should include `/`, `/about`, `/pricing`, and `/blog/:slug`, including source files and render modes once render extraction exists.
+
+## Inspect Why A Route Works
+
+Target MVP behavior:
+
+```bash
+lumina inspect / --json
+lumina inspect why /
+```
+
+The JSON form should be compact and stable for tools. The `why` form should explain which file produced the route, which layout wraps it, which render mode applies, which generated artifacts include it, and which map edges support the answer.
+
+## Inspect The Lumina Map
+
+Target MVP behavior:
+
+```bash
+lumina map --json
+```
+
+MVP Alpha should generate a file-level Lumina Map from discovered routes, route source files, imported components, render mode declarations, and generated manifests. The map should be useful for humans and agents before deeper semantic contracts exist.
+
+## Generated Files
+
+MVP Alpha should generate only the first route, render, and map contracts:
+
+```txt
+.lumina/routes.json
+.lumina/render-manifest.json
+.lumina/map.json
+```
+
+Generated files must be deterministic and must not be edited manually.
+
+## Troubleshooting During MVP Alpha
+
+- If `bun create lumina` is unavailable, use the repository scaffold and example fixture work until `create-lumina` is implemented.
+- If `lumina dev` is unavailable, the CLI package has not reached the MVP dev-server slice yet.
+- If `.lumina/routes.json` is missing, route discovery has not produced artifacts yet.
+- If `.lumina/map.json` is missing, the Lumina Map generator has not reached the MVP file-level graph slice yet.
+- If docs describe behavior that does not exist, mark it as `Target MVP behavior`, `Planned for MVP Alpha`, or `Future`.
+
+## What Is Deferred
+
+Future work after MVP Alpha includes:
+
+- API routes.
+- Hot API schemas.
+- Full graph output in `.lumina/graph.json`.
+- Full SEO engine and `.lumina/seo.report.json`.
+- Performance reports and `.lumina/perf.report.json`.
+- Agent context capsules under `.lumina/context/*.ctx.json` and `.lumina/context/agent-index.json`.
+- Safe edit mutation logs under `.lumina/mutations.json`.
+- Generated compiler outputs under `.lumina/generated/*`.
+- Adapter-oriented deployment copies under `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, `dist/adapter.manifest.json`, and `dist/*`.
+- MCP server.
+- Node and static adapter runtime behavior.
+- Migration tooling.
+- Benchmark claims.
+- Devtools dashboard.
+
+## Source Of Truth
+
+- [MVP Alpha Scope](mvp-alpha-scope.md): included, deferred, demo-app, and verification scope.
+- [Lumina Map](lumina-map.md): MVP map output and future graph direction.
+- [File Conventions](file-conventions.md): starter file conventions and deferred route conventions.
+- [Examples](examples.md): planned MVP demo app and future examples.
+- [Task Backlog](task-backlog.md): implementation order.

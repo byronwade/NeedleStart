@@ -66,7 +66,7 @@ This map is also the planned source mapping input for the future docs renderer, 
 | Home | `README.md`, `VISION.md` |
 | Public home | `docs/public/index.md`, `README.md`, `VISION.md` |
 | Public docs landing | `docs/public/docs.md`, `docs/README.md`, `docs/public-docs-site-architecture.md`, `docs/public-frontmatter-standard.md`, `docs/docs-site-build-plan.md` |
-| Getting Started | `docs/public/guides/create-app.md`, `docs/public/reference/examples.md`, `docs/getting-started.md`, `docs/examples-contract.md`, `docs/status.md` |
+| Getting Started | `docs/public/guides/create-app.md`, `docs/public/reference/examples.md`, `docs/getting-started.md`, `docs/examples-contract.md`, `docs/status.md`, `docs/mvp-alpha-scope.md`, `docs/task-backlog.md` |
 | Guides | `docs/public/guides/*`, `docs/guides.md` |
 | API Reference | `docs/public/reference/*`, `docs/api-reference.md`, `docs/cli.md`, `docs/cli-json-contract.md`, `docs/diagnostics-contract.md`, `docs/config.md`, `docs/adapter-contract.md`, `docs/examples-contract.md`, `docs/examples-catalog.md`, `docs/file-conventions.md`, `docs/routing-contract.md`, `docs/api-route-contract.md`, `docs/schema-contract.md`, `docs/cache-contract.md`, `docs/seo-contract.md`, `docs/accessibility-contract.md`, `docs/security-contract.md`, `docs/threat-model.md`, `docs/performance-contract.md`, `docs/benchmark-fixtures.md`, `docs/testing-contract.md`, `docs/product-build-readiness.md` |
 | Concepts | `docs/public/concepts/*`, `ARCHITECTURE.md`, `docs/lumina-map.md`, `docs/agent-kernel.md` |
@@ -95,6 +95,7 @@ Every internal source linked by a public page must also be listed here so the fu
 - `docs/maintainer-guide.md`
 - `docs/manifest-contracts.md`
 - `docs/mcp-server.md`
+- `docs/mvp-alpha-scope.md`
 - `docs/open-source-community.md`
 - `docs/operating-cadence.md`
 - `docs/package-map.md`
@@ -111,5 +112,6 @@ Every internal source linked by a public page must also be listed here so the fu
 - `docs/seo-engine.md`
 - `docs/speed-decisions.md`
 - `docs/speed-strategy.md`
+- `docs/task-backlog.md`
 - `docs/testing.md`
 - `docs/website-content-map.md`

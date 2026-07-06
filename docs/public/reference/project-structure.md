@@ -6,9 +6,9 @@ Audience: app developers, framework contributors, AI agents.
 
 Lumina apps are planned to use a small application root, file-based routes under `app/`, generated framework artifacts under `.lumina/`, and production output under `dist/`.
 
-The repository is in Phase 1 scaffold. This page describes target application structure and scaffolded repository structure, not verified generated app output.
+The repository is in Phase 1 scaffold. This page describes target MVP Alpha application structure and scaffolded repository structure, not verified generated app output.
 
-## Application Structure
+## MVP Alpha Application Structure
 
 Planned generated app:
 
@@ -17,8 +17,17 @@ my-app/
   app/
     layout.tsx
     page.tsx
-    api/
-      health.ts
+    about/
+      page.tsx
+    (marketing)/
+      pricing/
+        page.tsx
+    blog/
+      [slug]/
+        page.tsx
+  components/
+    Hero.tsx
+    PricingCard.tsx
   lumina.config.ts
   package.json
   public/
@@ -26,24 +35,38 @@ my-app/
 
 | Path | Purpose | Status |
 | --- | --- | --- |
-| `app/` | Route modules, layouts, pages, route handlers, and route-level conventions. | Planned |
-| `app/page.tsx` | Home page route. | Planned |
-| `app/layout.tsx` | Root layout for nested pages. | Planned |
-| `app/api/*` | API route handlers. | Planned |
+| `app/layout.tsx` | Root layout for the demo app. | Planned |
+| `app/page.tsx` | Home page route at `/`. | Planned |
+| `app/about/page.tsx` | Basic static page route at `/about`. | Planned |
+| `app/(marketing)/pricing/page.tsx` | Route group example that maps to `/pricing`. | Planned |
+| `app/blog/[slug]/page.tsx` | Dynamic route example that maps to `/blog/:slug`. | Planned |
+| `components/*.tsx` | Imported UI components for map edges. | Planned |
 | `lumina.config.ts` | Framework config. | Planned |
 | `public/` | Static assets copied to output. | Planned |
-| `.lumina/` | Generated route, render, SEO, graph, and agent artifacts. | Planned |
-| `dist/` | Built production output. | Planned |
+| `.lumina/` | Generated route, render, and map artifacts. | Planned |
+| `dist/` | Built production output once build behavior exists. | Planned |
 
-## Generated Files
+## MVP Alpha Generated Files
 
-Planned generated files:
+Planned MVP Alpha generated files:
 
 ```txt
 .lumina/
   routes.json
   render-manifest.json
   map.json
+```
+
+The generated artifact names are `.lumina/routes.json`, `.lumina/render-manifest.json`, and `.lumina/map.json`. They are canonical compiler and map contracts for the first prototype.
+
+Generated files must be deterministic and must not be edited manually.
+
+## Future Generated Files
+
+Future work after MVP Alpha may add:
+
+```txt
+.lumina/
   graph.json
   seo.report.json
   perf.report.json
@@ -60,9 +83,9 @@ dist/
   *
 ```
 
-The generated artifact names are `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/graph.json`, `.lumina/seo.report.json`, `.lumina/perf.report.json`, `.lumina/context/*.ctx.json`, `.lumina/context/agent-index.json`, `.lumina/mutations.json`, `.lumina/generated/*`, `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, `dist/adapter.manifest.json`, and `dist/*`. The `.lumina/*` files are canonical compiler and agent contracts; the named `dist/*` files are deployment-oriented adapter copies.
+These future artifacts must not be described as implemented until the packages, commands, tests, and generated output exist.
 
-Generated files must be deterministic and must not be edited manually.
+The future generated artifact names are `.lumina/graph.json`, `.lumina/seo.report.json`, `.lumina/perf.report.json`, `.lumina/context/*.ctx.json`, `.lumina/context/agent-index.json`, `.lumina/mutations.json`, `.lumina/generated/*`, `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, `dist/adapter.manifest.json`, and `dist/*`.
 
 ## Repository Structure
 
@@ -82,6 +105,7 @@ docs/
 
 ## Source
 
+- [MVP Alpha Scope](../../mvp-alpha-scope.md)
 - [File Conventions](../../file-conventions.md)
 - [Routing Contract](../../routing-contract.md)
 - [Package Map](../../package-map.md)
