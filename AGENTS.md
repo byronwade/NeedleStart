@@ -143,6 +143,7 @@ needle migrate
 - Keep CLI JSON output stable, compact, and documented.
 - Public SEO behavior must be tested when implemented.
 - New graph edges must include `kind`, `source`, `confidence`, and `why`.
+- Claims about scaffolded directories, examples, commands, generated files, and performance evidence must match the current filesystem and checks; otherwise mark them as planned.
 - Do not edit generated files manually.
 - Do not add network calls in tests unless explicitly required.
 - Do not introduce global mutable state in the server runtime.
@@ -317,7 +318,8 @@ While editing:
 2. Update docs touched by the change.
 3. Prefer adding task files from `docs/templates/task-template.md` for implementation work.
 4. Keep docs-level skills and subagent role briefs vendor-neutral and aligned with the documented safety rules.
-5. Keep planned and implemented behavior separate.
+5. Keep planned, scaffolded, implemented, and verified behavior separate.
+6. When a doc names a directory or example as current, confirm it exists or make the text explicitly planned.
 
 Before finishing:
 

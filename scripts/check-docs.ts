@@ -231,6 +231,11 @@ const staleStatusPatterns = [
     message: "docs/public/reference/testing.md ignores scaffold test tooling.",
   },
   {
+    file: "docs/public/reference/project-structure.md",
+    pattern: /scaffolded as a Bun workspace with .*examples under `examples\/`|scaffolded as a Bun workspace with .*playgrounds under `playgrounds\/`/i,
+    message: "docs/public/reference/project-structure.md claims planned example directories are scaffolded.",
+  },
+  {
     file: "docs/speed-capability-audit.md",
     pattern: /Before Phase 1 package scaffold/i,
     message: "docs/speed-capability-audit.md still uses pre-scaffold language.",

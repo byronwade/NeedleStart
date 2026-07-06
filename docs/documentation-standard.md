@@ -80,6 +80,7 @@ Not every page needs every section. Reference pages should favor exact tables an
 - Keep current behavior separate from target behavior.
 - Prefer concrete examples over abstract promises.
 - Name files, commands, packages, and generated artifacts exactly.
+- Confirm directories, examples, generated files, commands, and benchmark evidence exist before describing them as scaffolded, runnable, implemented, or verified.
 - Include deterministic JSON examples for agent-facing output.
 - Explain what validates a claim: command, test type, fixture, or acceptance demo.
 - Link related architecture and risk docs instead of repeating long rationale.
