@@ -8,7 +8,7 @@ NeedleStart's product strategy is to make the framework itself the map of the ap
 
 ## Positioning
 
-NeedleStart is app-graph-native, SEO-first, React-based, and designed for humans and AI agents.
+NeedleStart is an app-graph-native, SEO-first React framework for humans and AI agents.
 
 ## Strategic Wedge
 

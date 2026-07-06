@@ -12,7 +12,7 @@ The framework should make applications faster to ship, easier to audit, safer to
 
 ## One-Sentence Pitch
 
-NeedleStart is an agent-native React framework for building fast, SEO-safe, large-scale web apps with a semantic map of every route, component, API, schema, test, cache, and content relationship.
+NeedleStart is an app-graph-native, SEO-first React framework for humans and AI agents, with a semantic map of every route, component, API, schema, test, cache, and content relationship.
 
 ## The Enemy
 
@@ -50,7 +50,7 @@ Short form:
 
 ## What NeedleStart Should Own
 
-NeedleStart should own the category of agent-native, SEO-first, graph-aware React applications.
+NeedleStart should own the category of app-graph-native, SEO-first React applications for humans and AI agents.
 
 The core bet is that agents will become normal contributors to large codebases. A framework that provides a semantic app graph, safe edit APIs, affected checks, and MCP tools will be easier for agents and humans to operate than a framework that only provides file routing and rendering.
 

@@ -23,6 +23,10 @@ A planned generated index that helps agents find the smallest relevant context f
 
 The broader application graph that connects routes, layouts, components, APIs, schemas, tests, owners, generated files, cache plans, SEO metadata, and risk.
 
+## App-Graph-Native
+
+NeedleStart's public category language: a framework where the semantic app graph is a first-class product primitive, not a later tool layered on top of routing and rendering.
+
 ## Benchmark Fixture
 
 A controlled app, route set, adapter output, or workflow used to measure a specific performance claim with repeatable inputs and raw result evidence.

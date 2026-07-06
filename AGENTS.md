@@ -8,7 +8,7 @@ Agents must read this file before editing code or documentation. When the projec
 
 Project name: NeedleStart.
 
-NeedleStart is an agent-native, SEO-first React framework for fast, large-scale web applications. It uses Bun for runtime paths, Vite/Rolldown for frontend build leverage, and a custom Needle compiler for route intelligence, SEO, graph, API generation, and agent context.
+NeedleStart is an app-graph-native, SEO-first React framework for humans and AI agents. It uses Bun for runtime paths, Vite/Rolldown for frontend build leverage, and a custom Needle compiler for route intelligence, SEO, graph, API generation, and agent context.
 
 ## Current Phase
 

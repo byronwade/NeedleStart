@@ -526,6 +526,33 @@ const agentEnforcementContractDocs = [
   },
 ];
 
+const productIdentityDocs = [
+  {
+    file: "README.md",
+    terms: ["app-graph-native, SEO-first React framework", "humans and AI agents", "semantic app graph", "Your app ships with a map"],
+  },
+  {
+    file: "AGENTS.md",
+    terms: ["app-graph-native, SEO-first React framework", "humans and AI agents"],
+  },
+  {
+    file: "VISION.md",
+    terms: ["app-graph-native, SEO-first React framework", "humans and AI agents", "semantic map"],
+  },
+  {
+    file: "docs/product-strategy.md",
+    terms: ["app-graph-native, SEO-first React framework", "humans and AI agents", "Semantic app graph"],
+  },
+  {
+    file: "docs/public/index.md",
+    terms: ["app-graph-native, SEO-first React framework", "humans and AI agents", "Your app ships with a map"],
+  },
+  {
+    file: "docs/glossary.md",
+    terms: ["App-Graph-Native", "semantic app graph", "first-class product primitive"],
+  },
+];
+
 const documentationMatrixStatusDocs = [
   {
     file: "docs/documentation-audit.md",
@@ -2318,6 +2345,16 @@ for (const { file, terms } of agentEnforcementContractDocs) {
   for (const term of terms.map((term) => term.toLowerCase())) {
     if (!content.includes(term)) {
       failures.push(`${file} is missing agent enforcement contract term: ${term}.`);
+    }
+  }
+}
+
+for (const { file, terms } of productIdentityDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file).toLowerCase();
+  for (const term of terms.map((term) => term.toLowerCase())) {
+    if (!content.includes(term)) {
+      failures.push(`${file} is missing product identity term: ${term}.`);
     }
   }
 }
