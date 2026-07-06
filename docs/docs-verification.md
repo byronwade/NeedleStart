@@ -250,10 +250,12 @@ Expected result: schema helpers, validation result shape, issue shape, type infe
 ### 20. Cache Contract Check
 
 ```powershell
-rg -n "cache-contract|CachePlan|CACHE_|Cache-Control|revalidateTag|micro-cache|stale-while-revalidate|cache tags|no-store" README.md AGENTS.md docs\cache-contract.md docs\cache.md docs\runtime-contract.md docs\speed-strategy.md docs\api-route-contract.md docs\hot-api-path.md docs\manifest-contracts.md docs\security.md docs\public\reference\cache.md
+rg -n "cache-contract|CachePlan|CACHE_|Cache-Control|revalidateTag|micro-cache|stale-while-revalidate|cache tags|no-store|generated manifests|diagnostics|secrets" README.md AGENTS.md docs\cache-contract.md docs\cache.md docs\runtime-contract.md docs\speed-strategy.md docs\api-route-contract.md docs\hot-api-path.md docs\manifest-contracts.md docs\security.md docs\public\reference\cache.md
 ```
 
-Expected result: cache plan shape, defaults, headers, tags, revalidation, micro-cache behavior, diagnostics, manifests, security rules, speed docs, and public reference docs remain connected. The automated `docs:check` also requires cache reference docs to name the current scaffolded `@needle/core` `CachePlan` fields so planned expanded APIs cannot be mistaken for implemented behavior.
+Expected result: cache plan shape, defaults, headers, tags, revalidation, micro-cache behavior, diagnostics, generated manifests, security rules, speed docs, and public reference docs remain connected.
+
+Automated coverage in `bun run docs:check` also requires cache contract, cache overview, and public cache reference docs to keep `Cache-Control`, cache tags, `revalidateTag`, micro-cache, `no-store`, diagnostics, generated manifests, and secret-exclusion language aligned. It also requires cache reference docs to name the current scaffolded `@needle/core` `CachePlan` fields so planned expanded APIs cannot be mistaken for implemented behavior.
 
 ### 21. SEO Contract Check
 

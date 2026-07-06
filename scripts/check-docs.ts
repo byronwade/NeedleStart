@@ -301,6 +301,12 @@ const diagnosticContractDocs = [
   "docs/public/reference/diagnostics.md",
 ];
 
+const cacheContractDocs = [
+  "docs/cache-contract.md",
+  "docs/cache.md",
+  "docs/public/reference/cache.md",
+];
+
 const routingContractDocs = [
   "docs/routing-contract.md",
   "docs/routing.md",
@@ -906,6 +912,16 @@ for (const file of diagnosticContractDocs) {
   for (const term of ["severity", "info", "warning", "error", "deterministic", "stable ordering", "code", "message", "remediation", "docs"]) {
     if (!content.includes(term)) {
       failures.push(`${file} is missing diagnostics contract term: ${term}.`);
+    }
+  }
+}
+
+for (const file of cacheContractDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file).toLowerCase();
+  for (const term of ["cache-control", "cache tags", "revalidatetag", "micro-cache", "no-store", "diagnostics", "generated manifests", "secrets"]) {
+    if (!content.includes(term)) {
+      failures.push(`${file} is missing cache contract term: ${term}.`);
     }
   }
 }

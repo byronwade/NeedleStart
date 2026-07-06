@@ -43,6 +43,16 @@ export const config = {
 }
 ```
 
+## Planned Contract Rules
+
+- Cache plans must map to `Cache-Control` headers consistently.
+- SSR and API routes default to `no-store` unless explicitly configured.
+- Cache tags must be deterministic and must not contain secrets, raw emails, user tokens, or private identifiers.
+- Revalidation through `revalidateTag(tag)` is planned, but live invalidation behavior is not implemented.
+- Hot API micro-cache behavior must be explicit, opt-in, deterministic, and unsafe for auth or session-sensitive data unless policy and tests prove it safe.
+- Cache metadata must appear in generated manifests or reports so CLI, MCP, Needle Map, runtime adapters, tests, and agents explain cache behavior the same way.
+- Manual cache header overrides must produce diagnostics when they conflict with the generated cache plan.
+
 ## Current Status
 
 This behavior is not implemented yet. The repository is in Phase 1 scaffold, so examples are target API design rather than verified commands.
