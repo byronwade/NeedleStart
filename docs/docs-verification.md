@@ -203,6 +203,8 @@ Expected result: config loading, validation, environment behavior, normalized ou
 
 Automated coverage in `bun run docs:check` also requires config, public config, and config contract docs to keep server-only env, public prefix, `.env*`, secret, generated artifact, diagnostics, adapter package, and `runtime.name` language aligned.
 
+Config docs must tie final default readiness to config-loading behavior, not package existence or generic package implementation. The Phase 1 package scaffold can exist while config loading remains planned.
+
 ### 14. Adapter Contract Check
 
 ```powershell

@@ -1066,8 +1066,13 @@ const staleStatusPatterns = [
   },
   {
     file: "docs/config-contract.md",
-    pattern: /Final config defaults before packages exist/i,
+    pattern: /Final config defaults before packages exist|Final config defaults before package implementation/i,
     message: "docs/config-contract.md should tie config defaults to config-loading behavior, not package existence.",
+  },
+  {
+    file: "docs/config.md",
+    pattern: /Final config defaults before packages exist|Final config defaults before package implementation/i,
+    message: "docs/config.md should tie config defaults to config-loading behavior, not package existence.",
   },
   {
     file: "docs/task-backlog.md",

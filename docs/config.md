@@ -48,6 +48,6 @@ export default defineConfig({
 
 ## Out Of Scope
 
-- Final config defaults before package implementation.
+- Final config defaults before config loading behavior exists.
 - Host-specific deployment config.
 - Secret management beyond documented environment-variable safety rules.
