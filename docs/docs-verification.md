@@ -163,7 +163,7 @@ rg -n "Agent Enforcement Matrix|bun run docs:check|bun run structure:check|bun r
 
 Expected result: agent rules, automation commands, claim gates, performance evidence, and root playbook placement rules remain connected from README, AGENTS, docs hub, build-readiness docs, and the maintenance checklist.
 
-Automated coverage in `bun run docs:check` also requires `docs/agent-enforcement.md` to exist, be linked from README and the docs hub, appear in AGENTS required-documentation-sync, and keep the command and claim-gate vocabulary aligned.
+Automated coverage in `bun run docs:check` also requires `docs/agent-enforcement.md` to exist, be linked from README and the docs hub, appear in AGENTS required-documentation-sync, keep the command and claim-gate vocabulary aligned, and use the single combined root playbook placement rule.
 
 ### 8. Machine-Readable Docs Contract Check
 

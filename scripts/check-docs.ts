@@ -498,8 +498,7 @@ const agentEnforcementContractDocs = [
       "bun run check",
       "planned, scaffolded, implemented, and verified",
       "Performance claims",
-      "Root `skills/`",
-      "Root `subagents/`",
+      "Root `skills/` and `subagents/` directories are forbidden",
       "AI skill playbooks live under `docs/skills/`",
       "AI subagent role briefs live under `docs/subagents/`",
     ],
@@ -1181,6 +1180,11 @@ const staleStatusPatterns = [
     file: ".github/PULL_REQUEST_TEMPLATE.md",
     pattern: /severity levels/i,
     message: ".github/PULL_REQUEST_TEMPLATE.md should reference diagnostic severity values, not severity levels.",
+  },
+  {
+    file: "docs/agent-enforcement.md",
+    pattern: /Root `skills\/` directories are forbidden|Root `subagents\/` directories are forbidden/i,
+    message: "docs/agent-enforcement.md should use the single combined root playbook placement rule.",
   },
   {
     file: "docs/public/reference/cli.md",

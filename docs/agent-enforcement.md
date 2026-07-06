@@ -60,8 +60,6 @@ Agents must preserve these structure rules:
 - AI skill playbooks live under `docs/skills/`.
 - AI subagent role briefs live under `docs/subagents/`.
 - Root `skills/` and `subagents/` directories are forbidden.
-- Root `skills/` directories are forbidden.
-- Root `subagents/` directories are forbidden.
 - Shared model types live in `@needle/core`.
 - Runtime packages must not depend on agent-only packages.
 - User application code should not require Bun-only APIs; Bun-specific behavior belongs in adapter packages.
