@@ -666,7 +666,12 @@ const prototypeScopeTerms = [
   },
   {
     file: "docs/public/roadmap.md",
-    terms: ["first public prototype", "first working slice"],
+    terms: [
+      "first public prototype",
+      "first working slice",
+      "first working slice is intended to prove create app, SEO-safe pages, `@needle/adapter-bun` serving, a basic map, agent inspection, and safe metadata edit",
+      "public prototype expands that slice into API routes, hot API, read-only MCP tools, adapter-aware output, and documented Node/static paths",
+    ],
   },
   {
     file: "docs/roadmap.md",

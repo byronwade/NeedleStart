@@ -305,7 +305,7 @@ Automated coverage in `bun run docs:check` also requires onboarding target-resul
 
 Prototype docs must describe the first public prototype and first working slice as planned proof targets until the prototype exists. Use `should prove` or `is intended to prove` for target scope, not wording that implies the proof has already happened.
 
-Prototype-scope docs should use `first working slice` and `first public prototype` instead of stale `MVP` shorthand or older "agent-native wedge" phrasing. The first working slice is the smaller proof path; the first public prototype is the broader demo target.
+Prototype-scope docs should use `first working slice` and `first public prototype` instead of stale `MVP` shorthand or older "agent-native wedge" phrasing. The first working slice is the smaller proof path; the first public prototype is the broader demo target. The public roadmap must use `is intended to prove` wording for the first working slice until that slice is implemented and verified.
 
 Automated coverage in `bun run docs:check` also requires every public guide page that shows planned commands or APIs to state the matching behavior is not implemented yet. This includes create-app, static page, API route, hot API route, SEO metadata, Needle Map, and agent context workflows.
 
