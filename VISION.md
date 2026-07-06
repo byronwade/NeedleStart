@@ -35,7 +35,7 @@ NeedleStart should let teams:
 - Build with familiar React framework ergonomics.
 - Get route-level type safety.
 - Ship static HTML when possible.
-- Use Bun for low-overhead runtime paths.
+- Use the Bun adapter path for low-overhead server execution.
 - Run hot APIs outside React when performance matters.
 - Give AI agents structured application context.
 - See what every file affects before making changes.

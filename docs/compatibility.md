@@ -8,7 +8,7 @@ NeedleStart should document runtime, platform, framework, and migration compatib
 
 ## Planned Compatibility Areas
 
-- Bun default runtime.
+- Bun default adapter runtime.
 - Node adapter.
 - Static adapter.
 - React version support.
@@ -28,7 +28,7 @@ Adapter compatibility must also follow [Adapter Contract](adapter-contract.md), 
 
 | Surface | Status | Evidence required |
 | --- | --- | --- |
-| Bun runtime | Planned | Adapter integration tests |
+| Bun adapter runtime | Planned | Adapter integration tests |
 | Node adapter | Planned | Node HTTP fixture |
 | Static adapter | Planned | Static export fixture |
 | React | Planned | SSR and hydration fixture |

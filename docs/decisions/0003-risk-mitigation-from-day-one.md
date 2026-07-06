@@ -7,7 +7,7 @@ Audience: maintainers, framework contributors, security reviewers.
 
 ## Context
 
-NeedleStart is intentionally competing on difficult axes: semantic graph extraction, agent-native workflows, safe automated edits, Bun-speed runtime paths, and adoption against mature React frameworks.
+NeedleStart is intentionally competing on difficult axes: semantic graph extraction, agent-native workflows, safe automated edits, Bun-first adapter paths, and adoption against mature React frameworks.
 
 If these risks are handled as late additions, the project will likely become too broad, too fragile, or too hard to trust.
 
@@ -18,7 +18,7 @@ Treat the five major risks as architecture constraints from day one:
 - Semantic graph extraction must be layered, with explicit contracts as the highest-signal source.
 - MVP scope must stay tight until the graph and agent wedge is proven.
 - Adoption must lead with the agent and Needle Map workflow, not generic framework parity.
-- Bun remains the default, but Node compatibility moves earlier.
+- The Bun adapter remains the default production path, but Node compatibility moves earlier.
 - Safe edits must be transactional, AST-based, previewable, logged, check-backed, and reversible.
 - Adapter abstraction starts early through Bun, Node, and static adapters.
 - Migration tooling should generate contract stubs instead of guessing semantics.

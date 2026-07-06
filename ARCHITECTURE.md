@@ -8,7 +8,7 @@ Scope: target architecture for the planned framework; current implemented behavi
 
 NeedleStart is built around a simple split:
 
-- Bun handles runtime execution.
+- Runtime adapters handle server execution, with Bun-specific request handling isolated in `@needle/adapter-bun`.
 - Vite/Rolldown handles frontend build mechanics.
 - The Needle compiler handles framework intelligence.
 - Needle runtime adapters handle production request routing.
@@ -18,7 +18,7 @@ NeedleStart is built around a simple split:
 
 Recommended stack:
 
-- Bun: runtime, package manager, test runner, and production server path.
+- Bun: package manager, test runner, local workflow, and default production adapter runtime.
 - Vite and Rolldown: frontend build, React transforms, HMR, assets, and plugin ecosystem.
 - Custom Needle compiler: route graph, render modes, SEO generation, Needle Map, codegen, and manifests.
 - Needle adapters: thin integration layers around generated server artifacts.
@@ -53,7 +53,7 @@ Responsible for file graph, semantic graph, route impact, affected checks, owner
 
 ### Runtime
 
-Bun is the default runtime because it provides a high-performance HTTP server, package manager, test runner, and native TypeScript-friendly workflow. The Bun adapter owns Bun-specific production request handling.
+Bun is the default production adapter runtime because it provides a high-performance HTTP server, package manager, test runner, and native TypeScript-friendly workflow. The Bun adapter owns Bun-specific production request handling.
 
 ### Frontend Build
 

@@ -223,7 +223,7 @@ NeedleStart must win on a new axis instead of trying to lead with parity:
 Use this order in marketing and user-facing documentation:
 
 1. Built for the age of AI agents building and maintaining apps.
-2. SEO-safe public pages and Bun-first runtime paths, backed by fixtures before public claims.
+2. SEO-safe public pages and Bun-first adapter paths, backed by fixtures before public claims.
 3. Familiar React meta-framework ergonomics.
 
 ### Killer Onboarding Experiences

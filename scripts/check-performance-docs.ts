@@ -54,6 +54,8 @@ const forbiddenPublicClaims = [
   /SEO-perfect/i,
   /Bun-fast/i,
   /Bun-speed/i,
+  /Bun-first\s+runtime\s+paths/i,
+  /low-overhead\s+runtime\s+paths/i,
   /planned\s+fast\s+runtime\s+paths/i,
   /Ship fast with Bun and Vite/i,
   /answer\s+instantly/i,

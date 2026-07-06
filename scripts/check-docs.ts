@@ -1761,7 +1761,7 @@ const staleStatusPatterns = [
   },
   {
     file: "AGENTS.md",
-    pattern: /Bun server|Serve through Bun|Adapter-aware Bun server/i,
+    pattern: /Bun server|Serve through Bun|Adapter-aware Bun server|Bun for runtime paths/i,
     message: "AGENTS.md should describe first-slice Bun serving through @needle/adapter-bun.",
   },
   {
@@ -1771,8 +1771,53 @@ const staleStatusPatterns = [
   },
   {
     file: "VISION.md",
-    pattern: /low-level Bun server|Bun server|Serve with Bun|Serve through Bun|Adapter-aware Bun server/i,
+    pattern: /low-level Bun server|Bun server|Serve with Bun|Serve through Bun|Adapter-aware Bun server|Use Bun for low-overhead runtime paths/i,
     message: "VISION.md should describe server execution through the Bun adapter path, not generic Bun server wording.",
+  },
+  {
+    file: "ARCHITECTURE.md",
+    pattern: /Bun handles runtime execution|Bun: runtime, package manager, test runner, and production server path|fast runtime path/i,
+    message: "ARCHITECTURE.md should describe Bun-specific execution through @needle/adapter-bun and the default adapter runtime.",
+  },
+  {
+    file: "docs/product-strategy.md",
+    pattern: /Bun-first runtime paths/i,
+    message: "docs/product-strategy.md should describe Bun-first adapter paths, not generic runtime paths.",
+  },
+  {
+    file: "docs/public/index.md",
+    pattern: /Bun-first runtime paths/i,
+    message: "docs/public/index.md should describe Bun-first adapter paths, not generic runtime paths.",
+  },
+  {
+    file: "docs/compatibility.md",
+    pattern: /Bun default runtime|Bun runtime/i,
+    message: "docs/compatibility.md should describe Bun adapter runtime compatibility.",
+  },
+  {
+    file: "docs/roadmap.md",
+    pattern: /Bun remains the default runtime/i,
+    message: "docs/roadmap.md should describe the Bun adapter as the default production path.",
+  },
+  {
+    file: "docs/decisions/0001-runtime-and-build-split.md",
+    pattern: /fast runtime path|default runtime and package\/test tool|Bun provides production request handling|Start with Node runtime instead of Bun/i,
+    message: "ADR 0001 should describe Bun production behavior through the adapter model.",
+  },
+  {
+    file: "docs/decisions/0003-risk-mitigation-from-day-one.md",
+    pattern: /Bun-speed runtime paths|Bun remains the default, but Node compatibility moves earlier/i,
+    message: "ADR 0003 should describe Bun speed through the default adapter path.",
+  },
+  {
+    file: "docs/decisions/0005-bun-default-node-static-adapters.md",
+    pattern: /fast default runtime path/i,
+    message: "ADR 0005 should describe the fast default adapter path.",
+  },
+  {
+    file: "docs/speed-decisions.md",
+    pattern: /fast default runtime path/i,
+    message: "docs/speed-decisions.md should describe the fast default adapter path.",
   },
   {
     file: "docs/prototype-acceptance.md",
@@ -1811,7 +1856,7 @@ const staleStatusPatterns = [
   },
   {
     file: "docs/risk-mitigation.md",
-    pattern: /Bun server|Serve through Bun|Adapter-aware Bun server/i,
+    pattern: /Bun server|Serve through Bun|Adapter-aware Bun server|Bun-first runtime paths/i,
     message: "docs/risk-mitigation.md should describe first-slice Bun serving through @needle/adapter-bun.",
   },
   {

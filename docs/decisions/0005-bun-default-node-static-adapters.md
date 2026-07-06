@@ -7,7 +7,7 @@ Audience: maintainers, framework contributors, adapter owners.
 
 ## Context
 
-NeedleStart wants a fast default runtime path, but Bun adoption concerns should not make the framework feel locked to one runtime. The first adapter model must support speed while preserving a credible compatibility story.
+NeedleStart wants a fast default adapter path, but Bun adoption concerns should not make the framework feel locked to one runtime. The first adapter model must support speed while preserving a credible compatibility story.
 
 ## Decision
 

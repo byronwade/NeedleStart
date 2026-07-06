@@ -511,7 +511,7 @@ Goal: reduce Bun adoption friction before the broader deployment adapter phase.
 
 Rationale:
 
-- Bun remains the default runtime because speed matters.
+- The Bun adapter remains the default production path because speed matters.
 - User application code should not depend on Bun-only APIs.
 - Teams that require Node should have a credible path early.
 

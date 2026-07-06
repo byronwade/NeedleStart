@@ -19,7 +19,7 @@ Current primary guidance supports these choices. This baseline was refreshed on 
 - React's current guidance favors framework or router-integrated code splitting over lazy imports that only start after a component renders.
 - [React Compiler](https://react.dev/learn/react-compiler) documents automatic build-time memoization for React applications.
 - React streaming SSR with Suspense lets frameworks send useful HTML before every async branch finishes.
-- [Bun HTTP server](https://bun.com/docs/runtime/http/server), [Bun routing](https://bun.com/docs/runtime/http/routing), and Bun's integrated package manager, runner, and test runner support the fast default runtime path.
+- [Bun HTTP server](https://bun.com/docs/runtime/http/server), [Bun routing](https://bun.com/docs/runtime/http/routing), and Bun's integrated package manager, runner, and test runner support the fast default adapter path.
 - [web.dev Web Vitals](https://web.dev/articles/vitals) and [Google Search Core Web Vitals](https://developers.google.com/search/docs/appearance/core-web-vitals) keep LCP, INP, and CLS as the public-page quality targets.
 - [Lighthouse performance budgets](https://web.dev/articles/use-lighthouse-for-performance-budgets) support enforcing budgets for metric values, resource sizes, and resource counts.
 - [web.dev image performance](https://web.dev/learn/performance/image-performance) recommends modern formats, responsive sizing, and LCP-aware image delivery.
