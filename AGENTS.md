@@ -131,6 +131,7 @@ needle agent
 needle mcp
 needle edit
 needle migrate
+needle bench
 ```
 
 ## Repository Rules

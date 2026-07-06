@@ -109,6 +109,7 @@ Initial planned command data shapes:
 | `needle build --json` | `{ "outputs": BuildOutput[], "manifests": string[], "checks": CheckResult[] }` |
 | `needle edit --json` | `{ "transaction": SafeEditTransaction, "diff": DiffSummary, "checks": CheckResult[] }` |
 | `needle migrate --json` | `{ "migration": MigrationReport, "contracts": string[], "manualReview": string[] }` |
+| `needle bench --json` | `{ "fixture": string, "runs": BenchmarkRun[], "environment": BenchmarkEnvironment, "summary": BenchmarkSummary }` |
 
 The exact schemas belong in command-specific reference docs once implementation exists.
 

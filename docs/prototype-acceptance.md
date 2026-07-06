@@ -12,7 +12,7 @@ Scope note: this is broader than the first working slice in `docs/risk-mitigatio
 ```bash
 bun create needle demo
 cd demo
-bun dev
+bun run dev
 ```
 
 Browser should show:
@@ -61,8 +61,8 @@ The safe edit flow should:
 Then:
 
 ```bash
-bun build
-bun start
+bun run build
+bun run start
 ```
 
 Production Bun server should serve:

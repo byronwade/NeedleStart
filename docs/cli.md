@@ -24,6 +24,7 @@ Machine-readable command behavior is planned in [CLI JSON Contract](cli-json-con
 | `needle mcp` | Start MCP server. | No |
 | `needle edit` | Preview, apply, inspect, and undo safe-edit transactions. | Yes |
 | `needle migrate` | Prototype framework migration workflows. | Yes |
+| `needle bench` | Run planned benchmark fixtures and emit evidence metadata. | Yes |
 
 ## Reference Requirements
 

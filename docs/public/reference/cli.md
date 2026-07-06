@@ -20,6 +20,7 @@ The `@needle/cli` package is scaffolded, but no NeedleStart CLI command behavior
 | `needle mcp` | Start MCP server. |
 | `needle edit` | Preview, apply, inspect, and undo safe-edit transactions. |
 | `needle migrate` | Prototype migration workflows. |
+| `needle bench` | Run benchmark fixtures and emit evidence metadata. |
 
 Exact options, outputs, and exit codes will be documented after implementation.
 

@@ -96,6 +96,7 @@ needle agent
 needle mcp
 needle edit
 needle migrate
+needle bench
 ```
 
 The repository must keep CLI JSON output stable, compact, and documented as commands become real.

@@ -35,6 +35,7 @@ Planned commands:
 | `needle mcp` | Planned | Start the MCP server. |
 | `needle edit` | Planned | Preview, apply, inspect, and undo safe-edit transactions. |
 | `needle migrate` | Planned | Prototype migration workflows such as `from-next`. |
+| `needle bench` | Planned | Run benchmark fixtures and emit evidence metadata. |
 
 Each command should eventually document human output, `--json` output, exit codes, and affected generated files.
 

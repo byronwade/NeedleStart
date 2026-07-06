@@ -77,6 +77,7 @@ needle agent
 needle mcp
 needle edit
 needle migrate
+needle bench
 ```
 
 Repository maintenance commands now available in this checkout:
@@ -288,6 +289,7 @@ Terminology: the first working slice is smaller and proves create app, SEO-safe 
 19. Safe metadata edit.
 20. Node adapter baseline.
 21. Migration prototype.
+22. Benchmark evidence command.
 
 ## Public API Draft
 
