@@ -19,6 +19,8 @@ export default defineConfig({
 })
 ```
 
+`runtime` describes the default local execution target and compatibility target for generated server code. `adapter` selects the production output package: `bun` maps to `@needle/adapter-bun`, `node` maps to `@needle/adapter-node`, and `static` maps to `@needle/adapter-static`. Resolved adapter output should be reported in `dist/adapter.manifest.json` with `runtime.name`.
+
 ## Planned Config Areas
 
 - Runtime target.

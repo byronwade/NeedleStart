@@ -175,7 +175,7 @@ Expected result: diagnostic code rules, severity values, categories, source loca
 rg -n "needle.config|defineConfig|environment|env|normalized|schemaVersion|secret|adapter" docs\config-contract.md docs\config.md docs\api-reference.md docs\runtime-contract.md docs\adapters.md docs\security.md docs\manifest-contracts.md
 ```
 
-Expected result: config loading, validation, environment behavior, normalized output, adapter selection, and secret-exclusion rules remain connected.
+Expected result: config loading, validation, environment behavior, normalized output, adapter selection, runtime/adapter ownership, `dist/adapter.manifest.json` `runtime.name`, and secret-exclusion rules remain connected.
 
 ### 14. Adapter Contract Check
 
@@ -298,7 +298,7 @@ The initial Bun workspace exposes these package scripts:
 
 Target behavior:
 
-- `docs:check` validates required docs, required links, local Markdown links, root docs metadata, every `docs/` Markdown file's top-level status and audience metadata, durable internal docs hub coverage, local directory index coverage for prompts, decisions, checklists, skills, and subagents, every Markdown status label format, public docs navigation coverage, AI playbook placement, verification-section coverage, scaffold-status language, scaffolded-package-versus-implemented-package wording, current-vs-planned structure claims, agent-output naming guardrails, package-map/build-plan/backlog package coverage, planned CLI command surface and prefix consistency, adapter package paths, shared-core scaffold terminology, and the current `bun.lockb` lockfile name.
+- `docs:check` validates required docs, required links, local Markdown links, root docs metadata, every `docs/` Markdown file's top-level status and audience metadata, durable internal docs hub coverage, local directory index coverage for prompts, decisions, checklists, skills, and subagents, every Markdown status label format, public docs navigation coverage, AI playbook placement, verification-section coverage, scaffold-status language, scaffolded-package-versus-implemented-package wording, current-vs-planned structure claims, agent-output naming guardrails, package-map/build-plan/backlog package coverage, planned CLI command surface and prefix consistency, config/adapter contract terms, adapter package paths, shared-core scaffold terminology, and the current `bun.lockb` lockfile name.
 - `structure:check` validates workspace scripts, package names, package entrypoints, TypeScript scaffold files, CI, forbidden runtime dependencies on agent-only packages, and shared-core type ownership outside `@needle/core`.
 - `performance:check` validates performance docs, benchmark fixture coverage, raw-result rules, and unsupported root/public speed, benchmark, or SEO positioning claim patterns.
 - `check` runs the automated docs, structure, performance, typecheck, and test gates.

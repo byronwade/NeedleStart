@@ -219,6 +219,12 @@ const plannedExampleInventoryDocs = [
   "docs/public/reference/examples.md",
 ];
 
+const configAdapterContractDocs = [
+  "docs/config-contract.md",
+  "docs/config.md",
+  "docs/public/reference/config.md",
+];
+
 function rel(path: string): string {
   return relative(root, path).replaceAll("\\", "/");
 }
@@ -737,6 +743,24 @@ for (const file of plannedExampleInventoryDocs) {
   for (const examplePath of plannedExamplePaths) {
     if (!content.includes(examplePath)) {
       failures.push(`${file} does not document planned example path: ${examplePath}.`);
+    }
+  }
+}
+
+for (const file of configAdapterContractDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file);
+  for (const term of [
+    "runtime",
+    "adapter",
+    "@needle/adapter-bun",
+    "@needle/adapter-node",
+    "@needle/adapter-static",
+    "dist/adapter.manifest.json",
+    "runtime.name",
+  ]) {
+    if (!content.includes(term)) {
+      failures.push(`${file} is missing config/adapter contract term: ${term}.`);
     }
   }
 }

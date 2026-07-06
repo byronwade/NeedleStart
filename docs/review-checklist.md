@@ -25,6 +25,7 @@ This checklist defines the review bar for NeedleStart changes. It complements [E
 - Public docs link to deeper internal contracts.
 - Docs do not duplicate large blocks of another page without a reason.
 - Terminology matches [Glossary](glossary.md).
+- Config examples distinguish runtime compatibility targets from production adapter output.
 - Public docs metadata follows [Public Frontmatter Standard](public-frontmatter-standard.md) once frontmatter is introduced.
 - Local Markdown links resolve.
 

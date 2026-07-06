@@ -38,6 +38,18 @@ export default defineConfig({
 
 `defineConfig()` should provide type checking and narrow accepted values. It should not execute runtime request logic.
 
+## Runtime And Adapter Ownership
+
+`runtime` and `adapter` are related but not interchangeable:
+
+- `runtime` describes the default local execution target and compatibility target for generated server code.
+- `adapter` selects the production output package that turns generated artifacts into deployable output.
+- `adapter: "bun"` maps to `@needle/adapter-bun`.
+- `adapter: "node"` maps to `@needle/adapter-node`.
+- `adapter: "static"` maps to `@needle/adapter-static`.
+
+If both fields are present, config validation must ensure they resolve to a compatible pair before generated output is emitted. Adapter packages must report their resolved runtime through `dist/adapter.manifest.json` as `runtime.name`, not through ad hoc config re-evaluation at startup.
+
 ## Loading Order
 
 Planned loading order:
