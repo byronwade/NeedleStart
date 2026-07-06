@@ -37,7 +37,7 @@ The first public prototype focuses on proving the agent-native and semantic grap
 
 ## Current Status
 
-The repository is in Phase 0. The next implementation stage is Phase 1: monorepo skeleton, followed by route discovery.
+The repository is in Phase 1. The monorepo scaffold exists with Bun workspace configuration, package placeholders, shared core scaffold types, CI, and enforcement scripts. The next implementation stage is Phase 1A: expand the shared core data model, followed by route discovery.
 
 ## How We Build
 
@@ -73,7 +73,7 @@ Definition of done:
 - Agent rules are documented.
 - Implementation task template exists.
 
-Status: in progress.
+Status: complete for initial project constitution.
 
 Risk mitigation focus:
 
@@ -87,6 +87,8 @@ Risk mitigation focus:
 Goal: create the Bun workspace and package scaffolds.
 
 Implementation guide: `docs/phase-1-build-plan.md`.
+
+Status: scaffolded.
 
 Packages:
 

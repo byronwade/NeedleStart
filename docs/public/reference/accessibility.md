@@ -42,7 +42,7 @@ Future checks should cover:
 
 ## Current Reality
 
-The repository is still Phase 0. Accessibility diagnostics, browser tests, route focus behavior, and generated reports do not exist yet.
+The repository is in Phase 1 scaffold. Accessibility diagnostics, browser tests, route focus behavior, and generated reports do not exist yet.
 
 ## Related
 

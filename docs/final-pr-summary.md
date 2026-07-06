@@ -29,7 +29,7 @@ This is a ready-to-adapt PR summary for the documentation-system work.
 
 ## Why It Matters
 
-NeedleStart is still documentation-only. This change makes the repository much easier to understand before implementation begins. It gives contributors a clean Phase 1 path, gives maintainers governance and review surfaces, gives AI agents structured rules and stable-contract expectations, and gives future public website content a source architecture.
+NeedleStart now has a Phase 1 scaffold. This documentation-system summary remains useful as historical context for the planning pass that made the repository easier to understand before implementation began. It gave contributors a clean Phase 1 path, gave maintainers governance and review surfaces, gave AI agents structured rules and stable-contract expectations, and gave future public website content a source architecture.
 
 ## Audiences That Benefit
 

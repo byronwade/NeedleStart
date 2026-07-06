@@ -4,11 +4,11 @@ Status: Planned.
 
 Audience: future website visitors, contributors, maintainers.
 
-NeedleStart is currently in Phase 0: project constitution and planning.
+NeedleStart is currently in Phase 1: monorepo scaffold.
 
 ## Current Phase
 
-Phase 0 defines the product direction, architecture, package responsibilities, documentation system, safety rules, and implementation sequence.
+Phase 0 defined the product direction, architecture, package responsibilities, documentation system, safety rules, and implementation sequence.
 
 No package scaffold or runtime implementation exists yet.
 

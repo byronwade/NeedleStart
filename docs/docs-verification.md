@@ -4,11 +4,11 @@ Status: Planned.
 
 Audience: maintainers, contributors, AI agents.
 
-This page defines the repeatable checks that keep NeedleStart documentation build-ready. It complements [Documentation Freshness Policy](docs-freshness-policy.md) and [Documentation Maintenance Checklist](docs-maintenance-checklist.md) by naming exact checks, expected evidence, and current Phase 0 limitations.
+This page defines the repeatable checks that keep NeedleStart documentation build-ready. It complements [Documentation Freshness Policy](docs-freshness-policy.md) and [Documentation Maintenance Checklist](docs-maintenance-checklist.md) by naming exact checks, expected evidence, and current scaffold limitations.
 
 ## Why This Exists
 
-Documentation quality needs proof. Mature documentation systems combine editorial standards, link validation, reference consistency, machine-readable contracts, and status discipline. NeedleStart is still documentation-only, so the first verification layer is lightweight and local. As packages are added, these checks should move into scripts and CI.
+Documentation quality needs proof. Mature documentation systems combine editorial standards, link validation, reference consistency, machine-readable contracts, and status discipline. NeedleStart now has a lightweight Bun workspace scaffold, so the first verification layer exists as local scripts and CI. This page remains the human-readable source of truth for what those checks mean and what evidence reviewers should report.
 
 Research backing:
 
@@ -19,7 +19,14 @@ Research backing:
 
 ## Current Manual Checks
 
-Run these checks before finishing documentation, navigation, public-docs, package-structure, command, generated-file, or agent-workflow changes.
+Run these checks before finishing documentation, navigation, public-docs, package-structure, command, generated-file, or agent-workflow changes. The automated subset runs through:
+
+```powershell
+bun run docs:check
+bun run structure:check
+bun run performance:check
+bun run check
+```
 
 ### 1. Git Whitespace Check
 
@@ -258,29 +265,29 @@ rg -n "review-checklist|threat-model|benchmark-fixtures|examples-catalog|docs-si
 
 Expected result: review gates, threat-model requirements, benchmark fixture planning, example catalog planning, docs-site implementation phases, and PR template evidence remain connected.
 
-## Future Script Targets
+## Script Targets
 
-Once the Bun workspace exists, these manual checks should become package scripts:
+The initial Bun workspace exposes these package scripts:
 
 ```json
 {
   "scripts": {
-    "docs:check": "needle-docs-check",
-    "docs:links": "needle-docs-check links",
-    "docs:claims": "needle-docs-check claims",
-    "docs:index": "needle-docs-index --check"
+    "docs:check": "bun scripts/check-docs.ts",
+    "structure:check": "bun scripts/check-structure.ts",
+    "performance:check": "bun scripts/check-performance-docs.ts",
+    "check": "bun run docs:check && bun run structure:check && bun run performance:check && bun run typecheck && bun test"
   }
 }
 ```
 
 Target behavior:
 
-- `docs:links` validates local links and heading anchors.
-- `docs:claims` flags unsupported implementation, speed, security, compatibility, and benchmark claims.
-- `docs:index` checks generated `docs-index.json` against source Markdown.
-- `docs:check` runs all documentation checks plus `git diff --check`.
+- `docs:check` validates required docs, required links, local Markdown links, AI playbook placement, and verification-section coverage.
+- `structure:check` validates workspace scripts, package names, package entrypoints, TypeScript scaffold files, CI, and forbidden runtime dependencies on agent-only packages.
+- `performance:check` validates performance docs, benchmark fixture coverage, raw-result rules, and unsupported public speed-claim patterns.
+- `check` runs the automated docs, structure, performance, typecheck, and test gates.
 
-Do not add these scripts to README as verified commands until implementation exists and passes.
+Future work can split these into narrower `docs:links`, `docs:claims`, and `docs:index` commands after generated docs indexes exist.
 
 ## Evidence To Report
 
@@ -311,18 +318,16 @@ Every documentation-heavy PR should report:
 - Whether high-risk surfaces, threat models, secret handling, production errors, security headers, vulnerability intake, package provenance, or security evidence changed.
 - Whether route budgets, Core Web Vitals target language, performance diagnostics, `.needle/perf.report.json`, route chunk fields, source-map exposure, RUM policy, benchmark evidence, or public speed claims changed.
 - Whether rendering defaults, build pipeline, runtime request path, route code splitting, CSS delivery, production source maps, React Compiler, React streaming, resource hints, fetch priority, 103 Early Hints, speculation rules, bfcache, compression, image/font delivery, client payload, optional RUM, hot API behavior, cache strategy, compiler scaling, or speed decision gates changed.
-- Which code checks were unavailable because package scaffolding does not exist.
+- Which code checks were unavailable and why.
 
 ## CI Path
 
-When Phase 1 package scaffolding exists, add a CI job that runs:
+The initial CI job runs:
 
 1. `bun install`
-2. `bun test`
-3. `bun run typecheck`
-4. `bun run docs:check`
+2. `bun run check`
 
-Until then, manual docs verification is the source of truth.
+Manual docs verification remains the source of truth for checks that require reviewer judgment.
 
 ## Out Of Scope
 

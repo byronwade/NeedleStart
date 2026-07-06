@@ -14,7 +14,7 @@ NeedleStart is designed so routes, components, APIs, schemas, tests, metadata, c
 
 ## Current Status
 
-NeedleStart is in Phase 0: project constitution and planning.
+NeedleStart is in Phase 1: monorepo scaffold. Framework runtime behavior is still planned.
 
 No runtime implementation, CLI, package scaffold, route compiler, Needle Map generator, MCP server, or safe edit system exists yet. The current repository defines the product direction, architecture, safety rules, docs system, and first implementation path.
 

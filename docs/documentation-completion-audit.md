@@ -67,7 +67,7 @@ Reason: the repository has no Bun workspace or package scaffold yet. The docs ex
 
 ## Deferred By Design
 
-These items are not completed as implemented behavior because the repository is still Phase 0:
+These items are not completed as implemented framework behavior because the repository is in Phase 1 scaffold:
 
 - Verified quick-start tutorial.
 - Real CLI output.

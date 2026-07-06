@@ -1,6 +1,6 @@
 # NeedleStart Subagents
 
-This directory defines vendor-neutral subagent role briefs for AI systems that support delegated or parallel work. They are documentation-only in Phase 0 and are intended to help agents from different AI companies coordinate consistently.
+This directory defines vendor-neutral subagent role briefs for AI systems that support delegated or parallel work. They are documentation-only in Phase 1 scaffold and are intended to help agents from different AI companies coordinate consistently.
 
 ## Role Index
 

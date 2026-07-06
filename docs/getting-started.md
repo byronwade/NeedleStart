@@ -2,7 +2,7 @@
 
 Status: Planned.
 
-This page describes the target onboarding path for NeedleStart. The repository is still in Phase 0, so the commands below are not verified local commands yet.
+This page describes the target app onboarding path for NeedleStart. The repository is in Phase 1 scaffold, so repository maintenance commands are available, but the app creation commands below are not verified local commands yet.
 
 ## Current Repository Status
 
@@ -101,7 +101,7 @@ The next implementation work is:
 
 See [Phase 1 Build Plan](phase-1-build-plan.md) and [Task Backlog](task-backlog.md).
 
-## Out Of Scope For Phase 0
+## Out Of Scope Until Implementation
 
 - Running a local NeedleStart app.
 - Publishing packages.

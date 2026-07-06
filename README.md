@@ -60,7 +60,21 @@ bun run build
 bun run start
 ```
 
-This repository is not yet at package-publish stage. Until the monorepo is scaffolded, these commands are target UX rather than verified local commands.
+This repository is not yet at package-publish stage. The user-facing create/dev commands above remain target UX rather than verified local commands.
+
+Repository maintenance commands now available in this checkout:
+
+```bash
+bun install
+bun test
+bun run typecheck
+bun run docs:check
+bun run structure:check
+bun run performance:check
+bun run check
+```
+
+These commands verify the package scaffold, documentation links, structure rules, performance-claim guardrails, TypeScript surface, and placeholder tests. They do not prove route discovery, rendering, CLI behavior, runtime adapters, Needle Map generation, MCP tools, or safe edits.
 
 ## Key Features
 
@@ -340,6 +354,7 @@ Start here:
 - [Product Build Readiness](docs/product-build-readiness.md)
 - [Versioning And Upgrades](docs/versioning-and-upgrades.md)
 - [Roadmap](docs/roadmap.md)
+- [Package Map](docs/package-map.md)
 - [Needle Map](docs/needle-map.md)
 - [App Graph Visual Map](docs/app-graph-visual.md)
 - [Risk Mitigation](docs/risk-mitigation.md)
@@ -371,11 +386,11 @@ Start here:
 
 ## Current Status
 
-This repository is in Phase 0: project constitution and planning.
+This repository is in Phase 1: monorepo scaffold.
 
-No runtime implementation exists yet. The current work is to lock the product direction, architecture boundaries, package responsibilities, documentation rules, agent workflow, and vendor-neutral AI collaboration playbooks before implementation begins.
+The repository now has a Bun workspace, package placeholders, shared core types, CI, and enforcement scripts for docs, structure, performance-claim hygiene, type checking, and placeholder tests.
 
-The next implementation stage is Phase 1: monorepo skeleton, then route discovery. Use the [Phase 1 Build Plan](docs/phase-1-build-plan.md) as the entry guide before adding package scaffolding or claiming local commands work.
+No framework runtime implementation exists yet. Route discovery, rendering, CLI behavior, runtime adapters, Needle Map generation, MCP tools, and safe edits remain planned. The next implementation stage is Phase 1A: shared core data model expansion, followed by route discovery.
 
 ## Philosophy
 

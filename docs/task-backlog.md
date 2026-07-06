@@ -298,6 +298,8 @@ Definition of done:
 
 Goal: create the Bun workspace and package scaffolds.
 
+Status: scaffolded in the repository. Keep this section as the acceptance record for the initial scaffold and update it if package boundaries change.
+
 Read first:
 
 - `docs/phase-1-build-plan.md`

@@ -42,7 +42,7 @@ Read before editing:
 
 ## Handoff Checklist
 
-- The change is aligned with Phase 0 or clearly marked as planned for a later phase.
+- The change is aligned with the current scaffold phase or clearly marked as planned for a later phase.
 - New implementation work has acceptance criteria.
 - Any package boundary changes are reflected in `../package-map.md`.
 - The next agent can continue without guessing status.

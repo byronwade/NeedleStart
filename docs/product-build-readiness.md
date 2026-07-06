@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: maintainers, framework contributors, AI agents.
 
-This page defines the documentation and evidence gates that must be true before NeedleStart can move from Phase 0 planning into a full product build. It is not an implementation plan by itself; it is the readiness checklist that keeps implementation work tied to clear contracts, user-facing docs, speed expectations, and verification.
+This page defines the documentation and evidence gates that must remain true as NeedleStart moves from scaffold into full product build work. It is not an implementation plan by itself; it is the readiness checklist that keeps implementation work tied to clear contracts, user-facing docs, speed expectations, and verification.
 
 ## Why This Exists
 
@@ -58,7 +58,7 @@ Before adding the monorepo scaffold, the repository should have:
 - A testing contract for fixtures, snapshots, HTTP checks, browser checks, security checks, CI gates, and evidence reporting.
 - A repeatable documentation verification runbook with exact checks and evidence expectations.
 
-This state is mostly present. The largest remaining Phase 0 doc gap is turning the readiness checklist into implementation issue templates or PR descriptions as Phase 1 starts.
+This state is mostly present. The current follow-up is keeping the readiness checklist aligned with implementation issues, PR descriptions, and the Phase 1 scaffold.
 
 ## Product Build Gates
 

@@ -31,7 +31,7 @@ NeedleStart plans to use file-based routing under `app/`. This page is the publi
 
 Route discovery should emit `.needle/routes.json` with route IDs, route paths, source files, params, layouts, route groups, and diagnostics.
 
-This output does not exist yet because NeedleStart is still in Phase 0.
+This output does not exist yet because route discovery is still planned.
 
 ## Source
 

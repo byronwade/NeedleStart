@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: framework contributors, maintainers, CI authors, AI agents.
 
-This page defines the planned testing contract for NeedleStart. Test tooling is not implemented yet. The contract exists so package scaffolding, compiler work, runtime adapters, route fixtures, public docs, diagnostics, benchmarks, and agent workflows share one evidence model.
+This page defines the testing contract for NeedleStart. Initial scaffold checks exist; feature-specific test tooling is still planned. The contract exists so package scaffolding, compiler work, runtime adapters, route fixtures, public docs, diagnostics, benchmarks, and agent workflows share one evidence model.
 
 ## Goals
 
@@ -58,13 +58,22 @@ Source links:
 | Security | Prove high-risk behavior is constrained. | Secret exclusion, auth cache rejection, safe edit rejection, production error sanitization. |
 | Performance | Prove speed claims with raw evidence. | Hot API benchmark, route discovery timing, build timing, manifest size. |
 
-## Planned Commands
+## Commands
 
-Target root scripts after package scaffolding:
+Initial scaffold commands:
 
 ```bash
 bun test
 bun run typecheck
+bun run docs:check
+bun run structure:check
+bun run performance:check
+bun run check
+```
+
+Future target scripts as implementation grows:
+
+```bash
 bun run test:unit
 bun run test:fixtures
 bun run test:integration
@@ -72,10 +81,9 @@ bun run test:http
 bun run test:browser
 bun run test:snapshots
 bun run test:security
-bun run docs:check
 ```
 
-These commands are planned. Do not document them as passing until package scaffolding exists and local evidence proves it.
+Do not document future target scripts as passing until they exist and local evidence proves it.
 
 ## Fixture Layout
 
@@ -150,12 +158,10 @@ Snapshot rules:
 
 ## CI Gates
 
-Initial CI after Phase 1 scaffold should run:
+Initial CI after Phase 1 scaffold runs:
 
 1. `bun install`
-2. `bun test`
-3. `bun run typecheck`
-4. `bun run docs:check`
+2. `bun run check`
 
 Future CI should add targeted jobs as implementation grows:
 

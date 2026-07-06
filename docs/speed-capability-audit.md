@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: maintainers, framework contributors, performance reviewers, AI agents.
 
-This audit checks whether NeedleStart has made explicit speed decisions for every major framework surface before implementation begins. It is documentation evidence, not product benchmark evidence. The repository is still Phase 0, so each item below is a planned decision with a proof gate.
+This audit checks whether NeedleStart has made explicit speed decisions for every major framework surface before implementation deepens. It is documentation evidence, not product benchmark evidence. The repository is in Phase 1 scaffold, so each framework behavior item below remains a planned decision with a proof gate.
 
 ## Research Baseline
 

@@ -6,13 +6,21 @@ Test command, fixture, snapshot, and CI expectations are defined in [Testing Con
 
 ## Current Truth
 
-NeedleStart is still documentation-only. Phase 1 starts when the repository adds a Bun workspace, package directories, placeholder source files, and placeholder tests.
+NeedleStart now has the initial Phase 1 scaffold: Bun workspace configuration, package directories, placeholder source files, shared core scaffold types, root verification scripts, and placeholder tests.
 
-Until that happens:
+Current verified scaffold commands:
 
-- `bun install`, `bun test`, and `bun run typecheck` are planned commands, not verified commands.
-- `needle dev`, `needle build`, and the other CLI commands are target UX, not implemented behavior.
-- Public API examples in the docs are drafts.
+```bash
+bun install
+bun test
+bun run typecheck
+bun run docs:check
+bun run structure:check
+bun run performance:check
+bun run check
+```
+
+`needle dev`, `needle build`, and the other CLI commands remain target UX, not implemented behavior. Public API examples in the docs are still drafts.
 
 ## Phase 1 Goal
 
@@ -28,7 +36,7 @@ The first implementation PR should prove only this:
 
 ## Package Scaffold
 
-Create these packages first:
+The scaffold uses these package paths:
 
 ```txt
 packages/create-needle
@@ -154,12 +162,15 @@ Phase 1A should define the shared model in `@needle/core` before any package cre
 
 ## Verification
 
-After Phase 1 scaffolding exists, the minimum checks are:
+The minimum scaffold checks are:
 
 ```bash
 bun install
 bun test
 bun run typecheck
+bun run docs:check
+bun run structure:check
+bun run performance:check
 ```
 
 If a command is not available yet, the PR must say so and update the relevant docs. Do not leave stale claims that the command passes.

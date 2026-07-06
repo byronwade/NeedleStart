@@ -1,6 +1,6 @@
 # Testing
 
-Status: Planned.
+Status: Scaffolded.
 
 Audience: framework contributors, maintainers, AI agents.
 
@@ -17,20 +17,22 @@ The planned test layers, fixture layout, snapshot policy, CI gates, artifact rul
 - Stable JSON tests for agent-facing output.
 - Benchmark tests only when performance claims are introduced.
 
-## Planned Commands
+## Implemented Commands
 
 ```bash
 bun test
 bun run typecheck
+bun run docs:check
+bun run structure:check
+bun run performance:check
+bun run check
 ```
 
-These commands are not verified until package scaffolding exists.
+These commands are available after the Phase 1 scaffold. They currently prove scaffold integrity, documentation links, package structure, performance documentation guardrails, TypeScript validity, and placeholder tests. They do not prove framework runtime behavior.
 
 ## Documentation Checks
 
-Until package scripts exist, documentation changes should use [Documentation Verification](docs-verification.md). That page defines the current manual checks for whitespace, local Markdown links, root AI playbook placement, status-language review, navigation coverage, and machine-readable docs contracts.
-
-Once the Bun workspace exists, these checks should become package scripts and CI jobs.
+Documentation changes should use [Documentation Verification](docs-verification.md). The first automated docs checks now run through `bun run docs:check`; the manual checks remain the human-readable source of truth for review evidence.
 
 ## Determinism
 
@@ -38,6 +40,6 @@ Agent-facing output, manifests, snapshots, and fixture output must be determinis
 
 ## Out Of Scope
 
-- Claiming checks pass before package scaffolding exists.
+- Claiming route, render, CLI, runtime, map, MCP, or safe-edit behavior exists because scaffold checks pass.
 - Network-dependent tests unless explicitly required.
 - Benchmark claims without benchmark methodology.

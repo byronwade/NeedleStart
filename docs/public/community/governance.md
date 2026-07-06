@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: contributors, maintainers, open source program reviewers.
 
-NeedleStart governance is lightweight while the project is in Phase 0. Human maintainers remain accountable for product direction, implementation, release decisions, and security decisions.
+NeedleStart governance is lightweight while the project is in Phase 1 scaffold. Human maintainers remain accountable for product direction, implementation, release decisions, and security decisions.
 
 ## Planned Governance Areas
 

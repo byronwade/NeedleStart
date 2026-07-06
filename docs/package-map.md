@@ -1,6 +1,8 @@
 # Package Map
 
-This document defines planned package responsibilities and boundaries.
+This document defines package responsibilities and boundaries.
+
+Status: Scaffolded for package names and entrypoints; package behavior remains planned unless a package README, tests, and implementation evidence say otherwise.
 
 ## Root Packages
 
@@ -24,6 +26,28 @@ This document defines planned package responsibilities and boundaries.
 | `@needle/adapter-node` | Node compatibility adapter using Node HTTP or a lightweight server with shims. |
 | `@needle/adapter-static` | Static export adapter for fully static routes. |
 | `@needle/adapters/*` | Later deployment targets such as Docker, Cloudflare, Vercel, and other cloud adapters. |
+
+Current scaffold paths:
+
+```txt
+packages/create-needle
+packages/cli
+packages/core
+packages/compiler
+packages/vite-plugin
+packages/react
+packages/router
+packages/seo
+packages/map
+packages/agent
+packages/mcp
+packages/cache
+packages/schema
+packages/devtools
+packages/adapters/bun
+packages/adapters/node
+packages/adapters/static
+```
 
 Note: earlier planning docs referred to `@needle/server-bun` as the Bun production runtime package. Phase 1 should prefer `@needle/adapter-bun` as the concrete package name so Bun, Node, and static output share the same adapter model. Reintroduce a separate `@needle/server-bun` package only through an architecture decision record if the adapter package becomes too broad.
 

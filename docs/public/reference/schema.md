@@ -39,7 +39,7 @@ Schemas are planned to validate params, query strings, request bodies, and respo
 
 ## Current Status
 
-This behavior is not implemented yet. The repository is still in Phase 0, so examples are target API design rather than verified commands.
+This behavior is not implemented yet. The repository is in Phase 1 scaffold, so examples are target API design rather than verified commands.
 
 ## Source
 

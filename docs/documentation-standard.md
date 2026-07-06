@@ -2,7 +2,7 @@
 
 NeedleStart should have documentation quality comparable to a mature framework. That means the docs must help a new developer start quickly, help an experienced developer find exact API details, and help an agent distinguish implemented behavior from planned behavior.
 
-This standard is inspired by mature framework docs that separate getting started material, task guides, API reference, and architecture notes. NeedleStart should use the same separation while remaining honest about the current Phase 0 status.
+This standard is inspired by mature framework docs that separate getting started material, task guides, API reference, and architecture notes. NeedleStart should use the same separation while remaining honest about the current scaffold status.
 
 ## Documentation Lanes
 
@@ -15,7 +15,7 @@ NeedleStart docs should be organized into these lanes:
 5. Architecture: internal design, package boundaries, compiler/runtime contracts, and decision records.
 6. Contributing: how humans and agents safely change the repository.
 
-The current repository is documentation-only, so several pages are draft references for planned behavior. Draft pages are still useful when they define names, boundaries, and acceptance criteria without claiming implementation.
+The current repository has a scaffold, so several pages remain draft references for planned framework behavior. Draft pages are still useful when they define names, boundaries, and acceptance criteria without claiming implementation.
 
 ## Page Status Labels
 

@@ -12,9 +12,9 @@ NeedleStart is an agent-native, SEO-first React framework for fast, large-scale 
 
 ## Current Phase
 
-Current phase: Phase 0, project constitution.
+Current phase: Phase 1, monorepo scaffold.
 
-The repository currently contains documentation and planning artifacts. Do not invent implemented behavior in docs unless the implementation exists or the text clearly marks it as planned.
+The repository currently contains documentation, a Bun workspace scaffold, package placeholders, shared core types, CI, and enforcement scripts. Do not invent implemented framework behavior in docs unless the implementation exists or the text clearly marks it as planned.
 
 ## Required Documentation Sync
 
@@ -102,15 +102,19 @@ Update both `README.md` and `AGENTS.md` when:
 
 ## Setup
 
-Planned commands once implementation exists:
+Implemented repository commands:
 
 ```bash
 bun install
 bun test
 bun run typecheck
+bun run docs:check
+bun run structure:check
+bun run performance:check
+bun run check
 ```
 
-Until package scaffolding exists, do not claim these commands pass.
+These commands verify the scaffold, docs links, package structure, performance documentation guardrails, TypeScript surface, and placeholder tests. They do not prove route discovery, rendering, CLI runtime behavior, adapters, Needle Map generation, MCP tools, or safe edits.
 
 ## Planned Commands
 
@@ -314,7 +318,7 @@ While editing:
 Before finishing:
 
 1. Run available checks.
-2. If checks cannot run because scaffolding does not exist, state that clearly.
+2. If checks cannot run, state the exact command and reason.
 3. Verify `README.md` and `AGENTS.md` still describe the repository honestly.
 4. Apply `docs/docs-freshness-policy.md`, `docs/docs-maintenance-checklist.md`, and `docs/docs-verification.md`.
 5. Summarize changed files and remaining next steps.

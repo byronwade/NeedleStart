@@ -1,8 +1,8 @@
 # Project Status
 
-Status: Implemented as documentation.
+Status: Scaffolded.
 
-NeedleStart is in Phase 0: project constitution and planning.
+NeedleStart is in Phase 1: monorepo scaffold.
 
 ## What Exists
 
@@ -13,10 +13,14 @@ NeedleStart is in Phase 0: project constitution and planning.
 - Documentation system scaffolding.
 - AI skill and subagent playbooks.
 - Prototype acceptance criteria.
+- Bun workspace package scaffold.
+- Root `package.json`, `bun.lock`, `tsconfig.base.json`, and `tsconfig.json`.
+- Package placeholders under `packages/` and `packages/adapters/`.
+- Shared `@needle/core` scaffold types for routes, graph edges, diagnostics, cache plans, and adapter manifests.
+- CI workflow and root verification scripts for docs, structure, performance documentation, type checking, and placeholder tests.
 
 ## What Does Not Exist Yet
 
-- Bun workspace package scaffold.
 - Published packages.
 - CLI implementation.
 - Route discovery.
@@ -31,7 +35,7 @@ NeedleStart is in Phase 0: project constitution and planning.
 
 ## Current Next Step
 
-The next implementation step is Phase 1: monorepo skeleton. See `docs/phase-1-build-plan.md`.
+The next implementation step is Phase 1A: expand and stabilize the shared core data model, then begin route discovery. See `docs/phase-1-build-plan.md` and `docs/task-backlog.md`.
 
 ## Status Language
 

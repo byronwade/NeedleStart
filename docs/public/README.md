@@ -6,7 +6,7 @@ Audience: future website visitors, docs site builders, maintainers, AI agents.
 
 This directory is the public-facing Markdown source layer for the future NeedleStart website. These pages are written for readers evaluating or learning the framework, not for internal planning. They link back to deeper repository docs for exact contracts and implementation status.
 
-NeedleStart is still Phase 0. Public pages must not claim that commands, packages, runtime behavior, generated artifacts, benchmarks, or safe-edit workflows exist until implementation and verification prove them.
+NeedleStart is in Phase 1 scaffold. Public pages must not claim that app commands, runtime behavior, generated artifacts, benchmarks, or safe-edit workflows exist until implementation and verification prove them.
 
 ## Navigation
 

@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: first-time contributors, maintainers, AI agents.
 
-This page gives a focused path for a first contribution. NeedleStart is still Phase 0, so this is a documentation and planning workflow until package scaffolding exists.
+This page gives a focused path for a first contribution. NeedleStart is in Phase 1 scaffold, so first contributions should keep framework behavior clearly separated from scaffold and documentation work.
 
 ## Before You Start
 
@@ -21,7 +21,7 @@ If the change touches architecture, package boundaries, runtime behavior, speed,
 
 ## Good First Contribution Types
 
-Good Phase 0 contributions are:
+Good early contributions are:
 
 - Clarifying planned docs without claiming implementation exists.
 - Adding missing links between docs.
@@ -33,7 +33,7 @@ Good Phase 0 contributions are:
 Avoid these as first contributions:
 
 - Adding package scaffolding without following [Phase 1 Build Plan](phase-1-build-plan.md).
-- Claiming commands pass before `package.json` and tests exist.
+- Claiming framework commands pass before the implementation exists.
 - Adding root-level AI playbook folders.
 - Changing high-risk areas without reading [Risk Mitigation](risk-mitigation.md) and the relevant contract.
 
@@ -98,7 +98,7 @@ Summaries should include:
 - What changed.
 - Which docs were updated.
 - Which checks ran.
-- Which checks could not run because scaffolding does not exist.
+- Which checks could not run and why.
 - Any follow-up needed before implementation.
 
 Do not hide missing evidence. Honest status is more useful than confident wording.

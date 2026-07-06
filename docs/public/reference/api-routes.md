@@ -54,7 +54,7 @@ Hot API routes use the same schema direction with generated validators and seria
 
 ## Current Status
 
-This behavior is not implemented yet. The repository is still in Phase 0, so examples are target API design rather than verified commands.
+This behavior is not implemented yet. The repository is in Phase 1 scaffold, so examples are target API design rather than verified commands.
 
 ## Source
 

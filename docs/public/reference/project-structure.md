@@ -6,7 +6,7 @@ Audience: app developers, framework contributors, AI agents.
 
 NeedleStart apps are planned to use a small application root, file-based routes under `app/`, generated framework artifacts under `.needle/`, and production output under `dist/`.
 
-The repository is still in Phase 0. This page describes target structure, not verified generated output.
+The repository is in Phase 1 scaffold. This page describes target application structure and scaffolded repository structure, not verified generated app output.
 
 ## Application Structure
 
