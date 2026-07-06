@@ -255,6 +255,8 @@ Expected result: generated artifact names, deployment-copy artifact names, schem
 
 Automated coverage in `bun run docs:check` also requires canonical `.needle/*` artifact names, named `dist/*` deployment-copy artifacts, and generated artifact contract-rule vocabulary to stay aligned across these docs.
 
+Automated coverage also requires internal and public manifest contract docs to link the same source contracts for routing, API routes, schema, cache, SEO, performance, and diagnostics.
+
 Onboarding and prototype docs must name `.needle/routes.json` and `.needle/render-manifest.json` instead of using generic "route and render manifests" wording.
 
 ### 16. Routing Contract Check

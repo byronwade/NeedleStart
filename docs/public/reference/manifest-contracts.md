@@ -32,6 +32,8 @@ Generated JSON must use schema versions, normalized paths, stable ordering, and 
 
 Generated files must be deterministic and must not be edited manually.
 
+Manifest fields should stay aligned with the routing, API route, schema, cache, SEO, performance, and diagnostics contracts that define their source behavior.
+
 ## Source
 
 - [Manifest Contracts](../../manifest-contracts.md)
@@ -39,6 +41,8 @@ Generated files must be deterministic and must not be edited manually.
 - [API Route Contract](../../api-route-contract.md)
 - [Schema Contract](../../schema-contract.md)
 - [Cache Contract](../../cache-contract.md)
+- [SEO Contract](../../seo-contract.md)
+- [Performance Contract](../../performance-contract.md)
 - [Diagnostics Contract](../../diagnostics-contract.md)
 - [Machine-Readable Documentation](../../machine-readable-docs.md)
 

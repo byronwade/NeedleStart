@@ -378,6 +378,21 @@ const generatedArtifactRuleDocs = [
   "docs/public/reference/manifest-contracts.md",
 ];
 
+const manifestSourceContractDocs = [
+  "docs/manifest-contracts.md",
+  "docs/public/reference/manifest-contracts.md",
+];
+
+const manifestSourceContractTerms = [
+  "Routing Contract",
+  "API Route Contract",
+  "Schema Contract",
+  "Cache Contract",
+  "SEO Contract",
+  "Performance Contract",
+  "Diagnostics Contract",
+];
+
 const machineReadableDocsContractDocs = [
   {
     file: "docs/machine-readable-docs.md",
@@ -2190,6 +2205,16 @@ for (const file of generatedArtifactRuleDocs) {
   for (const term of ["schema version", "normalized paths", "stable ordering", "source inputs", "absolute local paths"]) {
     if (!content.toLowerCase().includes(term)) {
       failures.push(`${file} is missing generated artifact contract rule: ${term}.`);
+    }
+  }
+}
+
+for (const file of manifestSourceContractDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file);
+  for (const term of manifestSourceContractTerms) {
+    if (!content.includes(term)) {
+      failures.push(`${file} is missing manifest source contract link term: ${term}.`);
     }
   }
 }
