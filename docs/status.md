@@ -28,6 +28,8 @@ A command must not be marked `verified` until it has been run after the relevant
 | --- | --- | --- | --- |
 | Product thesis | drafted | `README.md`, `VISION.md` | Keep concise and user-facing. |
 | Product strategy | drafted | `docs/product-strategy.md` | Update after full deep research report returns. |
+| Open source governance | scaffolded | `LICENSE`, `CODE_OF_CONDUCT.md`, `GOVERNANCE.md`, `CONTRIBUTING.md`, `SECURITY.md` | Refine as contributors join. |
+| Vercel OSS readiness | drafted | `docs/open-source-community.md`, `docs/website-content-map.md` | Prepare public docs/demo hosting and impact metrics before applying. |
 | Architecture split | drafted | `ARCHITECTURE.md`, ADR 0001 | Revisit when package scaffolds land. |
 | Agent-native core | drafted | ADR 0002, `docs/agent-kernel.md` | Generate context capsules after graph and SEO outputs exist. |
 | Risk mitigation | drafted | `docs/risk-mitigation.md`, ADR 0003 | Keep required for map, agent, MCP, adapter, and safe-edit work. |
@@ -94,6 +96,7 @@ Until the monorepo exists, all commands below are target UX only.
 | --- | --- | --- |
 | Product thesis | `README.md` | `VISION.md` |
 | Product strategy | `docs/product-strategy.md` | `docs/comparisons.md`, `docs/benchmarks.md`, `docs/risk-mitigation.md` |
+| Open source community | `docs/open-source-community.md` | `CODE_OF_CONDUCT.md`, `GOVERNANCE.md`, `CONTRIBUTING.md`, `SECURITY.md` |
 | Architecture | `ARCHITECTURE.md` | `docs/decisions/*`, `docs/risk-mitigation.md` |
 | Package boundaries | `docs/package-map.md` | `ARCHITECTURE.md`, `AGENTS.md`, ADR 0004 |
 | CLI | `docs/cli.md` | `docs/prototype-acceptance.md`, `AGENTS.md`, ADR 0004 |
@@ -105,7 +108,7 @@ Until the monorepo exists, all commands below are target UX only.
 | Accessibility | `docs/accessibility.md` | `docs/seo-engine.md`, `docs/testing.md` |
 | Performance | `docs/performance.md` | `docs/testing.md`, `docs/benchmarks.md` |
 | Benchmarks | `docs/benchmarks.md` | `docs/benchmark-methodology.md`, `docs/examples.md`, `docs/comparisons.md`, `docs/testing.md` |
-| Public website docs | `docs/public-docs.md` | `docs/website-content-map.md`, `docs/status.md`, `docs/release.md` |
+| Public website docs | `docs/public-docs.md` | `docs/website-content-map.md`, `docs/status.md`, `docs/release.md`, `docs/open-source-community.md` |
 | Cache | `docs/cache.md` | `docs/runtime-contract.md`, `docs/needle-map.md` |
 | API routes | `docs/api-routes.md` | `docs/schema.md`, `docs/hot-api-path.md` |
 | Schema DSL | `docs/schema.md` | `docs/hot-api-path.md` |
@@ -114,10 +117,10 @@ Until the monorepo exists, all commands below are target UX only.
 | MCP | `docs/mcp-server.md` | `docs/security.md`, `docs/safe-edit-transactions.md` |
 | Safe edits | `docs/safe-edit-transactions.md` | `docs/security.md`, `docs/testing.md` |
 | Migration | `docs/migration.md` | `docs/needle-map.md`, `docs/schema.md` |
-| Deployment | `docs/deployment.md` | `docs/adapters.md`, `docs/runtime-contract.md` |
+| Deployment | `docs/deployment.md` | `docs/adapters.md`, `docs/runtime-contract.md`, `docs/open-source-community.md` |
 | Security | `docs/security.md`, `SECURITY.md` | `AGENTS.md`, `docs/mcp-server.md` |
 | Testing | `docs/testing.md` | `CONTRIBUTING.md`, `docs/task-backlog.md`, `docs/benchmarks.md` |
-| Release | `docs/release.md` | `docs/status.md`, `docs/compatibility.md` |
+| Release | `docs/release.md` | `docs/status.md`, `docs/compatibility.md`, `docs/open-source-community.md` |
 | Examples | `docs/examples.md` | `docs/testing.md`, `docs/prototype-acceptance.md`, `docs/benchmarks.md` |
 | Comparisons | `docs/comparisons.md` | `README.md`, `VISION.md`, `docs/benchmarks.md`, `docs/product-strategy.md` |
 | Prompt library | `docs/prompts/frontier-skills-subagents-prompt.md` | `AGENTS.md`, `docs/agent-kernel.md` |
@@ -131,7 +134,7 @@ Update this file whenever one of these changes:
 - A package is added, removed, or renamed.
 - A generated artifact is added, removed, or versioned.
 - A roadmap phase starts, completes, or changes scope.
-- A governance artifact such as a template, workflow, CODEOWNERS entry, release policy, public docs policy, benchmark policy, product strategy note, or prompt changes status.
+- A governance artifact such as a template, workflow, CODEOWNERS entry, Code of Conduct, governance policy, release policy, public docs policy, benchmark policy, open source program readiness note, product strategy note, or prompt changes status.
 
 Every implementation PR should include a one-line status update when it changes the truth table.
 
@@ -171,3 +174,4 @@ The first public prototype becomes credible when the status matrix can honestly 
 18. Demonstrate Node/static adapter path as documented compatibility.
 19. Generate public docs index or equivalent website-ready docs output.
 20. Run benchmark smoke harness without publishing official performance claims.
+21. Publish a public open source docs/demo deployment or preview plan.
