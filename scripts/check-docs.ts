@@ -633,6 +633,9 @@ for (const dir of ["docs/skills", "docs/subagents"]) {
 
 const agentsGuide = read("AGENTS.md");
 for (const doc of agentRequiredSyncDocs) {
+  if (!existsSync(join(root, doc))) {
+    failures.push(`AGENTS.md required documentation sync file is missing: ${doc}.`);
+  }
   if (!agentsGuide.includes(`- \`${doc}\``)) {
     failures.push(`AGENTS.md required documentation sync list does not include ${doc}.`);
   }
