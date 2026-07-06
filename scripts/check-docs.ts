@@ -1930,6 +1930,11 @@ const staleStatusPatterns = [
     message: "docs/cli.md should treat needle build JSON output as a full planned automation contract.",
   },
   {
+    file: "docs/cli.md",
+    pattern: /\| Command \| Purpose \| JSON output required\? \|/i,
+    message: "docs/cli.md should say JSON output is required once implemented while CLI behavior is unimplemented.",
+  },
+  {
     file: "docs/config-contract.md",
     pattern: /"level":/i,
     message: "docs/config-contract.md should show diagnostic severity, not level.",

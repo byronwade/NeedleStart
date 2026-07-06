@@ -10,7 +10,7 @@ Machine-readable command behavior is planned in [CLI JSON Contract](cli-json-con
 
 ## Planned Commands
 
-| Command | Purpose | JSON output required? |
+| Command | Purpose | JSON output required once implemented? |
 | --- | --- | --- |
 | `needle dev` | Start local development. | No |
 | `needle build` | Build app, manifests, graph, SEO, and adapter output. | Yes |

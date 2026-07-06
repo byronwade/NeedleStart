@@ -117,6 +117,8 @@ README feature and differentiator sections must label planned framework capabili
 
 Public API draft examples must say they are planned and not implemented yet unless the behavior has feature-specific implementation evidence.
 
+Internal and public CLI reference tables must make the planned status visible in their headings or status columns. For example, use `JSON output required once implemented?` instead of a present-tense `JSON output required?` heading while `@needle/cli` has no behavior.
+
 Automated coverage also requires README, AGENTS, Vision, product strategy, public home, and glossary docs to keep the canonical product identity aligned: NeedleStart is an `app-graph-native, SEO-first React framework` for humans and AI agents, the semantic app graph is the first-class primitive, public pages can use the short promise `Your app ships with a map`, short-form positioning should use `Build like Next.js` and `Type like TanStack Start`, and public agent workflow pages should use the `Agent-Safe Workflows` label instead of older agent-native product wording. Public index and roadmap pages must also name the current Phase 1 scaffold evidence: Bun workspace, package placeholders, shared core types, CI, and enforcement scripts.
 
 Top-level speed positioning must stay static-first and evidence-aware until benchmarks exist. `bun run performance:check` rejects unsupported public speed slogans such as `Ship fast with Bun and Vite`, `Bun-speed`, `Bun-first runtime paths`, generic `planned fast runtime paths`, or `maximum speed`.
