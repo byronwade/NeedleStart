@@ -1301,11 +1301,12 @@ for (const file of ["docs/status.md", "docs/documentation-standard.md"]) {
   }
 }
 
-if (existsSync(join(root, "docs/public-frontmatter-standard.md"))) {
-  const publicFrontmatter = read("docs/public-frontmatter-standard.md");
+for (const file of ["docs/public-frontmatter-standard.md", "docs/public-docs-site-architecture.md"]) {
+  if (!existsSync(join(root, file))) continue;
+  const publicFrontmatter = read(file);
   for (const status of canonicalStatusLabels) {
     if (!publicFrontmatter.includes(`\`${status.publicValue}\``)) {
-      failures.push(`docs/public-frontmatter-standard.md is missing public status value: ${status.publicValue}.`);
+      failures.push(`${file} is missing public status value: ${status.publicValue}.`);
     }
   }
 }

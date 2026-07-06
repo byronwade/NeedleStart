@@ -153,7 +153,7 @@ rg -n "frontmatter|canonical|docs-index\.json|llms\.txt|route mapping|renderer|p
 
 Expected result: public docs metadata, routes, navigation, source mapping, renderer assumptions, and machine-readable outputs remain connected.
 
-Automated coverage in `bun run docs:check` also requires public docs architecture, public frontmatter, docs-site build plan, public docs readiness, website content map, and machine-readable docs pages to keep frontmatter, canonical route, route mapping, renderer, source mapping, `docs-index.json`, `llms.txt`, and related source-doc vocabulary aligned.
+Automated coverage in `bun run docs:check` also requires public docs architecture, public frontmatter, docs-site build plan, public docs readiness, website content map, and machine-readable docs pages to keep frontmatter, canonical route, route mapping, renderer, source mapping, `docs-index.json`, `llms.txt`, and related source-doc vocabulary aligned. It also requires public docs architecture and public frontmatter docs to list the same canonical public status values: `draft`, `proposed`, `planned`, `scaffolded`, `implemented`, `verified`, and `deprecated`.
 
 ### 10. Testing Contract Check
 

@@ -83,7 +83,7 @@ Required fields:
 | --- | --- |
 | `title` | Page title used in navigation, search, Open Graph, and `docs-index.json`. |
 | `description` | Short page summary for previews, search, and agent indexes. |
-| `status` | One of `draft`, `planned`, `scaffolded`, `implemented`, `verified`, or `deprecated`. |
+| `status` | One of `draft`, `proposed`, `planned`, `scaffolded`, `implemented`, `verified`, or `deprecated`. |
 | `audience` | Reader groups such as `app developers`, `maintainers`, `AI agents`, or `future website visitors`. |
 | `category` | Navigation lane such as `start`, `guide`, `reference`, `concept`, `deployment`, `community`, or `comparison`. |
 | `source` | Repository source path. |
