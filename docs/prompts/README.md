@@ -8,7 +8,7 @@ This directory is reserved for durable prompts that help humans and AI agents pe
 
 ## Planned Prompts
 
-- Documentation audit.
+- [Documentation audit](documentation-audit.md).
 - Feature implementation task.
 - Security review.
 - Needle Map design review.

@@ -189,6 +189,27 @@ function allDurableInternalDocs(): string[] {
     .sort();
 }
 
+function requireDirectoryIndexCoverage(dir: string): void {
+  const dirPath = join(root, dir);
+  const indexPath = `${dir}/README.md`;
+
+  if (!existsSync(dirPath)) return;
+  if (!existsSync(join(root, indexPath))) {
+    failures.push(`${dir} is missing README.md index coverage.`);
+    return;
+  }
+
+  const index = read(indexPath);
+  for (const entry of readdirSync(dirPath)) {
+    const entryPath = join(dirPath, entry);
+    if (!statSync(entryPath).isFile()) continue;
+    if (!entry.endsWith(".md") || entry === "README.md") continue;
+    if (!index.includes(entry)) {
+      failures.push(`${indexPath} does not list ${dir}/${entry}.`);
+    }
+  }
+}
+
 for (const doc of requiredDocs) {
   if (!existsSync(join(root, doc))) {
     failures.push(`Missing required doc: ${doc}`);
@@ -577,6 +598,10 @@ for (const internalDoc of allDurableInternalDocs()) {
   if (!docsHub.includes(hubTarget)) {
     failures.push(`docs/README.md does not list durable internal doc: ${hubTarget}`);
   }
+}
+
+for (const dir of ["docs/prompts", "docs/skills", "docs/subagents", "docs/checklists", "docs/decisions"]) {
+  requireDirectoryIndexCoverage(dir);
 }
 
 for (const doc of requiredEntryLinks) {
