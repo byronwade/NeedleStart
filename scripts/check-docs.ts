@@ -598,6 +598,13 @@ const adapterContractDocs = [
   "docs/public/reference/adapters.md",
 ];
 
+const runtimeImplementationStatusDocs = [
+  {
+    file: "docs/runtime-contract.md",
+    terms: ["planned runtime contract", "Runtime behavior is not implemented yet"],
+  },
+];
+
 const configEnvironmentContractDocs = [
   "docs/config-contract.md",
   "docs/config.md",
@@ -1678,9 +1685,20 @@ for (const file of adapterContractDocs) {
     "early hints",
     "resourcehints",
     "bfcache",
+    "adapter behavior is not implemented yet",
   ]) {
     if (!content.includes(term)) {
       failures.push(`${file} is missing adapter contract term: ${term}.`);
+    }
+  }
+}
+
+for (const { file, terms } of runtimeImplementationStatusDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file);
+  for (const term of terms) {
+    if (!content.includes(term)) {
+      failures.push(`${file} is missing runtime implementation status term: ${term}.`);
     }
   }
 }

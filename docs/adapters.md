@@ -3,7 +3,9 @@
 Status: Planned.
 Audience: app developers, framework contributors, deployment owners.
 
-NeedleStart defaults to Bun, but the framework must not create an all-in Bun adoption risk.
+This page describes planned adapter architecture. Adapter packages are scaffolded, but adapter behavior is not implemented yet.
+
+NeedleStart is planned to default to Bun, but the framework must not create an all-in Bun adoption risk.
 
 Adapter support begins early so Bun is the fast default and Node/static output are credible deployment paths.
 
