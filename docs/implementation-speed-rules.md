@@ -33,7 +33,7 @@ Do not collapse these into one number. Each category needs its own evidence or `
 
 ## Early Speed Proof
 
-Before route discovery expands beyond the first implementation slice, add the planned benchmark skeleton:
+The planned early benchmark skeleton now exists and must stay in place before route discovery expands beyond the first implementation slice:
 
 ```txt
 fixtures/apps/tiny-static/
@@ -45,7 +45,7 @@ benchmarks/graph-query.bench.ts
 benchmarks/adapter-dispatch.bench.ts
 ```
 
-These files may start as deterministic skeletons that report `not implemented`. They must not include synthetic winning numbers. The first real implementation should record baseline numbers rather than retrofitting benchmarks after architecture decisions are already locked.
+These files start as deterministic skeletons that report `not implemented`. They must not include synthetic winning numbers. The first measured implementation should record baseline numbers rather than retrofitting benchmarks after architecture decisions are already locked.
 
 ## Dependency Pin Rule
 

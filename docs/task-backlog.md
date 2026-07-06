@@ -7,7 +7,7 @@ This backlog turns the roadmap into concrete implementation tasks. Each task sho
 
 Unless a task is explicitly marked `Verified.` or `Scaffolded.` with evidence, its "Definition of done" is planned acceptance criteria, not a claim that the behavior exists today. Future implementation tasks should use `should` wording for behavior that does not exist yet.
 
-Current implementation path: Phase 1B adds an early benchmark and fixture skeleton with no public claims, then route discovery connects to generated artifacts and CLI inspection. Phase 1A shared core model hardening is implemented in `@lumina/core`; the first route-discovery package API is implemented in `@lumina/compiler`.
+Current implementation path: route discovery connects to generated artifacts and CLI inspection. Phase 1A shared core model hardening is implemented in `@lumina/core`; the first route-discovery package API is implemented in `@lumina/compiler`; the early benchmark/status skeleton exists with `not implemented` status and no public claims.
 
 MVP Alpha implementation path: keep PR 1A through PR 4 focused on core model hardening, the early benchmark skeleton, large-repo architecture planning, route discovery, deterministic `.lumina/routes.json`, basic render mode data for `.lumina/render-manifest.json`, the first file-level `.lumina/map.json`, CLI inspection, and a demo app. API routes, MCP, safe edits, migration, Node adapter runtime behavior, benchmark publishing, and performance claims are post-MVP unless `docs/mvp-alpha-scope.md` changes in the same work.
 
@@ -443,6 +443,10 @@ Definition of done:
 Goal: create the speed evidence path before route discovery and adapter behavior expand.
 
 MVP Alpha role: keep the first implementation honest by reporting measured or `not implemented` status for the first speed surfaces without publishing claims.
+
+Task status: Scaffolded.
+
+Evidence: `benchmarks/status.ts`, `benchmarks/route-discovery.bench.ts`, `benchmarks/manifest-size.bench.ts`, `benchmarks/graph-query.bench.ts`, `benchmarks/adapter-dispatch.bench.ts`, `fixtures/apps/tiny-static/`, `fixtures/apps/medium-100-routes/`, `fixtures/apps/large-1000-routes/`, and `tests/benchmark-skeleton.test.ts`.
 
 Read first:
 

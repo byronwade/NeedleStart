@@ -30,7 +30,7 @@ Lumina is moving toward Alpha. This checkout is in Phase 1: monorepo scaffold wi
 
 Lumina is preparing an MVP Alpha focused on route discovery, explicit render modes, the first Lumina Map output, and CLI inspection. The current repository has initial in-memory route discovery in `@lumina/compiler`; MVP commands below are target behavior until implementation and fixture evidence exist.
 
-Current implemented scope is the Bun workspace scaffold, package placeholders, contract-backed shared core model types, initial `@lumina/compiler` route discovery and `lumina.routes.v0` manifest shaping, CI, and verification scripts. Generated `.lumina/routes.json` files, rendering, CLI behavior, runtime adapter behavior, Lumina Map generation, MCP tools, and safe edits remain planned.
+Current implemented scope is the Bun workspace scaffold, package placeholders, contract-backed shared core model types, initial `@lumina/compiler` route discovery and `lumina.routes.v0` manifest shaping, early benchmark/status skeletons with `not implemented` status, CI, and verification scripts. Generated `.lumina/routes.json` files, measured benchmark results, rendering, CLI behavior, runtime adapter behavior, Lumina Map generation, MCP tools, and safe edits remain planned.
 
 Package manifest versions currently use `0.0.0` as private scaffold placeholder metadata. No packages are published, and these placeholder versions are not release tags, published package versions, or compatibility guarantees.
 
@@ -119,7 +119,7 @@ bun run performance:check
 bun run check
 ```
 
-These commands verify the package scaffold, documentation links, root docs metadata, docs navigation coverage, package-map/build-plan/backlog alignment, planned CLI command surface and prefix consistency, status-drift guardrails, config/adapter contract terms, structure rules, shared-core type ownership, shared-core contract terminology, performance-claim guardrails, TypeScript surface, initial route-discovery fixture behavior, and tests. They do not prove generated `.lumina/routes.json` files, rendering, CLI behavior, runtime adapter behavior, Lumina Map generation, MCP tools, or safe edits.
+These commands verify the package scaffold, documentation links, root docs metadata, docs navigation coverage, package-map/build-plan/backlog alignment, planned CLI command surface and prefix consistency, status-drift guardrails, config/adapter contract terms, structure rules, shared-core type ownership, shared-core contract terminology, performance-claim guardrails, TypeScript surface, initial route-discovery fixture behavior, early benchmark/status skeleton paths, and tests. They do not prove generated `.lumina/routes.json` files, measured benchmark results, rendering, CLI behavior, runtime adapter behavior, Lumina Map generation, MCP tools, or safe edits.
 
 ## Planned Key Features
 
@@ -462,7 +462,7 @@ This repository is in Phase 1: monorepo scaffold with the first compiler route-d
 
 The repository now has a Bun workspace, package placeholders, contract-backed shared core model types, initial `@lumina/compiler` route discovery and route manifest shaping, CI, and enforcement scripts for docs, structure, performance-claim hygiene, type checking, and package tests.
 
-No framework runtime implementation exists yet. Generated `.lumina/routes.json` files, rendering, CLI behavior, runtime adapter behavior, Lumina Map generation, MCP tools, and safe edits remain planned. The next implementation stage is to add the early benchmark and fixture skeleton, then connect route discovery to generated artifacts and CLI inspection.
+No framework runtime implementation exists yet. Generated `.lumina/routes.json` files, measured benchmark results, rendering, CLI behavior, runtime adapter behavior, Lumina Map generation, MCP tools, and safe edits remain planned. The next implementation stage is to connect route discovery to generated artifacts and CLI inspection.
 
 ## Philosophy
 

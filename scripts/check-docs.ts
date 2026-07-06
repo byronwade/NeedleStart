@@ -743,27 +743,27 @@ const prototypeScopeTerms = [
 const currentImplementationStepDocs = [
   {
     file: "README.md",
-    terms: ["The next implementation stage is to add the early benchmark and fixture skeleton, then connect route discovery to generated artifacts and CLI inspection."],
+    terms: ["The next implementation stage is to connect route discovery to generated artifacts and CLI inspection."],
   },
   {
     file: "docs/status.md",
-    terms: ["The next implementation path is the Phase 1B early benchmark and fixture skeleton, then connecting route discovery to generated `.lumina/routes.json` files and CLI inspection."],
+    terms: ["The next implementation path is connecting route discovery to generated `.lumina/routes.json` files and CLI inspection."],
   },
   {
     file: "docs/roadmap.md",
-    terms: ["The next implementation stage is Phase 1B early benchmark and fixture skeleton, then connecting route discovery to generated artifacts and CLI inspection."],
+    terms: ["The next implementation stage is connecting route discovery to generated artifacts and CLI inspection."],
   },
   {
     file: "docs/public/roadmap.md",
-    terms: ["The next implementation path is Phase 1B early benchmark and fixture skeleton, then connecting route discovery to generated artifacts and CLI inspection."],
+    terms: ["The next implementation path is connecting route discovery to generated artifacts and CLI inspection."],
   },
   {
     file: "docs/product-build-readiness.md",
-    terms: ["Phase 1B early benchmark skeleton work and generated route artifact or CLI integration."],
+    terms: ["early benchmark/status skeleton exists with `not implemented` status"],
   },
   {
     file: "docs/task-backlog.md",
-    terms: ["Current implementation path: Phase 1B adds an early benchmark and fixture skeleton with no public claims, then route discovery connects to generated artifacts and CLI inspection."],
+    terms: ["Current implementation path: route discovery connects to generated artifacts and CLI inspection."],
   },
 ];
 

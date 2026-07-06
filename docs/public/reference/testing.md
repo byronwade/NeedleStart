@@ -17,7 +17,7 @@ bun run performance:check
 bun run check
 ```
 
-These commands are verified for the Phase 1 scaffold and the first compiler route-discovery slice. They prove scaffold integrity, documentation links and guardrails, package structure, performance documentation hygiene, TypeScript validity, scaffold tests, shared core model tests, and initial route-discovery fixture behavior. They do not prove generated `.lumina/routes.json` files, rendering, runtime adapter behavior, Lumina Map generation, MCP tools, or safe edits.
+These commands are verified for the Phase 1 scaffold, the first compiler route-discovery slice, and the early benchmark/status skeleton. They prove scaffold integrity, documentation links and guardrails, package structure, performance documentation hygiene, TypeScript validity, scaffold tests, shared core model tests, initial route-discovery fixture behavior, and benchmark skeleton path/status coverage. They do not prove generated `.lumina/routes.json` files, measured benchmark results, rendering, runtime adapter behavior, Lumina Map generation, MCP tools, or safe edits.
 
 ## Future Target Commands
 

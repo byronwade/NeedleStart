@@ -4,7 +4,7 @@ Status: Scaffolded.
 
 Audience: maintainers, contributors, AI agents.
 
-Lumina is in Phase 1: monorepo scaffold with the first compiler route-discovery slice implemented.
+Lumina is in Phase 1: monorepo scaffold with the first compiler route-discovery slice and early benchmark/status skeleton implemented.
 
 ## What Exists
 
@@ -22,7 +22,8 @@ Lumina is in Phase 1: monorepo scaffold with the first compiler route-discovery 
 - Package manifests use `0.0.0` private scaffold placeholder versions; these are not published release versions.
 - Contract-backed shared `@lumina/core` model types for routes, graph edges, diagnostics, cache plans, and adapter manifests.
 - Initial `@lumina/compiler` route discovery for page and API route files under `app/`, including deterministic route IDs, route groups, dynamic params, catch-all params, layout collection, duplicate-path diagnostics, and in-memory `lumina.routes.v0` manifest shaping.
-- CI workflow and root verification scripts for docs, structure, performance documentation, type checking, scaffold tests, and shared core model tests.
+- Early benchmark/status skeletons under `benchmarks/` and stable fixture placeholders under `fixtures/apps/`, all reporting `not implemented` and no synthetic timing results.
+- CI workflow and root verification scripts for docs, structure, performance documentation, type checking, scaffold tests, shared core model tests, route-discovery fixture tests, and benchmark skeleton path/status tests.
 
 ## What Does Not Exist Yet
 
@@ -30,6 +31,7 @@ Lumina is in Phase 1: monorepo scaffold with the first compiler route-discovery 
 - Released package versions.
 - CLI implementation.
 - Generated `.lumina/routes.json` files.
+- Measured benchmark results.
 - React rendering.
 - Compiler output.
 - Runtime adapter behavior.
@@ -42,7 +44,7 @@ Lumina is in Phase 1: monorepo scaffold with the first compiler route-discovery 
 
 ## Current Next Step
 
-The next implementation path is the Phase 1B early benchmark and fixture skeleton, then connecting route discovery to generated `.lumina/routes.json` files and CLI inspection. Phase 1A shared core model hardening is implemented in `@lumina/core` and covered by type-focused tests. The first route-discovery package slice is implemented in `@lumina/compiler` and covered by fixture tests, but MVP Alpha is not complete. The next prototype target is MVP Alpha, defined in `docs/mvp-alpha-scope.md`, and should stay focused on route discovery, basic render modes, generated route/render/map artifacts, CLI inspection, and a demo app. Agent workflow for that build target is scaffolded in `docs/alpha-agent-operating-system.md`, `docs/alpha-work-routing.md`, and `docs/alpha-drift-prevention.md`. See `docs/phase-1-build-plan.md`, `docs/large-repo-build-architecture.md`, and `docs/task-backlog.md`.
+The next implementation path is connecting route discovery to generated `.lumina/routes.json` files and CLI inspection. Phase 1A shared core model hardening is implemented in `@lumina/core` and covered by type-focused tests. The first route-discovery package slice is implemented in `@lumina/compiler` and covered by fixture tests. The early benchmark/status skeleton paths exist with `not implemented` status and no benchmark evidence. MVP Alpha is not complete. The next prototype target is MVP Alpha, defined in `docs/mvp-alpha-scope.md`, and should stay focused on route discovery, basic render modes, generated route/render/map artifacts, CLI inspection, and a demo app. Agent workflow for that build target is scaffolded in `docs/alpha-agent-operating-system.md`, `docs/alpha-work-routing.md`, and `docs/alpha-drift-prevention.md`. See `docs/phase-1-build-plan.md`, `docs/large-repo-build-architecture.md`, and `docs/task-backlog.md`.
 
 ## MVP Alpha Target Status
 

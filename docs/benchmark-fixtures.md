@@ -6,7 +6,7 @@ Audience: maintainers, performance reviewers, compiler contributors, runtime ada
 
 This page defines the planned fixture set for proving Lumina speed claims. It complements [Benchmark Methodology](benchmark-methodology.md), [Performance Contract](performance-contract.md), [Speed Strategy](speed-strategy.md), [Speed Decisions](speed-decisions.md), and [Performance Evidence Checklist](checklists/performance-evidence.md).
 
-No benchmark fixture exists yet. Do not report results from this page.
+The first benchmark skeleton paths and fixture placeholders exist. They report `not implemented` and are not benchmark evidence.
 
 ## Evidence Boundary
 
@@ -14,7 +14,7 @@ This document makes Lumina ready to collect speed evidence. It is not speed evid
 
 Current limitations:
 
-- No benchmark fixture files exist yet.
+- No measured benchmark fixture behavior exists yet.
 - No benchmark commands are implemented yet.
 - No raw benchmark results exist yet.
 - No public performance comparison can be made from this page.
@@ -36,7 +36,7 @@ benchmarks/graph-query.bench.ts
 benchmarks/adapter-dispatch.bench.ts
 ```
 
-These files may report `not implemented` until the owning feature exists. They must not publish synthetic numbers.
+These files currently report `not implemented` until the owning benchmark behavior exists. They must not publish synthetic numbers.
 
 The early skeleton should separate:
 

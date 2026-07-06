@@ -39,7 +39,7 @@ The initial scaffold proves this foundation:
 
 Future Phase 1 hardening should preserve those guarantees while adding the smallest implementation surface needed for Phase 1B and route discovery.
 
-Before route discovery expands into generated artifacts, CLI behavior, or performance claims, Phase 1 should also add the early benchmark and fixture skeleton described in [Implementation Speed Rules](implementation-speed-rules.md). That skeleton may report `not implemented`; it must not publish speed claims or synthetic results.
+Before route discovery expands into generated artifacts, CLI behavior, or performance claims, Phase 1 must keep the early benchmark and fixture skeleton described in [Implementation Speed Rules](implementation-speed-rules.md). That skeleton reports `not implemented`; it must not publish speed claims or synthetic results.
 
 ## Package Scaffold
 
