@@ -30,10 +30,15 @@ These variants are referenced by public guides, roadmap, and internal contracts:
 
 ```txt
 needle inspect why
+needle map route
 needle map affected
 needle map explain
+needle agent init
 needle agent context
+needle agent task
 needle agent plan
+needle agent apply
+needle agent log
 needle edit undo
 needle migrate from-next
 needle seo --route

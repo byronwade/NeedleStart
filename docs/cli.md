@@ -33,10 +33,15 @@ These variants are referenced by roadmap, guide, and contract docs. They remain 
 | Command variant | Purpose |
 | --- | --- |
 | `needle inspect why` | Explain route render, cache, SEO, and risk decisions. |
+| `needle map route` | Show the graph slice and route context for one route. |
 | `needle map affected` | Show affected routes, files, and checks for a changed target. |
 | `needle map explain` | Explain why a graph relationship or impact result exists. |
+| `needle agent init` | Generate or refresh app-local agent guidance once app generation exists. |
 | `needle agent context` | Emit a route or surface context capsule. |
+| `needle agent task` | Create a structured task record from graph data and templates. |
 | `needle agent plan` | Generate a deterministic task skeleton from graph data. |
+| `needle agent apply` | Apply a validated safe-edit plan through the safe edit transaction path. |
+| `needle agent log` | Read agent mutation, task, or context history. |
 | `needle edit undo` | Roll back an applied safe edit by mutation ID. |
 | `needle migrate from-next` | Prototype migration from a Next.js-style app. |
 | `needle seo --route` | Run SEO checks for one route. |
