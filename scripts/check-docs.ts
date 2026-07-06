@@ -1100,6 +1100,16 @@ const staleStatusPatterns = [
     message: "README.md still ties quick start to package existence instead of implemented app creation behavior.",
   },
   {
+    file: "README.md",
+    pattern: /The first public prototype proves:|first working slice is smaller and proves/i,
+    message: "README.md should use planned prototype wording until the prototype exists.",
+  },
+  {
+    file: "docs/prototype-acceptance.md",
+    pattern: /The working slice proves/i,
+    message: "docs/prototype-acceptance.md should describe the working slice as intended proof until implementation exists.",
+  },
+  {
     file: "docs/prototype-acceptance.md",
     pattern: /\bbun dev\b|\bbun build\b|\bbun start\b/i,
     message: "docs/prototype-acceptance.md should use generated app script commands with `bun run ...`.",

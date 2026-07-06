@@ -257,6 +257,8 @@ Automated coverage in `bun run docs:check` also requires generated app package s
 
 Automated coverage in `bun run docs:check` also requires onboarding target-result bullets in `docs/getting-started.md` and `docs/public/guides/create-app.md` to use planned `should` wording until app creation, route output, SEO metadata, Needle Map, and agent context behavior are implemented.
 
+Prototype docs must describe the first public prototype and first working slice as planned proof targets until the prototype exists. Use `should prove` or `is intended to prove` for target scope, not wording that implies the proof has already happened.
+
 Automated coverage in `bun run docs:check` also requires every public guide page that shows planned commands or APIs to state the matching behavior is not implemented yet. This includes create-app, static page, API route, hot API route, SEO metadata, Needle Map, and agent context workflows.
 
 ### 18. API Route Contract Check
