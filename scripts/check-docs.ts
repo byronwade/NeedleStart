@@ -477,6 +477,37 @@ const generatedAppScriptDocs = [
   },
 ];
 
+const publicGuideImplementationStatusDocs = [
+  {
+    file: "docs/public/guides/agent-context.md",
+    terms: ["planned agent context workflow", "not implemented yet"],
+  },
+  {
+    file: "docs/public/guides/api-route.md",
+    terms: ["planned API route workflow", "not implemented yet"],
+  },
+  {
+    file: "docs/public/guides/create-app.md",
+    terms: ["target app creation flow", "not implemented yet"],
+  },
+  {
+    file: "docs/public/guides/hot-api.md",
+    terms: ["planned hot API route workflow", "not implemented yet"],
+  },
+  {
+    file: "docs/public/guides/needle-map.md",
+    terms: ["planned workflow for inspecting the app graph", "not implemented yet"],
+  },
+  {
+    file: "docs/public/guides/seo-metadata.md",
+    terms: ["planned workflow for adding route metadata", "not implemented yet"],
+  },
+  {
+    file: "docs/public/guides/static-page.md",
+    terms: ["planned workflow for adding a static public page", "not implemented yet"],
+  },
+];
+
 const safeEditContractDocs = [
   "AGENTS.md",
   "docs/safe-edit-transactions.md",
@@ -1912,6 +1943,16 @@ for (const { file, terms } of generatedAppScriptDocs) {
   for (const term of terms) {
     if (!content.includes(term)) {
       failures.push(`${file} does not align generated app package scripts with framework command term: ${term}.`);
+    }
+  }
+}
+
+for (const { file, terms } of publicGuideImplementationStatusDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file);
+  for (const term of terms) {
+    if (!content.includes(term)) {
+      failures.push(`${file} does not state planned public-guide behavior with required term: ${term}.`);
     }
   }
 }

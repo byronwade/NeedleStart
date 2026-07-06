@@ -253,7 +253,7 @@ Expected result: example status labels, starter-template requirements, create-co
 
 Automated coverage in `bun run docs:check` also requires generated app package scripts (`bun run dev`, `bun run build`, and `bun run start`) to stay documented as wrappers around `needle dev`, `needle build`, and `needle start` in the onboarding and examples docs. Example command blocks must not list both `bun run build` and direct `needle build` as separate required build steps.
 
-Automated coverage in `bun run docs:check` also requires public guide pages that show planned commands or APIs to state the matching behavior is not implemented yet.
+Automated coverage in `bun run docs:check` also requires every public guide page that shows planned commands or APIs to state the matching behavior is not implemented yet. This includes create-app, static page, API route, hot API route, SEO metadata, Needle Map, and agent context workflows.
 
 ### 18. API Route Contract Check
 

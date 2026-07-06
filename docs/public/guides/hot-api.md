@@ -4,6 +4,8 @@ Status: Planned.
 
 Audience: advanced app developers, performance reviewers.
 
+This guide describes the planned hot API route workflow. Hot API route behavior, generated validators, generated serializers, and benchmark evidence are not implemented yet.
+
 Hot API routes are planned for performance-critical endpoints that need generated validation and serialization.
 
 ## Planned Example
