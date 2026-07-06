@@ -641,6 +641,21 @@ const safeEditContractDocs = [
   "docs/public/concepts/safe-edits.md",
 ];
 
+const safeEditTransactionResultDocs = [
+  "docs/safe-edit-transactions.md",
+  "docs/mcp-server.md",
+  "docs/public/concepts/safe-edits.md",
+];
+
+const safeEditTransactionResultTerms = [
+  "mutation id",
+  "risk tier",
+  "affected files",
+  "affected routes",
+  "checks",
+  "rollback availability",
+];
+
 const coreModelTypes = [
   "NeedleApp",
   "RouteNode",
@@ -2312,6 +2327,16 @@ for (const file of safeEditContractDocs) {
   for (const term of ["dry-run", "ast", "format", "affected checks", ".needle/mutations.json", "undo", "human sign-off"]) {
     if (!content.includes(term)) {
       failures.push(`${file} is missing safe-edit contract term: ${term}.`);
+    }
+  }
+}
+
+for (const file of safeEditTransactionResultDocs) {
+  if (!existsSync(join(root, file))) continue;
+  const content = read(file).toLowerCase();
+  for (const term of safeEditTransactionResultTerms) {
+    if (!content.includes(term)) {
+      failures.push(`${file} is missing safe-edit transaction result term: ${term}.`);
     }
   }
 }

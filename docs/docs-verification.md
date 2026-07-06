@@ -373,6 +373,8 @@ Expected result: safe edits, Agent Kernel, MCP write tools, security rules, thre
 
 Automated coverage in `bun run docs:check` also requires the core safe-edit contract vocabulary to stay aligned across AGENTS, safe edit transactions, Agent Kernel, MCP, and public safe edit docs.
 
+Automated coverage also requires safe edit transaction result vocabulary to stay aligned across the internal safe-edit contract, MCP contract, and public Safe Edits page: mutation ID, risk tier, affected files, affected routes, checks, and rollback availability.
+
 ### 25. Performance Contract Check
 
 ```powershell

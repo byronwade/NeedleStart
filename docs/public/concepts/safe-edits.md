@@ -20,6 +20,17 @@ Safe edits are planned guardrails for automated changes. The first safe edit pat
 10. Append a mutation log.
 11. Support undo.
 
+## Planned Transaction Result
+
+Safe edit results should expose:
+
+- mutation ID
+- risk tier
+- affected files
+- affected routes
+- checks
+- rollback availability
+
 ## Safety Rules
 
 - No string replacement for safe edits.
