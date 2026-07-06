@@ -10,6 +10,8 @@ NeedleStart's market push is simple:
 Your app ships with a map.
 ```
 
+NeedleStart is also intended to be built fully in public as an open source community project.
+
 ## One-Sentence Pitch
 
 NeedleStart is the app-graph-native React framework for building SEO-safe, agent-safe, large-scale web apps with a semantic map of every route, component, API, schema, test, cache, content, ownership, and risk relationship.
@@ -44,6 +46,7 @@ NeedleStart should let teams:
 - Give AI agents structured application context.
 - See what every file affects before making changes.
 - Change safe surfaces through previewable, check-backed, reversible transactions.
+- Join an open source community that builds in public and values honest docs, reproducible benchmarks, and transparent governance.
 
 Short form:
 
@@ -52,12 +55,15 @@ Short form:
 - Ship like a static site when possible.
 - Run like a low-level adapter-aware server when needed.
 - Let humans and agents inspect, plan, and safely edit through a native semantic graph instead of searching the repo.
+- Build in public with community standards, governance, and open source infrastructure.
 
 ## What NeedleStart Should Own
 
 NeedleStart should own the category of app-graph-native, SEO-safe, agent-safe React applications.
 
 The core bet is that large applications need a framework-level map. A framework that provides a semantic app graph, explainable render/cache behavior, safe edit APIs, affected checks, and MCP tools will be easier for humans and AI agents to operate than a framework that only provides file routing and rendering.
+
+The community bet is that this should be built in the open. The app graph, safe edit system, public docs, benchmarks, examples, governance, and roadmap should all be inspectable by the community.
 
 ## Product Pillars
 
@@ -95,6 +101,22 @@ NeedleStart must generate useful context and safe workflows for agents:
 ### SEO-Safe
 
 Public pages must render meaningful HTML by default. The framework should make title, description, canonical URL, sitemap inclusion, robots behavior, Open Graph tags, structured data, accessibility-relevant structure, and initial HTML inspectable.
+
+### Open Source Community
+
+NeedleStart must be credible as an open source project:
+
+- MIT license.
+- Code of Conduct.
+- Contributing guide.
+- Security policy.
+- Governance model.
+- Public roadmap.
+- Public status matrix.
+- Public docs and examples.
+- Reproducible benchmark methodology.
+- Clear issue and pull request templates.
+- Transparent usage of any open source program credits or hosted infrastructure.
 
 ### Explainable by Default
 
@@ -148,6 +170,10 @@ No invisible framework magic. Render, cache, SEO, adapter, and graph decisions s
 
 Your framework should be the map, not the maze. Agents can inspect, plan changes, run affected checks, and apply safe edits through structured tools.
 
+### Open Source Promise
+
+No closed-roadmap mystery box. The project should publish its status, roadmap, governance, benchmark methodology, and contribution paths so the community can see where NeedleStart is going and help shape it.
+
 ### Needle Map Promise
 
 Needle Map should answer instantly: what uses this, what does this use, what breaks if this changes, and which tests, SEO surfaces, cache tags, generated files, and owners are affected.
@@ -166,10 +192,11 @@ NeedleStart is not:
 - A framework that hides caching behavior.
 - A framework that claims AI-safe edits without rejection tests.
 - A framework that publishes benchmark claims without raw data.
+- A project that claims open source program participation before acceptance.
 
 ## Positioning
 
-NeedleStart is not trying to clone Next.js. It is building a new category: a framework designed from the ground up for large applications that need a semantic app graph, explainable behavior, SEO-safe output, and AI-agent-safe workflows.
+NeedleStart is not trying to clone Next.js. It is building a new category: a framework designed from the ground up for large applications that need a semantic app graph, explainable behavior, SEO-safe output, AI-agent-safe workflows, and open source community trust.
 
 The public message:
 
@@ -193,3 +220,4 @@ NeedleStart becomes credible when it can say:
 - Run affected checks after changes.
 - Undo safe edits.
 - Publish public docs and benchmarks that are status-aware, reproducible, and honest about limitations.
+- Build an open source community with governance, Code of Conduct, contribution paths, public demos, and measurable impact.
