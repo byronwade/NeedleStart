@@ -94,6 +94,6 @@ Before public launch, a docs check should verify:
 ## Out Of Scope
 
 - Choosing the final docs renderer.
-- Adding frontmatter to every page in Phase 0.
+- Adding frontmatter to every page during the current scaffold phase.
 - Claiming the public docs site is implemented.
 - Replacing source-of-truth internal docs with public summaries.

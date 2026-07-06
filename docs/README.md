@@ -103,9 +103,9 @@ This directory is the source of truth for NeedleStart planning, architecture, ro
 - [Documentation Completion Audit](documentation-completion-audit.md): requirement-to-evidence map for this docs-system pass.
 - [Final PR Summary Draft](final-pr-summary.md): summary template for this docs-system work.
 - [Docs Maintenance Checklist](docs-maintenance-checklist.md): update triggers for future contributors.
-- [Documentation Verification](docs-verification.md): manual verification commands until package scripts exist.
+- [Documentation Verification](docs-verification.md): automated scaffold checks plus manual review checks for unsupported claims.
 - [Glossary](glossary.md): shared terminology.
-- [First Contribution Path](first-contribution.md): first safe contribution path for Phase 0.
+- [First Contribution Path](first-contribution.md): first safe contribution path for Phase 1 scaffold work.
 - [AI Skill Playbooks](skills/README.md): vendor-neutral skill workflows for agents.
 - [AI Subagent Roles](subagents/README.md): delegated-agent role briefs.
 

@@ -34,7 +34,7 @@ Use an ADR when a decision affects:
 - `superseded`: replaced by a later ADR.
 - `deprecated`: no longer recommended.
 
-Phase 0 ADRs should normally stay `proposed` until implementation and verification exist.
+Early ADRs should normally stay `proposed` until implementation and verification exist.
 
 ## Maintenance Rules
 

@@ -117,7 +117,7 @@ benchmarks/results/<date>-<commit>/<fixture>/
 - Do not publish browser-delivery claims without route asset evidence.
 - Do not mark any performance doc verified until raw fixture evidence exists.
 
-## Out Of Scope For Phase 0
+## Out Of Scope For The Current Scaffold
 
 - Benchmark implementation.
 - Synthetic results.

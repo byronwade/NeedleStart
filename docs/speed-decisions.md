@@ -8,7 +8,7 @@ This page records the speed-sensitive product and engineering decisions NeedleSt
 
 ## Research Baseline
 
-Current primary guidance supports these choices. This baseline was refreshed on 2026-07-06 and must be refreshed again before package scaffolding pins dependency versions:
+Current primary guidance supports these choices. This baseline was refreshed on 2026-07-06 and must be refreshed again before implementation pins dependency versions:
 
 - [Vite performance guide](https://vite.dev/guide/performance) emphasizes keeping browser and transform work lean during development.
 - [Vite 8](https://vite.dev/blog/announcing-vite8) moved Vite to a single Rolldown-powered bundler, and [Vite 8.1](https://vite.dev/blog/announcing-vite8-1) continues that stable line. If scaffolding started from this research snapshot, the default candidate would be current stable Vite 8.x with Rolldown.

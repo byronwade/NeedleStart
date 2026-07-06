@@ -1,6 +1,6 @@
 # Phase 1 Build Plan
 
-This document turns the planning docs into the first implementation path. It should be read before creating package scaffolding or claiming local commands work.
+This document turns the planning docs into the first implementation path. It should be read before hardening package scaffolding, expanding shared core types, or claiming framework behavior works.
 
 Test command, fixture, snapshot, and CI expectations are defined in [Testing Contract](testing-contract.md).
 
@@ -87,7 +87,7 @@ create-needle
 The Phase 1 scaffold should add or update:
 
 - `package.json` with Bun workspace configuration.
-- `bun.lock` after install.
+- `bun.lockb` after install.
 - `tsconfig.base.json`.
 - Root test and typecheck scripts.
 - Package-level `package.json` files.

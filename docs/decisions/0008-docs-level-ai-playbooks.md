@@ -12,7 +12,7 @@ NeedleStart includes guidance for AI skills and subagent roles, but executable l
 
 Keep AI skill playbooks and subagent role briefs under `docs/skills/` and `docs/subagents/` until executable tooling exists.
 
-These files are documentation, not runtime code. Root-level `skills/` and `subagents/` mirrors should not exist in Phase 0.
+These files are documentation, not runtime code. Root-level `skills/` and `subagents/` mirrors should not exist during the current scaffold phase.
 
 ## Consequences
 

@@ -24,10 +24,10 @@ This matrix evaluates the current documentation system file by file. It uses the
 | `docs/open-source-community.md` | Contributors, reviewers | Basic | Thin community operations | Add issue triage and discussion policy | Medium | Medium | Partial | Partial |
 | `docs/roadmap.md` | Maintainers, contributors | Strong | Long phase list | Add status table or split later | Medium | Medium | Partial | Yes |
 | `docs/task-backlog.md` | Contributors | Strong | Large linear backlog | Move active work to issues later | Medium | Medium | No | Yes |
-| `docs/package-map.md` | Contributors, agents | Strong | Package names are planned | Update after scaffold exists | High | Low | No | Yes |
+| `docs/package-map.md` | Contributors, agents | Strong | Package names and entrypoints are scaffolded; behavior remains planned | Update when package boundaries or behavior change | High | Low | No | Yes |
 | `docs/phase-1-build-plan.md` | Contributors | Strong | Only covers first scaffold phase | Keep scoped; create Phase 2 plan later | High | Low | No | Yes |
 | `docs/product-build-readiness.md` | Maintainers, contributors, agents | New | Must be kept aligned with build phases | Use as the first gate before expanding implementation scope | High | Low | Partial | Yes |
-| `docs/getting-started.md` | New users | Good planned | Commands do not work yet | Replace with verified tutorial after scaffold | High | Medium | Partial | Yes |
+| `docs/getting-started.md` | New users | Good planned | App creation commands do not work yet; repository checks do | Replace with verified tutorial after app creation exists | High | Medium | Partial | Yes |
 | `docs/guides.md` | App developers | Good index | No real guide bodies yet | Fill as features land | High | High | Partial | Partial |
 | `docs/api-reference.md` | Developers, agents | Good index | Needs exact API contracts later | Split into generated references as APIs stabilize | High | High | Partial | Yes |
 | `docs/file-conventions.md` | Developers, agents | Good planned | Needs diagnostics and examples from implementation | Add verified route examples | High | Medium | Partial | Yes |
@@ -44,7 +44,7 @@ This matrix evaluates the current documentation system file by file. It uses the
 | `docs/adapters.md` | Deployers, contributors | Good planned | Overview depends on deeper contract | Keep paired with `docs/adapter-contract.md` and add capability tables from implementation | High | Medium | Partial | Partial |
 | `docs/adapter-contract.md` | Adapter maintainers, runtime contributors, deployers, agents | New | Contract only until adapters exist | Convert inputs, outputs, manifest fields, capabilities, health endpoint, static export, diagnostics, and fixtures into adapter tests | High | Medium | Partial | Yes |
 | `docs/deployment.md` | Deployers | Good planned | No runnable deployment flow | Add verified Bun/Node/static guides later | High | High | Partial | Partial |
-| `docs/testing.md` | Contributors, maintainers | Good planned | Overview depends on deeper contract | Keep paired with `docs/testing-contract.md` and add actual scripts after scaffold | High | Low | No | Yes |
+| `docs/testing.md` | Contributors, maintainers | Good scaffold overview | Feature-specific test layers remain planned | Keep paired with `docs/testing-contract.md` as feature scripts land | High | Low | No | Yes |
 | `docs/testing-contract.md` | Contributors, maintainers, CI authors, agents | New | Contract only until test tooling exists | Convert test layers, fixture layout, snapshots, CI gates, artifacts, browser rules, and evidence reporting into package scripts and CI | High | Medium | Partial | Yes |
 | `docs/security.md` | Security reviewers, agents | Good planned | Overview depends on deeper contract | Keep paired with `docs/security-contract.md`; add feature-specific threat models as high-risk features land | High | Medium | Partial | Yes |
 | `docs/security-contract.md` | Security reviewers, maintainers, contributors, agents | New | Planned until high-risk features exist | Convert threat model, secret handling, production errors, headers, advisory, and supply-chain evidence rules into implementation checks | High | Medium | Partial | Yes |
@@ -84,10 +84,10 @@ This matrix evaluates the current documentation system file by file. It uses the
 | `docs/public/reference/accessibility.md` | App developers, docs builders, agents | New | Public summary only until accessibility tooling exists | Replace planned checks with verified diagnostics and browser evidence after docs UI and examples land | High | Low | Partial | Yes |
 | `docs/public/reference/security.md` | App developers, security reviewers, maintainers, agents | New | Public summary only until security-sensitive tooling exists | Replace planned rules with verified threat models, diagnostics, and release evidence after implementation lands | High | Low | Partial | Yes |
 | `docs/public/reference/performance.md` | App developers, performance reviewers, agents | New | Public summary only until performance tooling exists | Replace planned targets with verified reports and benchmark evidence after tooling lands | High | Low | Partial | Yes |
-| `docs/public/reference/testing.md` | Contributors, app developers, agents | New | Public summary only until test tooling exists | Replace planned commands with verified scripts after scaffold lands | High | Low | Partial | Yes |
+| `docs/public/reference/testing.md` | Contributors, app developers, agents | New | Public summary includes scaffold checks; feature test tooling remains planned | Replace target fixture, HTTP, and browser commands with verified scripts as they land | High | Low | Partial | Yes |
 | `docs/website-content-map.md` | Website editors | Good planned | Needs detailed nav groups later | Expand during site build | Medium | Medium | Partial | Partial |
 | `docs/comparisons.md` | Website visitors | Good planned | No comparison pages yet | Add source-cited comparisons after implementation | Medium | High | Partial | Partial |
-| `docs/examples.md` | App developers | Good planned | No examples exist | Keep paired with `docs/examples-contract.md`; add example READMEs when scaffold exists | High | High | Partial | Partial |
+| `docs/examples.md` | App developers | Good planned | No examples exist | Keep paired with `docs/examples-contract.md`; add example READMEs when examples are scaffolded | High | High | Partial | Partial |
 | `docs/examples-contract.md` | App developers, contributors, agents | New | Planned until examples exist | Convert planned statuses and evidence rules into real fixture checks | High | Medium | Partial | Yes |
 | `docs/public/reference/examples.md` | App developers, agents | New | Public summary only until examples exist | Link verified examples after create command and fixtures exist | High | Low | Partial | Yes |
 | `docs/compatibility.md` | Deployers | Good planned | No compatibility evidence yet | Add evidence table as tests land | High | Medium | Partial | Partial |
@@ -97,11 +97,11 @@ This matrix evaluates the current documentation system file by file. It uses the
 | `docs/documentation-standard.md` | Docs contributors, agents | Strong | Needs enforcement | Enforce through PR template | High | Low | No | Yes |
 | `docs/docs-freshness-policy.md` | Maintainers, contributors, agents | Strong planned | Needs continued use in PRs | Keep update triggers current as project changes | High | Low | No | Yes |
 | `docs/docs-maintenance-checklist.md` | Maintainers, agents | Strong | Needs PR integration | Added PR template; keep current | High | Low | No | Yes |
-| `docs/docs-verification.md` | Maintainers, contributors, agents | New | Manual until package scripts exist | Convert checks into `docs:*` scripts and CI after scaffold | High | Medium | No | Yes |
+| `docs/docs-verification.md` | Maintainers, contributors, agents | New | Scaffold scripts exist; some checks remain manual review | Expand generated index, claim, and anchor checks as docs tooling grows | High | Medium | No | Yes |
 | `docs/documentation-audit.md` | Maintainers | Strong | Large and strategic | Keep as periodic audit artifact | Medium | Medium | No | Yes |
 | `docs/documentation-research.md` | Docs contributors | Strong | Needs periodic refresh | Revisit before public launch | Medium | Medium | No | Partial |
 | `docs/documentation-matrix.md` | Maintainers, agents | New | Must stay updated as docs change | Update during docs audits | Medium | Medium | No | Yes |
-| `docs/machine-readable-docs.md` | Agents, contributors | Strong planned | Generated outputs do not exist | Implement after package scaffold | High | Medium | No | Yes |
+| `docs/machine-readable-docs.md` | Agents, contributors | Strong planned | Generated outputs do not exist | Implement with the docs index or public docs pipeline | High | Medium | No | Yes |
 | `docs/maintainer-guide.md` | Maintainers | Good planned | Roles are not active yet | Convert planned roles into real maintainership later | High | Medium | Partial | Partial |
 | `docs/decisions/*` | Maintainers | Good | Limited ADR set | Add ADRs for new architecture decisions | Medium | Low | No | Yes |
 | `docs/templates/*` | Contributors | Good | Needs usage through PR template | Link from contributing and PR template | Medium | Low | No | Yes |

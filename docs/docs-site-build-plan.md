@@ -18,7 +18,7 @@ No docs site renderer has been chosen yet. This page describes decision gates an
 
 ## Non-Goals
 
-- Choosing a renderer in Phase 0.
+- Choosing a renderer during the current scaffold phase.
 - Duplicating every internal architecture document as public copy.
 - Shipping MDX-only docs before plain Markdown is preserved.
 - Hiding planned status behind marketing language.
@@ -143,7 +143,7 @@ Before public launch:
 - Source-map exposure follows [Performance Contract](performance-contract.md).
 - Public speed claims link to benchmark evidence.
 
-## Out Of Scope For Phase 0
+## Out Of Scope For The Current Scaffold
 
 - Implementing the docs site.
 - Adding frontmatter to every public page.

@@ -24,7 +24,7 @@ NeedleStart should use established security guidance without claiming compliance
 
 Do not claim NeedleStart is secure, hardened, compliant, audited, or production-ready until implementation, tests, review evidence, and release notes support the exact claim.
 
-Allowed Phase 0 language:
+Allowed current scaffold language:
 
 - "planned security contract"
 - "security target"
@@ -170,7 +170,7 @@ Security-sensitive work should name evidence in review:
 | MCP | Read/write permission tests, secret exclusion, audit log shape. |
 | Releases | Provenance, changelog, advisory, and supported-version evidence after publishing exists. |
 
-## Out Of Scope For Phase 0
+## Out Of Scope For The Current Scaffold
 
 - Security audit claims.
 - Compliance certifications.

@@ -296,7 +296,7 @@ Agents and CI should be able to:
 - Attach raw benchmark files only when requested or needed for review.
 - Treat field data and RUM payloads as opt-in app artifacts, not framework default context.
 
-## Out Of Scope For Phase 0
+## Out Of Scope For The Current Scaffold
 
 - Real performance reports.
 - Verified Core Web Vitals.

@@ -193,7 +193,7 @@ Before high-risk behavior is marked implemented:
 - Safe edit and MCP writes have risk tiers.
 - Docs avoid secure, hardened, compliant, audited, or production-ready claims unless evidence supports the exact claim.
 
-## Out Of Scope For Phase 0
+## Out Of Scope For The Current Scaffold
 
 - Full STRIDE, LINDDUN, or formal security audit output.
 - Runtime hardening implementation.

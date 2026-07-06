@@ -106,7 +106,116 @@ const staleStatusPatterns = [
     pattern: /because the repository has no package scaffold yet/i,
     message: "docs/documentation-audit.md still presents pre-scaffold status as current.",
   },
+  {
+    file: "README.md",
+    pattern: /Planned command once the package exists/i,
+    message: "README.md still ties quick start to package existence instead of implemented app creation behavior.",
+  },
+  {
+    file: "docs/README.md",
+    pattern: /until package scripts exist|first safe contribution path for Phase 0/i,
+    message: "docs/README.md still uses pre-scaffold navigation language.",
+  },
+  {
+    file: "docs/docs-verification.md",
+    pattern: /once the Bun workspace exists/i,
+    message: "docs/docs-verification.md still treats the Bun workspace as future work.",
+  },
+  {
+    file: "docs/review-checklist.md",
+    pattern: /Out Of Scope For Phase 0|before package scaffolding exists/i,
+    message: "docs/review-checklist.md still uses Phase 0 or pre-scaffold review language.",
+  },
+  {
+    file: "docs/machine-readable-docs.md",
+    pattern: /generated once package scaffolding exists/i,
+    message: "docs/machine-readable-docs.md still ties generated docs to package scaffold existence.",
+  },
+  {
+    file: "docs/examples-contract.md",
+    pattern: /honest about Phase 0|until the package scaffold and CLI exist|Out Of Scope For Phase 0/i,
+    message: "docs/examples-contract.md still uses Phase 0 or pre-scaffold example language.",
+  },
+  {
+    file: "docs/product-build-readiness.md",
+    pattern: /before package work begins|Before adding the monorepo scaffold|Build work may add the Bun workspace|first package scaffold task/i,
+    message: "docs/product-build-readiness.md still frames scaffold work as future.",
+  },
+  {
+    file: "docs/checklists/phase-1-scaffold.md",
+    pattern: /Status: Planned|It is not evidence that scaffolding exists|documented placeholder reason/i,
+    message: "docs/checklists/phase-1-scaffold.md still treats scaffold evidence as unavailable.",
+  },
+  {
+    file: "docs/skills/README.md",
+    pattern: /while the repository has no package scaffolding/i,
+    message: "docs/skills/README.md still says package scaffolding is missing.",
+  },
+  {
+    file: "docs/decisions/0008-docs-level-ai-playbooks.md",
+    pattern: /should not exist in Phase 0/i,
+    message: "ADR 0008 still uses Phase 0 placement language for current playbooks.",
+  },
+  {
+    file: "docs/versioning-and-upgrades.md",
+    pattern: /before the first package scaffold/i,
+    message: "docs/versioning-and-upgrades.md still frames package scaffold as future.",
+  },
+  {
+    file: "docs/first-contribution.md",
+    pattern: /Adding package scaffolding|Until package scripts exist/i,
+    message: "docs/first-contribution.md still uses pre-scaffold contribution guidance.",
+  },
+  {
+    file: "docs/decisions/README.md",
+    pattern: /Phase 0 ADRs/i,
+    message: "docs/decisions/README.md still uses Phase 0 ADR status language.",
+  },
+  {
+    file: "docs/decisions/0004-vite-rolldown-before-custom-bundler.md",
+    pattern: /when package scaffolding begins/i,
+    message: "ADR 0004 still frames package scaffolding as future.",
+  },
+  {
+    file: "docs/speed-decisions.md",
+    pattern: /before package scaffolding pins/i,
+    message: "docs/speed-decisions.md still frames package scaffolding as future dependency work.",
+  },
+  {
+    file: "docs/documentation-audit.md",
+    pattern: /Strong for Phase 0|Replace planned flow with verified tutorial after scaffold|Planned packages only|Update after scaffold|Phase 0 governance/i,
+    message: "docs/documentation-audit.md still contains stale pre-scaffold audit wording.",
+  },
+  {
+    file: "docs/documentation-matrix.md",
+    pattern: /when scaffold exists|after scaffold lands|until package scripts exist/i,
+    message: "docs/documentation-matrix.md still contains stale scaffold timing language.",
+  },
+  {
+    file: "docs/speed-strategy.md",
+    pattern: /after scaffold exists/i,
+    message: "docs/speed-strategy.md still ties speed evidence to scaffold existence.",
+  },
+  {
+    file: "docs/versioning-and-upgrades.md",
+    pattern: /when scaffold exists/i,
+    message: "docs/versioning-and-upgrades.md still ties example docs to scaffold existence.",
+  },
 ];
+
+for (const file of [
+  "docs/accessibility-contract.md",
+  "docs/benchmark-fixtures.md",
+  "docs/docs-site-build-plan.md",
+  "docs/examples-catalog.md",
+  "docs/performance-contract.md",
+  "docs/security-contract.md",
+  "docs/threat-model.md",
+]) {
+  if (existsSync(join(root, file)) && /Out Of Scope For Phase 0/i.test(read(file))) {
+    failures.push(`${file} still uses Phase 0 out-of-scope language.`);
+  }
+}
 
 for (const { file, pattern, message } of staleStatusPatterns) {
   if (existsSync(join(root, file)) && pattern.test(read(file))) {
@@ -128,6 +237,12 @@ for (const requiredPath of [
 for (const staleTreeEntry of ["    adapter-bun/", "    adapter-node/", "    adapter-static/"]) {
   if (readme.includes(staleTreeEntry)) {
     failures.push(`README.md still documents stale flat adapter path: ${staleTreeEntry.trim()}`);
+  }
+}
+
+for (const file of ["README.md", "docs/status.md", "docs/phase-1-build-plan.md", "docs/task-backlog.md"]) {
+  if (existsSync(join(root, file)) && /`bun\.lock`/.test(read(file))) {
+    failures.push(`${file} documents bun.lock, but this scaffold uses bun.lockb.`);
   }
 }
 

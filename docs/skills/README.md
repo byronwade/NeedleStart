@@ -23,5 +23,5 @@ All skills must follow the root [`../../AGENTS.md`](../../AGENTS.md). In particu
 - Update README.md and AGENTS.md when setup, commands, structure, safety rules, or phase status changes.
 - Read `../risk-mitigation.md` before changing Needle Map, Agent Kernel, MCP, runtime adapters, or safe edit behavior.
 - Prefer deterministic outputs and testable acceptance criteria.
-- Do not invent passing commands while the repository has no package scaffolding.
+- Do not invent passing feature commands; scaffold checks are real, but framework behavior still needs implementation evidence.
 

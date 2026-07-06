@@ -44,7 +44,7 @@ A route context capsule gives humans and AI agents the exact slice of the app th
 
 ## Quick Start
 
-Planned command once the package exists:
+Planned command once app creation behavior exists:
 
 ```bash
 bun create needle my-app
@@ -74,7 +74,7 @@ bun run performance:check
 bun run check
 ```
 
-These commands verify the package scaffold, documentation links, structure rules, performance-claim guardrails, TypeScript surface, and placeholder tests. They do not prove route discovery, rendering, CLI behavior, runtime adapters, Needle Map generation, MCP tools, or safe edits.
+These commands verify the package scaffold, documentation links, status-drift guardrails, structure rules, performance-claim guardrails, TypeScript surface, and placeholder tests. They do not prove route discovery, rendering, CLI behavior, runtime adapters, Needle Map generation, MCP tools, or safe edits.
 
 ## Key Features
 
@@ -166,7 +166,7 @@ The framework should avoid building a custom bundler until the app-graph and age
 ```txt
 needlestart/
   package.json
-  bun.lock
+  bun.lockb
   tsconfig.base.json
   AGENTS.md
   README.md

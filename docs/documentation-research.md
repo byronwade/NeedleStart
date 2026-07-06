@@ -233,7 +233,7 @@ What it does exceptionally well:
 
 NeedleStart lesson:
 
-- Keep governance lightweight in Phase 0, but document decision records, review ownership, and escalation paths early.
+- Keep governance lightweight during the scaffold phase, but document decision records, review ownership, and escalation paths early.
 
 ## Patterns NeedleStart Should Copy
 

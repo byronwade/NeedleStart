@@ -1,10 +1,10 @@
 # Phase 1 Scaffold Checklist
 
-Status: Planned.
+Status: Scaffolded.
 
 Audience: maintainers, implementation contributors, AI agents.
 
-Use this checklist before and during the monorepo scaffold work described in [Phase 1 Build Plan](../phase-1-build-plan.md). It is not evidence that scaffolding exists.
+Use this checklist before, during, and after monorepo scaffold work described in [Phase 1 Build Plan](../phase-1-build-plan.md). It is evidence only when paired with current command output and repository files.
 
 ## Read First
 
@@ -25,10 +25,10 @@ Use this checklist before and during the monorepo scaffold work described in [Ph
 
 ## Files To Add
 
-Planned scaffold files:
+Scaffold files:
 
 - `package.json`
-- `bun.lock`
+- `bun.lockb`
 - `tsconfig.base.json`
 - package directories under `packages/`
 - fixture or example directories only when they have status labels
@@ -37,11 +37,12 @@ Do not add empty packages that imply implemented behavior without clear placehol
 
 ## Verification Gate
 
-Before marking scaffold behavior implemented:
+Before treating scaffold behavior as current evidence:
 
 - `bun install` runs.
-- `bun test` runs or has a documented placeholder reason.
-- `bun run typecheck` runs or has a documented placeholder reason.
+- `bun test` runs.
+- `bun run typecheck` runs.
+- `bun run check` runs.
 - Package entrypoints do not claim real framework behavior unless tests cover it.
 - README and AGENTS describe the current scaffold honestly.
 

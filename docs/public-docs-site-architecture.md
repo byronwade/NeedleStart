@@ -203,7 +203,7 @@ Do not choose a renderer solely because it is popular. Choose the path that keep
 
 ## Out Of Scope
 
-- Choosing the final docs renderer in Phase 0.
+- Choosing the final docs renderer during the current scaffold phase.
 - Adding frontmatter to every public page before the parser exists.
 - Claiming the docs site is implemented before route rendering and deployment exist.
 - Duplicating internal architecture docs as long public pages.

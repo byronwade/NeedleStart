@@ -32,7 +32,7 @@ Definition of done:
 
 Remaining follow-up:
 
-- Add verified tutorials after package scaffolding exists.
+- Add verified tutorials after app creation and runtime behavior exist.
 - Add public docs frontmatter after a docs site parser is chosen.
 - Add generated `docs-index.json`, `llms.txt`, and `llms-full.txt` plans to Agent Kernel implementation tasks.
 - Keep the pull request template aligned with `docs/docs-maintenance-checklist.md`, `docs/docs-verification.md`, and `docs/review-checklist.md`.
@@ -88,13 +88,13 @@ Status: initial documentation exists in `docs/docs-verification.md`.
 Definition of done:
 
 - Manual checks are documented for `git diff --check`, local Markdown links, AI playbook placement, status-language review, navigation coverage, and machine-readable docs contracts.
-- The future `docs:*` package scripts are specified without claiming they exist.
+- The current `docs:check`, `structure:check`, `performance:check`, and root `check` scripts are documented without claiming they prove framework behavior.
 - README, AGENTS, docs hub, freshness policy, maintenance checklist, testing docs, machine-readable docs, and product-build-readiness docs link to the verification runbook.
 - PR summaries report documentation evidence instead of relying on intent.
 
 ## PR 0F: Testing Contract
 
-Goal: define test layers, fixture layout, snapshot policy, CI gates, browser artifact rules, network restrictions, contract-to-test mapping, and evidence reporting before package scaffolding starts.
+Goal: define test layers, fixture layout, snapshot policy, CI gates, browser artifact rules, network restrictions, contract-to-test mapping, and evidence reporting before feature implementation expands beyond the scaffold.
 
 Status: initial documentation exists in `docs/testing-contract.md` and `docs/public/reference/testing.md`.
 
@@ -344,7 +344,7 @@ Definition of done:
 - Every package has `package.json`.
 - Every package has `src/index.ts`.
 - Placeholder tests exist.
-- Root `package.json`, `bun.lock`, and `tsconfig.base.json` exist.
+- Root `package.json`, `bun.lockb`, and `tsconfig.base.json` exist.
 - No package claims real route, runtime, graph, MCP, or safe-edit behavior yet.
 - README, AGENTS, roadmap, and package map reflect the scaffold.
 

@@ -154,7 +154,7 @@ The future docs site should eventually include:
 
 Public docs Markdown must keep status and audience text readable without depending on color alone.
 
-## Out Of Scope For Phase 0
+## Out Of Scope For The Current Scaffold
 
 - Verified accessibility tooling.
 - WCAG conformance claims.

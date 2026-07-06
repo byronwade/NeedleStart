@@ -30,7 +30,7 @@ This checklist defines the review bar for NeedleStart changes. It complements [E
 
 ## Implementation Review
 
-Use this after package scaffolding exists:
+Use this for any implementation work that builds on the current package scaffold:
 
 - Tests cover the smallest complete behavior.
 - Package boundaries match [Package Map](package-map.md).
@@ -75,8 +75,8 @@ Use this after package scaffolding exists:
 - Raw benchmark data is linked when performance claims change.
 - The PR template is complete enough for a reviewer to audit the change.
 
-## Out Of Scope For Phase 0
+## Out Of Scope For The Current Scaffold
 
-- Treating this checklist as CI enforcement.
-- Claiming implementation review gates passed before package scaffolding exists.
+- Treating this checklist as complete CI enforcement.
+- Claiming feature implementation review gates passed before feature code, fixtures, and checks exist.
 - Replacing human review with automated text search.

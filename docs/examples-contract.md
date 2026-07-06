@@ -17,7 +17,7 @@ Mature framework docs make examples part of the product surface, not an aftertho
 - [Vite getting started](https://vite.dev/guide/) keeps scaffolding commands concise and template-driven.
 - [Vite SSR guide](https://vite.dev/guide/ssr) points to example projects for advanced rendering setups.
 
-NeedleStart should learn from those patterns while staying honest about Phase 0. Examples must be runnable evidence before they become marketing or onboarding claims.
+NeedleStart should learn from those patterns while staying honest about the current scaffold. Examples must be runnable evidence before they become marketing or onboarding claims.
 
 ## Example Categories
 
@@ -105,7 +105,7 @@ needle inspect --json
 needle check --json
 ```
 
-Do not publish these as working commands until the package scaffold and CLI exist.
+Do not publish these as working commands until CLI behavior, example files, and verification evidence exist.
 
 ## Expected Artifacts
 
@@ -211,7 +211,7 @@ The `large-app-fixture` example must eventually prove:
 
 Scale fixture claims must link to [Benchmark Methodology](benchmark-methodology.md) and raw evidence.
 
-## Out Of Scope For Phase 0
+## Out Of Scope For The Current Scaffold
 
 - Real example apps.
 - Verified create-command output.
@@ -222,7 +222,7 @@ Scale fixture claims must link to [Benchmark Methodology](benchmark-methodology.
 
 ## Build Readiness
 
-Before Phase 1 can call onboarding build-ready, NeedleStart should have:
+Before NeedleStart can call onboarding build-ready, it should have:
 
 - A default starter example plan.
 - A verified-example definition.

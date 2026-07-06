@@ -10,7 +10,7 @@ This page defines how NeedleStart should version packages, documentation, genera
 
 Framework users need to know which docs match their installed version. Agents need the same thing, especially when reading `llms.txt`, manifest schemas, or generated context. Mature docs systems keep upgrade guides, changelogs, API versions, migration notes, and compatibility evidence close to release work.
 
-NeedleStart should establish those rules before the first package scaffold so early implementation does not create undocumented contracts.
+NeedleStart should keep those rules established before early implementation creates undocumented contracts.
 
 Research backing:
 
@@ -30,7 +30,7 @@ Research backing:
 | Manifests | Every generated JSON artifact must include `schemaVersion`. | Update [Manifest Contracts](manifest-contracts.md) and machine-readable docs. |
 | Agent context | Context capsule JSON must include schema versions. | Update [Agent Kernel](agent-kernel.md), [MCP Server](mcp-server.md), and [Machine-Readable Documentation](machine-readable-docs.md). |
 | Docs site | Public docs should identify the product version they describe once releases exist. | Add docs-site version switcher or version labels before stable public launch. |
-| Examples | Examples should name compatible NeedleStart versions. | Update example READMEs when scaffold exists. |
+| Examples | Examples should name compatible NeedleStart versions. | Update example READMEs when examples exist. |
 
 ## Pre-1.0 Policy
 

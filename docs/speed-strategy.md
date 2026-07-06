@@ -29,7 +29,7 @@ The concrete technology and architecture choices that support this strategy are 
 
 | Surface | Speed goal | Primary docs | Evidence required |
 | --- | --- | --- | --- |
-| Dev startup | Start quickly after config and route discovery. | `docs/roadmap.md`, `docs/compiler-ir.md` | Dev fixture timing after scaffold exists |
+| Dev startup | Start quickly after config and route discovery. | `docs/roadmap.md`, `docs/compiler-ir.md` | Dev fixture timing after route discovery and dev server work exist |
 | HMR and route updates | Recompute changed route slices, not the whole app. | `docs/compiler-ir.md`, `docs/needle-map.md` | Incremental route fixture |
 | Static pages | Serve prebuilt HTML with minimal runtime work. | `docs/runtime-contract.md`, `docs/seo-engine.md` | Static output and HTTP tests |
 | SSR routes | Keep request routing small and manifest-driven. | `docs/runtime-contract.md`, `docs/adapters.md` | Adapter HTTP latency fixture |

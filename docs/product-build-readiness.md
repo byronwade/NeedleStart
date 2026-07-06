@@ -8,7 +8,7 @@ This page defines the documentation and evidence gates that must remain true as 
 
 ## Why This Exists
 
-Mature framework docs give builders a fast path, a precise reference surface, and clear project structure before they scale the product surface. NeedleStart needs the same discipline before package work begins:
+Mature framework docs give builders a fast path, a precise reference surface, and clear project structure before they scale the product surface. NeedleStart needs the same discipline as package work moves from scaffold into real framework behavior:
 
 - Getting started docs must distinguish target commands from verified commands.
 - Project structure must be explicit enough for generated apps, examples, and agents to follow.
@@ -22,7 +22,7 @@ Research backing lives in [Documentation Research Notes](documentation-research.
 | Lane | Source of truth | Build-ready when |
 | --- | --- | --- |
 | Product status | [Project Status](status.md), [README](../README.md) | Current phase, implemented behavior, and planned behavior are easy to distinguish. |
-| User onboarding | [Getting Started](getting-started.md), [Public Create App Guide](public/guides/create-app.md), [Examples And Templates Contract](examples-contract.md) | The planned flow is documented now, and can be replaced with verified commands and a verified starter example after scaffold. |
+| User onboarding | [Getting Started](getting-started.md), [Public Create App Guide](public/guides/create-app.md), [Examples And Templates Contract](examples-contract.md) | The planned flow is documented now, and can be replaced with verified commands and a verified starter example after app creation exists. |
 | Project structure | [File Conventions](file-conventions.md), [Routing Contract](routing-contract.md), [Public Project Structure](public/reference/project-structure.md), [Package Map](package-map.md) | App structure, route grammar, package structure, generated files, and root-only files are documented. |
 | Reference docs | [API Reference](api-reference.md), [CLI](cli.md), [CLI JSON Contract](cli-json-contract.md), [Diagnostics Contract](diagnostics-contract.md), [Config](config.md), [Configuration Contract](config-contract.md), [Adapter Contract](adapter-contract.md), [API Route Contract](api-route-contract.md), [Schema Contract](schema-contract.md), [Cache Contract](cache-contract.md), [SEO Contract](seo-contract.md), [Accessibility Contract](accessibility-contract.md), [Manifest Contracts](manifest-contracts.md) | Every planned public command, helper, config field, config loading rule, diagnostic rule, adapter rule, API handler rule, schema rule, cache rule, SEO rule, accessibility rule, JSON envelope, exit code, and generated artifact has a reference home. |
 | Versioning | [Versioning And Upgrades](versioning-and-upgrades.md), [Release Process](release.md), [Compatibility](compatibility.md) | Public APIs, manifests, docs outputs, deprecations, compatibility claims, and upgrade guides have rules before release work. |
@@ -34,7 +34,7 @@ Research backing lives in [Documentation Research Notes](documentation-research.
 
 ## Minimum Build-Ready State For Phase 1
 
-Before adding the monorepo scaffold, the repository should have:
+Before expanding beyond the monorepo scaffold, the repository should have:
 
 - A clear Phase 1 package list and package boundaries.
 - A target app structure and target monorepo structure.
@@ -66,10 +66,10 @@ Use these gates as the first screen for build work.
 
 ### Gate 1: Package Scaffold
 
-Build work may add the Bun workspace only when:
+Build work may rely on the Bun workspace only when:
 
 - [Phase 1 Build Plan](phase-1-build-plan.md) and [Package Map](package-map.md) agree on package names.
-- README and AGENTS still say commands are planned until they pass locally.
+- README and AGENTS distinguish verified scaffold commands from planned feature commands.
 - Package README expectations are known.
 - `bun install`, `bun test`, `bun run typecheck`, and `bun run check` are implemented for the scaffold and passing locally before feature work builds on them.
 
@@ -196,11 +196,11 @@ These docs should become more exact as implementation starts:
 - `docs/versioning-and-upgrades.md`: replace policy draft with real release, deprecation, and upgrade-guide procedures once packages exist.
 - `docs/testing.md`: actual scripts and fixture commands.
 - `docs/testing-contract.md`: replace planned fixture layout, snapshot policy, CI gates, browser-test rules, and evidence reporting with implemented package scripts and CI jobs.
-- `docs/docs-verification.md`: replace manual PowerShell checks with package scripts and CI jobs after scaffold.
+- `docs/docs-verification.md`: expand automated checks for generated indexes, anchors, and claim categories as docs tooling grows.
 - `docs/compatibility.md`: evidence table for Bun, Node, static, and deployment adapters.
 - `docs/machine-readable-docs.md`: generated `docs-index.json`, `llms.txt`, and `llms-full.txt` behavior.
 - `docs/public-docs-site-architecture.md`: choose a renderer and replace planned metadata contracts with implemented parser behavior.
-- `docs/public/reference/project-structure.md`: replace planned structure with verified generated app structure after scaffold.
+- `docs/public/reference/project-structure.md`: replace planned generated app structure with verified output after app creation exists.
 
 ## Completion Standard
 
@@ -208,7 +208,7 @@ NeedleStart is ready for a full product build when a contributor can:
 
 1. Read README and know the current phase.
 2. Read the docs hub and find start, guide, reference, concept, deployment, community, and agent lanes.
-3. Read the Phase 1 build plan and know the first package scaffold task.
+3. Read the Phase 1 build plan and know the next Phase 1A task.
 4. Read package map and know where each responsibility belongs.
 5. Read project structure docs and know what goes in the root, `app/`, `packages/`, `.needle/`, `dist/`, and `docs/`.
 6. Read examples docs and know which starter or fixture proves an onboarding workflow.

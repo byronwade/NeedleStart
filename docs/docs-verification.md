@@ -68,7 +68,7 @@ if ($missing.Count) {
 
 Expected result: `All local Markdown links resolve.`
 
-This check does not validate heading anchors or external URLs. Add stricter tooling once the Bun workspace exists.
+This check does not validate heading anchors or external URLs. Add stricter tooling when the public docs renderer or generated docs index exists.
 
 ### 3. Root Playbook Placement Check
 
@@ -282,7 +282,7 @@ The initial Bun workspace exposes these package scripts:
 
 Target behavior:
 
-- `docs:check` validates required docs, required links, local Markdown links, AI playbook placement, and verification-section coverage.
+- `docs:check` validates required docs, required links, local Markdown links, AI playbook placement, verification-section coverage, scaffold-status language, adapter package paths, and the current `bun.lockb` lockfile name.
 - `structure:check` validates workspace scripts, package names, package entrypoints, TypeScript scaffold files, CI, and forbidden runtime dependencies on agent-only packages.
 - `performance:check` validates performance docs, benchmark fixture coverage, raw-result rules, and unsupported public speed-claim patterns.
 - `check` runs the automated docs, structure, performance, typecheck, and test gates.

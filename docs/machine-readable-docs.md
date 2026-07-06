@@ -81,7 +81,7 @@ NeedleStart should make documentation consumable by humans and AI agents. Machin
 
 ## Maintenance
 
-Machine-readable docs should be generated once package scaffolding exists. Until then, this page is the contract draft.
+Machine-readable docs should be generated once the docs index or public docs pipeline exists. Until then, this page is the contract draft.
 
 Use [Documentation Verification](docs-verification.md) to check that `llms.txt`, `llms-full.txt`, `docs-index.json`, schema versions, and generated agent context remain documented consistently while the outputs are still planned.
 

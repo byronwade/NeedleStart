@@ -14,7 +14,7 @@ NeedleStart is in Phase 1: monorepo scaffold.
 - AI skill and subagent playbooks.
 - Prototype acceptance criteria.
 - Bun workspace package scaffold.
-- Root `package.json`, `bun.lock`, `tsconfig.base.json`, and `tsconfig.json`.
+- Root `package.json`, `bun.lockb`, `tsconfig.base.json`, and `tsconfig.json`.
 - Package placeholders under `packages/` and `packages/adapters/`.
 - Shared `@needle/core` scaffold types for routes, graph edges, diagnostics, cache plans, and adapter manifests.
 - CI workflow and root verification scripts for docs, structure, performance documentation, type checking, and placeholder tests.

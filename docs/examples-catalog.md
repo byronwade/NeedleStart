@@ -90,7 +90,7 @@ An example can move to verified only when:
 - README and AGENTS remain honest about package and command status.
 - Platform limitations are documented in [Compatibility](compatibility.md).
 
-## Out Of Scope For Phase 0
+## Out Of Scope For The Current Scaffold
 
 - Creating example apps.
 - Claiming examples run.

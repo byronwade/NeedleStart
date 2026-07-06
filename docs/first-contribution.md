@@ -32,7 +32,7 @@ Good early contributions are:
 
 Avoid these as first contributions:
 
-- Adding package scaffolding without following [Phase 1 Build Plan](phase-1-build-plan.md).
+- Changing package scaffolding without following [Phase 1 Build Plan](phase-1-build-plan.md).
 - Claiming framework commands pass before the implementation exists.
 - Adding root-level AI playbook folders.
 - Changing high-risk areas without reading [Risk Mitigation](risk-mitigation.md) and the relevant contract.
@@ -49,7 +49,7 @@ For documentation tasks, prefer a small change that has a clear verification pat
 - Add one ADR.
 - Fix stale navigation.
 
-For implementation tasks after scaffolding exists, create or update a task file from [Implementation Task Template](templates/task-template.md).
+For implementation tasks that build on the scaffold, create or update a task file from [Implementation Task Template](templates/task-template.md).
 
 ## Make The Change
 
@@ -63,12 +63,13 @@ Keep the change scoped:
 
 ## Verify
 
-Until package scripts exist, use [Documentation Verification](docs-verification.md).
+Use [Documentation Verification](docs-verification.md) for the current automated checks and manual review steps.
 
 Minimum checks for documentation-only changes:
 
 ```powershell
 git diff --check
+bun run docs:check
 ```
 
 Run the local Markdown link check from [Documentation Verification](docs-verification.md).

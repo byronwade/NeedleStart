@@ -9,7 +9,7 @@ The full file-by-file improvement matrix lives in `docs/documentation-matrix.md`
 
 ## 1. Executive Summary
 
-NeedleStart already has unusually strong Phase 0 architecture, risk, agent-safety, and product-positioning documentation. Its biggest gap is not depth of thought; it is information architecture for different audiences. Mature framework docs separate onboarding, guides, reference, concepts, examples, deployment, release, security, governance, and contributor workflows. NeedleStart now has initial lanes for those areas, but most are still planned reference homes.
+NeedleStart already has unusually strong early architecture, risk, agent-safety, and product-positioning documentation. Its biggest gap is not depth of thought; it is information architecture for different audiences. Mature framework docs separate onboarding, guides, reference, concepts, examples, deployment, release, security, governance, and contributor workflows. NeedleStart now has initial lanes for those areas, but most are still planned reference homes.
 
 The highest-impact move is to keep building a docs system where every feature has a status, a quick example, exact API/reference details, generated artifacts, agent notes, verification requirements, and out-of-scope boundaries.
 
@@ -66,7 +66,7 @@ See `docs/documentation-research.md` for project-by-project notes.
 | App developers | Routing, config, SEO, API, deployment, examples. | Reference homes now exist; implementation absent. | Fill guides as features land. |
 | Framework contributors | Architecture, package map, tasks, tests. | Strong. | Add task-level acceptance criteria and testing docs. |
 | Maintainers | Governance, release, security, review process. | Added initial governance/security/release homes. | Define maintainer roles before public launch. |
-| AI agents | AGENTS, stable JSON, safe edit rules, package boundaries. | Strong for Phase 0. | Add machine-readable docs index plan and schemas. |
+| AI agents | AGENTS, stable JSON, safe edit rules, package boundaries. | Strong early foundation. | Add machine-readable docs index plan and schemas. |
 | Security reviewers | Threat model, high-risk areas, reporting path. | High-risk areas documented; policy added. | Add threat-model docs per high-risk feature. |
 | Open source program reviewers | License, conduct, governance, security, contribution path. | License exists; conduct/governance/security added. | Add maintainer and release policy detail. |
 | Future website visitors | Public positioning, examples, comparisons. | Early. | Build website content map and public docs readiness checks. |
@@ -161,7 +161,7 @@ All planned feature docs should carry status warnings until code exists. This in
 | Add missing governance/security/release/testing docs. | High | Medium | Immediate |
 | Create exact CLI/config/routing/manifest references. | High | Medium | Phase 1 |
 | Add machine-readable docs index and llms output plan. | High | Medium | Phase 1-2 |
-| Add public website content map. | Medium | Low | Phase 0 |
+| Add public website content map. | Medium | Low | Early docs foundation |
 | Add benchmark methodology before any speed claims. | High | Low | Before benchmarks |
 | Add examples once scaffold exists. | High | Medium | Phase 1-2 |
 
@@ -183,14 +183,14 @@ The table below summarizes the highest-signal findings. The complete matrix is m
 | `docs/README.md` | All | Good | Navigation still early | Keep as canonical docs hub | High | Low | Yes | Yes |
 | `docs/documentation-standard.md` | Writers, agents | Good | Needs examples as docs grow | Add frontmatter examples later | High | Low | No | Yes |
 | `docs/docs-maintenance-checklist.md` | Maintainers, agents | New | Needs enforcement in PR template | Add PR template later | High | Low | No | Yes |
-| `docs/getting-started.md` | New users | Good planned page | No working app yet | Replace planned flow with verified tutorial after scaffold | High | Medium | Partial | Yes |
+| `docs/getting-started.md` | New users | Good planned page | No working app yet | Replace planned flow with verified tutorial after app creation exists | High | Medium | Partial | Yes |
 | `docs/guides.md` | App developers | Good planned index | No implemented guide content | Fill per feature | High | High | Partial | Partial |
 | `docs/api-reference.md` | Developers, agents | Good planned index | Needs split references | Split as APIs stabilize | High | Medium | Partial | Yes |
 | `docs/file-conventions.md` | Developers, agents | Good planned reference | Needs implementation evidence | Add diagnostics and tests later | High | Medium | Partial | Yes |
 | `docs/phase-1-build-plan.md` | Contributors | Strong | Only covers Phase 1 | Keep scoped | High | Low | No | Yes |
 | `docs/roadmap.md` | Maintainers | Strong | Long | Add status table later | Medium | Low | Partial | Yes |
 | `docs/task-backlog.md` | Contributors | Strong | Large linear list | Move tasks to issues later | Medium | Medium | No | Yes |
-| `docs/package-map.md` | Contributors | Strong | Planned packages only | Update after scaffold | High | Low | No | Yes |
+| `docs/package-map.md` | Contributors | Strong | Package names and entrypoints are scaffolded; behavior remains planned | Update when package boundaries or behavior change | High | Low | No | Yes |
 | `docs/compiler-ir.md` | Contributors, agents | Strong | Needs schema version examples | Add manifest contracts | High | Medium | No | Yes |
 | `docs/runtime-contract.md` | Contributors | Good | Needs adapter test expectations | Link deployment/testing docs | Medium | Low | No | Yes |
 | `docs/adapters.md` | Contributors, deployers | Good | Needs deployment guide | Link deployment and compatibility | Medium | Low | Partial | Partial |
@@ -318,7 +318,7 @@ Files: contributing, governance, release, security, testing, task templates.
 
 Acceptance criteria: contributors know how to propose work; maintainers know how to review and release.
 
-Risks: process overhead too early. Keep Phase 0 governance lightweight.
+Risks: process overhead too early. Keep early governance lightweight.
 
 Verification: dry-run a contributor path from README to task template.
 
