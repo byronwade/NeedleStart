@@ -292,13 +292,22 @@ export async function buildLuminaStaticApp(options: LuminaDevServerOptions): Pro
       });
     }
     outputs.push(...clientOutputs);
+    const ssrOutputs = await writeSsrServerBundle(appRoot, routeState.routes.filter((route) => route.kind === "page" && route.renderMode === "ssr"));
+    outputs.push(...ssrOutputs);
+    if (ssrOutputs.length > 0) {
+      phaseTimings.push({
+        name: "ssr server bundle",
+        durationMs: 0,
+        status: "ok",
+      });
+    }
   } finally {
     await vite.close();
   }
 
   copyJsonArtifact(appRoot, ".lumina/routes.json", "dist/routes.manifest.json", routeState.manifest);
   copyJsonArtifact(appRoot, ".lumina/render-manifest.json", "dist/render.manifest.json", routeState.renderManifest);
-  const adapterManifest = createBunAdapterManifest();
+  const adapterManifest = createBunAdapterManifest(routeState.routes.some((route) => route.kind === "page" && route.renderMode === "ssr"));
   copyJsonArtifact(appRoot, "", "dist/adapter.manifest.json", adapterManifest);
 
   const buildTracePath = ".lumina/build-trace.json";
@@ -550,6 +559,79 @@ function createClientEntryModule(route: RouteNode, modulePath = (sourceFile: str
   ].join("\n");
 }
 
+async function writeSsrServerBundle(appRoot: string, routes: RouteNode[]): Promise<string[]> {
+  if (routes.length === 0) return [];
+
+  const entryRoot = resolve(appRoot, ".lumina", "generated", "server");
+  const outdir = resolve(appRoot, "dist", "server");
+  const entry = resolve(entryRoot, "ssr-routes.tsx");
+  mkdirSync(entryRoot, { recursive: true });
+  mkdirSync(outdir, { recursive: true });
+  writeFileSync(entry, createSsrRoutesModule(routes, entry, appRoot), "utf8");
+
+  const result = await Bun.build({
+    entrypoints: [entry],
+    outdir,
+    target: "bun",
+    format: "esm",
+    splitting: false,
+    sourcemap: "none",
+    minify: false,
+    naming: "[name].[ext]",
+  });
+
+  if (!result.success) {
+    throw new Error(`Lumina SSR bundle failed: ${result.logs.map((log) => log.message).join("; ")}`);
+  }
+
+  return ["dist/server/ssr-routes.js"];
+}
+
+function createSsrRoutesModule(routes: RouteNode[], fromFile: string, appRoot: string): string {
+  const imports = [
+    `import { createElement } from "react";`,
+    `import { renderToString } from "react-dom/server";`,
+  ];
+  const entries: string[] = [];
+
+  routes.forEach((route, routeIndex) => {
+    const pageName = `Page${routeIndex}`;
+    imports.push(`import ${pageName} from ${JSON.stringify(relativeModulePath(fromFile, appRoot, route.sourceFile))};`);
+    route.layouts.forEach((layout, layoutIndex) => {
+      imports.push(`import Layout${routeIndex}_${layoutIndex} from ${JSON.stringify(relativeModulePath(fromFile, appRoot, layout))};`);
+    });
+
+    const layoutApplications = route.layouts
+      .map((_, layoutIndex) => `    app = createElement(Layout${routeIndex}_${layoutIndex}, { children: app, params, searchParams });`)
+      .reverse();
+    const clientEntry = `<script type="module" src="${clientEntryUrl(route, "/_lumina/client")}"></script>`;
+
+    entries.push([
+      "  {",
+      `    path: ${JSON.stringify(route.path)},`,
+      `    segments: ${JSON.stringify(route.segments)},`,
+      "    render(context) {",
+      "      const params = context.params ?? {};",
+      "      const searchParams = context.searchParams ?? {};",
+      `      let app = createElement(${pageName}, { params, searchParams });`,
+      ...layoutApplications,
+      "      const appHtml = renderToString(app);",
+      `      return "<!doctype html>" + appHtml + ${JSON.stringify(`<div data-lumina-route="${escapeAttribute(route.path)}"></div>${clientEntry}`)};`,
+      "    },",
+      "  }",
+    ].join("\n"));
+  });
+
+  return [
+    ...imports,
+    "",
+    "export const ssrRoutes = [",
+    entries.join(",\n"),
+    "];",
+    "",
+  ].join("\n");
+}
+
 function clientEntryUrl(route: RouteNode, basePath = "/@lumina/client"): string {
   return `${basePath}/${route.id}.js`;
 }
@@ -762,7 +844,7 @@ function copyJsonArtifact(appRoot: string, _sourcePath: string, outputPath: stri
   writeJsonArtifact(appRoot, outputPath, value);
 }
 
-function createBunAdapterManifest() {
+function createBunAdapterManifest(hasSsrOutput = false) {
   return {
     schemaVersion: "lumina.adapter.v0",
     adapter: "bun",
@@ -774,6 +856,7 @@ function createBunAdapterManifest() {
     source: {
       routesManifest: "dist/routes.manifest.json",
       renderManifest: "dist/render.manifest.json",
+      serverEntry: hasSsrOutput ? "dist/server/ssr-routes.js" : null,
     },
     runtime: {
       name: "bun",
@@ -782,17 +865,17 @@ function createBunAdapterManifest() {
     capabilities: {
       staticAssets: true,
       prerenderedHtml: true,
-      ssr: false,
+      ssr: hasSsrOutput,
       api: false,
       hotApi: false,
       streaming: false,
       healthEndpoint: false,
     },
     unsupported: [
-      {
+      ...(hasSsrOutput ? [] : [{
         feature: "ssr",
-        reason: "The current MVP build output serves static HTML only.",
-      },
+        reason: "No SSR routes were emitted in this build output.",
+      }]),
       {
         feature: "api",
         reason: "API routes are outside the current MVP build slice.",
@@ -841,12 +924,13 @@ function createPerfReport(routes: RouteNode[], outputs: string[], appRoot: strin
       .filter((route) => route.kind === "page")
       .map((route) => {
         const outputPath = staticHtmlOutputPath(route.path);
+        const hasStaticHtml = route.renderMode === "static" && route.params.length === 0 && outputs.includes(outputPath);
         return {
           routeId: route.id,
           path: route.path,
           mode: route.renderMode,
-          htmlOutput: route.params.length === 0 ? outputPath : null,
-          htmlBytes: route.params.length === 0 ? byteLengthOfFile(appRoot, outputPath) : 0,
+          htmlOutput: hasStaticHtml ? outputPath : null,
+          htmlBytes: hasStaticHtml ? byteLengthOfFile(appRoot, outputPath) : 0,
           budgets: [],
           diagnostics: [],
         };

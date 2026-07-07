@@ -3,7 +3,7 @@
 Status: Planned.
 Audience: framework contributors, adapter owners, AI agents.
 
-This page describes the runtime contract. Static built-output serving through `@lumina/adapter-bun` is implemented for `dist/public` HTML and route-specific production client bundles under `dist/public/_lumina/client/*.js`. The implemented static path returns stable 404 HTML for unknown routes, `Cache-Control: no-store` for HTML responses, immutable cache headers for route-specific client bundles, and sanitized 400 responses for malformed encoded request paths. SSR, API, hot API, health endpoints, production 500 fixture coverage, expanded cache headers, and broader runtime behavior remain planned.
+This page describes the runtime contract. Static built-output serving through `@lumina/adapter-bun` is implemented. Built-output serving through `@lumina/adapter-bun` is also implemented for generated SSR route bundles under `dist/server/ssr-routes.js` and route-specific production client bundles under `dist/public/_lumina/client/*.js`. The implemented path returns stable 404 HTML for unknown routes, `Cache-Control: no-store` for HTML and SSR responses, immutable cache headers for route-specific client bundles, sanitized 400 responses for malformed encoded request paths, and sanitized 500 responses for failing generated SSR routes. SSR, API, hot API support is still incomplete beyond generated SSR page routes; API, hot API, health endpoints, expanded cache headers, and broader runtime behavior remain planned.
 
 The Lumina runtime must stay small, explicit, fast, and easy to inspect. Runtime speed depends on generated manifests and handlers; see `docs/speed-strategy.md`.
 
@@ -116,7 +116,7 @@ Cache plans, cache headers, cache tags, revalidation, micro-cache behavior, and 
 
 Runtime diagnostics, source locations, production sanitization, and JSON diagnostic fields are defined in `docs/diagnostics-contract.md`.
 
-Render mode literals must stay aligned with `@lumina/core` `RenderMode`: `"static"`, `"prerender"`, `"ssr"`, `"stream"`, `"client-only"`, `"api"`, and `"hot-api"`. The current compiler records default static/API modes and explicit `staticPage()` / `ssr()` declarations in `.lumina/render-manifest.json`; production SSR serving remains planned. Client-only routes must be intentional and visible in generated manifests so runtime behavior does not silently hide SEO, hydration, or payload costs.
+Render mode literals must stay aligned with `@lumina/core` `RenderMode`: `"static"`, `"prerender"`, `"ssr"`, `"stream"`, `"client-only"`, `"api"`, and `"hot-api"`. The current compiler records default static/API modes and explicit `staticPage()` / `ssr()` declarations in `.lumina/render-manifest.json`; build output emits generated SSR route bundles for explicit SSR page routes. Client-only routes must be intentional and visible in generated manifests so runtime behavior does not silently hide SEO, hydration, or payload costs.
 
 ## Server Inputs
 

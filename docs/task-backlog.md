@@ -658,9 +658,9 @@ Definition of done:
 
 Goal: support `lumina start` for built apps.
 
-Task status: Implemented for static built-output serving.
+Task status: Implemented for static built-output serving and generated SSR page route serving.
 
-Evidence: `@lumina/adapter-bun` exposes `startBuiltLuminaApp`, `@lumina/cli` exposes `start <appPath>`, and `tests/static-build-and-start.test.ts` proves static built HTML is served after source route files are removed, request-path imports stay generated-output only, static HTML uses `Cache-Control: no-store`, route-specific client bundles use immutable cache headers, malformed encoded asset paths return sanitized 400 HTML, missing routes return 404, and `start --once` smoke-starts and closes.
+Evidence: `@lumina/adapter-bun` exposes `startBuiltLuminaApp`, `@lumina/cli` exposes `start <appPath>`, and `tests/static-build-and-start.test.ts` proves static built HTML and generated SSR page routes are served after source route files are removed, request-path imports stay generated-output only, static and SSR HTML use `Cache-Control: no-store`, route-specific client bundles use immutable cache headers, malformed encoded asset paths return sanitized 400 HTML, failing generated SSR routes return sanitized 500 HTML, missing routes return 404, and `start --once` smoke-starts and closes.
 
 Read first:
 

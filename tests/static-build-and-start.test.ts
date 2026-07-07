@@ -157,6 +157,59 @@ describe("static build and Bun start integration", () => {
     }
   }, 20_000);
 
+  test("Bun adapter serves built SSR output without source route files and sanitizes SSR errors", async () => {
+    const appRoot = createSsrBuildStartApp();
+
+    try {
+      const stdout: string[] = [];
+      const buildExitCode = await cli.runCli(["build", appRoot, "--json"], {
+        stdout: (text) => stdout.push(text),
+        stderr: () => {},
+      });
+      expect(buildExitCode).toBe(0);
+
+      const output = JSON.parse(stdout[0]!);
+      expect(output.data.outputs).toContain("dist/public/index.html");
+      expect(output.data.outputs).toContain("dist/server/ssr-routes.js");
+
+      const adapterManifest = JSON.parse(readFileSync(join(appRoot, "dist", "adapter.manifest.json"), "utf8"));
+      expect(adapterManifest.capabilities.ssr).toBe(true);
+      expect(adapterManifest.unsupported.map((item: { feature: string }) => item.feature)).not.toContain("ssr");
+
+      rmSync(join(appRoot, "app"), { recursive: true, force: true });
+
+      const { startBuiltLuminaApp } = await import("../packages/adapters/bun/src/index");
+      const server = await startBuiltLuminaApp({
+        appRoot,
+        host: "127.0.0.1",
+        port: await getFreePort(),
+      });
+
+      try {
+        const dashboard = await fetchWithTimeout(`${server.url}/dashboard?tab=reports`);
+        expect(dashboard.status).toBe(200);
+        expect(dashboard.headers.get("content-type")).toContain("text/html");
+        expect(dashboard.headers.get("cache-control")).toBe("no-store");
+        const dashboardBody = await dashboard.text();
+        expect(dashboardBody).toContain("<h1>SSR Dashboard</h1>");
+        expect(dashboardBody).toContain("reports");
+        expect(dashboardBody).toContain('data-lumina-route="/dashboard"');
+
+        const broken = await fetchWithTimeout(`${server.url}/broken`);
+        expect(broken.status).toBe(500);
+        expect(broken.headers.get("cache-control")).toBe("no-store");
+        const brokenBody = await broken.text();
+        expect(brokenBody).toContain("Lumina server error");
+        expect(brokenBody).not.toContain("Exploded SSR secret");
+        expect(brokenBody).not.toContain(appRoot);
+      } finally {
+        await server.close();
+      }
+    } finally {
+      rmSync(appRoot, { recursive: true, force: true });
+    }
+  }, 20_000);
+
   test("CLI can smoke-start built output and close", async () => {
     const appRoot = createBuildStartApp();
     const stdout: string[] = [];
@@ -241,6 +294,62 @@ function createBuildStartApp(): string {
     [
       "export default function AboutPage() {",
       "  return <main><h1>Built About</h1></main>;",
+      "}",
+      "",
+    ].join("\n"),
+    "utf8",
+  );
+
+  return appRoot;
+}
+
+function createSsrBuildStartApp(): string {
+  const scratchRoot = join(repoRoot, ".tmp");
+  mkdirSync(scratchRoot, { recursive: true });
+  const appRoot = mkdtempSync(join(scratchRoot, "lumina-ssr-build-start-"));
+  for (const directory of ["app", "app/dashboard", "app/broken"]) {
+    mkdirSync(join(appRoot, directory), { recursive: true });
+  }
+
+  writeFileSync(
+    join(appRoot, "app", "layout.tsx"),
+    [
+      "export default function RootLayout({ children }: { children: unknown }) {",
+      "  return <html lang=\"en\"><body>{children}</body></html>;",
+      "}",
+      "",
+    ].join("\n"),
+    "utf8",
+  );
+  writeFileSync(
+    join(appRoot, "app", "page.tsx"),
+    [
+      "export default function HomePage() {",
+      "  return <main><h1>Static Home</h1></main>;",
+      "}",
+      "",
+    ].join("\n"),
+    "utf8",
+  );
+  writeFileSync(
+    join(appRoot, "app", "dashboard", "page.tsx"),
+    [
+      "import { ssr } from \"@lumina/react\";",
+      "export const render = ssr();",
+      "export default function DashboardPage({ searchParams }: { searchParams: Record<string, string | string[]> }) {",
+      "  return <main><h1>SSR Dashboard</h1><p>{searchParams.tab}</p></main>;",
+      "}",
+      "",
+    ].join("\n"),
+    "utf8",
+  );
+  writeFileSync(
+    join(appRoot, "app", "broken", "page.tsx"),
+    [
+      "import { ssr } from \"@lumina/react\";",
+      "export const render = ssr();",
+      "export default function BrokenPage() {",
+      "  throw new Error(\"Exploded SSR secret\");",
       "}",
       "",
     ].join("\n"),
