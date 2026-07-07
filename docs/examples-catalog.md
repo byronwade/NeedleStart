@@ -6,7 +6,7 @@ Audience: app developers, docs maintainers, framework contributors, AI agents.
 
 This catalog names the official examples Lumina should grow into. It complements [Examples And Templates Contract](examples-contract.md), [Getting Started](getting-started.md), [Public Examples Reference](public/reference/examples.md), and [Benchmark Fixtures](benchmark-fixtures.md).
 
-Source fixtures now exist for `apps/www`, `examples/basic/`, `examples/blog-seo/`, `examples/multi-app-workspace/`, `examples/large-100-routes/`, and `examples/large-1000-routes/`. `apps/www` is runnable through the minimal dev/build/start path. `examples/basic/` is the first verified starter example, with test coverage for dev smoke startup, static build, built start, generated artifacts, and the root HTML response. The remaining standalone examples are compiler-verifiable fixtures, not runnable or verified examples yet. Every other entry is planned until files, commands, tests, and generated artifacts prove otherwise.
+Source fixtures now exist for `apps/www`, `examples/basic/`, `examples/blog-seo/`, `examples/multi-app-workspace/`, `examples/large-100-routes/`, and `examples/large-1000-routes/`. `apps/www` is runnable through the minimal dev/build/start path. `examples/basic/` is the first verified starter example, with test coverage for dev smoke startup, static build, built start, generated artifacts, and the root HTML response. `examples/blog-seo/` is runnable for dev dynamic content, static index build/start, generated artifacts, and documented production dynamic-route limits. The remaining standalone examples are compiler-verifiable fixtures, not runnable or verified examples yet. Every other entry is planned until files, commands, tests, and generated artifacts prove otherwise.
 
 ## Status Values
 
@@ -24,7 +24,7 @@ Use the same status values as [Examples And Templates Contract](examples-contrac
 | --- | --- | --- | --- |
 | Lumina Marketing App | `apps/www/` | Runnable | First marketing app source fixture for route discovery, generated manifests, Lumina Map, CLI inspection, dev serving, static build, and static start. |
 | Basic Starter | `examples/basic/` | Verified | Smallest useful app for `bun create lumina`. |
-| Blog SEO | `examples/blog-seo/` | Scaffolded | Static content, future metadata, sitemap, robots, and structured data. |
+| Blog SEO | `examples/blog-seo/` | Runnable | Public content route fixture with dev dynamic route evidence, static index build/start evidence, and future metadata, sitemap, robots, and structured data. |
 | Multi-App Workspace | `examples/multi-app-workspace/` | Scaffolded | Future workspace graph, shared-file identity, affected build, and split-app planning. |
 | Large 100 Routes | `examples/large-100-routes/` | Scaffolded | Deterministic generated route-discovery and manifest-ordering fixture. |
 | Large 1000 Routes | `examples/large-1000-routes/` | Scaffolded | Deterministic generated large-route and future graph-scaling fixture. |

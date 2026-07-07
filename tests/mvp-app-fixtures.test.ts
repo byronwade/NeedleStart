@@ -85,7 +85,7 @@ describe("MVP app and example fixtures", () => {
     }
 
     expect(readFileSync(join(repoRoot, "examples/basic/README.md"), "utf8")).toContain("Status: Verified.");
-    expect(readFileSync(join(repoRoot, "examples/blog-seo/README.md"), "utf8")).toContain("Status: Scaffolded.");
+    expect(readFileSync(join(repoRoot, "examples/blog-seo/README.md"), "utf8")).toContain("Example status: Runnable.");
   });
 
   test("examples/basic is a verified starter for dev, build, start, and generated artifacts", async () => {
@@ -163,6 +163,108 @@ describe("MVP app and example fixtures", () => {
       }
 
       expect(readFileSync(join(repoRoot, "examples/basic/README.md"), "utf8")).toContain("Status: Verified.");
+    } finally {
+      rmSync(appRoot, { recursive: true, force: true });
+    }
+  }, 20_000);
+
+  test("examples/blog-seo is a runnable content example with honest static-output limits", async () => {
+    const appRoot = await createRepoWritableCopy("examples/blog-seo", "lumina-blog-seo-");
+    const packageJson = JSON.parse(readFileSync(join(repoRoot, "examples/blog-seo/package.json"), "utf8"));
+
+    try {
+      expect(packageJson.scripts.dev).toBe("bun ../../packages/cli/src/index.ts dev .");
+      expect(packageJson.scripts.build).toBe("bun ../../packages/cli/src/index.ts build .");
+      expect(packageJson.scripts.start).toBe("bun ../../packages/cli/src/index.ts start .");
+
+      const { startLuminaDevServer } = await import("../packages/vite-plugin/src/index");
+      const dev = await startLuminaDevServer({
+        appRoot,
+        port: await getFreePort(),
+        logLevel: "silent",
+      });
+
+      try {
+        const index = await fetchWithTimeout(`${dev.url}/`);
+        expect(index.status).toBe(200);
+        expect(await index.text()).toContain("<h1>Blog SEO Example</h1>");
+
+        const post = await fetchWithTimeout(`${dev.url}/blog/hello-lumina`);
+        expect(post.status).toBe(200);
+        expect(await post.text()).toContain("<h1>Hello Lumina</h1>");
+      } finally {
+        await dev.close();
+      }
+
+      const buildExitCode = await cli.runCli(["build", appRoot, "--json"], {
+        stdout: () => {},
+        stderr: () => {},
+      });
+      expect(buildExitCode).toBe(0);
+
+      for (const artifact of [
+        ".lumina/routes.json",
+        ".lumina/render-manifest.json",
+        ".lumina/map.json",
+        ".lumina/build-trace.json",
+        ".lumina/perf.report.json",
+        "dist/routes.manifest.json",
+        "dist/render.manifest.json",
+        "dist/adapter.manifest.json",
+      ]) {
+        const raw = readFileSync(join(appRoot, artifact), "utf8");
+        expect(raw).not.toContain("\n");
+        expect(raw).not.toContain(repoRoot);
+      }
+
+      const routesManifest = JSON.parse(readFileSync(join(appRoot, ".lumina/routes.json"), "utf8"));
+      expect(routesManifest.routes.map((route: { path: string }) => route.path)).toEqual(["/blog/:slug", "/"]);
+
+      const map = JSON.parse(readFileSync(join(appRoot, ".lumina/map.json"), "utf8"));
+      expect(map.edges).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            from: "route:/blog/:slug",
+            to: "file:app/blog/[slug]/page.tsx",
+            kind: "route.source",
+          }),
+          expect.objectContaining({
+            from: "file:app/page.tsx",
+            to: "file:components/PostCard.tsx",
+            kind: "file.imports",
+          }),
+        ]),
+      );
+
+      const whyStdout: string[] = [];
+      const whyExitCode = await cli.runCli(["inspect", appRoot, "why", "/blog/:slug"], {
+        stdout: (text) => whyStdout.push(text),
+        stderr: () => {},
+      });
+      expect(whyExitCode).toBe(0);
+      expect(whyStdout[0]).toContain("Source: app/blog/[slug]/page.tsx");
+
+      rmSync(join(appRoot, "app"), { recursive: true, force: true });
+
+      const { startBuiltLuminaApp } = await import("../packages/adapters/bun/src/index");
+      const server = await startBuiltLuminaApp({
+        appRoot,
+        host: "127.0.0.1",
+        port: await getFreePort(),
+      });
+
+      try {
+        const index = await fetchWithTimeout(`${server.url}/`);
+        expect(index.status).toBe(200);
+        expect(await index.text()).toContain("<h1>Blog SEO Example</h1>");
+
+        const dynamicPost = await fetchWithTimeout(`${server.url}/blog/hello-lumina`);
+        expect(dynamicPost.status).toBe(404);
+      } finally {
+        await server.close();
+      }
+
+      expect(readFileSync(join(repoRoot, "examples/blog-seo/README.md"), "utf8")).toContain("Example status: Runnable.");
     } finally {
       rmSync(appRoot, { recursive: true, force: true });
     }

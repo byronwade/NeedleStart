@@ -4,6 +4,12 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "dev": "bun ../../packages/cli/src/index.ts dev .",
+    "dev:once": "bun ../../packages/cli/src/index.ts dev . --once",
+    "build": "bun ../../packages/cli/src/index.ts build .",
+    "build:json": "bun ../../packages/cli/src/index.ts build . --json",
+    "start": "bun ../../packages/cli/src/index.ts start .",
+    "start:once": "bun ../../packages/cli/src/index.ts start . --once",
     "routes": "bun ../../packages/cli/src/index.ts routes . --json",
     "inspect": "bun ../../packages/cli/src/index.ts inspect . --json",
     "inspect:why": "bun ../../packages/cli/src/index.ts inspect . why /"

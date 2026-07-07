@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, framework contributors, AI agents.
 
-Examples should become the fastest way to understand Lumina behavior once implementation exists. Current example files are source fixtures for the compiler and CLI. The `apps/www` fixture is runnable through the minimal local `lumina dev` path, and `examples/basic/` is the first verified standalone starter example. The other standalone example directories are not verified runnable apps yet.
+Examples should become the fastest way to understand Lumina behavior once implementation exists. Current example files are source fixtures for the compiler and CLI. The `apps/www` fixture is runnable through the minimal local `lumina dev` path, `examples/basic/` is the first verified standalone starter example, and `examples/blog-seo/` is runnable with documented production dynamic-route limits. The other standalone example directories are not verified runnable apps yet.
 
 The detailed requirements for examples, templates, verification evidence, and create-command integration are defined in [Examples And Templates Contract](examples-contract.md).
 
@@ -14,15 +14,15 @@ The official inventory is canonical in [Examples Catalog](examples-catalog.md). 
 
 - `apps/www/`
 - `examples/basic/`
+- `examples/blog-seo/`
 
 Current scaffolded paths are:
 
-- `examples/blog-seo/`
 - `examples/multi-app-workspace/`
 - `examples/large-100-routes/`
 - `examples/large-1000-routes/`
 
-These fixtures have README status labels and route-discovery tests. `apps/www` is covered by minimal dev-server tests. `examples/basic/` is covered by dev/build/start, generated artifact, and built-output HTTP tests. The remaining standalone example directories are not runnable or verified examples until build/start commands and broader runtime behavior exist.
+These fixtures have README status labels and route-discovery tests. `apps/www` is covered by minimal dev-server tests. `examples/basic/` is covered by dev/build/start, generated artifact, and built-output HTTP tests. `examples/blog-seo/` is covered by dev dynamic route, static index build/start, generated artifact, map, and inspect tests. The remaining standalone example directories are not runnable or verified examples until build/start commands and broader runtime behavior exist.
 
 ## Planned Examples
 

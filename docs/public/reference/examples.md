@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, framework contributors, AI agents.
 
-Lumina examples are scaffolded only where noted. Scaffolded examples are source fixtures for compiler and CLI evidence. `examples/basic/` is the first verified starter example; the other standalone examples are not runnable or verified public examples yet.
+Lumina examples are scaffolded only where noted. Scaffolded examples are source fixtures for compiler and CLI evidence. `examples/basic/` is the first verified starter example; `examples/blog-seo/` is runnable with documented production dynamic-route limits. The other standalone examples are not runnable or verified public examples yet.
 
 ## Planned Examples
 
@@ -12,7 +12,7 @@ Lumina examples are scaffolded only where noted. Scaffolded examples are source 
 | --- | --- | --- | --- |
 | Lumina Marketing App | `apps/www/` | Route discovery, generated manifests, Lumina Map, and CLI inspection source fixture. | Runnable |
 | Basic Starter | `examples/basic/` | Smallest useful generated app. | Verified |
-| Blog SEO | `examples/blog-seo/` | Tutorial app for pages, metadata, sitemap, and public HTML checks. | Scaffolded |
+| Blog SEO | `examples/blog-seo/` | Tutorial app for pages, metadata, sitemap, and public HTML checks. | Runnable |
 | Multi-App Workspace | `examples/multi-app-workspace/` | Future workspace graph and shared-file identity fixture. | Scaffolded |
 | Large 100 Routes | `examples/large-100-routes/` | Deterministic generated route-discovery fixture. | Scaffolded |
 | Large 1000 Routes | `examples/large-1000-routes/` | Deterministic generated large-route fixture. | Scaffolded |
@@ -34,7 +34,7 @@ Lumina examples are scaffolded only where noted. Scaffolded examples are source 
 - Verified: commands, tests, generated artifacts, and docs claims pass.
 - Deprecated: retained for compatibility or migration notes.
 
-`apps/www` is runnable through the minimal dev/build/start path, and `examples/basic/` is verified through fixture tests. Other standalone examples remain scaffolded or planned.
+`apps/www` is runnable through the minimal dev/build/start path, `examples/basic/` is verified through fixture tests, and `examples/blog-seo/` is runnable through dev dynamic route plus static index build/start fixture evidence. Other standalone examples remain scaffolded or planned.
 
 ## MVP Alpha Demo
 

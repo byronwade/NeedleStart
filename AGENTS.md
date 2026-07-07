@@ -14,7 +14,7 @@ Lumina is an app-graph-native, SEO-first React framework for humans and AI agent
 
 Current phase: Phase 1, monorepo scaffold.
 
-The repository currently contains documentation, a Bun workspace scaffold, package placeholders, contract-backed shared core model types, initial `@lumina/compiler` route discovery and route manifest shaping, scaffolded `apps/www`, a verified `examples/basic` starter fixture, other scaffolded example fixtures, CI, and enforcement scripts. Do not invent implemented framework behavior in docs unless the implementation exists or the text clearly marks it as planned.
+The repository currently contains documentation, a Bun workspace scaffold, package placeholders, contract-backed shared core model types, initial `@lumina/compiler` route discovery and route manifest shaping, scaffolded `apps/www`, a verified `examples/basic` starter fixture, a runnable `examples/blog-seo` content fixture, other scaffolded example fixtures, CI, and enforcement scripts. Do not invent implemented framework behavior in docs unless the implementation exists or the text clearly marks it as planned.
 
 The next prototype target is defined in `docs/mvp-alpha-scope.md`. Agents must keep MVP Alpha scope language aligned with README.md, this file, status, roadmap, getting started, examples, file conventions, and Lumina Map docs.
 
