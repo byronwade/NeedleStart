@@ -14,6 +14,25 @@ import { startLuminaDevServer } from "../packages/vite-plugin/src/index";
 
 const repoRoot = join(import.meta.dir, "..");
 const wwwRoot = join(repoRoot, "apps", "www");
+const expectedWwwRoutes = [
+  "/docs/concepts/app-graph",
+  "/docs/guides/create-app",
+  "/docs/reference/cli",
+  "/docs/reference/manifest-contracts",
+  "/docs/reference/routing",
+  "/docs/community",
+  "/docs/concepts",
+  "/docs/deployment",
+  "/docs/guides",
+  "/docs/reference",
+  "/docs/start",
+  "/about",
+  "/benchmarks",
+  "/docs",
+  "/examples",
+  "/roadmap",
+  "/",
+];
 
 describe("Vite dev integration", () => {
   test("serves apps/www routes with generated route, render, and map artifacts", async () => {
@@ -26,14 +45,7 @@ describe("Vite dev integration", () => {
     });
 
     try {
-      expect(dev.routes.map((route) => route.path)).toEqual([
-        "/about",
-        "/benchmarks",
-        "/docs",
-        "/examples",
-        "/roadmap",
-        "/",
-      ]);
+      expect(dev.routes.map((route) => route.path)).toEqual(expectedWwwRoutes);
       expect(dev.url).toStartWith("http://127.0.0.1:");
 
       const home = await fetch(`${dev.url}/`);
@@ -54,6 +66,10 @@ describe("Vite dev integration", () => {
       const docs = await fetch(`${dev.url}/docs`);
       expect(docs.status).toBe(200);
       expect(await docs.text()).toContain("<h1>Documentation</h1>");
+
+      const cliDocs = await fetch(`${dev.url}/docs/reference/cli`);
+      expect(cliDocs.status).toBe(200);
+      expect(await cliDocs.text()).toContain("<h1>CLI Reference</h1>");
 
       const viteClient = await fetch(`${dev.url}/@vite/client`);
       expect(viteClient.status).toBe(200);
@@ -92,9 +108,47 @@ describe("Vite dev integration", () => {
     expect(stdout).toHaveLength(1);
     expect(stdout[0]).toContain(`Lumina dev ${wwwRoot}`);
     expect(stdout[0]).toContain("Local http://127.0.0.1:");
-    expect(stdout[0]).toContain("Routes 6");
+    expect(stdout[0]).toContain(`Routes ${expectedWwwRoutes.length}`);
     expect(stdout[0]).toContain("Artifacts .lumina/routes.json, .lumina/render-manifest.json, .lumina/map.json");
   });
+
+  test("CLI smoke-start exits with a clear failure when the requested dev port is occupied", async () => {
+    const blocker = await occupyRandomPort();
+    const proc = Bun.spawn([
+      "bun",
+      "packages/cli/src/index.ts",
+      "dev",
+      "apps/www",
+      "--port",
+      String(blocker.port),
+      "--once",
+    ], {
+      cwd: repoRoot,
+      stdout: "pipe",
+      stderr: "pipe",
+    });
+
+    let timedOut = false;
+    try {
+      const exitCode = await Promise.race([
+        proc.exited,
+        delay(8_000).then(async () => {
+          timedOut = true;
+          proc.kill();
+          return await proc.exited;
+        }),
+      ]);
+      const stdout = await new Response(proc.stdout).text();
+      const stderr = await new Response(proc.stderr).text();
+
+      expect(timedOut).toBe(false);
+      expect(exitCode).not.toBe(0);
+      expect(stdout).toBe("");
+      expect(stderr).toContain(`Port ${blocker.port} is already in use`);
+    } finally {
+      await blocker.close();
+    }
+  }, 12_000);
 
   test("serves the virtual routes module during SSR", async () => {
     const appRoot = createVirtualRoutesApp();
@@ -247,6 +301,39 @@ async function getFreePort(): Promise<number> {
       }
     });
   });
+}
+
+async function occupyRandomPort(): Promise<{ port: number; close: () => Promise<void> }> {
+  return await new Promise((resolve, reject) => {
+    const server = createServer();
+    server.once("error", reject);
+    try {
+      server.listen(0, "127.0.0.1", () => {
+        const address = server.address();
+        if (typeof address !== "object" || !address) {
+          server.close(() => reject(new Error("Unable to allocate a blocked localhost port.")));
+          return;
+        }
+        resolve({
+          port: address.port,
+          close: async () => {
+            await new Promise<void>((closeResolve, closeReject) => {
+              server.close((error) => {
+                if (error) closeReject(error);
+                else closeResolve();
+              });
+            });
+          },
+        });
+      });
+    } catch (error) {
+      reject(error);
+    }
+  });
+}
+
+async function delay(ms: number): Promise<void> {
+  await new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 function createVirtualRoutesApp(): string {

@@ -35,7 +35,7 @@ These variants are referenced by roadmap, guide, and contract docs. They remain 
 | Command variant | Purpose |
 | --- | --- |
 | `lumina inspect why` | Implemented for route source, layout, render-mode, and artifact evidence. |
-| `lumina dev --port <port>` | Implemented for selecting a local dev-server port. |
+| `lumina dev --port <port>` | Implemented for selecting a strict local dev-server port; if the port is occupied, the CLI exits with a clean message instead of probing silently. |
 | `lumina dev --once` | Implemented for smoke-starting the dev server, writing artifacts, and closing immediately. |
 | `lumina build --affected` | Build only apps, routes, packages, and artifacts selected by the workspace graph. |
 | `lumina check --affected` | Run framework checks selected by affected workspace graph output. |
@@ -97,6 +97,8 @@ bun run lumina -- dev apps/www --once
 ```
 
 The implemented dev command writes `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/generated/client/*.tsx`, and `.lumina/client/*.js`, starts a Vite server, renders static, dynamic, and catch-all page routes through React SSR, passes route `params` and `searchParams` to page components, renders nearest app-level or route-level `not-found.tsx` and `error.tsx` components for dev 404/500 responses, exposes route-specific dev hydration bundles through `/@lumina/client/*.js`, hydrates the `apps/www` root route counter in a browser smoke test, exposes `virtual:lumina/routes`, emits `.lumina/hmr-report.json` for route-file changes, sends a `lumina:routes-updated` dev-server event, and returns stable fallback 404/500 HTML when a special component is missing or fails. It does not yet implement component-level HMR.
+
+The dev server uses the selected port strictly. If the default `5173` or a provided `--port` value is already occupied, the CLI exits nonzero with a clean port-in-use message and the developer should rerun with another `--port` value.
 
 ## Implemented Build Command
 

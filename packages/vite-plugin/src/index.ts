@@ -74,7 +74,7 @@ export async function startLuminaDevServer(options: LuminaDevServerOptions): Pro
     server: {
       host: options.host ?? "127.0.0.1",
       port: options.port ?? 5173,
-      strictPort: false,
+      strictPort: true,
     },
     plugins: [
       {

@@ -10,6 +10,8 @@ This page defines the planned content model for turning `docs/public/` into an a
 
 Lumina already has public-facing Markdown under `docs/public/`, but a polished docs site needs more than pages. It needs consistent metadata, navigation, route rules, source links, status labels, version context, machine-readable outputs, and validation. Mature docs systems use frontmatter, sidebar configuration, file-based routing, generated indexes, and page-level metadata to keep documentation navigable for humans and agents.
 
+The current `apps/www` docs area is a static visual route scaffold for this future system. It includes `/docs` plus hand-authored static pages for start, concepts, guides, reference, deployment, and community lanes so the site can demonstrate navigation shape, source-path cards, and status language. It is not yet a Markdown renderer, generated sidebar, search index, frontmatter parser, or machine-readable docs output.
+
 Research backing:
 
 - VitePress supports page frontmatter, file-based routing, and configurable sidebars.

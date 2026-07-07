@@ -6,7 +6,7 @@ import { SpeedPanel } from "../components/SpeedPanel";
 
 export default function HomePage() {
   return (
-    <main>
+    <main className="home-page" id="main-content">
       <Hero />
       <FeatureGrid />
       <SpeedPanel />

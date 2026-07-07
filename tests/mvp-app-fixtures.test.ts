@@ -32,6 +32,17 @@ describe("MVP app and example fixtures", () => {
     try {
       const manifest = compiler.createRoutesManifest({ appRoot });
       expect(manifest.routes.map((route) => route.path)).toEqual([
+        "/docs/concepts/app-graph",
+        "/docs/guides/create-app",
+        "/docs/reference/cli",
+        "/docs/reference/manifest-contracts",
+        "/docs/reference/routing",
+        "/docs/community",
+        "/docs/concepts",
+        "/docs/deployment",
+        "/docs/guides",
+        "/docs/reference",
+        "/docs/start",
         "/about",
         "/benchmarks",
         "/docs",

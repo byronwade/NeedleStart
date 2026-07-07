@@ -30,10 +30,13 @@ Current local dev-server usage:
 
 ```bash
 bun run lumina -- dev apps/www
+bun run lumina -- dev apps/www --port 5173
 bun run lumina -- dev apps/www --once
 ```
 
 The implemented dev path writes the first `.lumina` artifacts, exposes route-specific dev hydration bundles, hydrates a browser-tested root-route counter, exposes `virtual:lumina/routes`, emits `.lumina/hmr-report.json` for route-file changes, and renders page routes on the server. The implemented build/start path emits static HTML, route-specific production client bundles, initial build/performance report artifacts, deployment manifest copies, and serves static built output through `@lumina/adapter-bun`. The implemented browser smoke hydrates the root-route counter in dev and built output. The implemented map affected path reports route impact from direct local import edges. The implemented benchmark list path emits skeleton benchmark status without running benchmarks or publishing timings. `lumina start` requires prior build output and reports a clean error when `dist/` artifacts are missing. SSR/API production behavior, component-level HMR, and broader Lumina Map query modes remain planned.
+
+`lumina dev` uses the selected port strictly. If the default port or a provided `--port` value is already occupied, rerun with a different `--port` value.
 
 ## Planned Command Variants
 

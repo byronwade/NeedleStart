@@ -28,7 +28,7 @@ Lumina is in Phase 1: monorepo scaffold with route discovery, explicit static/SS
 - `@lumina/vite-plugin` minimal dev-server and static-build integration that writes route/render/map artifacts, serves static, dynamic, and catch-all page routes with React SSR through Vite middleware, passes route `params` and `searchParams` to page components, renders nearest app-level or route-level not-found/error components for dev 404/500 responses, emits `.lumina/client/*.js` dev route hydration bundles, emits `dist/public/_lumina/client/*.js` production route hydration bundles, supports browser-verified interactive root-route hydration in dev and built output, exposes `virtual:lumina/routes`, and emits `.lumina/hmr-report.json` when app route files change.
 - `@lumina/vite-plugin` static build integration that renders build-time static page routes into `dist/public`, copies deployment manifests into `dist/`, and emits `.lumina/build-trace.json` plus `.lumina/perf.report.json` with initial status data.
 - `@lumina/adapter-bun` static built-output serving for `dist/public` HTML with no source route files required on the request path, stable 404 behavior, tested static HTML and client asset cache headers, a request-path import guardrail, and sanitized malformed-path responses.
-- Scaffolded `apps/www` marketing app source, verified starter example under `examples/basic/`, runnable content example under `examples/blog-seo/`, and scaffolded examples under `examples/multi-app-workspace/`, `examples/large-100-routes/`, and `examples/large-1000-routes/`, with route-discovery and inspect fixture evidence.
+- Scaffolded `apps/www` marketing app source with shadcn-style UI primitives, Tailwind v4/shadcn configuration files, light/dark theme tokens, a persisted theme toggle, a static public-docs route scaffold for the docs home plus start, concepts, guide, reference, deployment, and community pages, verified starter example under `examples/basic/`, runnable content example under `examples/blog-seo/`, and scaffolded examples under `examples/multi-app-workspace/`, `examples/large-100-routes/`, and `examples/large-1000-routes/`, with route-discovery and inspect fixture evidence.
 - Early benchmark/status skeletons under `benchmarks/` and stable fixture placeholders under `fixtures/apps/`, all reporting `not implemented` and no synthetic timing results.
 - CI workflow and root verification scripts for docs, structure, performance documentation, type checking, scaffold tests, shared core model tests, route-discovery fixture tests, and benchmark skeleton path/status tests.
 
@@ -47,6 +47,7 @@ Lumina is in Phase 1: monorepo scaffold with route discovery, explicit static/SS
 - MCP server.
 - Safe edit transactions.
 - Checked-in generated `.lumina/*` or `dist/*` artifacts.
+- Full Markdown-to-public-docs rendering, generated docs search, generated docs sidebars, frontmatter parsing, and generated per-document public routes for every source Markdown file.
 - Implemented agent automation beyond documentation and wrapper scaffolds.
 
 ## Current Next Step

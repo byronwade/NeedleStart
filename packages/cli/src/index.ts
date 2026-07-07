@@ -135,11 +135,18 @@ export async function runCli(argv: string[], io: CliIo = {}): Promise<number> {
     const appRoot = resolve(appPath);
     const portFlagIndex = flags.indexOf("--port");
     const port = portFlagIndex >= 0 ? Number(flags[portFlagIndex + 1]) : undefined;
-    const dev = await startLuminaDevServer({
-      appRoot,
-      port: Number.isFinite(port) ? port : undefined,
-      logLevel: "silent",
-    });
+    const selectedPort = Number.isFinite(port) ? port : undefined;
+    let dev;
+    try {
+      dev = await startLuminaDevServer({
+        appRoot,
+        port: selectedPort,
+        logLevel: "silent",
+      });
+    } catch (error) {
+      stderr(formatDevStartupError(error, selectedPort ?? 5173));
+      return 7;
+    }
 
     stdout(
       [
@@ -280,6 +287,14 @@ function inspectApp(appRoot: string) {
 
 function normalizeCliPath(path: string): string {
   return path.replaceAll("\\", "/").replace(/^\.\//, "");
+}
+
+function formatDevStartupError(error: unknown, port: number): string {
+  const message = error instanceof Error ? error.message : String(error);
+  if (message.toLowerCase().includes("port") || message.toLowerCase().includes("eaddrinuse")) {
+    return `Port ${port} is already in use. Choose another port with --port <port>.`;
+  }
+  return `Lumina dev failed to start: ${message}`;
 }
 
 async function waitForShutdown(close: () => Promise<void>): Promise<void> {

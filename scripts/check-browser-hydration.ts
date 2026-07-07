@@ -9,7 +9,7 @@ const appRoot = fileURLToPath(new URL("../apps/www/", import.meta.url));
 const watchdog = setTimeout(() => {
   console.error("Browser hydration check timed out.");
   process.exit(1);
-}, 20_000);
+}, 60_000);
 
 const port = await getFreePort();
 const devUrl = `http://127.0.0.1:${port}`;

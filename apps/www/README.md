@@ -6,11 +6,38 @@ This is the first Lumina marketing website source fixture. It exists so the comp
 exercise a real app-shaped route tree through route discovery, CLI inspection, minimal dev serving,
 static build output, and static built-output serving.
 
+The public pages use a local shadcn-style source component layer under `components/ui/`, a
+`components.json` file for future shadcn CLI additions, and a Tailwind v4 entry file at
+`app/globals.css`. The current Lumina renderer still inlines the app-owned CSS from `styles.ts` so
+the fixture can prove the marketing and docs surface without changing Lumina's broader CSS delivery
+contract.
+
+The root layout supports light and dark mode through shadcn-style CSS variables, the `dark` class on
+`html`, a header theme toggle, and `localStorage` persistence under `lumina-theme`. The inline CSS
+path and `app/globals.css` should stay aligned until Lumina implements direct CSS asset delivery for
+the app renderer.
+
+The docs area is a static public-docs route scaffold inspired by documentation systems such as
+Next.js: it has a docs home, lane pages, topic pages, source-path cards, reference lanes, active
+sidebar navigation, and status language. It is not yet a Markdown renderer, search implementation,
+frontmatter parser, generated sidebar, or generated docs router.
+
 ## Routes
 
 - `/`
 - `/about`
 - `/docs`
+- `/docs/start`
+- `/docs/concepts`
+- `/docs/concepts/app-graph`
+- `/docs/guides`
+- `/docs/guides/create-app`
+- `/docs/reference`
+- `/docs/reference/cli`
+- `/docs/reference/routing`
+- `/docs/reference/manifest-contracts`
+- `/docs/deployment`
+- `/docs/community`
 - `/benchmarks`
 - `/examples`
 - `/roadmap`
@@ -42,7 +69,8 @@ These commands generate and inspect:
 
 ## Known Limitations
 
-- Client hydration is not implemented yet.
+- Hydration is currently proven for the root marketing route and counter fixture, not for a complete
+  application interaction model.
 - Component-level HMR is not implemented yet.
 - Production SSR/API serving is not implemented yet.
 - Benchmark pages describe status only and make no performance claims.

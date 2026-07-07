@@ -56,9 +56,10 @@ describe("static build and Bun start integration", () => {
     expect(output.schemaVersion).toBe("lumina.cli.v0");
     expect(output.command).toBe("lumina build");
     expect(output.status).toBe("ok");
-    expect(output.data.routes).toBe(6);
+    expect(output.data.routes).toBe(17);
     expect(output.data.outputs).toContain("dist/public/index.html");
     expect(output.data.outputs).toContain("dist/public/about/index.html");
+    expect(output.data.outputs).toContain("dist/public/docs/reference/cli/index.html");
     expect(output.data.outputs).toContain("dist/public/_lumina/client/app.page.js");
     expect(output.data.manifests).toContain(".lumina/build-trace.json");
     expect(output.data.manifests).toContain(".lumina/perf.report.json");
