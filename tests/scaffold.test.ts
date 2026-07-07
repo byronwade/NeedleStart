@@ -22,12 +22,13 @@ describe("Phase 1 scaffold", () => {
     };
 
     expect(packageJson.scripts.check).toBe(
-      "bun run docs:check && bun run structure:check && bun run performance:check && bun run typecheck && bun test",
+      "bun run docs:check && bun run structure:check && bun run performance:check && bun run typecheck && bun test && bun run test:browser",
     );
     expect(packageJson.scripts["docs:check"]).toBe("bun scripts/check-docs.ts");
     expect(packageJson.scripts["structure:check"]).toBe("bun scripts/check-structure.ts");
     expect(packageJson.scripts["performance:check"]).toBe("bun scripts/check-performance-docs.ts");
     expect(packageJson.scripts.test).toBe("bun test tests/**/*.test.ts");
+    expect(packageJson.scripts["test:browser"]).toBe("tsx scripts/check-browser-hydration.ts");
     expect(packageJson.scripts.typecheck).toBe("tsc -p tsconfig.json --noEmit");
   });
 

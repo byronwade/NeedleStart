@@ -163,7 +163,7 @@ Vision, prototype, public-roadmap, Phase 1 build plan, task backlog, and contrib
 
 Feature scheduling gates in compiler IR and risk-mitigation docs must use `planned acceptance criteria` wording for tests and agent demos, rather than ambiguous current-tense definition-of-done wording.
 
-The current implementation path must stay aligned across README, project status, roadmap, public roadmap, product-readiness, and backlog docs: Phase 1A shared core model hardening is implemented, the first `@lumina/compiler` route-discovery package API exists, the early benchmark/status skeleton exists with `not implemented` status, static `@lumina/adapter-bun` serving exists for built HTML, first dev hydration bundles exist under `.lumina/client/*.js`, and the next work connects production hydration output plus production hardening. Current-status and verification docs must distinguish static `@lumina/adapter-bun` serving from planned SSR/API runtime adapter behavior.
+The current implementation path must stay aligned across README, project status, roadmap, public roadmap, product-readiness, and backlog docs: Phase 1A shared core model hardening is implemented, the first `@lumina/compiler` route-discovery package API exists, the early benchmark/status skeleton exists with `not implemented` status, static `@lumina/adapter-bun` serving exists for built HTML, first dev hydration bundles exist under `.lumina/client/*.js`, browser-verified interactive dev hydration exists, and the next work connects production hydration output plus production hardening. Current-status and verification docs must distinguish static `@lumina/adapter-bun` serving from planned SSR/API runtime adapter behavior.
 
 ### 7A. Agent Enforcement Matrix Check
 

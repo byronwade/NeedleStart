@@ -121,6 +121,7 @@ export async function runCli(argv: string[], io: CliIo = {}): Promise<number> {
     const dev = await startLuminaDevServer({
       appRoot,
       port: Number.isFinite(port) ? port : undefined,
+      logLevel: "silent",
     });
 
     stdout(

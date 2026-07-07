@@ -23,12 +23,13 @@ The planned test layers, fixture layout, snapshot policy, CI gates, artifact rul
 bun test
 bun run typecheck
 bun run docs:check
+bun run test:browser
 bun run structure:check
 bun run performance:check
 bun run check
 ```
 
-These commands are available after the Phase 1 scaffold. They currently prove scaffold integrity, documentation links, package structure, performance documentation guardrails, TypeScript validity, scaffold tests, and shared core model tests. They do not prove framework runtime behavior.
+These commands are available after the Phase 1 scaffold. They currently prove scaffold integrity, documentation links, package structure, performance documentation guardrails, TypeScript validity, scaffold tests, shared core model tests, route/render/map artifact behavior, CLI inspection, static build/start behavior, dev-server behavior, and browser-verified interactive dev hydration. They do not prove production SSR/API runtime behavior, production hydration output, component-level HMR, MCP tools, safe edits, or measured benchmark results.
 
 ## Documentation Checks
 

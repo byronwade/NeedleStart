@@ -8,7 +8,7 @@ The `@lumina/cli` package implements the first route inspection paths, minimal m
 
 | Command | Purpose | Status |
 | --- | --- | --- |
-| `lumina dev` | Start local development. | Implemented for minimal `<appPath>` Vite SSR route serving, route-specific dev hydration bundles, `virtual:lumina/routes`, and route-file update reports; production hydration output and component-level HMR planned |
+| `lumina dev` | Start local development. | Implemented for minimal `<appPath>` Vite SSR route serving, route-specific dev hydration bundles, browser-verified interactive root-route hydration, `virtual:lumina/routes`, and route-file update reports; production hydration output and component-level HMR planned |
 | `lumina build` | Build app output and generated artifacts. | Implemented for build-time static page routes; SSR/API output planned |
 | `lumina start` | Start a built app. | Implemented for static HTML in `dist/public`; SSR/API serving planned |
 | `lumina routes` | Inspect discovered routes. | Implemented for `<appPath> --json` |
@@ -33,7 +33,7 @@ bun run lumina -- dev apps/www
 bun run lumina -- dev apps/www --once
 ```
 
-The implemented dev path writes the first `.lumina` artifacts, exposes route-specific dev hydration bundles, exposes `virtual:lumina/routes`, emits `.lumina/hmr-report.json` for route-file changes, and renders page routes on the server. The implemented build/start path emits static HTML, initial build/performance report artifacts, deployment manifest copies, and serves static built output through `@lumina/adapter-bun`. The implemented map affected path reports route impact from direct local import edges. `lumina start` requires prior build output and reports a clean error when `dist/` artifacts are missing. SSR/API production behavior, production hydration output, component-level HMR, and broader Lumina Map query modes remain planned.
+The implemented dev path writes the first `.lumina` artifacts, exposes route-specific dev hydration bundles, hydrates a browser-tested root-route counter, exposes `virtual:lumina/routes`, emits `.lumina/hmr-report.json` for route-file changes, and renders page routes on the server. The implemented build/start path emits static HTML, initial build/performance report artifacts, deployment manifest copies, and serves static built output through `@lumina/adapter-bun`. The implemented map affected path reports route impact from direct local import edges. `lumina start` requires prior build output and reports a clean error when `dist/` artifacts are missing. SSR/API production behavior, production hydration output, component-level HMR, and broader Lumina Map query modes remain planned.
 
 ## Planned Command Variants
 

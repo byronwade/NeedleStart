@@ -9,6 +9,7 @@ build/
 
 # Needle generated artifacts
 .needle/
+.lumina/
 
 # Logs
 *.log

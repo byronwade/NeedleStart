@@ -66,12 +66,13 @@ const rootPackage = readJson<{
 }>("package.json");
 
 const expectedRootScripts: Record<string, string> = {
-  check: "bun run docs:check && bun run structure:check && bun run performance:check && bun run typecheck && bun test",
+  check: "bun run docs:check && bun run structure:check && bun run performance:check && bun run typecheck && bun test && bun run test:browser",
   "docs:check": "bun scripts/check-docs.ts",
   lumina: "bun packages/cli/src/index.ts",
   "performance:check": "bun scripts/check-performance-docs.ts",
   "structure:check": "bun scripts/check-structure.ts",
   test: "bun test tests/**/*.test.ts",
+  "test:browser": "tsx scripts/check-browser-hydration.ts",
   typecheck: "tsc -p tsconfig.json --noEmit",
 };
 

@@ -547,10 +547,12 @@ const agentEnforcementContractDocs = [
     terms: [
       "Agent Enforcement Matrix",
       "bun run docs:check",
+      "bun run test:browser",
       "bun run structure:check",
       "bun run performance:check",
       "bun run typecheck",
       "bun test",
+      "bun run test:browser",
       "bun run check",
       "planned, scaffolded, implemented, and verified",
       "Performance claims",
@@ -745,19 +747,19 @@ const prototypeScopeTerms = [
 const currentImplementationStepDocs = [
   {
     file: "README.md",
-    terms: ["The next implementation stage is completing production hydration output, component-level HMR, and production hardening after the first dev hydration slice"],
+    terms: ["The next implementation stage is completing production hydration output, component-level HMR, and production hardening after the interactive dev hydration proof"],
   },
   {
     file: "docs/status.md",
-    terms: ["The next implementation path is completing production hydration output, component-level HMR, and production hardening after the first dev hydration slice"],
+    terms: ["The next implementation path is completing production hydration output, component-level HMR, and production hardening after the interactive dev hydration proof"],
   },
   {
     file: "docs/roadmap.md",
-    terms: ["The next implementation stage is completing production hydration output, component-level HMR, and production hardening after the first dev hydration slice."],
+    terms: ["The next implementation stage is completing production hydration output, component-level HMR, and production hardening after the interactive dev hydration proof."],
   },
   {
     file: "docs/public/roadmap.md",
-    terms: ["The next implementation path is completing production hydration output, component-level HMR, and production hardening after the first dev hydration slice."],
+    terms: ["The next implementation path is completing production hydration output, component-level HMR, and production hardening after the interactive dev hydration proof."],
   },
   {
     file: "docs/product-build-readiness.md",
@@ -765,7 +767,7 @@ const currentImplementationStepDocs = [
   },
   {
     file: "docs/task-backlog.md",
-    terms: ["Current implementation path: complete production hydration output, component-level HMR, and production hardening after the first dev hydration slice."],
+    terms: ["Current implementation path: complete production hydration output, component-level HMR, and production hardening after the interactive dev hydration proof."],
   },
 ];
 

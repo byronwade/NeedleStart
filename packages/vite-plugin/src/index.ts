@@ -1,5 +1,4 @@
 import { existsSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
-import { createRequire } from "node:module";
 import { dirname, relative, resolve } from "node:path";
 import { writeLuminaMap, writeRenderManifest, writeRoutesManifest } from "@lumina/compiler";
 import type { RouteNode } from "@lumina/core";
@@ -35,20 +34,17 @@ export type LuminaBuildResult = {
 
 const virtualRoutesModuleId = "virtual:lumina/routes";
 const resolvedVirtualRoutesModuleId = `\0${virtualRoutesModuleId}`;
-const require = createRequire(import.meta.url);
-const reactRuntimeAliases = {
-  react: require.resolve("react"),
-  "react-dom": require.resolve("react-dom"),
-  "react-dom/client": require.resolve("react-dom/client"),
-  "react-dom/server": require.resolve("react-dom/server"),
-  "react/jsx-dev-runtime": require.resolve("react/jsx-dev-runtime"),
-  "react/jsx-runtime": require.resolve("react/jsx-runtime"),
-};
 
 export async function startLuminaDevServer(options: LuminaDevServerOptions): Promise<LuminaDevServer> {
   const appRoot = resolve(options.appRoot);
   let routeState = regenerateArtifacts(appRoot);
-  await writeClientBundles(appRoot, routeState.routes);
+  let clientBundleWrite: Promise<void> = Promise.resolve();
+  const queueClientBundleWrite = () => {
+    const write = writeClientBundles(appRoot, routeState.routes);
+    clientBundleWrite = write.catch(() => undefined);
+    return write;
+  };
+  await queueClientBundleWrite();
 
   let vite: ViteDevServer;
   vite = await createServer({
@@ -59,14 +55,11 @@ export async function startLuminaDevServer(options: LuminaDevServerOptions): Pro
       jsxImportSource: "react",
     },
     optimizeDeps: {
-      include: ["react", "react-dom/client"],
+      include: [],
       noDiscovery: true,
     },
-    resolve: {
-      alias: reactRuntimeAliases,
-    },
     ssr: {
-      noExternal: ["react", "react-dom"],
+      external: ["react", "react-dom", "react-dom/client", "react-dom/server", "react/jsx-dev-runtime", "react/jsx-runtime"],
     },
     root: appRoot,
     logLevel: options.logLevel ?? "info",
@@ -93,7 +86,7 @@ export async function startLuminaDevServer(options: LuminaDevServerOptions): Pro
           const updateRouteState = (file: string) => {
             if (!isAppSourceFile(appRoot, file)) return;
             routeState = regenerateArtifacts(appRoot, file);
-            void writeClientBundles(appRoot, routeState.routes);
+            void queueClientBundleWrite().catch(() => undefined);
             const virtualModule = server.moduleGraph.getModuleById(resolvedVirtualRoutesModuleId);
             if (virtualModule) server.moduleGraph.invalidateModule(virtualModule);
             server.ws.send({
@@ -152,7 +145,7 @@ export async function startLuminaDevServer(options: LuminaDevServerOptions): Pro
         handleHotUpdate({ file, server, modules, timestamp }) {
           if (!isAppSourceFile(appRoot, file)) return;
           routeState = regenerateArtifacts(appRoot, file);
-          void writeClientBundles(appRoot, routeState.routes);
+          void queueClientBundleWrite().catch(() => undefined);
           const invalidatedModules = new Set<ModuleNode>();
           for (const mod of modules) {
             server.moduleGraph.invalidateModule(mod, invalidatedModules, timestamp, true);
@@ -179,7 +172,10 @@ export async function startLuminaDevServer(options: LuminaDevServerOptions): Pro
   return {
     url: resolveServerUrl(vite),
     routes: routeState.routes,
-    close: () => vite.close(),
+    close: async () => {
+      await clientBundleWrite;
+      await vite.close();
+    },
   };
 }
 
@@ -204,14 +200,11 @@ export async function buildLuminaStaticApp(options: LuminaDevServerOptions): Pro
       jsxImportSource: "react",
     },
     optimizeDeps: {
-      include: ["react", "react-dom/client"],
+      include: [],
       noDiscovery: true,
     },
-    resolve: {
-      alias: reactRuntimeAliases,
-    },
     ssr: {
-      noExternal: ["react", "react-dom"],
+      external: ["react", "react-dom", "react-dom/client", "react-dom/server", "react/jsx-dev-runtime", "react/jsx-runtime"],
     },
     root: appRoot,
     logLevel: options.logLevel ?? "silent",
