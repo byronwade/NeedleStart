@@ -3,7 +3,7 @@
 Status: Planned.
 Audience: framework contributors, adapter owners, AI agents.
 
-This page describes the runtime contract. Static built-output serving through `@lumina/adapter-bun` is implemented for `dist/public` HTML and route-specific production client bundles under `dist/public/_lumina/client/*.js`; SSR, API, hot API, health endpoints, expanded cache headers, and broader runtime behavior remain planned.
+This page describes the runtime contract. Static built-output serving through `@lumina/adapter-bun` is implemented for `dist/public` HTML and route-specific production client bundles under `dist/public/_lumina/client/*.js`. The implemented static path returns stable 404 HTML for unknown routes, `Cache-Control: no-store` for HTML responses, immutable cache headers for route-specific client bundles, and sanitized 400 responses for malformed encoded request paths. SSR, API, hot API, health endpoints, production 500 fixture coverage, expanded cache headers, and broader runtime behavior remain planned.
 
 The Lumina runtime must stay small, explicit, fast, and easy to inspect. Runtime speed depends on generated manifests and handlers; see `docs/speed-strategy.md`.
 

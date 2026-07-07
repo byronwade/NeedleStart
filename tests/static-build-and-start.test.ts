@@ -15,6 +15,30 @@ const repoRoot = join(import.meta.dir, "..");
 const wwwRoot = join(repoRoot, "apps", "www");
 
 describe("static build and Bun start integration", () => {
+  test("Bun adapter request path stays generated-output only", () => {
+    const adapterSource = readFileSync(join(repoRoot, "packages", "adapters", "bun", "src", "index.ts"), "utf8");
+
+    for (const forbidden of [
+      "@lumina/compiler",
+      "@lumina/map",
+      "@lumina/agent",
+      "@lumina/mcp",
+      "@lumina/devtools",
+      "node:fs",
+      "readFile",
+      "readdir",
+      "glob",
+      ".lumina/build-trace",
+      ".lumina/hmr-report",
+      "docs/",
+    ]) {
+      expect(adapterSource).not.toContain(forbidden);
+    }
+
+    expect(adapterSource).toContain("dist/public");
+    expect(adapterSource).toContain("Bun.file");
+  });
+
   test("CLI build emits static HTML, manifests, and early build reports for apps/www", async () => {
     const stdout: string[] = [];
     const stderr: string[] = [];
@@ -98,20 +122,33 @@ describe("static build and Bun start integration", () => {
         const home = await fetchWithTimeout(`${server.url}/`);
         expect(home.status).toBe(200);
         expect(home.headers.get("content-type")).toContain("text/html");
+        expect(home.headers.get("cache-control")).toBe("no-store");
         expect(await home.text()).toContain("<h1>Built Home</h1>");
 
         const about = await fetchWithTimeout(`${server.url}/about`);
         expect(about.status).toBe(200);
+        expect(about.headers.get("cache-control")).toBe("no-store");
         expect(await about.text()).toContain("<h1>Built About</h1>");
 
         const clientBundle = await fetchWithTimeout(`${server.url}/_lumina/client/app.page.js`);
         expect(clientBundle.status).toBe(200);
         expect(clientBundle.headers.get("content-type")).toContain("application/javascript");
+        expect(clientBundle.headers.get("cache-control")).toBe("public, max-age=31536000, immutable");
         expect(await clientBundle.text()).toContain("hydrateRoot");
 
         const missing = await fetchWithTimeout(`${server.url}/missing`);
         expect(missing.status).toBe(404);
+        expect(missing.headers.get("cache-control")).toBe("no-store");
         expect(await missing.text()).toContain("Lumina route not found");
+
+        const malformedAsset = await fetchWithTimeout(`${server.url}/%E0%A4%A.js`);
+        expect(malformedAsset.status).toBe(400);
+        expect(malformedAsset.headers.get("content-type")).toContain("text/html");
+        expect(malformedAsset.headers.get("cache-control")).toBe("no-store");
+        const malformedBody = await malformedAsset.text();
+        expect(malformedBody).toContain("Lumina request invalid");
+        expect(malformedBody).not.toContain("URIError");
+        expect(malformedBody).not.toContain("decodeURIComponent");
       } finally {
         await server.close();
       }

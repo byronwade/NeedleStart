@@ -660,7 +660,7 @@ Goal: support `lumina start` for built apps.
 
 Task status: Implemented for static built-output serving.
 
-Evidence: `@lumina/adapter-bun` exposes `startBuiltLuminaApp`, `@lumina/cli` exposes `start <appPath>`, and `tests/static-build-and-start.test.ts` proves static built HTML is served after source route files are removed, missing routes return 404, and `start --once` smoke-starts and closes.
+Evidence: `@lumina/adapter-bun` exposes `startBuiltLuminaApp`, `@lumina/cli` exposes `start <appPath>`, and `tests/static-build-and-start.test.ts` proves static built HTML is served after source route files are removed, request-path imports stay generated-output only, static HTML uses `Cache-Control: no-store`, route-specific client bundles use immutable cache headers, malformed encoded asset paths return sanitized 400 HTML, missing routes return 404, and `start --once` smoke-starts and closes.
 
 Read first:
 
@@ -673,7 +673,7 @@ Definition of done:
 - SSR routes should be served.
 - 404 works for missing static routes.
 - 500 should work.
-- Basic HTML cache headers are tested.
+- Basic HTML cache headers are tested for static built output.
 - Bun serving is implemented through `@lumina/adapter-bun`.
 
 ## PR 7A: Adapter-Aware Server Entry

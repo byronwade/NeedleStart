@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: adapter maintainers, runtime contributors, deployers, AI agents.
 
-This page defines the adapter and deployment-output contract for Lumina. Static built-output serving through `@lumina/adapter-bun` is implemented for `dist/public` HTML and route-specific production client bundles under `dist/public/_lumina/client/*.js`; SSR, API, hot API, health endpoints, expanded cache behavior, Node, and static export adapter behavior remain planned. The contract exists so Bun, Node, static export, runtime manifests, deployment docs, compatibility claims, cache behavior, health checks, and tests all use the same expectations.
+This page defines the adapter and deployment-output contract for Lumina. Static built-output serving through `@lumina/adapter-bun` is implemented for `dist/public` HTML and route-specific production client bundles under `dist/public/_lumina/client/*.js`; the tested static path covers generated-output-only request handling, stable 404s, basic HTML and client asset cache headers, and sanitized malformed-path responses. SSR, API, hot API, health endpoints, production 500 fixture coverage, expanded cache behavior, Node, and static export adapter behavior remain planned. The contract exists so Bun, Node, static export, runtime manifests, deployment docs, compatibility claims, cache behavior, health checks, and tests all use the same expectations.
 
 ## Goals
 
@@ -41,7 +41,7 @@ Source links:
 
 | Adapter | Package | Status | Purpose |
 | --- | --- | --- | --- |
-| Bun | `@lumina/adapter-bun` | Implemented for static built HTML | Default production adapter path using Bun runtime APIs. |
+| Bun | `@lumina/adapter-bun` | Implemented for static built HTML with basic header and malformed-path tests | Default production adapter path using Bun runtime APIs. |
 | Node | `@lumina/adapter-node` | Planned | Compatibility adapter path using Node HTTP APIs. |
 | Static | `@lumina/adapter-static` | Planned | Static export for fully static apps. |
 

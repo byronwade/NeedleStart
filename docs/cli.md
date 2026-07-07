@@ -119,7 +119,7 @@ bun run lumina -- start apps/www --port 4173
 bun run lumina -- start apps/www --once
 ```
 
-The implemented start command serves built static HTML from `dist/public` through `@lumina/adapter-bun`, reports the built route count from `dist/routes.manifest.json`, and returns stable 404 HTML for unknown static routes. The current request path does not need source route files. SSR, API, health endpoint, compression, production 500 handling, and cache-header expansion remain planned.
+The implemented start command serves built static HTML from `dist/public` through `@lumina/adapter-bun`, reports the built route count from `dist/routes.manifest.json`, and returns stable 404 HTML for unknown static routes. The current request path does not need source route files, does not import compiler/map/agent/MCP/devtools code, returns `Cache-Control: no-store` for HTML, returns immutable cache headers for route-specific client bundles, and returns sanitized 400 HTML for malformed encoded asset paths. SSR, API, health endpoint, compression, production 500 fixture coverage, and cache-header expansion remain planned.
 
 If build output is missing, `lumina start` exits nonzero with a clean message telling the developer to run `lumina build` first.
 

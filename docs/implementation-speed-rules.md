@@ -76,7 +76,7 @@ Concrete schemas may include additional `source`, `generatedAt`, build, route, a
 
 Production runtime adapters must load generated manifests and generated handlers only.
 
-Runtime adapter behavior now exists for static built-output serving through `@lumina/adapter-bun`. That path must stay covered by tests that fail if production request handling imports or reads:
+Runtime adapter behavior now exists for static built-output serving through `@lumina/adapter-bun`. `tests/static-build-and-start.test.ts` now includes a request-path guardrail for the static adapter source and HTTP coverage proving built output serves after source route files are removed. That path must stay covered by tests that fail if production request handling imports or reads:
 
 - `@lumina/compiler`
 - `@lumina/map`
