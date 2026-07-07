@@ -39,7 +39,8 @@ Planned commands:
 | `lumina edit` | Planned | Preview, apply, inspect, and undo safe-edit transactions. |
 | `lumina migrate` | Planned | Prototype migration workflows such as `from-next`. |
 | `lumina bench --list --json` | Implemented | List benchmark skeleton status without running benchmarks or emitting timings. |
-| `lumina bench` | Planned | Run benchmark fixtures and emit evidence metadata. |
+| `lumina bench <name> --json` | Implemented | Report one benchmark skeleton status without running benchmarks or emitting timings. |
+| `lumina bench` | Planned | Run measured benchmark fixtures and emit raw evidence metadata. |
 
 Each command should eventually document human output, `--json` output, exit codes, and affected generated files.
 

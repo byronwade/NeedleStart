@@ -66,7 +66,7 @@ RUM and field data remain optional app-owned evidence, not default framework tel
 
 ## Current Reality
 
-The repository is in Phase 1 scaffold. Initial performance reports and `lumina bench --list --json` exist, but benchmark execution commands, raw benchmark results, and Core Web Vitals evidence do not exist yet.
+The repository is in Phase 1 scaffold. Initial performance reports, `lumina bench --list --json`, and `lumina bench <name> --json` skeleton status output exist, but measured benchmark execution, raw benchmark results, and Core Web Vitals evidence do not exist yet.
 
 ## Source
 

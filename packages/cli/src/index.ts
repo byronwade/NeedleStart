@@ -8,7 +8,7 @@ import {
 } from "@lumina/compiler";
 import { getAffectedFiles, getAffectedRoutes } from "@lumina/map";
 import { buildLuminaStaticApp, startLuminaDevServer, type LuminaBuildPhase } from "@lumina/vite-plugin";
-import { benchmarkSkeletonReport } from "../../../benchmarks/status";
+import { benchmarkSkeletonReport, getBenchmarkDefinition } from "../../../benchmarks/status";
 
 export const luminaCliStatus = {
   name: "@lumina/cli",
@@ -40,6 +40,36 @@ export async function runCli(argv: string[], io: CliIo = {}): Promise<number> {
       }),
     );
     return 0;
+  }
+
+  if (command === "bench" && appPath && flags.includes("--json")) {
+    try {
+      const benchmark = getBenchmarkDefinition(appPath);
+      stdout(
+        JSON.stringify({
+          schemaVersion: "lumina.cli.v0",
+          command: "lumina bench",
+          status: "ok",
+          data: {
+            schemaVersion: benchmarkSkeletonReport.schemaVersion,
+            generatedBy: benchmarkSkeletonReport.generatedBy,
+            benchmark,
+            notes: [
+              "Skeleton status is not performance evidence.",
+              "This command does not run benchmarks or emit timings yet.",
+            ],
+          },
+          diagnostics: [],
+          meta: {
+            cwd: ".",
+          },
+        }),
+      );
+      return 0;
+    } catch {
+      stderr(`Unknown benchmark skeleton: ${appPath}`);
+      return 3;
+    }
   }
 
   if (command === "routes" && appPath && flags.includes("--json")) {
@@ -277,7 +307,7 @@ export async function runCli(argv: string[], io: CliIo = {}): Promise<number> {
     return 0;
   }
 
-  stderr("Usage: lumina dev <appPath> [--port <port>] | lumina build <appPath> [--json] | lumina start <appPath> [--port <port>] | lumina routes <appPath> --json | lumina inspect <appPath> --json | lumina inspect <appPath> why <route> | lumina map affected <appPath> <file> --json | lumina bench --list --json");
+  stderr("Usage: lumina dev <appPath> [--port <port>] | lumina build <appPath> [--json] | lumina start <appPath> [--port <port>] | lumina routes <appPath> --json | lumina inspect <appPath> --json | lumina inspect <appPath> why <route> | lumina map affected <appPath> <file> --json | lumina bench --list --json | lumina bench <name> --json");
   return 2;
 }
 

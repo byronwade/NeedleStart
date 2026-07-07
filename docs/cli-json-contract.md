@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: framework contributors, CLI implementers, AI agents.
 
-This page defines the JSON output and exit-code contract for the `lumina` CLI. The implemented JSON surfaces are `lumina routes <appPath> --json`, `lumina inspect <appPath> --json`, `lumina map affected <appPath> <file> --json`, `lumina build <appPath> --json`, and `lumina bench --list --json`; other command outputs remain planned. The shared diagnostic vocabulary lives in [Diagnostics Contract](diagnostics-contract.md). These contracts exist so Phase 1 and later command work can implement stable automation surfaces from the beginning.
+This page defines the JSON output and exit-code contract for the `lumina` CLI. The implemented JSON surfaces are `lumina routes <appPath> --json`, `lumina inspect <appPath> --json`, `lumina map affected <appPath> <file> --json`, `lumina build <appPath> --json`, `lumina bench --list --json`, and `lumina bench <name> --json`; other command outputs remain planned. The shared diagnostic vocabulary lives in [Diagnostics Contract](diagnostics-contract.md). These contracts exist so Phase 1 and later command work can implement stable automation surfaces from the beginning.
 
 ## Why This Exists
 
@@ -117,6 +117,7 @@ Initial planned command data shapes:
 | `lumina edit --json` | `{ "transaction": SafeEditTransaction, "diff": DiffSummary, "checks": CheckResult[] }` |
 | `lumina migrate --json` | `{ "migration": MigrationReport, "contracts": string[], "manualReview": string[] }` |
 | `lumina bench --list --json` | Implemented benchmark skeleton status list: `{ "schemaVersion": "lumina.benchmark-status.v0", "benchmarks": BenchmarkDefinition[], "notes": string[] }` with `status: "not implemented"` until benchmarks run. |
+| `lumina bench <name> --json` | Implemented benchmark skeleton status detail: `{ "schemaVersion": "lumina.benchmark-status.v0", "generatedBy": GeneratedBy, "benchmark": BenchmarkDefinition, "notes": string[] }` with `status: "not implemented"` until benchmarks run. |
 | `lumina bench --json` | `{ "fixture": string, "runs": BenchmarkRun[], "environment": BenchmarkEnvironment, "summary": BenchmarkSummary }` |
 
 The exact schemas belong in command-specific reference docs once implementation exists.

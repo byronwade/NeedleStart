@@ -6,7 +6,7 @@ Audience: maintainers, performance reviewers, future website visitors.
 
 Lumina must not make benchmark claims without raw data and methodology.
 
-Current status: benchmark docs, fixture plans, benchmark skeleton files, and `lumina bench --list --json` exist, but benchmark execution commands and raw results do not exist yet. The docs are ready for speed evidence; they are not speed evidence.
+Current status: benchmark docs, fixture plans, benchmark skeleton files, `lumina bench --list --json`, and `lumina bench <name> --json` skeleton status output exist, but measured benchmark execution and raw results do not exist yet. The docs are ready for speed evidence; they are not speed evidence.
 
 ## Planned Benchmark Areas
 

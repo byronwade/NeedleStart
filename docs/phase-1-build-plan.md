@@ -23,7 +23,7 @@ bun run performance:check
 bun run check
 ```
 
-Most CLI commands remain target UX, not implemented behavior. `lumina routes <appPath> --json`, `lumina inspect <appPath> --json`, `lumina inspect <appPath> why <route>`, `lumina bench --list --json`, minimal `lumina dev <appPath>`, static `lumina build <appPath>`, and static `lumina start <appPath>` are implemented through the local `bun run lumina -- ...` script. Public API examples in the docs are still drafts, except for the initial `@lumina/compiler` route, render-manifest, map artifact APIs, minimal `@lumina/vite-plugin` dev-server/static-build APIs, and static `@lumina/adapter-bun` serving covered by route-discovery, artifact, CLI, HTTP dev-server, build, and HTTP adapter tests.
+Most CLI commands remain target UX, not implemented behavior. `lumina routes <appPath> --json`, `lumina inspect <appPath> --json`, `lumina inspect <appPath> why <route>`, `lumina bench --list --json`, `lumina bench <name> --json`, minimal `lumina dev <appPath>`, static `lumina build <appPath>`, and static `lumina start <appPath>` are implemented through the local `bun run lumina -- ...` script. Public API examples in the docs are still drafts, except for the initial `@lumina/compiler` route, render-manifest, map artifact APIs, minimal `@lumina/vite-plugin` dev-server/static-build APIs, and static `@lumina/adapter-bun` serving covered by route-discovery, artifact, CLI, HTTP dev-server, build, and HTTP adapter tests.
 
 ## Phase 1 Goal
 
