@@ -4,7 +4,7 @@ Status: Scaffolded.
 
 Audience: app developers, framework contributors, AI agents.
 
-This page is the reference for `lumina` commands. `@lumina/cli` currently implements `lumina routes <appPath> --json`, `lumina inspect <appPath> --json`, `lumina inspect <appPath> why <route>`, minimal `lumina dev <appPath>`, static `lumina build <appPath>`, and static `lumina start <appPath>` through the local `bun run lumina -- ...` script. Other commands remain planned.
+This page is the reference for `lumina` commands. `@lumina/cli` currently implements `lumina routes <appPath> --json`, `lumina inspect <appPath> --json`, `lumina inspect <appPath> why <route>`, `lumina map affected <appPath> <file> --json`, minimal `lumina dev <appPath>`, static `lumina build <appPath>`, and static `lumina start <appPath>` through the local `bun run lumina -- ...` script. Other commands remain planned.
 
 Machine-readable command behavior is planned in [CLI JSON Contract](cli-json-contract.md). Human output may evolve, but `--json` output, exit codes, diagnostic codes, and schema versions become stable contracts once released.
 
@@ -20,7 +20,7 @@ Machine-readable command behavior is planned in [CLI JSON Contract](cli-json-con
 | `lumina check` | Run framework-aware checks. | Planned | Yes |
 | `lumina test` | Run framework-aware test selection. | Planned | Yes |
 | `lumina seo` | Run SEO audit. | Planned | Yes |
-| `lumina map` | Query Lumina Map. | Planned | Yes |
+| `lumina map` | Query Lumina Map. | Implemented only for `affected <appPath> <file> --json`; broader map queries remain planned | Yes |
 | `lumina workspace` | Inspect workspace graph, apps, and shared-file impact. | Planned | Yes |
 | `lumina agent` | Generate or inspect agent context. | Planned | Yes |
 | `lumina mcp` | Start MCP server. | Planned | No |
@@ -30,7 +30,7 @@ Machine-readable command behavior is planned in [CLI JSON Contract](cli-json-con
 
 ## Planned Command Variants
 
-These variants are referenced by roadmap, guide, and contract docs. They remain planned until `@lumina/cli` implements and tests them, except for `lumina inspect why`.
+These variants are referenced by roadmap, guide, and contract docs. They remain planned until `@lumina/cli` implements and tests them, except for `lumina inspect why`, `lumina dev --port`, `lumina dev --once`, and the minimal `lumina map affected <appPath> <file> --json` query.
 
 | Command variant | Purpose |
 | --- | --- |
@@ -42,7 +42,7 @@ These variants are referenced by roadmap, guide, and contract docs. They remain 
 | `lumina test --affected` | Run tests selected by affected apps, routes, packages, and shared files. |
 | `lumina map file` | Show graph details, route usage, and risk notes for one source file. |
 | `lumina map route` | Show the graph slice and route context for one route. |
-| `lumina map affected` | Show affected routes, files, and checks for a changed target. |
+| `lumina map affected` | Implemented for direct local import route impact with `<appPath> <file> --json`; affected checks and workspace impact remain planned. |
 | `lumina map explain` | Explain why a graph relationship or impact result exists. |
 | `lumina workspace graph` | Emit or inspect the planned workspace graph. |
 | `lumina workspace apps` | List workspace apps, package dependencies, and generated artifact owners. |
@@ -83,7 +83,7 @@ These global flags are planned, not implemented:
 | `--verbose` | Emit additional human-readable progress or diagnostic detail. |
 | `--quiet` | Reduce non-essential human output. |
 
-Do not rely on these flags until the owning command implements and tests them. The `--json` flag is implemented for `lumina routes <appPath>`.
+Do not rely on these flags until the owning command implements and tests them. The `--json` flag is implemented for `lumina routes <appPath>`, `lumina inspect <appPath>`, `lumina map affected <appPath> <file>`, and `lumina build <appPath>`.
 
 ## Implemented Dev Command
 
@@ -121,6 +121,16 @@ bun run lumina -- start apps/www --once
 The implemented start command serves built static HTML from `dist/public` through `@lumina/adapter-bun`, reports the built route count from `dist/routes.manifest.json`, and returns stable 404 HTML for unknown static routes. The current request path does not need source route files. SSR, API, health endpoint, compression, production 500 handling, and cache-header expansion remain planned.
 
 If build output is missing, `lumina start` exits nonzero with a clean message telling the developer to run `lumina build` first.
+
+## Implemented Map Affected Command
+
+Local repository usage:
+
+```bash
+bun run lumina -- map affected apps/www components/Hero.tsx --json
+```
+
+The implemented map affected command regenerates `.lumina/map.json`, reads direct local import edges, and emits a compact `lumina.cli.v0` envelope with the target file, affected routes, related files, and map artifact path. It currently covers route impact from direct static imports only. Workspace impact, affected checks, semantic graph queries, `lumina map file`, `lumina map route`, and `lumina map explain` remain planned.
 
 ## Planned Exit Code Policy
 

@@ -3,7 +3,7 @@
 Status: Scaffolded.
 Audience: app developers, framework contributors, AI agents.
 
-This page describes the Lumina Map direction. The first deterministic file-level `.lumina/map.json` generator exists in `@lumina/compiler`; CLI map queries, semantic graph expansion, affected-test accuracy, MCP integration, and safe-edit behavior remain planned.
+This page describes the Lumina Map direction. The first deterministic file-level `.lumina/map.json` generator exists in `@lumina/compiler`, including direct local import edges for simple static imports. `@lumina/map` and `@lumina/cli` implement a minimal `lumina map affected <appPath> <file> --json` route-impact query. Broader CLI map queries, semantic graph expansion, affected-test accuracy, MCP integration, and safe-edit behavior remain planned.
 
 Lumina Map is the semantic dependency graph for a Lumina application.
 
@@ -15,7 +15,7 @@ Large-repo workspace graph behavior is documented in [Large-Repo Build Architect
 
 For MVP Alpha, the Lumina Map is a deterministic file-level graph generated from discovered routes, route source files, imported components, render mode declarations, and basic ownership or source metadata when present. It should be useful before deeper semantic contracts exist.
 
-MVP Alpha should prove the map can explain a small app through generated JSON and CLI inspection. The generated JSON slice and route-centered inspect commands exist. It should not claim full semantic understanding, affected-test accuracy, MCP write support, safe edit behavior, or benchmark-backed performance until those features exist.
+MVP Alpha should prove the map can explain a small app through generated JSON and CLI inspection. The generated JSON slice, route-centered inspect commands, and minimal affected-route query exist. It should not claim full semantic understanding, affected-test accuracy, MCP write support, safe edit behavior, or benchmark-backed performance until those features exist.
 
 ## MVP Alpha Nodes
 
@@ -45,13 +45,13 @@ Every MVP edge must include `kind`, `source`, `confidence`, and `why`.
 Target MVP behavior:
 
 ```bash
-lumina map --json
+lumina map affected apps/www components/Hero.tsx --json
 lumina inspect / --json
 lumina inspect why /
 lumina inspect why components/Hero.tsx
 ```
 
-`.lumina/map.json` now emits the first map contract. `lumina inspect <appPath> --json` and `lumina inspect <appPath> why <route>` are implemented for route summary and route explanation output. `lumina map --json` remains planned.
+`.lumina/map.json` now emits the first map contract. `lumina inspect <appPath> --json` and `lumina inspect <appPath> why <route>` are implemented for route summary and route explanation output. `lumina map affected <appPath> <file> --json` is implemented for route impact from direct local import edges. Full `lumina map --json`, `lumina map file`, `lumina map route`, and `lumina map explain` remain planned.
 
 ## MVP Alpha Example Output
 
@@ -196,14 +196,22 @@ Planned commands:
 lumina map
 lumina map --json
 lumina map file components/ProductCard.tsx
-lumina map affected components/ProductCard.tsx
+lumina map affected apps/www components/ProductCard.tsx --json
 lumina map route /pricing
 lumina map explain components/ProductCard.tsx
 ```
 
+Current implemented command:
+
+```bash
+lumina map affected <appPath> <file> --json
+```
+
+The current command returns affected routes and related files for direct local import edges in `.lumina/map.json`. It does not yet select tests, packages, workspace apps, cache tags, SEO checks, or generated artifacts beyond the map artifact itself.
+
 ## Query API
 
-`@lumina/map` should expose a programmatic query API used by CLI, MCP, devtools, and the Agent Kernel.
+`@lumina/map` should expose a programmatic query API used by CLI, MCP, devtools, and the Agent Kernel. The current implemented API exposes `getAffectedRoutes(map, targetFile)` and `getAffectedFiles(map, targetFile)` for direct local import edges.
 
 Planned API:
 

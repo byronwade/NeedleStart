@@ -533,7 +533,7 @@ Goal: select affected apps, routes, packages, tests, and generated artifacts fro
 
 Definition of done:
 
-- `lumina build --affected --json`, `lumina check --affected --json`, `lumina test --affected --json`, and `lumina map affected <file>` are planned with stable JSON output.
+- `lumina build --affected --json`, `lumina check --affected --json`, and `lumina test --affected --json` are planned with stable JSON output. Minimal `lumina map affected <appPath> <file> --json` is implemented for direct local import route impact; workspace impact, affected checks, packages, tests, and generated artifact selection remain planned.
 - `.lumina/affected.json` schema is documented.
 - Fixtures cover shared-file changes, app-local changes, and route moves.
 

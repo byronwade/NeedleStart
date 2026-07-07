@@ -812,7 +812,7 @@ const publicGuideImplementationStatusDocs = [
   },
   {
     file: "docs/public/guides/lumina-map.md",
-    terms: ["planned workflow for inspecting the app graph", "not implemented yet"],
+    terms: ["minimal `lumina map affected <appPath> <file> --json`", "broader Lumina Map commands remain planned"],
   },
   {
     file: "docs/public/guides/seo-metadata.md",
@@ -970,7 +970,7 @@ const plannedOverviewImplementationStatusDocs = [
   },
   {
     file: "docs/lumina-map.md",
-    terms: ["first deterministic file-level `.lumina/map.json` generator exists", "CLI map queries"],
+    terms: ["first deterministic file-level `.lumina/map.json` generator exists", "lumina map affected <appPath> <file> --json", "Broader CLI map queries"],
   },
   {
     file: "docs/safe-edit-transactions.md",
@@ -1762,8 +1762,8 @@ const staleStatusPatterns = [
   },
   {
     file: "docs/public/guides/lumina-map.md",
-    pattern: /^This guide describes the planned workflow for inspecting the app graph\.$/m,
-    message: "docs/public/guides/lumina-map.md should state Lumina Map commands are not implemented yet.",
+    pattern: /Lumina Map commands are not implemented yet/i,
+    message: "docs/public/guides/lumina-map.md should state that only minimal map affected is implemented and broader map commands remain planned.",
   },
   {
     file: "docs/public/guides/seo-metadata.md",

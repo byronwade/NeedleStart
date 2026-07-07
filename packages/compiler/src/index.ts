@@ -1,5 +1,5 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
-import { join, relative } from "node:path";
+import { join, posix, relative } from "node:path";
 import * as ts from "typescript";
 import { createGraphEdge } from "@lumina/core";
 import type {
@@ -214,6 +214,8 @@ export function createLuminaMap(options: RouteDiscoveryOptions): LuminaMap {
       ),
     ];
 
+    routeEdges.push(...createImportEdges(options.appRoot, route.sourceFile, nodes));
+
     for (const layout of route.layouts) {
       const layoutNodeId = `file:${layout}`;
       nodes.set(layoutNodeId, {
@@ -248,7 +250,7 @@ export function createLuminaMap(options: RouteDiscoveryOptions): LuminaMap {
       renderManifest: ".lumina/render-manifest.json",
     },
     nodes: [...nodes.values()].sort((left, right) => compareStrings(left.id, right.id)),
-    edges: edges.sort((left, right) => compareStrings(left.id, right.id)),
+    edges: dedupeEdges(edges).sort((left, right) => compareStrings(left.id, right.id)),
     diagnostics: [...routesManifest.diagnostics, ...renderManifest.diagnostics],
   };
 }
@@ -431,6 +433,74 @@ function renderDiagnostic(options: {
   };
 }
 
+function createImportEdges(
+  appRoot: string,
+  sourceFile: string,
+  nodes: Map<string, GraphNode>,
+) {
+  const absolutePath = join(appRoot, ...sourceFile.split("/"));
+  if (!existsSync(absolutePath)) return [];
+
+  const sourceText = readFileSync(absolutePath, "utf8");
+  const source = ts.createSourceFile(sourceFile, sourceText, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+  const importedFiles = new Set<string>();
+
+  for (const statement of source.statements) {
+    if (!ts.isImportDeclaration(statement)) continue;
+    if (!ts.isStringLiteral(statement.moduleSpecifier)) continue;
+    const importedFile = resolveLocalImport(appRoot, sourceFile, statement.moduleSpecifier.text);
+    if (importedFile) importedFiles.add(importedFile);
+  }
+
+  return [...importedFiles].sort(compareStrings).map((importedFile) => {
+    const importedNodeId = `file:${importedFile}`;
+    nodes.set(importedNodeId, {
+      id: importedNodeId,
+      kind: nodeKindForFile(importedFile),
+      label: importedFile,
+      sourceFile: importedFile,
+    });
+
+    return createGraphEdge({
+      id: `edge:file:${createFileId(sourceFile)}:imports:${createFileId(importedFile)}`,
+      from: `file:${sourceFile}`,
+      to: importedNodeId,
+      kind: "file.imports",
+      source: "static-analysis",
+      confidence: "high",
+      why: `${sourceFile} imports ${importedFile}.`,
+    });
+  });
+}
+
+function resolveLocalImport(appRoot: string, sourceFile: string, specifier: string): string | undefined {
+  if (!specifier.startsWith(".")) return undefined;
+
+  const sourceDirectory = posix.dirname(sourceFile);
+  const candidate = posix.normalize(posix.join(sourceDirectory, specifier));
+  const candidates = [
+    candidate,
+    `${candidate}.tsx`,
+    `${candidate}.ts`,
+    `${candidate}.jsx`,
+    `${candidate}.js`,
+    posix.join(candidate, "index.tsx"),
+    posix.join(candidate, "index.ts"),
+    posix.join(candidate, "index.jsx"),
+    posix.join(candidate, "index.js"),
+  ];
+
+  return candidates.find((path) => existsSync(join(appRoot, ...path.split("/"))));
+}
+
+function nodeKindForFile(sourceFile: string): string {
+  if (sourceFile.startsWith("components/")) return "component";
+  if (sourceFile.endsWith("/layout.tsx") || sourceFile === "app/layout.tsx") return "layout";
+  if (sourceFile.startsWith("app/api/")) return "api";
+  if (sourceFile.endsWith("/page.tsx") || sourceFile === "app/page.tsx") return "page";
+  return "file";
+}
+
 function walkFiles(directory: string): string[] {
   const found: string[] = [];
 
@@ -611,6 +681,10 @@ function sortDiagnostics(diagnostics: LuminaDiagnostic[]): LuminaDiagnostic[] {
       compareStrings(left.message, right.message)
     );
   });
+}
+
+function dedupeEdges(edges: ReturnType<typeof createGraphEdge>[]): ReturnType<typeof createGraphEdge>[] {
+  return [...new Map(edges.map((edge) => [edge.id, edge])).values()];
 }
 
 function compareRoutes(left: RouteNode, right: RouteNode): number {

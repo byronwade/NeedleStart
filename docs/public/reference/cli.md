@@ -4,7 +4,7 @@ Status: Scaffolded.
 
 Audience: app developers, AI agents.
 
-The `@lumina/cli` package implements the first route inspection paths, minimal dev-server path, and static build/start path: `lumina routes <appPath> --json`, `lumina inspect <appPath> --json`, `lumina inspect <appPath> why <route>`, `lumina dev <appPath>`, `lumina build <appPath>`, and `lumina start <appPath>`, available locally as `bun run lumina -- ...`. Other Lumina CLI commands remain planned.
+The `@lumina/cli` package implements the first route inspection paths, minimal map affected query, minimal dev-server path, and static build/start path: `lumina routes <appPath> --json`, `lumina inspect <appPath> --json`, `lumina inspect <appPath> why <route>`, `lumina map affected <appPath> <file> --json`, `lumina dev <appPath>`, `lumina build <appPath>`, and `lumina start <appPath>`, available locally as `bun run lumina -- ...`. Other Lumina CLI commands remain planned.
 
 | Command | Purpose | Status |
 | --- | --- | --- |
@@ -16,7 +16,7 @@ The `@lumina/cli` package implements the first route inspection paths, minimal d
 | `lumina check` | Run framework-aware checks. | Planned |
 | `lumina test` | Run framework-aware test selection. | Planned |
 | `lumina seo` | Run SEO audits. | Planned |
-| `lumina map` | Query Lumina Map. | Planned |
+| `lumina map` | Query Lumina Map. | Implemented only for `affected <appPath> <file> --json`; broader map queries planned |
 | `lumina workspace` | Inspect workspace graph, apps, and shared-file impact. | Planned |
 | `lumina agent` | Generate or inspect agent context. | Planned |
 | `lumina mcp` | Start MCP server. | Planned |
@@ -33,7 +33,7 @@ bun run lumina -- dev apps/www
 bun run lumina -- dev apps/www --once
 ```
 
-The implemented dev path writes the first `.lumina` artifacts, exposes `virtual:lumina/routes`, emits `.lumina/hmr-report.json` for route-file changes, and renders page routes on the server. The implemented build/start path emits static HTML, initial build/performance report artifacts, deployment manifest copies, and serves static built output through `@lumina/adapter-bun`. `lumina start` requires prior build output and reports a clean error when `dist/` artifacts are missing. SSR/API production behavior, client hydration, and component-level HMR remain planned.
+The implemented dev path writes the first `.lumina` artifacts, exposes `virtual:lumina/routes`, emits `.lumina/hmr-report.json` for route-file changes, and renders page routes on the server. The implemented build/start path emits static HTML, initial build/performance report artifacts, deployment manifest copies, and serves static built output through `@lumina/adapter-bun`. The implemented map affected path reports route impact from direct local import edges. `lumina start` requires prior build output and reports a clean error when `dist/` artifacts are missing. SSR/API production behavior, client hydration, component-level HMR, and broader Lumina Map query modes remain planned.
 
 ## Planned Command Variants
 
@@ -46,7 +46,7 @@ lumina check --affected
 lumina test --affected
 lumina map file
 lumina map route
-lumina map affected
+lumina map affected <appPath> <file> --json
 lumina map explain
 lumina workspace graph
 lumina workspace apps
@@ -87,7 +87,7 @@ lumina migrate --json
 lumina bench --json
 ```
 
-`lumina routes <appPath> --json` and `lumina inspect <appPath> --json` are implemented. The other JSON outputs are planned, not implemented. The shared envelope, diagnostic shape, exit-code policy, and stability rules live in [CLI JSON Contract](../../cli-json-contract.md).
+`lumina routes <appPath> --json`, `lumina inspect <appPath> --json`, and `lumina map affected <appPath> <file> --json` are implemented. The other JSON outputs are planned, not implemented. The shared envelope, diagnostic shape, exit-code policy, and stability rules live in [CLI JSON Contract](../../cli-json-contract.md).
 
 ## Source
 

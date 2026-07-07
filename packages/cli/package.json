@@ -11,6 +11,7 @@
     "@lumina/adapter-bun": "workspace:*",
     "@lumina/compiler": "workspace:*",
     "@lumina/core": "workspace:*",
+    "@lumina/map": "workspace:*",
     "@lumina/vite-plugin": "workspace:*"
   }
 }

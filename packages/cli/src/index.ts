@@ -6,6 +6,7 @@ import {
   writeRenderManifest,
   writeRoutesManifest,
 } from "@lumina/compiler";
+import { getAffectedFiles, getAffectedRoutes } from "@lumina/map";
 import { buildLuminaStaticApp, startLuminaDevServer } from "@lumina/vite-plugin";
 
 export const luminaCliStatus = {
@@ -82,6 +83,33 @@ export async function runCli(argv: string[], io: CliIo = {}): Promise<number> {
         `Artifacts: ${inspection.artifacts.join(", ")}`,
         `Why: ${route.sourceFile} defines the ${route.path} route; ${route.layouts.length ? `${route.layouts.join(", ")} wraps it` : "no layout wraps it"}; the render manifest records ${route.renderMode} mode.`,
       ].join("\n"),
+    );
+    return 0;
+  }
+
+  if (command === "map" && appPath === "affected" && flags[0] && flags[1] && flags.includes("--json")) {
+    const appRoot = resolve(flags[0]);
+    const target = normalizeCliPath(flags[1]);
+    const mapResult = writeLuminaMap({ appRoot });
+    const affectedRoutes = getAffectedRoutes(mapResult.map, target);
+    const relatedFiles = getAffectedFiles(mapResult.map, target);
+
+    stdout(
+      JSON.stringify({
+        schemaVersion: "lumina.cli.v0",
+        command: "lumina map affected",
+        status: "ok",
+        data: {
+          target,
+          affectedRoutes,
+          relatedFiles,
+          mapArtifact: mapResult.path,
+        },
+        diagnostics: mapResult.map.diagnostics,
+        meta: {
+          cwd: ".",
+        },
+      }),
     );
     return 0;
   }
@@ -193,7 +221,7 @@ export async function runCli(argv: string[], io: CliIo = {}): Promise<number> {
     return 0;
   }
 
-  stderr("Usage: lumina dev <appPath> [--port <port>] | lumina build <appPath> [--json] | lumina start <appPath> [--port <port>] | lumina routes <appPath> --json | lumina inspect <appPath> --json | lumina inspect <appPath> why <route>");
+  stderr("Usage: lumina dev <appPath> [--port <port>] | lumina build <appPath> [--json] | lumina start <appPath> [--port <port>] | lumina routes <appPath> --json | lumina inspect <appPath> --json | lumina inspect <appPath> why <route> | lumina map affected <appPath> <file> --json");
   return 2;
 }
 
@@ -230,6 +258,10 @@ function inspectApp(appRoot: string) {
       artifactCount: 3,
     },
   };
+}
+
+function normalizeCliPath(path: string): string {
+  return path.replaceAll("\\", "/").replace(/^\.\//, "");
 }
 
 async function waitForShutdown(close: () => Promise<void>): Promise<void> {
