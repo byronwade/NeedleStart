@@ -6,7 +6,7 @@ Audience: maintainers, performance reviewers, compiler contributors, runtime ada
 
 This page defines the planned fixture set for proving Lumina speed claims. It complements [Benchmark Methodology](benchmark-methodology.md), [Performance Contract](performance-contract.md), [Speed Strategy](speed-strategy.md), [Speed Decisions](speed-decisions.md), and [Performance Evidence Checklist](checklists/performance-evidence.md).
 
-The first benchmark skeleton paths and fixture placeholders exist. They report `not implemented` and are not benchmark evidence.
+The first benchmark skeleton paths and fixture placeholders exist. `route-discovery` can run locally against `fixtures/apps/tiny-static` and returns raw metadata in the JSON response. The other benchmark surfaces still report `not implemented`. This page is not public comparison evidence.
 
 ## Evidence Boundary
 
@@ -14,9 +14,9 @@ This document makes Lumina ready to collect speed evidence. It is not speed evid
 
 Current limitations:
 
-- No measured benchmark fixture behavior exists yet.
+- Local route-discovery benchmark execution exists for `lumina bench route-discovery --json --run`.
 - `lumina bench --list --json` and `lumina bench <name> --json` are implemented, and they report skeleton status without running benchmarks.
-- No raw benchmark results exist yet.
+- Route-discovery raw metadata is returned in the command JSON response, but no reviewed raw result files exist yet.
 - No public performance comparison can be made from this page.
 - No market performance claim should cite this document as proof.
 
@@ -36,7 +36,7 @@ benchmarks/graph-query.bench.ts
 benchmarks/adapter-dispatch.bench.ts
 ```
 
-These files currently report `not implemented` until the owning benchmark behavior exists. They must not publish synthetic numbers.
+These files report `not implemented` until the owning benchmark behavior exists. `benchmarks/route-discovery.bench.ts` now has a local run path for `fixtures/apps/tiny-static`; the remaining benchmark files are still status-only. They must not publish synthetic numbers.
 
 The early skeleton should separate:
 
@@ -102,7 +102,8 @@ Must prove:
 - The smallest route fixture has deterministic files.
 - Generated artifact skeletons remain compact.
 - Static request-path tests have a stable future home.
-- The fixture never implies benchmark evidence before raw results exist.
+- Route discovery can run against the fixture with raw metadata.
+- The fixture never implies public comparison evidence before reviewed raw results exist.
 
 ### `medium-100-routes`
 
@@ -183,9 +184,14 @@ benchmarks/results/<date>-<commit>/<fixture>/
 - Do not publish browser-delivery claims without route asset evidence.
 - Do not mark any performance doc verified until raw fixture evidence exists.
 
+## Current Implemented Runner
+
+`bun run lumina -- bench route-discovery --json --run` runs route discovery against `fixtures/apps/tiny-static` with one warmup and five measured runs. The JSON response includes commit SHA, fixture name, Bun and Node versions, compiler dependency versions, OS, hardware summary, command, warmup count, run count, raw per-run durations, route count, diagnostic count, and summary values.
+
+The command does not persist files under `benchmarks/results/`, does not compare frameworks, and does not support public performance rankings.
+
 ## Out Of Scope For The Current Scaffold
 
-- Benchmark implementation.
 - Synthetic results.
 - CI performance gates.
 - Public claims that Lumina is faster than another framework.

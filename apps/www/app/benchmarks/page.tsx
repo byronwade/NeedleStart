@@ -6,8 +6,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/ca
 const lanes = [
   {
     title: "Route discovery",
-    status: "Skeleton",
-    description: "Benchmark fixtures exist as status surfaces; measured results are not claimed yet.",
+    status: "Measured locally",
+    description: "The route-discovery benchmark runs against the tiny fixture and returns raw local metadata.",
     icon: Activity,
   },
   {
@@ -45,6 +45,12 @@ const benchmarkArtifacts = [
     icon: Activity,
   },
   {
+    title: "Route discovery run",
+    path: "bun run lumina -- bench route-discovery --json --run",
+    status: "Implemented",
+    icon: TimerReset,
+  },
+  {
     title: "Methodology contract",
     path: "docs/benchmark-methodology.md",
     status: "Planned",
@@ -64,7 +70,7 @@ export default function BenchmarksPage() {
       <PageHeader
         eyebrow="Evidence only"
         title="Benchmarks"
-        description="Lumina has benchmark skeletons for route discovery, manifest size, graph queries, and adapter dispatch. They currently report not implemented until measured fixtures exist."
+        description="Lumina has benchmark skeletons for route discovery, manifest size, graph queries, and adapter dispatch. Route discovery can run locally today; the other benchmark surfaces stay not implemented until measured fixtures exist."
       />
 
       <section className="benchmark-grid">
@@ -93,8 +99,8 @@ export default function BenchmarksPage() {
           <h2>Benchmark pages should be useful before they are flattering.</h2>
           <p>
             The site can show benchmark surfaces today, but it cannot claim speed wins until the repository contains
-            repeatable commands, raw result files, and methodology notes reviewers can inspect. The current status
-            command reports skeleton metadata and does not execute benchmark code.
+            repeatable commands, raw result files, and methodology notes reviewers can inspect. The route-discovery
+            run command returns raw local metadata, while status commands remain useful for incomplete surfaces.
           </p>
         </div>
         <div className="evidence-checklist" aria-label="Benchmark evidence requirements">

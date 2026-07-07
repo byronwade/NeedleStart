@@ -51,7 +51,7 @@ This audit is based on current primary guidance and the repository contracts:
 | Agent context | Compact route context and affected-check selection instead of repository-wide reads. | [Agent Kernel](agent-kernel.md), [Machine-Readable Documentation](machine-readable-docs.md), [Speed Strategy](speed-strategy.md) | Context size budgets, map query timing, affected-check fixture. | Covered as planned |
 | Field measurement | RUM and Core Web Vitals field data are optional app instrumentation, never default framework telemetry. | [Speed Decisions](speed-decisions.md), [Performance Contract](performance-contract.md) | Optional web-vitals example, no-default-telemetry test, field-data claim policy. | Covered as planned |
 | Benchmarks | Raw data, methodology, equivalent behavior, variance, and separate tracks. | [Benchmark Methodology](benchmark-methodology.md), [Performance Contract](performance-contract.md) | Raw result folder, environment metadata, commit SHA, commands. | Covered as planned |
-| Early speed skeleton | Keep fixture and benchmark skeletons before route discovery expands; report `not implemented` until measured behavior exists. | [Implementation Speed Rules](implementation-speed-rules.md), [Benchmark Fixtures](benchmark-fixtures.md) | `tiny-static`, `medium-100-routes`, `large-1000-routes`, and skeleton benchmark paths. | Scaffolded; no benchmark evidence yet |
+| Early speed skeleton | Keep fixture and benchmark skeletons before route discovery expands; report `not implemented` until measured behavior exists. | [Implementation Speed Rules](implementation-speed-rules.md), [Benchmark Fixtures](benchmark-fixtures.md) | `tiny-static`, `medium-100-routes`, `large-1000-routes`, and skeleton benchmark paths. | Route-discovery local run implemented; persisted reviewed evidence remains planned |
 
 ## Current Judgment
 
@@ -63,7 +63,7 @@ The documentation now covers the major speed decision surfaces as planned behavi
 - Route code splitting, CSS splitting, source-map output, and telemetry must stay explicit defaults with fixture evidence before any exception.
 - 103 Early Hints should be modeled as an adapter capability, not a universal default.
 - Public speed claims must wait for raw data and comparable behavior.
-- The early benchmark skeleton has landed before generated route artifacts, but skeleton files must not be treated as benchmark proof.
+- The early benchmark skeleton has landed before generated route artifacts, and route discovery now has a local raw metadata command. Skeleton files and local output must not be treated as public comparison proof.
 
 ## Required Follow-Up At Implementation Time
 
@@ -72,7 +72,7 @@ After Phase 1 scaffold and before speed-sensitive implementation:
 - Pin actual Vite/Rolldown/Bun/React versions in package docs and lockfile evidence after a fresh source check.
 - Default to current stable Vite 8.x/Rolldown if scaffold work starts from the 2026-07-06 research snapshot and no blocking regression is found.
 - Add fixtures that can later prove build speed, route discovery speed, and browser delivery behavior.
-- Connect the early fixture and benchmark skeleton from `docs/implementation-speed-rules.md` to measured route-discovery and artifact-size work before publishing speed claims.
+- Connect the early fixture and benchmark skeleton from `docs/implementation-speed-rules.md` to artifact-size work and persisted route-discovery result review before publishing speed claims.
 
 Before runtime/adapters are marked verified:
 

@@ -767,7 +767,7 @@ const currentImplementationStepDocs = [
   },
   {
     file: "docs/product-build-readiness.md",
-    terms: ["early benchmark/status skeleton exists with `not implemented` status"],
+    terms: ["early benchmark/status skeleton exists with route-discovery local run support plus remaining `not implemented` status surfaces"],
   },
   {
     file: "docs/task-backlog.md",

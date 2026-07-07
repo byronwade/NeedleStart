@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: framework contributors, performance reviewers, app developers, CI authors, AI agents.
 
-This page defines the planned performance contract for Lumina. The current static build emits an initial `.lumina/perf.report.json` with route count, static HTML file count, render modes, and `not implemented` benchmark status; full performance tooling is not implemented yet. The contract exists so route budgets, Core Web Vitals, build timing, hot API benchmarks, generated reports, public claims, and agent-facing diagnostics use the same evidence model.
+This page defines the planned performance contract for Lumina. The current static build emits an initial `.lumina/perf.report.json` with route count, static HTML file count, render modes, and benchmark status fields; `lumina bench route-discovery --json --run` can return raw local route-discovery metadata, but full performance tooling is not implemented yet. The contract exists so route budgets, Core Web Vitals, build timing, hot API benchmarks, generated reports, public claims, and agent-facing diagnostics use the same evidence model.
 
 ## Research Notes
 
@@ -222,7 +222,7 @@ Planned `.lumina/perf.report.json` shape:
 }
 ```
 
-Reports must avoid absolute local paths, secrets, random IDs, and machine-specific values unless explicitly part of a raw benchmark result.
+Reports must avoid absolute local paths, secrets, random IDs, and machine-specific values unless explicitly part of a raw benchmark result. Raw benchmark JSON may include OS and hardware metadata because those fields are required to interpret local timing data.
 
 Budget status values must use `pass`, `warning`, or `fail`. Use `warning`, not `warn`, so performance reports align with the shared diagnostic severity vocabulary.
 
@@ -306,7 +306,7 @@ Agents and CI should be able to:
 
 - Real performance reports.
 - Verified Core Web Vitals.
-- Raw benchmark results.
+- Raw benchmark results, including command output or persisted files when the benchmark has a reviewed storage path.
 - Performance CI.
 - Field data collection.
 - Default telemetry or analytics collection.

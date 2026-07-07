@@ -4,7 +4,7 @@ Status: Scaffolded.
 
 Audience: app developers, AI agents.
 
-The `@lumina/cli` package implements the first route inspection paths, minimal map affected query, benchmark skeleton list/detail status, minimal dev-server path, and static build/start path: `lumina routes <appPath> --json`, `lumina inspect <appPath> --json`, `lumina inspect <appPath> why <route>`, `lumina map affected <appPath> <file> --json`, `lumina bench --list --json`, `lumina bench <name> --json`, `lumina dev <appPath>`, `lumina build <appPath>`, and `lumina start <appPath>`, available locally as `bun run lumina -- ...`. Other Lumina CLI commands remain planned.
+The `@lumina/cli` package implements the first route inspection paths, minimal map affected query, benchmark skeleton list/detail status, local route-discovery benchmark execution, minimal dev-server path, and static build/start path: `lumina routes <appPath> --json`, `lumina inspect <appPath> --json`, `lumina inspect <appPath> why <route>`, `lumina map affected <appPath> <file> --json`, `lumina bench --list --json`, `lumina bench <name> --json`, `lumina bench route-discovery --json --run`, `lumina dev <appPath>`, `lumina build <appPath>`, and `lumina start <appPath>`, available locally as `bun run lumina -- ...`. Other Lumina CLI commands remain planned.
 
 | Command | Purpose | Status |
 | --- | --- | --- |
@@ -22,7 +22,7 @@ The `@lumina/cli` package implements the first route inspection paths, minimal m
 | `lumina mcp` | Start MCP server. | Planned |
 | `lumina edit` | Preview, apply, inspect, and undo safe-edit transactions. | Planned |
 | `lumina migrate` | Prototype migration workflows. | Planned |
-| `lumina bench` | Run benchmark fixtures and emit evidence metadata. | Implemented only for `--list --json` and `<name> --json` skeleton status; measured benchmark execution remains planned |
+| `lumina bench` | Run benchmark fixtures and emit evidence metadata. | Implemented for `--list --json`, `<name> --json` skeleton status, and `route-discovery --json --run`; broader benchmark execution remains planned |
 
 Exact options, outputs, and exit codes will be documented after implementation.
 
@@ -34,7 +34,7 @@ bun run lumina -- dev apps/www --port 5173
 bun run lumina -- dev apps/www --once
 ```
 
-The implemented dev path writes the first `.lumina` artifacts, exposes route-specific dev hydration bundles, hydrates a browser-tested root-route counter, exposes `virtual:lumina/routes`, emits `.lumina/hmr-report.json` for route-file changes and direct local imported component affected-route reports, and renders page routes on the server. The implemented build/start path emits static HTML, route-specific production client bundles, initial build/performance report artifacts, deployment manifest copies, and serves static built output through `@lumina/adapter-bun`. The implemented browser smoke hydrates the root-route counter in dev and built output. The implemented map affected path reports route impact from direct local import edges. The implemented benchmark list and detail paths emit skeleton benchmark status without running benchmarks or publishing timings. `lumina start` requires prior build output and reports a clean error when `dist/` artifacts are missing. SSR/API production behavior, broader component-level browser HMR, and broader Lumina Map query modes remain planned.
+The implemented dev path writes the first `.lumina` artifacts, exposes route-specific dev hydration bundles, hydrates a browser-tested root-route counter, exposes `virtual:lumina/routes`, emits `.lumina/hmr-report.json` for route-file changes and direct local imported component affected-route reports, and renders page routes on the server. The implemented build/start path emits static HTML, route-specific production client bundles, initial build/performance report artifacts, deployment manifest copies, and serves static built output through `@lumina/adapter-bun`. The implemented browser smoke hydrates the root-route counter in dev and built output. The implemented map affected path reports route impact from direct local import edges. The implemented benchmark list and detail paths emit skeleton benchmark status, and `route-discovery --json --run` returns raw local route-discovery metadata without persisted result files or public comparisons. `lumina start` requires prior build output and reports a clean error when `dist/` artifacts are missing. SSR/API production behavior, broader component-level browser HMR, and broader Lumina Map query modes remain planned.
 
 `lumina dev` uses the selected port strictly. If the default port or a provided `--port` value is already occupied, rerun with a different `--port` value.
 
@@ -89,10 +89,11 @@ lumina edit --json
 lumina migrate --json
 lumina bench --list --json
 lumina bench <name> --json
+lumina bench route-discovery --json --run
 lumina bench --json
 ```
 
-`lumina routes <appPath> --json`, `lumina inspect <appPath> --json`, `lumina map affected <appPath> <file> --json`, `lumina build <appPath> --json`, `lumina bench --list --json`, and `lumina bench <name> --json` are implemented. Measured `lumina bench --json` output remains planned, not implemented. The shared envelope, diagnostic shape, exit-code policy, and stability rules live in [CLI JSON Contract](../../cli-json-contract.md).
+`lumina routes <appPath> --json`, `lumina inspect <appPath> --json`, `lumina map affected <appPath> <file> --json`, `lumina build <appPath> --json`, `lumina bench --list --json`, `lumina bench <name> --json`, and `lumina bench route-discovery --json --run` are implemented. Broader measured `lumina bench --json` output remains planned, not implemented. The shared envelope, diagnostic shape, exit-code policy, and stability rules live in [CLI JSON Contract](../../cli-json-contract.md).
 
 ## Source
 

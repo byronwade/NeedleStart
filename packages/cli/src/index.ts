@@ -8,6 +8,7 @@ import {
 } from "@lumina/compiler";
 import { getAffectedFiles, getAffectedRoutes } from "@lumina/map";
 import { buildLuminaStaticApp, startLuminaDevServer, type LuminaBuildPhase } from "@lumina/vite-plugin";
+import { runRouteDiscoveryBenchmark } from "../../../benchmarks/route-discovery.bench";
 import { benchmarkSkeletonReport, getBenchmarkDefinition } from "../../../benchmarks/status";
 
 export const luminaCliStatus = {
@@ -44,6 +45,22 @@ export async function runCli(argv: string[], io: CliIo = {}): Promise<number> {
 
   if (command === "bench" && appPath && flags.includes("--json")) {
     try {
+      if (appPath === "route-discovery" && flags.includes("--run")) {
+        stdout(
+          JSON.stringify({
+            schemaVersion: "lumina.cli.v0",
+            command: "lumina bench",
+            status: "ok",
+            data: runRouteDiscoveryBenchmark(),
+            diagnostics: [],
+            meta: {
+              cwd: ".",
+            },
+          }),
+        );
+        return 0;
+      }
+
       const benchmark = getBenchmarkDefinition(appPath);
       stdout(
         JSON.stringify({
@@ -307,7 +324,7 @@ export async function runCli(argv: string[], io: CliIo = {}): Promise<number> {
     return 0;
   }
 
-  stderr("Usage: lumina dev <appPath> [--port <port>] | lumina build <appPath> [--json] | lumina start <appPath> [--port <port>] | lumina routes <appPath> --json | lumina inspect <appPath> --json | lumina inspect <appPath> why <route> | lumina map affected <appPath> <file> --json | lumina bench --list --json | lumina bench <name> --json");
+  stderr("Usage: lumina dev <appPath> [--port <port>] | lumina build <appPath> [--json] | lumina start <appPath> [--port <port>] | lumina routes <appPath> --json | lumina inspect <appPath> --json | lumina inspect <appPath> why <route> | lumina map affected <appPath> <file> --json | lumina bench --list --json | lumina bench <name> --json [--run]");
   return 2;
 }
 

@@ -40,7 +40,8 @@ Planned commands:
 | `lumina migrate` | Planned | Prototype migration workflows such as `from-next`. |
 | `lumina bench --list --json` | Implemented | List benchmark skeleton status without running benchmarks or emitting timings. |
 | `lumina bench <name> --json` | Implemented | Report one benchmark skeleton status without running benchmarks or emitting timings. |
-| `lumina bench` | Planned | Run measured benchmark fixtures and emit raw evidence metadata. |
+| `lumina bench route-discovery --json --run` | Implemented | Run local route discovery against `fixtures/apps/tiny-static` and emit raw metadata in the JSON response. |
+| `lumina bench` | Planned | Run broader measured benchmark fixtures and emit reviewed raw evidence metadata. |
 
 Each command should eventually document human output, `--json` output, exit codes, and affected generated files.
 

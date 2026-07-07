@@ -34,7 +34,8 @@ describe("MVP app and example fixtures", () => {
     expect(aboutPage).not.toContain('value: "44"');
     expect(examplesPage).toContain('<ExampleCard name="Blog SEO" status="Runnable" path="examples/blog-seo" />');
     expect(benchmarksPage).toContain("bun run lumina -- bench route-discovery --json");
-    expect(benchmarksPage).toContain("does not execute benchmark code");
+    expect(benchmarksPage).toContain("bun run lumina -- bench route-discovery --json --run");
+    expect(benchmarksPage).toContain("returns raw local metadata");
   });
 
   test("apps/www is a real marketing app fixture for route, render, map, and inspect output", async () => {
