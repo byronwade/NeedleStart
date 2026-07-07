@@ -8,7 +8,7 @@ The `@lumina/cli` package implements the first route inspection paths and minima
 
 | Command | Purpose | Status |
 | --- | --- | --- |
-| `lumina dev` | Start local development. | Implemented for minimal `<appPath>` Vite SSR route serving; HMR and client hydration planned |
+| `lumina dev` | Start local development. | Implemented for minimal `<appPath>` Vite SSR route serving, `virtual:lumina/routes`, and route-file update reports; client hydration and component-level HMR planned |
 | `lumina build` | Build app output and generated artifacts. | Planned |
 | `lumina start` | Start a built app. | Planned |
 | `lumina routes` | Inspect discovered routes. | Implemented for `<appPath> --json` |
@@ -33,7 +33,7 @@ bun run lumina -- dev apps/www
 bun run lumina -- dev apps/www --once
 ```
 
-The implemented dev path writes the first `.lumina` artifacts and renders page routes on the server. Production build/start behavior, route HMR, virtual route modules, and client hydration remain planned.
+The implemented dev path writes the first `.lumina` artifacts, exposes `virtual:lumina/routes`, emits `.lumina/hmr-report.json` for route-file changes, and renders page routes on the server. Production build/start behavior, client hydration, and component-level HMR remain planned.
 
 ## Planned Command Variants
 

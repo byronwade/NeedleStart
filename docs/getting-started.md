@@ -3,7 +3,7 @@
 Status: Planned.
 Audience: new users, app developers, AI agents.
 
-This is the target MVP Alpha onboarding path. The repository currently has the Phase 1 scaffold plus route discovery, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, minimal `lumina dev` Vite SSR route serving, scaffolded `apps/www`, and scaffolded example fixtures; app creation, build/start, client hydration, route HMR, virtual route modules, and production runtime serving are not implemented yet.
+This is the target MVP Alpha onboarding path. The repository currently has the Phase 1 scaffold plus route discovery, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/hmr-report.json`, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, minimal `lumina dev` Vite SSR route serving, `virtual:lumina/routes`, scaffolded `apps/www`, and scaffolded example fixtures; app creation, build/start, client hydration, component-level HMR, and production runtime serving are not implemented yet.
 
 ## What You Will Build In MVP Alpha
 
@@ -32,7 +32,7 @@ bun run lumina -- dev apps/www --once
 bun run check
 ```
 
-They verify scaffold health, documentation links and guardrails, package structure, TypeScript validity, performance-claim hygiene, scaffold tests, shared core model tests, route-discovery fixture behavior, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, minimal `lumina dev` SSR route serving, scaffolded app/example route evidence, and benchmark skeleton path/status coverage. The repository currently contains a Bun workspace, package placeholders, shared core types, route/render/map artifact generation, route-centered CLI inspection, scaffolded `apps/www` and example fixtures, early benchmark/status skeletons, and enforcement scripts; it does not yet contain build/start CLI behavior, measured benchmark results, route HMR, virtual route modules, client hydration, or production runtime serving.
+They verify scaffold health, documentation links and guardrails, package structure, TypeScript validity, performance-claim hygiene, scaffold tests, shared core model tests, route-discovery fixture behavior, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/hmr-report.json`, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, minimal `lumina dev` SSR route serving, `virtual:lumina/routes`, scaffolded app/example route evidence, and benchmark skeleton path/status coverage. The repository currently contains a Bun workspace, package placeholders, shared core types, route/render/map artifact generation, route-centered CLI inspection, scaffolded `apps/www` and example fixtures, early benchmark/status skeletons, and enforcement scripts; it does not yet contain build/start CLI behavior, measured benchmark results, client hydration, component-level HMR, or production runtime serving.
 
 ## Target MVP App Creation
 
@@ -155,7 +155,7 @@ bun run lumina -- dev apps/www
 bun run lumina -- dev apps/www --once
 ```
 
-The implemented dev server starts the scaffolded `apps/www` app, writes `.lumina/routes.json`, `.lumina/render-manifest.json`, and `.lumina/map.json`, renders page routes through React SSR, and serves Vite internals. It does not yet keep route virtual modules, HMR summaries, client hydration, or dynamic route params in sync.
+The implemented dev server starts the scaffolded `apps/www` app, writes `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, and `.lumina/hmr-report.json` on route-file changes, renders page routes through React SSR, exposes `virtual:lumina/routes`, emits a `lumina:routes-updated` dev-server event, and serves Vite internals. It does not yet keep client hydration, component-level HMR, or dynamic route params in sync.
 
 ## Inspect Routes
 

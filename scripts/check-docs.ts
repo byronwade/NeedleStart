@@ -743,19 +743,19 @@ const prototypeScopeTerms = [
 const currentImplementationStepDocs = [
   {
     file: "README.md",
-    terms: ["The next implementation stage is completing Vite dev HMR, virtual route modules, and client hydration, then static build output"],
+    terms: ["The next implementation stage is completing client hydration and static build output after the first Vite route-update slice"],
   },
   {
     file: "docs/status.md",
-    terms: ["The next implementation path is completing Vite dev HMR, virtual route modules, and client hydration, then static build output"],
+    terms: ["The next implementation path is completing client hydration and static build output after the first Vite route-update slice"],
   },
   {
     file: "docs/roadmap.md",
-    terms: ["The next implementation stage is completing Vite dev HMR, virtual route modules, and client hydration, then static build output."],
+    terms: ["The next implementation stage is completing client hydration and static build output after the first Vite route-update slice."],
   },
   {
     file: "docs/public/roadmap.md",
-    terms: ["The next implementation path is completing Vite dev HMR, virtual route modules, and client hydration, then static build output."],
+    terms: ["The next implementation path is completing client hydration and static build output after the first Vite route-update slice."],
   },
   {
     file: "docs/product-build-readiness.md",
@@ -763,7 +763,7 @@ const currentImplementationStepDocs = [
   },
   {
     file: "docs/task-backlog.md",
-    terms: ["Current implementation path: complete Vite dev HMR, virtual route modules, and client hydration, then static build output."],
+    terms: ["Current implementation path: complete client hydration and static build output after the first Vite route-update slice."],
   },
 ];
 

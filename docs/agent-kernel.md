@@ -39,7 +39,7 @@ Planned public docs and app-agent outputs:
 | `.lumina/affected.json` | Planned generated app artifact | Affected apps, routes, packages, tests, generated artifacts, and reasons. |
 | `.lumina/build-trace.json` | Planned generated app artifact | Build phases, timings, cache behavior, and diagnostics. |
 | `.lumina/cache-report.json` | Planned generated app artifact | Cache keys, hits, misses, invalidations, and reused artifact summary. |
-| `.lumina/hmr-report.json` | Planned generated app artifact | Dev server update scope, invalidated modules, route updates, and timings. |
+| `.lumina/hmr-report.json` | Implemented dev artifact for route-file changes | Dev server update scope, invalidated modules, route updates, and timings. |
 | `.lumina/split-report.json` | Planned generated app artifact | Planned app or route split analysis and generated artifact movement. |
 | `.lumina/context/*.ctx.json` | Planned generated app artifact | Route or surface context capsules. |
 | `.lumina/context/agent-index.json` | Planned generated app artifact | Index of generated agent context. |

@@ -98,7 +98,7 @@ Planned generated files:
 
 | File | Status | Purpose |
 | --- | --- | --- |
-| `.lumina/routes.json` | Planned | Stable route manifest. |
+| `.lumina/routes.json` | Implemented | Stable route manifest. |
 | `.lumina/render-manifest.json` | Implemented for default static/API route modes | Route render modes and generated file metadata. |
 | `.lumina/map.json` | Implemented for first file-level route graph | Public Lumina Map output. |
 | `.lumina/graph.json` | Planned | Graph data for compiler, map, and agents. |
@@ -109,7 +109,7 @@ Planned generated files:
 | `.lumina/affected.json` | Planned | Affected apps, routes, packages, tests, generated artifacts, and reasons. |
 | `.lumina/build-trace.json` | Planned | Build phases, timings, cache behavior, and diagnostics. |
 | `.lumina/cache-report.json` | Planned | Cache keys, hits, misses, invalidations, and reused artifact summary. |
-| `.lumina/hmr-report.json` | Planned | Dev server update scope, invalidated modules, route updates, and timings. |
+| `.lumina/hmr-report.json` | Implemented for route-file changes | Dev server update scope, invalidated modules, route updates, and timings. |
 | `.lumina/split-report.json` | Planned | Planned app or route split analysis and generated artifact movement. |
 | `.lumina/context/*.ctx.json` | Planned | Route or surface context capsules. |
 | `.lumina/context/agent-index.json` | Planned | Agent context index. |

@@ -1,4 +1,11 @@
-import { existsSync, readFileSync } from "node:fs";
+import {
+  existsSync,
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
 import { createServer } from "node:net";
 import { join } from "node:path";
 import { describe, expect, test } from "bun:test";
@@ -60,7 +67,7 @@ describe("Vite dev integration", () => {
     } finally {
       await dev.close();
     }
-  });
+  }, 15_000);
 
   test("CLI can smoke-start and close the dev server", async () => {
     const port = await getFreePort();
@@ -80,6 +87,71 @@ describe("Vite dev integration", () => {
     expect(stdout[0]).toContain("Routes 6");
     expect(stdout[0]).toContain("Artifacts .lumina/routes.json, .lumina/render-manifest.json, .lumina/map.json");
   });
+
+  test("serves the virtual routes module during SSR", async () => {
+    const appRoot = createVirtualRoutesApp();
+    const port = await getFreePort();
+    const dev = await startLuminaDevServer({
+      appRoot,
+      host: "127.0.0.1",
+      port,
+      logLevel: "silent",
+    });
+
+    try {
+      const response = await fetchWithTimeout(`${dev.url}/`);
+      expect(response.status).toBe(200);
+      const html = await response.text();
+      expect(html).toContain("<h1>Virtual routes</h1>");
+      expect(html).toContain("<p>/about,/</p>");
+    } finally {
+      await dev.close();
+      rmSync(appRoot, { recursive: true, force: true });
+    }
+  });
+
+  test("regenerates route artifacts and HMR report when a page is added", async () => {
+    const appRoot = createVirtualRoutesApp();
+    const port = await getFreePort();
+    const dev = await startLuminaDevServer({
+      appRoot,
+      host: "127.0.0.1",
+      port,
+      logLevel: "silent",
+    });
+
+    try {
+      const routeDir = join(appRoot, "app", "contact");
+      mkdirSync(routeDir, { recursive: true });
+      writeFileSync(
+        join(routeDir, "page.tsx"),
+        [
+          "export default function ContactPage() {",
+          "  return <main><h1>Contact</h1></main>;",
+          "}",
+          "",
+        ].join("\n"),
+        "utf8",
+      );
+
+      await waitFor(() => {
+        const routes = JSON.parse(readFileSync(join(appRoot, ".lumina", "routes.json"), "utf8"));
+        return routes.routes.some((route: { path: string }) => route.path === "/contact");
+      });
+
+      const hmrReport = JSON.parse(readFileSync(join(appRoot, ".lumina", "hmr-report.json"), "utf8"));
+      expect(hmrReport.schemaVersion).toBe("lumina.hmr-report.v0");
+      expect(hmrReport.changedFile).toBe("app/contact/page.tsx");
+      expect(hmrReport.routes.map((route: { path: string }) => route.path)).toContain("/contact");
+
+      const response = await fetchWithTimeout(`${dev.url}/contact`);
+      expect(response.status).toBe(200);
+      expect(await response.text()).toContain("<h1>Contact</h1>");
+    } finally {
+      await dev.close();
+      rmSync(appRoot, { recursive: true, force: true });
+    }
+  }, 15_000);
 });
 
 async function getFreePort(): Promise<number> {
@@ -96,4 +168,59 @@ async function getFreePort(): Promise<number> {
       }
     });
   });
+}
+
+function createVirtualRoutesApp(): string {
+  const scratchRoot = join(repoRoot, ".tmp");
+  mkdirSync(scratchRoot, { recursive: true });
+  const appRoot = mkdtempSync(join(scratchRoot, "lumina-vite-virtual-"));
+  mkdirSync(join(appRoot, "app", "about"), { recursive: true });
+
+  writeFileSync(
+    join(appRoot, "app", "layout.tsx"),
+    [
+      "export default function RootLayout({ children }: { children: unknown }) {",
+      "  return <html lang=\"en\"><body>{children}</body></html>;",
+      "}",
+      "",
+    ].join("\n"),
+    "utf8",
+  );
+  writeFileSync(
+    join(appRoot, "app", "page.tsx"),
+    [
+      "import { routes } from \"virtual:lumina/routes\";",
+      "",
+      "export default function HomePage() {",
+      "  return <main><h1>Virtual routes</h1><p>{routes.map((route) => route.path).join(\",\")}</p></main>;",
+      "}",
+      "",
+    ].join("\n"),
+    "utf8",
+  );
+  writeFileSync(
+    join(appRoot, "app", "about", "page.tsx"),
+    [
+      "export default function AboutPage() {",
+      "  return <main><h1>About</h1></main>;",
+      "}",
+      "",
+    ].join("\n"),
+    "utf8",
+  );
+
+  return appRoot;
+}
+
+async function waitFor(assertion: () => boolean): Promise<void> {
+  const startedAt = Date.now();
+  while (Date.now() - startedAt < 5_000) {
+    if (assertion()) return;
+    await new Promise((resolve) => setTimeout(resolve, 50));
+  }
+  throw new Error("Timed out waiting for assertion.");
+}
+
+async function fetchWithTimeout(url: string): Promise<Response> {
+  return await fetch(url, { signal: AbortSignal.timeout(5_000) });
 }

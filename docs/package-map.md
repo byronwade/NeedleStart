@@ -16,7 +16,7 @@ Scope: package names and entrypoints are scaffolded; package behavior remains pl
 | `@lumina/cli` | Implemented `lumina routes <appPath> --json`, `lumina inspect <appPath> --json`, `lumina inspect <appPath> why <route>`, and minimal `lumina dev <appPath>` paths plus planned command surface: `lumina build`, `lumina start`, `lumina check`, `lumina test`, `lumina seo`, `lumina map`, `lumina workspace`, `lumina agent`, `lumina mcp`, `lumina edit`, `lumina migrate`, and `lumina bench`. |
 | `@lumina/core` | Shared types, config, route definitions, render modes, diagnostics, workspace graph, shared-file identity, generated artifact identity, and public helper types. |
 | `@lumina/compiler` | App discovery, workspace discovery, route IR, render mode extraction, manifests, generated modules, route asset metadata, API codegen, graph inputs, incremental planning, affected selection, and large-repo reports. |
-| `@lumina/vite-plugin` | Implemented minimal Vite dev-server integration for artifact generation and SSR page serving; planned virtual modules, route HMR, app-scoped invalidation, client hydration, and server entry wiring. |
+| `@lumina/vite-plugin` | Implemented minimal Vite dev-server integration for artifact generation, SSR page serving, `virtual:lumina/routes`, and route-file update reports; planned client hydration, component-level HMR, app-scoped invalidation, and server entry wiring. |
 | `@lumina/react` | React SSR helpers, layouts, head manager, loaders, hydration, client entry helpers. |
 | `@lumina/router` | Generated route matcher, typed links, params, route helpers. |
 | `@lumina/seo` | Metadata, sitemap, robots, OG images, structured data helpers, SEO audits. |

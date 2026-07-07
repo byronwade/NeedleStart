@@ -12,7 +12,7 @@ Machine-readable command behavior is planned in [CLI JSON Contract](cli-json-con
 
 | Command | Purpose | Status | JSON output required once implemented? |
 | --- | --- | --- |
-| `lumina dev` | Start local development. | Implemented for minimal `<appPath>` Vite SSR route serving; HMR, virtual route modules, and client hydration remain planned | No |
+| `lumina dev` | Start local development. | Implemented for minimal `<appPath>` Vite SSR route serving, `virtual:lumina/routes`, and route-file update reports; client hydration and component-level HMR remain planned | No |
 | `lumina build` | Build app, manifests, graph, SEO, and adapter output. | Planned | Yes |
 | `lumina start` | Start built output. | Planned | No |
 | `lumina routes` | List route manifest entries. | Implemented for `<appPath> --json` | Yes |
@@ -95,7 +95,7 @@ bun run lumina -- dev apps/www --port 5173
 bun run lumina -- dev apps/www --once
 ```
 
-The implemented dev command writes `.lumina/routes.json`, `.lumina/render-manifest.json`, and `.lumina/map.json`, starts a Vite server, renders page routes through React SSR, and returns 404 HTML for unknown page routes. It does not yet implement route params, client hydration, route-manifest virtual modules, or HMR summaries.
+The implemented dev command writes `.lumina/routes.json`, `.lumina/render-manifest.json`, and `.lumina/map.json`, starts a Vite server, renders page routes through React SSR, exposes `virtual:lumina/routes`, emits `.lumina/hmr-report.json` for route-file changes, sends a `lumina:routes-updated` dev-server event, and returns 404 HTML for unknown page routes. It does not yet implement route params, client hydration, or component-level HMR.
 
 ## Planned Exit Code Policy
 
