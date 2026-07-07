@@ -30,7 +30,7 @@ Lumina is moving toward Alpha. This checkout is in Phase 1: monorepo scaffold wi
 
 Lumina is preparing an MVP Alpha focused on route discovery, explicit render modes, the first Lumina Map output, CLI inspection, and the first dev-server path. The current repository has route discovery in `@lumina/compiler`, generated `.lumina/routes.json`, `.lumina/render-manifest.json`, and `.lumina/map.json` output, the first route and inspect CLI paths, and a minimal `lumina dev` path; broader MVP commands below are target behavior until implementation and fixture evidence exist.
 
-Current implemented scope is the Bun workspace scaffold, package placeholders, contract-backed shared core model types, `@lumina/compiler` route discovery, compact `.lumina/routes.json`, `.lumina/render-manifest.json`, and `.lumina/map.json` generation, `bun run lumina -- routes <appPath> --json`, `bun run lumina -- inspect <appPath> --json`, `bun run lumina -- inspect <appPath> why <route>`, `bun run lumina -- dev <appPath>`, minimal Vite SSR dev serving for page routes, `virtual:lumina/routes`, route-file artifact regeneration with `.lumina/hmr-report.json`, scaffolded `apps/www` and example fixtures, early benchmark/status skeletons with `not implemented` status, CI, and verification scripts. Measured benchmark results, production build/start behavior, runtime adapter behavior, client hydration, component-level HMR, MCP tools, and safe edits remain planned.
+Current implemented scope is the Bun workspace scaffold, package placeholders, contract-backed shared core model types, `@lumina/compiler` route discovery, compact `.lumina/routes.json`, `.lumina/render-manifest.json`, and `.lumina/map.json` generation, `bun run lumina -- routes <appPath> --json`, `bun run lumina -- inspect <appPath> --json`, `bun run lumina -- inspect <appPath> why <route>`, `bun run lumina -- dev <appPath>`, minimal Vite SSR dev serving for page routes, `virtual:lumina/routes`, route-file artifact regeneration with `.lumina/hmr-report.json`, `bun run lumina -- build <appPath>` static HTML output, `bun run lumina -- start <appPath>` static built-output serving through `@lumina/adapter-bun`, `.lumina/build-trace.json`, `.lumina/perf.report.json`, deployment manifest copies under `dist/`, scaffolded `apps/www` and example fixtures, early benchmark/status skeletons with `not implemented` status, CI, and verification scripts. Measured benchmark results, SSR/API production behavior, client hydration, component-level HMR, MCP tools, and safe edits remain planned.
 
 Package manifest versions currently use `0.0.0` as private scaffold placeholder metadata. No packages are published, and these placeholder versions are not release tags, published package versions, or compatibility guarantees.
 
@@ -119,12 +119,16 @@ bun run lumina -- inspect <appPath> --json
 bun run lumina -- inspect <appPath> why <route>
 bun run lumina -- dev <appPath>
 bun run lumina -- dev <appPath> --once
+bun run lumina -- build <appPath>
+bun run lumina -- build <appPath> --json
+bun run lumina -- start <appPath>
+bun run lumina -- start <appPath> --once
 bun run structure:check
 bun run performance:check
 bun run check
 ```
 
-These commands verify the package scaffold, documentation links, root docs metadata, docs navigation coverage, package-map/build-plan/backlog alignment, planned CLI command surface and prefix consistency, status-drift guardrails, config/adapter contract terms, structure rules, shared-core type ownership, shared-core contract terminology, performance-claim guardrails, TypeScript surface, route-discovery fixture behavior, generated `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, and `.lumina/hmr-report.json` output, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, minimal `lumina dev` Vite SSR route serving, `virtual:lumina/routes`, scaffolded `apps/www` and example fixture route evidence, early benchmark/status skeleton paths, and tests. They do not prove measured benchmark results, production build/start behavior, runtime adapter behavior, client hydration, component-level HMR, MCP tools, or safe edits.
+These commands verify the package scaffold, documentation links, root docs metadata, docs navigation coverage, package-map/build-plan/backlog alignment, planned CLI command surface and prefix consistency, status-drift guardrails, config/adapter contract terms, structure rules, shared-core type ownership, shared-core contract terminology, performance-claim guardrails, TypeScript surface, route-discovery fixture behavior, generated `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/hmr-report.json`, `.lumina/build-trace.json`, `.lumina/perf.report.json`, `dist/routes.manifest.json`, `dist/render.manifest.json`, and `dist/adapter.manifest.json` output, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, minimal `lumina dev` Vite SSR route serving, `virtual:lumina/routes`, static `lumina build`, static `lumina start`, scaffolded `apps/www` and example fixture route evidence, early benchmark/status skeleton paths, and tests. They do not prove measured benchmark results, SSR/API production behavior, client hydration, component-level HMR, MCP tools, or safe edits.
 
 ## Planned Key Features
 
@@ -467,7 +471,7 @@ This repository is in Phase 1: monorepo scaffold with the first compiler route-d
 
 The repository now has a Bun workspace, package placeholders, contract-backed shared core model types, initial `@lumina/compiler` route discovery and route manifest shaping, CI, and enforcement scripts for docs, structure, performance-claim hygiene, type checking, and package tests.
 
-The first dev-server implementation exists for minimal Vite SSR page rendering, `virtual:lumina/routes`, and route-file update reports. Measured benchmark results, production build/start behavior, runtime adapter behavior, client hydration, component-level HMR, MCP tools, and safe edits remain planned. The next implementation stage is completing client hydration and static build output after the first Vite route-update slice.
+The first dev-server implementation exists for minimal Vite SSR page rendering, `virtual:lumina/routes`, and route-file update reports. Static build output and static built-output serving through `@lumina/adapter-bun` exist for routes that can be rendered at build time. Measured benchmark results, SSR/API production behavior, client hydration, component-level HMR, MCP tools, and safe edits remain planned. The next implementation stage is completing client hydration and production hardening after the first static build/start slice.
 
 ## Philosophy
 

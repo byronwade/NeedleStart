@@ -6,7 +6,7 @@ Audience: app developers, docs maintainers, framework contributors, AI agents.
 
 This catalog names the official examples Lumina should grow into. It complements [Examples And Templates Contract](examples-contract.md), [Getting Started](getting-started.md), [Public Examples Reference](public/reference/examples.md), and [Benchmark Fixtures](benchmark-fixtures.md).
 
-Scaffolded source fixtures now exist for `apps/www`, `examples/basic/`, `examples/blog-seo/`, `examples/multi-app-workspace/`, `examples/large-100-routes/`, and `examples/large-1000-routes/`. They are compiler-verifiable fixtures, not runnable or verified examples. Every other entry is planned until files, commands, tests, and generated artifacts prove otherwise.
+Source fixtures now exist for `apps/www`, `examples/basic/`, `examples/blog-seo/`, `examples/multi-app-workspace/`, `examples/large-100-routes/`, and `examples/large-1000-routes/`. `apps/www` is runnable through the minimal dev/build/start path. The standalone examples are compiler-verifiable fixtures, not runnable or verified examples yet. Every other entry is planned until files, commands, tests, and generated artifacts prove otherwise.
 
 ## Status Values
 
@@ -22,7 +22,7 @@ Use the same status values as [Examples And Templates Contract](examples-contrac
 
 | Example | Planned path | Status | Purpose |
 | --- | --- | --- | --- |
-| Lumina Marketing App | `apps/www/` | Scaffolded | First marketing app source fixture for route discovery, generated manifests, Lumina Map, and CLI inspection. |
+| Lumina Marketing App | `apps/www/` | Runnable | First marketing app source fixture for route discovery, generated manifests, Lumina Map, CLI inspection, dev serving, static build, and static start. |
 | Basic Starter | `examples/basic/` | Scaffolded | Smallest useful app for `bun create lumina`. |
 | Blog SEO | `examples/blog-seo/` | Scaffolded | Static content, future metadata, sitemap, robots, and structured data. |
 | Multi-App Workspace | `examples/multi-app-workspace/` | Scaffolded | Future workspace graph, shared-file identity, affected build, and split-app planning. |

@@ -8,6 +8,7 @@
   },
   "types": "./src/index.ts",
   "dependencies": {
+    "@lumina/adapter-bun": "workspace:*",
     "@lumina/compiler": "workspace:*",
     "@lumina/core": "workspace:*",
     "@lumina/vite-plugin": "workspace:*"

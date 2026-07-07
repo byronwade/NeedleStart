@@ -74,7 +74,7 @@ This page defines the first Lumina MVP Alpha target. It is a target scope, not a
 
 ## Current Evidence
 
-The repository currently has the Phase 1 scaffold: Bun workspace, package placeholders, shared `@lumina/core` scaffold types, `@lumina/compiler` route discovery, generated `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/hmr-report.json`, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, minimal `lumina dev` Vite SSR route serving, `virtual:lumina/routes`, CI, and verification scripts. It does not yet have build/start CLI behavior, client hydration, component-level HMR, production runtime serving, or Lumina Map query CLI behavior.
+The repository currently has the Phase 1 scaffold: Bun workspace, package placeholders, shared `@lumina/core` scaffold types, `@lumina/compiler` route discovery, generated `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/hmr-report.json`, `.lumina/build-trace.json`, `.lumina/perf.report.json`, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, minimal `lumina dev` Vite SSR route serving, `virtual:lumina/routes`, static `lumina build`, static `lumina start`, CI, and verification scripts. It does not yet have client hydration, component-level HMR, production SSR/API serving, or Lumina Map query CLI behavior.
 
 ## MVP Alpha Goal
 
@@ -283,7 +283,7 @@ Replace the broad current guide with this section order:
 Status: Planned.
 Audience: new users, app developers, AI agents.
 
-This is the target MVP Alpha onboarding path. The repository currently has the Phase 1 scaffold plus route discovery, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/hmr-report.json`, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, minimal `lumina dev` Vite SSR route serving, and `virtual:lumina/routes`; app creation, build/start, client hydration, component-level HMR, and production runtime serving are not implemented yet.
+This is the target MVP Alpha onboarding path. The repository currently has the Phase 1 scaffold plus route discovery, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/hmr-report.json`, `.lumina/build-trace.json`, `.lumina/perf.report.json`, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, minimal `lumina dev` Vite SSR route serving, `virtual:lumina/routes`, static `lumina build`, and static `lumina start`; app creation, client hydration, component-level HMR, and production SSR/API serving are not implemented yet.
 
 ## What You Will Build In MVP Alpha
 ## Current Repository Commands

@@ -52,7 +52,7 @@ describe("MVP app and example fixtures", () => {
       expect(exitCode).toBe(0);
       expect(stderr).toEqual([]);
       expect(stdout[0]).toContain("Source: app/page.tsx");
-      expect(readFileSync(join(appRoot, "README.md"), "utf8")).toContain("Status: Scaffolded.");
+      expect(readFileSync(join(appRoot, "README.md"), "utf8")).toContain("Status: Verified.");
     } finally {
       rmSync(appRoot, { recursive: true, force: true });
     }

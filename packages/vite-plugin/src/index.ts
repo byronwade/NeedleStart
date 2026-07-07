@@ -1,4 +1,4 @@
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import { dirname, relative, resolve } from "node:path";
 import { writeLuminaMap, writeRenderManifest, writeRoutesManifest } from "@lumina/compiler";
@@ -26,6 +26,13 @@ export type LuminaDevServer = {
   close: () => Promise<void>;
 };
 
+export type LuminaBuildResult = {
+  routes: RouteNode[];
+  outputs: string[];
+  manifests: string[];
+  diagnostics: unknown[];
+};
+
 const virtualRoutesModuleId = "virtual:lumina/routes";
 const resolvedVirtualRoutesModuleId = `\0${virtualRoutesModuleId}`;
 const require = createRequire(import.meta.url);
@@ -50,7 +57,8 @@ export async function startLuminaDevServer(options: LuminaDevServerOptions): Pro
       jsxImportSource: "react",
     },
     optimizeDeps: {
-      include: ["react", "react-dom"],
+      include: [],
+      noDiscovery: true,
     },
     resolve: {
       alias: reactRuntimeAliases,
@@ -167,6 +175,100 @@ export async function startLuminaDevServer(options: LuminaDevServerOptions): Pro
   };
 }
 
+export async function buildLuminaStaticApp(options: LuminaDevServerOptions): Promise<LuminaBuildResult> {
+  const appRoot = resolve(options.appRoot);
+  const routeState = regenerateArtifacts(appRoot);
+  const outputs: string[] = [];
+  const manifests = [
+    ".lumina/routes.json",
+    ".lumina/render-manifest.json",
+    ".lumina/map.json",
+  ];
+  const phaseTimings: Array<{ name: string; durationMs: number; status: "ok" }> = [];
+
+  clearBuildOutput(appRoot);
+
+  const vite = await createServer({
+    appType: "custom",
+    configFile: false,
+    esbuild: {
+      jsx: "automatic",
+      jsxImportSource: "react",
+    },
+    optimizeDeps: {
+      include: [],
+      noDiscovery: true,
+    },
+    resolve: {
+      alias: reactRuntimeAliases,
+    },
+    ssr: {
+      noExternal: ["react", "react-dom"],
+    },
+    root: appRoot,
+    logLevel: options.logLevel ?? "silent",
+    server: {
+      middlewareMode: true,
+    },
+    plugins: [
+      {
+        name: "lumina-static-build-virtual-routes",
+        resolveId(id) {
+          if (id === virtualRoutesModuleId) return resolvedVirtualRoutesModuleId;
+        },
+        load(id) {
+          if (id === resolvedVirtualRoutesModuleId) {
+            return [
+              `export const routes = ${JSON.stringify(routeState.routes)};`,
+              `export const manifest = ${JSON.stringify(routeState.manifest)};`,
+            ].join("\n");
+          }
+        },
+      },
+    ],
+  });
+
+  try {
+    for (const route of routeState.routes) {
+      if (route.kind !== "page" || route.renderMode !== "static" || route.params.length > 0) continue;
+      const html = await renderRoute(vite, route, route.path, { includeViteClient: false });
+      const outputPath = staticHtmlOutputPath(route.path);
+      writeTextArtifact(appRoot, outputPath, html);
+      outputs.push(outputPath);
+      phaseTimings.push({
+        name: `static html ${route.path}`,
+        durationMs: 0,
+        status: "ok",
+      });
+    }
+  } finally {
+    await vite.close();
+  }
+
+  copyJsonArtifact(appRoot, ".lumina/routes.json", "dist/routes.manifest.json", routeState.manifest);
+  copyJsonArtifact(appRoot, ".lumina/render-manifest.json", "dist/render.manifest.json", routeState.renderManifest);
+  const adapterManifest = createBunAdapterManifest();
+  copyJsonArtifact(appRoot, "", "dist/adapter.manifest.json", adapterManifest);
+
+  const buildTracePath = ".lumina/build-trace.json";
+  const perfReportPath = ".lumina/perf.report.json";
+  writeJsonArtifact(appRoot, buildTracePath, createBuildTrace([...manifests, ...outputs, "dist/routes.manifest.json", "dist/render.manifest.json", "dist/adapter.manifest.json"], phaseTimings));
+  writeJsonArtifact(appRoot, perfReportPath, createPerfReport(routeState.routes, outputs, appRoot));
+
+  manifests.push(buildTracePath, perfReportPath, "dist/routes.manifest.json", "dist/render.manifest.json", "dist/adapter.manifest.json");
+
+  return {
+    routes: routeState.routes,
+    outputs: outputs.sort(compareStrings),
+    manifests,
+    diagnostics: [
+      ...routeState.manifest.diagnostics,
+      ...routeState.renderManifest.diagnostics,
+      ...routeState.map.diagnostics,
+    ],
+  };
+}
+
 function regenerateArtifacts(appRoot: string, changedFile?: string) {
   const routesResult = writeRoutesManifest({ appRoot });
   const renderResult = writeRenderManifest({ appRoot });
@@ -224,7 +326,12 @@ function writeHmrReport(
   );
 }
 
-async function renderRoute(server: ViteDevServer, route: RouteNode, url: string): Promise<string> {
+async function renderRoute(
+  server: ViteDevServer,
+  route: RouteNode,
+  url: string,
+  options: { includeViteClient: boolean } = { includeViteClient: true },
+): Promise<string> {
   const pageModule = await server.ssrLoadModule(`/${route.sourceFile}`);
   const Page = pageModule.default;
   if (typeof Page !== "function") {
@@ -243,7 +350,8 @@ async function renderRoute(server: ViteDevServer, route: RouteNode, url: string)
   }
 
   const appHtml = renderToString(app);
-  const html = `<!doctype html>${appHtml}<div data-lumina-route="${escapeAttribute(route.path)}"></div><script type="module" src="/@vite/client"></script>`;
+  const viteClient = options.includeViteClient ? '<script type="module" src="/@vite/client"></script>' : "";
+  const html = `<!doctype html>${appHtml}<div data-lumina-route="${escapeAttribute(route.path)}"></div>${viteClient}`;
   return server.transformIndexHtml(url, html);
 }
 
@@ -279,6 +387,132 @@ function resolveServerUrl(server: ViteDevServer): string {
   const local = server.resolvedUrls?.local[0];
   if (!local) throw new Error("Vite dev server did not expose a local URL.");
   return local.replace(/\/$/, "");
+}
+
+function clearBuildOutput(appRoot: string): void {
+  rmSync(resolve(appRoot, "dist"), { recursive: true, force: true });
+}
+
+function staticHtmlOutputPath(routePath: string): string {
+  if (routePath === "/") return "dist/public/index.html";
+  return `dist/public${routePath}/index.html`;
+}
+
+function writeTextArtifact(appRoot: string, outputPath: string, value: string): void {
+  const absolutePath = resolve(appRoot, ...outputPath.split("/"));
+  mkdirSync(dirname(absolutePath), { recursive: true });
+  writeFileSync(absolutePath, value, "utf8");
+}
+
+function writeJsonArtifact(appRoot: string, outputPath: string, value: unknown): void {
+  writeTextArtifact(appRoot, outputPath, JSON.stringify(value));
+}
+
+function copyJsonArtifact(appRoot: string, _sourcePath: string, outputPath: string, value: unknown): void {
+  writeJsonArtifact(appRoot, outputPath, value);
+}
+
+function createBunAdapterManifest() {
+  return {
+    schemaVersion: "lumina.adapter.v0",
+    adapter: "bun",
+    package: "@lumina/adapter-bun",
+    generatedBy: {
+      package: "@lumina/vite-plugin",
+      version: "0.0.0",
+    },
+    source: {
+      routesManifest: "dist/routes.manifest.json",
+      renderManifest: "dist/render.manifest.json",
+    },
+    runtime: {
+      name: "bun",
+    },
+    publicDir: "dist/public",
+    capabilities: {
+      staticAssets: true,
+      prerenderedHtml: true,
+      ssr: false,
+      api: false,
+      hotApi: false,
+      streaming: false,
+      healthEndpoint: false,
+    },
+    unsupported: [
+      {
+        feature: "ssr",
+        reason: "The current MVP build output serves static HTML only.",
+      },
+      {
+        feature: "api",
+        reason: "API routes are outside the current MVP build slice.",
+      },
+    ],
+    diagnostics: [],
+  };
+}
+
+function createBuildTrace(
+  artifacts: string[],
+  phases: Array<{ name: string; durationMs: number; status: "ok" }>,
+) {
+  return {
+    schemaVersion: "lumina.build-trace.v0",
+    generatedBy: {
+      package: "@lumina/compiler",
+      version: "0.0.0",
+    },
+    phases: [
+      { name: "route discovery", durationMs: 0, status: "ok" },
+      { name: "render manifest", durationMs: 0, status: "ok" },
+      { name: "map generation", durationMs: 0, status: "ok" },
+      ...phases,
+      { name: "adapter output", durationMs: 0, status: "ok" },
+    ],
+    artifacts: artifacts.sort(compareStrings),
+    diagnostics: [],
+  };
+}
+
+function createPerfReport(routes: RouteNode[], outputs: string[], appRoot: string) {
+  return {
+    schemaVersion: "lumina.perf-report.v0",
+    generatedBy: {
+      package: "@lumina/compiler",
+      version: "0.0.0",
+    },
+    status: "not implemented",
+    summary: {
+      routeCount: routes.length,
+      staticHtmlFiles: outputs.length,
+      note: "Initial MVP build report; browser payload and benchmark evidence are not implemented.",
+    },
+    routes: routes
+      .filter((route) => route.kind === "page")
+      .map((route) => {
+        const outputPath = staticHtmlOutputPath(route.path);
+        return {
+          routeId: route.id,
+          path: route.path,
+          mode: route.renderMode,
+          htmlOutput: route.params.length === 0 ? outputPath : null,
+          htmlBytes: route.params.length === 0 ? byteLengthOfFile(appRoot, outputPath) : 0,
+          budgets: [],
+          diagnostics: [],
+        };
+      }),
+    benchmarks: [],
+    diagnostics: [],
+  };
+}
+
+function byteLengthOfFile(appRoot: string, outputPath: string): number {
+  const file = Bun.file(resolve(appRoot, ...outputPath.split("/")));
+  return file.size;
+}
+
+function compareStrings(left: string, right: string): number {
+  return left.localeCompare(right, "en");
 }
 
 function escapeHtml(value: string): string {

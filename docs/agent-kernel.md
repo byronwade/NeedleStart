@@ -33,11 +33,11 @@ Planned public docs and app-agent outputs:
 | `.lumina/map.json` | Implemented generated app artifact | First file-level Lumina Map output. |
 | `.lumina/graph.json` | Planned generated app artifact | Semantic app graph. |
 | `.lumina/seo.report.json` | Planned generated app artifact | SEO audit output for agents and tooling. |
-| `.lumina/perf.report.json` | Planned generated app artifact | Performance budget output for agents and tooling. |
+| `.lumina/perf.report.json` | Implemented initial build status artifact | Performance budget output for agents and tooling remains planned; current output records static HTML status without benchmark claims. |
 | `.lumina/workspace.json` | Planned generated app artifact | Workspace apps, packages, settings, and generated artifact index. |
 | `.lumina/workspace-graph.json` | Planned generated app artifact | Cross-app graph for shared files, packages, routes, tests, owners, and artifacts. |
 | `.lumina/affected.json` | Planned generated app artifact | Affected apps, routes, packages, tests, generated artifacts, and reasons. |
-| `.lumina/build-trace.json` | Planned generated app artifact | Build phases, timings, cache behavior, and diagnostics. |
+| `.lumina/build-trace.json` | Implemented initial static build artifact | Build phases, timings, cache behavior, and diagnostics. |
 | `.lumina/cache-report.json` | Planned generated app artifact | Cache keys, hits, misses, invalidations, and reused artifact summary. |
 | `.lumina/hmr-report.json` | Implemented dev artifact for route-file changes | Dev server update scope, invalidated modules, route updates, and timings. |
 | `.lumina/split-report.json` | Planned generated app artifact | Planned app or route split analysis and generated artifact movement. |
@@ -49,7 +49,7 @@ Planned public docs and app-agent outputs:
 | `dist/render.manifest.json` | Planned deployment artifact | Adapter-shaped render manifest copy. |
 | `dist/seo.report.json` | Planned deployment artifact | Adapter-shaped SEO report copy. |
 | `dist/adapter.manifest.json` | Planned deployment artifact | Adapter capabilities and deployment output metadata. |
-| `dist/*` | Planned deployment artifact | Production build output. |
+| `dist/*` | Implemented static HTML deployment artifact | Production build output for static page routes. |
 
 The `.lumina/*` files are the canonical compiler, CLI, MCP, Agent Kernel, devtools, and test contracts. The named `dist/*` files are deployment-oriented adapter outputs. Agent-facing docs must preserve that distinction so agent metadata stays out of production runtime bundles.
 

@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: framework contributors, CLI implementers, AI agents.
 
-This page defines the JSON output and exit-code contract for the `lumina` CLI. The implemented JSON surfaces are `lumina routes <appPath> --json` and `lumina inspect <appPath> --json`; other command outputs remain planned. The shared diagnostic vocabulary lives in [Diagnostics Contract](diagnostics-contract.md). These contracts exist so Phase 1 and later command work can implement stable automation surfaces from the beginning.
+This page defines the JSON output and exit-code contract for the `lumina` CLI. The implemented JSON surfaces are `lumina routes <appPath> --json`, `lumina inspect <appPath> --json`, and `lumina build <appPath> --json`; other command outputs remain planned. The shared diagnostic vocabulary lives in [Diagnostics Contract](diagnostics-contract.md). These contracts exist so Phase 1 and later command work can implement stable automation surfaces from the beginning.
 
 ## Why This Exists
 
@@ -106,7 +106,7 @@ Initial planned command data shapes:
 | `lumina seo --json` | `{ "report": SeoReport }` |
 | `lumina map --json` | `{ "query": string, "nodes": GraphNode[], "edges": GraphEdge[] }` |
 | `lumina agent context --json` | `{ "context": RouteContextCapsule }` |
-| `lumina build --json` | `{ "outputs": BuildOutput[], "manifests": string[], "checks": CheckResult[] }` |
+| `lumina build --json` | Implemented for `<appPath>` static build: `{ "routes": number, "outputs": string[], "manifests": string[] }`; broader `{ "outputs": BuildOutput[], "manifests": string[], "checks": CheckResult[] }` remains planned |
 | `lumina build --affected --json` | `{ "affected": AffectedSelection, "outputs": BuildOutput[], "manifests": string[], "checks": CheckResult[] }` |
 | `lumina check --affected --json` | `{ "affected": AffectedSelection, "checks": CheckResult[], "summary": CheckSummary }` |
 | `lumina test --affected --json` | `{ "affected": AffectedSelection, "tests": TestSelection[], "summary": TestSummary }` |

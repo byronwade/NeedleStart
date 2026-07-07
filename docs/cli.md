@@ -4,7 +4,7 @@ Status: Scaffolded.
 
 Audience: app developers, framework contributors, AI agents.
 
-This page is the reference for `lumina` commands. `@lumina/cli` currently implements `lumina routes <appPath> --json`, `lumina inspect <appPath> --json`, `lumina inspect <appPath> why <route>`, and a minimal `lumina dev <appPath>` through the local `bun run lumina -- ...` script. Other commands remain planned.
+This page is the reference for `lumina` commands. `@lumina/cli` currently implements `lumina routes <appPath> --json`, `lumina inspect <appPath> --json`, `lumina inspect <appPath> why <route>`, minimal `lumina dev <appPath>`, static `lumina build <appPath>`, and static `lumina start <appPath>` through the local `bun run lumina -- ...` script. Other commands remain planned.
 
 Machine-readable command behavior is planned in [CLI JSON Contract](cli-json-contract.md). Human output may evolve, but `--json` output, exit codes, diagnostic codes, and schema versions become stable contracts once released.
 
@@ -13,8 +13,8 @@ Machine-readable command behavior is planned in [CLI JSON Contract](cli-json-con
 | Command | Purpose | Status | JSON output required once implemented? |
 | --- | --- | --- |
 | `lumina dev` | Start local development. | Implemented for minimal `<appPath>` Vite SSR route serving, `virtual:lumina/routes`, and route-file update reports; client hydration and component-level HMR remain planned | No |
-| `lumina build` | Build app, manifests, graph, SEO, and adapter output. | Planned | Yes |
-| `lumina start` | Start built output. | Planned | No |
+| `lumina build` | Build app, manifests, graph, early reports, and adapter output. | Implemented for build-time static page routes and `--json`; SSR/API output remains planned | Yes |
+| `lumina start` | Start built output. | Implemented for static HTML in `dist/public`; SSR/API serving remains planned | No |
 | `lumina routes` | List route manifest entries. | Implemented for `<appPath> --json` | Yes |
 | `lumina inspect` | Inspect route, file, or artifact details. | Implemented for `<appPath> --json` and `<appPath> why <route>` | Yes |
 | `lumina check` | Run framework-aware checks. | Planned | Yes |
@@ -96,6 +96,31 @@ bun run lumina -- dev apps/www --once
 ```
 
 The implemented dev command writes `.lumina/routes.json`, `.lumina/render-manifest.json`, and `.lumina/map.json`, starts a Vite server, renders page routes through React SSR, exposes `virtual:lumina/routes`, emits `.lumina/hmr-report.json` for route-file changes, sends a `lumina:routes-updated` dev-server event, and returns 404 HTML for unknown page routes. It does not yet implement route params, client hydration, or component-level HMR.
+
+## Implemented Build Command
+
+Local repository usage:
+
+```bash
+bun run lumina -- build apps/www
+bun run lumina -- build apps/www --json
+```
+
+The implemented build command writes `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/build-trace.json`, `.lumina/perf.report.json`, static HTML under `dist/public`, and deployment manifest copies under `dist/routes.manifest.json`, `dist/render.manifest.json`, and `dist/adapter.manifest.json`. JSON mode emits a compact `lumina.cli.v0` envelope with output and manifest paths. It does not yet build SSR routes, API routes, client assets, browser hydration bundles, SEO reports, or measured benchmark evidence.
+
+## Implemented Start Command
+
+Local repository usage after build:
+
+```bash
+bun run lumina -- start apps/www
+bun run lumina -- start apps/www --port 4173
+bun run lumina -- start apps/www --once
+```
+
+The implemented start command serves built static HTML from `dist/public` through `@lumina/adapter-bun`, reports the built route count from `dist/routes.manifest.json`, and returns stable 404 HTML for unknown static routes. The current request path does not need source route files. SSR, API, health endpoint, compression, production 500 handling, and cache-header expansion remain planned.
+
+If build output is missing, `lumina start` exits nonzero with a clean message telling the developer to run `lumina build` first.
 
 ## Planned Exit Code Policy
 

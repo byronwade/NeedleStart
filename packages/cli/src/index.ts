@@ -1,15 +1,17 @@
+import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { startBuiltLuminaApp } from "@lumina/adapter-bun";
 import {
   writeLuminaMap,
   writeRenderManifest,
   writeRoutesManifest,
 } from "@lumina/compiler";
-import { startLuminaDevServer } from "@lumina/vite-plugin";
+import { buildLuminaStaticApp, startLuminaDevServer } from "@lumina/vite-plugin";
 
 export const luminaCliStatus = {
   name: "@lumina/cli",
   phase: "implemented",
-  implementsRuntimeBehavior: false,
+  implementsRuntimeBehavior: true,
 } as const;
 
 export type CliIo = {
@@ -111,8 +113,95 @@ export async function runCli(argv: string[], io: CliIo = {}): Promise<number> {
     return 0;
   }
 
-  stderr("Usage: lumina dev <appPath> [--port <port>] | lumina routes <appPath> --json | lumina inspect <appPath> --json | lumina inspect <appPath> why <route>");
+  if (command === "build" && appPath) {
+    const appRoot = resolve(appPath);
+    const build = await buildLuminaStaticApp({
+      appRoot,
+      logLevel: "silent",
+    });
+
+    if (flags.includes("--json")) {
+      stdout(
+        JSON.stringify({
+          schemaVersion: "lumina.cli.v0",
+          command: "lumina build",
+          status: "ok",
+          data: {
+            routes: build.routes.length,
+            outputs: build.outputs,
+            manifests: build.manifests,
+          },
+          diagnostics: build.diagnostics,
+          meta: {
+            cwd: ".",
+          },
+        }),
+      );
+      return 0;
+    }
+
+    stdout(
+      [
+        `Lumina build ${appPath}`,
+        `Routes     ${build.routes.length}`,
+        `Outputs    ${build.outputs.length}`,
+        `Artifacts  ${build.manifests.join(", ")}`,
+        "",
+        "Phase                 Status",
+        "route discovery       ok",
+        "render manifest       ok",
+        "map generation        ok",
+        "static output         ok",
+        "adapter output        ok",
+        "",
+        "Done",
+      ].join("\n"),
+    );
+    return 0;
+  }
+
+  if (command === "start" && appPath) {
+    const appRoot = resolve(appPath);
+    const portFlagIndex = flags.indexOf("--port");
+    const port = portFlagIndex >= 0 ? Number(flags[portFlagIndex + 1]) : undefined;
+    const builtRoutes = countBuiltRoutes(appRoot);
+    if (builtRoutes === null || !existsSync(resolve(appRoot, "dist", "public"))) {
+      stderr(`Build output not found for ${appPath}. Run lumina build ${appPath} before lumina start.`);
+      return 4;
+    }
+
+    const server = await startBuiltLuminaApp({
+      appRoot,
+      port: Number.isFinite(port) ? port : undefined,
+    });
+
+    stdout(
+      [
+        `Lumina start ${appPath}`,
+        `Local ${server.url}`,
+        `Routes ${builtRoutes}`,
+        "Serving dist/public",
+      ].join("\n"),
+    );
+
+    if (flags.includes("--once")) {
+      await server.close();
+      return 0;
+    }
+
+    await waitForShutdown(server.close);
+    return 0;
+  }
+
+  stderr("Usage: lumina dev <appPath> [--port <port>] | lumina build <appPath> [--json] | lumina start <appPath> [--port <port>] | lumina routes <appPath> --json | lumina inspect <appPath> --json | lumina inspect <appPath> why <route>");
   return 2;
+}
+
+function countBuiltRoutes(appRoot: string): number | null {
+  const manifestPath = resolve(appRoot, "dist", "routes.manifest.json");
+  if (!existsSync(manifestPath)) return null;
+  const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
+  return Array.isArray(manifest.routes) ? manifest.routes.length : 0;
 }
 
 function inspectApp(appRoot: string) {

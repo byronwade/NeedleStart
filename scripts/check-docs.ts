@@ -609,11 +609,11 @@ const productIdentityDocs = [
 const publicScaffoldStatusDocs = [
   {
     file: "docs/getting-started.md",
-    terms: ["Bun workspace", "package placeholders", "shared core types", "route discovery", "CI", "enforcement scripts", "does not yet contain build/start CLI behavior"],
+    terms: ["Bun workspace", "package placeholders", "shared core types", "route discovery", "CI", "enforcement scripts", "static build/start output"],
   },
   {
     file: "docs/public/index.md",
-    terms: ["Bun workspace", "package placeholders", "shared core types", "initial route-discovery API", "minimal local Vite dev server", "CI", "enforcement scripts", "production framework runtime behavior is still planned"],
+    terms: ["Bun workspace", "package placeholders", "shared core types", "initial route-discovery API", "minimal local Vite dev server", "CI", "enforcement scripts", "SSR/API production behavior"],
   },
   {
     file: "docs/public/guides/create-app.md",
@@ -621,7 +621,7 @@ const publicScaffoldStatusDocs = [
   },
   {
     file: "docs/public/roadmap.md",
-    terms: ["Bun workspace", "package placeholders", "shared core types", "CI", "enforcement scripts", "Production runtime implementation is still planned"],
+    terms: ["Bun workspace", "package placeholders", "shared core types", "CI", "enforcement scripts", "SSR/API production runtime implementation is still planned"],
   },
 ];
 
@@ -743,19 +743,19 @@ const prototypeScopeTerms = [
 const currentImplementationStepDocs = [
   {
     file: "README.md",
-    terms: ["The next implementation stage is completing client hydration and static build output after the first Vite route-update slice"],
+    terms: ["The next implementation stage is completing client hydration and production hardening after the first static build/start slice"],
   },
   {
     file: "docs/status.md",
-    terms: ["The next implementation path is completing client hydration and static build output after the first Vite route-update slice"],
+    terms: ["The next implementation path is completing client hydration and production hardening after the first static build/start slice"],
   },
   {
     file: "docs/roadmap.md",
-    terms: ["The next implementation stage is completing client hydration and static build output after the first Vite route-update slice."],
+    terms: ["The next implementation stage is completing client hydration and production hardening after the first static build/start slice."],
   },
   {
     file: "docs/public/roadmap.md",
-    terms: ["The next implementation path is completing client hydration and static build output after the first Vite route-update slice."],
+    terms: ["The next implementation path is completing client hydration and production hardening after the first static build/start slice."],
   },
   {
     file: "docs/product-build-readiness.md",
@@ -763,7 +763,7 @@ const currentImplementationStepDocs = [
   },
   {
     file: "docs/task-backlog.md",
-    terms: ["Current implementation path: complete client hydration and static build output after the first Vite route-update slice."],
+    terms: ["Current implementation path: complete client hydration and production hardening after the first static build/start slice."],
   },
 ];
 
@@ -932,34 +932,34 @@ const adapterContractDocs = [
 const runtimeImplementationStatusDocs = [
   {
     file: "docs/runtime-contract.md",
-    terms: ["planned runtime contract", "Runtime behavior is not implemented yet"],
+    terms: ["Static built-output serving through `@lumina/adapter-bun` is implemented", "SSR, API, hot API"],
   },
 ];
 
 const adapterBehaviorStatusDocs = [
   {
     file: "README.md",
-    terms: ["runtime adapter behavior", "package placeholders"],
+    terms: ["static built-output serving through `@lumina/adapter-bun`", "SSR/API production behavior"],
   },
   {
     file: "AGENTS.md",
-    terms: ["runtime adapter behavior", "config/adapter contract terms"],
+    terms: ["static `lumina start` through `@lumina/adapter-bun`", "config/adapter contract terms"],
   },
   {
     file: "docs/status.md",
-    terms: ["Package placeholders under `packages/` and `packages/adapters/`", "Runtime adapter behavior"],
+    terms: ["Package placeholders under `packages/` and `packages/adapters/`", "Runtime adapter behavior beyond static HTML serving"],
   },
   {
     file: "docs/agent-enforcement.md",
-    terms: ["runtime adapter behavior", "Package structure"],
+    terms: ["static `lumina start`", "Package structure"],
   },
   {
     file: "docs/public/reference/testing.md",
-    terms: ["runtime adapter behavior", "Phase 1 scaffold"],
+    terms: ["static build/start", "Phase 1 scaffold"],
   },
   {
     file: "docs/docs-verification.md",
-    terms: ["scaffolded adapter packages", "unimplemented runtime adapter behavior"],
+    terms: ["static `@lumina/adapter-bun` serving", "SSR/API runtime adapter behavior"],
   },
 ];
 
@@ -1333,7 +1333,7 @@ const staleStatusPatterns = [
   {
     file: "docs/status.md",
     pattern: /- Runtime adapters\./i,
-    message: "docs/status.md should say runtime adapter behavior is missing, because adapter package placeholders exist.",
+    message: "docs/status.md should distinguish static adapter behavior from planned SSR/API runtime behavior.",
   },
   {
     file: "README.md",
@@ -1353,7 +1353,7 @@ const staleStatusPatterns = [
   {
     file: "docs/public/reference/testing.md",
     pattern: /rendering, runtime adapters,/i,
-    message: "docs/public/reference/testing.md should say runtime adapter behavior is not proved.",
+    message: "docs/public/reference/testing.md should distinguish static build/start from unproved broader adapter behavior.",
   },
   {
     file: "docs/public/README.md",
@@ -2434,7 +2434,8 @@ for (const file of adapterContractDocs) {
     "early hints",
     "resourcehints",
     "bfcache",
-    "adapter behavior is not implemented yet",
+    "static built-output serving through `@lumina/adapter-bun` is implemented",
+    "remain planned",
   ]) {
     if (!content.includes(term)) {
       failures.push(`${file} is missing adapter contract term: ${term}.`);

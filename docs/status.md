@@ -4,7 +4,7 @@ Status: Scaffolded.
 
 Audience: maintainers, contributors, AI agents.
 
-Lumina is in Phase 1: monorepo scaffold with route discovery, generated route/render/map artifacts, route and inspect CLI paths, a minimal Vite dev-server path, and the early benchmark/status skeleton implemented.
+Lumina is in Phase 1: monorepo scaffold with route discovery, generated route/render/map artifacts, route and inspect CLI paths, a minimal Vite dev-server path, static build/start output, and the early benchmark/status skeleton implemented.
 
 ## What Exists
 
@@ -22,8 +22,10 @@ Lumina is in Phase 1: monorepo scaffold with route discovery, generated route/re
 - Package manifests use `0.0.0` private scaffold placeholder versions; these are not published release versions.
 - Contract-backed shared `@lumina/core` model types for routes, graph edges, diagnostics, cache plans, and adapter manifests.
 - `@lumina/compiler` route discovery for page and API route files under `app/`, including deterministic route IDs, route groups, dynamic params, catch-all params, layout collection, duplicate-path diagnostics, compact `.lumina/routes.json`, `.lumina/render-manifest.json`, and `.lumina/map.json` generation.
-- `@lumina/cli` support for `routes <appPath> --json`, `inspect <appPath> --json`, `inspect <appPath> why <route>`, and `dev <appPath>`, exposed locally through `bun run lumina -- ...`.
+- `@lumina/cli` support for `routes <appPath> --json`, `inspect <appPath> --json`, `inspect <appPath> why <route>`, `dev <appPath>`, `build <appPath>`, and `start <appPath>`, exposed locally through `bun run lumina -- ...`.
 - `@lumina/vite-plugin` minimal dev-server integration that writes route/render/map artifacts, serves page routes with React SSR through Vite middleware, exposes `virtual:lumina/routes`, and emits `.lumina/hmr-report.json` when app route files change.
+- `@lumina/vite-plugin` static build integration that renders build-time static page routes into `dist/public`, copies deployment manifests into `dist/`, and emits `.lumina/build-trace.json` plus `.lumina/perf.report.json` with initial status data.
+- `@lumina/adapter-bun` static built-output serving for `dist/public` HTML with stable 404 behavior and no source route files required on the request path.
 - Scaffolded `apps/www` marketing app source and scaffolded examples under `examples/basic/`, `examples/blog-seo/`, `examples/multi-app-workspace/`, `examples/large-100-routes/`, and `examples/large-1000-routes/`, with route-discovery and inspect fixture evidence.
 - Early benchmark/status skeletons under `benchmarks/` and stable fixture placeholders under `fixtures/apps/`, all reporting `not implemented` and no synthetic timing results.
 - CI workflow and root verification scripts for docs, structure, performance documentation, type checking, scaffold tests, shared core model tests, route-discovery fixture tests, and benchmark skeleton path/status tests.
@@ -32,12 +34,12 @@ Lumina is in Phase 1: monorepo scaffold with route discovery, generated route/re
 
 - Published packages.
 - Released package versions.
-- CLI implementation beyond `routes <appPath> --json`, `inspect <appPath> --json`, `inspect <appPath> why <route>`, and minimal `dev <appPath>`.
+- CLI implementation beyond `routes <appPath> --json`, `inspect <appPath> --json`, `inspect <appPath> why <route>`, minimal `dev <appPath>`, static `build <appPath>`, and static `start <appPath>`.
 - Measured benchmark results.
-- Production build/start behavior.
-- Runtime adapter behavior.
+- SSR/API production build/start behavior.
+- Runtime adapter behavior beyond static HTML serving through `@lumina/adapter-bun`.
 - Client hydration, component-level HMR, and dynamic route params in the dev server.
-- Compiler output beyond `.lumina/routes.json`, `.lumina/render-manifest.json`, and `.lumina/map.json`.
+- Compiler/build output beyond `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/hmr-report.json`, `.lumina/build-trace.json`, `.lumina/perf.report.json`, and initial `dist/*` deployment manifests.
 - Lumina Map queries and semantic graph expansion beyond the first file-level map.
 - Agent Kernel implementation.
 - MCP server.
@@ -47,11 +49,11 @@ Lumina is in Phase 1: monorepo scaffold with route discovery, generated route/re
 
 ## Current Next Step
 
-The next implementation path is completing client hydration and static build output after the first Vite route-update slice. Phase 1A shared core model hardening is implemented in `@lumina/core` and covered by type-focused tests. Route discovery, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/hmr-report.json`, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, minimal `lumina dev`, `virtual:lumina/routes`, and scaffolded app/example fixture route evidence are implemented and covered by fixture, artifact, CLI, and HTTP dev-server tests. The early benchmark/status skeleton paths exist with `not implemented` status and no benchmark evidence. MVP Alpha is not complete. The next prototype target is MVP Alpha, defined in `docs/mvp-alpha-scope.md`, and should stay focused on route discovery, basic render modes, generated route/render/map artifacts, CLI inspection, a demo app, and the first dev-server path. Agent workflow for that build target is scaffolded in `docs/alpha-agent-operating-system.md`, `docs/alpha-work-routing.md`, and `docs/alpha-drift-prevention.md`. See `docs/phase-1-build-plan.md`, `docs/large-repo-build-architecture.md`, and `docs/task-backlog.md`.
+The next implementation path is completing client hydration and production hardening after the first static build/start slice. Phase 1A shared core model hardening is implemented in `@lumina/core` and covered by type-focused tests. Route discovery, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/hmr-report.json`, `.lumina/build-trace.json`, `.lumina/perf.report.json`, initial `dist/*` deployment manifests, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, minimal `lumina dev`, `virtual:lumina/routes`, static `lumina build`, static `lumina start`, and scaffolded app/example fixture route evidence are implemented and covered by fixture, artifact, CLI, HTTP dev-server, and HTTP adapter tests. The early benchmark/status skeleton paths exist with `not implemented` status and no benchmark evidence. MVP Alpha is not complete. The next prototype target is MVP Alpha, defined in `docs/mvp-alpha-scope.md`, and should stay focused on route discovery, basic render modes, generated route/render/map artifacts, CLI inspection, a demo app, and the first dev/build/start path. Agent workflow for that build target is scaffolded in `docs/alpha-agent-operating-system.md`, `docs/alpha-work-routing.md`, and `docs/alpha-drift-prevention.md`. See `docs/phase-1-build-plan.md`, `docs/large-repo-build-architecture.md`, and `docs/task-backlog.md`.
 
 ## MVP Alpha Target Status
 
-MVP Alpha is planned, not complete. Route discovery, route/render/map artifacts, `.lumina/hmr-report.json`, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, minimal `lumina dev`, `virtual:lumina/routes`, and scaffolded `apps/www` / example source fixtures exist, but the MVP build target still requires client hydration, build/start commands, and production runtime serving.
+MVP Alpha is planned, not complete. Route discovery, route/render/map artifacts, `.lumina/hmr-report.json`, `.lumina/build-trace.json`, `.lumina/perf.report.json`, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, minimal `lumina dev`, `virtual:lumina/routes`, static `lumina build`, static `lumina start`, and scaffolded `apps/www` / example source fixtures exist, but the MVP build target still requires client hydration, broader example verification, and production SSR/API hardening.
 
 Included MVP Alpha evidence should eventually cover `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, and the MVP Alpha demo app described in `docs/mvp-alpha-scope.md`.
 

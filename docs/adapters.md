@@ -1,9 +1,9 @@
 # Adapter Architecture
 
-Status: Planned.
+Status: Implemented.
 Audience: app developers, framework contributors, deployment owners.
 
-This page describes planned adapter architecture. Adapter packages are scaffolded, but adapter behavior is not implemented yet.
+This page describes adapter architecture. Static built-output serving through `@lumina/adapter-bun` is implemented for build-time static page routes. Node adapter behavior, static export adapter behavior, SSR, API, hot API, streaming, compression, 103 Early Hints, and adapter-native route dispatch remain planned.
 
 Lumina is planned to default to Bun, but the framework must not create an all-in Bun adoption risk.
 
@@ -33,9 +33,12 @@ The planned adapter input/output contract, manifest shape, capability rules, env
 
 Default adapter.
 
-Responsibilities:
+Implemented responsibility:
 
-- Use `Bun.serve`.
+- Serve `dist/public` static HTML through `Bun.serve`.
+
+Planned responsibilities:
+
 - Use generated route matcher.
 - Optionally lower compatible generated routes into native `Bun.serve({ routes })` when evidence proves it is faster.
 - Serve static assets.
@@ -97,7 +100,7 @@ The compiler chooses the adapter import during build. Runtime packages consume g
 
 ## Adapter Manifest
 
-Adapter deployment output uses `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, and `dist/adapter.manifest.json`. Every adapter manifest must include `runtime.name`, adapter package identity, explicit `capabilities`, unsupported features, environment-variable names, and diagnostics.
+Adapter deployment output uses `dist/routes.manifest.json`, `dist/render.manifest.json`, and `dist/adapter.manifest.json` today for the static build path. `dist/seo.report.json` is planned. Every adapter manifest must include `runtime.name`, adapter package identity, explicit `capabilities`, unsupported features, environment-variable names, and diagnostics.
 
 ```json
 {
@@ -109,9 +112,9 @@ Adapter deployment output uses `dist/routes.manifest.json`, `dist/render.manifes
   },
   "capabilities": {
     "static": true,
-    "ssr": true,
-    "api": true,
-    "hotApi": true,
+    "ssr": false,
+    "api": false,
+    "hotApi": false,
     "streaming": false,
     "nativeRouteDispatch": {
       "enabled": false,
@@ -133,7 +136,7 @@ Adapter deployment output uses `dist/routes.manifest.json`, `dist/render.manifes
 }
 ```
 
-Detailed manifest fields and capability semantics are defined in [Adapter Contract](adapter-contract.md).
+Detailed manifest fields and capability semantics are defined in [Adapter Contract](adapter-contract.md). Capability values must describe verified behavior, not desired behavior.
 
 ## Contract Vocabulary
 

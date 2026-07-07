@@ -3,7 +3,7 @@
 Status: Planned.
 Audience: framework contributors, adapter owners, AI agents.
 
-This page describes the planned runtime contract. Runtime behavior is not implemented yet.
+This page describes the runtime contract. Static built-output serving through `@lumina/adapter-bun` is implemented for `dist/public` HTML; SSR, API, hot API, health endpoints, expanded cache headers, and broader runtime behavior remain planned.
 
 The Lumina runtime must stay small, explicit, fast, and easy to inspect. Runtime speed depends on generated manifests and handlers; see `docs/speed-strategy.md`.
 

@@ -33,7 +33,7 @@ apps/www/
   README.md
 ```
 
-This fixture is scaffolded, compiler-verifiable, and runnable through the minimal local `lumina dev` path. It is not yet a production build/start app.
+This fixture is scaffolded, compiler-verifiable, runnable through the minimal local `lumina dev` path, and buildable/servable through the static `lumina build` and `lumina start` path. SSR/API production behavior remains planned.
 
 ## Target Generated App Structure
 
@@ -71,7 +71,7 @@ my-app/
 | `lumina.config.ts` | Framework config. | Planned |
 | `public/` | Static assets copied to output. | Planned |
 | `.lumina/` | Generated route, render, and map artifacts. | Implemented for routes, default render modes, and first file-level map |
-| `dist/` | Built production output once build behavior exists. | Planned |
+| `dist/` | Built production output for static page routes. | Implemented for static build output |
 
 ## MVP Alpha Generated Files
 
@@ -110,6 +110,7 @@ Future work after MVP Alpha may add:
   mutations.json
   generated/
 dist/
+  public/
   routes.manifest.json
   render.manifest.json
   seo.report.json
@@ -117,7 +118,7 @@ dist/
   *
 ```
 
-These future artifacts must not be described as implemented until the packages, commands, tests, and generated output exist.
+`.lumina/perf.report.json`, `.lumina/build-trace.json`, `.lumina/hmr-report.json`, `dist/public/`, `dist/routes.manifest.json`, `dist/render.manifest.json`, and `dist/adapter.manifest.json` now exist for the verified dev/build/start slices. The remaining future artifacts must not be described as implemented until the packages, commands, tests, and generated output exist.
 
 The future generated artifact names are `.lumina/graph.json`, `.lumina/seo.report.json`, `.lumina/perf.report.json`, `.lumina/workspace.json`, `.lumina/workspace-graph.json`, `.lumina/affected.json`, `.lumina/build-trace.json`, `.lumina/cache-report.json`, `.lumina/hmr-report.json`, `.lumina/split-report.json`, `.lumina/context/*.ctx.json`, `.lumina/context/agent-index.json`, `.lumina/mutations.json`, `.lumina/generated/*`, `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, `dist/adapter.manifest.json`, and `dist/*`.
 

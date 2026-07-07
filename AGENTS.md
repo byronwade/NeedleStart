@@ -208,12 +208,16 @@ bun run lumina -- inspect <appPath> --json
 bun run lumina -- inspect <appPath> why <route>
 bun run lumina -- dev <appPath>
 bun run lumina -- dev <appPath> --once
+bun run lumina -- build <appPath>
+bun run lumina -- build <appPath> --json
+bun run lumina -- start <appPath>
+bun run lumina -- start <appPath> --once
 bun run structure:check
 bun run performance:check
 bun run check
 ```
 
-These commands verify the scaffold, docs links, root docs metadata, docs navigation coverage, package-map/build-plan/backlog alignment, planned CLI command surface and prefix consistency, status-drift guardrails, config/adapter contract terms, generated artifact inventories across agent and machine-readable docs, package structure, shared-core type ownership, shared-core contract terminology, performance documentation guardrails, TypeScript surface, route-discovery fixture behavior, generated `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, and `.lumina/hmr-report.json` output, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, minimal `lumina dev` Vite SSR route serving, `virtual:lumina/routes`, scaffolded `apps/www` and example fixture route evidence, early benchmark/status skeleton paths, and tests. They do not prove measured benchmark results, production build/start behavior, runtime adapter behavior, client hydration, component-level HMR, MCP tools, or safe edits.
+These commands verify the scaffold, docs links, root docs metadata, docs navigation coverage, package-map/build-plan/backlog alignment, planned CLI command surface and prefix consistency, status-drift guardrails, config/adapter contract terms, generated artifact inventories across agent and machine-readable docs, package structure, shared-core type ownership, shared-core contract terminology, performance documentation guardrails, TypeScript surface, route-discovery fixture behavior, generated `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/hmr-report.json`, `.lumina/build-trace.json`, `.lumina/perf.report.json`, `dist/routes.manifest.json`, `dist/render.manifest.json`, and `dist/adapter.manifest.json` output, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, minimal `lumina dev` Vite SSR route serving, `virtual:lumina/routes`, static `lumina build`, static `lumina start` through `@lumina/adapter-bun`, scaffolded `apps/www` and example fixture route evidence, early benchmark/status skeleton paths, and tests. They do not prove measured benchmark results, SSR/API production behavior, client hydration, component-level HMR, MCP tools, or safe edits.
 
 ## Planned Commands
 

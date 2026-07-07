@@ -76,7 +76,7 @@ Concrete schemas may include additional `source`, `generatedAt`, build, route, a
 
 Production runtime adapters must load generated manifests and generated handlers only.
 
-Once runtime adapter behavior exists, add a test that fails if production request handling imports or reads:
+Runtime adapter behavior now exists for static built-output serving through `@lumina/adapter-bun`. That path must stay covered by tests that fail if production request handling imports or reads:
 
 - `@lumina/compiler`
 - `@lumina/map`
@@ -85,7 +85,7 @@ Once runtime adapter behavior exists, add a test that fails if production reques
 - source route files outside generated runtime entrypoints
 - repository docs or agent metadata
 
-The test should prove runtime routing does not build the Lumina Map, scan `app/`, or walk source files during a request.
+The test should prove runtime routing does not build the Lumina Map, scan `app/`, or walk source files during a request. New SSR, API, hot API, Node, or static-export adapter behavior must extend this rule with focused request-path tests.
 
 ## Code-Level Rules
 

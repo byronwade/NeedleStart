@@ -24,8 +24,8 @@ Planned commands:
 | Command | Status | Purpose |
 | --- | --- | --- |
 | `lumina dev` | Implemented for minimal `<appPath>` Vite SSR route serving | Start local development server. |
-| `lumina build` | Planned | Build static, SSR, API, graph, SEO, and adapter outputs. |
-| `lumina start` | Planned | Start a built app with the selected adapter. |
+| `lumina build` | Implemented for static page routes | Build static HTML, route/render/map artifacts, initial build/performance reports, and Bun adapter manifests; SSR/API/SEO output remains planned. |
+| `lumina start` | Implemented for static built output | Start a built static app with `@lumina/adapter-bun`; SSR/API serving remains planned. |
 | `lumina routes` | Implemented for `<appPath> --json` | Inspect discovered routes and emit `.lumina/routes.json`. |
 | `lumina inspect` | Implemented for `<appPath> --json` and `<appPath> why <route>` | Inspect generated app evidence and explain why a route exists. |
 | `lumina inspect` | Planned | Inspect a route, file, or generated artifact. |
@@ -103,11 +103,11 @@ Planned generated files:
 | `.lumina/map.json` | Implemented for first file-level route graph | Public Lumina Map output. |
 | `.lumina/graph.json` | Planned | Graph data for compiler, map, and agents. |
 | `.lumina/seo.report.json` | Planned | SEO audit output. |
-| `.lumina/perf.report.json` | Planned | Performance budget output. |
+| `.lumina/perf.report.json` | Implemented initial build status report | Performance budget output remains planned; current output records static HTML status without benchmark claims. |
 | `.lumina/workspace.json` | Planned | Workspace apps, packages, settings, and generated artifact index. |
 | `.lumina/workspace-graph.json` | Planned | Cross-app graph for shared files, packages, routes, tests, owners, and artifacts. |
 | `.lumina/affected.json` | Planned | Affected apps, routes, packages, tests, generated artifacts, and reasons. |
-| `.lumina/build-trace.json` | Planned | Build phases, timings, cache behavior, and diagnostics. |
+| `.lumina/build-trace.json` | Implemented initial static build trace | Build phases, timings, cache behavior, and diagnostics. |
 | `.lumina/cache-report.json` | Planned | Cache keys, hits, misses, invalidations, and reused artifact summary. |
 | `.lumina/hmr-report.json` | Implemented for route-file changes | Dev server update scope, invalidated modules, route updates, and timings. |
 | `.lumina/split-report.json` | Planned | Planned app or route split analysis and generated artifact movement. |
@@ -115,11 +115,11 @@ Planned generated files:
 | `.lumina/context/agent-index.json` | Planned | Agent context index. |
 | `.lumina/mutations.json` | Planned | Safe edit mutation log. |
 | `.lumina/generated/*` | Planned | Generated runtime modules. |
-| `dist/routes.manifest.json` | Planned | Deployment-oriented route manifest copy for adapters. |
-| `dist/render.manifest.json` | Planned | Deployment-oriented render manifest copy for adapters. |
+| `dist/routes.manifest.json` | Implemented for static build | Deployment-oriented route manifest copy for adapters. |
+| `dist/render.manifest.json` | Implemented for static build | Deployment-oriented render manifest copy for adapters. |
 | `dist/seo.report.json` | Planned | Deployment-oriented SEO report copy for adapters. |
-| `dist/adapter.manifest.json` | Planned | Adapter capabilities and deployment output metadata. |
-| `dist/*` | Planned | Production build output. |
+| `dist/adapter.manifest.json` | Implemented for static Bun output | Adapter capabilities and deployment output metadata. |
+| `dist/*` | Implemented for static HTML output | Production build output for static page routes. |
 
 Generated JSON must use schema versions, normalized paths, stable ordering, compact agent-friendly fields, documented source inputs when practical, and no absolute local paths in public artifacts.
 

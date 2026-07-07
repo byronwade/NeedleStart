@@ -10,9 +10,9 @@ Lumina is currently in Phase 1: monorepo scaffold with the first compiler route-
 
 Phase 0 defined the product direction, architecture, package responsibilities, documentation system, safety rules, and implementation sequence.
 
-The Bun workspace, package placeholders, shared core types, CI, enforcement scripts, `@lumina/compiler` route discovery, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, minimal `lumina dev` Vite SSR route serving, scaffolded `apps/www` and example fixtures, and early benchmark/status skeletons exist. Phase 1A shared core model hardening is implemented in `@lumina/core`. Production runtime implementation is still planned.
+The Bun workspace, package placeholders, shared core types, CI, enforcement scripts, `@lumina/compiler` route discovery, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/build-trace.json`, `.lumina/perf.report.json`, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, minimal `lumina dev` Vite SSR route serving, static `lumina build`, static `lumina start` through `@lumina/adapter-bun`, scaffolded `apps/www` and example fixtures, and early benchmark/status skeletons exist. Phase 1A shared core model hardening is implemented in `@lumina/core`. SSR/API production runtime implementation is still planned.
 
-The next implementation path is completing client hydration and static build output after the first Vite route-update slice.
+The next implementation path is completing client hydration and production hardening after the first static build/start slice.
 
 MVP Alpha is the upcoming prototype target: route discovery, basic render modes, generated `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, CLI inspection, and a demo app.
 

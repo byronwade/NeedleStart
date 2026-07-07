@@ -3,7 +3,7 @@
 Status: Planned.
 Audience: new users, app developers, AI agents.
 
-This is the target MVP Alpha onboarding path. The repository currently has the Phase 1 scaffold plus route discovery, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/hmr-report.json`, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, minimal `lumina dev` Vite SSR route serving, `virtual:lumina/routes`, scaffolded `apps/www`, and scaffolded example fixtures; app creation, build/start, client hydration, component-level HMR, and production runtime serving are not implemented yet.
+This is the target MVP Alpha onboarding path. The repository currently has the Phase 1 scaffold plus route discovery, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/hmr-report.json`, `.lumina/build-trace.json`, `.lumina/perf.report.json`, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, minimal `lumina dev` Vite SSR route serving, `virtual:lumina/routes`, static `lumina build`, static `lumina start`, scaffolded `apps/www`, and scaffolded example fixtures; app creation, client hydration, component-level HMR, and production SSR/API serving are not implemented yet.
 
 ## What You Will Build In MVP Alpha
 
@@ -29,10 +29,13 @@ bun run docs:check
 bun run structure:check
 bun run performance:check
 bun run lumina -- dev apps/www --once
+bun run lumina -- build apps/www
+bun run lumina -- build apps/www --json
+bun run lumina -- start apps/www --once
 bun run check
 ```
 
-They verify scaffold health, documentation links and guardrails, package structure, TypeScript validity, performance-claim hygiene, scaffold tests, shared core model tests, route-discovery fixture behavior, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/hmr-report.json`, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, minimal `lumina dev` SSR route serving, `virtual:lumina/routes`, scaffolded app/example route evidence, and benchmark skeleton path/status coverage. The repository currently contains a Bun workspace, package placeholders, shared core types, route/render/map artifact generation, route-centered CLI inspection, scaffolded `apps/www` and example fixtures, early benchmark/status skeletons, and enforcement scripts; it does not yet contain build/start CLI behavior, measured benchmark results, client hydration, component-level HMR, or production runtime serving.
+They verify scaffold health, documentation links and guardrails, package structure, TypeScript validity, performance-claim hygiene, scaffold tests, shared core model tests, route-discovery fixture behavior, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/hmr-report.json`, `.lumina/build-trace.json`, `.lumina/perf.report.json`, deployment manifest copies, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, minimal `lumina dev` SSR route serving, `virtual:lumina/routes`, static `lumina build`, static `lumina start`, scaffolded app/example route evidence, and benchmark skeleton path/status coverage. The repository currently contains a Bun workspace, package placeholders, shared core types, route/render/map artifact generation, route-centered CLI inspection, static build/start output, scaffolded `apps/www` and example fixtures, early benchmark/status skeletons, and enforcement scripts; it does not yet contain measured benchmark results, client hydration, component-level HMR, or production SSR/API serving.
 
 ## Target MVP App Creation
 
@@ -156,6 +159,21 @@ bun run lumina -- dev apps/www --once
 ```
 
 The implemented dev server starts the scaffolded `apps/www` app, writes `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, and `.lumina/hmr-report.json` on route-file changes, renders page routes through React SSR, exposes `virtual:lumina/routes`, emits a `lumina:routes-updated` dev-server event, and serves Vite internals. It does not yet keep client hydration, component-level HMR, or dynamic route params in sync.
+
+## Build And Start Static Output
+
+Current local repository commands:
+
+```bash
+bun run lumina -- build apps/www
+bun run lumina -- build apps/www --json
+bun run lumina -- start apps/www
+bun run lumina -- start apps/www --once
+```
+
+The implemented build command emits static HTML for build-time static page routes, deployment manifest copies under `dist/`, `.lumina/build-trace.json`, and `.lumina/perf.report.json`. The implemented start command serves built static HTML through `@lumina/adapter-bun` and returns stable 404 HTML for unknown static routes. It does not yet serve SSR routes, API routes, client hydration bundles, or full production cache behavior.
+
+Run `lumina build` before `lumina start`; the start command expects `dist/routes.manifest.json` and `dist/public` to exist.
 
 ## Inspect Routes
 

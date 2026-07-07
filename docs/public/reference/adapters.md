@@ -1,20 +1,20 @@
 # Adapters
 
-Status: Planned.
+Status: Implemented.
 
 Audience: deployers, app developers, adapter maintainers, AI agents.
 
-Lumina adapters are planned to turn generated build output into deployable Bun, Node, or static output. Adapter packages are scaffolded; adapter behavior is not implemented yet.
+Lumina adapters turn generated build output into deployable Bun, Node, or static output. Static built-output serving through `@lumina/adapter-bun` is implemented for build-time static page routes. Node adapter behavior, static export adapter behavior, SSR, API, hot API, streaming, compression, 103 Early Hints, and adapter-native route dispatch remain planned.
 
 ## Initial Adapters
 
-| Planned adapter | Package | Purpose |
+| Adapter | Package | Status |
 | --- | --- | --- |
-| Bun | `@lumina/adapter-bun` | Default production adapter path. |
-| Node | `@lumina/adapter-node` | Compatibility adapter path. |
-| Static | `@lumina/adapter-static` | Static export path. |
+| Bun | `@lumina/adapter-bun` | Implemented for static built HTML serving; broader runtime behavior planned. |
+| Node | `@lumina/adapter-node` | Planned compatibility adapter path. |
+| Static | `@lumina/adapter-static` | Planned static export path. |
 
-## Planned Generated Output
+## Generated Output
 
 ```txt
 dist/
@@ -26,13 +26,13 @@ dist/
   seo.report.json
 ```
 
-These files are deployment output. Canonical compiler and agent artifacts stay under `.lumina/`.
+`dist/public/`, `dist/routes.manifest.json`, `dist/render.manifest.json`, and `dist/adapter.manifest.json` are implemented for the static build path. `dist/server/` and `dist/seo.report.json` remain planned. These files are deployment output. Canonical compiler and agent artifacts stay under `.lumina/`.
 
 The named deployment artifacts are `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, and `dist/adapter.manifest.json`.
 
-## Planned Manifest
+## Manifest
 
-`dist/adapter.manifest.json` should describe:
+`dist/adapter.manifest.json` describes the current adapter output. It must not claim planned capabilities as implemented. The manifest should describe:
 
 - adapter package,
 - runtime through `runtime.name`,
