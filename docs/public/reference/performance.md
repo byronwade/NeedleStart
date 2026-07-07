@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, performance reviewers, framework contributors, AI agents.
 
-Lumina performance tooling is planned, with only initial build reports plus local route-discovery, manifest-size, and graph-query benchmark execution implemented. This page summarizes the public performance expectations for future route budgets, reports, and benchmark evidence.
+Lumina performance tooling is planned, with only initial build reports plus local route-discovery, manifest-size, graph-query, and adapter-dispatch benchmark execution implemented. This page summarizes the public performance expectations for future route budgets, reports, and benchmark evidence.
 
 ## Planned Surfaces
 
@@ -66,7 +66,7 @@ RUM and field data remain optional app-owned evidence, not default framework tel
 
 ## Current Reality
 
-The repository is in Phase 1 scaffold. Initial performance reports, `lumina bench --list --json`, `lumina bench <name> --json` skeleton status output, `lumina bench route-discovery --json --run` local raw metadata output, `lumina bench manifest-size --json --run` local raw metadata output, and `lumina bench graph-query --json --run` local raw metadata output exist. Persisted raw benchmark result files, reviewed public benchmark evidence, broader benchmark execution, and Core Web Vitals evidence do not exist yet.
+The repository is in Phase 1 scaffold. Initial performance reports, `lumina bench --list --json`, `lumina bench <name> --json` skeleton status output, `lumina bench route-discovery --json --run` local raw metadata output, `lumina bench manifest-size --json --run` local raw metadata output, `lumina bench graph-query --json --run` local raw metadata output, and `lumina bench adapter-dispatch --json --run` local raw metadata output exist. Persisted raw benchmark result files, reviewed public benchmark evidence, broader benchmark execution, and Core Web Vitals evidence do not exist yet.
 
 ## Source
 

@@ -8,6 +8,7 @@ import {
 } from "@lumina/compiler";
 import { getAffectedFiles, getAffectedRoutes } from "@lumina/map";
 import { buildLuminaStaticApp, startLuminaDevServer, type LuminaBuildPhase } from "@lumina/vite-plugin";
+import { runAdapterDispatchBenchmark } from "../../../benchmarks/adapter-dispatch.bench";
 import { runManifestSizeBenchmark } from "../../../benchmarks/manifest-size.bench";
 import { runGraphQueryBenchmark } from "../../../benchmarks/graph-query.bench";
 import { runRouteDiscoveryBenchmark } from "../../../benchmarks/route-discovery.bench";
@@ -86,6 +87,22 @@ export async function runCli(argv: string[], io: CliIo = {}): Promise<number> {
             command: "lumina bench",
             status: "ok",
             data: runGraphQueryBenchmark(),
+            diagnostics: [],
+            meta: {
+              cwd: ".",
+            },
+          }),
+        );
+        return 0;
+      }
+
+      if (appPath === "adapter-dispatch" && flags.includes("--run")) {
+        stdout(
+          JSON.stringify({
+            schemaVersion: "lumina.cli.v0",
+            command: "lumina bench",
+            status: "ok",
+            data: await runAdapterDispatchBenchmark(),
             diagnostics: [],
             meta: {
               cwd: ".",

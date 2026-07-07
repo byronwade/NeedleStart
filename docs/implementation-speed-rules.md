@@ -45,7 +45,7 @@ benchmarks/graph-query.bench.ts
 benchmarks/adapter-dispatch.bench.ts
 ```
 
-These files start as deterministic skeletons that report `not implemented` until an owning run path exists. Route discovery, manifest size, and graph-query now have local run paths that return raw metadata in the JSON response. The benchmark files must not include synthetic winning numbers, and raw local output must not become a public comparison without review.
+These files start as deterministic skeletons that report `not implemented` until an owning run path exists. Route discovery, manifest size, graph-query, and adapter-dispatch now have local run paths that return raw metadata in the JSON response. The benchmark files must not include synthetic winning numbers, and raw local output must not become a public comparison without review.
 
 ## Dependency Pin Rule
 

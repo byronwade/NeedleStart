@@ -767,7 +767,7 @@ const currentImplementationStepDocs = [
   },
   {
     file: "docs/product-build-readiness.md",
-    terms: ["early benchmark/status skeleton exists with route-discovery, manifest-size, and graph-query local run support plus remaining `not implemented` status surfaces"],
+    terms: ["early benchmark/status skeleton exists with route-discovery, manifest-size, graph-query, and adapter-dispatch local run support"],
   },
   {
     file: "docs/task-backlog.md",

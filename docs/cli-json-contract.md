@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: framework contributors, CLI implementers, AI agents.
 
-This page defines the JSON output and exit-code contract for the `lumina` CLI. The implemented JSON surfaces are `lumina routes <appPath> --json`, `lumina inspect <appPath> --json`, `lumina map affected <appPath> <file> --json`, `lumina build <appPath> --json`, `lumina bench --list --json`, `lumina bench <name> --json`, `lumina bench route-discovery --json --run`, `lumina bench manifest-size --json --run`, and `lumina bench graph-query --json --run`; other command outputs remain planned. The shared diagnostic vocabulary lives in [Diagnostics Contract](diagnostics-contract.md). These contracts exist so Phase 1 and later command work can implement stable automation surfaces from the beginning.
+This page defines the JSON output and exit-code contract for the `lumina` CLI. The implemented JSON surfaces are `lumina routes <appPath> --json`, `lumina inspect <appPath> --json`, `lumina map affected <appPath> <file> --json`, `lumina build <appPath> --json`, `lumina bench --list --json`, `lumina bench <name> --json`, `lumina bench route-discovery --json --run`, `lumina bench manifest-size --json --run`, `lumina bench graph-query --json --run`, and `lumina bench adapter-dispatch --json --run`; other command outputs remain planned. The shared diagnostic vocabulary lives in [Diagnostics Contract](diagnostics-contract.md). These contracts exist so Phase 1 and later command work can implement stable automation surfaces from the beginning.
 
 ## Why This Exists
 
@@ -121,6 +121,7 @@ Initial planned command data shapes:
 | `lumina bench route-discovery --json --run` | Implemented local result detail: `{ "schemaVersion": "lumina.benchmark-result.v0", "generatedBy": GeneratedBy, "benchmark": BenchmarkDefinition, "metadata": BenchmarkMetadata, "results": BenchmarkRun[], "summary": BenchmarkSummary, "notes": string[] }` with raw metadata in the response and no persisted result files. |
 | `lumina bench manifest-size --json --run` | Implemented local result detail with the same `lumina.benchmark-result.v0` envelope, route/render/map artifact byte counts, raw metadata in the response, and no persisted result files. |
 | `lumina bench graph-query --json --run` | Implemented local result detail with the same `lumina.benchmark-result.v0` envelope, deterministic affected-route and related-file query counts for the large 1000-route fixture, raw metadata in the response, and no persisted result files. |
+| `lumina bench adapter-dispatch --json --run` | Implemented local result detail with the same `lumina.benchmark-result.v0` envelope, built `tiny-static` request-path status codes, response byte counts, raw metadata in the response, and no persisted result files. |
 | `lumina bench --json` | Planned broader runner: `{ "fixture": string, "runs": BenchmarkRun[], "environment": BenchmarkEnvironment, "summary": BenchmarkSummary }` |
 
 `lumina.benchmark-result.v0` is raw local evidence, not a public comparison contract. It may include machine-specific OS and hardware metadata because those fields are required benchmark context; normal agent-facing manifests must continue to avoid machine-specific values.

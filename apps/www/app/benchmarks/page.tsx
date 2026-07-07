@@ -24,8 +24,8 @@ const lanes = [
   },
   {
     title: "Adapter dispatch",
-    status: "Planned",
-    description: "Static output is verified today; production SSR/API dispatch benchmarks remain future scope.",
+    status: "Measured locally",
+    description: "The adapter-dispatch benchmark builds the tiny fixture, starts @lumina/adapter-bun, and records raw request-path metadata.",
     icon: TimerReset,
   },
 ];
@@ -69,6 +69,12 @@ const benchmarkArtifacts = [
     icon: BarChart3,
   },
   {
+    title: "Adapter dispatch run",
+    path: "bun run lumina -- bench adapter-dispatch --json --run",
+    status: "Implemented",
+    icon: TimerReset,
+  },
+  {
     title: "Methodology contract",
     path: "docs/benchmark-methodology.md",
     status: "Planned",
@@ -88,7 +94,12 @@ export default function BenchmarksPage() {
       <PageHeader
         eyebrow="Evidence only"
         title="Benchmarks"
-        description="Lumina has benchmark skeletons for route discovery, manifest size, graph queries, and adapter dispatch. Route discovery, manifest size, and graph query can run locally today; adapter dispatch stays not implemented until measured fixtures exist."
+        description="Lumina has benchmark skeletons for route discovery, manifest size, graph queries, and adapter dispatch. All four first-wave benchmark commands can run locally today and return raw metadata without making public comparison claims."
+        facts={[
+          { label: "Route", value: "/benchmarks" },
+          { label: "Source", value: "app/benchmarks/page.tsx" },
+          { label: "Status", value: "Measured surfaces" },
+        ]}
       />
 
       <section className="benchmark-grid">
@@ -118,8 +129,8 @@ export default function BenchmarksPage() {
           <p>
             The site can show benchmark surfaces today, but it cannot claim speed wins until the repository contains
             repeatable commands, raw result files, and methodology notes reviewers can inspect. The route-discovery,
-            manifest-size, and graph-query run commands return raw local metadata, while status commands remain useful for
-            incomplete surfaces.
+            manifest-size, graph-query, and adapter-dispatch run commands return raw local metadata, while status commands
+            remain useful for incomplete surfaces.
           </p>
         </div>
         <div className="evidence-checklist" aria-label="Benchmark evidence requirements">

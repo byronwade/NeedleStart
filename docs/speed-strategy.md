@@ -41,7 +41,7 @@ Early status output should say `not implemented` for missing behavior instead of
 
 | Surface | Speed goal | Primary docs | Evidence required |
 | --- | --- | --- | --- |
-| Early speed skeleton | Create stable fixture and benchmark paths before route discovery expands. | `docs/implementation-speed-rules.md`, `docs/benchmark-fixtures.md` | Skeleton files, route-discovery, manifest-size, and graph-query local raw metadata, remaining `not implemented` adapter-dispatch surface, and no synthetic results |
+| Early speed skeleton | Create stable fixture and benchmark paths before route discovery expands. | `docs/implementation-speed-rules.md`, `docs/benchmark-fixtures.md` | Skeleton files, route-discovery, manifest-size, graph-query, and adapter-dispatch local raw metadata, and no synthetic results |
 | Dev startup | Start quickly after config and route discovery. | `docs/roadmap.md`, `docs/compiler-ir.md` | Dev fixture timing after route discovery and dev server work exist |
 | HMR and route updates | Recompute changed route slices, not the whole app. | `docs/compiler-ir.md`, `docs/lumina-map.md` | Incremental route fixture |
 | Static pages | Serve prebuilt HTML with minimal runtime work. | `docs/runtime-contract.md`, `docs/seo-engine.md` | Static output and HTTP tests |

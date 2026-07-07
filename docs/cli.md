@@ -26,7 +26,7 @@ Machine-readable command behavior is planned in [CLI JSON Contract](cli-json-con
 | `lumina mcp` | Start MCP server. | Planned | No |
 | `lumina edit` | Preview, apply, inspect, and undo safe-edit transactions. | Planned | Yes |
 | `lumina migrate` | Prototype framework migration workflows. | Planned | Yes |
-| `lumina bench` | Run planned benchmark fixtures and emit evidence metadata. | Implemented for `--list --json`, `<name> --json` benchmark skeleton status, `route-discovery --json --run`, `manifest-size --json --run`, and `graph-query --json --run`; persisted raw result files and public comparisons remain planned | Yes |
+| `lumina bench` | Run planned benchmark fixtures and emit evidence metadata. | Implemented for `--list --json`, `<name> --json` benchmark skeleton status, `route-discovery --json --run`, `manifest-size --json --run`, `graph-query --json --run`, and `adapter-dispatch --json --run`; persisted raw result files and public comparisons remain planned | Yes |
 
 ## Planned Command Variants
 
@@ -56,7 +56,7 @@ These variants are referenced by roadmap, guide, and contract docs. They remain 
 | `lumina edit undo` | Roll back an applied safe edit by mutation ID. |
 | `lumina migrate from-next` | Prototype migration from a Next.js-style app. |
 | `lumina bench --list` | Implemented for listing benchmark skeleton status as compact JSON with `--json`. |
-| `lumina bench <name>` | Implemented for reporting one benchmark skeleton status as compact JSON with `--json`; `route-discovery --json --run`, `manifest-size --json --run`, and `graph-query --json --run` also run local benchmarks and return raw metadata in the JSON response. |
+| `lumina bench <name>` | Implemented for reporting one benchmark skeleton status as compact JSON with `--json`; `route-discovery --json --run`, `manifest-size --json --run`, `graph-query --json --run`, and `adapter-dispatch --json --run` also run local benchmarks and return raw metadata in the JSON response. |
 | `lumina seo --route` | Run SEO checks for one route. |
 | `lumina seo --sitemap` | Inspect planned sitemap output. |
 | `lumina seo --strict` | Treat warnings as check failures for SEO automation. |
@@ -160,6 +160,8 @@ bun run lumina -- bench graph-query --json --run
 The implemented benchmark status command emits a compact `lumina.cli.v0` envelope for one named skeleton from `benchmarks/status.ts`. Supported names are `route-discovery`, `manifest-size`, `graph-query`, and `adapter-dispatch`. The command reports the benchmark file, category, fixture, and catalog status. It does not execute benchmark code, emit timings, create raw result files, or support public performance claims; measured benchmark execution requires an explicit `--run` variant.
 
 `bun run lumina -- bench route-discovery --json --run` runs the route-discovery benchmark against `fixtures/apps/tiny-static` and emits a compact `lumina.benchmark-result.v0` payload. The payload includes commit SHA, fixture name, runtime versions, dependency versions, OS, hardware summary, command, warmup count, run count, raw per-run route counts, diagnostics counts, durations, and min/median/max/mean summary values.
+
+`bun run lumina -- bench adapter-dispatch --json --run` builds a scratch copy of `fixtures/apps/tiny-static`, starts the built output through `@lumina/adapter-bun`, sends warmed request batches for `/` and `/missing`, and emits compact raw local metadata. The payload includes commit SHA, fixture name, runtime versions, adapter/build dependency versions, OS, hardware summary, command, warmup count, run count, status codes, response byte counts, durations, and min/median/max/mean summary values.
 
 `bun run lumina -- bench manifest-size --json --run` generates the fixed `fixtures/apps/medium-100-routes` source into a temporary directory, creates route, render, and map manifests in memory, and emits route count, diagnostic count, route manifest bytes, render manifest bytes, map bytes, total bytes, local timing, and min/median/max/mean total-byte summary values.
 
