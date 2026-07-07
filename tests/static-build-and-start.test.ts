@@ -98,6 +98,34 @@ describe("static build and Bun start integration", () => {
     expect(readFileSync(join(wwwRoot, ".lumina", "perf.report.json"), "utf8")).toBe(perfReport);
   }, 20_000);
 
+  test("CLI build human output shows stable timed phases", async () => {
+    const stdout: string[] = [];
+    const stderr: string[] = [];
+
+    const exitCode = await cli.runCli(["build", wwwRoot], {
+      stdout: (text) => stdout.push(text),
+      stderr: (text) => stderr.push(text),
+    });
+
+    expect(exitCode).toBe(0);
+    expect(stderr).toEqual([]);
+    expect(stdout).toHaveLength(1);
+
+    const output = stdout[0]!;
+    expect(output).toContain(`Lumina build ${wwwRoot}`);
+    expect(output).toContain("Routes     18");
+    expect(output).toContain("Artifacts  .lumina/routes.json, .lumina/render-manifest.json, .lumina/map.json");
+    expect(output).toContain("Phase                 Time      Status");
+    expect(output).toMatch(/^config\s+\d+ms\s+ok$/m);
+    expect(output).toMatch(/^route discovery\s+\d+ms\s+ok$/m);
+    expect(output).toMatch(/^render manifest\s+\d+ms\s+ok$/m);
+    expect(output).toMatch(/^map generation\s+\d+ms\s+ok$/m);
+    expect(output).toMatch(/^client bundles\s+\d+ms\s+ok$/m);
+    expect(output).toMatch(/^static output\s+\d+ms\s+ok$/m);
+    expect(output).toMatch(/^adapter output\s+\d+ms\s+ok$/m);
+    expect(output).toMatch(/^Done in \d+ms$/m);
+  }, 20_000);
+
   test("CLI build loads lumina.config.ts and emits adapter-aware server entry", async () => {
     const appRoot = createConfiguredBuildStartApp();
     const stdout: string[] = [];
@@ -267,6 +295,9 @@ describe("static build and Bun start integration", () => {
       const securityHtml = await security.text();
       expect(securityHtml).toContain("<h1>Security</h1>");
       expect(securityHtml).toContain("docs/public/reference/security.md");
+      expect(securityHtml).toContain("<h2 id=\"current-status\">Current Status</h2>");
+      expect(securityHtml).toContain("Do not treat Lumina as security-audited");
+      expect(securityHtml).toContain("<li>Auth and sessions.</li>");
       expect(securityHtml).toContain('data-lumina-route="/docs/*"');
     } finally {
       await server.close();

@@ -30,6 +30,14 @@ export type LuminaBuildResult = {
   outputs: string[];
   manifests: string[];
   diagnostics: unknown[];
+  phases: LuminaBuildPhase[];
+  durationMs: number;
+};
+
+export type LuminaBuildPhase = {
+  name: string;
+  durationMs: number;
+  status: "ok";
 };
 
 type RouteParams = Record<string, string | string[]>;
@@ -42,6 +50,7 @@ type RouteMatch = {
 
 const virtualRoutesModuleId = "virtual:lumina/routes";
 const resolvedVirtualRoutesModuleId = `\0${virtualRoutesModuleId}`;
+const buildLocks = new Map<string, Promise<void>>();
 
 export async function startLuminaDevServer(options: LuminaDevServerOptions): Promise<LuminaDevServer> {
   const appRoot = resolve(options.appRoot);
@@ -96,6 +105,10 @@ export async function startLuminaDevServer(options: LuminaDevServerOptions): Pro
           const watchAddedDirectory = (directory: string) => {
             if (!isAppDirectory(appRoot, directory)) return;
             server.watcher.add(directory);
+            setTimeout(() => {
+              const routeFile = findRouteSourceInDirectory(directory);
+              if (routeFile) updateRouteState(routeFile);
+            }, 50).unref();
           };
 
           const updateRouteState = (file: string) => {
@@ -234,107 +247,112 @@ export async function startLuminaDevServer(options: LuminaDevServerOptions): Pro
 
 export async function buildLuminaStaticApp(options: LuminaDevServerOptions): Promise<LuminaBuildResult> {
   const appRoot = resolve(options.appRoot);
-  const configResult = await loadLuminaConfig({ appRoot, mode: "production" });
+  return await withBuildLock(appRoot, () => buildLuminaStaticAppLocked(options, appRoot));
+}
+
+async function buildLuminaStaticAppLocked(options: LuminaDevServerOptions, appRoot: string): Promise<LuminaBuildResult> {
+  const buildStartedAt = Date.now();
+  const phaseTimings: LuminaBuildPhase[] = [];
+  const configResult = await timePhase(phaseTimings, "config", () => loadLuminaConfig({ appRoot, mode: "production" }));
   if (configResult.diagnostics.some((diagnostic) => diagnostic.severity === "error")) {
     return {
       routes: [],
       outputs: [],
       manifests: [],
       diagnostics: configResult.diagnostics,
+      phases: phaseTimings,
+      durationMs: elapsedSince(buildStartedAt),
     };
   }
 
-  const routeState = regenerateArtifacts(appRoot, undefined, configResult.config.outputDir);
+  const routeState = regenerateBuildArtifacts(appRoot, configResult.config.outputDir, phaseTimings);
   const outputs: string[] = [];
   const manifests = [
     ".lumina/routes.json",
     ".lumina/render-manifest.json",
     ".lumina/map.json",
   ];
-  const phaseTimings: Array<{ name: string; durationMs: number; status: "ok" }> = [];
 
-  clearBuildOutput(appRoot);
-  await writeClientBundles(appRoot, routeState.routes);
-  const clientOutputs = copyClientBundlesToPublic(appRoot);
+  const clientOutputs = await timePhase(phaseTimings, "client bundles", async () => {
+    clearBuildOutput(appRoot);
+    await writeClientBundles(appRoot, routeState.routes);
+    return copyClientBundlesToPublic(appRoot);
+  });
 
-  const vite = await createServer({
-    appType: "custom",
-    configFile: false,
-    esbuild: {
-      jsx: "automatic",
-      jsxImportSource: "react",
-    },
-    optimizeDeps: {
-      include: [],
-      noDiscovery: true,
-    },
-    ssr: {
-      external: ["react", "react-dom", "react-dom/client", "react-dom/server", "react/jsx-dev-runtime", "react/jsx-runtime"],
-    },
-    root: appRoot,
-    logLevel: options.logLevel ?? "silent",
-    server: {
-      middlewareMode: true,
-    },
-    plugins: [
-      {
-        name: "lumina-static-build-virtual-routes",
-        resolveId(id) {
-          if (id === virtualRoutesModuleId) return resolvedVirtualRoutesModuleId;
-        },
-        load(id) {
-          if (id === resolvedVirtualRoutesModuleId) {
-            return [
-              `export const routes = ${JSON.stringify(routeState.routes)};`,
-              `export const manifest = ${JSON.stringify(routeState.manifest)};`,
-            ].join("\n");
-          }
-        },
+  await timePhase(phaseTimings, "static output", async () => {
+    const vite = await createServer({
+      appType: "custom",
+      configFile: false,
+      esbuild: {
+        jsx: "automatic",
+        jsxImportSource: "react",
       },
-    ],
+      optimizeDeps: {
+        include: [],
+        noDiscovery: true,
+      },
+      ssr: {
+        external: ["react", "react-dom", "react-dom/client", "react-dom/server", "react/jsx-dev-runtime", "react/jsx-runtime"],
+      },
+      root: appRoot,
+      logLevel: options.logLevel ?? "silent",
+      server: {
+        middlewareMode: true,
+      },
+      plugins: [
+        {
+          name: "lumina-static-build-virtual-routes",
+          resolveId(id) {
+            if (id === virtualRoutesModuleId) return resolvedVirtualRoutesModuleId;
+          },
+          load(id) {
+            if (id === resolvedVirtualRoutesModuleId) {
+              return [
+                `export const routes = ${JSON.stringify(routeState.routes)};`,
+                `export const manifest = ${JSON.stringify(routeState.manifest)};`,
+              ].join("\n");
+            }
+          },
+        },
+      ],
+    });
+
+    try {
+      for (const route of routeState.routes) {
+        if (route.kind !== "page" || route.renderMode !== "static" || route.params.length > 0) continue;
+        const html = await renderRoute(vite, route, route.path, {
+          includeViteClient: false,
+          includeClientEntry: true,
+          clientBasePath: "/_lumina/client",
+        });
+        const outputPath = staticHtmlOutputPath(route.path);
+        writeTextArtifact(appRoot, outputPath, html);
+        outputs.push(outputPath);
+      }
+      outputs.push(...clientOutputs);
+    } finally {
+      await vite.close();
+    }
   });
 
-  try {
-    for (const route of routeState.routes) {
-      if (route.kind !== "page" || route.renderMode !== "static" || route.params.length > 0) continue;
-      const html = await renderRoute(vite, route, route.path, {
-        includeViteClient: false,
-        includeClientEntry: true,
-        clientBasePath: "/_lumina/client",
-      });
-      const outputPath = staticHtmlOutputPath(route.path);
-      writeTextArtifact(appRoot, outputPath, html);
-      outputs.push(outputPath);
-      phaseTimings.push({
-        name: `static html ${route.path}`,
-        durationMs: 0,
-        status: "ok",
-      });
-    }
-    outputs.push(...clientOutputs);
-    const ssrOutputs = await writeSsrServerBundle(appRoot, routeState.routes.filter((route) => route.kind === "page" && route.renderMode === "ssr"));
-    outputs.push(...ssrOutputs);
-    if (ssrOutputs.length > 0) {
-      phaseTimings.push({
-        name: "ssr server bundle",
-        durationMs: 0,
-        status: "ok",
-      });
-    }
-  } finally {
-    await vite.close();
-  }
-
-  copyJsonArtifact(appRoot, ".lumina/routes.json", "dist/routes.manifest.json", routeState.manifest);
-  copyJsonArtifact(appRoot, ".lumina/render-manifest.json", "dist/render.manifest.json", routeState.renderManifest);
-  const serverEntryPath = writeServerEntry(appRoot, configResult.config.adapter);
-  const adapterManifest = createBunAdapterManifest({
-    hasSsrOutput: routeState.routes.some((route) => route.kind === "page" && route.renderMode === "ssr"),
-    config: configResult.config,
-    configSource: configResult.sourceFile,
-    serverEntry: serverEntryPath,
+  const ssrOutputs = await timePhase(phaseTimings, "ssr server bundle", () => {
+    return writeSsrServerBundle(appRoot, routeState.routes.filter((route) => route.kind === "page" && route.renderMode === "ssr"));
   });
-  copyJsonArtifact(appRoot, "", "dist/adapter.manifest.json", adapterManifest);
+  outputs.push(...ssrOutputs);
+
+  const serverEntryPath = await timePhase(phaseTimings, "adapter output", () => {
+    copyJsonArtifact(appRoot, ".lumina/routes.json", "dist/routes.manifest.json", routeState.manifest);
+    copyJsonArtifact(appRoot, ".lumina/render-manifest.json", "dist/render.manifest.json", routeState.renderManifest);
+    const entryPath = writeServerEntry(appRoot, configResult.config.adapter);
+    const adapterManifest = createBunAdapterManifest({
+      hasSsrOutput: routeState.routes.some((route) => route.kind === "page" && route.renderMode === "ssr"),
+      config: configResult.config,
+      configSource: configResult.sourceFile,
+      serverEntry: entryPath,
+    });
+    copyJsonArtifact(appRoot, "", "dist/adapter.manifest.json", adapterManifest);
+    return entryPath;
+  });
 
   const buildTracePath = ".lumina/build-trace.json";
   const perfReportPath = ".lumina/perf.report.json";
@@ -352,7 +370,29 @@ export async function buildLuminaStaticApp(options: LuminaDevServerOptions): Pro
       ...routeState.renderManifest.diagnostics,
       ...routeState.map.diagnostics,
     ],
+    phases: phaseTimings,
+    durationMs: elapsedSince(buildStartedAt),
   };
+}
+
+async function withBuildLock<T>(appRoot: string, action: () => Promise<T>): Promise<T> {
+  const previous = buildLocks.get(appRoot) ?? Promise.resolve();
+  let release!: () => void;
+  const current = new Promise<void>((resolveRelease) => {
+    release = resolveRelease;
+  });
+  const chained = previous.then(() => current);
+  buildLocks.set(appRoot, chained);
+  await previous;
+
+  try {
+    return await action();
+  } finally {
+    release();
+    if (buildLocks.get(appRoot) === chained) {
+      buildLocks.delete(appRoot);
+    }
+  }
 }
 
 function regenerateArtifacts(appRoot: string, changedFile?: string, outputDir = ".lumina") {
@@ -373,6 +413,20 @@ function regenerateArtifacts(appRoot: string, changedFile?: string, outputDir = 
       ],
     });
   }
+
+  return {
+    manifest: routesResult.manifest,
+    renderManifest: renderResult.manifest,
+    map: mapResult.map,
+    routes,
+  };
+}
+
+function regenerateBuildArtifacts(appRoot: string, outputDir: string, phaseTimings: LuminaBuildPhase[]) {
+  const routesResult = timeSyncPhase(phaseTimings, "route discovery", () => writeRoutesManifest({ appRoot, outputDir }));
+  const renderResult = timeSyncPhase(phaseTimings, "render manifest", () => writeRenderManifest({ appRoot, outputDir }));
+  const mapResult = timeSyncPhase(phaseTimings, "map generation", () => writeLuminaMap({ appRoot, outputDir }));
+  const routes = routesResult.manifest.routes.filter((route) => route.kind === "page");
 
   return {
     manifest: routesResult.manifest,
@@ -796,6 +850,13 @@ function isAppDirectory(appRoot: string, directory: string): boolean {
   return normalized === "app" || normalized.startsWith("app/");
 }
 
+function findRouteSourceInDirectory(directory: string): string | undefined {
+  for (const file of ["page.tsx", "page.ts", "page.jsx", "page.js"]) {
+    const candidate = resolve(directory, file);
+    if (existsSync(candidate)) return candidate;
+  }
+}
+
 function waitForWatcherReady(server: ViteDevServer): Promise<void> {
   const watcher = server.watcher as ViteDevServer["watcher"] & { _readyEmitted?: boolean };
   if (watcher._readyEmitted) return Promise.resolve();
@@ -961,7 +1022,7 @@ function createBunAdapterManifest(options: {
 
 function createBuildTrace(
   artifacts: string[],
-  phases: Array<{ name: string; durationMs: number; status: "ok" }>,
+  phases: LuminaBuildPhase[],
 ) {
   return {
     schemaVersion: "lumina.build-trace.v0",
@@ -969,13 +1030,11 @@ function createBuildTrace(
       package: "@lumina/compiler",
       version: "0.0.0",
     },
-    phases: [
-      { name: "route discovery", durationMs: 0, status: "ok" },
-      { name: "render manifest", durationMs: 0, status: "ok" },
-      { name: "map generation", durationMs: 0, status: "ok" },
-      ...phases,
-      { name: "adapter output", durationMs: 0, status: "ok" },
-    ],
+    phases: phases.map((phase) => ({
+      name: phase.name,
+      durationMs: 0,
+      status: phase.status,
+    })),
     artifacts: artifacts.sort(compareStrings),
     diagnostics: [],
   };
@@ -1015,11 +1074,39 @@ function createPerfReport(routes: RouteNode[], outputs: string[], appRoot: strin
 }
 
 function byteLengthOfFile(appRoot: string, outputPath: string): number {
-  return statSync(resolve(appRoot, ...outputPath.split("/"))).size;
+  const absolutePath = resolve(appRoot, ...outputPath.split("/"));
+  if (!existsSync(absolutePath)) return 0;
+  return statSync(absolutePath).size;
 }
 
 function compareStrings(left: string, right: string): number {
   return left.localeCompare(right, "en");
+}
+
+async function timePhase<T>(phases: LuminaBuildPhase[], name: string, action: () => Promise<T> | T): Promise<T> {
+  const startedAt = Date.now();
+  const result = await action();
+  phases.push({
+    name,
+    durationMs: elapsedSince(startedAt),
+    status: "ok",
+  });
+  return result;
+}
+
+function timeSyncPhase<T>(phases: LuminaBuildPhase[], name: string, action: () => T): T {
+  const startedAt = Date.now();
+  const result = action();
+  phases.push({
+    name,
+    durationMs: elapsedSince(startedAt),
+    status: "ok",
+  });
+  return result;
+}
+
+function elapsedSince(startedAt: number): number {
+  return Math.max(0, Date.now() - startedAt);
 }
 
 function escapeHtml(value: string): string {

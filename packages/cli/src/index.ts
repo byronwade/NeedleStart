@@ -7,7 +7,7 @@ import {
   writeRoutesManifest,
 } from "@lumina/compiler";
 import { getAffectedFiles, getAffectedRoutes } from "@lumina/map";
-import { buildLuminaStaticApp, startLuminaDevServer } from "@lumina/vite-plugin";
+import { buildLuminaStaticApp, startLuminaDevServer, type LuminaBuildPhase } from "@lumina/vite-plugin";
 import { benchmarkSkeletonReport } from "../../../benchmarks/status";
 
 export const luminaCliStatus = {
@@ -230,14 +230,10 @@ export async function runCli(argv: string[], io: CliIo = {}): Promise<number> {
         `Outputs    ${build.outputs.length}`,
         `Artifacts  ${build.manifests.join(", ")}`,
         "",
-        "Phase                 Status",
-        "route discovery       ok",
-        "render manifest       ok",
-        "map generation        ok",
-        "static output         ok",
-        "adapter output        ok",
+        "Phase                 Time      Status",
+        ...formatBuildPhases(build.phases),
         "",
-        "Done",
+        `Done in ${build.durationMs}ms`,
       ].join("\n"),
     );
     return 0;
@@ -325,6 +321,12 @@ function formatDevStartupError(error: unknown, port: number): string {
     return `Port ${port} is already in use. Choose another port with --port <port>.`;
   }
   return `Lumina dev failed to start: ${message}`;
+}
+
+function formatBuildPhases(phases: LuminaBuildPhase[]): string[] {
+  return phases.map((phase) => {
+    return `${phase.name.padEnd(21)}${`${phase.durationMs}ms`.padStart(6)}    ${phase.status}`;
+  });
 }
 
 async function waitForShutdown(close: () => Promise<void>): Promise<void> {

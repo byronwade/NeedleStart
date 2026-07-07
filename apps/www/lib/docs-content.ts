@@ -11,6 +11,7 @@ import {
   Workflow,
 } from "lucide-react";
 import type { ComponentType } from "react";
+import { getPublicDocsMarkdown } from "./public-docs-source";
 
 export type DocsStatus = "Current" | "Implemented" | "Scaffolded" | "Planned";
 
@@ -27,6 +28,7 @@ export type DocsArticle = {
     title: string;
     body: string;
   }>;
+  markdown?: string;
   links: Array<{
     label: string;
     href: string;
@@ -823,6 +825,7 @@ export function findPublicDocsPage(slug: string): PublicDocsPage | undefined {
 }
 
 export function createPublicDocsArticle(page: PublicDocsPage): DocsArticle {
+  const markdown = getPublicDocsMarkdown(page.slug)?.markdown;
   const siblingLinks = publicDocsPages
     .filter((candidate) => candidate.lane === page.lane && candidate.href !== page.href)
     .slice(0, 3)
@@ -837,20 +840,23 @@ export function createPublicDocsArticle(page: PublicDocsPage): DocsArticle {
     status: page.status,
     source: page.source,
     icon: laneIcons[page.lane] ?? FileCode2,
-    sections: [
-      {
-        title: "Public page role",
-        body: page.description,
-      },
-      {
-        title: "Current website behavior",
-        body: "This route is rendered from the website's public-docs metadata inventory. It shows the source path, status, lane, and related internal docs, but it does not parse or render the Markdown body yet.",
-      },
-      {
-        title: "Source-of-truth links",
-        body: `Related source docs: ${page.related.join(", ")}.`,
-      },
-    ],
+    markdown,
+    sections: markdown
+      ? []
+      : [
+          {
+            title: "Public page role",
+            body: page.description,
+          },
+          {
+            title: "Current website behavior",
+            body: "This route is rendered from the website's public-docs metadata inventory. A Markdown source snapshot is missing for this page, so only the route metadata is shown.",
+          },
+          {
+            title: "Source-of-truth links",
+            body: `Related source docs: ${page.related.join(", ")}.`,
+          },
+        ],
     links: siblingLinks.length
       ? siblingLinks
       : [

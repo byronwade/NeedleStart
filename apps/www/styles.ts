@@ -1272,6 +1272,19 @@ html.dark .theme-icon-moon {
   color: var(--background);
 }
 
+.docs-toc-group {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.85rem;
+}
+
+.docs-toc-group a {
+  font-size: 0.86rem;
+}
+
+.docs-toc-group .docs-toc-child {
+  padding-left: 1.1rem;
+}
+
 .docs-article-page {
   display: grid;
   grid-template-columns: minmax(220px, 0.28fr) minmax(0, 1fr);
@@ -1421,6 +1434,131 @@ html.dark .theme-icon-moon {
   margin: 0;
   color: var(--muted-foreground);
   font-size: 1rem;
+}
+
+.docs-markdown {
+  display: grid;
+  gap: 1rem;
+  max-width: 82ch;
+  color: var(--foreground);
+}
+
+.docs-markdown h2,
+.docs-markdown h3,
+.docs-markdown h4 {
+  margin: 1.35rem 0 0;
+  letter-spacing: 0;
+  scroll-margin-top: 7rem;
+}
+
+.docs-markdown h2 {
+  border-top: 1px solid var(--border);
+  padding-top: 1.35rem;
+  font-size: clamp(1.55rem, 3vw, 2.25rem);
+  line-height: 1.08;
+}
+
+.docs-markdown h2:first-child {
+  margin-top: 0;
+  border-top: 0;
+  padding-top: 0;
+}
+
+.docs-markdown h3 {
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  line-height: 1.18;
+}
+
+.docs-markdown h4 {
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.docs-markdown p,
+.docs-markdown li,
+.docs-markdown blockquote {
+  color: var(--muted-foreground);
+  font-size: 1rem;
+  line-height: 1.72;
+}
+
+.docs-markdown p {
+  margin: 0;
+}
+
+.docs-markdown ul,
+.docs-markdown ol {
+  display: grid;
+  gap: 0.42rem;
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.docs-markdown li::marker {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.docs-markdown a {
+  color: var(--foreground);
+  font-weight: 650;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--primary), transparent 45%);
+  text-underline-offset: 0.2em;
+}
+
+.docs-markdown a:hover,
+.docs-markdown a:focus-visible {
+  color: var(--primary);
+}
+
+.docs-markdown :not(pre) > code {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--code-bg);
+  color: var(--foreground);
+  font-family: "Geist Mono", "Cascadia Code", monospace;
+  font-size: 0.88em;
+  padding: 0.12rem 0.32rem;
+}
+
+.docs-code-block {
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--code-bg);
+}
+
+.docs-code-block figcaption {
+  border-bottom: 1px solid var(--border);
+  color: var(--muted-foreground);
+  font-family: "Geist Mono", "Cascadia Code", monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.62rem 0.85rem;
+  text-transform: uppercase;
+}
+
+.docs-code-block pre {
+  margin: 0;
+  overflow-x: auto;
+  padding: 0.9rem;
+}
+
+.docs-code-block code {
+  color: var(--foreground);
+  font-family: "Geist Mono", "Cascadia Code", monospace;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  white-space: pre;
+}
+
+.docs-markdown blockquote {
+  margin: 0;
+  border-left: 3px solid var(--primary);
+  background: var(--surface-soft);
+  padding: 0.8rem 1rem;
 }
 
 .docs-next-card .ui-card-content {

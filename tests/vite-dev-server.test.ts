@@ -74,7 +74,10 @@ describe("Vite dev integration", () => {
 
       const securityDocs = await fetch(`${dev.url}/docs/reference/security`);
       expect(securityDocs.status).toBe(200);
-      expect(await securityDocs.text()).toContain("<h1>Security</h1>");
+      const securityDocsHtml = await securityDocs.text();
+      expect(securityDocsHtml).toContain("<h1>Security</h1>");
+      expect(securityDocsHtml).toContain("<h2 id=\"current-status\">Current Status</h2>");
+      expect(securityDocsHtml).toContain("Do not treat Lumina as security-audited");
 
       const viteClient = await fetch(`${dev.url}/@vite/client`);
       expect(viteClient.status).toBe(200);

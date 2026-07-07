@@ -541,6 +541,10 @@ Definition of done:
 
 Goal: make large-repo output concise by default and structured when requested.
 
+Task status: Scaffolded for `lumina build` human output only.
+
+Evidence: `@lumina/cli` renders measured build phase timings for `config`, `route discovery`, `render manifest`, `map generation`, `client bundles`, `static output`, optional `ssr server bundle`, and `adapter output`; `tests/static-build-and-start.test.ts` covers the stable human phase table and total elapsed line. Check, test, dev, HMR, grouped diagnostics, cache summaries, affected summaries, verbose mode, and next-action rendering remain planned.
+
 Definition of done:
 
 - Build, check, test, dev, and HMR output have phase names, timings, grouped diagnostics, cache summaries, affected summaries, and next actions.

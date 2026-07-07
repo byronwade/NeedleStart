@@ -109,7 +109,7 @@ bun run lumina -- build apps/www
 bun run lumina -- build apps/www --json
 ```
 
-The implemented build command writes `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/build-trace.json`, `.lumina/perf.report.json`, static HTML under `dist/public`, generated SSR route bundles under `dist/server/ssr-routes.js` when explicit SSR page routes exist, route-specific production client bundles under `dist/public/_lumina/client/*.js`, and deployment manifest copies under `dist/routes.manifest.json`, `dist/render.manifest.json`, and `dist/adapter.manifest.json`. JSON mode emits a compact `lumina.cli.v0` envelope with output and manifest paths. It does not yet build API routes, SEO reports, or measured benchmark evidence.
+The implemented build command writes `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/build-trace.json`, `.lumina/perf.report.json`, static HTML under `dist/public`, generated SSR route bundles under `dist/server/ssr-routes.js` when explicit SSR page routes exist, route-specific production client bundles under `dist/public/_lumina/client/*.js`, and deployment manifest copies under `dist/routes.manifest.json`, `dist/render.manifest.json`, and `dist/adapter.manifest.json`. Human output shows a quiet phase table with measured timings for `config`, `route discovery`, `render manifest`, `map generation`, `client bundles`, `static output`, optional `ssr server bundle`, and `adapter output`, followed by total elapsed time. JSON mode emits a compact `lumina.cli.v0` envelope with output and manifest paths and does not mix prose into stdout. It does not yet build API routes, SEO reports, or measured benchmark evidence.
 
 ## Implemented Start Command
 

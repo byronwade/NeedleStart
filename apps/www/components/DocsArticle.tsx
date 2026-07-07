@@ -1,6 +1,7 @@
 import { ArrowLeft, ArrowRight, FileText } from "lucide-react";
 import type { DocsArticle } from "../lib/docs-content";
 import { docsNavGroups } from "../lib/docs-content";
+import { getMarkdownHeadings, MarkdownBody } from "./MarkdownBody";
 import { Badge } from "./ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 
@@ -12,6 +13,7 @@ function statusVariant(status: DocsArticle["status"]) {
 
 export function DocsArticlePage({ article }: { article: DocsArticle }) {
   const Icon = article.icon;
+  const headings = article.markdown ? getMarkdownHeadings(article.markdown).filter((heading) => heading.depth === 2 || heading.depth === 3) : [];
 
   return (
     <main className="docs-page docs-article-page" id="main-content">
@@ -20,6 +22,16 @@ export function DocsArticlePage({ article }: { article: DocsArticle }) {
           <ArrowLeft aria-hidden="true" size={14} />
           Docs home
         </a>
+        {headings.length ? (
+          <nav className="docs-nav-group docs-toc-group" aria-label="On this page">
+            <h2>On this page</h2>
+            {headings.slice(0, 8).map((heading) => (
+              <a className={heading.depth === 3 ? "docs-toc-child" : undefined} href={`#${heading.id}`} key={heading.id}>
+                {heading.text}
+              </a>
+            ))}
+          </nav>
+        ) : null}
         {docsNavGroups.map((group) => (
           <nav className="docs-nav-group" key={group.title} aria-label={group.title}>
             <h2>{group.title}</h2>
@@ -55,14 +67,18 @@ export function DocsArticlePage({ article }: { article: DocsArticle }) {
           </div>
         </section>
 
-        <div className="docs-article-sections">
-          {article.sections.map((section) => (
-            <section className="docs-prose-section" key={section.title}>
-              <h2>{section.title}</h2>
-              <p>{section.body}</p>
-            </section>
-          ))}
-        </div>
+        {article.markdown ? (
+          <MarkdownBody markdown={article.markdown} source={article.source} />
+        ) : (
+          <div className="docs-article-sections">
+            {article.sections.map((section) => (
+              <section className="docs-prose-section" key={section.title}>
+                <h2>{section.title}</h2>
+                <p>{section.body}</p>
+              </section>
+            ))}
+          </div>
+        )}
 
         <Card className="docs-next-card">
           <CardHeader>

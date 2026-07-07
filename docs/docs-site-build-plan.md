@@ -8,7 +8,7 @@ This page turns the public docs architecture into an implementation plan for the
 
 No docs site renderer has been chosen yet. This page describes decision gates and implementation phases, not current behavior.
 
-The `apps/www` docs area currently provides a visual public-docs route scaffold for the marketing fixture. It includes the docs home, hand-authored static lane and topic pages, and an SSR `/docs/*` inventory viewer backed by metadata for the current `docs/public/` page set. This is useful for design direction, navigation shape, source-path presentation, whole-inventory coverage, and route-discovery evidence, but it does not complete the phases below. Markdown rendering, generated navigation, generated static routes, search, frontmatter validation, and machine-readable docs outputs remain planned.
+The `apps/www` docs area currently provides a visual public-docs route scaffold for the marketing fixture. It includes the docs home, hand-authored static lane and topic pages, and an SSR `/docs/*` viewer backed by metadata and bundled Markdown body snapshots for the current `docs/public/` page set. This is useful for design direction, navigation shape, source-path presentation, whole-inventory coverage, Markdown readability, and route-discovery evidence, but it does not complete the phases below. Generated navigation, generated static routes, search, frontmatter validation, and machine-readable docs outputs remain planned.
 
 ## Goals
 
@@ -57,6 +57,8 @@ Evaluate:
 - Integration with the eventual Lumina site.
 
 Renderer candidates may include VitePress, Docusaurus, Nextra, Mintlify, or a custom Lumina docs app. The final choice should be recorded in an ADR.
+
+The current `apps/www` Markdown body renderer is a scaffolded custom preview path, not the final renderer decision.
 
 ### Phase C: Navigation And Search
 
