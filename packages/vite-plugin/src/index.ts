@@ -33,6 +33,7 @@ export type LuminaBuildResult = {
 };
 
 type RouteParams = Record<string, string | string[]>;
+type SearchParams = Record<string, string | string[]>;
 
 type RouteMatch = {
   route: RouteNode;
@@ -111,7 +112,8 @@ export async function startLuminaDevServer(options: LuminaDevServerOptions): Pro
           server.watcher.on("unlink", updateRouteState);
 
           server.middlewares.use(async (request, response, next) => {
-            const url = normalizeRequestPath(request.url ?? "/");
+            const rawUrl = request.url ?? "/";
+            const url = normalizeRequestPath(rawUrl);
             if (url.startsWith("/@lumina/client/")) {
               await serveClientBundle(appRoot, url, response);
               return;
@@ -131,7 +133,10 @@ export async function startLuminaDevServer(options: LuminaDevServerOptions): Pro
             }
 
             try {
-              const html = await renderRoute(server, match.route, url, { params: match.params });
+              const html = await renderRoute(server, match.route, url, {
+                params: match.params,
+                searchParams: readSearchParams(rawUrl),
+              });
               response.statusCode = 200;
               response.setHeader("Content-Type", "text/html; charset=utf-8");
               response.end(html);
@@ -345,7 +350,7 @@ async function renderRoute(
   server: ViteDevServer,
   route: RouteNode,
   url: string,
-  options: { includeViteClient?: boolean; includeClientEntry?: boolean; clientBasePath?: string; params?: RouteParams } = { includeViteClient: true },
+  options: { includeViteClient?: boolean; includeClientEntry?: boolean; clientBasePath?: string; params?: RouteParams; searchParams?: SearchParams } = { includeViteClient: true },
 ): Promise<string> {
   const pageModule = await server.ssrLoadModule(`/${route.sourceFile}`);
   const Page = pageModule.default;
@@ -354,7 +359,8 @@ async function renderRoute(
   }
 
   const params = options.params ?? {};
-  let app: ReactNode = createElement(Page, { params });
+  const searchParams = options.searchParams ?? {};
+  let app: ReactNode = createElement(Page, { params, searchParams });
 
   for (const layout of [...route.layouts].reverse()) {
     const layoutModule = await server.ssrLoadModule(`/${layout}`);
@@ -362,7 +368,7 @@ async function renderRoute(
     if (typeof Layout !== "function") {
       throw new Error(`${layout} must export a default layout component.`);
     }
-    app = createElement(Layout, { children: app, params });
+    app = createElement(Layout, { children: app, params, searchParams });
   }
 
   const appHtml = renderToString(app);
@@ -432,7 +438,7 @@ function createClientEntryModule(route: RouteNode, modulePath = (sourceFile: str
     ...route.layouts.map((layout, index) => `import Layout${index} from "${modulePath(layout)}";`),
   ];
   const layoutApplications = route.layouts
-    .map((_, index) => `app = createElement(Layout${index}, { children: app });`)
+    .map((_, index) => `app = createElement(Layout${index}, { children: app, params, searchParams });`)
     .reverse();
 
   return [
@@ -463,8 +469,23 @@ function createClientEntryModule(route: RouteNode, modulePath = (sourceFile: str
     "  return params;",
     "}",
     "",
+    "function readLuminaSearchParams(search) {",
+    "  const values = new URLSearchParams(search);",
+    "  const searchParams = {};",
+    "  for (const [key, value] of values) {",
+    "    if (Object.prototype.hasOwnProperty.call(searchParams, key)) {",
+    "      const existing = searchParams[key];",
+    "      searchParams[key] = Array.isArray(existing) ? [...existing, value] : [existing, value];",
+    "    } else {",
+    "      searchParams[key] = value;",
+    "    }",
+    "  }",
+    "  return searchParams;",
+    "}",
+    "",
     "const params = readLuminaRouteParams(window.location.pathname);",
-    "let app = createElement(Page, { params });",
+    "const searchParams = readLuminaSearchParams(window.location.search);",
+    "let app = createElement(Page, { params, searchParams });",
     ...layoutApplications,
     "hydrateRoot(document, app);",
   ].join("\n");
@@ -573,6 +594,22 @@ function normalizeRequestPath(url: string): string {
   const pathname = new URL(url, "http://lumina.local").pathname;
   if (pathname.length > 1 && pathname.endsWith("/")) return pathname.slice(0, -1);
   return pathname;
+}
+
+function readSearchParams(url: string): SearchParams {
+  const values = new URL(url, "http://lumina.local").searchParams;
+  const searchParams: SearchParams = {};
+  for (const [key, value] of values) {
+    const existing = searchParams[key];
+    if (Array.isArray(existing)) {
+      existing.push(value);
+    } else if (typeof existing === "string") {
+      searchParams[key] = [existing, value];
+    } else {
+      searchParams[key] = value;
+    }
+  }
+  return searchParams;
 }
 
 function shouldPassThroughToVite(method: string | undefined, pathname: string): boolean {

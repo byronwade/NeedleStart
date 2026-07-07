@@ -144,6 +144,13 @@ describe("Vite dev integration", () => {
       const missingParam = await fetchWithTimeout(`${dev.url}/blog`);
       expect(missingParam.status).toBe(404);
       expect(await missingParam.text()).toContain("Route not found: /blog");
+
+      const search = await fetchWithTimeout(`${dev.url}/search?q=lumina&page=2`);
+      expect(search.status).toBe(200);
+      const searchHtml = await search.text();
+      expect(searchHtml).toContain("<h1>Search");
+      expect(searchHtml).toContain("lumina");
+      expect(searchHtml).toContain("2</h1>");
     } finally {
       await dev.close();
       rmSync(appRoot, { recursive: true, force: true });
@@ -258,6 +265,7 @@ function createDynamicRoutesApp(): string {
   const appRoot = mkdtempSync(join(scratchRoot, "lumina-vite-params-"));
   mkdirSync(join(appRoot, "app", "blog", "[slug]"), { recursive: true });
   mkdirSync(join(appRoot, "app", "docs", "[...parts]"), { recursive: true });
+  mkdirSync(join(appRoot, "app", "search"), { recursive: true });
 
   writeFileSync(
     join(appRoot, "app", "layout.tsx"),
@@ -284,6 +292,16 @@ function createDynamicRoutesApp(): string {
     [
       "export default function DocsPage({ params }: { params: { parts: string[] } }) {",
       "  return <main><h1>Docs {params.parts.join(\"/\")}</h1></main>;",
+      "}",
+      "",
+    ].join("\n"),
+    "utf8",
+  );
+  writeFileSync(
+    join(appRoot, "app", "search", "page.tsx"),
+    [
+      "export default function SearchPage({ searchParams }: { searchParams: { q?: string; page?: string } }) {",
+      "  return <main><h1>Search {searchParams.q}/{searchParams.page}</h1></main>;",
       "}",
       "",
     ].join("\n"),

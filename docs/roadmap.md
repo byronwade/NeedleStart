@@ -18,7 +18,7 @@ Unless a phase is explicitly marked `Verified.` or `Scaffolded.` with evidence, 
 - Route discovery and manifest generation.
 - Workspace graph, shared-file identity, and affected build planning.
 - Basic Vite integration with React SSR and hydration.
-- Nested layouts and dev-server page params; search params and error conventions remain planned.
+- Nested layouts and dev-server page params; error conventions remain planned.
 
 ### Core Wedge
 
@@ -295,7 +295,7 @@ Features:
 - Root layout.
 - Nested layouts.
 - Dynamic and catch-all page route params in the Vite dev server.
-- Search params.
+- Search params in the Vite dev server.
 - Error page.
 - Not found page.
 - Client components with `"use client"`.
@@ -305,7 +305,7 @@ Definition of done:
 
 - Nested layouts render in correct order in the Vite dev server.
 - Dynamic and catch-all params are available to page components in the Vite dev server.
-- Search params should be available.
+- Search params are available to page components in the Vite dev server.
 - 404 should use `app/not-found.tsx`.
 - Errors should use `app/error.tsx`.
 - Hydration works for the first simple client component in the dev server and built static output; broader component-level HMR remains planned.

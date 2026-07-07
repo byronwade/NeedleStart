@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, framework contributors, AI agents.
 
-This page documents file and folder conventions for Lumina apps. The route-discovery subset, explicit `staticPage()` / `ssr()` render declarations, minimal Vite dev page rendering with dynamic and catch-all route params, and route-specific hydration bundle output are implemented for current fixtures; config loading, metadata, search params, and production SSR/API behavior remain planned.
+This page documents file and folder conventions for Lumina apps. The route-discovery subset, explicit `staticPage()` / `ssr()` render declarations, minimal Vite dev page rendering with dynamic and catch-all route params plus search params, and route-specific hydration bundle output are implemented for current fixtures; config loading, metadata, and production SSR/API behavior remain planned.
 
 For exact route parsing, route IDs, sorting, conflict diagnostics, and fixture requirements, see [Routing Contract](routing-contract.md).
 
@@ -23,7 +23,7 @@ MVP Alpha route discovery currently supports source fixtures that use:
 - `components/*.tsx`
 - `lumina.config.ts`
 
-MVP Alpha should defer config loading, optional catch-all segments, search params, error routes, not-found routes, contract files, app-local AGENTS generation, and llms outputs. Production rendered HTML for dynamic routes remains planned; the current static build emits HTML only for static routes.
+MVP Alpha should defer config loading, optional catch-all segments, error routes, not-found routes, contract files, app-local AGENTS generation, and llms outputs. Production rendered HTML for dynamic routes remains planned; the current static build emits HTML only for static routes.
 
 These conventions are the starter surface for `apps/www/`, scaffolded examples, and `bun create lumina` target behavior.
 
