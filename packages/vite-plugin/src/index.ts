@@ -32,6 +32,13 @@ export type LuminaBuildResult = {
   diagnostics: unknown[];
 };
 
+type RouteParams = Record<string, string | string[]>;
+
+type RouteMatch = {
+  route: RouteNode;
+  params: RouteParams;
+};
+
 const virtualRoutesModuleId = "virtual:lumina/routes";
 const resolvedVirtualRoutesModuleId = `\0${virtualRoutesModuleId}`;
 
@@ -114,9 +121,9 @@ export async function startLuminaDevServer(options: LuminaDevServerOptions): Pro
               return;
             }
 
-            const route = findRoute(routeState.routes, url);
+            const match = findRoute(routeState.routes, url);
 
-            if (!route) {
+            if (!match) {
               response.statusCode = 404;
               response.setHeader("Content-Type", "text/html; charset=utf-8");
               response.end(`<!doctype html><h1>Route not found: ${escapeHtml(url)}</h1>`);
@@ -124,7 +131,7 @@ export async function startLuminaDevServer(options: LuminaDevServerOptions): Pro
             }
 
             try {
-              const html = await renderRoute(server, route, url);
+              const html = await renderRoute(server, match.route, url, { params: match.params });
               response.statusCode = 200;
               response.setHeader("Content-Type", "text/html; charset=utf-8");
               response.end(html);
@@ -338,7 +345,7 @@ async function renderRoute(
   server: ViteDevServer,
   route: RouteNode,
   url: string,
-  options: { includeViteClient: boolean; includeClientEntry?: boolean; clientBasePath?: string } = { includeViteClient: true },
+  options: { includeViteClient?: boolean; includeClientEntry?: boolean; clientBasePath?: string; params?: RouteParams } = { includeViteClient: true },
 ): Promise<string> {
   const pageModule = await server.ssrLoadModule(`/${route.sourceFile}`);
   const Page = pageModule.default;
@@ -346,7 +353,8 @@ async function renderRoute(
     throw new Error(`${route.sourceFile} must export a default page component.`);
   }
 
-  let app: ReactNode = createElement(Page);
+  const params = options.params ?? {};
+  let app: ReactNode = createElement(Page, { params });
 
   for (const layout of [...route.layouts].reverse()) {
     const layoutModule = await server.ssrLoadModule(`/${layout}`);
@@ -354,12 +362,13 @@ async function renderRoute(
     if (typeof Layout !== "function") {
       throw new Error(`${layout} must export a default layout component.`);
     }
-    app = createElement(Layout, { children: app });
+    app = createElement(Layout, { children: app, params });
   }
 
   const appHtml = renderToString(app);
-  const viteClient = options.includeViteClient ? '<script type="module" src="/@vite/client"></script>' : "";
-  const includeClientEntry = options.includeClientEntry ?? options.includeViteClient;
+  const includeViteClient = options.includeViteClient ?? true;
+  const viteClient = includeViteClient ? '<script type="module" src="/@vite/client"></script>' : "";
+  const includeClientEntry = options.includeClientEntry ?? includeViteClient;
   const clientEntry = includeClientEntry ? `<script type="module" src="${clientEntryUrl(route, options.clientBasePath)}"></script>` : "";
   const html = `<!doctype html>${appHtml}<div data-lumina-route="${escapeAttribute(route.path)}"></div>${viteClient}${clientEntry}`;
   return server.transformIndexHtml(url, html);
@@ -429,7 +438,33 @@ function createClientEntryModule(route: RouteNode, modulePath = (sourceFile: str
   return [
     ...imports,
     "",
-    "let app = createElement(Page);",
+    `const luminaRouteSegments = ${JSON.stringify(route.segments)};`,
+    "",
+    "function readLuminaRouteParams(pathname) {",
+    "  const parts = pathname.replace(/^\\/+|\\/+$/g, \"\").split(\"/\").filter(Boolean).map((part) => decodeURIComponent(part));",
+    "  const params = {};",
+    "  let partIndex = 0;",
+    "  for (const segment of luminaRouteSegments) {",
+    "    if (segment.kind === \"group\") continue;",
+    "    if (segment.kind === \"static\") {",
+    "      partIndex += 1;",
+    "      continue;",
+    "    }",
+    "    if (segment.kind === \"dynamic\") {",
+    "      params[segment.name] = parts[partIndex];",
+    "      partIndex += 1;",
+    "      continue;",
+    "    }",
+    "    if (segment.kind === \"catchAll\") {",
+    "      params[segment.name] = parts.slice(partIndex);",
+    "      break;",
+    "    }",
+    "  }",
+    "  return params;",
+    "}",
+    "",
+    "const params = readLuminaRouteParams(window.location.pathname);",
+    "let app = createElement(Page, { params });",
     ...layoutApplications,
     "hydrateRoot(document, app);",
   ].join("\n");
@@ -467,8 +502,61 @@ function relativeModulePath(fromFile: string, appRoot: string, sourceFile: strin
   return relativePath.startsWith(".") ? relativePath : `./${relativePath}`;
 }
 
-function findRoute(routes: RouteNode[], url: string): RouteNode | undefined {
-  return routes.find((route) => route.path === url);
+function findRoute(routes: RouteNode[], url: string): RouteMatch | undefined {
+  for (const route of routes) {
+    const params = matchRoute(route, url);
+    if (params) return { route, params };
+  }
+  return undefined;
+}
+
+function matchRoute(route: RouteNode, url: string): RouteParams | undefined {
+  const parts = splitRoutePath(url);
+  if (!parts) return undefined;
+
+  const params: RouteParams = {};
+  let partIndex = 0;
+
+  for (const segment of route.segments) {
+    if (segment.kind === "group") continue;
+
+    if (segment.kind === "static") {
+      if (parts[partIndex] !== segment.value) return undefined;
+      partIndex += 1;
+      continue;
+    }
+
+    if (segment.kind === "dynamic") {
+      const value = parts[partIndex];
+      if (!value) return undefined;
+      params[segment.name] = value;
+      partIndex += 1;
+      continue;
+    }
+
+    if (segment.kind === "catchAll") {
+      const rest = parts.slice(partIndex);
+      if (rest.length === 0) return undefined;
+      params[segment.name] = rest;
+      partIndex = parts.length;
+    }
+  }
+
+  if (partIndex !== parts.length) return undefined;
+  return params;
+}
+
+function splitRoutePath(pathname: string): string[] | undefined {
+  const rawParts = pathname.replace(/^\/+|\/+$/g, "").split("/").filter(Boolean);
+  const parts: string[] = [];
+  for (const part of rawParts) {
+    try {
+      parts.push(decodeURIComponent(part));
+    } catch {
+      return undefined;
+    }
+  }
+  return parts;
 }
 
 function isAppSourceFile(appRoot: string, file: string): boolean {

@@ -118,6 +118,38 @@ describe("Vite dev integration", () => {
     }
   });
 
+  test("passes dynamic and catch-all route params to dev page renders", async () => {
+    const appRoot = createDynamicRoutesApp();
+    const port = await getFreePort();
+    const dev = await startLuminaDevServer({
+      appRoot,
+      host: "127.0.0.1",
+      port,
+      logLevel: "silent",
+    });
+
+    try {
+      const blog = await fetchWithTimeout(`${dev.url}/blog/hello-lumina`);
+      expect(blog.status).toBe(200);
+      const blogHtml = await blog.text();
+      expect(blogHtml).toContain("<h1>Post");
+      expect(blogHtml).toContain("hello-lumina</h1>");
+
+      const docs = await fetchWithTimeout(`${dev.url}/docs/guide/getting-started`);
+      expect(docs.status).toBe(200);
+      const docsHtml = await docs.text();
+      expect(docsHtml).toContain("<h1>Docs");
+      expect(docsHtml).toContain("guide/getting-started</h1>");
+
+      const missingParam = await fetchWithTimeout(`${dev.url}/blog`);
+      expect(missingParam.status).toBe(404);
+      expect(await missingParam.text()).toContain("Route not found: /blog");
+    } finally {
+      await dev.close();
+      rmSync(appRoot, { recursive: true, force: true });
+    }
+  }, 15_000);
+
   test("regenerates route artifacts and HMR report when a page is added", async () => {
     const appRoot = createVirtualRoutesApp();
     const port = await getFreePort();
@@ -211,6 +243,47 @@ function createVirtualRoutesApp(): string {
     [
       "export default function AboutPage() {",
       "  return <main><h1>About</h1></main>;",
+      "}",
+      "",
+    ].join("\n"),
+    "utf8",
+  );
+
+  return appRoot;
+}
+
+function createDynamicRoutesApp(): string {
+  const scratchRoot = join(repoRoot, ".tmp");
+  mkdirSync(scratchRoot, { recursive: true });
+  const appRoot = mkdtempSync(join(scratchRoot, "lumina-vite-params-"));
+  mkdirSync(join(appRoot, "app", "blog", "[slug]"), { recursive: true });
+  mkdirSync(join(appRoot, "app", "docs", "[...parts]"), { recursive: true });
+
+  writeFileSync(
+    join(appRoot, "app", "layout.tsx"),
+    [
+      "export default function RootLayout({ children }: { children: unknown }) {",
+      "  return <html lang=\"en\"><body>{children}</body></html>;",
+      "}",
+      "",
+    ].join("\n"),
+    "utf8",
+  );
+  writeFileSync(
+    join(appRoot, "app", "blog", "[slug]", "page.tsx"),
+    [
+      "export default function BlogPage({ params }: { params: { slug: string } }) {",
+      "  return <main><h1>Post {params.slug}</h1></main>;",
+      "}",
+      "",
+    ].join("\n"),
+    "utf8",
+  );
+  writeFileSync(
+    join(appRoot, "app", "docs", "[...parts]", "page.tsx"),
+    [
+      "export default function DocsPage({ params }: { params: { parts: string[] } }) {",
+      "  return <main><h1>Docs {params.parts.join(\"/\")}</h1></main>;",
       "}",
       "",
     ].join("\n"),
