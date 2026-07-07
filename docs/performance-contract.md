@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: framework contributors, performance reviewers, app developers, CI authors, AI agents.
 
-This page defines the planned performance contract for Lumina. The current static build emits an initial `.lumina/perf.report.json` with route count, static HTML file count, render modes, and benchmark status fields; `lumina bench route-discovery --json --run` can return raw local route-discovery metadata, but full performance tooling is not implemented yet. The contract exists so route budgets, Core Web Vitals, build timing, hot API benchmarks, generated reports, public claims, and agent-facing diagnostics use the same evidence model.
+This page defines the planned performance contract for Lumina. The current static build emits an initial `.lumina/perf.report.json` with route count, static HTML file count, render modes, and benchmark status fields; `lumina bench route-discovery --json --run` and `lumina bench manifest-size --json --run` can return raw local metadata, but full performance tooling is not implemented yet. The contract exists so route budgets, Core Web Vitals, build timing, hot API benchmarks, generated reports, public claims, and agent-facing diagnostics use the same evidence model.
 
 ## Research Notes
 

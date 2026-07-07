@@ -35,6 +35,7 @@ describe("MVP app and example fixtures", () => {
     expect(examplesPage).toContain('<ExampleCard name="Blog SEO" status="Runnable" path="examples/blog-seo" />');
     expect(benchmarksPage).toContain("bun run lumina -- bench route-discovery --json");
     expect(benchmarksPage).toContain("bun run lumina -- bench route-discovery --json --run");
+    expect(benchmarksPage).toContain("bun run lumina -- bench manifest-size --json --run");
     expect(benchmarksPage).toContain("returns raw local metadata");
   });
 

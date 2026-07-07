@@ -6,7 +6,7 @@ Audience: maintainers, performance reviewers, future website visitors.
 
 Lumina must not make benchmark claims without raw data and methodology.
 
-Current status: benchmark docs, fixture plans, benchmark skeleton files, `lumina bench --list --json`, and `lumina bench <name> --json` skeleton status output exist. `lumina bench route-discovery --json --run` can run the local route-discovery benchmark and return raw metadata in the JSON response. Persisted raw result files, reviewed benchmark evidence, and public comparisons do not exist yet. The docs are ready for speed evidence; they are not speed evidence.
+Current status: benchmark docs, fixture plans, benchmark skeleton files, `lumina bench --list --json`, and `lumina bench <name> --json` skeleton status output exist. `lumina bench route-discovery --json --run` can run the local route-discovery benchmark, and `lumina bench manifest-size --json --run` can run the local manifest-size benchmark. Both return raw metadata in the JSON response. Persisted raw result files, reviewed benchmark evidence, and public comparisons do not exist yet. The docs are ready for speed evidence; they are not speed evidence.
 
 ## Planned Benchmark Areas
 

@@ -12,8 +12,8 @@ const lanes = [
   },
   {
     title: "Manifest size",
-    status: "Skeleton",
-    description: "Generated artifact sizes are planned benchmark inputs after fixture coverage expands.",
+    status: "Measured locally",
+    description: "The manifest-size benchmark runs against the deterministic 100-route fixture and returns raw local metadata.",
     icon: Gauge,
   },
   {
@@ -51,6 +51,12 @@ const benchmarkArtifacts = [
     icon: TimerReset,
   },
   {
+    title: "Manifest size run",
+    path: "bun run lumina -- bench manifest-size --json --run",
+    status: "Implemented",
+    icon: Gauge,
+  },
+  {
     title: "Methodology contract",
     path: "docs/benchmark-methodology.md",
     status: "Planned",
@@ -70,7 +76,7 @@ export default function BenchmarksPage() {
       <PageHeader
         eyebrow="Evidence only"
         title="Benchmarks"
-        description="Lumina has benchmark skeletons for route discovery, manifest size, graph queries, and adapter dispatch. Route discovery can run locally today; the other benchmark surfaces stay not implemented until measured fixtures exist."
+        description="Lumina has benchmark skeletons for route discovery, manifest size, graph queries, and adapter dispatch. Route discovery and manifest size can run locally today; graph query and adapter dispatch stay not implemented until measured fixtures exist."
       />
 
       <section className="benchmark-grid">
@@ -100,7 +106,8 @@ export default function BenchmarksPage() {
           <p>
             The site can show benchmark surfaces today, but it cannot claim speed wins until the repository contains
             repeatable commands, raw result files, and methodology notes reviewers can inspect. The route-discovery
-            run command returns raw local metadata, while status commands remain useful for incomplete surfaces.
+            and manifest-size run commands return raw local metadata, while status commands remain useful for
+            incomplete surfaces.
           </p>
         </div>
         <div className="evidence-checklist" aria-label="Benchmark evidence requirements">

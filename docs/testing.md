@@ -29,7 +29,7 @@ bun run performance:check
 bun run check
 ```
 
-These commands are available after the Phase 1 scaffold. They currently prove scaffold integrity, documentation links, package structure, performance documentation guardrails, TypeScript validity, scaffold tests, shared core model tests, route/render/map artifact behavior, CLI inspection, static build/start behavior, dev-server behavior, browser-verified interactive dev and production hydration, benchmark skeleton status commands, and route-discovery benchmark JSON metadata output. They do not prove production SSR/API runtime behavior, broader component-level browser HMR, MCP tools, safe edits, persisted benchmark result files, or public benchmark evidence.
+These commands are available after the Phase 1 scaffold. They currently prove scaffold integrity, documentation links, package structure, performance documentation guardrails, TypeScript validity, scaffold tests, shared core model tests, route/render/map artifact behavior, CLI inspection, static build/start behavior, dev-server behavior, browser-verified interactive dev and production hydration, benchmark skeleton status commands, route-discovery benchmark JSON metadata output, and manifest-size benchmark JSON metadata output. They do not prove production SSR/API runtime behavior, broader component-level browser HMR, MCP tools, safe edits, persisted benchmark result files, or public benchmark evidence.
 
 ## Documentation Checks
 
