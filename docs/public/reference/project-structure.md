@@ -68,7 +68,7 @@ my-app/
 | `app/(marketing)/pricing/page.tsx` | Route group example that maps to `/pricing`. | Planned |
 | `app/blog/[slug]/page.tsx` | Dynamic route example that maps to `/blog/:slug`. | Planned |
 | `components/*.tsx` | Imported UI components for map edges. | Planned |
-| `lumina.config.ts` | Framework config. | Planned |
+| `lumina.config.ts` | Framework config for the MVP Bun build path. | Implemented for `appDir`, `outputDir`, `outDir`, `runtime: "bun"`, and `adapter: "bun"` |
 | `public/` | Static assets copied to output. | Planned |
 | `.lumina/` | Generated route, render, and map artifacts. | Implemented for routes, default render modes, and first file-level map |
 | `dist/` | Built production output for static page routes. | Implemented for static build output |
@@ -85,11 +85,12 @@ Planned MVP Alpha generated files:
   client/
     *.js
   generated/
+    server-entry.ts
     client/
       *.tsx
 ```
 
-The generated artifact names are `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/client/*.js`, and `.lumina/generated/client/*.tsx`. The route, render, and map artifacts are canonical compiler and map contracts for the first prototype; the client paths are current route-specific dev hydration artifacts.
+The generated artifact names are `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/client/*.js`, `.lumina/generated/server-entry.ts`, and `.lumina/generated/client/*.tsx`. The route, render, map, and server-entry artifacts are canonical compiler and adapter contracts for the first prototype; the client paths are current route-specific dev hydration artifacts.
 
 Generated files must be deterministic and must not be edited manually.
 
@@ -127,9 +128,9 @@ dist/
   *
 ```
 
-`.lumina/perf.report.json`, `.lumina/build-trace.json`, `.lumina/hmr-report.json`, `dist/public/`, `dist/routes.manifest.json`, `dist/render.manifest.json`, and `dist/adapter.manifest.json` now exist for the verified dev/build/start slices. The remaining future artifacts must not be described as implemented until the packages, commands, tests, and generated output exist.
+`.lumina/perf.report.json`, `.lumina/build-trace.json`, `.lumina/hmr-report.json`, `.lumina/generated/server-entry.ts`, `dist/public/`, `dist/routes.manifest.json`, `dist/render.manifest.json`, and `dist/adapter.manifest.json` now exist for the verified dev/build/start slices. The remaining future artifacts must not be described as implemented until the packages, commands, tests, and generated output exist.
 
-The future generated artifact names are `.lumina/graph.json`, `.lumina/seo.report.json`, `.lumina/perf.report.json`, `.lumina/workspace.json`, `.lumina/workspace-graph.json`, `.lumina/affected.json`, `.lumina/build-trace.json`, `.lumina/cache-report.json`, `.lumina/hmr-report.json`, `.lumina/split-report.json`, `.lumina/context/*.ctx.json`, `.lumina/context/agent-index.json`, `.lumina/mutations.json`, `.lumina/client/*.js`, `.lumina/generated/*`, `.lumina/generated/client/*.tsx`, `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, `dist/adapter.manifest.json`, and `dist/*`.
+The future generated artifact names are `.lumina/graph.json`, `.lumina/seo.report.json`, `.lumina/perf.report.json`, `.lumina/workspace.json`, `.lumina/workspace-graph.json`, `.lumina/affected.json`, `.lumina/build-trace.json`, `.lumina/cache-report.json`, `.lumina/hmr-report.json`, `.lumina/split-report.json`, `.lumina/context/*.ctx.json`, `.lumina/context/agent-index.json`, `.lumina/mutations.json`, `.lumina/client/*.js`, `.lumina/generated/*`, `.lumina/generated/server-entry.ts`, `.lumina/generated/client/*.tsx`, `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, `dist/adapter.manifest.json`, and `dist/*`.
 
 ## Repository Structure
 

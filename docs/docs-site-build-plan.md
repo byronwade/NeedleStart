@@ -8,7 +8,7 @@ This page turns the public docs architecture into an implementation plan for the
 
 No docs site renderer has been chosen yet. This page describes decision gates and implementation phases, not current behavior.
 
-The `apps/www` docs area currently provides a static visual public-docs route scaffold for the marketing fixture. It includes the docs home plus hand-authored static lane and topic pages for design direction, navigation shape, source-path presentation, and route-discovery evidence, but it does not complete the phases below. Markdown rendering, generated navigation, search, frontmatter validation, and machine-readable docs outputs remain planned.
+The `apps/www` docs area currently provides a visual public-docs route scaffold for the marketing fixture. It includes the docs home, hand-authored static lane and topic pages, and an SSR `/docs/*` inventory viewer backed by metadata for the current `docs/public/` page set. This is useful for design direction, navigation shape, source-path presentation, whole-inventory coverage, and route-discovery evidence, but it does not complete the phases below. Markdown rendering, generated navigation, generated static routes, search, frontmatter validation, and machine-readable docs outputs remain planned.
 
 ## Goals
 

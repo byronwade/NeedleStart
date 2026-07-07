@@ -45,7 +45,7 @@ Planned public docs and app-agent outputs:
 | `.lumina/context/agent-index.json` | Planned generated app artifact | Index of generated agent context. |
 | `.lumina/mutations.json` | Planned generated app artifact | Safe edit mutation log. |
 | `.lumina/client/*.js` | Implemented build artifact | Route-specific hydration bundles before adapter copying. |
-| `.lumina/generated/*` | Planned generated app artifact | Generated runtime modules. |
+| `.lumina/generated/*` | Implemented generated app artifact | Runtime modules. `.lumina/generated/server-entry.ts` is implemented for the Bun adapter path; broader generated runtime modules remain planned. |
 | `.lumina/generated/client/*.tsx` | Implemented build artifact | Generated source entries for route-specific hydration bundles. |
 | `dist/routes.manifest.json` | Planned deployment artifact | Adapter-shaped route manifest copy. |
 | `dist/render.manifest.json` | Planned deployment artifact | Adapter-shaped render manifest copy. |

@@ -17,10 +17,11 @@ The root layout supports light and dark mode through shadcn-style CSS variables,
 path and `app/globals.css` should stay aligned until Lumina implements direct CSS asset delivery for
 the app renderer.
 
-The docs area is a static public-docs route scaffold inspired by documentation systems such as
-Next.js: it has a docs home, lane pages, topic pages, source-path cards, reference lanes, active
-sidebar navigation, and status language. It is not yet a Markdown renderer, search implementation,
-frontmatter parser, generated sidebar, or generated docs router.
+The docs area is a public-docs route scaffold inspired by documentation systems such as Next.js: it
+has a docs home, lane pages, topic pages, source-path cards, reference lanes, active sidebar
+navigation, status language, and an SSR `/docs/*` inventory viewer backed by metadata for the
+current `docs/public/` page set. It is not yet a Markdown renderer, search implementation,
+frontmatter parser, generated sidebar, or generated static docs router.
 
 ## Routes
 
@@ -38,6 +39,7 @@ frontmatter parser, generated sidebar, or generated docs router.
 - `/docs/reference/manifest-contracts`
 - `/docs/deployment`
 - `/docs/community`
+- `/docs/*` for metadata-backed public-doc inventory pages
 - `/benchmarks`
 - `/examples`
 - `/roadmap`

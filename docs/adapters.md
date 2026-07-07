@@ -3,7 +3,7 @@
 Status: Implemented.
 Audience: app developers, framework contributors, deployment owners.
 
-This page describes adapter architecture. Static built-output serving through `@lumina/adapter-bun` is implemented for build-time static page routes. Node adapter behavior, static export adapter behavior, SSR, API, hot API, streaming, compression, 103 Early Hints, and adapter-native route dispatch remain planned.
+This page describes adapter architecture. Static built-output serving through `@lumina/adapter-bun` is implemented for build-time static page routes and generated SSR page bundles. MVP Bun config normalization and `.lumina/generated/server-entry.ts` are implemented. Node adapter behavior, static export adapter behavior, API, hot API, streaming, compression, 103 Early Hints, and adapter-native route dispatch remain planned.
 
 Lumina is planned to default to Bun, but the framework must not create an all-in Bun adoption risk.
 
@@ -36,6 +36,8 @@ Default adapter.
 Implemented responsibility:
 
 - Serve `dist/public` static HTML through `Bun.serve`.
+- Serve generated SSR page bundles through `dist/server/ssr-routes.js`.
+- Consume build-time normalized Bun config through generated manifests.
 
 Planned responsibilities:
 
@@ -74,6 +76,9 @@ Responsibilities:
 import { defineConfig } from "lumina"
 
 export default defineConfig({
+  appDir: "app",
+  outputDir: ".lumina",
+  outDir: "dist",
   runtime: "bun",
   adapter: "bun",
 })
@@ -87,13 +92,11 @@ Config loading and validation rules are documented in `docs/config-contract.md`.
 
 ```ts
 // .lumina/generated/server-entry.ts
-import { createServer } from "@lumina/adapter-bun"
+import { startBuiltLuminaApp } from "@lumina/adapter-bun"
 
-export default createServer({
-  manifest,
-  routes,
-  handlers,
-})
+export const adapter = "bun"
+export const runtime = "bun"
+export { startBuiltLuminaApp }
 ```
 
 The compiler chooses the adapter import during build. Runtime packages consume generated artifacts; they do not rediscover app source structure.
@@ -109,6 +112,10 @@ Adapter deployment output uses `dist/routes.manifest.json`, `dist/render.manifes
   "package": "@lumina/adapter-bun",
   "runtime": {
     "name": "bun"
+  },
+  "source": {
+    "config": "lumina.config.ts",
+    "serverEntry": ".lumina/generated/server-entry.ts"
   },
   "capabilities": {
     "static": true,

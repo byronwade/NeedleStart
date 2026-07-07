@@ -1,10 +1,10 @@
 # Configuration Contract
 
-Status: Planned.
+Status: Scaffolded.
 
 Audience: framework contributors, app developers, adapter maintainers, AI agents.
 
-This page defines how Lumina should load, validate, type, and use `lumina.config.ts`. No implementation exists yet. The goal is to prevent configuration behavior from becoming implicit during the first product build.
+This page defines how Lumina should load, validate, type, and use `lumina.config.ts`. The MVP build path now implements a literal config parser for `export default defineConfig({ ... })` and `export default { ... }`, normalizes the Bun adapter config into `dist/adapter.manifest.json`, and reports config diagnostics before build output is emitted. Environment loading, workspace config, Node/static adapter selection, and the full typed package import story remain planned.
 
 ## Why This Exists
 
@@ -17,7 +17,7 @@ Research backing:
 - Astro and Vite document typed config helpers such as `defineConfig()`.
 - Docusaurus documents a central site config and frontmatter behavior, reinforcing that config and page metadata need clear contracts.
 
-## Planned Config File
+## Config File
 
 Lumina apps should use:
 
@@ -31,18 +31,21 @@ Large multi-app workspaces may later add:
 lumina.workspace.ts
 ```
 
-Planned minimal config:
+Implemented MVP config syntax:
 
 ```ts
 import { defineConfig } from "lumina"
 
 export default defineConfig({
+  appDir: "app",
+  outputDir: ".lumina",
+  outDir: "dist",
   runtime: "bun",
   adapter: "bun",
 })
 ```
 
-`defineConfig()` should provide type checking and narrow accepted values. It should not execute runtime request logic.
+The current loader accepts the `defineConfig(...)` wrapper syntax without evaluating arbitrary config code. Full package-level type checking and published `lumina` package import behavior remain planned.
 
 `defineWorkspace()` is planned for multi-app workspace topology, shared-file policy, affected build settings, and terminal output settings. It should feed compiler and CLI planning only; runtime adapters must consume generated app-specific output instead of evaluating workspace source config.
 
@@ -52,22 +55,22 @@ export default defineConfig({
 
 - `runtime` describes the default local execution target and compatibility target for generated server code.
 - `adapter` selects the production output package that turns generated artifacts into deployable output.
-- `adapter: "bun"` maps to `@lumina/adapter-bun`.
-- `adapter: "node"` maps to `@lumina/adapter-node`.
-- `adapter: "static"` maps to `@lumina/adapter-static`.
+- `adapter: "bun"` maps to `@lumina/adapter-bun` and is implemented for the current build/start slice.
+- `adapter: "node"` maps to `@lumina/adapter-node` and remains planned.
+- `adapter: "static"` maps to `@lumina/adapter-static` and remains planned.
 
-If both fields are present, config validation must ensure they resolve to a compatible pair before generated output is emitted. Adapter packages must report their resolved runtime through `dist/adapter.manifest.json` as `runtime.name`, not through ad hoc config re-evaluation at startup.
+If both fields are present, current validation accepts only the compatible MVP pair `runtime: "bun"` and `adapter: "bun"`. Adapter output reports the resolved runtime through `dist/adapter.manifest.json` as `runtime.name`, not through ad hoc config re-evaluation at startup.
 
 ## Loading Order
 
-Planned loading order:
+MVP loading order:
 
 1. Resolve project root.
 2. Resolve CLI flags such as `--cwd`, `--config`, and future `--mode`.
-3. Load `lumina.config.ts`.
+3. Parse `lumina.config.ts` when present.
 4. Validate config shape.
 5. Resolve defaults.
-6. Load environment files only after config identifies env behavior.
+6. Load environment files only after config identifies env behavior. This is planned, not implemented.
 7. Create an immutable normalized config object.
 8. Pass normalized config to compiler, CLI commands, adapters, and manifest generation.
 
@@ -75,17 +78,17 @@ Do not let runtime adapters independently reinterpret source config. Adapters sh
 
 ## Normalized Config
 
-The compiler should eventually produce or use a normalized config shape similar to:
+The current Bun build path serializes normalized config in `dist/adapter.manifest.json`:
 
 ```json
 {
   "schemaVersion": "lumina.config.v0",
-  "root": ".",
+  "appDir": "app",
+  "outputDir": ".lumina",
+  "outDir": "dist",
   "runtime": "bun",
   "adapter": "bun",
-  "outDir": "dist",
-  "luminaDir": ".lumina",
-  "mode": "development"
+  "mode": "production"
 }
 ```
 
@@ -101,11 +104,12 @@ Rules:
 
 | Field | Status | Purpose |
 | --- | --- | --- |
-| `runtime` | Planned | Default local execution target, initially `bun`. |
-| `adapter` | Planned | Production output adapter, initially `bun`, later `node` or `static`. |
+| `runtime` | Implemented for `bun` | Default local execution target, initially `bun`. |
+| `adapter` | Implemented for `bun` | Production output adapter, initially `bun`, later `node` or `static`. |
 | `root` | Planned | Project root override. |
-| `outDir` | Planned | Production output directory. |
-| `luminaDir` | Planned | Generated framework artifact directory. |
+| `appDir` | Implemented for `app` | Route source directory. Other route roots remain planned. |
+| `outDir` | Implemented for `dist` | Production output directory. |
+| `outputDir` / `luminaDir` | Implemented for `.lumina` | Generated framework artifact directory. |
 | `routes` | Planned | Route discovery options and ignored paths. |
 | `seo` | Planned | Metadata defaults, sitemap, robots, and audit behavior. |
 | `cache` | Planned | Default route and API cache policy. |
@@ -303,6 +307,7 @@ Config can affect:
 - `.lumina/mutations.json`.
 - `.lumina/client/*.js`.
 - `.lumina/generated/*`.
+- `.lumina/generated/server-entry.ts`.
 - `.lumina/generated/client/*.tsx`.
 - `dist/routes.manifest.json`.
 - `dist/render.manifest.json`.
@@ -324,18 +329,23 @@ See [Security](security.md) for high-risk feature documentation rules.
 
 ## Tests
 
-Once implemented:
+Implemented MVP coverage:
+
+- Fixture-test `lumina.config.ts` parsing for `defineConfig({ runtime: "bun", adapter: "bun" })`.
+- Fixture-test invalid adapter diagnostics in CLI JSON mode.
+- Snapshot generated adapter manifest normalized config fields.
+- Test that generated adapter output avoids absolute local paths.
+
+Future coverage:
 
 - Unit-test config normalization.
-- Unit-test invalid config diagnostics.
 - Fixture-test `.env*` loading order.
 - Fixture-test public versus server-only env behavior.
-- Snapshot generated config-related manifest fields.
 - Test that secrets are not emitted into public or agent-facing artifacts.
 
 ## Out Of Scope
 
-- Final config defaults before config loading behavior exists.
+- Final config defaults beyond the MVP Bun adapter path.
 - Host-specific deployment config.
 - A secrets manager.
 - Claiming public environment behavior works before client build tests exist.

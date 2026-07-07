@@ -2,13 +2,13 @@ import { BookOpen, FileCode2, Search, ShieldCheck } from "lucide-react";
 import { PageHeader } from "../../components/PageHeader";
 import { Badge } from "../../components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
-import { docsArticles, docsNavGroups } from "../../lib/docs-content";
+import { docsArticles, docsNavGroups, publicDocsPages } from "../../lib/docs-content";
 
 const featuredDocs = docsArticles.filter((article) =>
   ["start", "concepts/app-graph", "reference/cli", "reference/routing"].includes(article.slug),
 );
 
-const referenceLanes = docsArticles.filter((article) => article.lane === "Reference");
+const referenceLanes = publicDocsPages.filter((article) => article.lane === "Reference");
 
 export default function DocsPage() {
   return (
@@ -102,7 +102,15 @@ export default function DocsPage() {
                   {group.links.map((link) => (
                     <a href={link.href} key={link.href}>
                       <span>{link.title}</span>
-                      <Badge variant={link.status === "Current" ? "success" : link.status === "Planned" ? "warning" : "secondary"}>
+                      <Badge
+                        variant={
+                          link.status === "Current" || link.status === "Implemented"
+                            ? "success"
+                            : link.status === "Planned"
+                              ? "warning"
+                              : "secondary"
+                        }
+                      >
                         {link.status}
                       </Badge>
                     </a>

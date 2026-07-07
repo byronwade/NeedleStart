@@ -257,7 +257,7 @@ Expected result: config loading, validation, environment behavior, normalized ou
 
 Automated coverage in `bun run docs:check` also requires config, public config, and config contract docs to keep server-only env, public prefix, `.env*`, secret, generated artifact, diagnostics, adapter package, and `runtime.name` language aligned.
 
-Config docs must tie final default readiness to config-loading behavior, not package existence or generic package implementation. The Phase 1 package scaffold can exist while config loading remains planned.
+Config docs must tie final default readiness to config-loading behavior, not package existence or generic package implementation. The current MVP Bun config parser exists, while environment loading, workspace config, and Node/static adapter selection remain planned.
 
 Automated coverage also requires config, public config, and config contract docs to keep normalized config vocabulary aligned: `schemaVersion`, `root`, `runtime`, `adapter`, `outDir`, `luminaDir`, and `mode`.
 
@@ -337,7 +337,7 @@ Expected result: API handler context, method exports, request/response behavior,
 
 Automated coverage in `bun run docs:check` also requires API route contract, API route overview, and public API route reference docs to keep `ApiRouteContext`, Web `Request` and `Response`, `VALIDATION_FAILED`, method exports, `API_METHOD_` diagnostics, hot API integration, `bodyLimit`, `no-store`, generated manifests, security, and diagnostics language aligned.
 
-Automated coverage in `bun run docs:check` also requires API route contract, API route overview, public guide, public reference docs, roadmap, and task backlog to use planned `should` wording for request, return, handler behavior, and API route acceptance criteria until implementation exists. Roadmap and backlog docs also state that "Definition of done" sections are planned acceptance criteria unless the section is explicitly marked `Verified.` or `Scaffolded.` with evidence. Runtime docs must mark adapter-aware server entry generation as planned until the compiler actually emits it.
+Automated coverage in `bun run docs:check` also requires API route contract, API route overview, public guide, public reference docs, roadmap, and task backlog to use planned `should` wording for request, return, handler behavior, and API route acceptance criteria until implementation exists. Roadmap and backlog docs also state that "Definition of done" sections are planned acceptance criteria unless the section is explicitly marked `Verified.` or `Scaffolded.` with evidence. Runtime docs must mark adapter-aware server entry generation as implemented only for the tested Bun path and planned for Node/static paths until those adapters emit equivalent entries.
 
 ### 18A. Render Mode Contract Check
 

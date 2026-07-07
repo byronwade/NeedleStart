@@ -82,7 +82,7 @@ dist/
   adapter.manifest.json
 ```
 
-The generated artifact names are `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/graph.json`, `.lumina/seo.report.json`, `.lumina/perf.report.json`, `.lumina/workspace.json`, `.lumina/workspace-graph.json`, `.lumina/affected.json`, `.lumina/build-trace.json`, `.lumina/cache-report.json`, `.lumina/hmr-report.json`, `.lumina/split-report.json`, `.lumina/context/*.ctx.json`, `.lumina/context/agent-index.json`, `.lumina/mutations.json`, `.lumina/client/*.js`, `.lumina/generated/*`, `.lumina/generated/client/*.tsx`, `dist/public/_lumina/client/*.js`, `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, `dist/adapter.manifest.json`, and `dist/*`.
+The generated artifact names are `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/graph.json`, `.lumina/seo.report.json`, `.lumina/perf.report.json`, `.lumina/workspace.json`, `.lumina/workspace-graph.json`, `.lumina/affected.json`, `.lumina/build-trace.json`, `.lumina/cache-report.json`, `.lumina/hmr-report.json`, `.lumina/split-report.json`, `.lumina/context/*.ctx.json`, `.lumina/context/agent-index.json`, `.lumina/mutations.json`, `.lumina/client/*.js`, `.lumina/generated/*`, `.lumina/generated/server-entry.ts`, `.lumina/generated/client/*.tsx`, `dist/public/_lumina/client/*.js`, `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, `dist/adapter.manifest.json`, and `dist/*`.
 
 The `.lumina/*` files are the canonical compiler and agent artifacts. `.lumina/render-manifest.json` is the canonical render-mode contract for routes. The `dist/*.manifest.json` files, including `dist/render.manifest.json`, and `dist/*.report.json` deployment reports are adapter-specific output shaped for runtime loading.
 
@@ -90,11 +90,15 @@ Large-repo reports such as `.lumina/workspace-graph.json`, `.lumina/build-trace.
 
 ## Adapter-Aware Entry
 
-The compiler is planned to generate an adapter-aware server entry.
+The current Bun build path generates an adapter-aware server entry.
 
 ```ts
 // .lumina/generated/server-entry.ts
-import { createServer } from "@lumina/adapter-bun"
+import { startBuiltLuminaApp } from "@lumina/adapter-bun"
+
+export const adapter = "bun"
+export const runtime = "bun"
+export { startBuiltLuminaApp }
 ```
 
 The selected adapter is controlled by `lumina.config.ts`.
@@ -108,7 +112,7 @@ export default defineConfig({
 
 Adapters consume generated manifests and handlers. They do not rediscover source files.
 
-Config loading, validation, and normalization are defined in `docs/config-contract.md`. Runtime adapters should consume normalized generated output instead of evaluating raw config in production.
+MVP config loading, validation, and normalization are defined in `docs/config-contract.md`. Runtime adapters consume normalized generated output instead of evaluating raw config in production.
 
 Normal API handler semantics, return normalization, validation diagnostics, and generated handler registry requirements are defined in `docs/api-route-contract.md`.
 

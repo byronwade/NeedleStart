@@ -56,10 +56,11 @@ describe("static build and Bun start integration", () => {
     expect(output.schemaVersion).toBe("lumina.cli.v0");
     expect(output.command).toBe("lumina build");
     expect(output.status).toBe("ok");
-    expect(output.data.routes).toBe(17);
+    expect(output.data.routes).toBe(18);
     expect(output.data.outputs).toContain("dist/public/index.html");
     expect(output.data.outputs).toContain("dist/public/about/index.html");
     expect(output.data.outputs).toContain("dist/public/docs/reference/cli/index.html");
+    expect(output.data.outputs).toContain("dist/server/ssr-routes.js");
     expect(output.data.outputs).toContain("dist/public/_lumina/client/app.page.js");
     expect(output.data.manifests).toContain(".lumina/build-trace.json");
     expect(output.data.manifests).toContain(".lumina/perf.report.json");
@@ -95,6 +96,94 @@ describe("static build and Bun start integration", () => {
     expect(secondBuildExitCode).toBe(0);
     expect(readFileSync(join(wwwRoot, ".lumina", "build-trace.json"), "utf8")).toBe(buildTrace);
     expect(readFileSync(join(wwwRoot, ".lumina", "perf.report.json"), "utf8")).toBe(perfReport);
+  }, 20_000);
+
+  test("CLI build loads lumina.config.ts and emits adapter-aware server entry", async () => {
+    const appRoot = createConfiguredBuildStartApp();
+    const stdout: string[] = [];
+    const stderr: string[] = [];
+
+    try {
+      const exitCode = await cli.runCli(["build", appRoot, "--json"], {
+        stdout: (text) => stdout.push(text),
+        stderr: (text) => stderr.push(text),
+      });
+
+      expect(exitCode).toBe(0);
+      expect(stderr).toEqual([]);
+      expect(stdout).toHaveLength(1);
+
+      const output = JSON.parse(stdout[0]!);
+      expect(output.data.manifests).toContain(".lumina/generated/server-entry.ts");
+      expect(output.data.manifests).toContain("dist/adapter.manifest.json");
+
+      const serverEntryPath = join(appRoot, ".lumina", "generated", "server-entry.ts");
+      expect(existsSync(serverEntryPath)).toBe(true);
+      const serverEntry = readFileSync(serverEntryPath, "utf8");
+      expect(serverEntry).toContain('@lumina/adapter-bun');
+      expect(serverEntry).toContain('export const adapter = "bun"');
+      expect(serverEntry).toContain("startBuiltLuminaApp");
+
+      const adapterManifest = JSON.parse(readFileSync(join(appRoot, "dist", "adapter.manifest.json"), "utf8"));
+      expect(adapterManifest.adapter).toBe("bun");
+      expect(adapterManifest.runtime.name).toBe("bun");
+      expect(adapterManifest.source.config).toBe("lumina.config.ts");
+      expect(adapterManifest.source.normalizedConfig).toEqual({
+        schemaVersion: "lumina.config.v0",
+        appDir: "app",
+        outputDir: ".lumina",
+        outDir: "dist",
+        runtime: "bun",
+        adapter: "bun",
+        mode: "production",
+      });
+      expect(adapterManifest.source.serverEntry).toBe(".lumina/generated/server-entry.ts");
+      expect(JSON.stringify(adapterManifest)).not.toContain(appRoot);
+    } finally {
+      rmSync(appRoot, { recursive: true, force: true });
+    }
+  }, 20_000);
+
+  test("CLI build reports config diagnostics for unsupported adapters in JSON mode", async () => {
+    const appRoot = createConfiguredBuildStartApp({ adapter: "edge" });
+    const stdout: string[] = [];
+    const stderr: string[] = [];
+
+    try {
+      const exitCode = await cli.runCli(["build", appRoot, "--json"], {
+        stdout: (text) => stdout.push(text),
+        stderr: (text) => stderr.push(text),
+      });
+
+      expect(exitCode).toBe(3);
+      expect(stderr).toEqual([]);
+      expect(stdout).toHaveLength(1);
+
+      const output = JSON.parse(stdout[0]!);
+      expect(output.schemaVersion).toBe("lumina.cli.v0");
+      expect(output.command).toBe("lumina build");
+      expect(output.status).toBe("error");
+      expect(output.data).toEqual({
+        routes: 0,
+        outputs: [],
+        manifests: [],
+      });
+      expect(output.diagnostics).toEqual([
+        expect.objectContaining({
+          code: "CONFIG_INVALID_ADAPTER",
+          severity: "error",
+          category: "config",
+          message: 'Unsupported adapter "edge".',
+          source: {
+            file: "lumina.config.ts",
+            owner: "compiler",
+          },
+        }),
+      ]);
+      expect(existsSync(join(appRoot, "dist", "adapter.manifest.json"))).toBe(false);
+    } finally {
+      rmSync(appRoot, { recursive: true, force: true });
+    }
   }, 20_000);
 
   test("Bun adapter serves built static output without source route files", async () => {
@@ -155,6 +244,32 @@ describe("static build and Bun start integration", () => {
       }
     } finally {
       rmSync(appRoot, { recursive: true, force: true });
+    }
+  }, 20_000);
+
+  test("Bun adapter serves the public docs inventory catch-all from built SSR output", async () => {
+    const buildExitCode = await cli.runCli(["build", wwwRoot, "--json"], {
+      stdout: () => {},
+      stderr: () => {},
+    });
+    expect(buildExitCode).toBe(0);
+
+    const { startBuiltLuminaApp } = await import("../packages/adapters/bun/src/index");
+    const server = await startBuiltLuminaApp({
+      appRoot: wwwRoot,
+      host: "127.0.0.1",
+      port: await getFreePort(),
+    });
+
+    try {
+      const security = await fetchWithTimeout(`${server.url}/docs/reference/security`);
+      expect(security.status).toBe(200);
+      const securityHtml = await security.text();
+      expect(securityHtml).toContain("<h1>Security</h1>");
+      expect(securityHtml).toContain("docs/public/reference/security.md");
+      expect(securityHtml).toContain('data-lumina-route="/docs/*"');
+    } finally {
+      await server.close();
     }
   }, 20_000);
 
@@ -301,6 +416,28 @@ function createBuildStartApp(): string {
     "utf8",
   );
 
+  return appRoot;
+}
+
+function createConfiguredBuildStartApp(options: { adapter?: string } = {}): string {
+  const appRoot = createBuildStartApp();
+  const adapter = options.adapter ?? "bun";
+  writeFileSync(
+    join(appRoot, "lumina.config.ts"),
+    [
+      'import { defineConfig } from "lumina";',
+      "",
+      "export default defineConfig({",
+      '  appDir: "app",',
+      '  outputDir: ".lumina",',
+      '  outDir: "dist",',
+      '  runtime: "bun",',
+      `  adapter: "${adapter}",`,
+      "});",
+      "",
+    ].join("\n"),
+    "utf8",
+  );
   return appRoot;
 }
 

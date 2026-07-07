@@ -1100,6 +1100,8 @@ html.dark .theme-icon-moon {
   top: 5rem;
   display: grid;
   gap: 1rem;
+  max-height: calc(100dvh - 6rem);
+  overflow: auto;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--surface);
@@ -1625,12 +1627,34 @@ html.dark .ui-badge-warning {
 
 @media (max-width: 900px) {
   .site-header {
-    align-items: flex-start;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    row-gap: 0.65rem;
   }
 
   .primary-nav {
+    grid-column: 1 / -1;
+    flex-wrap: nowrap;
     justify-content: flex-start;
+    max-width: 100%;
+    overflow-x: auto;
+    padding-bottom: 0.1rem;
+    scrollbar-width: none;
+  }
+
+  .primary-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .primary-nav a {
+    flex: 0 0 auto;
+  }
+
+  .theme-toggle {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
   }
 
   .hero-section,

@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import type { ComponentType } from "react";
 
-export type DocsStatus = "Current" | "Scaffolded" | "Planned";
+export type DocsStatus = "Current" | "Implemented" | "Scaffolded" | "Planned";
 
 export type DocsArticle = {
   slug: string;
@@ -31,6 +31,28 @@ export type DocsArticle = {
     label: string;
     href: string;
   }>;
+};
+
+export type PublicDocsPage = {
+  slug: string;
+  href: string;
+  lane: string;
+  title: string;
+  description: string;
+  status: DocsStatus;
+  source: string;
+  related: string[];
+};
+
+const laneIcons: Record<string, DocsArticle["icon"]> = {
+  Start: TerminalSquare,
+  Product: Compass,
+  Concepts: GitBranch,
+  Guides: BookOpen,
+  Reference: FileCode2,
+  Deployment: ShieldCheck,
+  Community: Users,
+  Comparisons: Workflow,
 };
 
 export const docsArticles: DocsArticle[] = [
@@ -355,26 +377,436 @@ export const docsArticles: DocsArticle[] = [
   },
 ];
 
-export const docsNavGroups = [
+export const publicDocsPages: PublicDocsPage[] = [
+  {
+    slug: "concepts/agent-native",
+    href: "/docs/concepts/agent-native",
+    lane: "Concepts",
+    title: "Agent-Safe Workflows",
+    description: "How Lumina plans to give agents stable context, guarded edits, and explicit evidence instead of repository-wide guessing.",
+    status: "Planned",
+    source: "docs/public/concepts/agent-native.md",
+    related: ["docs/agent-kernel.md", "docs/safe-edit-transactions.md"],
+  },
+  {
+    slug: "concepts/app-graph",
+    href: "/docs/concepts/app-graph",
+    lane: "Concepts",
+    title: "Your App Ships With A Map",
+    description: "The public concept page for Lumina Map, route relationships, source evidence, and future semantic graph expansion.",
+    status: "Planned",
+    source: "docs/public/concepts/app-graph.md",
+    related: ["docs/lumina-map.md", "docs/app-graph-visual.md"],
+  },
+  {
+    slug: "concepts/compiler-runtime",
+    href: "/docs/concepts/compiler-runtime",
+    lane: "Concepts",
+    title: "Compiler And Runtime Split",
+    description: "Why Lumina keeps intelligence in the compiler and keeps production runtime paths small and adapter-aware.",
+    status: "Planned",
+    source: "docs/public/concepts/compiler-runtime.md",
+    related: ["ARCHITECTURE.md", "docs/runtime-contract.md"],
+  },
+  {
+    slug: "concepts/safe-edits",
+    href: "/docs/concepts/safe-edits",
+    lane: "Concepts",
+    title: "Safe Edits",
+    description: "The planned edit transaction model for previewable, logged, check-backed, and reversible AI-assisted changes.",
+    status: "Planned",
+    source: "docs/public/concepts/safe-edits.md",
+    related: ["docs/safe-edit-transactions.md", "docs/threat-model.md"],
+  },
+  {
+    slug: "concepts/seo-first",
+    href: "/docs/concepts/seo-first",
+    lane: "Concepts",
+    title: "SEO-First Rendering",
+    description: "The public explanation of static-first public HTML, metadata, audits, and future SEO report behavior.",
+    status: "Planned",
+    source: "docs/public/concepts/seo-first.md",
+    related: ["docs/seo-contract.md", "docs/seo-engine.md"],
+  },
+  {
+    slug: "concepts/speed",
+    href: "/docs/concepts/speed",
+    lane: "Concepts",
+    title: "Whole-System Speed",
+    description: "How Lumina frames speed across compiler output, route modes, payloads, adapters, and benchmark evidence.",
+    status: "Planned",
+    source: "docs/public/concepts/speed.md",
+    related: ["docs/speed-strategy.md", "docs/performance-contract.md"],
+  },
+  {
+    slug: "guides/agent-context",
+    href: "/docs/guides/agent-context",
+    lane: "Guides",
+    title: "Use Agent Context",
+    description: "A planned guide for reading route context capsules and agent-facing generated context safely.",
+    status: "Planned",
+    source: "docs/public/guides/agent-context.md",
+    related: ["docs/agent-kernel.md", "docs/mcp-server.md"],
+  },
+  {
+    slug: "guides/api-route",
+    href: "/docs/guides/api-route",
+    lane: "Guides",
+    title: "Create An API Route",
+    description: "A planned task guide for ordinary API route handlers, request behavior, diagnostics, and security boundaries.",
+    status: "Planned",
+    source: "docs/public/guides/api-route.md",
+    related: ["docs/api-route-contract.md", "docs/api-routes.md"],
+  },
+  {
+    slug: "guides/create-app",
+    href: "/docs/guides/create-app",
+    lane: "Guides",
+    title: "Create An App",
+    description: "The future public starter flow, separated from the local repository commands that work today.",
+    status: "Planned",
+    source: "docs/public/guides/create-app.md",
+    related: ["docs/getting-started.md", "docs/mvp-alpha-scope.md"],
+  },
+  {
+    slug: "guides/hot-api",
+    href: "/docs/guides/hot-api",
+    lane: "Guides",
+    title: "Create A Hot API Route",
+    description: "A planned guide for generated validation, serialization, micro-cache behavior, and hot API route boundaries.",
+    status: "Planned",
+    source: "docs/public/guides/hot-api.md",
+    related: ["docs/hot-api-path.md", "docs/schema-contract.md"],
+  },
+  {
+    slug: "guides/lumina-map",
+    href: "/docs/guides/lumina-map",
+    lane: "Guides",
+    title: "Inspect Lumina Map",
+    description: "How developers and agents should use map output, affected-route queries, and route relationship evidence.",
+    status: "Planned",
+    source: "docs/public/guides/lumina-map.md",
+    related: ["docs/lumina-map.md", "docs/app-graph-visual.md"],
+  },
+  {
+    slug: "guides/seo-metadata",
+    href: "/docs/guides/seo-metadata",
+    lane: "Guides",
+    title: "Add SEO Metadata",
+    description: "A planned guide for defining public metadata and keeping SEO behavior evidence-backed.",
+    status: "Planned",
+    source: "docs/public/guides/seo-metadata.md",
+    related: ["docs/seo-contract.md", "docs/public/reference/seo.md"],
+  },
+  {
+    slug: "guides/static-page",
+    href: "/docs/guides/static-page",
+    lane: "Guides",
+    title: "Add A Static Page",
+    description: "A task guide for the static-first path that the current scaffold is beginning to prove.",
+    status: "Planned",
+    source: "docs/public/guides/static-page.md",
+    related: ["docs/routing-contract.md", "docs/file-conventions.md"],
+  },
+  {
+    slug: "reference/accessibility",
+    href: "/docs/reference/accessibility",
+    lane: "Reference",
+    title: "Accessibility",
+    description: "Planned accessibility contract coverage for framework-owned HTML, public docs UI, keyboard behavior, and diagnostics.",
+    status: "Planned",
+    source: "docs/public/reference/accessibility.md",
+    related: ["docs/accessibility-contract.md", "docs/accessibility.md"],
+  },
+  {
+    slug: "reference/adapters",
+    href: "/docs/reference/adapters",
+    lane: "Reference",
+    title: "Adapters",
+    description: "Adapter package boundaries, current Bun adapter evidence, deployment manifests, and planned runtime compatibility.",
+    status: "Implemented",
+    source: "docs/public/reference/adapters.md",
+    related: ["docs/adapter-contract.md", "docs/adapters.md"],
+  },
+  {
+    slug: "reference/api-routes",
+    href: "/docs/reference/api-routes",
+    lane: "Reference",
+    title: "API Routes",
+    description: "Planned API route handler contracts, methods, diagnostics, schemas, and security expectations.",
+    status: "Planned",
+    source: "docs/public/reference/api-routes.md",
+    related: ["docs/api-route-contract.md", "docs/api-routes.md"],
+  },
+  {
+    slug: "reference/cache",
+    href: "/docs/reference/cache",
+    lane: "Reference",
+    title: "Cache",
+    description: "Planned cache modes, headers, tags, revalidation, micro-cache behavior, diagnostics, and security notes.",
+    status: "Planned",
+    source: "docs/public/reference/cache.md",
+    related: ["docs/cache-contract.md", "docs/cache.md"],
+  },
+  {
+    slug: "reference/cli",
+    href: "/docs/reference/cli",
+    lane: "Reference",
+    title: "CLI Reference",
+    description: "Implemented local commands and planned automation surfaces for route, inspect, map, build, start, and bench workflows.",
+    status: "Scaffolded",
+    source: "docs/public/reference/cli.md",
+    related: ["docs/cli.md", "docs/cli-json-contract.md"],
+  },
+  {
+    slug: "reference/config",
+    href: "/docs/reference/config",
+    lane: "Reference",
+    title: "Configuration Reference",
+    description: "Planned normalized config fields, environment behavior, validation diagnostics, and generated output rules.",
+    status: "Planned",
+    source: "docs/public/reference/config.md",
+    related: ["docs/config-contract.md", "docs/config.md"],
+  },
+  {
+    slug: "reference/diagnostics",
+    href: "/docs/reference/diagnostics",
+    lane: "Reference",
+    title: "Diagnostics",
+    description: "Planned diagnostic code, severity, location, remediation, and JSON-output contracts.",
+    status: "Planned",
+    source: "docs/public/reference/diagnostics.md",
+    related: ["docs/diagnostics-contract.md", "docs/cli-json-contract.md"],
+  },
+  {
+    slug: "reference/examples",
+    href: "/docs/reference/examples",
+    lane: "Reference",
+    title: "Examples",
+    description: "Example fixture inventory, current verification status, and planned starter/example catalog behavior.",
+    status: "Planned",
+    source: "docs/public/reference/examples.md",
+    related: ["docs/examples-contract.md", "docs/examples-catalog.md"],
+  },
+  {
+    slug: "reference/file-conventions",
+    href: "/docs/reference/file-conventions",
+    lane: "Reference",
+    title: "File Conventions",
+    description: "App file naming, route grammar, planned conventions, and generated artifact boundaries.",
+    status: "Planned",
+    source: "docs/public/reference/file-conventions.md",
+    related: ["docs/file-conventions.md", "docs/routing-contract.md"],
+  },
+  {
+    slug: "reference/manifest-contracts",
+    href: "/docs/reference/manifest-contracts",
+    lane: "Reference",
+    title: "Manifest Contracts",
+    description: "Generated route, render, map, build, performance, and adapter artifacts plus planned future reports.",
+    status: "Planned",
+    source: "docs/public/reference/manifest-contracts.md",
+    related: ["docs/manifest-contracts.md", "docs/runtime-contract.md"],
+  },
+  {
+    slug: "reference/mcp",
+    href: "/docs/reference/mcp",
+    lane: "Reference",
+    title: "MCP Reference",
+    description: "The planned Model Context Protocol read and write tool surface for Lumina agents.",
+    status: "Planned",
+    source: "docs/public/reference/mcp.md",
+    related: ["docs/mcp-server.md", "docs/agent-kernel.md"],
+  },
+  {
+    slug: "reference/performance",
+    href: "/docs/reference/performance",
+    lane: "Reference",
+    title: "Performance",
+    description: "Performance budgets, reports, benchmark evidence rules, Core Web Vitals targets, and public claim gates.",
+    status: "Planned",
+    source: "docs/public/reference/performance.md",
+    related: ["docs/performance-contract.md", "docs/benchmark-methodology.md"],
+  },
+  {
+    slug: "reference/project-structure",
+    href: "/docs/reference/project-structure",
+    lane: "Reference",
+    title: "Project Structure",
+    description: "The planned app, package, generated-file, and documentation structure for Lumina projects.",
+    status: "Planned",
+    source: "docs/public/reference/project-structure.md",
+    related: ["docs/package-map.md", "docs/product-build-readiness.md"],
+  },
+  {
+    slug: "reference/render-modes",
+    href: "/docs/reference/render-modes",
+    lane: "Reference",
+    title: "Render Modes",
+    description: "Current static and SSR helper evidence plus planned prerender, stream, client-only, API, and hot API modes.",
+    status: "Implemented",
+    source: "docs/public/reference/render-modes.md",
+    related: ["docs/runtime-contract.md", "docs/api-reference.md"],
+  },
+  {
+    slug: "reference/routing",
+    href: "/docs/reference/routing",
+    lane: "Reference",
+    title: "Routing",
+    description: "Route discovery, route IDs, params, layouts, diagnostics, fixture evidence, and planned route behavior.",
+    status: "Planned",
+    source: "docs/public/reference/routing.md",
+    related: ["docs/routing-contract.md", "docs/routing.md"],
+  },
+  {
+    slug: "reference/schema",
+    href: "/docs/reference/schema",
+    lane: "Reference",
+    title: "Schema",
+    description: "Planned schema helpers, validation results, query coercion, OpenAPI mapping, and diagnostics.",
+    status: "Planned",
+    source: "docs/public/reference/schema.md",
+    related: ["docs/schema-contract.md", "docs/schema.md"],
+  },
+  {
+    slug: "reference/security",
+    href: "/docs/reference/security",
+    lane: "Reference",
+    title: "Security",
+    description: "Security-sensitive surfaces, threat model gates, production error rules, agent-write controls, and evidence expectations.",
+    status: "Planned",
+    source: "docs/public/reference/security.md",
+    related: ["docs/security-contract.md", "docs/threat-model.md"],
+  },
+  {
+    slug: "reference/seo",
+    href: "/docs/reference/seo",
+    lane: "Reference",
+    title: "SEO",
+    description: "Planned metadata helpers, canonical URLs, sitemap and robots behavior, structured data, and SEO diagnostics.",
+    status: "Planned",
+    source: "docs/public/reference/seo.md",
+    related: ["docs/seo-contract.md", "docs/seo-engine.md"],
+  },
+  {
+    slug: "reference/testing",
+    href: "/docs/reference/testing",
+    lane: "Reference",
+    title: "Testing",
+    description: "Test layers, fixture layout, browser checks, snapshot policy, network rules, and evidence reporting.",
+    status: "Planned",
+    source: "docs/public/reference/testing.md",
+    related: ["docs/testing-contract.md", "docs/testing.md"],
+  },
+  {
+    slug: "deployment/benchmarks",
+    href: "/docs/deployment/benchmarks",
+    lane: "Deployment",
+    title: "Benchmark Honesty",
+    description: "How Lumina should publish benchmark evidence without synthetic or unsupported speed claims.",
+    status: "Planned",
+    source: "docs/public/deployment/benchmarks.md",
+    related: ["docs/benchmark-methodology.md", "docs/benchmarks.md"],
+  },
+  {
+    slug: "deployment/overview",
+    href: "/docs/deployment/overview",
+    lane: "Deployment",
+    title: "Deployment Overview",
+    description: "Planned deployment guidance across Bun, Node, static output, adapters, compatibility, and launch gates.",
+    status: "Planned",
+    source: "docs/public/deployment/overview.md",
+    related: ["docs/deployment.md", "docs/compatibility.md"],
+  },
+  {
+    slug: "community/contributing",
+    href: "/docs/community/contributing",
+    lane: "Community",
+    title: "Contributing",
+    description: "How contributors should work through documented contracts, checks, review expectations, and status honesty.",
+    status: "Planned",
+    source: "docs/public/community/contributing.md",
+    related: ["CONTRIBUTING.md", "docs/first-contribution.md"],
+  },
+  {
+    slug: "community/governance",
+    href: "/docs/community/governance",
+    lane: "Community",
+    title: "Governance",
+    description: "Public governance expectations, maintainer accountability, release discipline, and community rules.",
+    status: "Planned",
+    source: "docs/public/community/governance.md",
+    related: ["GOVERNANCE.md", "CODE_OF_CONDUCT.md"],
+  },
+  {
+    slug: "community/overview",
+    href: "/docs/community/overview",
+    lane: "Community",
+    title: "Community",
+    description: "The public community overview for contribution paths, governance, review, and launch readiness.",
+    status: "Planned",
+    source: "docs/public/community/overview.md",
+    related: ["docs/open-source-community.md", "docs/operating-cadence.md"],
+  },
+  {
+    slug: "comparisons/overview",
+    href: "/docs/comparisons/overview",
+    lane: "Comparisons",
+    title: "Comparisons",
+    description: "A planned comparison surface that explains Lumina fit and tradeoffs without unsupported competitor claims.",
+    status: "Planned",
+    source: "docs/public/comparisons/overview.md",
+    related: ["docs/comparisons.md", "docs/documentation-research.md"],
+  },
+];
+
+const navLinksByHref = new Map<string, DocsArticle | PublicDocsPage>();
+
+for (const article of docsArticles) {
+  navLinksByHref.set(article.href, article);
+}
+
+for (const page of publicDocsPages) {
+  navLinksByHref.set(page.href, page);
+}
+
+function navLinksForLane(title: string): Array<DocsArticle | PublicDocsPage> {
+  return [...navLinksByHref.values()].filter(
+    (item) =>
+      item.lane === title ||
+      (title === "Start" && item.slug === "start") ||
+      (title === "Deployment" && item.lane === "Operations"),
+  );
+}
+
+export const docsNavGroups: Array<{ title: string; links: Array<DocsArticle | PublicDocsPage> }> = [
   {
     title: "Start",
-    links: docsArticles.filter((article) => article.slug === "start"),
+    links: navLinksForLane("Start"),
   },
   {
     title: "Concepts",
-    links: docsArticles.filter((article) => article.slug === "concepts" || article.slug === "concepts/app-graph"),
+    links: navLinksForLane("Concepts"),
   },
   {
     title: "Guides",
-    links: docsArticles.filter((article) => article.slug === "guides" || article.slug === "guides/create-app"),
+    links: navLinksForLane("Guides"),
   },
   {
     title: "Reference",
-    links: docsArticles.filter((article) => article.slug.startsWith("reference")),
+    links: navLinksForLane("Reference"),
   },
   {
-    title: "Operations",
-    links: docsArticles.filter((article) => article.slug === "deployment" || article.slug === "community"),
+    title: "Deployment",
+    links: navLinksForLane("Deployment"),
+  },
+  {
+    title: "Community",
+    links: navLinksForLane("Community"),
+  },
+  {
+    title: "Comparisons",
+    links: navLinksForLane("Comparisons"),
   },
 ];
 
@@ -384,4 +816,47 @@ export function getDocsArticle(slug: string): DocsArticle {
     throw new Error(`Unknown docs article: ${slug}`);
   }
   return article;
+}
+
+export function findPublicDocsPage(slug: string): PublicDocsPage | undefined {
+  return publicDocsPages.find((page) => page.slug === slug);
+}
+
+export function createPublicDocsArticle(page: PublicDocsPage): DocsArticle {
+  const siblingLinks = publicDocsPages
+    .filter((candidate) => candidate.lane === page.lane && candidate.href !== page.href)
+    .slice(0, 3)
+    .map((candidate) => ({ label: candidate.title, href: candidate.href }));
+
+  return {
+    slug: page.slug,
+    href: page.href,
+    lane: page.lane,
+    title: page.title,
+    description: page.description,
+    status: page.status,
+    source: page.source,
+    icon: laneIcons[page.lane] ?? FileCode2,
+    sections: [
+      {
+        title: "Public page role",
+        body: page.description,
+      },
+      {
+        title: "Current website behavior",
+        body: "This route is rendered from the website's public-docs metadata inventory. It shows the source path, status, lane, and related internal docs, but it does not parse or render the Markdown body yet.",
+      },
+      {
+        title: "Source-of-truth links",
+        body: `Related source docs: ${page.related.join(", ")}.`,
+      },
+    ],
+    links: siblingLinks.length
+      ? siblingLinks
+      : [
+          { label: "Docs home", href: "/docs" },
+          { label: "Reference", href: "/docs/reference" },
+          { label: "Roadmap", href: "/roadmap" },
+        ],
+  };
 }

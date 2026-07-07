@@ -31,6 +31,7 @@ const expectedWwwRoutes = [
   "/docs",
   "/examples",
   "/roadmap",
+  "/docs/*",
   "/",
 ];
 
@@ -70,6 +71,10 @@ describe("Vite dev integration", () => {
       const cliDocs = await fetch(`${dev.url}/docs/reference/cli`);
       expect(cliDocs.status).toBe(200);
       expect(await cliDocs.text()).toContain("<h1>CLI Reference</h1>");
+
+      const securityDocs = await fetch(`${dev.url}/docs/reference/security`);
+      expect(securityDocs.status).toBe(200);
+      expect(await securityDocs.text()).toContain("<h1>Security</h1>");
 
       const viteClient = await fetch(`${dev.url}/@vite/client`);
       expect(viteClient.status).toBe(200);

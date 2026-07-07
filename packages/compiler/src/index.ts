@@ -5,7 +5,9 @@ import { createGraphEdge } from "@lumina/core";
 import type {
   GraphNode,
   LuminaDiagnostic,
+  LuminaConfigInput,
   LuminaMap,
+  NormalizedLuminaConfig,
   RenderMode,
   RenderManifest,
   RouteNode,
@@ -56,6 +58,17 @@ export type LuminaMapWriteResult = {
   map: LuminaMap;
 };
 
+export type LuminaConfigLoadOptions = {
+  appRoot: string;
+  mode?: "development" | "production" | string;
+};
+
+export type LuminaConfigLoadResult = {
+  config: NormalizedLuminaConfig;
+  sourceFile: "lumina.config.ts" | null;
+  diagnostics: LuminaDiagnostic[];
+};
+
 type ParsedSegments = {
   segments: RouteSegment[];
   params: RouteParam[];
@@ -80,6 +93,55 @@ const unsupportedRenderHelpers = new Map<string, RenderMode>([
   ["apiHot", "hot-api"],
 ]);
 
+export async function loadLuminaConfig(options: LuminaConfigLoadOptions): Promise<LuminaConfigLoadResult> {
+  const mode = options.mode ?? "development";
+  const configPath = join(options.appRoot, "lumina.config.ts");
+
+  if (!existsSync(configPath)) {
+    return {
+      config: createNormalizedConfig({}, mode),
+      sourceFile: null,
+      diagnostics: [],
+    };
+  }
+
+  let parsedConfig: LuminaConfigInput | undefined;
+  try {
+    parsedConfig = parseConfigSource(readFileSync(configPath, "utf8"));
+  } catch (error) {
+    return {
+      config: createNormalizedConfig({}, mode),
+      sourceFile: "lumina.config.ts",
+      diagnostics: [
+        configDiagnostic({
+          code: "CONFIG_LOAD_FAILED",
+          message: `Could not load lumina.config.ts: ${error instanceof Error ? error.message : String(error)}`,
+          why: "The compiler evaluates config only during build or dev setup, before production request handling starts.",
+          remediation: "Fix lumina.config.ts so it has a valid default export and does not import unavailable runtime-only code.",
+        }),
+      ],
+    };
+  }
+
+  const rawConfig = parsedConfig ?? {};
+  const diagnostics = parsedConfig
+    ? validateConfig(rawConfig)
+    : [
+        configDiagnostic({
+          code: "CONFIG_FILE_INVALID",
+          message: "lumina.config.ts must default-export a literal configuration object.",
+          why: "The MVP config loader intentionally reads a small literal shape instead of evaluating arbitrary application code.",
+          remediation: "Export `defineConfig({ adapter: \"bun\", runtime: \"bun\" })` or a literal object from lumina.config.ts.",
+        }),
+      ];
+
+  return {
+    config: createNormalizedConfig(rawConfig, mode),
+    sourceFile: "lumina.config.ts",
+    diagnostics,
+  };
+}
+
 export function createRoutesManifest(options: RouteDiscoveryOptions): RoutesManifest {
   const routeRoot = options.routeRoot ?? "app";
   const routes = discoverRoutes({ ...options, routeRoot });
@@ -100,6 +162,155 @@ export function createRoutesManifest(options: RouteDiscoveryOptions): RoutesMani
     routes,
     diagnostics,
   };
+}
+
+function createNormalizedConfig(input: LuminaConfigInput, mode: string): NormalizedLuminaConfig {
+  return {
+    schemaVersion: "lumina.config.v0",
+    appDir: "app",
+    outputDir: normalizeConfigPath(input.outputDir ?? input.luminaDir ?? ".lumina"),
+    outDir: normalizeConfigPath(input.outDir ?? "dist"),
+    runtime: "bun",
+    adapter: "bun",
+    mode,
+  };
+}
+
+function validateConfig(input: LuminaConfigInput): LuminaDiagnostic[] {
+  const diagnostics: LuminaDiagnostic[] = [];
+
+  if (input.appDir !== undefined && input.appDir !== "app") {
+    diagnostics.push(
+      configDiagnostic({
+        code: "CONFIG_INVALID_APP_DIR",
+        message: `Unsupported appDir "${input.appDir}".`,
+        why: "The MVP route compiler currently supports app/ as the only route root.",
+        remediation: "Use appDir: \"app\" until configurable route roots are implemented.",
+      }),
+    );
+  }
+
+  if (input.runtime !== undefined && input.runtime !== "bun") {
+    diagnostics.push(
+      configDiagnostic({
+        code: "CONFIG_INVALID_RUNTIME",
+        message: `Unsupported runtime "${input.runtime}".`,
+        why: "The MVP build output only generates Bun-compatible server code.",
+        remediation: "Use runtime: \"bun\" until Node and static adapter runtime support is implemented.",
+      }),
+    );
+  }
+
+  if (input.adapter !== undefined && input.adapter !== "bun") {
+    diagnostics.push(
+      configDiagnostic({
+        code: "CONFIG_INVALID_ADAPTER",
+        message: `Unsupported adapter "${input.adapter}".`,
+        why: "The MVP build output only emits @lumina/adapter-bun deployment artifacts.",
+        remediation: "Use adapter: \"bun\" until Node and static adapter output is implemented.",
+      }),
+    );
+  }
+
+  for (const [field, value] of [
+    ["outputDir", input.outputDir ?? input.luminaDir],
+    ["outDir", input.outDir],
+  ] as const) {
+    if (typeof value === "string" && !isSafeRelativeConfigPath(value)) {
+      diagnostics.push(
+        configDiagnostic({
+          code: "CONFIG_INVALID_PATH",
+          message: `${field} must be a relative path inside the app root.`,
+          why: "Generated artifacts must not escape the app root or expose machine-specific absolute paths.",
+          remediation: `Use a relative ${field} such as ".lumina" or "dist".`,
+        }),
+      );
+    }
+  }
+
+  return diagnostics.sort((left, right) => compareStrings(left.code, right.code));
+}
+
+function configDiagnostic(options: {
+  code: "CONFIG_FILE_INVALID" | "CONFIG_INVALID_ADAPTER" | "CONFIG_INVALID_APP_DIR" | "CONFIG_INVALID_PATH" | "CONFIG_INVALID_RUNTIME" | "CONFIG_LOAD_FAILED";
+  message: string;
+  why: string;
+  remediation: string;
+}): LuminaDiagnostic {
+  return {
+    code: options.code,
+    severity: "error",
+    category: "config",
+    message: options.message,
+    source: {
+      file: "lumina.config.ts",
+      owner: "compiler",
+    },
+    docs: "docs/config-contract.md#validation",
+    why: options.why,
+    remediation: options.remediation,
+  };
+}
+
+function normalizeConfigPath(path: string): string {
+  return posix.normalize(path.replaceAll("\\", "/")).replace(/\/$/, "");
+}
+
+function isSafeRelativeConfigPath(path: string): boolean {
+  const normalized = normalizeConfigPath(path);
+  return normalized.length > 0
+    && !normalized.startsWith("/")
+    && !/^[A-Za-z]:/.test(path)
+    && normalized !== ".."
+    && !normalized.startsWith("../");
+}
+
+function parseConfigSource(sourceText: string): LuminaConfigInput | undefined {
+  const source = ts.createSourceFile("lumina.config.ts", sourceText, ts.ScriptTarget.Latest, true, ts.ScriptKind.TS);
+
+  for (const statement of source.statements) {
+    if (!ts.isExportAssignment(statement) || statement.isExportEquals) continue;
+    const expression = unwrapConfigExpression(statement.expression);
+    if (!ts.isObjectLiteralExpression(expression)) return undefined;
+    return parseConfigObject(expression);
+  }
+
+  return undefined;
+}
+
+function unwrapConfigExpression(expression: ts.Expression): ts.Expression {
+  if (ts.isCallExpression(expression) && ts.isIdentifier(expression.expression) && expression.expression.text === "defineConfig") {
+    return expression.arguments[0] ?? expression;
+  }
+  return expression;
+}
+
+function parseConfigObject(object: ts.ObjectLiteralExpression): LuminaConfigInput {
+  const config: LuminaConfigInput = {};
+
+  for (const property of object.properties) {
+    if (!ts.isPropertyAssignment(property)) continue;
+    const name = configPropertyName(property.name);
+    if (!name) continue;
+    if (!isConfigStringField(name)) continue;
+    if (!ts.isStringLiteralLike(property.initializer)) continue;
+    config[name] = property.initializer.text;
+  }
+
+  return config;
+}
+
+function configPropertyName(name: ts.PropertyName): string | undefined {
+  if (ts.isIdentifier(name) || ts.isStringLiteral(name) || ts.isNumericLiteral(name)) return name.text;
+}
+
+function isConfigStringField(name: string): name is keyof LuminaConfigInput {
+  return name === "appDir"
+    || name === "outputDir"
+    || name === "luminaDir"
+    || name === "outDir"
+    || name === "runtime"
+    || name === "adapter";
 }
 
 export function writeRoutesManifest(options: RoutesManifestWriteOptions): RoutesManifestWriteResult {

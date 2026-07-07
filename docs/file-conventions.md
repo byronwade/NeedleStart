@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, framework contributors, AI agents.
 
-This page documents file and folder conventions for Lumina apps. The route-discovery subset, explicit `staticPage()` / `ssr()` render declarations, minimal Vite dev page rendering with dynamic and catch-all route params plus search params, dev not-found/error components, and route-specific hydration bundle output are implemented for current fixtures; config loading, metadata, and production SSR/API behavior remain planned.
+This page documents file and folder conventions for Lumina apps. The route-discovery subset, explicit `staticPage()` / `ssr()` render declarations, minimal Vite dev page rendering with dynamic and catch-all route params plus search params, dev not-found/error components, route-specific hydration bundle output, and MVP Bun config loading are implemented for current fixtures; metadata and production API behavior remain planned.
 
 For exact route parsing, route IDs, sorting, conflict diagnostics, and fixture requirements, see [Routing Contract](routing-contract.md).
 
@@ -23,7 +23,7 @@ MVP Alpha route discovery currently supports source fixtures that use:
 - `components/*.tsx`
 - `lumina.config.ts`
 
-MVP Alpha should defer config loading, optional catch-all segments, production special-file rendering, contract files, app-local AGENTS generation, and llms outputs. Production rendered HTML for dynamic routes remains planned; the current static build emits HTML only for static routes.
+MVP Alpha should defer optional catch-all segments, production special-file rendering, contract files, app-local AGENTS generation, and llms outputs. Production rendered HTML for dynamic routes remains planned; the current build emits static HTML for static routes and generated SSR route bundles for explicit SSR page routes.
 
 These conventions are the starter surface for `apps/www/`, scaffolded examples, and `bun create lumina` target behavior.
 
@@ -140,7 +140,7 @@ Planned special files:
 | --- | --- | --- |
 | `app/not-found.tsx` | Implemented in Vite dev server | Route-level or app-level 404 UI for dev responses. Production support remains planned. |
 | `app/error.tsx` | Implemented in Vite dev server | Route-level or app-level 500 UI for dev responses. Production support remains planned. |
-| `lumina.config.ts` | Planned | Framework config. |
+| `lumina.config.ts` | Implemented for MVP Bun fields | Framework config for `appDir`, `outputDir`, `outDir`, `runtime: "bun"`, and `adapter: "bun"`. |
 | `AGENTS.md` | Planned app-local generated artifact | Agent operating guide for a user app. This does not describe the hand-maintained Lumina repository root `AGENTS.md`. |
 | `llms.txt` | Planned app-local or public-docs artifact | Compact AI-readable project summary. |
 | `llms-full.txt` | Planned app-local or public-docs artifact | Full AI-readable project context. |

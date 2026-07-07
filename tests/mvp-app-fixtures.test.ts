@@ -48,6 +48,7 @@ describe("MVP app and example fixtures", () => {
         "/docs",
         "/examples",
         "/roadmap",
+        "/docs/*",
         "/",
       ]);
 

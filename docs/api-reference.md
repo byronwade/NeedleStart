@@ -24,8 +24,8 @@ Planned commands:
 | Command | Status | Purpose |
 | --- | --- | --- |
 | `lumina dev` | Implemented for minimal `<appPath>` Vite SSR route serving | Start local development server. |
-| `lumina build` | Implemented for static page routes | Build static HTML, route/render/map artifacts, initial build/performance reports, and Bun adapter manifests; SSR/API/SEO output remains planned. |
-| `lumina start` | Implemented for static built output | Start a built static app with `@lumina/adapter-bun`; SSR/API serving remains planned. |
+| `lumina build` | Implemented for static page routes and generated SSR page bundles | Build static HTML, route/render/map artifacts, initial build/performance reports, adapter-aware server entry, and Bun adapter manifests; API/SEO output remains planned. |
+| `lumina start` | Implemented for static built output and generated SSR page bundles | Start a built app with `@lumina/adapter-bun`; API serving remains planned. |
 | `lumina routes` | Implemented for `<appPath> --json` | Inspect discovered routes and emit `.lumina/routes.json`. |
 | `lumina inspect` | Implemented for `<appPath> --json` and `<appPath> why <route>` | Inspect generated app evidence and explain why a route exists. |
 | `lumina inspect` | Planned | Inspect a route, file, or generated artifact. |
@@ -49,13 +49,16 @@ The shared diagnostic code, severity, source-location, remediation, docs-link, a
 
 ## Config Reference
 
-Planned config file:
+Implemented MVP config file:
 
 ```ts
 // lumina.config.ts
 import { defineConfig } from "lumina"
 
 export default defineConfig({
+  appDir: "app",
+  outputDir: ".lumina",
+  outDir: "dist",
   runtime: "bun",
   adapter: "bun",
 })
@@ -81,7 +84,7 @@ Planned helpers:
 
 | API | Status | Package | Purpose |
 | --- | --- | --- | --- |
-| `defineConfig()` | Planned | `lumina` | Define project config. |
+| `defineConfig()` | Implemented as accepted config wrapper syntax | `lumina` target | Define project config for the MVP Bun build parser. |
 | `defineMeta()` | Planned | `lumina` | Define route metadata for SEO, social cards, sitemap output, robots policy, and structured data. |
 | `staticPage()` | Implemented in `@lumina/react` for MVP render declarations | `lumina` target, local `@lumina/react` package | Mark a route as static. |
 | `prerender()` | Planned | `lumina` | Mark a route as prerendered with revalidation metadata. |
@@ -116,8 +119,9 @@ Planned generated files:
 | `.lumina/context/agent-index.json` | Planned | Agent context index. |
 | `.lumina/mutations.json` | Planned | Safe edit mutation log. |
 | `.lumina/client/*.js` | Implemented for dev and static build | Route-specific hydration bundles before adapter copying. |
-| `.lumina/generated/*` | Planned | Generated runtime modules. |
+| `.lumina/generated/*` | Implemented for adapter-aware server entry; broader runtime modules planned | Generated runtime modules. |
 | `.lumina/generated/client/*.tsx` | Implemented for dev and static build | Generated source entries for route-specific hydration bundles. |
+| `.lumina/generated/server-entry.ts` | Implemented for Bun build output | Adapter-aware server entry that imports `@lumina/adapter-bun`. |
 | `dist/routes.manifest.json` | Implemented for static build | Deployment-oriented route manifest copy for adapters. |
 | `dist/render.manifest.json` | Implemented for static build | Deployment-oriented render manifest copy for adapters. |
 | `dist/seo.report.json` | Planned | Deployment-oriented SEO report copy for adapters. |

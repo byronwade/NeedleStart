@@ -240,7 +240,7 @@ Future work after MVP Alpha includes:
 - Large-repo workspace reports: `.lumina/workspace.json`, `.lumina/workspace-graph.json`, `.lumina/affected.json`, `.lumina/build-trace.json`, `.lumina/cache-report.json`, `.lumina/hmr-report.json`, and `.lumina/split-report.json`.
 - Agent context capsules under `.lumina/context/*.ctx.json` and `.lumina/context/agent-index.json`.
 - Safe edit mutation logs under `.lumina/mutations.json`.
-- Generated compiler outputs under `.lumina/generated/*`.
+- Broader generated compiler outputs under `.lumina/generated/*`; `.lumina/generated/server-entry.ts` and route client entries already exist for the current build/dev slices.
 - Adapter-oriented deployment copies under `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, `dist/adapter.manifest.json`, and `dist/*`.
 - MCP server.
 - Node and static adapter runtime behavior.

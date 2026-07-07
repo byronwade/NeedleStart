@@ -1,10 +1,10 @@
 # Manifest Contracts
 
-Status: Planned.
+Status: Scaffolded.
 
 Audience: framework contributors, adapter authors, AI agents.
 
-Lumina planned manifests are the contracts between compiler, runtime adapters, CLI, Lumina Map, Agent Kernel, MCP, devtools, and tests.
+Lumina manifests are the contracts between compiler, runtime adapters, CLI, Lumina Map, Agent Kernel, MCP, devtools, and tests. The MVP route, render, map, build trace, performance report, Bun server-entry, and adapter deployment manifests are implemented; broader manifests remain planned.
 
 Planned generated files include:
 
@@ -26,6 +26,7 @@ Planned generated files include:
 - `.lumina/mutations.json`
 - `.lumina/client/*.js`
 - `.lumina/generated/*`
+- `.lumina/generated/server-entry.ts`
 - `.lumina/generated/client/*.tsx`
 - `dist/routes.manifest.json`
 - `dist/render.manifest.json`

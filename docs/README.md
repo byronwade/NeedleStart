@@ -40,8 +40,8 @@ This directory is the source of truth for Lumina planning, architecture, roadmap
 - [CLI Reference](cli.md): planned `needle` command reference.
 - [CLI JSON Contract](cli-json-contract.md): planned `--json` envelope, diagnostics, and exit-code policy.
 - [Diagnostics Contract](diagnostics-contract.md): planned diagnostic codes, severity values, locations, remediations, docs links, and JSON behavior.
-- [Configuration Reference](config.md): planned `lumina.config.ts` reference.
-- [Configuration Contract](config-contract.md): planned config loading, validation, env handling, and normalized output rules.
+- [Configuration Reference](config.md): MVP Bun `lumina.config.ts` reference plus planned future fields.
+- [Configuration Contract](config-contract.md): implemented MVP config parsing/validation plus planned env handling and broader normalized output rules.
 - [Adapter Contract](adapter-contract.md): planned Bun, Node, and static adapter inputs, outputs, manifests, capabilities, and tests.
 - [Routing](routing.md): planned route conventions.
 - [Routing Contract](routing-contract.md): planned route IDs, segment grammar, sorting, diagnostics, and fixture requirements.

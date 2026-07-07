@@ -141,6 +141,7 @@ Verified examples must document expected artifacts:
 .lumina/mutations.json
 .lumina/client/*.js
 .lumina/generated/*
+.lumina/generated/server-entry.ts
 .lumina/generated/client/*.tsx
 dist/routes.manifest.json
 dist/render.manifest.json

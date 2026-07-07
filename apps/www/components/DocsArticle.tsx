@@ -5,7 +5,7 @@ import { Badge } from "./ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 
 function statusVariant(status: DocsArticle["status"]) {
-  if (status === "Current") return "success";
+  if (status === "Current" || status === "Implemented") return "success";
   if (status === "Scaffolded") return "secondary";
   return "warning";
 }

@@ -1,7 +1,7 @@
 import { copyFileSync, existsSync, mkdirSync, readdirSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { dirname, relative, resolve } from "node:path";
-import { writeLuminaMap, writeRenderManifest, writeRoutesManifest } from "@lumina/compiler";
-import type { RouteNode } from "@lumina/core";
+import { loadLuminaConfig, writeLuminaMap, writeRenderManifest, writeRoutesManifest } from "@lumina/compiler";
+import type { LuminaAdapter, NormalizedLuminaConfig, RouteNode } from "@lumina/core";
 import { createElement, type ReactNode } from "react";
 import { renderToString } from "react-dom/server";
 import { createServer, type ModuleNode, type ViteDevServer } from "vite";
@@ -91,6 +91,13 @@ export async function startLuminaDevServer(options: LuminaDevServerOptions): Pro
           }
         },
         configureServer(server) {
+          server.watcher.add(resolve(appRoot, "app"));
+
+          const watchAddedDirectory = (directory: string) => {
+            if (!isAppDirectory(appRoot, directory)) return;
+            server.watcher.add(directory);
+          };
+
           const updateRouteState = (file: string) => {
             if (!isAppSourceFile(appRoot, file)) return;
             routeState = regenerateArtifacts(appRoot, file);
@@ -108,6 +115,7 @@ export async function startLuminaDevServer(options: LuminaDevServerOptions): Pro
             server.ws.send({ type: "full-reload" });
           };
 
+          server.watcher.on("addDir", watchAddedDirectory);
           server.watcher.on("add", updateRouteState);
           server.watcher.on("unlink", updateRouteState);
 
@@ -210,7 +218,9 @@ export async function startLuminaDevServer(options: LuminaDevServerOptions): Pro
     ],
   });
 
+  const watcherReady = waitForWatcherReady(vite);
   await vite.listen();
+  await watcherReady;
 
   return {
     url: resolveServerUrl(vite),
@@ -224,7 +234,17 @@ export async function startLuminaDevServer(options: LuminaDevServerOptions): Pro
 
 export async function buildLuminaStaticApp(options: LuminaDevServerOptions): Promise<LuminaBuildResult> {
   const appRoot = resolve(options.appRoot);
-  const routeState = regenerateArtifacts(appRoot);
+  const configResult = await loadLuminaConfig({ appRoot, mode: "production" });
+  if (configResult.diagnostics.some((diagnostic) => diagnostic.severity === "error")) {
+    return {
+      routes: [],
+      outputs: [],
+      manifests: [],
+      diagnostics: configResult.diagnostics,
+    };
+  }
+
+  const routeState = regenerateArtifacts(appRoot, undefined, configResult.config.outputDir);
   const outputs: string[] = [];
   const manifests = [
     ".lumina/routes.json",
@@ -307,15 +327,21 @@ export async function buildLuminaStaticApp(options: LuminaDevServerOptions): Pro
 
   copyJsonArtifact(appRoot, ".lumina/routes.json", "dist/routes.manifest.json", routeState.manifest);
   copyJsonArtifact(appRoot, ".lumina/render-manifest.json", "dist/render.manifest.json", routeState.renderManifest);
-  const adapterManifest = createBunAdapterManifest(routeState.routes.some((route) => route.kind === "page" && route.renderMode === "ssr"));
+  const serverEntryPath = writeServerEntry(appRoot, configResult.config.adapter);
+  const adapterManifest = createBunAdapterManifest({
+    hasSsrOutput: routeState.routes.some((route) => route.kind === "page" && route.renderMode === "ssr"),
+    config: configResult.config,
+    configSource: configResult.sourceFile,
+    serverEntry: serverEntryPath,
+  });
   copyJsonArtifact(appRoot, "", "dist/adapter.manifest.json", adapterManifest);
 
   const buildTracePath = ".lumina/build-trace.json";
   const perfReportPath = ".lumina/perf.report.json";
-  writeJsonArtifact(appRoot, buildTracePath, createBuildTrace([...manifests, ...outputs, "dist/routes.manifest.json", "dist/render.manifest.json", "dist/adapter.manifest.json"], phaseTimings));
+  writeJsonArtifact(appRoot, buildTracePath, createBuildTrace([...manifests, serverEntryPath, ...outputs, "dist/routes.manifest.json", "dist/render.manifest.json", "dist/adapter.manifest.json"], phaseTimings));
   writeJsonArtifact(appRoot, perfReportPath, createPerfReport(routeState.routes, outputs, appRoot));
 
-  manifests.push(buildTracePath, perfReportPath, "dist/routes.manifest.json", "dist/render.manifest.json", "dist/adapter.manifest.json");
+  manifests.push(serverEntryPath, buildTracePath, perfReportPath, "dist/routes.manifest.json", "dist/render.manifest.json", "dist/adapter.manifest.json");
 
   return {
     routes: routeState.routes,
@@ -329,10 +355,10 @@ export async function buildLuminaStaticApp(options: LuminaDevServerOptions): Pro
   };
 }
 
-function regenerateArtifacts(appRoot: string, changedFile?: string) {
-  const routesResult = writeRoutesManifest({ appRoot });
-  const renderResult = writeRenderManifest({ appRoot });
-  const mapResult = writeLuminaMap({ appRoot });
+function regenerateArtifacts(appRoot: string, changedFile?: string, outputDir = ".lumina") {
+  const routesResult = writeRoutesManifest({ appRoot, outputDir });
+  const renderResult = writeRenderManifest({ appRoot, outputDir });
+  const mapResult = writeLuminaMap({ appRoot, outputDir });
   const routes = routesResult.manifest.routes.filter((route) => route.kind === "page");
 
   if (changedFile) {
@@ -765,6 +791,24 @@ function isAppSourceFile(appRoot: string, file: string): boolean {
     && (normalized.endsWith(".ts") || normalized.endsWith(".tsx") || normalized.endsWith(".js") || normalized.endsWith(".jsx"));
 }
 
+function isAppDirectory(appRoot: string, directory: string): boolean {
+  const normalized = toRelativePath(appRoot, directory);
+  return normalized === "app" || normalized.startsWith("app/");
+}
+
+function waitForWatcherReady(server: ViteDevServer): Promise<void> {
+  const watcher = server.watcher as ViteDevServer["watcher"] & { _readyEmitted?: boolean };
+  if (watcher._readyEmitted) return Promise.resolve();
+
+  return new Promise((resolveReady) => {
+    const timeout = setTimeout(resolveReady, 1_000);
+    watcher.once("ready", () => {
+      clearTimeout(timeout);
+      resolveReady();
+    });
+  });
+}
+
 function toRelativePath(root: string, file: string): string {
   return relative(root, file).replaceAll("\\", "/");
 }
@@ -844,7 +888,34 @@ function copyJsonArtifact(appRoot: string, _sourcePath: string, outputPath: stri
   writeJsonArtifact(appRoot, outputPath, value);
 }
 
-function createBunAdapterManifest(hasSsrOutput = false) {
+function writeServerEntry(appRoot: string, adapter: LuminaAdapter): string {
+  const outputPath = ".lumina/generated/server-entry.ts";
+  writeTextArtifact(appRoot, outputPath, createServerEntryModule(adapter));
+  return outputPath;
+}
+
+function createServerEntryModule(adapter: LuminaAdapter): string {
+  if (adapter === "bun") {
+    return [
+      'import { startBuiltLuminaApp } from "@lumina/adapter-bun";',
+      "",
+      'export const adapter = "bun";',
+      'export const runtime = "bun";',
+      "export { startBuiltLuminaApp };",
+      "",
+    ].join("\n");
+  }
+
+  throw new Error(`Unsupported adapter: ${adapter}`);
+}
+
+function createBunAdapterManifest(options: {
+  hasSsrOutput?: boolean;
+  config: NormalizedLuminaConfig;
+  configSource: "lumina.config.ts" | null;
+  serverEntry: string;
+}) {
+  const hasSsrOutput = options.hasSsrOutput ?? false;
   return {
     schemaVersion: "lumina.adapter.v0",
     adapter: "bun",
@@ -854,9 +925,12 @@ function createBunAdapterManifest(hasSsrOutput = false) {
       version: "0.0.0",
     },
     source: {
+      config: options.configSource,
+      normalizedConfig: options.config,
       routesManifest: "dist/routes.manifest.json",
       renderManifest: "dist/render.manifest.json",
-      serverEntry: hasSsrOutput ? "dist/server/ssr-routes.js" : null,
+      serverEntry: options.serverEntry,
+      ssrRoutes: hasSsrOutput ? "dist/server/ssr-routes.js" : null,
     },
     runtime: {
       name: "bun",

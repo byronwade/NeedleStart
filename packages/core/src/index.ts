@@ -205,6 +205,29 @@ export type GeneratedArtifact = {
   sourceInputs: string[];
 };
 
+export type LuminaRuntime = "bun";
+
+export type LuminaAdapter = "bun";
+
+export type LuminaConfigInput = {
+  appDir?: string;
+  outputDir?: string;
+  luminaDir?: string;
+  outDir?: string;
+  runtime?: LuminaRuntime | string;
+  adapter?: LuminaAdapter | string;
+};
+
+export type NormalizedLuminaConfig = {
+  schemaVersion: "lumina.config.v0";
+  appDir: "app";
+  outputDir: string;
+  outDir: string;
+  runtime: LuminaRuntime;
+  adapter: LuminaAdapter;
+  mode: "development" | "production" | string;
+};
+
 export type RenderManifestRoute = {
   id: string;
   path: string;

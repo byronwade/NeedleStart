@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: adapter maintainers, runtime contributors, deployers, AI agents.
 
-This page defines the adapter and deployment-output contract for Lumina. Static built-output serving through `@lumina/adapter-bun` is implemented. Built-output serving through `@lumina/adapter-bun` is also implemented for generated SSR route bundles under `dist/server/ssr-routes.js` and route-specific production client bundles under `dist/public/_lumina/client/*.js`; the tested path covers generated-output-only request handling, stable 404s, basic HTML and client asset cache headers, generated SSR route serving, sanitized SSR 500 responses, and sanitized malformed-path responses. API, hot API, health endpoints, expanded cache behavior, Node, and static export adapter behavior remain planned. The contract exists so Bun, Node, static export, runtime manifests, deployment docs, compatibility claims, cache behavior, health checks, and tests all use the same expectations.
+This page defines the adapter and deployment-output contract for Lumina. Static built-output serving through `@lumina/adapter-bun` is implemented. Built-output serving through `@lumina/adapter-bun` is also implemented for generated SSR route bundles under `dist/server/ssr-routes.js` and route-specific production client bundles under `dist/public/_lumina/client/*.js`; the tested path covers generated-output-only request handling, stable 404s, basic HTML and client asset cache headers, generated SSR route serving, sanitized SSR 500 responses, sanitized malformed-path responses, MVP Bun config normalization, and `.lumina/generated/server-entry.ts` importing `@lumina/adapter-bun`. API, hot API, health endpoints, expanded cache behavior, Node, and static export adapter behavior remain planned. The contract exists so Bun, Node, static export, runtime manifests, deployment docs, compatibility claims, cache behavior, health checks, and tests all use the same expectations.
 
 ## Goals
 
@@ -80,6 +80,8 @@ Adapter inputs must include:
 - SEO output paths,
 - diagnostics.
 
+The current Bun build path serializes normalized MVP config into `dist/adapter.manifest.json` and writes `.lumina/generated/server-entry.ts`. Runtime request handling still consumes built manifests and generated handlers; it does not parse source config.
+
 ## Adapter Output
 
 Planned output:
@@ -113,6 +115,22 @@ Planned `dist/adapter.manifest.json`:
   },
   "entry": "dist/server/index.js",
   "publicDir": "dist/public",
+  "source": {
+    "config": "lumina.config.ts",
+    "normalizedConfig": {
+      "schemaVersion": "lumina.config.v0",
+      "appDir": "app",
+      "outputDir": ".lumina",
+      "outDir": "dist",
+      "runtime": "bun",
+      "adapter": "bun",
+      "mode": "production"
+    },
+    "routesManifest": "dist/routes.manifest.json",
+    "renderManifest": "dist/render.manifest.json",
+    "serverEntry": ".lumina/generated/server-entry.ts",
+    "ssrRoutes": "dist/server/ssr-routes.js"
+  },
   "capabilities": {
     "staticAssets": true,
     "prerenderedHtml": true,

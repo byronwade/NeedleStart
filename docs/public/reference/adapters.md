@@ -4,13 +4,13 @@ Status: Implemented.
 
 Audience: deployers, app developers, adapter maintainers, AI agents.
 
-Lumina adapters turn generated build output into deployable Bun, Node, or static output. Static built-output serving through `@lumina/adapter-bun` is implemented for build-time static page routes. Node adapter behavior, static export adapter behavior, SSR, API, hot API, streaming, compression, 103 Early Hints, and adapter-native route dispatch remain planned.
+Lumina adapters turn generated build output into deployable Bun, Node, or static output. Static built-output serving through `@lumina/adapter-bun` is implemented for build-time static page routes and generated SSR page bundles. MVP Bun config normalization and `.lumina/generated/server-entry.ts` are implemented. Node adapter behavior, static export adapter behavior, API, hot API, streaming, compression, 103 Early Hints, and adapter-native route dispatch remain planned.
 
 ## Initial Adapters
 
 | Adapter | Package | Status |
 | --- | --- | --- |
-| Bun | `@lumina/adapter-bun` | Implemented for static built HTML serving; broader runtime behavior planned. |
+| Bun | `@lumina/adapter-bun` | Implemented for static built HTML and generated SSR page serving; broader runtime behavior planned. |
 | Node | `@lumina/adapter-node` | Planned compatibility adapter path. |
 | Static | `@lumina/adapter-static` | Planned static export path. |
 
@@ -26,7 +26,7 @@ dist/
   seo.report.json
 ```
 
-`dist/public/`, `dist/routes.manifest.json`, `dist/render.manifest.json`, and `dist/adapter.manifest.json` are implemented for the static build path. `dist/server/` and `dist/seo.report.json` remain planned. These files are deployment output. Canonical compiler and agent artifacts stay under `.lumina/`.
+`dist/public/`, `dist/server/ssr-routes.js`, `dist/routes.manifest.json`, `dist/render.manifest.json`, and `dist/adapter.manifest.json` are implemented for the Bun build path. `dist/seo.report.json` remains planned. These files are deployment output. Canonical compiler and agent artifacts stay under `.lumina/`.
 
 The named deployment artifacts are `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, and `dist/adapter.manifest.json`.
 
@@ -36,6 +36,7 @@ The named deployment artifacts are `dist/routes.manifest.json`, `dist/render.man
 
 - adapter package,
 - runtime through `runtime.name`,
+- normalized MVP config and `.lumina/generated/server-entry.ts` source metadata,
 - entry file,
 - public directory,
 - capabilities, including compression, route-known resource hints, 103 Early Hints support, and bfcache-aware headers,

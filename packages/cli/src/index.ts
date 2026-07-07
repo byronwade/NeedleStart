@@ -172,6 +172,36 @@ export async function runCli(argv: string[], io: CliIo = {}): Promise<number> {
       appRoot,
       logLevel: "silent",
     });
+    const hasErrors = build.diagnostics.some((diagnostic) => {
+      return typeof diagnostic === "object"
+        && diagnostic !== null
+        && "severity" in diagnostic
+        && diagnostic.severity === "error";
+    });
+
+    if (hasErrors) {
+      if (flags.includes("--json")) {
+        stdout(
+          JSON.stringify({
+            schemaVersion: "lumina.cli.v0",
+            command: "lumina build",
+            status: "error",
+            data: {
+              routes: build.routes.length,
+              outputs: build.outputs,
+              manifests: build.manifests,
+            },
+            diagnostics: build.diagnostics,
+            meta: {
+              cwd: ".",
+            },
+          }),
+        );
+      } else {
+        stderr("Lumina build failed validation. Run with --json for structured diagnostics.");
+      }
+      return 3;
+    }
 
     if (flags.includes("--json")) {
       stdout(

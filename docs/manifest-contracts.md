@@ -31,6 +31,7 @@ Shared diagnostic fields in manifests should follow [Diagnostics Contract](diagn
 | `.lumina/client/*.js` | Implemented route-specific dev hydration bundles. |
 | `.lumina/generated/*` | Generated runtime modules. |
 | `.lumina/generated/client/*.tsx` | Implemented source entries for dev hydration bundles. |
+| `.lumina/generated/server-entry.ts` | Implemented Bun adapter-aware server entry. |
 | `dist/routes.manifest.json` | Deployment-oriented route manifest copy for adapters. |
 | `dist/render.manifest.json` | Deployment-oriented render manifest copy for adapters. |
 | `dist/seo.report.json` | Deployment-oriented SEO report copy for adapters. |
@@ -78,7 +79,7 @@ Draft route entry:
 }
 ```
 
-The route manifest shape, explicit static/SSR render-mode extraction, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/client/*.js` dev hydration bundles, `dist/public/_lumina/client/*.js` production hydration bundles, generated `dist/server/ssr-routes.js` SSR route registry output, `.lumina/build-trace.json`, `.lumina/perf.report.json`, `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/adapter.manifest.json`, static `dist/public` HTML emission, and generated SSR route serving are backed by route-discovery, render-mode, artifact, CLI JSON, dev-server, browser, build, and adapter HTTP tests. Broader generated artifacts remain planned until their owning implementations land.
+The route manifest shape, explicit static/SSR render-mode extraction, MVP Bun config normalization, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/client/*.js` dev hydration bundles, `.lumina/generated/server-entry.ts`, `dist/public/_lumina/client/*.js` production hydration bundles, generated `dist/server/ssr-routes.js` SSR route registry output, `.lumina/build-trace.json`, `.lumina/perf.report.json`, `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/adapter.manifest.json`, static `dist/public` HTML emission, and generated SSR route serving are backed by route-discovery, render-mode, artifact, CLI JSON, dev-server, browser, build, and adapter HTTP tests. Broader generated artifacts remain planned until their owning implementations land.
 
 API route entries should follow [API Route Contract](api-route-contract.md) for method lists, schema flags, cache metadata, hot API flags, and API diagnostics.
 

@@ -33,6 +33,7 @@ Lumina should make documentation consumable by humans and AI agents. Machine-rea
 | `.lumina/context/agent-index.json` | Index of generated agent context. | Agent source contract; not a production runtime bundle |
 | `.lumina/mutations.json` | Safe edit mutation log for apps. | Agent and safe-edit source contract; not a production runtime bundle |
 | `.lumina/generated/*` | Generated runtime modules for apps. | May feed production build output, but not agent metadata |
+| `.lumina/generated/server-entry.ts` | Implemented Bun adapter-aware server entry. | Production build output |
 | `.lumina/generated/client/*.tsx` | Generated source entries for route hydration bundles. | Build source artifact; not served directly in production |
 | `.lumina/client/*.js` | Generated route-specific hydration bundles before adapter copying. | Compiler build artifact copied into production output when static build runs |
 | `dist/public/_lumina/client/*.js` | Generated route-specific production hydration bundles for static built pages. | Production static asset |
