@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: adapter maintainers, runtime contributors, deployers, AI agents.
 
-This page defines the adapter and deployment-output contract for Lumina. Static built-output serving through `@lumina/adapter-bun` is implemented for `dist/public` HTML; SSR, API, hot API, health endpoints, expanded cache behavior, Node, and static export adapter behavior remain planned. The contract exists so Bun, Node, static export, runtime manifests, deployment docs, compatibility claims, cache behavior, health checks, and tests all use the same expectations.
+This page defines the adapter and deployment-output contract for Lumina. Static built-output serving through `@lumina/adapter-bun` is implemented for `dist/public` HTML and route-specific production client bundles under `dist/public/_lumina/client/*.js`; SSR, API, hot API, health endpoints, expanded cache behavior, Node, and static export adapter behavior remain planned. The contract exists so Bun, Node, static export, runtime manifests, deployment docs, compatibility claims, cache behavior, health checks, and tests all use the same expectations.
 
 ## Goals
 

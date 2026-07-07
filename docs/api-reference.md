@@ -114,13 +114,14 @@ Planned generated files:
 | `.lumina/context/*.ctx.json` | Planned | Route or surface context capsules. |
 | `.lumina/context/agent-index.json` | Planned | Agent context index. |
 | `.lumina/mutations.json` | Planned | Safe edit mutation log. |
-| `.lumina/client/*.js` | Implemented for dev server | Route-specific dev hydration bundles. |
+| `.lumina/client/*.js` | Implemented for dev and static build | Route-specific hydration bundles before adapter copying. |
 | `.lumina/generated/*` | Planned | Generated runtime modules. |
-| `.lumina/generated/client/*.tsx` | Implemented for dev server | Generated source entries for route-specific dev hydration bundles. |
+| `.lumina/generated/client/*.tsx` | Implemented for dev and static build | Generated source entries for route-specific hydration bundles. |
 | `dist/routes.manifest.json` | Implemented for static build | Deployment-oriented route manifest copy for adapters. |
 | `dist/render.manifest.json` | Implemented for static build | Deployment-oriented render manifest copy for adapters. |
 | `dist/seo.report.json` | Planned | Deployment-oriented SEO report copy for adapters. |
 | `dist/adapter.manifest.json` | Implemented for static Bun output | Adapter capabilities and deployment output metadata. |
+| `dist/public/_lumina/client/*.js` | Implemented for static build | Production static assets for route-specific hydration. |
 | `dist/*` | Implemented for static HTML output | Production build output for static page routes. |
 
 Generated JSON must use schema versions, normalized paths, stable ordering, compact agent-friendly fields, documented source inputs when practical, and no absolute local paths in public artifacts.

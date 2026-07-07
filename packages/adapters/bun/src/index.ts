@@ -25,6 +25,30 @@ export async function startBuiltLuminaApp(options: BuiltLuminaAppOptions): Promi
     port,
     fetch(request) {
       const pathname = normalizePathname(new URL(request.url).pathname);
+      if (looksLikeStaticAsset(pathname)) {
+        const assetPath = publicAssetPath(publicRoot, pathname);
+        if (assetPath) {
+          const asset = Bun.file(assetPath);
+          if (asset.size > 0) {
+            return new Response(asset, {
+              status: 200,
+              headers: {
+                "Content-Type": contentTypeForPath(pathname),
+                "Cache-Control": pathname.startsWith("/_lumina/client/") ? "public, max-age=31536000, immutable" : "no-store",
+              },
+            });
+          }
+        }
+
+        return new Response("Lumina asset not found", {
+          status: 404,
+          headers: {
+            "Content-Type": "text/plain; charset=utf-8",
+            "Cache-Control": "no-store",
+          },
+        });
+      }
+
       const htmlPath = htmlFileForPath(publicRoot, pathname);
       const html = Bun.file(htmlPath);
 
@@ -64,4 +88,22 @@ function normalizePathname(pathname: string): string {
 function htmlFileForPath(publicRoot: string, pathname: string): string {
   if (pathname === "/") return `${publicRoot}/index.html`;
   return `${publicRoot}${pathname}/index.html`;
+}
+
+function looksLikeStaticAsset(pathname: string): boolean {
+  return /\.[a-zA-Z0-9]+$/.test(pathname);
+}
+
+function publicAssetPath(publicRoot: string, pathname: string): string | null {
+  const decoded = decodeURIComponent(pathname);
+  if (decoded.includes("..") || decoded.includes("\\") || decoded.includes("\0")) return null;
+  return `${publicRoot}${decoded}`;
+}
+
+function contentTypeForPath(pathname: string): string {
+  if (pathname.endsWith(".js")) return "application/javascript; charset=utf-8";
+  if (pathname.endsWith(".css")) return "text/css; charset=utf-8";
+  if (pathname.endsWith(".svg")) return "image/svg+xml";
+  if (pathname.endsWith(".json")) return "application/json; charset=utf-8";
+  return "application/octet-stream";
 }

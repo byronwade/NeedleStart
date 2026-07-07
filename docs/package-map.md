@@ -6,7 +6,7 @@ Status: Scaffolded.
 
 Audience: framework contributors, package owners, AI agents.
 
-Scope: package names and entrypoints are scaffolded; package behavior remains planned unless a package README, tests, and implementation evidence say otherwise. The initial `@lumina/react` `staticPage()` / `ssr()` helpers are implemented for render declarations. The initial `@lumina/compiler` route-discovery, explicit static/SSR render-mode extraction, and direct local import map edge APIs are implemented and covered by fixture tests. The initial `@lumina/map` affected-route query API is implemented for direct local import edges. The initial `@lumina/vite-plugin` dev-server and static-build APIs are implemented for minimal SSR page serving, static HTML output, and deployment manifest copies. The initial `@lumina/adapter-bun` runtime API serves static built HTML from `dist/public`.
+Scope: package names and entrypoints are scaffolded; package behavior remains planned unless a package README, tests, and implementation evidence say otherwise. The initial `@lumina/react` `staticPage()` / `ssr()` helpers are implemented for render declarations. The initial `@lumina/compiler` route-discovery, explicit static/SSR render-mode extraction, and direct local import map edge APIs are implemented and covered by fixture tests. The initial `@lumina/map` affected-route query API is implemented for direct local import edges. The initial `@lumina/vite-plugin` dev-server and static-build APIs are implemented for minimal SSR page serving, dev and production route-specific hydration bundle output, static HTML output, and deployment manifest copies. The initial `@lumina/adapter-bun` runtime API serves static built HTML and production client bundles from `dist/public`.
 
 ## Root Packages
 
@@ -16,7 +16,7 @@ Scope: package names and entrypoints are scaffolded; package behavior remains pl
 | `@lumina/cli` | Implemented `lumina routes <appPath> --json`, `lumina inspect <appPath> --json`, `lumina inspect <appPath> why <route>`, `lumina map affected <appPath> <file> --json`, minimal `lumina dev <appPath>`, static `lumina build <appPath>`, and static `lumina start <appPath>` paths plus planned command surface: `lumina check`, `lumina test`, `lumina seo`, broader `lumina map` query modes, `lumina workspace`, `lumina agent`, `lumina mcp`, `lumina edit`, `lumina migrate`, and `lumina bench`. |
 | `@lumina/core` | Shared types, config, route definitions, render modes, diagnostics, workspace graph, shared-file identity, generated artifact identity, and public helper types. |
 | `@lumina/compiler` | Implemented app route discovery, explicit static/SSR render mode extraction, manifest generation, and direct local import graph edges; planned workspace discovery, broader route IR, generated modules, route asset metadata, API codegen, semantic graph inputs, incremental planning, affected selection, and large-repo reports. |
-| `@lumina/vite-plugin` | Implemented minimal Vite dev-server integration for artifact generation, SSR page serving, route-specific dev hydration bundles, browser-verified interactive root-route hydration, `virtual:lumina/routes`, route-file update reports, and static build-time HTML rendering; planned production hydration bundles, component-level HMR, app-scoped invalidation, and server entry wiring. |
+| `@lumina/vite-plugin` | Implemented minimal Vite dev-server integration for artifact generation, SSR page serving, route-specific dev hydration bundles, browser-verified interactive root-route hydration, `virtual:lumina/routes`, route-file update reports, static build-time HTML rendering, and route-specific production hydration bundles; planned component-level HMR, app-scoped invalidation, and server entry wiring. |
 | `@lumina/react` | Implemented `staticPage()` and `ssr()` render declaration helpers; planned React SSR helpers, layouts, head manager, loaders, hydration, and client entry helpers. |
 | `@lumina/router` | Generated route matcher, typed links, params, route helpers. |
 | `@lumina/seo` | Metadata, sitemap, robots, OG images, structured data helpers, SEO audits. |
@@ -26,7 +26,7 @@ Scope: package names and entrypoints are scaffolded; package behavior remains pl
 | `@lumina/cache` | Cache tags, route cache, response cache, invalidation primitives. |
 | `@lumina/schema` | Schema DSL, validators, serializers, OpenAPI generation. |
 | `@lumina/devtools` | Local-only dashboard for routes, map, SEO, performance, cache, and agent context. |
-| `@lumina/adapter-bun` | Implemented static built-output serving through `Bun.serve`; planned generated route matcher, SSR, API, cache, and broader adapter capabilities. |
+| `@lumina/adapter-bun` | Implemented static built-output serving for HTML and production client bundles through `Bun.serve`; planned generated route matcher, SSR, API, cache, and broader adapter capabilities. |
 | `@lumina/adapter-node` | Node compatibility adapter using Node HTTP or a lightweight server with shims. |
 | `@lumina/adapter-static` | Static export adapter for fully static routes. |
 | `packages/adapters/*` | Later deployment targets such as Docker, Cloudflare, Vercel, and other cloud adapters. |

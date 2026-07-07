@@ -35,6 +35,7 @@ Shared diagnostic fields in manifests should follow [Diagnostics Contract](diagn
 | `dist/render.manifest.json` | Deployment-oriented render manifest copy for adapters. |
 | `dist/seo.report.json` | Deployment-oriented SEO report copy for adapters. |
 | `dist/adapter.manifest.json` | Adapter capabilities. |
+| `dist/public/_lumina/client/*.js` | Implemented route-specific production hydration bundles for static built pages. |
 | `dist/*` | Production build output. |
 
 The `.lumina/*` files remain the source contracts for compiler, CLI, MCP, Agent Kernel, devtools, and tests. The `dist/*.manifest.json` and `dist/*.report.json` files listed above are deployment-oriented copies shaped for runtime adapters.
@@ -76,7 +77,7 @@ Draft route entry:
 }
 ```
 
-The route manifest shape, explicit static/SSR render-mode extraction, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/client/*.js` dev hydration bundles, `.lumina/build-trace.json`, `.lumina/perf.report.json`, `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/adapter.manifest.json`, and static `dist/public` HTML emission are backed by route-discovery, render-mode, artifact, CLI JSON, dev-server, build, and adapter HTTP tests. Broader generated artifacts remain planned until their owning implementations land.
+The route manifest shape, explicit static/SSR render-mode extraction, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/client/*.js` dev hydration bundles, `dist/public/_lumina/client/*.js` production hydration bundles, `.lumina/build-trace.json`, `.lumina/perf.report.json`, `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/adapter.manifest.json`, and static `dist/public` HTML emission are backed by route-discovery, render-mode, artifact, CLI JSON, dev-server, browser, build, and adapter HTTP tests. Broader generated artifacts remain planned until their owning implementations land.
 
 API route entries should follow [API Route Contract](api-route-contract.md) for method lists, schema flags, cache metadata, hot API flags, and API diagnostics.
 

@@ -35,6 +35,7 @@ describe("static build and Bun start integration", () => {
     expect(output.data.routes).toBe(6);
     expect(output.data.outputs).toContain("dist/public/index.html");
     expect(output.data.outputs).toContain("dist/public/about/index.html");
+    expect(output.data.outputs).toContain("dist/public/_lumina/client/app.page.js");
     expect(output.data.manifests).toContain(".lumina/build-trace.json");
     expect(output.data.manifests).toContain(".lumina/perf.report.json");
     expect(output.data.manifests).toContain("dist/adapter.manifest.json");
@@ -57,6 +58,8 @@ describe("static build and Bun start integration", () => {
     const homeHtml = readFileSync(join(wwwRoot, "dist", "public", "index.html"), "utf8");
     expect(homeHtml).toContain("<h1>Your app ships with a map.</h1>");
     expect(homeHtml).toContain('data-lumina-route="/"');
+    expect(homeHtml).toContain('<script type="module" src="/_lumina/client/app.page.js"></script>');
+    expect(readFileSync(join(wwwRoot, "dist", "public", "_lumina", "client", "app.page.js"), "utf8")).toContain("hydrateRoot");
 
     const buildTrace = readFileSync(join(wwwRoot, ".lumina", "build-trace.json"), "utf8");
     const perfReport = readFileSync(join(wwwRoot, ".lumina", "perf.report.json"), "utf8");
@@ -100,6 +103,11 @@ describe("static build and Bun start integration", () => {
         const about = await fetchWithTimeout(`${server.url}/about`);
         expect(about.status).toBe(200);
         expect(await about.text()).toContain("<h1>Built About</h1>");
+
+        const clientBundle = await fetchWithTimeout(`${server.url}/_lumina/client/app.page.js`);
+        expect(clientBundle.status).toBe(200);
+        expect(clientBundle.headers.get("content-type")).toContain("application/javascript");
+        expect(await clientBundle.text()).toContain("hydrateRoot");
 
         const missing = await fetchWithTimeout(`${server.url}/missing`);
         expect(missing.status).toBe(404);

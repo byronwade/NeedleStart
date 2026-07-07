@@ -182,7 +182,7 @@ bun run performance:check
 
 If a command is not available yet, the PR must say so and update the relevant docs. Do not leave stale claims that the command passes.
 
-Tests should prove package entrypoints, shared type surfaces, and explicitly implemented compiler, CLI, or dev-server behavior. They should not imply production adapter behavior, CLI behavior beyond routes/inspect/minimal dev, production hydration output, component-level HMR, or generated artifacts beyond `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/client/*.js`, and `.lumina/hmr-report.json` exist.
+Tests should prove package entrypoints, shared type surfaces, and explicitly implemented compiler, CLI, dev-server, static-build, or adapter behavior. They should not imply production adapter behavior beyond static built-output serving, CLI behavior beyond implemented route/inspect/map/dev/build/start paths, component-level HMR, or generated artifacts beyond `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/client/*.js`, `dist/public/_lumina/client/*.js`, and `.lumina/hmr-report.json` exist.
 
 When benchmark skeletons are added, checks should verify path existence, deterministic fixture naming, and claim hygiene only. They should not treat skeleton files as performance evidence.
 
@@ -193,7 +193,7 @@ Phase 1 should not implement:
 - Route discovery.
 - Production Vite build output beyond static HTML generation for build-time static page routes.
 - Full React rendering behavior beyond minimal dev SSR.
-- Component-level HMR and production hydration output.
+- Component-level HMR.
 - Runtime request handling beyond static built HTML serving through `@lumina/adapter-bun`.
 - Lumina Map extraction.
 - MCP tools.

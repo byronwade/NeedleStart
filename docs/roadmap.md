@@ -43,7 +43,7 @@ Unless a phase is explicitly marked `Verified.` or `Scaffolded.` with evidence, 
 
 ## Current Status
 
-The repository is in Phase 1. The monorepo scaffold exists with Bun workspace configuration, package placeholders, contract-backed shared core model types, `@lumina/react` `staticPage()` / `ssr()` helpers, `@lumina/compiler` route discovery and explicit static/SSR render-mode extraction, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json` with direct local import edges, `.lumina/client/*.js` dev hydration bundles, browser-verified interactive dev hydration, `.lumina/hmr-report.json`, `.lumina/build-trace.json`, `.lumina/perf.report.json`, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, minimal `lumina map affected --json`, minimal `lumina dev` Vite SSR route serving, `virtual:lumina/routes`, static `lumina build`, static `lumina start` through `@lumina/adapter-bun`, scaffolded `apps/www` and example fixtures, early benchmark/status skeletons, CI, and enforcement scripts. Phase 1A shared core model hardening is implemented. The next implementation stage is completing production hydration output, component-level HMR, and production hardening after the interactive dev hydration proof.
+The repository is in Phase 1. The monorepo scaffold exists with Bun workspace configuration, package placeholders, contract-backed shared core model types, `@lumina/react` `staticPage()` / `ssr()` helpers, `@lumina/compiler` route discovery and explicit static/SSR render-mode extraction, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json` with direct local import edges, `.lumina/client/*.js` dev hydration bundles, `dist/public/_lumina/client/*.js` production hydration bundles, browser-verified interactive dev and production hydration, `.lumina/hmr-report.json`, `.lumina/build-trace.json`, `.lumina/perf.report.json`, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, minimal `lumina map affected --json`, minimal `lumina dev` Vite SSR route serving, `virtual:lumina/routes`, static `lumina build`, static `lumina start` through `@lumina/adapter-bun`, scaffolded `apps/www` and example fixtures, early benchmark/status skeletons, CI, and enforcement scripts. Phase 1A shared core model hardening is implemented. The next implementation stage is completing component-level HMR and production hardening after the dev and production hydration proof.
 
 The upcoming prototype target is MVP Alpha, defined in `docs/mvp-alpha-scope.md`. MVP Alpha should keep the first build narrow: route discovery, basic render modes, generated `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, CLI inspection, and a demo app. API routes, MCP, safe edits, migration tooling, Node runtime behavior, and benchmark claims remain post-MVP unless the scope doc changes.
 
@@ -58,7 +58,7 @@ The upcoming prototype target is MVP Alpha, defined in `docs/mvp-alpha-scope.md`
 7. Demo app and example source fixtures proving route/render/map/inspect workflow inputs. Scaffolded.
 8. Minimal Vite dev integration for the scaffolded `apps/www` app and examples. Implemented for SSR page serving, `virtual:lumina/routes`, and route-file update reports.
 9. Static build output and static `@lumina/adapter-bun` serving. Implemented for build-time static page routes.
-10. Complete production hydration output and component-level HMR. The first dev hydration bundle slice and browser-verified interactive counter proof are implemented.
+10. Complete component-level HMR. The first dev and production hydration bundle slices and browser-verified interactive counter proof are implemented.
 
 API routes, MCP, safe edits, migration, Node adapter runtime behavior, and benchmark claims are post-MVP unless `docs/mvp-alpha-scope.md` is updated in the same change.
 
@@ -308,7 +308,7 @@ Definition of done:
 - Search params should be available.
 - 404 should use `app/not-found.tsx`.
 - Errors should use `app/error.tsx`.
-- Hydration works for the first simple client component in the dev server; broader production hydration output remains planned.
+- Hydration works for the first simple client component in the dev server and built static output; broader component-level HMR remains planned.
 
 ## Phase 5: Render Modes
 

@@ -18,7 +18,7 @@ bun run performance:check
 bun run check
 ```
 
-These commands are verified for the Phase 1 scaffold, route discovery, explicit static/SSR render-mode extraction, route/render/map artifact generation, direct local import map edges, dev hydration bundle output, browser-verified interactive dev hydration, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, minimal `lumina map affected --json`, static build/start, and the early benchmark/status skeleton. They prove scaffold integrity, documentation links and guardrails, package structure, performance documentation hygiene, TypeScript validity, scaffold tests, shared core model tests, route-discovery fixture behavior, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/client/*.js`, `.lumina/build-trace.json`, `.lumina/perf.report.json`, deployment manifest copies, JSON-only CLI output, stable route explanation output, minimal map affected output, static built-output HTTP serving, browser hydration of the root-route counter, and benchmark skeleton path/status coverage. They do not prove measured benchmark results, production hydration output, SSR/API runtime adapter behavior, broader Lumina Map query modes, MCP tools, or safe edits.
+These commands are verified for the Phase 1 scaffold, route discovery, explicit static/SSR render-mode extraction, route/render/map artifact generation, direct local import map edges, dev and production hydration bundle output, browser-verified interactive dev and production hydration, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, minimal `lumina map affected --json`, static build/start, and the early benchmark/status skeleton. They prove scaffold integrity, documentation links and guardrails, package structure, performance documentation hygiene, TypeScript validity, scaffold tests, shared core model tests, route-discovery fixture behavior, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/client/*.js`, `dist/public/_lumina/client/*.js`, `.lumina/build-trace.json`, `.lumina/perf.report.json`, deployment manifest copies, JSON-only CLI output, stable route explanation output, minimal map affected output, static built-output HTTP serving, browser hydration of the root-route counter in dev and built output, and benchmark skeleton path/status coverage. They do not prove measured benchmark results, SSR/API runtime adapter behavior, broader Lumina Map query modes, MCP tools, or safe edits.
 
 ## Future Target Commands
 
@@ -27,7 +27,7 @@ bun run test:fixtures
 bun run test:http
 ```
 
-`bun run test:browser` is implemented for the first root-route hydration smoke check. Fixture and broader HTTP/browser commands remain target commands until implementation lands.
+`bun run test:browser` is implemented for the first root-route hydration smoke check in dev and built output. Fixture and broader HTTP/browser commands remain target commands until implementation lands.
 
 ## Planned Test Layers
 

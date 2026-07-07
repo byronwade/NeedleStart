@@ -13,7 +13,6 @@ const watchdog = setTimeout(() => {
 
 const port = await getFreePort();
 const devUrl = `http://127.0.0.1:${port}`;
-console.log("Starting Lumina dev server...");
 const dev = spawn("bun", ["packages/cli/src/index.ts", "dev", appRoot, "--port", String(port)], {
   cwd: repoRoot,
   env: { ...process.env, NO_COLOR: "1" },
@@ -21,29 +20,51 @@ const dev = spawn("bun", ["packages/cli/src/index.ts", "dev", appRoot, "--port",
 const devOutput: string[] = [];
 dev.stdout.on("data", (chunk) => devOutput.push(String(chunk)));
 dev.stderr.on("data", (chunk) => devOutput.push(String(chunk)));
+console.log("Starting Lumina dev server...");
 await waitForServer(devUrl, dev, devOutput);
 
-console.log("Launching Chromium...");
 let browser: Browser | undefined;
+let production: ChildProcessWithoutNullStreams | undefined;
 
 try {
+  console.log("Building production app...");
+  const build = spawn("bun", ["packages/cli/src/index.ts", "build", appRoot, "--json"], {
+    cwd: repoRoot,
+    env: { ...process.env, NO_COLOR: "1" },
+  });
+  const buildOutput = await waitForExit(build);
+  if (buildOutput.exitCode !== 0) {
+    throw new Error(`Lumina build failed with code ${buildOutput.exitCode}.\n${buildOutput.output.join("")}`);
+  }
+
+  const productionPort = await getFreePort();
+  const productionUrl = `http://127.0.0.1:${productionPort}`;
+  production = spawn("bun", ["packages/cli/src/index.ts", "start", appRoot, "--port", String(productionPort)], {
+    cwd: repoRoot,
+    env: { ...process.env, NO_COLOR: "1" },
+  });
+  const productionOutput: string[] = [];
+  production.stdout.on("data", (chunk) => productionOutput.push(String(chunk)));
+  production.stderr.on("data", (chunk) => productionOutput.push(String(chunk)));
+  console.log("Starting production Lumina server...");
+  await waitForServer(productionUrl, production, productionOutput);
+
+  console.log("Launching Chromium...");
   browser = await chromium.launch();
   const page = await browser.newPage();
   page.setDefaultTimeout(5_000);
   console.log(`Opening ${devUrl}...`);
-  await page.goto(devUrl, { waitUntil: "domcontentloaded" });
+  await assertCounterHydrates(page, devUrl);
 
-  console.log("Checking hydrated counter...");
-  const counter = page.getByRole("button", { name: "Hydrated clicks: 0" });
-  await counter.waitFor({ state: "visible" });
-  await counter.click();
-  await page.getByRole("button", { name: "Hydrated clicks: 1" }).waitFor({ state: "visible" });
+  console.log(`Opening ${productionUrl}...`);
+  await assertCounterHydrates(page, productionUrl);
 
   console.log("Browser hydration check passed.");
 } finally {
   clearTimeout(watchdog);
   await browser?.close();
   await stopProcess(dev);
+  if (production) await stopProcess(production);
 }
 
 async function getFreePort(): Promise<number> {
@@ -80,6 +101,14 @@ async function waitForServer(url: string, process: ChildProcessWithoutNullStream
   throw new Error(`Timed out waiting for Lumina dev server at ${url}.\n${output.join("")}`);
 }
 
+async function waitForExit(process: ChildProcessWithoutNullStreams): Promise<{ exitCode: number | null; output: string[] }> {
+  const output: string[] = [];
+  process.stdout.on("data", (chunk) => output.push(String(chunk)));
+  process.stderr.on("data", (chunk) => output.push(String(chunk)));
+  const exitCode = await new Promise<number | null>((resolve) => process.once("exit", (code) => resolve(code)));
+  return { exitCode, output };
+}
+
 async function stopProcess(process: ChildProcessWithoutNullStreams): Promise<void> {
   if (process.exitCode !== null) return;
   await new Promise<void>((resolve) => {
@@ -87,4 +116,13 @@ async function stopProcess(process: ChildProcessWithoutNullStreams): Promise<voi
     process.kill();
     setTimeout(resolve, 2_000).unref();
   });
+}
+
+async function assertCounterHydrates(page: import("playwright").Page, url: string): Promise<void> {
+  await page.goto(url, { waitUntil: "domcontentloaded" });
+  console.log("Checking hydrated counter...");
+  const counter = page.getByRole("button", { name: "Hydrated clicks: 0" });
+  await counter.waitFor({ state: "visible" });
+  await counter.click();
+  await page.getByRole("button", { name: "Hydrated clicks: 1" }).waitFor({ state: "visible" });
 }

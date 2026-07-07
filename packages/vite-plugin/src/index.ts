@@ -1,4 +1,4 @@
-import { existsSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, relative, resolve } from "node:path";
 import { writeLuminaMap, writeRenderManifest, writeRoutesManifest } from "@lumina/compiler";
 import type { RouteNode } from "@lumina/core";
@@ -191,6 +191,8 @@ export async function buildLuminaStaticApp(options: LuminaDevServerOptions): Pro
   const phaseTimings: Array<{ name: string; durationMs: number; status: "ok" }> = [];
 
   clearBuildOutput(appRoot);
+  await writeClientBundles(appRoot, routeState.routes);
+  const clientOutputs = copyClientBundlesToPublic(appRoot);
 
   const vite = await createServer({
     appType: "custom",
@@ -232,7 +234,11 @@ export async function buildLuminaStaticApp(options: LuminaDevServerOptions): Pro
   try {
     for (const route of routeState.routes) {
       if (route.kind !== "page" || route.renderMode !== "static" || route.params.length > 0) continue;
-      const html = await renderRoute(vite, route, route.path, { includeViteClient: false });
+      const html = await renderRoute(vite, route, route.path, {
+        includeViteClient: false,
+        includeClientEntry: true,
+        clientBasePath: "/_lumina/client",
+      });
       const outputPath = staticHtmlOutputPath(route.path);
       writeTextArtifact(appRoot, outputPath, html);
       outputs.push(outputPath);
@@ -242,6 +248,7 @@ export async function buildLuminaStaticApp(options: LuminaDevServerOptions): Pro
         status: "ok",
       });
     }
+    outputs.push(...clientOutputs);
   } finally {
     await vite.close();
   }
@@ -331,7 +338,7 @@ async function renderRoute(
   server: ViteDevServer,
   route: RouteNode,
   url: string,
-  options: { includeViteClient: boolean } = { includeViteClient: true },
+  options: { includeViteClient: boolean; includeClientEntry?: boolean; clientBasePath?: string } = { includeViteClient: true },
 ): Promise<string> {
   const pageModule = await server.ssrLoadModule(`/${route.sourceFile}`);
   const Page = pageModule.default;
@@ -352,7 +359,8 @@ async function renderRoute(
 
   const appHtml = renderToString(app);
   const viteClient = options.includeViteClient ? '<script type="module" src="/@vite/client"></script>' : "";
-  const clientEntry = options.includeViteClient ? `<script type="module" src="${clientEntryUrl(route)}"></script>` : "";
+  const includeClientEntry = options.includeClientEntry ?? options.includeViteClient;
+  const clientEntry = includeClientEntry ? `<script type="module" src="${clientEntryUrl(route, options.clientBasePath)}"></script>` : "";
   const html = `<!doctype html>${appHtml}<div data-lumina-route="${escapeAttribute(route.path)}"></div>${viteClient}${clientEntry}`;
   return server.transformIndexHtml(url, html);
 }
@@ -427,8 +435,8 @@ function createClientEntryModule(route: RouteNode, modulePath = (sourceFile: str
   ].join("\n");
 }
 
-function clientEntryUrl(route: RouteNode): string {
-  return `/@lumina/client/${route.id}.js`;
+function clientEntryUrl(route: RouteNode, basePath = "/@lumina/client"): string {
+  return `${basePath}/${route.id}.js`;
 }
 
 async function serveClientBundle(appRoot: string, url: string, response: { statusCode: number; setHeader: (name: string, value: string) => void; end: (body: string | Uint8Array) => void }): Promise<void> {
@@ -496,6 +504,21 @@ function resolveServerUrl(server: ViteDevServer): string {
 
 function clearBuildOutput(appRoot: string): void {
   rmSync(resolve(appRoot, "dist"), { recursive: true, force: true });
+}
+
+function copyClientBundlesToPublic(appRoot: string): string[] {
+  const sourceDir = resolve(appRoot, ".lumina", "client");
+  const publicDir = resolve(appRoot, "dist", "public", "_lumina", "client");
+  if (!existsSync(sourceDir)) return [];
+  mkdirSync(publicDir, { recursive: true });
+
+  return readdirSync(sourceDir)
+    .filter((file) => /^[a-zA-Z0-9.-]+\.js$/.test(file))
+    .sort(compareStrings)
+    .map((file) => {
+      copyFileSync(resolve(sourceDir, file), resolve(publicDir, file));
+      return `dist/public/_lumina/client/${file}`;
+    });
 }
 
 function staticHtmlOutputPath(routePath: string): string {
@@ -589,8 +612,8 @@ function createPerfReport(routes: RouteNode[], outputs: string[], appRoot: strin
     status: "not implemented",
     summary: {
       routeCount: routes.length,
-      staticHtmlFiles: outputs.length,
-      note: "Initial MVP build report; browser payload and benchmark evidence are not implemented.",
+      staticHtmlFiles: outputs.filter((output) => output.endsWith(".html")).length,
+      note: "Initial MVP build report; measured browser payload and benchmark evidence are not implemented.",
     },
     routes: routes
       .filter((route) => route.kind === "page")

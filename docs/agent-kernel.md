@@ -44,13 +44,14 @@ Planned public docs and app-agent outputs:
 | `.lumina/context/*.ctx.json` | Planned generated app artifact | Route or surface context capsules. |
 | `.lumina/context/agent-index.json` | Planned generated app artifact | Index of generated agent context. |
 | `.lumina/mutations.json` | Planned generated app artifact | Safe edit mutation log. |
-| `.lumina/client/*.js` | Implemented dev artifact | Route-specific dev hydration bundles. |
+| `.lumina/client/*.js` | Implemented build artifact | Route-specific hydration bundles before adapter copying. |
 | `.lumina/generated/*` | Planned generated app artifact | Generated runtime modules. |
-| `.lumina/generated/client/*.tsx` | Implemented dev artifact | Generated source entries for route-specific dev hydration bundles. |
+| `.lumina/generated/client/*.tsx` | Implemented build artifact | Generated source entries for route-specific hydration bundles. |
 | `dist/routes.manifest.json` | Planned deployment artifact | Adapter-shaped route manifest copy. |
 | `dist/render.manifest.json` | Planned deployment artifact | Adapter-shaped render manifest copy. |
 | `dist/seo.report.json` | Planned deployment artifact | Adapter-shaped SEO report copy. |
 | `dist/adapter.manifest.json` | Planned deployment artifact | Adapter capabilities and deployment output metadata. |
+| `dist/public/_lumina/client/*.js` | Implemented deployment artifact | Production static assets for route-specific hydration. |
 | `dist/*` | Implemented static HTML deployment artifact | Production build output for static page routes. |
 
 The `.lumina/*` files are the canonical compiler, CLI, MCP, Agent Kernel, devtools, and test contracts. The named `dist/*` files are deployment-oriented adapter outputs. Agent-facing docs must preserve that distinction so agent metadata stays out of production runtime bundles.

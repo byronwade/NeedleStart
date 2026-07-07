@@ -747,19 +747,19 @@ const prototypeScopeTerms = [
 const currentImplementationStepDocs = [
   {
     file: "README.md",
-    terms: ["The next implementation stage is completing production hydration output, component-level HMR, and production hardening after the interactive dev hydration proof"],
+    terms: ["The next implementation stage is completing component-level HMR and production hardening after the dev and production hydration proof"],
   },
   {
     file: "docs/status.md",
-    terms: ["The next implementation path is completing production hydration output, component-level HMR, and production hardening after the interactive dev hydration proof"],
+    terms: ["The next implementation path is completing component-level HMR and production hardening after the dev and production hydration proof"],
   },
   {
     file: "docs/roadmap.md",
-    terms: ["The next implementation stage is completing production hydration output, component-level HMR, and production hardening after the interactive dev hydration proof."],
+    terms: ["The next implementation stage is completing component-level HMR and production hardening after the dev and production hydration proof."],
   },
   {
     file: "docs/public/roadmap.md",
-    terms: ["The next implementation path is completing production hydration output, component-level HMR, and production hardening after the interactive dev hydration proof."],
+    terms: ["The next implementation path is completing component-level HMR and production hardening after the dev and production hydration proof."],
   },
   {
     file: "docs/product-build-readiness.md",
@@ -767,7 +767,7 @@ const currentImplementationStepDocs = [
   },
   {
     file: "docs/task-backlog.md",
-    terms: ["Current implementation path: complete production hydration output, component-level HMR, and production hardening after the interactive dev hydration proof."],
+    terms: ["Current implementation path: complete component-level HMR and production hardening after the dev and production hydration proof."],
   },
 ];
 
