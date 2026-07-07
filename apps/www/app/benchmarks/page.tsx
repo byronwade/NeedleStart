@@ -17,6 +17,12 @@ const lanes = [
     icon: Gauge,
   },
   {
+    title: "Graph query",
+    status: "Measured locally",
+    description: "The graph-query benchmark runs deterministic affected-route queries against the generated 1000-route fixture.",
+    icon: BarChart3,
+  },
+  {
     title: "Adapter dispatch",
     status: "Planned",
     description: "Static output is verified today; production SSR/API dispatch benchmarks remain future scope.",
@@ -57,6 +63,12 @@ const benchmarkArtifacts = [
     icon: Gauge,
   },
   {
+    title: "Graph query run",
+    path: "bun run lumina -- bench graph-query --json --run",
+    status: "Implemented",
+    icon: BarChart3,
+  },
+  {
     title: "Methodology contract",
     path: "docs/benchmark-methodology.md",
     status: "Planned",
@@ -76,7 +88,7 @@ export default function BenchmarksPage() {
       <PageHeader
         eyebrow="Evidence only"
         title="Benchmarks"
-        description="Lumina has benchmark skeletons for route discovery, manifest size, graph queries, and adapter dispatch. Route discovery and manifest size can run locally today; graph query and adapter dispatch stay not implemented until measured fixtures exist."
+        description="Lumina has benchmark skeletons for route discovery, manifest size, graph queries, and adapter dispatch. Route discovery, manifest size, and graph query can run locally today; adapter dispatch stays not implemented until measured fixtures exist."
       />
 
       <section className="benchmark-grid">
@@ -105,8 +117,8 @@ export default function BenchmarksPage() {
           <h2>Benchmark pages should be useful before they are flattering.</h2>
           <p>
             The site can show benchmark surfaces today, but it cannot claim speed wins until the repository contains
-            repeatable commands, raw result files, and methodology notes reviewers can inspect. The route-discovery
-            and manifest-size run commands return raw local metadata, while status commands remain useful for
+            repeatable commands, raw result files, and methodology notes reviewers can inspect. The route-discovery,
+            manifest-size, and graph-query run commands return raw local metadata, while status commands remain useful for
             incomplete surfaces.
           </p>
         </div>

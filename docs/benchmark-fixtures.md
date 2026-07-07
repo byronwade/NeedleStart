@@ -6,7 +6,7 @@ Audience: maintainers, performance reviewers, compiler contributors, runtime ada
 
 This page defines the planned fixture set for proving Lumina speed claims. It complements [Benchmark Methodology](benchmark-methodology.md), [Performance Contract](performance-contract.md), [Speed Strategy](speed-strategy.md), [Speed Decisions](speed-decisions.md), and [Performance Evidence Checklist](checklists/performance-evidence.md).
 
-The first benchmark skeleton paths and fixture placeholders exist. `route-discovery` can run locally against `fixtures/apps/tiny-static`, and `manifest-size` can run locally against deterministic generated source from `fixtures/apps/medium-100-routes`. Both commands return raw metadata in the JSON response. The `graph-query` and `adapter-dispatch` benchmark surfaces still report `not implemented`. This page is not public comparison evidence.
+The first benchmark skeleton paths and fixture placeholders exist. `route-discovery` can run locally against `fixtures/apps/tiny-static`, `manifest-size` can run locally against deterministic generated source from `fixtures/apps/medium-100-routes`, and `graph-query` can run locally against deterministic generated source from `fixtures/apps/large-1000-routes`. These commands return raw metadata in the JSON response. The `adapter-dispatch` benchmark surface still reports `not implemented`. This page is not public comparison evidence.
 
 ## Evidence Boundary
 
@@ -16,8 +16,9 @@ Current limitations:
 
 - Local route-discovery benchmark execution exists for `lumina bench route-discovery --json --run`.
 - Local manifest-size benchmark execution exists for `lumina bench manifest-size --json --run`.
+- Local graph-query benchmark execution exists for `lumina bench graph-query --json --run`.
 - `lumina bench --list --json` and `lumina bench <name> --json` are implemented, and they report skeleton status without running benchmarks.
-- Route-discovery and manifest-size raw metadata is returned in the command JSON response, but no reviewed raw result files exist yet.
+- Route-discovery, manifest-size, and graph-query raw metadata is returned in the command JSON response, but no reviewed raw result files exist yet.
 - No public performance comparison can be made from this page.
 - No market performance claim should cite this document as proof.
 
@@ -37,7 +38,7 @@ benchmarks/graph-query.bench.ts
 benchmarks/adapter-dispatch.bench.ts
 ```
 
-These files report `not implemented` until the owning benchmark behavior exists. `benchmarks/route-discovery.bench.ts` now has a local run path for `fixtures/apps/tiny-static`, and `benchmarks/manifest-size.bench.ts` now has a local run path for deterministic generated source from `fixtures/apps/medium-100-routes`. `graph-query` and `adapter-dispatch` are still status-only. They must not publish synthetic numbers.
+These files report `not implemented` until the owning benchmark behavior exists. `benchmarks/route-discovery.bench.ts` now has a local run path for `fixtures/apps/tiny-static`, `benchmarks/manifest-size.bench.ts` now has a local run path for deterministic generated source from `fixtures/apps/medium-100-routes`, and `benchmarks/graph-query.bench.ts` now has a local run path for deterministic generated source from `fixtures/apps/large-1000-routes`. `adapter-dispatch` is still status-only. They must not publish synthetic numbers.
 
 The early skeleton should separate:
 
@@ -190,6 +191,8 @@ benchmarks/results/<date>-<commit>/<fixture>/
 `bun run lumina -- bench route-discovery --json --run` runs route discovery against `fixtures/apps/tiny-static` with one warmup and five measured runs. The JSON response includes commit SHA, fixture name, Bun and Node versions, compiler dependency versions, OS, hardware summary, command, warmup count, run count, raw per-run durations, route count, diagnostic count, and summary values.
 
 `bun run lumina -- bench manifest-size --json --run` generates the fixed `fixtures/apps/medium-100-routes` source into a temporary directory, creates route, render, and map manifests in memory, and returns compact manifest byte counts with the same local metadata fields. The command measures generated artifact size, not user runtime speed.
+
+`bun run lumina -- bench graph-query --json --run` generates the fixed `fixtures/apps/large-1000-routes` source into a temporary directory, creates one Lumina Map in memory, runs deterministic affected-route and related-file queries for five route source files, and returns route count, node count, edge count, diagnostic count, query count, affected route count, related file count, local timing, and min/median/max/mean duration summary values. The command measures agent-side graph query latency, not user runtime speed.
 
 The commands do not persist files under `benchmarks/results/`, do not compare frameworks, and do not support public performance rankings.
 
