@@ -148,11 +148,18 @@ describe("static build and Bun start integration", () => {
     expect(homeHtml).toContain("<h1>Your app ships with a map.</h1>");
     expect(homeHtml).toContain("data-theme-toggle");
     expect(homeHtml).toContain("Switch to light mode");
+    expect(homeHtml).toContain('aria-label="Search Lumina documentation"');
+    expect(homeHtml).toContain('class="header-search-link"');
+    expect(homeHtml).toContain('href="/docs/search"');
     expect(homeHtml).toContain("Graph relationship preview");
     expect(homeHtml).toContain("Generated outputs");
     expect(homeHtml).toContain("5 relationship edges");
     expect(homeHtml).toContain('data-lumina-route="/"');
     expect(homeHtml).toContain('aria-label="Site footer"');
+    expect(homeHtml).toContain('aria-label="Search Lumina documentation"');
+    expect(homeHtml).toContain('class="header-search-link"');
+    expect(homeHtml).toContain('href="/docs/search"');
+    expect(homeHtml).toContain("Search docs");
     expect(homeHtml).toContain("Your app ships with a map.");
     expect(homeHtml).toContain("Docs artifacts");
     expect(homeHtml).toContain("docs-index.json");
@@ -449,6 +456,8 @@ describe("static build and Bun start integration", () => {
       expect(search.status).toBe(200);
       const searchHtml = await search.text();
       expect(searchHtml).toContain("<h1>Search Lumina docs</h1>");
+      expect(searchHtml).toContain('aria-label="Search Lumina documentation"');
+      expect(searchHtml).toContain('href="/docs/search"');
       expect(searchHtml).toContain('aria-label="Search Lumina docs page evidence"');
       expect(searchHtml).toContain("app/docs/search/page.tsx");
       expect(searchHtml).toContain("SSR search");

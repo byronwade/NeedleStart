@@ -25,9 +25,10 @@ Roadmap, Docs, and Docs Search expose the same evidence shape before the reader 
 This keeps the marketing pages and docs pages aligned with the same shadcn/Vercel-inspired surface
 language instead of treating docs as a separate app.
 
-The root layout also renders a shared site footer across every route. It exposes product links, docs
-lanes, docs artifact links, docs inventory counts, and canonical source status using the same token
-system as the header, docs sidebar, article footer, and page proof rail.
+The root layout also exposes a global docs search entry in the header, backed by the current docs
+inventory count, and renders a shared site footer across every route. The footer exposes product
+links, docs lanes, docs artifact links, docs inventory counts, and canonical source status using the
+same token system as the header, docs sidebar, article footer, and page proof rail.
 
 The docs area is a public-docs route scaffold inspired by documentation systems such as Next.js: it
 has a docs home, lane pages, topic pages, source-path cards, reference lanes, active sidebar

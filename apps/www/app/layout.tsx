@@ -1,5 +1,6 @@
-import { Moon, Sun } from "lucide-react";
+import { Moon, Search, Sun } from "lucide-react";
 import { SiteFooter } from "../components/SiteFooter";
+import { docsIndexStats } from "../lib/docs-index";
 import { appStyles } from "../styles";
 
 const themeBootstrap = String.raw`
@@ -101,6 +102,11 @@ export default function RootLayout({ children }: { children: unknown }) {
             <a href="/examples">Examples</a>
             <a href="/roadmap">Roadmap</a>
           </nav>
+          <a aria-label="Search Lumina documentation" className="header-search-link" href="/docs/search">
+            <Search aria-hidden="true" size={15} />
+            <span>Search docs</span>
+            <kbd>{docsIndexStats.pages}</kbd>
+          </a>
           <button
             aria-label="Toggle theme"
             aria-pressed="false"

@@ -349,6 +349,59 @@ a {
   gap: 0.15rem;
 }
 
+.header-search-link {
+  display: inline-flex;
+  min-height: 2.35rem;
+  min-width: 10.75rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--muted-foreground);
+  font-size: 0.86rem;
+  font-weight: 560;
+  padding: 0.48rem 0.52rem 0.48rem 0.7rem;
+  transition: background 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.header-search-link svg {
+  flex: 0 0 auto;
+  color: var(--primary);
+}
+
+.header-search-link span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.header-search-link kbd {
+  display: inline-grid;
+  min-width: 1.55rem;
+  height: 1.35rem;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface-soft);
+  color: var(--foreground);
+  font-family: "Geist Mono", "Cascadia Code", monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.header-search-link:hover,
+.header-search-link:focus-visible {
+  border-color: var(--ring);
+  background: var(--secondary);
+  color: var(--foreground);
+  outline: none;
+  transform: translateY(-1px);
+}
+
 .theme-toggle {
   display: inline-grid;
   width: 2.35rem;
@@ -3305,6 +3358,16 @@ html.dark .ui-badge-warning {
 
   .primary-nav a {
     flex: 0 1 auto;
+  }
+
+  .header-search-link {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .header-search-link kbd {
+    margin-left: auto;
   }
 
   .theme-toggle {
