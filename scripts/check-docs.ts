@@ -241,6 +241,7 @@ const plannedJsonCommandContracts = [
   "lumina agent context --json",
   "lumina edit --json",
   "lumina migrate --json",
+  "lumina bench --list --json",
   "lumina bench --json",
 ];
 
@@ -264,6 +265,7 @@ const plannedCommandVariants = [
   "lumina agent log",
   "lumina edit undo",
   "lumina migrate from-next",
+  "lumina bench --list",
   "lumina seo --route",
   "lumina seo --sitemap",
   "lumina seo --strict",

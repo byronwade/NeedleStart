@@ -15,7 +15,7 @@ This document makes Lumina ready to collect speed evidence. It is not speed evid
 Current limitations:
 
 - No measured benchmark fixture behavior exists yet.
-- No benchmark commands are implemented yet.
+- Only `lumina bench --list --json` is implemented, and it lists skeleton status without running benchmarks.
 - No raw benchmark results exist yet.
 - No public performance comparison can be made from this page.
 - No market performance claim should cite this document as proof.

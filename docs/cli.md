@@ -4,7 +4,7 @@ Status: Scaffolded.
 
 Audience: app developers, framework contributors, AI agents.
 
-This page is the reference for `lumina` commands. `@lumina/cli` currently implements `lumina routes <appPath> --json`, `lumina inspect <appPath> --json`, `lumina inspect <appPath> why <route>`, `lumina map affected <appPath> <file> --json`, minimal `lumina dev <appPath>`, static `lumina build <appPath>`, and static `lumina start <appPath>` through the local `bun run lumina -- ...` script. Other commands remain planned.
+This page is the reference for `lumina` commands. `@lumina/cli` currently implements `lumina routes <appPath> --json`, `lumina inspect <appPath> --json`, `lumina inspect <appPath> why <route>`, `lumina map affected <appPath> <file> --json`, `lumina bench --list --json`, minimal `lumina dev <appPath>`, static `lumina build <appPath>`, and static `lumina start <appPath>` through the local `bun run lumina -- ...` script. Other commands remain planned.
 
 Machine-readable command behavior is planned in [CLI JSON Contract](cli-json-contract.md). Human output may evolve, but `--json` output, exit codes, diagnostic codes, and schema versions become stable contracts once released.
 
@@ -26,11 +26,11 @@ Machine-readable command behavior is planned in [CLI JSON Contract](cli-json-con
 | `lumina mcp` | Start MCP server. | Planned | No |
 | `lumina edit` | Preview, apply, inspect, and undo safe-edit transactions. | Planned | Yes |
 | `lumina migrate` | Prototype framework migration workflows. | Planned | Yes |
-| `lumina bench` | Run planned benchmark fixtures and emit evidence metadata. | Planned | Yes |
+| `lumina bench` | Run planned benchmark fixtures and emit evidence metadata. | Implemented only for `--list --json` benchmark skeleton status; benchmark execution remains planned | Yes |
 
 ## Planned Command Variants
 
-These variants are referenced by roadmap, guide, and contract docs. They remain planned until `@lumina/cli` implements and tests them, except for `lumina inspect why`, `lumina dev --port`, `lumina dev --once`, and the minimal `lumina map affected <appPath> <file> --json` query.
+These variants are referenced by roadmap, guide, and contract docs. They remain planned until `@lumina/cli` implements and tests them, except for `lumina inspect why`, `lumina dev --port`, `lumina dev --once`, `lumina bench --list --json`, and the minimal `lumina map affected <appPath> <file> --json` query.
 
 | Command variant | Purpose |
 | --- | --- |
@@ -55,6 +55,7 @@ These variants are referenced by roadmap, guide, and contract docs. They remain 
 | `lumina agent log` | Read agent mutation, task, or context history. |
 | `lumina edit undo` | Roll back an applied safe edit by mutation ID. |
 | `lumina migrate from-next` | Prototype migration from a Next.js-style app. |
+| `lumina bench --list` | Implemented for listing benchmark skeleton status as compact JSON with `--json`. |
 | `lumina seo --route` | Run SEO checks for one route. |
 | `lumina seo --sitemap` | Inspect planned sitemap output. |
 | `lumina seo --strict` | Treat warnings as check failures for SEO automation. |
@@ -83,7 +84,7 @@ These global flags are planned, not implemented:
 | `--verbose` | Emit additional human-readable progress or diagnostic detail. |
 | `--quiet` | Reduce non-essential human output. |
 
-Do not rely on these flags until the owning command implements and tests them. The `--json` flag is implemented for `lumina routes <appPath>`, `lumina inspect <appPath>`, `lumina map affected <appPath> <file>`, and `lumina build <appPath>`.
+Do not rely on these flags until the owning command implements and tests them. The `--json` flag is implemented for `lumina routes <appPath>`, `lumina inspect <appPath>`, `lumina map affected <appPath> <file>`, `lumina build <appPath>`, and `lumina bench --list`.
 
 ## Implemented Dev Command
 
@@ -131,6 +132,16 @@ bun run lumina -- map affected apps/www components/Hero.tsx --json
 ```
 
 The implemented map affected command regenerates `.lumina/map.json`, reads direct local import edges, and emits a compact `lumina.cli.v0` envelope with the target file, affected routes, related files, and map artifact path. It currently covers route impact from direct static imports only. Workspace impact, affected checks, semantic graph queries, `lumina map file`, `lumina map route`, and `lumina map explain` remain planned.
+
+## Implemented Benchmark List Command
+
+Local repository usage:
+
+```bash
+bun run lumina -- bench --list --json
+```
+
+The implemented benchmark list command emits a compact `lumina.cli.v0` envelope containing the `lumina.benchmark-status.v0` skeleton report from `benchmarks/status.ts`. It lists the first benchmark surfaces and keeps each status at `not implemented` until real benchmark execution and raw results exist. It does not run benchmarks, emit timings, or support public performance claims.
 
 ## Planned Exit Code Policy
 

@@ -8,6 +8,7 @@ import {
 } from "@lumina/compiler";
 import { getAffectedFiles, getAffectedRoutes } from "@lumina/map";
 import { buildLuminaStaticApp, startLuminaDevServer } from "@lumina/vite-plugin";
+import { benchmarkSkeletonReport } from "../../../benchmarks/status";
 
 export const luminaCliStatus = {
   name: "@lumina/cli",
@@ -24,6 +25,22 @@ export async function runCli(argv: string[], io: CliIo = {}): Promise<number> {
   const stdout = io.stdout ?? ((text: string) => console.log(text));
   const stderr = io.stderr ?? ((text: string) => console.error(text));
   const [command, appPath, ...flags] = argv;
+
+  if (command === "bench" && appPath === "--list" && flags.includes("--json")) {
+    stdout(
+      JSON.stringify({
+        schemaVersion: "lumina.cli.v0",
+        command: "lumina bench --list",
+        status: "ok",
+        data: benchmarkSkeletonReport,
+        diagnostics: [],
+        meta: {
+          cwd: ".",
+        },
+      }),
+    );
+    return 0;
+  }
 
   if (command === "routes" && appPath && flags.includes("--json")) {
     const result = writeRoutesManifest({ appRoot: resolve(appPath) });
@@ -222,7 +239,7 @@ export async function runCli(argv: string[], io: CliIo = {}): Promise<number> {
     return 0;
   }
 
-  stderr("Usage: lumina dev <appPath> [--port <port>] | lumina build <appPath> [--json] | lumina start <appPath> [--port <port>] | lumina routes <appPath> --json | lumina inspect <appPath> --json | lumina inspect <appPath> why <route> | lumina map affected <appPath> <file> --json");
+  stderr("Usage: lumina dev <appPath> [--port <port>] | lumina build <appPath> [--json] | lumina start <appPath> [--port <port>] | lumina routes <appPath> --json | lumina inspect <appPath> --json | lumina inspect <appPath> why <route> | lumina map affected <appPath> <file> --json | lumina bench --list --json");
   return 2;
 }
 
