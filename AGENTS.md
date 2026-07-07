@@ -218,7 +218,7 @@ bun run performance:check
 bun run check
 ```
 
-These commands verify the scaffold, docs links, root docs metadata, docs navigation coverage, package-map/build-plan/backlog alignment, planned CLI command surface and prefix consistency, status-drift guardrails, config/adapter contract terms, generated artifact inventories across agent and machine-readable docs, package structure, shared-core type ownership, shared-core contract terminology, performance documentation guardrails, TypeScript surface, route-discovery fixture behavior, explicit `staticPage()` / `ssr()` render-mode extraction, generated `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, direct local import map edges, `.lumina/hmr-report.json`, `.lumina/build-trace.json`, `.lumina/perf.report.json`, `dist/routes.manifest.json`, `dist/render.manifest.json`, and `dist/adapter.manifest.json` output, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, `lumina map affected --json`, minimal `lumina dev` Vite SSR route serving, `virtual:lumina/routes`, static `lumina build`, static `lumina start` through `@lumina/adapter-bun`, scaffolded `apps/www` and example fixture route evidence, early benchmark/status skeleton paths, and tests. They do not prove measured benchmark results, SSR/API production behavior, client hydration, component-level HMR, broader Lumina Map query modes, MCP tools, or safe edits.
+These commands verify the scaffold, docs links, root docs metadata, docs navigation coverage, package-map/build-plan/backlog alignment, planned CLI command surface and prefix consistency, status-drift guardrails, config/adapter contract terms, generated artifact inventories across agent and machine-readable docs, package structure, shared-core type ownership, shared-core contract terminology, performance documentation guardrails, TypeScript surface, route-discovery fixture behavior, explicit `staticPage()` / `ssr()` render-mode extraction, generated `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, direct local import map edges, `.lumina/client/*.js` dev hydration bundles, `.lumina/hmr-report.json`, `.lumina/build-trace.json`, `.lumina/perf.report.json`, `dist/routes.manifest.json`, `dist/render.manifest.json`, and `dist/adapter.manifest.json` output, `lumina routes --json`, `lumina inspect --json`, `lumina inspect why`, `lumina map affected --json`, minimal `lumina dev` Vite SSR route serving, `virtual:lumina/routes`, static `lumina build`, static `lumina start` through `@lumina/adapter-bun`, scaffolded `apps/www` and example fixture route evidence, early benchmark/status skeleton paths, and tests. They do not prove measured benchmark results, SSR/API production behavior, production client hydration bundles, component-level HMR, broader Lumina Map query modes, MCP tools, or safe edits.
 
 ## Planned Commands
 
@@ -285,7 +285,9 @@ Planned generated files include:
 .lumina/context/*.ctx.json
 .lumina/context/agent-index.json
 .lumina/mutations.json
+.lumina/client/*.js
 .lumina/generated/*
+.lumina/generated/client/*.tsx
 dist/routes.manifest.json
 dist/render.manifest.json
 dist/seo.report.json

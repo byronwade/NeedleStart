@@ -12,7 +12,7 @@ Machine-readable command behavior is planned in [CLI JSON Contract](cli-json-con
 
 | Command | Purpose | Status | JSON output required once implemented? |
 | --- | --- | --- |
-| `lumina dev` | Start local development. | Implemented for minimal `<appPath>` Vite SSR route serving, `virtual:lumina/routes`, and route-file update reports; client hydration and component-level HMR remain planned | No |
+| `lumina dev` | Start local development. | Implemented for minimal `<appPath>` Vite SSR route serving, route-specific dev hydration bundles, `virtual:lumina/routes`, and route-file update reports; production hydration output and component-level HMR remain planned | No |
 | `lumina build` | Build app, manifests, graph, early reports, and adapter output. | Implemented for build-time static page routes and `--json`; SSR/API output remains planned | Yes |
 | `lumina start` | Start built output. | Implemented for static HTML in `dist/public`; SSR/API serving remains planned | No |
 | `lumina routes` | List route manifest entries. | Implemented for `<appPath> --json` | Yes |
@@ -95,7 +95,7 @@ bun run lumina -- dev apps/www --port 5173
 bun run lumina -- dev apps/www --once
 ```
 
-The implemented dev command writes `.lumina/routes.json`, `.lumina/render-manifest.json`, and `.lumina/map.json`, starts a Vite server, renders page routes through React SSR, exposes `virtual:lumina/routes`, emits `.lumina/hmr-report.json` for route-file changes, sends a `lumina:routes-updated` dev-server event, and returns 404 HTML for unknown page routes. It does not yet implement route params, client hydration, or component-level HMR.
+The implemented dev command writes `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/generated/client/*.tsx`, and `.lumina/client/*.js`, starts a Vite server, renders page routes through React SSR, exposes route-specific dev hydration bundles through `/@lumina/client/*.js`, exposes `virtual:lumina/routes`, emits `.lumina/hmr-report.json` for route-file changes, sends a `lumina:routes-updated` dev-server event, and returns 404 HTML for unknown page routes. It does not yet implement route params, production hydration output, or component-level HMR.
 
 ## Implemented Build Command
 
@@ -106,7 +106,7 @@ bun run lumina -- build apps/www
 bun run lumina -- build apps/www --json
 ```
 
-The implemented build command writes `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/build-trace.json`, `.lumina/perf.report.json`, static HTML under `dist/public`, and deployment manifest copies under `dist/routes.manifest.json`, `dist/render.manifest.json`, and `dist/adapter.manifest.json`. JSON mode emits a compact `lumina.cli.v0` envelope with output and manifest paths. It does not yet build SSR routes, API routes, client assets, browser hydration bundles, SEO reports, or measured benchmark evidence.
+The implemented build command writes `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/build-trace.json`, `.lumina/perf.report.json`, static HTML under `dist/public`, and deployment manifest copies under `dist/routes.manifest.json`, `dist/render.manifest.json`, and `dist/adapter.manifest.json`. JSON mode emits a compact `lumina.cli.v0` envelope with output and manifest paths. It does not yet build SSR routes, API routes, production client assets, production browser hydration bundles, SEO reports, or measured benchmark evidence.
 
 ## Implemented Start Command
 

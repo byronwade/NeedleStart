@@ -1,4 +1,4 @@
-import { mkdirSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import { dirname, relative, resolve } from "node:path";
 import { writeLuminaMap, writeRenderManifest, writeRoutesManifest } from "@lumina/compiler";
@@ -39,6 +39,7 @@ const require = createRequire(import.meta.url);
 const reactRuntimeAliases = {
   react: require.resolve("react"),
   "react-dom": require.resolve("react-dom"),
+  "react-dom/client": require.resolve("react-dom/client"),
   "react-dom/server": require.resolve("react-dom/server"),
   "react/jsx-dev-runtime": require.resolve("react/jsx-dev-runtime"),
   "react/jsx-runtime": require.resolve("react/jsx-runtime"),
@@ -47,6 +48,7 @@ const reactRuntimeAliases = {
 export async function startLuminaDevServer(options: LuminaDevServerOptions): Promise<LuminaDevServer> {
   const appRoot = resolve(options.appRoot);
   let routeState = regenerateArtifacts(appRoot);
+  await writeClientBundles(appRoot, routeState.routes);
 
   let vite: ViteDevServer;
   vite = await createServer({
@@ -57,7 +59,7 @@ export async function startLuminaDevServer(options: LuminaDevServerOptions): Pro
       jsxImportSource: "react",
     },
     optimizeDeps: {
-      include: [],
+      include: ["react", "react-dom/client"],
       noDiscovery: true,
     },
     resolve: {
@@ -91,6 +93,7 @@ export async function startLuminaDevServer(options: LuminaDevServerOptions): Pro
           const updateRouteState = (file: string) => {
             if (!isAppSourceFile(appRoot, file)) return;
             routeState = regenerateArtifacts(appRoot, file);
+            void writeClientBundles(appRoot, routeState.routes);
             const virtualModule = server.moduleGraph.getModuleById(resolvedVirtualRoutesModuleId);
             if (virtualModule) server.moduleGraph.invalidateModule(virtualModule);
             server.ws.send({
@@ -109,6 +112,10 @@ export async function startLuminaDevServer(options: LuminaDevServerOptions): Pro
 
           server.middlewares.use(async (request, response, next) => {
             const url = normalizeRequestPath(request.url ?? "/");
+            if (url.startsWith("/@lumina/client/")) {
+              await serveClientBundle(appRoot, url, response);
+              return;
+            }
             if (shouldPassThroughToVite(request.method, url)) {
               next();
               return;
@@ -145,6 +152,7 @@ export async function startLuminaDevServer(options: LuminaDevServerOptions): Pro
         handleHotUpdate({ file, server, modules, timestamp }) {
           if (!isAppSourceFile(appRoot, file)) return;
           routeState = regenerateArtifacts(appRoot, file);
+          void writeClientBundles(appRoot, routeState.routes);
           const invalidatedModules = new Set<ModuleNode>();
           for (const mod of modules) {
             server.moduleGraph.invalidateModule(mod, invalidatedModules, timestamp, true);
@@ -196,7 +204,7 @@ export async function buildLuminaStaticApp(options: LuminaDevServerOptions): Pro
       jsxImportSource: "react",
     },
     optimizeDeps: {
-      include: [],
+      include: ["react", "react-dom/client"],
       noDiscovery: true,
     },
     resolve: {
@@ -351,8 +359,111 @@ async function renderRoute(
 
   const appHtml = renderToString(app);
   const viteClient = options.includeViteClient ? '<script type="module" src="/@vite/client"></script>' : "";
-  const html = `<!doctype html>${appHtml}<div data-lumina-route="${escapeAttribute(route.path)}"></div>${viteClient}`;
+  const clientEntry = options.includeViteClient ? `<script type="module" src="${clientEntryUrl(route)}"></script>` : "";
+  const html = `<!doctype html>${appHtml}<div data-lumina-route="${escapeAttribute(route.path)}"></div>${viteClient}${clientEntry}`;
   return server.transformIndexHtml(url, html);
+}
+
+async function writeClientBundles(appRoot: string, routes: RouteNode[]): Promise<void> {
+  const entryRoot = resolve(appRoot, ".lumina", "generated", "client");
+  const outdir = resolve(appRoot, ".lumina", "client");
+  rmSync(entryRoot, { recursive: true, force: true });
+  rmSync(outdir, { recursive: true, force: true });
+  mkdirSync(entryRoot, { recursive: true });
+
+  const entrypoints = routes
+    .filter((route) => route.kind === "page")
+    .map((route) => {
+      const entry = resolve(entryRoot, `${route.id}.tsx`);
+      writeFileSync(entry, createClientEntryModule(route, (sourceFile) => relativeModulePath(entry, appRoot, sourceFile)), "utf8");
+      return entry;
+    });
+
+  if (entrypoints.length === 0) return;
+
+  const result = await Bun.build({
+    entrypoints,
+    outdir,
+    target: "browser",
+    splitting: false,
+    sourcemap: "none",
+    minify: false,
+    naming: "[name].[ext]",
+    plugins: [
+      {
+        name: "lumina-client-virtual-routes",
+        setup(build) {
+          build.onResolve({ filter: /^virtual:lumina\/routes$/ }, () => ({
+            path: virtualRoutesModuleId,
+            namespace: "lumina",
+          }));
+          build.onLoad({ filter: /^virtual:lumina\/routes$/, namespace: "lumina" }, () => ({
+            contents: [
+              `export const routes = ${JSON.stringify(routes)};`,
+              `export const manifest = ${JSON.stringify({ routes })};`,
+            ].join("\n"),
+            loader: "js",
+          }));
+        },
+      },
+    ],
+  });
+
+  if (!result.success) {
+    throw new Error(`Lumina client bundle failed: ${result.logs.map((log) => log.message).join("; ")}`);
+  }
+}
+
+function createClientEntryModule(route: RouteNode, modulePath = (sourceFile: string) => `/${sourceFile}`): string {
+  const imports = [
+    `import { createElement } from "react";`,
+    `import { hydrateRoot } from "react-dom/client";`,
+    `import Page from "${modulePath(route.sourceFile)}";`,
+    ...route.layouts.map((layout, index) => `import Layout${index} from "${modulePath(layout)}";`),
+  ];
+  const layoutApplications = route.layouts
+    .map((_, index) => `app = createElement(Layout${index}, { children: app });`)
+    .reverse();
+
+  return [
+    ...imports,
+    "",
+    "let app = createElement(Page);",
+    ...layoutApplications,
+    "hydrateRoot(document, app);",
+  ].join("\n");
+}
+
+function clientEntryUrl(route: RouteNode): string {
+  return `/@lumina/client/${route.id}.js`;
+}
+
+async function serveClientBundle(appRoot: string, url: string, response: { statusCode: number; setHeader: (name: string, value: string) => void; end: (body: string | Uint8Array) => void }): Promise<void> {
+  const requestedFile = url.slice("/@lumina/client/".length);
+  if (!/^[a-zA-Z0-9.-]+\.js$/.test(requestedFile)) {
+    response.statusCode = 400;
+    response.setHeader("Content-Type", "text/plain; charset=utf-8");
+    response.end("Invalid Lumina client bundle path.");
+    return;
+  }
+
+  const bundlePath = resolve(appRoot, ".lumina", "client", requestedFile);
+  if (!existsSync(bundlePath)) {
+    response.statusCode = 404;
+    response.setHeader("Content-Type", "text/plain; charset=utf-8");
+    response.end("Lumina client bundle not found.");
+    return;
+  }
+
+  response.statusCode = 200;
+  response.setHeader("Content-Type", "application/javascript; charset=utf-8");
+  response.end(await Bun.file(bundlePath).bytes());
+}
+
+function relativeModulePath(fromFile: string, appRoot: string, sourceFile: string): string {
+  const target = resolve(appRoot, ...sourceFile.split("/"));
+  const relativePath = relative(dirname(fromFile), target).replaceAll("\\", "/");
+  return relativePath.startsWith(".") ? relativePath : `./${relativePath}`;
 }
 
 function findRoute(routes: RouteNode[], url: string): RouteNode | undefined {
@@ -378,6 +489,7 @@ function normalizeRequestPath(url: string): string {
 function shouldPassThroughToVite(method: string | undefined, pathname: string): boolean {
   if (method && method !== "GET" && method !== "HEAD") return true;
   return pathname.startsWith("/@vite/")
+    || pathname.startsWith("/@id/")
     || pathname.startsWith("/@fs/")
     || pathname.startsWith("/node_modules/")
     || /\.[a-zA-Z0-9]+$/.test(pathname);

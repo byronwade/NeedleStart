@@ -28,7 +28,9 @@ Shared diagnostic fields in manifests should follow [Diagnostics Contract](diagn
 | `.lumina/context/*.ctx.json` | Route or surface context capsules for agents and tools. |
 | `.lumina/context/agent-index.json` | Agent context index. |
 | `.lumina/mutations.json` | Safe edit mutation log. |
+| `.lumina/client/*.js` | Implemented route-specific dev hydration bundles. |
 | `.lumina/generated/*` | Generated runtime modules. |
+| `.lumina/generated/client/*.tsx` | Implemented source entries for dev hydration bundles. |
 | `dist/routes.manifest.json` | Deployment-oriented route manifest copy for adapters. |
 | `dist/render.manifest.json` | Deployment-oriented render manifest copy for adapters. |
 | `dist/seo.report.json` | Deployment-oriented SEO report copy for adapters. |
@@ -74,7 +76,7 @@ Draft route entry:
 }
 ```
 
-The route manifest shape, explicit static/SSR render-mode extraction, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/build-trace.json`, `.lumina/perf.report.json`, `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/adapter.manifest.json`, and static `dist/public` HTML emission are backed by route-discovery, render-mode, artifact, CLI JSON, build, and adapter HTTP tests. Broader generated artifacts remain planned until their owning implementations land.
+The route manifest shape, explicit static/SSR render-mode extraction, `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/client/*.js` dev hydration bundles, `.lumina/build-trace.json`, `.lumina/perf.report.json`, `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/adapter.manifest.json`, and static `dist/public` HTML emission are backed by route-discovery, render-mode, artifact, CLI JSON, dev-server, build, and adapter HTTP tests. Broader generated artifacts remain planned until their owning implementations land.
 
 API route entries should follow [API Route Contract](api-route-contract.md) for method lists, schema flags, cache metadata, hot API flags, and API diagnostics.
 

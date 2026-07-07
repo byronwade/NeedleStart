@@ -82,9 +82,14 @@ Planned MVP Alpha generated files:
   routes.json
   render-manifest.json
   map.json
+  client/
+    *.js
+  generated/
+    client/
+      *.tsx
 ```
 
-The generated artifact names are `.lumina/routes.json`, `.lumina/render-manifest.json`, and `.lumina/map.json`. They are canonical compiler and map contracts for the first prototype.
+The generated artifact names are `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/client/*.js`, and `.lumina/generated/client/*.tsx`. The route, render, and map artifacts are canonical compiler and map contracts for the first prototype; the client paths are current route-specific dev hydration artifacts.
 
 Generated files must be deterministic and must not be edited manually.
 
@@ -108,7 +113,11 @@ Future work after MVP Alpha may add:
     *.ctx.json
     agent-index.json
   mutations.json
+  client/
+    *.js
   generated/
+    client/
+      *.tsx
 dist/
   public/
   routes.manifest.json
@@ -120,7 +129,7 @@ dist/
 
 `.lumina/perf.report.json`, `.lumina/build-trace.json`, `.lumina/hmr-report.json`, `dist/public/`, `dist/routes.manifest.json`, `dist/render.manifest.json`, and `dist/adapter.manifest.json` now exist for the verified dev/build/start slices. The remaining future artifacts must not be described as implemented until the packages, commands, tests, and generated output exist.
 
-The future generated artifact names are `.lumina/graph.json`, `.lumina/seo.report.json`, `.lumina/perf.report.json`, `.lumina/workspace.json`, `.lumina/workspace-graph.json`, `.lumina/affected.json`, `.lumina/build-trace.json`, `.lumina/cache-report.json`, `.lumina/hmr-report.json`, `.lumina/split-report.json`, `.lumina/context/*.ctx.json`, `.lumina/context/agent-index.json`, `.lumina/mutations.json`, `.lumina/generated/*`, `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, `dist/adapter.manifest.json`, and `dist/*`.
+The future generated artifact names are `.lumina/graph.json`, `.lumina/seo.report.json`, `.lumina/perf.report.json`, `.lumina/workspace.json`, `.lumina/workspace-graph.json`, `.lumina/affected.json`, `.lumina/build-trace.json`, `.lumina/cache-report.json`, `.lumina/hmr-report.json`, `.lumina/split-report.json`, `.lumina/context/*.ctx.json`, `.lumina/context/agent-index.json`, `.lumina/mutations.json`, `.lumina/client/*.js`, `.lumina/generated/*`, `.lumina/generated/client/*.tsx`, `dist/routes.manifest.json`, `dist/render.manifest.json`, `dist/seo.report.json`, `dist/adapter.manifest.json`, and `dist/*`.
 
 ## Repository Structure
 

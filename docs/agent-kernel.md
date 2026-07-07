@@ -44,7 +44,9 @@ Planned public docs and app-agent outputs:
 | `.lumina/context/*.ctx.json` | Planned generated app artifact | Route or surface context capsules. |
 | `.lumina/context/agent-index.json` | Planned generated app artifact | Index of generated agent context. |
 | `.lumina/mutations.json` | Planned generated app artifact | Safe edit mutation log. |
+| `.lumina/client/*.js` | Implemented dev artifact | Route-specific dev hydration bundles. |
 | `.lumina/generated/*` | Planned generated app artifact | Generated runtime modules. |
+| `.lumina/generated/client/*.tsx` | Implemented dev artifact | Generated source entries for route-specific dev hydration bundles. |
 | `dist/routes.manifest.json` | Planned deployment artifact | Adapter-shaped route manifest copy. |
 | `dist/render.manifest.json` | Planned deployment artifact | Adapter-shaped render manifest copy. |
 | `dist/seo.report.json` | Planned deployment artifact | Adapter-shaped SEO report copy. |

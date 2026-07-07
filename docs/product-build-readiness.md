@@ -61,7 +61,7 @@ Before expanding beyond the monorepo scaffold, the repository should have:
 - A testing contract for fixtures, snapshots, HTTP checks, browser checks, security checks, CI gates, and evidence reporting.
 - A repeatable documentation verification runbook with exact checks and evidence expectations.
 
-This documentation foundation is present for the Phase 1 scaffold when `bun run check` passes. Phase 1A shared core model hardening is implemented in `@lumina/core`, the first route-discovery package API is implemented in `@lumina/compiler`, the minimal dev-server and static-build APIs are implemented in `@lumina/vite-plugin`, the first static serving path is implemented in `@lumina/adapter-bun`, and the early benchmark/status skeleton exists with `not implemented` status. The current follow-up is keeping the readiness checklist aligned with implementation issues, PR descriptions, client hydration, component-level HMR, and production hardening after the first static build/start slice.
+This documentation foundation is present for the Phase 1 scaffold when `bun run check` passes. Phase 1A shared core model hardening is implemented in `@lumina/core`, the first route-discovery package API is implemented in `@lumina/compiler`, the minimal dev-server and static-build APIs are implemented in `@lumina/vite-plugin`, the first dev hydration bundle output exists, the first static serving path is implemented in `@lumina/adapter-bun`, and the early benchmark/status skeleton exists with `not implemented` status. The current follow-up is keeping the readiness checklist aligned with implementation issues, PR descriptions, production hydration output, component-level HMR, and production hardening after the first dev hydration slice.
 
 ## Product Build Gates
 

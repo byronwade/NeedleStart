@@ -378,7 +378,9 @@ const canonicalGeneratedArtifacts = [
   ".lumina/context/*.ctx.json",
   ".lumina/context/agent-index.json",
   ".lumina/mutations.json",
+  ".lumina/client/*.js",
   ".lumina/generated/*",
+  ".lumina/generated/client/*.tsx",
   "dist/routes.manifest.json",
   "dist/render.manifest.json",
   "dist/seo.report.json",
@@ -743,19 +745,19 @@ const prototypeScopeTerms = [
 const currentImplementationStepDocs = [
   {
     file: "README.md",
-    terms: ["The next implementation stage is completing client hydration and production hardening after the first static build/start slice"],
+    terms: ["The next implementation stage is completing production hydration output, component-level HMR, and production hardening after the first dev hydration slice"],
   },
   {
     file: "docs/status.md",
-    terms: ["The next implementation path is completing client hydration and production hardening after the first static build/start slice"],
+    terms: ["The next implementation path is completing production hydration output, component-level HMR, and production hardening after the first dev hydration slice"],
   },
   {
     file: "docs/roadmap.md",
-    terms: ["The next implementation stage is completing client hydration and production hardening after the first static build/start slice."],
+    terms: ["The next implementation stage is completing production hydration output, component-level HMR, and production hardening after the first dev hydration slice."],
   },
   {
     file: "docs/public/roadmap.md",
-    terms: ["The next implementation path is completing client hydration and production hardening after the first static build/start slice."],
+    terms: ["The next implementation path is completing production hydration output, component-level HMR, and production hardening after the first dev hydration slice."],
   },
   {
     file: "docs/product-build-readiness.md",
@@ -763,7 +765,7 @@ const currentImplementationStepDocs = [
   },
   {
     file: "docs/task-backlog.md",
-    terms: ["Current implementation path: complete client hydration and production hardening after the first static build/start slice."],
+    terms: ["Current implementation path: complete production hydration output, component-level HMR, and production hardening after the first dev hydration slice."],
   },
 ];
 

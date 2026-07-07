@@ -42,6 +42,14 @@ describe("Vite dev integration", () => {
       const homeHtml = await home.text();
       expect(homeHtml).toContain("<h1>Your app ships with a map.</h1>");
       expect(homeHtml).toContain('data-lumina-route="/"');
+      expect(homeHtml).toContain('<script type="module" src="/@lumina/client/app.page.js"></script>');
+
+      const clientEntry = await fetch(`${dev.url}/@lumina/client/app.page.js`);
+      expect(clientEntry.status).toBe(200);
+      const clientEntryJs = await clientEntry.text();
+      expect(clientEntryJs).toContain("hydrateRoot");
+      expect(clientEntryJs).toContain("Your app ships with a map.");
+      expect(clientEntryJs).toContain("document");
 
       const docs = await fetch(`${dev.url}/docs`);
       expect(docs.status).toBe(200);

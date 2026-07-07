@@ -301,7 +301,9 @@ Config can affect:
 - `.lumina/context/*.ctx.json`.
 - `.lumina/context/agent-index.json`.
 - `.lumina/mutations.json`.
+- `.lumina/client/*.js`.
 - `.lumina/generated/*`.
+- `.lumina/generated/client/*.tsx`.
 - `dist/routes.manifest.json`.
 - `dist/render.manifest.json`.
 - `dist/seo.report.json`.

@@ -114,7 +114,9 @@ Planned generated files:
 | `.lumina/context/*.ctx.json` | Planned | Route or surface context capsules. |
 | `.lumina/context/agent-index.json` | Planned | Agent context index. |
 | `.lumina/mutations.json` | Planned | Safe edit mutation log. |
+| `.lumina/client/*.js` | Implemented for dev server | Route-specific dev hydration bundles. |
 | `.lumina/generated/*` | Planned | Generated runtime modules. |
+| `.lumina/generated/client/*.tsx` | Implemented for dev server | Generated source entries for route-specific dev hydration bundles. |
 | `dist/routes.manifest.json` | Implemented for static build | Deployment-oriented route manifest copy for adapters. |
 | `dist/render.manifest.json` | Implemented for static build | Deployment-oriented render manifest copy for adapters. |
 | `dist/seo.report.json` | Planned | Deployment-oriented SEO report copy for adapters. |
