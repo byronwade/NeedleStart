@@ -106,6 +106,11 @@ export async function startLuminaDevServer(options: LuminaDevServerOptions): Pro
           },
           configureServer(server) {
             server.watcher.add(resolve(appRoot, "app"));
+            const knownRouteFiles = new Set(routeState.routes.map((route) => route.sourceFile));
+            const rememberRouteFiles = () => {
+              knownRouteFiles.clear();
+              for (const route of routeState.routes) knownRouteFiles.add(route.sourceFile);
+            };
 
             const watchAddedDirectory = (directory: string) => {
               if (!isAppDirectory(appRoot, directory)) return;
@@ -119,6 +124,7 @@ export async function startLuminaDevServer(options: LuminaDevServerOptions): Pro
             const updateRouteState = (file: string) => {
               if (!isAppSourceFile(appRoot, file)) return;
               routeState = regenerateArtifacts(appRoot, file);
+              rememberRouteFiles();
               void queueClientBundleWrite().catch(() => undefined);
               const virtualModule = server.moduleGraph.getModuleById(resolvedVirtualRoutesModuleId);
               if (virtualModule) server.moduleGraph.invalidateModule(virtualModule);
@@ -132,6 +138,19 @@ export async function startLuminaDevServer(options: LuminaDevServerOptions): Pro
               });
               server.ws.send({ type: "full-reload" });
             };
+
+            const scanForAddedRouteFiles = () => {
+              for (const routeFile of findAppPageFiles(resolve(appRoot, "app"))) {
+                const sourceFile = toRelativePath(appRoot, routeFile);
+                if (!knownRouteFiles.has(sourceFile)) {
+                  updateRouteState(routeFile);
+                  break;
+                }
+              }
+            };
+            const routeFilePoll = setInterval(scanForAddedRouteFiles, 250);
+            routeFilePoll.unref();
+            server.httpServer?.once("close", () => clearInterval(routeFilePoll));
 
             server.watcher.on("addDir", watchAddedDirectory);
             server.watcher.on("add", updateRouteState);
@@ -871,6 +890,24 @@ function findRouteSourceInDirectory(directory: string): string | undefined {
     const candidate = resolve(directory, file);
     if (existsSync(candidate)) return candidate;
   }
+}
+
+function findAppPageFiles(directory: string): string[] {
+  if (!existsSync(directory)) return [];
+  const files: string[] = [];
+
+  for (const entry of readdirSync(directory, { withFileTypes: true })) {
+    const path = resolve(directory, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...findAppPageFiles(path));
+      continue;
+    }
+    if (entry.isFile() && /^page\.(tsx|ts|jsx|js)$/.test(entry.name)) {
+      files.push(path);
+    }
+  }
+
+  return files.sort((a, b) => a.localeCompare(b));
 }
 
 function waitForWatcherReady(server: ViteDevServer): Promise<void> {

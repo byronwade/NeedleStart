@@ -1,7 +1,7 @@
-import { ArrowLeft, ArrowRight, FileText } from "lucide-react";
+import { ArrowRight, FileText } from "lucide-react";
 import type { DocsArticle } from "../lib/docs-content";
-import { docsNavGroups } from "../lib/docs-content";
 import { getMarkdownHeadings, MarkdownBody } from "./MarkdownBody";
+import { DocsSidebar } from "./DocsSidebar";
 import { Badge } from "./ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 
@@ -17,32 +17,7 @@ export function DocsArticlePage({ article }: { article: DocsArticle }) {
 
   return (
     <main className="docs-page docs-article-page" id="main-content">
-      <aside className="docs-sidebar docs-article-sidebar" aria-label="Documentation sections">
-        <a className="docs-back-link" href="/docs">
-          <ArrowLeft aria-hidden="true" size={14} />
-          Docs home
-        </a>
-        {headings.length ? (
-          <nav className="docs-nav-group docs-toc-group" aria-label="On this page">
-            <h2>On this page</h2>
-            {headings.slice(0, 8).map((heading) => (
-              <a className={heading.depth === 3 ? "docs-toc-child" : undefined} href={`#${heading.id}`} key={heading.id}>
-                {heading.text}
-              </a>
-            ))}
-          </nav>
-        ) : null}
-        {docsNavGroups.map((group) => (
-          <nav className="docs-nav-group" key={group.title} aria-label={group.title}>
-            <h2>{group.title}</h2>
-            {group.links.map((link) => (
-              <a aria-current={link.href === article.href ? "page" : undefined} href={link.href} key={link.href}>
-                {link.title}
-              </a>
-            ))}
-          </nav>
-        ))}
-      </aside>
+      <DocsSidebar activeHref={article.href} headings={headings} showBackLink />
 
       <article className="docs-article">
         <header className="docs-article-header">

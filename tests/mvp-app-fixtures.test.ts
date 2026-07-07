@@ -42,6 +42,7 @@ describe("MVP app and example fixtures", () => {
         "/docs/deployment",
         "/docs/guides",
         "/docs/reference",
+        "/docs/search",
         "/docs/start",
         "/about",
         "/benchmarks",
@@ -282,7 +283,7 @@ describe("MVP app and example fixtures", () => {
     }
   }, 20_000);
 
-  test("multi-app and generated large-route examples have deterministic scaffold evidence", async () => {
+  test("multi-app and generated large-route examples have deterministic artifact evidence", async () => {
     const marketing = compiler.createRoutesManifest({
       appRoot: join(repoRoot, "examples/multi-app-workspace/apps/marketing"),
     });
@@ -294,10 +295,12 @@ describe("MVP app and example fixtures", () => {
     expect(docs.routes.map((route) => route.path)).toEqual(["/"]);
 
     for (const fixture of [
-      { path: "examples/large-100-routes", expectedRoutes: 100 },
-      { path: "examples/large-1000-routes", expectedRoutes: 1000 },
+      { path: "examples/large-100-routes", expectedRoutes: 100, status: "Example status: Runnable." },
+      { path: "examples/large-1000-routes", expectedRoutes: 1000, status: "Example status: Runnable." },
     ]) {
       const appRoot = mkdtempSync(join(tmpdir(), "lumina-large-routes-"));
+      const cliStdout: string[] = [];
+      const cliStderr: string[] = [];
 
       try {
         const routeWidth = fixture.expectedRoutes.toString().length;
@@ -314,7 +317,58 @@ describe("MVP app and example fixtures", () => {
         expect(manifest.routes).toHaveLength(fixture.expectedRoutes);
         expect(manifest.routes[0]?.path).toBe(`/route-${"1".padStart(routeWidth, "0")}`);
         expect(manifest.routes.at(-1)?.path).toBe(`/route-${fixture.expectedRoutes.toString().padStart(routeWidth, "0")}`);
-        expect(readFileSync(join(repoRoot, fixture.path, "README.md"), "utf8")).toContain("Status: Scaffolded.");
+
+        compiler.writeRoutesManifest({ appRoot });
+        compiler.writeRenderManifest({ appRoot });
+        compiler.writeLuminaMap({ appRoot });
+
+        for (const artifact of [
+          ".lumina/routes.json",
+          ".lumina/render-manifest.json",
+          ".lumina/map.json",
+        ]) {
+          const raw = readFileSync(join(appRoot, artifact), "utf8");
+          expect(raw).not.toContain("\n");
+          expect(raw).not.toContain(repoRoot);
+          expect(raw).not.toContain(appRoot);
+        }
+
+        const routesRaw = readFileSync(join(appRoot, ".lumina/routes.json"), "utf8");
+        const renderRaw = readFileSync(join(appRoot, ".lumina/render-manifest.json"), "utf8");
+        const mapRaw = readFileSync(join(appRoot, ".lumina/map.json"), "utf8");
+        const routesManifest = JSON.parse(routesRaw);
+        const renderManifest = JSON.parse(renderRaw);
+        const map = JSON.parse(mapRaw);
+
+        expect(routesManifest.routes.map((route: { path: string }) => route.path)).toEqual(
+          manifest.routes.map((route) => route.path),
+        );
+        expect(renderManifest.routes).toHaveLength(fixture.expectedRoutes);
+        expect(map.edges.filter((edge: { kind: string }) => edge.kind === "route.source")).toHaveLength(
+          fixture.expectedRoutes,
+        );
+        expect(routesRaw.length).toBeGreaterThan(fixture.expectedRoutes * 100);
+        expect(renderRaw.length).toBeGreaterThan(fixture.expectedRoutes * 50);
+        expect(mapRaw.length).toBeGreaterThan(fixture.expectedRoutes * 100);
+
+        const routesExitCode = await cli.runCli(["routes", appRoot, "--json"], {
+          stdout: (text) => cliStdout.push(text),
+          stderr: (text) => cliStderr.push(text),
+        });
+        expect(routesExitCode).toBe(0);
+        expect(cliStderr).toEqual([]);
+        expect(cliStdout.join("")).not.toContain("\n");
+        const cliRoutes = JSON.parse(cliStdout.join(""));
+        expect(cliRoutes.data.routes).toHaveLength(fixture.expectedRoutes);
+        expect(cliRoutes.data.routes[0]?.path).toBe(manifest.routes[0]?.path);
+        expect(cliRoutes.data.routes.at(-1)?.path).toBe(manifest.routes.at(-1)?.path);
+
+        const readme = readFileSync(join(repoRoot, fixture.path, "README.md"), "utf8");
+        expect(readme).toContain(fixture.status);
+        expect(readme).toContain(".lumina/routes.json");
+        expect(readme).toContain(".lumina/render-manifest.json");
+        expect(readme).toContain(".lumina/map.json");
+        expect(readme).toContain("manifest-size");
       } finally {
         rmSync(appRoot, { recursive: true, force: true });
       }

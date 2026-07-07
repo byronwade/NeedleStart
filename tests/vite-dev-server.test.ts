@@ -25,6 +25,7 @@ const expectedWwwRoutes = [
   "/docs/deployment",
   "/docs/guides",
   "/docs/reference",
+  "/docs/search",
   "/docs/start",
   "/about",
   "/benchmarks",
@@ -71,7 +72,20 @@ describe("Vite dev integration", () => {
 
       const docs = await fetch(`${dev.url}/docs`);
       expect(docs.status).toBe(200);
-      expect(await docs.text()).toContain("<h1>Documentation</h1>");
+      const docsHtml = await docs.text();
+      expect(docsHtml).toContain("<h1>Documentation</h1>");
+      expect(docsHtml).toContain('href="/docs/search"');
+      expect(docsHtml).toContain("indexed pages");
+      expect(docsHtml).toContain("All public docs pages");
+      expect(docsHtml).toContain("SEO-First Rendering");
+
+      const docsSearch = await fetch(`${dev.url}/docs/search?q=security`);
+      expect(docsSearch.status).toBe(200);
+      const docsSearchHtml = await docsSearch.text();
+      expect(docsSearchHtml).toContain("<h1>Search Lumina docs</h1>");
+      expect(docsSearchHtml).toContain('value="security"');
+      expect(docsSearchHtml).toContain("<h3>Security</h3>");
+      expect(docsSearchHtml).toContain("docs/public/reference/security.md");
 
       const cliDocs = await fetch(`${dev.url}/docs/reference/cli`);
       expect(cliDocs.status).toBe(200);
@@ -83,6 +97,8 @@ describe("Vite dev integration", () => {
       expect(securityDocsHtml).toContain("<h1>Security</h1>");
       expect(securityDocsHtml).toContain("<h2 id=\"current-status\">Current Status</h2>");
       expect(securityDocsHtml).toContain("Do not treat Lumina as security-audited");
+      expect(securityDocsHtml).toContain("Agent-Safe Workflows");
+      expect(securityDocsHtml).toContain('aria-current="page" href="/docs/reference/security"');
 
       const viteClient = await fetch(`${dev.url}/@vite/client`);
       expect(viteClient.status).toBe(200);

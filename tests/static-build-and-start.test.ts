@@ -56,7 +56,7 @@ describe("static build and Bun start integration", () => {
     expect(output.schemaVersion).toBe("lumina.cli.v0");
     expect(output.command).toBe("lumina build");
     expect(output.status).toBe("ok");
-    expect(output.data.routes).toBe(18);
+    expect(output.data.routes).toBe(19);
     expect(output.data.outputs).toContain("dist/public/index.html");
     expect(output.data.outputs).toContain("dist/public/about/index.html");
     expect(output.data.outputs).toContain("dist/public/docs/reference/cli/index.html");
@@ -118,7 +118,7 @@ describe("static build and Bun start integration", () => {
 
     const output = stdout[0]!;
     expect(output).toContain(`Lumina build ${wwwRoot}`);
-    expect(output).toContain("Routes     18");
+    expect(output).toContain("Routes     19");
     expect(output).toContain("Artifacts  .lumina/routes.json, .lumina/render-manifest.json, .lumina/map.json");
     expect(output).toContain("Phase                 Time      Status");
     expect(output).toMatch(/^config\s+\d+ms\s+ok$/m);
@@ -304,6 +304,17 @@ describe("static build and Bun start integration", () => {
       expect(securityHtml).toContain("Do not treat Lumina as security-audited");
       expect(securityHtml).toContain("<li>Auth and sessions.</li>");
       expect(securityHtml).toContain('data-lumina-route="/docs/*"');
+      expect(securityHtml).toContain("Agent-Safe Workflows");
+      expect(securityHtml).toContain('aria-current="page" href="/docs/reference/security"');
+
+      const search = await fetchWithTimeout(`${server.url}/docs/search?q=adapter`);
+      expect(search.status).toBe(200);
+      const searchHtml = await search.text();
+      expect(searchHtml).toContain("<h1>Search Lumina docs</h1>");
+      expect(searchHtml).toContain('value="adapter"');
+      expect(searchHtml).toContain("<h3>Adapters</h3>");
+      expect(searchHtml).toContain("docs/public/reference/adapters.md");
+      expect(searchHtml).toContain('data-lumina-route="/docs/search"');
     } finally {
       await server.close();
     }

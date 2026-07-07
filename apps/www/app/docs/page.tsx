@@ -1,7 +1,9 @@
-import { BookOpen, FileCode2, Search, ShieldCheck } from "lucide-react";
+import { BookOpen, FileCode2, ShieldCheck } from "lucide-react";
+import { DocsSidebar } from "../../components/DocsSidebar";
 import { PageHeader } from "../../components/PageHeader";
 import { Badge } from "../../components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
+import { docsIndexByLane, docsIndexStats } from "../../lib/docs-index";
 import { docsArticles, docsNavGroups, publicDocsPages } from "../../lib/docs-content";
 
 const featuredDocs = docsArticles.filter((article) =>
@@ -20,23 +22,7 @@ export default function DocsPage() {
       />
 
       <section className="docs-browser">
-        <aside className="docs-sidebar" aria-label="Documentation sections">
-          <div className="docs-search">
-            <Search aria-hidden="true" size={16} />
-            <span>Search docs</span>
-            <kbd>Planned</kbd>
-          </div>
-          {docsNavGroups.map((group) => (
-            <nav className="docs-nav-group" key={group.title} aria-label={group.title}>
-              <h2>{group.title}</h2>
-              {group.links.map((link) => (
-                <a href={link.href} key={link.href}>
-                  {link.title}
-                </a>
-              ))}
-            </nav>
-          ))}
-        </aside>
+        <DocsSidebar activeHref="/docs" />
 
         <div className="docs-content" id="docs-content">
           <div className="docs-intro">
@@ -44,9 +30,24 @@ export default function DocsPage() {
             <h2>Read from overview to contract without losing the project map.</h2>
             <p>
               The source Markdown files remain canonical today. This public layer now has static docs routes for the
-              main lanes, while full Markdown rendering, generated sidebars, search indexing, and frontmatter parsing
-              remain planned.
+              main lanes, an SSR Markdown viewer for mapped public docs, and a search page backed by the bundled docs
+              inventory. Generated sidebars, generated static docs routes, and frontmatter parsing remain planned.
             </p>
+          </div>
+
+          <div className="docs-index-strip" aria-label="Bundled docs index">
+            <div>
+              <strong>{docsIndexStats.pages}</strong>
+              <span>indexed pages</span>
+            </div>
+            <div>
+              <strong>{docsIndexStats.lanes}</strong>
+              <span>content lanes</span>
+            </div>
+            <div>
+              <strong>{docsIndexStats.sources}</strong>
+              <span>source files</span>
+            </div>
           </div>
 
           <div className="docs-feature-grid">
@@ -118,6 +119,38 @@ export default function DocsPage() {
                 </CardContent>
               </Card>
             ))}
+          </section>
+
+          <section className="docs-full-index" aria-labelledby="docs-full-index-title">
+            <div className="docs-full-index-heading">
+              <div>
+                <Badge variant="secondary">Bundled inventory</Badge>
+                <h2 id="docs-full-index-title">All public docs pages</h2>
+              </div>
+              <p>
+                These links come from the current `docs/public/` metadata inventory and resolve through the SSR
+                Markdown viewer until generated static docs routes land.
+              </p>
+            </div>
+            <div className="docs-full-index-grid">
+              {docsIndexByLane().map((group) => (
+                <Card className="docs-index-card" key={group.lane}>
+                  <CardHeader>
+                    <CardTitle>{group.lane}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    {group.entries.map((entry) => (
+                      <a href={entry.href} key={entry.href}>
+                        <span>{entry.title}</span>
+                        <Badge variant={entry.status === "Implemented" ? "success" : entry.status === "Planned" ? "warning" : "secondary"}>
+                          {entry.status}
+                        </Badge>
+                      </a>
+                    ))}
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </section>
 
           <section className="docs-status-panel">

@@ -6,7 +6,7 @@ Audience: app developers, docs maintainers, framework contributors, AI agents.
 
 This catalog names the official examples Lumina should grow into. It complements [Examples And Templates Contract](examples-contract.md), [Getting Started](getting-started.md), [Public Examples Reference](public/reference/examples.md), and [Benchmark Fixtures](benchmark-fixtures.md).
 
-Source fixtures now exist for `apps/www`, `examples/basic/`, `examples/blog-seo/`, `examples/multi-app-workspace/`, `examples/large-100-routes/`, and `examples/large-1000-routes/`. `apps/www` is runnable through the minimal dev/build/start path. `examples/basic/` is the first verified starter example, with test coverage for dev smoke startup, static build, built start, generated artifacts, and the root HTML response. `examples/blog-seo/` is runnable for dev dynamic content, static index build/start, generated artifacts, and documented production dynamic-route limits. The remaining standalone examples are compiler-verifiable fixtures, not runnable or verified examples yet. Every other entry is planned until files, commands, tests, and generated artifacts prove otherwise.
+Source fixtures now exist for `apps/www`, `examples/basic/`, `examples/blog-seo/`, `examples/multi-app-workspace/`, `examples/large-100-routes/`, and `examples/large-1000-routes/`. `apps/www` is runnable through the minimal dev/build/start path. `examples/basic/` is the first verified starter example, with test coverage for dev smoke startup, static build, built start, generated artifacts, and the root HTML response. `examples/blog-seo/` is runnable for dev dynamic content, static index build/start, generated artifacts, and documented production dynamic-route limits. `examples/large-100-routes/` and `examples/large-1000-routes/` are runnable generated fixtures for deterministic route discovery, compact route/render/map artifacts, CLI JSON, and manifest-size readiness; they are not verified runtime examples and they do not provide benchmark evidence. Every other entry is planned until files, commands, tests, and generated artifacts prove otherwise.
 
 ## Status Values
 
@@ -26,8 +26,8 @@ Use the same status values as [Examples And Templates Contract](examples-contrac
 | Basic Starter | `examples/basic/` | Verified | Smallest useful app for `bun create lumina`. |
 | Blog SEO | `examples/blog-seo/` | Runnable | Public content route fixture with dev dynamic route evidence, static index build/start evidence, and future metadata, sitemap, robots, and structured data. |
 | Multi-App Workspace | `examples/multi-app-workspace/` | Scaffolded | Future workspace graph, shared-file identity, affected build, and split-app planning. |
-| Large 100 Routes | `examples/large-100-routes/` | Scaffolded | Deterministic generated route-discovery and manifest-ordering fixture. |
-| Large 1000 Routes | `examples/large-1000-routes/` | Scaffolded | Deterministic generated large-route and future graph-scaling fixture. |
+| Large 100 Routes | `examples/large-100-routes/` | Runnable | Deterministic generated route-discovery, artifact, and manifest-ordering fixture. |
+| Large 1000 Routes | `examples/large-1000-routes/` | Runnable | Deterministic generated large-route, artifact, manifest-size, and future graph-scaling fixture. |
 | API Route | `examples/api-route/` | Planned | Standard API route methods, params, body handling, and errors. |
 | Hot API | `examples/hot-api/` | Planned | Generated validation, serialization, and optional micro-cache. |
 | Static Export | `examples/static-export/` | Planned | Fully static output and unsupported-route diagnostics. |
@@ -40,7 +40,7 @@ Use the same status values as [Examples And Templates Contract](examples-contrac
 
 ## Default Starter Requirements
 
-MVP Alpha is currently using `apps/www/` plus the scaffolded examples as the source fixture lane. These fixtures should not include API routes, MCP, safe edits, auth, databases, benchmark claims, or production adapter compatibility beyond the exact MVP scope.
+MVP Alpha is currently using `apps/www/` plus scaffolded and generated examples as the source fixture lane. These fixtures should not include API routes, MCP, safe edits, auth, databases, benchmark claims, or production adapter compatibility beyond the exact MVP scope.
 
 The default starter is the first `examples/` entry to become verified.
 

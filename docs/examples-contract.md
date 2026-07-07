@@ -4,7 +4,7 @@ Status: Planned.
 
 Audience: app developers, framework contributors, docs maintainers, AI agents.
 
-This page defines how Lumina examples, starter templates, and public guide snippets should work once implementation exists. The repository is in Phase 1 scaffold, so only the first starter example is verified. Source fixtures exist for `apps/www`, `examples/blog-seo/`, `examples/multi-app-workspace/`, `examples/large-100-routes/`, and `examples/large-1000-routes/`; `apps/www` is runnable through the minimal local dev-server path and static build/start path, `examples/basic/` is verified through dev, build, start, generated artifact, and HTTP fixture evidence, and `examples/blog-seo/` is runnable through dev dynamic route, static index build/start, generated artifact, and documented production dynamic-route limitation evidence. Other standalone examples remain scaffolded until their own command evidence, generated artifacts, and runtime limitations are documented. The planned official inventory lives in [Examples Catalog](examples-catalog.md).
+This page defines how Lumina examples, starter templates, and public guide snippets should work once implementation exists. The repository is in Phase 1 scaffold, so only the first starter example is verified. Source fixtures exist for `apps/www`, `examples/blog-seo/`, `examples/multi-app-workspace/`, `examples/large-100-routes/`, and `examples/large-1000-routes/`; `apps/www` is runnable through the minimal local dev-server path and static build/start path, `examples/basic/` is verified through dev, build, start, generated artifact, and HTTP fixture evidence, `examples/blog-seo/` is runnable through dev dynamic route, static index build/start, generated artifact, and documented production dynamic-route limitation evidence, and the two large-route examples are runnable generated fixtures for deterministic route discovery, generated artifacts, CLI JSON, and manifest-size readiness. Other standalone examples remain scaffolded until their own command evidence, generated artifacts, and runtime limitations are documented. The planned official inventory lives in [Examples Catalog](examples-catalog.md).
 
 ## Research Notes
 
@@ -62,7 +62,7 @@ playgrounds/
   large-app-fixture/
 ```
 
-The canonical verified starter path is `examples/basic/`. The canonical runnable content example path is `examples/blog-seo/`. Canonical scaffolded paths are `examples/multi-app-workspace/`, `examples/large-100-routes/`, and `examples/large-1000-routes/`. Canonical planned future paths are `examples/api-route/`, `examples/hot-api/`, `examples/static-export/`, `examples/adapter-node/`, `examples/dashboard-client/`, `examples/ecommerce/`, `examples/agent-demo/`, `examples/docs-site/`, and `playgrounds/large-app-fixture/`.
+The canonical verified starter path is `examples/basic/`. Canonical runnable fixture paths are `examples/blog-seo/`, `examples/large-100-routes/`, and `examples/large-1000-routes/`; the large-route fixtures are not full runtime app examples. The canonical scaffolded path is `examples/multi-app-workspace/`. Canonical planned future paths are `examples/api-route/`, `examples/hot-api/`, `examples/static-export/`, `examples/adapter-node/`, `examples/dashboard-client/`, `examples/ecommerce/`, `examples/agent-demo/`, `examples/docs-site/`, and `playgrounds/large-app-fixture/`.
 
 The exact layout may change during Phase 1, but every verified example must have a README, commands, expected outputs, tests, and status.
 
@@ -241,7 +241,7 @@ Scale fixture claims must link to [Benchmark Methodology](benchmark-methodology.
 
 ## Out Of Scope For The Current Scaffold
 
-- Additional runnable or verified example apps beyond `examples/basic/`.
+- Additional verified example apps beyond `examples/basic/`.
 - Verified create-command output.
 - Package installation commands.
 - Remote template fetching.

@@ -19,10 +19,12 @@ the app renderer.
 
 The docs area is a public-docs route scaffold inspired by documentation systems such as Next.js: it
 has a docs home, lane pages, topic pages, source-path cards, reference lanes, active sidebar
-navigation, status language, and an SSR `/docs/*` inventory viewer backed by metadata for the
-current `docs/public/` page set. The catch-all route now renders a bundled Markdown body snapshot
-for mapped public docs pages. It is not yet a search implementation, frontmatter parser, generated
-sidebar, generated static docs router, or machine-readable docs output.
+navigation, status language, an SSR `/docs/search` route backed by a bundled docs index, and an SSR
+`/docs/*` inventory viewer backed by metadata for the current `docs/public/` page set. The catch-all
+route now renders a bundled Markdown body snapshot for mapped public docs pages, and docs pages use a
+complete in-app public-docs inventory sidebar grouped by lane. It is not yet a frontmatter parser,
+generated sidebar artifact, generated static docs router, generated search artifact, or
+machine-readable docs output.
 
 ## Routes
 
@@ -38,6 +40,7 @@ sidebar, generated static docs router, or machine-readable docs output.
 - `/docs/reference/cli`
 - `/docs/reference/routing`
 - `/docs/reference/manifest-contracts`
+- `/docs/search`
 - `/docs/deployment`
 - `/docs/community`
 - `/docs/*` for Markdown-backed public-doc inventory pages
