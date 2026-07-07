@@ -22,6 +22,8 @@ export type LuminaDevServerOptions = {
 export type LuminaDevServer = {
   url: string;
   routes: RouteNode[];
+  phases: LuminaBuildPhase[];
+  durationMs: number;
   close: () => Promise<void>;
 };
 
@@ -53,70 +55,172 @@ const resolvedVirtualRoutesModuleId = `\0${virtualRoutesModuleId}`;
 const buildLocks = new Map<string, Promise<void>>();
 
 export async function startLuminaDevServer(options: LuminaDevServerOptions): Promise<LuminaDevServer> {
+  const devStartedAt = Date.now();
+  const phaseTimings: LuminaBuildPhase[] = [];
   const appRoot = resolve(options.appRoot);
-  let routeState = regenerateArtifacts(appRoot);
+  let routeState = regenerateArtifacts(appRoot, undefined, ".lumina", phaseTimings);
   let clientBundleWrite: Promise<void> = Promise.resolve();
   const queueClientBundleWrite = () => {
     const write = writeClientBundles(appRoot, routeState.routes);
     clientBundleWrite = write.catch(() => undefined);
     return write;
   };
-  await queueClientBundleWrite();
+  await timePhase(phaseTimings, "client bundles", queueClientBundleWrite);
 
-  let vite: ViteDevServer;
-  vite = await createServer({
-    appType: "custom",
-    configFile: false,
-    esbuild: {
-      jsx: "automatic",
-      jsxImportSource: "react",
-    },
-    optimizeDeps: {
-      include: [],
-      noDiscovery: true,
-    },
-    ssr: {
-      external: ["react", "react-dom", "react-dom/client", "react-dom/server", "react/jsx-dev-runtime", "react/jsx-runtime"],
-    },
-    root: appRoot,
-    logLevel: options.logLevel ?? "info",
-    server: {
-      host: options.host ?? "127.0.0.1",
-      port: options.port ?? 5173,
-      strictPort: true,
-    },
-    plugins: [
-      {
-        name: "lumina-dev-renderer",
-        resolveId(id) {
-          if (id === virtualRoutesModuleId) return resolvedVirtualRoutesModuleId;
-        },
-        load(id) {
-          if (id === resolvedVirtualRoutesModuleId) {
-            return [
-              `export const routes = ${JSON.stringify(routeState.routes)};`,
-              `export const manifest = ${JSON.stringify(routeState.manifest)};`,
-            ].join("\n");
-          }
-        },
-        configureServer(server) {
-          server.watcher.add(resolve(appRoot, "app"));
+  let vite: ViteDevServer | undefined;
+  await timePhase(phaseTimings, "vite server", async () => {
+    vite = await createServer({
+      appType: "custom",
+      configFile: false,
+      esbuild: {
+        jsx: "automatic",
+        jsxImportSource: "react",
+      },
+      optimizeDeps: {
+        include: [],
+        noDiscovery: true,
+      },
+      ssr: {
+        external: ["react", "react-dom", "react-dom/client", "react-dom/server", "react/jsx-dev-runtime", "react/jsx-runtime"],
+      },
+      root: appRoot,
+      logLevel: options.logLevel ?? "info",
+      server: {
+        host: options.host ?? "127.0.0.1",
+        port: options.port ?? 5173,
+        strictPort: true,
+      },
+      plugins: [
+        {
+          name: "lumina-dev-renderer",
+          resolveId(id) {
+            if (id === virtualRoutesModuleId) return resolvedVirtualRoutesModuleId;
+          },
+          load(id) {
+            if (id === resolvedVirtualRoutesModuleId) {
+              return [
+                `export const routes = ${JSON.stringify(routeState.routes)};`,
+                `export const manifest = ${JSON.stringify(routeState.manifest)};`,
+              ].join("\n");
+            }
+          },
+          configureServer(server) {
+            server.watcher.add(resolve(appRoot, "app"));
 
-          const watchAddedDirectory = (directory: string) => {
-            if (!isAppDirectory(appRoot, directory)) return;
-            server.watcher.add(directory);
-            setTimeout(() => {
-              const routeFile = findRouteSourceInDirectory(directory);
-              if (routeFile) updateRouteState(routeFile);
-            }, 50).unref();
-          };
+            const watchAddedDirectory = (directory: string) => {
+              if (!isAppDirectory(appRoot, directory)) return;
+              server.watcher.add(directory);
+              setTimeout(() => {
+                const routeFile = findRouteSourceInDirectory(directory);
+                if (routeFile) updateRouteState(routeFile);
+              }, 50).unref();
+            };
 
-          const updateRouteState = (file: string) => {
+            const updateRouteState = (file: string) => {
+              if (!isAppSourceFile(appRoot, file)) return;
+              routeState = regenerateArtifacts(appRoot, file);
+              void queueClientBundleWrite().catch(() => undefined);
+              const virtualModule = server.moduleGraph.getModuleById(resolvedVirtualRoutesModuleId);
+              if (virtualModule) server.moduleGraph.invalidateModule(virtualModule);
+              server.ws.send({
+                type: "custom",
+                event: "lumina:routes-updated",
+                data: {
+                  changedFile: toRelativePath(appRoot, file),
+                  routes: routeState.routes.map((route) => route.path),
+                },
+              });
+              server.ws.send({ type: "full-reload" });
+            };
+
+            server.watcher.on("addDir", watchAddedDirectory);
+            server.watcher.on("add", updateRouteState);
+            server.watcher.on("unlink", updateRouteState);
+
+            server.middlewares.use(async (request, response, next) => {
+              const rawUrl = request.url ?? "/";
+              const url = normalizeRequestPath(rawUrl);
+              if (url.startsWith("/@lumina/client/")) {
+                await serveClientBundle(appRoot, url, response);
+                return;
+              }
+              if (shouldPassThroughToVite(request.method, url)) {
+                next();
+                return;
+              }
+
+              const match = findRoute(routeState.routes, url);
+              const searchParams = readSearchParams(rawUrl);
+
+              if (!match) {
+                const notFoundFile = findNotFoundFile(appRoot, url);
+                if (notFoundFile) {
+                  try {
+                    const html = await renderSpecialFile(server, appRoot, notFoundFile, url, {
+                      searchParams,
+                    });
+                    response.statusCode = 404;
+                    response.setHeader("Content-Type", "text/html; charset=utf-8");
+                    response.end(html);
+                    return;
+                  } catch {
+                    // Fall through to the stable generic 404 if the user's not-found component fails.
+                  }
+                }
+                response.statusCode = 404;
+                response.setHeader("Content-Type", "text/html; charset=utf-8");
+                response.end(`<!doctype html><h1>Route not found: ${escapeHtml(url)}</h1>`);
+                return;
+              }
+
+              try {
+                const html = await renderRoute(server, match.route, url, {
+                  params: match.params,
+                  searchParams,
+                });
+                response.statusCode = 200;
+                response.setHeader("Content-Type", "text/html; charset=utf-8");
+                response.end(html);
+              } catch (error) {
+                if (error instanceof Error) {
+                  try {
+                    server.ssrFixStacktrace(error);
+                  } catch {
+                    // Vite's stacktrace mapper can fail for synthetic modules; keep the dev response reliable.
+                  }
+                }
+                const errorFile = findErrorFile(appRoot, match.route);
+                if (errorFile) {
+                  try {
+                    const html = await renderSpecialFile(server, appRoot, errorFile, url, {
+                      error: error instanceof Error ? error : new Error(String(error)),
+                      params: match.params,
+                      searchParams,
+                    });
+                    response.statusCode = 500;
+                    response.setHeader("Content-Type", "text/html; charset=utf-8");
+                    response.end(html);
+                    return;
+                  } catch {
+                    // Fall through to the stable generic 500 if the user's error component fails.
+                  }
+                }
+                response.statusCode = 500;
+                response.setHeader("Content-Type", "text/html; charset=utf-8");
+                response.end(`<!doctype html><h1>Lumina dev render failed</h1><pre>${escapeHtml(error instanceof Error ? error.message : String(error))}</pre>`);
+              }
+            });
+          },
+          handleHotUpdate({ file, server, modules, timestamp }) {
             if (!isAppSourceFile(appRoot, file)) return;
             routeState = regenerateArtifacts(appRoot, file);
             void queueClientBundleWrite().catch(() => undefined);
+            const invalidatedModules = new Set<ModuleNode>();
+            for (const mod of modules) {
+              server.moduleGraph.invalidateModule(mod, invalidatedModules, timestamp, true);
+            }
             const virtualModule = server.moduleGraph.getModuleById(resolvedVirtualRoutesModuleId);
-            if (virtualModule) server.moduleGraph.invalidateModule(virtualModule);
+            if (virtualModule) server.moduleGraph.invalidateModule(virtualModule, invalidatedModules, timestamp, true);
             server.ws.send({
               type: "custom",
               event: "lumina:routes-updated",
@@ -126,121 +230,27 @@ export async function startLuminaDevServer(options: LuminaDevServerOptions): Pro
               },
             });
             server.ws.send({ type: "full-reload" });
-          };
-
-          server.watcher.on("addDir", watchAddedDirectory);
-          server.watcher.on("add", updateRouteState);
-          server.watcher.on("unlink", updateRouteState);
-
-          server.middlewares.use(async (request, response, next) => {
-            const rawUrl = request.url ?? "/";
-            const url = normalizeRequestPath(rawUrl);
-            if (url.startsWith("/@lumina/client/")) {
-              await serveClientBundle(appRoot, url, response);
-              return;
-            }
-            if (shouldPassThroughToVite(request.method, url)) {
-              next();
-              return;
-            }
-
-            const match = findRoute(routeState.routes, url);
-            const searchParams = readSearchParams(rawUrl);
-
-            if (!match) {
-              const notFoundFile = findNotFoundFile(appRoot, url);
-              if (notFoundFile) {
-                try {
-                  const html = await renderSpecialFile(server, appRoot, notFoundFile, url, {
-                    searchParams,
-                  });
-                  response.statusCode = 404;
-                  response.setHeader("Content-Type", "text/html; charset=utf-8");
-                  response.end(html);
-                  return;
-                } catch {
-                  // Fall through to the stable generic 404 if the user's not-found component fails.
-                }
-              }
-              response.statusCode = 404;
-              response.setHeader("Content-Type", "text/html; charset=utf-8");
-              response.end(`<!doctype html><h1>Route not found: ${escapeHtml(url)}</h1>`);
-              return;
-            }
-
-            try {
-              const html = await renderRoute(server, match.route, url, {
-                params: match.params,
-                searchParams,
-              });
-              response.statusCode = 200;
-              response.setHeader("Content-Type", "text/html; charset=utf-8");
-              response.end(html);
-            } catch (error) {
-              if (error instanceof Error) {
-                try {
-                  server.ssrFixStacktrace(error);
-                } catch {
-                  // Vite's stacktrace mapper can fail for synthetic modules; keep the dev response reliable.
-                }
-              }
-              const errorFile = findErrorFile(appRoot, match.route);
-              if (errorFile) {
-                try {
-                  const html = await renderSpecialFile(server, appRoot, errorFile, url, {
-                    error: error instanceof Error ? error : new Error(String(error)),
-                    params: match.params,
-                    searchParams,
-                  });
-                  response.statusCode = 500;
-                  response.setHeader("Content-Type", "text/html; charset=utf-8");
-                  response.end(html);
-                  return;
-                } catch {
-                  // Fall through to the stable generic 500 if the user's error component fails.
-                }
-              }
-              response.statusCode = 500;
-              response.setHeader("Content-Type", "text/html; charset=utf-8");
-              response.end(`<!doctype html><h1>Lumina dev render failed</h1><pre>${escapeHtml(error instanceof Error ? error.message : String(error))}</pre>`);
-            }
-          });
+            return [];
+          },
         },
-        handleHotUpdate({ file, server, modules, timestamp }) {
-          if (!isAppSourceFile(appRoot, file)) return;
-          routeState = regenerateArtifacts(appRoot, file);
-          void queueClientBundleWrite().catch(() => undefined);
-          const invalidatedModules = new Set<ModuleNode>();
-          for (const mod of modules) {
-            server.moduleGraph.invalidateModule(mod, invalidatedModules, timestamp, true);
-          }
-          const virtualModule = server.moduleGraph.getModuleById(resolvedVirtualRoutesModuleId);
-          if (virtualModule) server.moduleGraph.invalidateModule(virtualModule, invalidatedModules, timestamp, true);
-          server.ws.send({
-            type: "custom",
-            event: "lumina:routes-updated",
-            data: {
-              changedFile: toRelativePath(appRoot, file),
-              routes: routeState.routes.map((route) => route.path),
-            },
-          });
-          server.ws.send({ type: "full-reload" });
-          return [];
-        },
-      },
-    ],
+      ],
+    });
+
+    const watcherReady = waitForWatcherReady(vite);
+    await vite.listen();
+    await watcherReady;
   });
-
-  const watcherReady = waitForWatcherReady(vite);
-  await vite.listen();
-  await watcherReady;
+  if (!vite) throw new Error("Vite dev server failed to initialize.");
+  const devServer = vite;
 
   return {
-    url: resolveServerUrl(vite),
+    url: resolveServerUrl(devServer),
     routes: routeState.routes,
+    phases: phaseTimings,
+    durationMs: elapsedSince(devStartedAt),
     close: async () => {
       await clientBundleWrite;
-      await vite.close();
+      await devServer.close();
     },
   };
 }
@@ -395,10 +405,16 @@ async function withBuildLock<T>(appRoot: string, action: () => Promise<T>): Prom
   }
 }
 
-function regenerateArtifacts(appRoot: string, changedFile?: string, outputDir = ".lumina") {
-  const routesResult = writeRoutesManifest({ appRoot, outputDir });
-  const renderResult = writeRenderManifest({ appRoot, outputDir });
-  const mapResult = writeLuminaMap({ appRoot, outputDir });
+function regenerateArtifacts(appRoot: string, changedFile?: string, outputDir = ".lumina", phaseTimings?: LuminaBuildPhase[]) {
+  const routesResult = phaseTimings
+    ? timeSyncPhase(phaseTimings, "route discovery", () => writeRoutesManifest({ appRoot, outputDir }))
+    : writeRoutesManifest({ appRoot, outputDir });
+  const renderResult = phaseTimings
+    ? timeSyncPhase(phaseTimings, "render manifest", () => writeRenderManifest({ appRoot, outputDir }))
+    : writeRenderManifest({ appRoot, outputDir });
+  const mapResult = phaseTimings
+    ? timeSyncPhase(phaseTimings, "map generation", () => writeLuminaMap({ appRoot, outputDir }))
+    : writeLuminaMap({ appRoot, outputDir });
   const routes = routesResult.manifest.routes.filter((route) => route.kind === "page");
 
   if (changedFile) {

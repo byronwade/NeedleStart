@@ -83,6 +83,11 @@ describe("static build and Bun start integration", () => {
 
     const homeHtml = readFileSync(join(wwwRoot, "dist", "public", "index.html"), "utf8");
     expect(homeHtml).toContain("<h1>Your app ships with a map.</h1>");
+    expect(homeHtml).toContain("data-theme-toggle");
+    expect(homeHtml).toContain("Switch to light mode");
+    expect(homeHtml).toContain("Graph relationship preview");
+    expect(homeHtml).toContain("Generated outputs");
+    expect(homeHtml).toContain("5 relationship edges");
     expect(homeHtml).toContain('data-lumina-route="/"');
     expect(homeHtml).toContain('<script type="module" src="/_lumina/client/app.page.js"></script>');
     expect(readFileSync(join(wwwRoot, "dist", "public", "_lumina", "client", "app.page.js"), "utf8")).toContain("hydrateRoot");

@@ -54,6 +54,11 @@ describe("Vite dev integration", () => {
       expect(home.headers.get("content-type")).toContain("text/html");
       const homeHtml = await home.text();
       expect(homeHtml).toContain("<h1>Your app ships with a map.</h1>");
+      expect(homeHtml).toContain("data-theme-toggle");
+      expect(homeHtml).toContain("Switch to light mode");
+      expect(homeHtml).toContain("Graph relationship preview");
+      expect(homeHtml).toContain("Generated outputs");
+      expect(homeHtml).toContain("5 relationship edges");
       expect(homeHtml).toContain('data-lumina-route="/"');
       expect(homeHtml).toContain('<script type="module" src="/@lumina/client/app.page.js"></script>');
 
@@ -118,6 +123,13 @@ describe("Vite dev integration", () => {
     expect(stdout[0]).toContain("Local http://127.0.0.1:");
     expect(stdout[0]).toContain(`Routes ${expectedWwwRoutes.length}`);
     expect(stdout[0]).toContain("Artifacts .lumina/routes.json, .lumina/render-manifest.json, .lumina/map.json");
+    expect(stdout[0]).toContain("Phase                 Time      Status");
+    expect(stdout[0]).toMatch(/route discovery\s+\d+ms\s+ok/);
+    expect(stdout[0]).toMatch(/render manifest\s+\d+ms\s+ok/);
+    expect(stdout[0]).toMatch(/map generation\s+\d+ms\s+ok/);
+    expect(stdout[0]).toMatch(/client bundles\s+\d+ms\s+ok/);
+    expect(stdout[0]).toMatch(/vite server\s+\d+ms\s+ok/);
+    expect(stdout[0]).toMatch(/Ready in \d+ms/);
   });
 
   test("CLI smoke-start exits with a clear failure when the requested dev port is occupied", async () => {

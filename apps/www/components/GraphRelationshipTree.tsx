@@ -1,11 +1,13 @@
 import {
   ArrowRight,
   Braces,
+  CheckCircle2,
   FileCode2,
   FileJson,
   Folder,
   GitBranch,
   LayoutTemplate,
+  Network,
   Route,
 } from "lucide-react";
 import { Badge } from "./ui/badge";
@@ -17,6 +19,7 @@ const sourceTree = [
     rows: [
       { label: "layout.tsx", detail: "wraps route", icon: LayoutTemplate },
       { label: "page.tsx", detail: "defines /", icon: Route, active: true },
+      { label: "docs/page.tsx", detail: "docs entry", icon: Route },
     ],
   },
   {
@@ -30,15 +33,30 @@ const sourceTree = [
 ];
 
 const outputs = [
-  { label: ".lumina/routes.json", detail: "route id, path, params", icon: FileJson },
-  { label: ".lumina/render-manifest.json", detail: "static mode evidence", icon: Braces },
-  { label: ".lumina/map.json", detail: "source and layout edges", icon: GitBranch },
+  {
+    label: ".lumina/routes.json",
+    detail: "route id, path, params",
+    icon: FileJson,
+    status: "route manifest",
+  },
+  {
+    label: ".lumina/render-manifest.json",
+    detail: "static mode evidence",
+    icon: Braces,
+    status: "render proof",
+  },
+  {
+    label: ".lumina/map.json",
+    detail: "source, layout, and import edges",
+    icon: GitBranch,
+    status: "map evidence",
+  },
 ];
 
 const relationships = [
-  { from: "app/page.tsx", relation: "declares", to: "Route /" },
-  { from: "app/layout.tsx", relation: "wraps", to: "Shared route layout" },
-  { from: "Hero.tsx", relation: "imports", to: "Graph relationship preview" },
+  { from: "app/page.tsx", relation: "declares", to: "Route /", confidence: "high" },
+  { from: "app/layout.tsx", relation: "wraps", to: "Shared route layout", confidence: "high" },
+  { from: "Hero.tsx", relation: "imports", to: "Graph relationship preview", confidence: "direct" },
 ];
 
 export function GraphRelationshipTree() {
@@ -51,6 +69,21 @@ export function GraphRelationshipTree() {
           <span />
         </div>
         <span className="console-label">lumina inspect apps/www why /</span>
+      </div>
+
+      <div className="console-metrics" aria-label="Graph summary">
+        <div>
+          <Network aria-hidden="true" size={16} />
+          <span>7 source nodes</span>
+        </div>
+        <div>
+          <GitBranch aria-hidden="true" size={16} />
+          <span>5 relationship edges</span>
+        </div>
+        <div>
+          <CheckCircle2 aria-hidden="true" size={16} />
+          <span>3 generated artifacts</span>
+        </div>
       </div>
 
       <div className="relationship-board">
@@ -107,27 +140,40 @@ export function GraphRelationshipTree() {
             <div className="relationship-list">
               {relationships.map((edge) => (
                 <div className="relationship-edge" key={`${edge.from}-${edge.relation}-${edge.to}`}>
-                  <span>{edge.from}</span>
-                  <strong>
-                    {edge.relation}
+                  <span className="edge-node edge-node-source">{edge.from}</span>
+                  <span className="edge-relation">
+                    <strong>{edge.relation}</strong>
                     <ArrowRight aria-hidden="true" size={14} />
-                  </strong>
-                  <span>{edge.to}</span>
+                    <small>{edge.confidence}</small>
+                  </span>
+                  <span className="edge-node edge-node-target">{edge.to}</span>
                 </div>
               ))}
             </div>
+          </div>
+        </div>
 
-            <div className="artifact-chips" aria-label="Generated evidence">
-              {outputs.map((output) => {
-                const OutputIcon = output.icon;
-                return (
-                  <span className="artifact-chip" key={output.label} title={output.detail}>
-                    <OutputIcon aria-hidden="true" size={14} />
-                    {output.label.replace(".lumina/", "")}
-                  </span>
-                );
-              })}
-            </div>
+        <div className="tree-panel output-panel">
+          <div className="panel-title">
+            <span>Generated outputs</span>
+            <Badge variant="outline">evidence</Badge>
+          </div>
+          <div className="output-stack" aria-label="Generated graph evidence">
+            {outputs.map((output) => {
+              const OutputIcon = output.icon;
+              return (
+                <div className="output-card" key={output.label}>
+                  <div className="output-icon">
+                    <OutputIcon aria-hidden="true" size={16} />
+                  </div>
+                  <div>
+                    <small>{output.status}</small>
+                    <strong>{output.label}</strong>
+                    <span>{output.detail}</span>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

@@ -314,6 +314,31 @@ html.dark .theme-icon-moon {
   font-size: 0.78rem;
 }
 
+.console-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  border-bottom: 1px solid rgba(237, 246, 238, 0.12);
+  background: rgba(237, 246, 238, 0.08);
+}
+
+.console-metrics div {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.52rem;
+  background: rgba(16, 32, 24, 0.84);
+  color: rgba(237, 246, 238, 0.78);
+  font-family: "Geist Mono", "Cascadia Code", monospace;
+  font-size: 0.68rem;
+  padding: 0.78rem 0.9rem;
+}
+
+.console-metrics svg {
+  flex: 0 0 auto;
+  color: #b9e9cc;
+}
+
 .route-map {
   position: relative;
   min-height: 360px;
@@ -411,9 +436,9 @@ html.dark .theme-icon-moon {
 
 .relationship-board {
   display: grid;
-  grid-template-columns: minmax(160px, 0.66fr) minmax(0, 1.34fr);
-  gap: 0.9rem;
-  padding: 0.95rem;
+  grid-template-columns: minmax(210px, 0.9fr) minmax(320px, 1.28fr) minmax(210px, 0.9fr);
+  gap: 1rem;
+  padding: 1rem;
 }
 
 .tree-panel {
@@ -421,6 +446,7 @@ html.dark .theme-icon-moon {
   border: 1px solid rgba(237, 246, 238, 0.12);
   border-radius: 8px;
   background: rgba(247, 248, 245, 0.06);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16);
 }
 
 .source-panel {
@@ -433,13 +459,20 @@ html.dark .theme-icon-moon {
   background: rgba(247, 248, 245, 0.08);
 }
 
+.output-panel {
+  background:
+    linear-gradient(180deg, rgba(214, 155, 98, 0.08), rgba(247, 248, 245, 0.04)),
+    rgba(247, 248, 245, 0.055);
+}
+
 .panel-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.7rem;
   border-bottom: 1px solid rgba(237, 246, 238, 0.12);
-  padding: 0.85rem;
+  min-height: 3.5rem;
+  padding: 0.85rem 0.95rem;
   color: rgba(237, 246, 238, 0.86);
   font-size: 0.82rem;
   font-weight: 700;
@@ -448,27 +481,27 @@ html.dark .theme-icon-moon {
 .file-tree,
 .output-stack {
   display: grid;
-  gap: 0.65rem;
-  padding: 0.85rem;
+  gap: 0.72rem;
+  padding: 0.95rem;
 }
 
 .tree-group {
   display: grid;
-  gap: 0.32rem;
+  gap: 0.34rem;
 }
 
 .tree-row {
   min-width: 0;
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 0.5rem;
+  gap: 0.58rem;
   align-items: center;
   border: 1px solid transparent;
   border-radius: 8px;
   color: rgba(237, 246, 238, 0.78);
   font-size: 0.82rem;
-  min-height: 2.35rem;
-  padding: 0.45rem 0.55rem;
+  min-height: 2.55rem;
+  padding: 0.5rem 0.62rem;
 }
 
 .tree-folder {
@@ -483,8 +516,11 @@ html.dark .theme-icon-moon {
 
 .tree-row-active {
   border-color: rgba(187, 215, 188, 0.28);
-  background: rgba(220, 239, 226, 0.1);
+  background:
+    linear-gradient(90deg, rgba(139, 211, 169, 0.16), rgba(220, 239, 226, 0.06)),
+    rgba(220, 239, 226, 0.1);
   color: #f4fff6;
+  box-shadow: inset 3px 0 0 rgba(139, 211, 169, 0.75);
 }
 
 .tree-row strong,
@@ -545,20 +581,37 @@ html.dark .theme-icon-moon {
 }
 
 .output-stack {
-  gap: 0.75rem;
+  gap: 0.82rem;
 }
 
 .output-card {
   min-width: 0;
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 0.65rem;
+  gap: 0.72rem;
   align-items: start;
   border: 1px solid rgba(237, 246, 238, 0.12);
   border-radius: 8px;
   background: rgba(247, 248, 245, 0.075);
   color: rgba(237, 246, 238, 0.86);
-  padding: 0.75rem;
+  padding: 0.82rem;
+}
+
+.output-card span {
+  display: block;
+  color: rgba(237, 246, 238, 0.62);
+  font-size: 0.72rem;
+}
+
+.output-icon {
+  display: grid;
+  width: 2.15rem;
+  height: 2.15rem;
+  place-items: center;
+  border: 1px solid rgba(237, 246, 238, 0.1);
+  border-radius: 8px;
+  background: rgba(214, 155, 98, 0.11);
+  color: #f0c497;
 }
 
 .output-card span,
@@ -568,8 +621,8 @@ html.dark .theme-icon-moon {
 
 .inspector-body {
   display: grid;
-  gap: 0.68rem;
-  padding: 0.75rem;
+  gap: 0.78rem;
+  padding: 0.95rem;
 }
 
 .route-summary-card {
@@ -580,7 +633,7 @@ html.dark .theme-icon-moon {
   border: 1px solid rgba(237, 246, 238, 0.14);
   border-radius: 8px;
   background: rgba(220, 239, 226, 0.1);
-  padding: 0.72rem;
+  padding: 0.85rem;
 }
 
 .route-summary-icon {
@@ -621,41 +674,43 @@ html.dark .theme-icon-moon {
 
 .relationship-list {
   display: grid;
-  gap: 0.52rem;
+  gap: 0.58rem;
 }
 
 .relationship-edge {
   display: grid;
   min-width: 0;
-  grid-template-columns: 1fr;
-  gap: 0.36rem;
-  align-items: start;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 0.62rem;
+  align-items: center;
   border: 1px solid rgba(237, 246, 238, 0.1);
   border-radius: 8px;
   background: rgba(16, 32, 24, 0.42);
-  padding: 0.68rem;
+  padding: 0.7rem;
 }
 
-.relationship-edge span,
-.relationship-edge strong {
+.edge-node,
+.edge-relation,
+.edge-relation strong,
+.edge-relation small {
   min-width: 0;
   overflow-wrap: anywhere;
 }
 
-.relationship-edge span {
+.edge-node {
   color: rgba(237, 246, 238, 0.76);
   font-family: "Geist Mono", "Cascadia Code", monospace;
   font-size: 0.7rem;
 }
 
-.relationship-edge span:last-child {
+.edge-node-target {
   color: #f5fff7;
   font-family: "Geist", "Aptos", "Segoe UI", system-ui, sans-serif;
   font-size: 0.82rem;
   font-weight: 720;
 }
 
-.relationship-edge strong {
+.edge-relation {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -668,6 +723,12 @@ html.dark .theme-icon-moon {
   justify-self: start;
   padding: 0.32rem 0.45rem;
   white-space: nowrap;
+}
+
+.edge-relation small {
+  color: rgba(237, 246, 238, 0.5);
+  font-family: "Geist Mono", "Cascadia Code", monospace;
+  font-size: 0.6rem;
 }
 
 .evidence-strip {
@@ -1809,7 +1870,7 @@ html.dark .ui-badge-warning {
 
   .hero-visual,
   .map-console {
-    min-height: 430px;
+    min-height: auto;
   }
 
   .feature-grid {
@@ -1817,6 +1878,10 @@ html.dark .ui-badge-warning {
   }
 
   .relationship-board {
+    grid-template-columns: 1fr;
+  }
+
+  .console-metrics {
     grid-template-columns: 1fr;
   }
 
@@ -1876,6 +1941,15 @@ html.dark .ui-badge-warning {
 
   .map-node {
     min-width: 7.8rem;
+  }
+
+  .relationship-edge {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+
+  .edge-relation {
+    white-space: normal;
   }
 
   .relationship-footer {

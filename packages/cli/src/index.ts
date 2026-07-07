@@ -154,6 +154,11 @@ export async function runCli(argv: string[], io: CliIo = {}): Promise<number> {
         `Local ${dev.url}`,
         `Routes ${dev.routes.length}`,
         "Artifacts .lumina/routes.json, .lumina/render-manifest.json, .lumina/map.json",
+        "",
+        "Phase                 Time      Status",
+        ...formatBuildPhases(dev.phases),
+        "",
+        `Ready in ${dev.durationMs}ms`,
       ].join("\n"),
     );
 
