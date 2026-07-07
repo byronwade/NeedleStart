@@ -12,7 +12,7 @@ Machine-readable command behavior is planned in [CLI JSON Contract](cli-json-con
 
 | Command | Purpose | Status | JSON output required once implemented? |
 | --- | --- | --- |
-| `lumina dev` | Start local development. | Implemented for minimal `<appPath>` Vite SSR route serving, dynamic and catch-all page route params, search params, route-specific dev hydration bundles, browser-verified interactive root-route hydration, `virtual:lumina/routes`, and route-file update reports; component-level HMR remains planned | No |
+| `lumina dev` | Start local development. | Implemented for minimal `<appPath>` Vite SSR route serving, dynamic and catch-all page route params, search params, app-level and route-level not-found/error components, route-specific dev hydration bundles, browser-verified interactive root-route hydration, `virtual:lumina/routes`, and route-file update reports; component-level HMR remains planned | No |
 | `lumina build` | Build app, manifests, graph, early reports, and adapter output. | Implemented for build-time static page routes and `--json`; SSR/API output remains planned | Yes |
 | `lumina start` | Start built output. | Implemented for static HTML in `dist/public`; SSR/API serving remains planned | No |
 | `lumina routes` | List route manifest entries. | Implemented for `<appPath> --json` | Yes |
@@ -96,7 +96,7 @@ bun run lumina -- dev apps/www --port 5173
 bun run lumina -- dev apps/www --once
 ```
 
-The implemented dev command writes `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/generated/client/*.tsx`, and `.lumina/client/*.js`, starts a Vite server, renders static, dynamic, and catch-all page routes through React SSR, passes route `params` and `searchParams` to page components, exposes route-specific dev hydration bundles through `/@lumina/client/*.js`, hydrates the `apps/www` root route counter in a browser smoke test, exposes `virtual:lumina/routes`, emits `.lumina/hmr-report.json` for route-file changes, sends a `lumina:routes-updated` dev-server event, and returns 404 HTML for unknown page routes. It does not yet implement component-level HMR.
+The implemented dev command writes `.lumina/routes.json`, `.lumina/render-manifest.json`, `.lumina/map.json`, `.lumina/generated/client/*.tsx`, and `.lumina/client/*.js`, starts a Vite server, renders static, dynamic, and catch-all page routes through React SSR, passes route `params` and `searchParams` to page components, renders nearest app-level or route-level `not-found.tsx` and `error.tsx` components for dev 404/500 responses, exposes route-specific dev hydration bundles through `/@lumina/client/*.js`, hydrates the `apps/www` root route counter in a browser smoke test, exposes `virtual:lumina/routes`, emits `.lumina/hmr-report.json` for route-file changes, sends a `lumina:routes-updated` dev-server event, and returns stable fallback 404/500 HTML when a special component is missing or fails. It does not yet implement component-level HMR.
 
 ## Implemented Build Command
 

@@ -4,7 +4,7 @@ Status: Implemented.
 
 Audience: framework contributors, app developers, runtime adapter authors, AI agents.
 
-This page defines the route-discovery contract for Lumina. The initial `@lumina/compiler` package API now implements the MVP page/API route grammar, in-memory route manifest shaping, compact `.lumina/routes.json` file emission, and the `lumina routes --json` / `lumina inspect` CLI inspection paths covered by fixture, artifact, and CLI tests. The Vite dev server implements minimal page-route matching for static, dynamic, and catch-all routes and passes route `params` to page components. Unsupported-convention diagnostics, case-collision diagnostics, production runtime matching for SSR/API routes, and broader route conventions remain planned.
+This page defines the route-discovery contract for Lumina. The initial `@lumina/compiler` package API now implements the MVP page/API route grammar, in-memory route manifest shaping, compact `.lumina/routes.json` file emission, and the `lumina routes --json` / `lumina inspect` CLI inspection paths covered by fixture, artifact, and CLI tests. The Vite dev server implements minimal page-route matching for static, dynamic, and catch-all routes, passes route `params` and `searchParams` to page components, and renders nearest app-level or route-level `not-found.tsx` / `error.tsx` components for dev 404/500 responses. Unsupported-convention diagnostics, case-collision diagnostics, production runtime matching for SSR/API routes, and broader route conventions remain planned.
 
 ## Contract Goals
 

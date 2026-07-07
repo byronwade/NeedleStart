@@ -589,7 +589,7 @@ MVP Alpha should support:
 - `components/*.tsx`
 - `lumina.config.ts`
 
-MVP Alpha should defer API routes, optional catch-all segments, error routes, not-found routes, contract files, app-local AGENTS generation, and llms outputs.
+MVP Alpha should defer API routes, optional catch-all segments, production special-file rendering, contract files, app-local AGENTS generation, and llms outputs.
 ```
 
 - [ ] **Step 7: Update public roadmap/examples/file-conventions pages**

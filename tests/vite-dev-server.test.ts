@@ -157,6 +157,38 @@ describe("Vite dev integration", () => {
     }
   }, 15_000);
 
+  test("uses not-found and error conventions in the dev server", async () => {
+    const appRoot = createSpecialRoutesApp();
+    const port = await getFreePort();
+    const dev = await startLuminaDevServer({
+      appRoot,
+      host: "127.0.0.1",
+      port,
+      logLevel: "silent",
+    });
+
+    try {
+      const rootMissing = await fetchWithTimeout(`${dev.url}/missing`);
+      expect(rootMissing.status).toBe(404);
+      const rootMissingHtml = await rootMissing.text();
+      expect(rootMissingHtml).toContain("<h1>Root not found</h1>");
+      expect(rootMissingHtml).toContain("<main>");
+
+      const blogMissing = await fetchWithTimeout(`${dev.url}/blog/missing/extra`);
+      expect(blogMissing.status).toBe(404);
+      expect(await blogMissing.text()).toContain("<h1>Blog not found</h1>");
+
+      const blogError = await fetchWithTimeout(`${dev.url}/blog/bad`);
+      expect(blogError.status).toBe(500);
+      const blogErrorHtml = await blogError.text();
+      expect(blogErrorHtml).toContain("<h1>Blog error");
+      expect(blogErrorHtml).toContain("broken bad");
+    } finally {
+      await dev.close();
+      rmSync(appRoot, { recursive: true, force: true });
+    }
+  }, 15_000);
+
   test("regenerates route artifacts and HMR report when a page is added", async () => {
     const appRoot = createVirtualRoutesApp();
     const port = await getFreePort();
@@ -302,6 +334,77 @@ function createDynamicRoutesApp(): string {
     [
       "export default function SearchPage({ searchParams }: { searchParams: { q?: string; page?: string } }) {",
       "  return <main><h1>Search {searchParams.q}/{searchParams.page}</h1></main>;",
+      "}",
+      "",
+    ].join("\n"),
+    "utf8",
+  );
+
+  return appRoot;
+}
+
+function createSpecialRoutesApp(): string {
+  const scratchRoot = join(repoRoot, ".tmp");
+  mkdirSync(scratchRoot, { recursive: true });
+  const appRoot = mkdtempSync(join(scratchRoot, "lumina-vite-special-"));
+  mkdirSync(join(appRoot, "app", "blog", "[slug]"), { recursive: true });
+
+  writeFileSync(
+    join(appRoot, "app", "layout.tsx"),
+    [
+      "export default function RootLayout({ children }: { children: unknown }) {",
+      "  return <html lang=\"en\"><body><main>{children}</main></body></html>;",
+      "}",
+      "",
+    ].join("\n"),
+    "utf8",
+  );
+  writeFileSync(
+    join(appRoot, "app", "not-found.tsx"),
+    [
+      "export default function RootNotFound() {",
+      "  return <h1>Root not found</h1>;",
+      "}",
+      "",
+    ].join("\n"),
+    "utf8",
+  );
+  writeFileSync(
+    join(appRoot, "app", "error.tsx"),
+    [
+      "export default function RootError({ error }: { error: Error }) {",
+      "  return <h1>Root error {error.message}</h1>;",
+      "}",
+      "",
+    ].join("\n"),
+    "utf8",
+  );
+  writeFileSync(
+    join(appRoot, "app", "blog", "not-found.tsx"),
+    [
+      "export default function BlogNotFound() {",
+      "  return <h1>Blog not found</h1>;",
+      "}",
+      "",
+    ].join("\n"),
+    "utf8",
+  );
+  writeFileSync(
+    join(appRoot, "app", "blog", "[slug]", "page.tsx"),
+    [
+      "export default function BlogPage({ params }: { params: { slug: string } }) {",
+      "  if (params.slug === \"bad\") throw new Error(`broken ${params.slug}`);",
+      "  return <h1>Blog {params.slug}</h1>;",
+      "}",
+      "",
+    ].join("\n"),
+    "utf8",
+  );
+  writeFileSync(
+    join(appRoot, "app", "blog", "[slug]", "error.tsx"),
+    [
+      "export default function BlogError({ error }: { error: Error }) {",
+      "  return <h1>Blog error {error.message}</h1>;",
       "}",
       "",
     ].join("\n"),

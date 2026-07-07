@@ -124,8 +124,23 @@ export async function startLuminaDevServer(options: LuminaDevServerOptions): Pro
             }
 
             const match = findRoute(routeState.routes, url);
+            const searchParams = readSearchParams(rawUrl);
 
             if (!match) {
+              const notFoundFile = findNotFoundFile(appRoot, url);
+              if (notFoundFile) {
+                try {
+                  const html = await renderSpecialFile(server, appRoot, notFoundFile, url, {
+                    searchParams,
+                  });
+                  response.statusCode = 404;
+                  response.setHeader("Content-Type", "text/html; charset=utf-8");
+                  response.end(html);
+                  return;
+                } catch {
+                  // Fall through to the stable generic 404 if the user's not-found component fails.
+                }
+              }
               response.statusCode = 404;
               response.setHeader("Content-Type", "text/html; charset=utf-8");
               response.end(`<!doctype html><h1>Route not found: ${escapeHtml(url)}</h1>`);
@@ -135,7 +150,7 @@ export async function startLuminaDevServer(options: LuminaDevServerOptions): Pro
             try {
               const html = await renderRoute(server, match.route, url, {
                 params: match.params,
-                searchParams: readSearchParams(rawUrl),
+                searchParams,
               });
               response.statusCode = 200;
               response.setHeader("Content-Type", "text/html; charset=utf-8");
@@ -146,6 +161,22 @@ export async function startLuminaDevServer(options: LuminaDevServerOptions): Pro
                   server.ssrFixStacktrace(error);
                 } catch {
                   // Vite's stacktrace mapper can fail for synthetic modules; keep the dev response reliable.
+                }
+              }
+              const errorFile = findErrorFile(appRoot, match.route);
+              if (errorFile) {
+                try {
+                  const html = await renderSpecialFile(server, appRoot, errorFile, url, {
+                    error: error instanceof Error ? error : new Error(String(error)),
+                    params: match.params,
+                    searchParams,
+                  });
+                  response.statusCode = 500;
+                  response.setHeader("Content-Type", "text/html; charset=utf-8");
+                  response.end(html);
+                  return;
+                } catch {
+                  // Fall through to the stable generic 500 if the user's error component fails.
                 }
               }
               response.statusCode = 500;
@@ -380,6 +411,34 @@ async function renderRoute(
   return server.transformIndexHtml(url, html);
 }
 
+async function renderSpecialFile(
+  server: ViteDevServer,
+  appRoot: string,
+  sourceFile: string,
+  url: string,
+  props: Record<string, unknown>,
+): Promise<string> {
+  const specialModule = await server.ssrLoadModule(`/${sourceFile}`);
+  const Special = specialModule.default;
+  if (typeof Special !== "function") {
+    throw new Error(`${sourceFile} must export a default component.`);
+  }
+
+  let app: ReactNode = createElement(Special, props);
+  for (const layout of [...layoutsForSpecialFile(appRoot, sourceFile)].reverse()) {
+    const layoutModule = await server.ssrLoadModule(`/${layout}`);
+    const Layout = layoutModule.default;
+    if (typeof Layout !== "function") {
+      throw new Error(`${layout} must export a default layout component.`);
+    }
+    app = createElement(Layout, { ...props, children: app });
+  }
+
+  const appHtml = renderToString(app);
+  const html = `<!doctype html>${appHtml}<script type="module" src="/@vite/client"></script>`;
+  return server.transformIndexHtml(url, html);
+}
+
 async function writeClientBundles(appRoot: string, routes: RouteNode[]): Promise<void> {
   const entryRoot = resolve(appRoot, ".lumina", "generated", "client");
   const outdir = resolve(appRoot, ".lumina", "client");
@@ -578,6 +637,44 @@ function splitRoutePath(pathname: string): string[] | undefined {
     }
   }
   return parts;
+}
+
+function findNotFoundFile(appRoot: string, url: string): string | undefined {
+  const parts = splitRoutePath(url) ?? [];
+  const candidates: string[] = [];
+  for (let index = parts.length; index >= 0; index -= 1) {
+    const prefix = parts.slice(0, index);
+    candidates.push(["app", ...prefix, "not-found.tsx"].join("/"));
+    candidates.push(["app", ...prefix, "not-found.jsx"].join("/"));
+  }
+  return findFirstExistingSource(appRoot, candidates);
+}
+
+function findErrorFile(appRoot: string, route: RouteNode): string | undefined {
+  const sourceParts = route.sourceFile.split("/");
+  sourceParts.pop();
+  const candidates: string[] = [];
+  for (let index = sourceParts.length; index >= 1; index -= 1) {
+    const prefix = sourceParts.slice(0, index);
+    candidates.push([...prefix, "error.tsx"].join("/"));
+    candidates.push([...prefix, "error.jsx"].join("/"));
+  }
+  return findFirstExistingSource(appRoot, candidates);
+}
+
+function layoutsForSpecialFile(appRoot: string, sourceFile: string): string[] {
+  const sourceParts = sourceFile.split("/");
+  sourceParts.pop();
+  const layouts: string[] = [];
+  for (let index = 1; index <= sourceParts.length; index += 1) {
+    const layout = [...sourceParts.slice(0, index), "layout.tsx"].join("/");
+    if (existsSync(resolve(appRoot, ...layout.split("/")))) layouts.push(layout);
+  }
+  return layouts;
+}
+
+function findFirstExistingSource(appRoot: string, candidates: string[]): string | undefined {
+  return candidates.find((candidate) => existsSync(resolve(appRoot, ...candidate.split("/"))));
 }
 
 function isAppSourceFile(appRoot: string, file: string): boolean {
