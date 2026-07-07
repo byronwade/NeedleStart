@@ -269,7 +269,7 @@ lumina/
   docs/
 ```
 
-Scaffolded example paths are `examples/basic/`, `examples/blog-seo/`, `examples/multi-app-workspace/`, `examples/large-100-routes/`, and `examples/large-1000-routes/`. Planned future example paths include `examples/api-route/`, `examples/hot-api/`, `examples/static-export/`, `examples/adapter-node/`, `examples/dashboard-client/`, `examples/ecommerce/`, `examples/agent-demo/`, `examples/docs-site/`, and `playgrounds/large-app-fixture/`. These planned paths are target inventory only until the directories, commands, tests, generated artifacts, and status labels exist.
+The verified starter example path is `examples/basic/`. Scaffolded example paths are `examples/blog-seo/`, `examples/multi-app-workspace/`, `examples/large-100-routes/`, and `examples/large-1000-routes/`. Planned future example paths include `examples/api-route/`, `examples/hot-api/`, `examples/static-export/`, `examples/adapter-node/`, `examples/dashboard-client/`, `examples/ecommerce/`, `examples/agent-demo/`, `examples/docs-site/`, and `playgrounds/large-app-fixture/`. These planned paths are target inventory only until the directories, commands, tests, generated artifacts, and status labels exist.
 
 Adapter package paths are `packages/adapters/bun`, `packages/adapters/node`, and `packages/adapters/static`.
 

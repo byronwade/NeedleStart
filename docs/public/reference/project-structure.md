@@ -135,7 +135,7 @@ The future generated artifact names are `.lumina/graph.json`, `.lumina/seo.repor
 
 Lumina itself is scaffolded as a Bun workspace with package workspaces under `packages/`, adapter package workspaces under `packages/adapters/`, repository scripts under `scripts/`, tests under `tests/`, and documentation under `docs/`.
 
-Scaffolded example directories now exist under `examples/basic/`, `examples/blog-seo/`, `examples/multi-app-workspace/`, `examples/large-100-routes/`, and `examples/large-1000-routes/`. Public docs may describe those directories as scaffolded only; they must not describe them as runnable or verified until the commands, runtime behavior, generated artifacts, and example evidence exist.
+The verified starter example now exists under `examples/basic/`. Scaffolded example directories exist under `examples/blog-seo/`, `examples/multi-app-workspace/`, `examples/large-100-routes/`, and `examples/large-1000-routes/`. Public docs may describe only `examples/basic/` as verified; other example directories must not be described as runnable or verified until the commands, runtime behavior, generated artifacts, and example evidence exist.
 
 Planned test fixture structure is defined in [Testing](testing.md) and the internal [Testing Contract](../../testing-contract.md).
 

@@ -1,5 +1,6 @@
-import { existsSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { cp } from "node:fs/promises";
+import { createServer } from "node:net";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
 import { describe, expect, test } from "bun:test";
@@ -10,6 +11,14 @@ const repoRoot = join(import.meta.dir, "..");
 
 async function createWritableCopy(relativePath: string, prefix: string): Promise<string> {
   const appRoot = mkdtempSync(join(tmpdir(), prefix));
+  await cp(join(repoRoot, relativePath), appRoot, { recursive: true });
+  return appRoot;
+}
+
+async function createRepoWritableCopy(relativePath: string, prefix: string): Promise<string> {
+  const scratchRoot = join(repoRoot, ".tmp");
+  mkdirSync(scratchRoot, { recursive: true });
+  const appRoot = mkdtempSync(join(scratchRoot, prefix));
   await cp(join(repoRoot, relativePath), appRoot, { recursive: true });
   return appRoot;
 }
@@ -58,7 +67,7 @@ describe("MVP app and example fixtures", () => {
     }
   });
 
-  test("examples/basic and examples/blog-seo are scaffolded as compiler-verifiable examples", () => {
+  test("examples/basic and examples/blog-seo expose their current fixture status honestly", () => {
     const basic = compiler.createRoutesManifest({ appRoot: join(repoRoot, "examples/basic") });
     const blogSeo = compiler.createRoutesManifest({ appRoot: join(repoRoot, "examples/blog-seo") });
 
@@ -75,9 +84,89 @@ describe("MVP app and example fixtures", () => {
       expect(existsSync(join(repoRoot, relativePath))).toBe(true);
     }
 
-    expect(readFileSync(join(repoRoot, "examples/basic/README.md"), "utf8")).toContain("Status: Scaffolded.");
+    expect(readFileSync(join(repoRoot, "examples/basic/README.md"), "utf8")).toContain("Status: Verified.");
     expect(readFileSync(join(repoRoot, "examples/blog-seo/README.md"), "utf8")).toContain("Status: Scaffolded.");
   });
+
+  test("examples/basic is a verified starter for dev, build, start, and generated artifacts", async () => {
+    const appRoot = await createRepoWritableCopy("examples/basic", "lumina-basic-");
+    const packageJson = JSON.parse(readFileSync(join(repoRoot, "examples/basic/package.json"), "utf8"));
+
+    try {
+      expect(packageJson.scripts.dev).toBe("bun ../../packages/cli/src/index.ts dev .");
+      expect(packageJson.scripts.build).toBe("bun ../../packages/cli/src/index.ts build .");
+      expect(packageJson.scripts.start).toBe("bun ../../packages/cli/src/index.ts start .");
+
+      const devExitCode = await cli.runCli(["dev", appRoot, "--port", String(await getFreePort()), "--once"], {
+        stdout: () => {},
+        stderr: () => {},
+      });
+      expect(devExitCode).toBe(0);
+
+      const buildExitCode = await cli.runCli(["build", appRoot, "--json"], {
+        stdout: () => {},
+        stderr: () => {},
+      });
+      expect(buildExitCode).toBe(0);
+
+      for (const artifact of [
+        ".lumina/routes.json",
+        ".lumina/render-manifest.json",
+        ".lumina/map.json",
+        ".lumina/build-trace.json",
+        ".lumina/perf.report.json",
+        "dist/routes.manifest.json",
+        "dist/render.manifest.json",
+        "dist/adapter.manifest.json",
+      ]) {
+        const raw = readFileSync(join(appRoot, artifact), "utf8");
+        expect(raw).not.toContain("\n");
+        expect(raw).not.toContain(repoRoot);
+      }
+
+      const routesManifest = JSON.parse(readFileSync(join(appRoot, ".lumina/routes.json"), "utf8"));
+      expect(routesManifest.routes.map((route: { path: string }) => route.path)).toEqual(["/"]);
+
+      const renderManifest = JSON.parse(readFileSync(join(appRoot, ".lumina/render-manifest.json"), "utf8"));
+      expect(renderManifest.routes).toEqual([
+        expect.objectContaining({ path: "/", mode: "static" }),
+      ]);
+
+      const map = JSON.parse(readFileSync(join(appRoot, ".lumina/map.json"), "utf8"));
+      expect(map.edges).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            from: "route:/",
+            to: "file:app/page.tsx",
+            kind: "route.source",
+            why: expect.stringContaining("defines the / route"),
+          }),
+        ]),
+      );
+
+      rmSync(join(appRoot, "app"), { recursive: true, force: true });
+
+      const { startBuiltLuminaApp } = await import("../packages/adapters/bun/src/index");
+      const server = await startBuiltLuminaApp({
+        appRoot,
+        host: "127.0.0.1",
+        port: await getFreePort(),
+      });
+
+      try {
+        const home = await fetchWithTimeout(`${server.url}/`);
+        expect(home.status).toBe(200);
+        expect(home.headers.get("cache-control")).toBe("no-store");
+        expect(await home.text()).toContain("<h1>Basic Lumina App</h1>");
+      } finally {
+        await server.close();
+      }
+
+      expect(readFileSync(join(repoRoot, "examples/basic/README.md"), "utf8")).toContain("Status: Verified.");
+    } finally {
+      rmSync(appRoot, { recursive: true, force: true });
+    }
+  }, 20_000);
 
   test("multi-app and generated large-route examples have deterministic scaffold evidence", async () => {
     const marketing = compiler.createRoutesManifest({
@@ -118,3 +207,23 @@ describe("MVP app and example fixtures", () => {
     }
   }, 15_000);
 });
+
+async function getFreePort(): Promise<number> {
+  return await new Promise((resolve, reject) => {
+    const server = createServer();
+    server.once("error", reject);
+    server.listen(0, "127.0.0.1", () => {
+      const address = server.address();
+      if (typeof address === "object" && address) {
+        const port = address.port;
+        server.close(() => resolve(port));
+      } else {
+        server.close(() => reject(new Error("Unable to allocate a localhost port.")));
+      }
+    });
+  });
+}
+
+async function fetchWithTimeout(url: string): Promise<Response> {
+  return await fetch(url, { signal: AbortSignal.timeout(5_000) });
+}

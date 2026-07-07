@@ -1,4 +1,4 @@
-import { copyFileSync, existsSync, mkdirSync, readdirSync, rmSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, readdirSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { dirname, relative, resolve } from "node:path";
 import { writeLuminaMap, writeRenderManifest, writeRoutesManifest } from "@lumina/compiler";
 import type { RouteNode } from "@lumina/core";
@@ -857,8 +857,7 @@ function createPerfReport(routes: RouteNode[], outputs: string[], appRoot: strin
 }
 
 function byteLengthOfFile(appRoot: string, outputPath: string): number {
-  const file = Bun.file(resolve(appRoot, ...outputPath.split("/")));
-  return file.size;
+  return statSync(resolve(appRoot, ...outputPath.split("/"))).size;
 }
 
 function compareStrings(left: string, right: string): number {
